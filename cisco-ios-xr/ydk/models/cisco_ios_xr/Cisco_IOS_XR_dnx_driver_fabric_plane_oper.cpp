@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Fabric::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Fabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "plane-table")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Fabric::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fabric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fabric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(plane_table != nullptr)
     {
-        children["plane-table"] = plane_table;
+        _children["plane-table"] = plane_table;
     }
 
-    return children;
+    return _children;
 }
 
 void Fabric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Fabric::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Fabric::clone_ptr() const
+std::shared_ptr<ydk::Entity> Fabric::clone_ptr() const
 {
     return std::make_shared<Fabric>();
 }
@@ -170,7 +170,7 @@ std::vector<std::pair<std::string, LeafData> > Fabric::PlaneTable::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Fabric::PlaneTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fabric::PlaneTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -193,21 +193,21 @@ std::shared_ptr<Entity> Fabric::PlaneTable::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fabric::PlaneTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fabric::PlaneTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(plane != nullptr)
     {
-        children["plane"] = plane;
+        _children["plane"] = plane;
     }
 
-    return children;
+    return _children;
 }
 
 void Fabric::PlaneTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -281,33 +281,33 @@ std::vector<std::pair<std::string, LeafData> > Fabric::PlaneTable::Statistics::g
 
 }
 
-std::shared_ptr<Entity> Fabric::PlaneTable::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fabric::PlaneTable::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "plane-stats-info")
     {
-        auto c = std::make_shared<Fabric::PlaneTable::Statistics::PlaneStatsInfo>();
-        c->parent = this;
-        plane_stats_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fabric::PlaneTable::Statistics::PlaneStatsInfo>();
+        ent_->parent = this;
+        plane_stats_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fabric::PlaneTable::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fabric::PlaneTable::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : plane_stats_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : plane_stats_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fabric::PlaneTable::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -393,16 +393,16 @@ std::vector<std::pair<std::string, LeafData> > Fabric::PlaneTable::Statistics::P
 
 }
 
-std::shared_ptr<Entity> Fabric::PlaneTable::Statistics::PlaneStatsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fabric::PlaneTable::Statistics::PlaneStatsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fabric::PlaneTable::Statistics::PlaneStatsInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fabric::PlaneTable::Statistics::PlaneStatsInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fabric::PlaneTable::Statistics::PlaneStatsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -536,33 +536,33 @@ std::vector<std::pair<std::string, LeafData> > Fabric::PlaneTable::Plane::get_na
 
 }
 
-std::shared_ptr<Entity> Fabric::PlaneTable::Plane::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fabric::PlaneTable::Plane::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-plane-info")
     {
-        auto c = std::make_shared<Fabric::PlaneTable::Plane::DetailPlaneInfo>();
-        c->parent = this;
-        detail_plane_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fabric::PlaneTable::Plane::DetailPlaneInfo>();
+        ent_->parent = this;
+        detail_plane_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fabric::PlaneTable::Plane::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fabric::PlaneTable::Plane::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail_plane_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail_plane_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fabric::PlaneTable::Plane::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -660,16 +660,16 @@ std::vector<std::pair<std::string, LeafData> > Fabric::PlaneTable::Plane::Detail
 
 }
 
-std::shared_ptr<Entity> Fabric::PlaneTable::Plane::DetailPlaneInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fabric::PlaneTable::Plane::DetailPlaneInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fabric::PlaneTable::Plane::DetailPlaneInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fabric::PlaneTable::Plane::DetailPlaneInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fabric::PlaneTable::Plane::DetailPlaneInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

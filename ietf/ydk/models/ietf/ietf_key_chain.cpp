@@ -69,7 +69,7 @@ std::vector<std::pair<std::string, LeafData> > KeyChains::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> KeyChains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> KeyChains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accept-tolerance")
     {
@@ -82,34 +82,34 @@ std::shared_ptr<Entity> KeyChains::get_child_by_name(const std::string & child_y
 
     if(child_yang_name == "key")
     {
-        auto c = std::make_shared<KeyChains::Key>();
-        c->parent = this;
-        key.append(c);
-        return c;
+        auto ent_ = std::make_shared<KeyChains::Key>();
+        ent_->parent = this;
+        key.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KeyChains::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> KeyChains::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accept_tolerance != nullptr)
     {
-        children["accept-tolerance"] = accept_tolerance;
+        _children["accept-tolerance"] = accept_tolerance;
     }
 
-    count = 0;
-    for (auto c : key.entities())
+    count_ = 0;
+    for (auto ent_ : key.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void KeyChains::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -130,7 +130,7 @@ void KeyChains::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> KeyChains::clone_ptr() const
+std::shared_ptr<ydk::Entity> KeyChains::clone_ptr() const
 {
     return std::make_shared<KeyChains>();
 }
@@ -203,16 +203,16 @@ std::vector<std::pair<std::string, LeafData> > KeyChains::AcceptTolerance::get_n
 
 }
 
-std::shared_ptr<Entity> KeyChains::AcceptTolerance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> KeyChains::AcceptTolerance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KeyChains::AcceptTolerance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> KeyChains::AcceptTolerance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void KeyChains::AcceptTolerance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -295,7 +295,7 @@ std::vector<std::pair<std::string, LeafData> > KeyChains::Key::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> KeyChains::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> KeyChains::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
@@ -327,26 +327,26 @@ std::shared_ptr<Entity> KeyChains::Key::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> KeyChains::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_string != nullptr)
     {
-        children["key-string"] = key_string;
+        _children["key-string"] = key_string;
     }
 
     if(lifetime != nullptr)
     {
-        children["lifetime"] = lifetime;
+        _children["lifetime"] = lifetime;
     }
 
     if(crypto_algorithm != nullptr)
     {
-        children["crypto-algorithm"] = crypto_algorithm;
+        _children["crypto-algorithm"] = crypto_algorithm;
     }
 
-    return children;
+    return _children;
 }
 
 void KeyChains::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -419,16 +419,16 @@ std::vector<std::pair<std::string, LeafData> > KeyChains::Key::KeyString::get_na
 
 }
 
-std::shared_ptr<Entity> KeyChains::Key::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> KeyChains::Key::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> KeyChains::Key::KeyString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void KeyChains::Key::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -515,7 +515,7 @@ std::vector<std::pair<std::string, LeafData> > KeyChains::Key::Lifetime::get_nam
 
 }
 
-std::shared_ptr<Entity> KeyChains::Key::Lifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> KeyChains::Key::Lifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "send-accept-lifetime")
     {
@@ -547,26 +547,26 @@ std::shared_ptr<Entity> KeyChains::Key::Lifetime::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::Lifetime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> KeyChains::Key::Lifetime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(send_accept_lifetime != nullptr)
     {
-        children["send-accept-lifetime"] = send_accept_lifetime;
+        _children["send-accept-lifetime"] = send_accept_lifetime;
     }
 
     if(send_lifetime != nullptr)
     {
-        children["send-lifetime"] = send_lifetime;
+        _children["send-lifetime"] = send_lifetime;
     }
 
     if(accept_lifetime != nullptr)
     {
-        children["accept-lifetime"] = accept_lifetime;
+        _children["accept-lifetime"] = accept_lifetime;
     }
 
-    return children;
+    return _children;
 }
 
 void KeyChains::Key::Lifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -641,16 +641,16 @@ std::vector<std::pair<std::string, LeafData> > KeyChains::Key::Lifetime::SendAcc
 
 }
 
-std::shared_ptr<Entity> KeyChains::Key::Lifetime::SendAcceptLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> KeyChains::Key::Lifetime::SendAcceptLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::Lifetime::SendAcceptLifetime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> KeyChains::Key::Lifetime::SendAcceptLifetime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void KeyChains::Key::Lifetime::SendAcceptLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -775,16 +775,16 @@ std::vector<std::pair<std::string, LeafData> > KeyChains::Key::Lifetime::SendLif
 
 }
 
-std::shared_ptr<Entity> KeyChains::Key::Lifetime::SendLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> KeyChains::Key::Lifetime::SendLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::Lifetime::SendLifetime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> KeyChains::Key::Lifetime::SendLifetime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void KeyChains::Key::Lifetime::SendLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -909,16 +909,16 @@ std::vector<std::pair<std::string, LeafData> > KeyChains::Key::Lifetime::AcceptL
 
 }
 
-std::shared_ptr<Entity> KeyChains::Key::Lifetime::AcceptLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> KeyChains::Key::Lifetime::AcceptLifetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::Lifetime::AcceptLifetime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> KeyChains::Key::Lifetime::AcceptLifetime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void KeyChains::Key::Lifetime::AcceptLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1055,16 +1055,16 @@ std::vector<std::pair<std::string, LeafData> > KeyChains::Key::CryptoAlgorithm::
 
 }
 
-std::shared_ptr<Entity> KeyChains::Key::CryptoAlgorithm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> KeyChains::Key::CryptoAlgorithm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::CryptoAlgorithm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> KeyChains::Key::CryptoAlgorithm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void KeyChains::Key::CryptoAlgorithm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

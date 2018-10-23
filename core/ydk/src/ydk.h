@@ -43,6 +43,8 @@ typedef void* Capability;
 typedef void* Repository;
 typedef void* YDKStatePtr;
 
+typedef void* Session;
+
 typedef struct DataNodeChildren
 {
     DataNode* datanodes;
@@ -99,6 +101,9 @@ boolean YDKStateErrorOccurred(YDKStatePtr);
 void YDKStateClear(YDKStatePtr ptr);
 void YDKStateFree(YDKStatePtr);
 
+void handle_error_message(YDKState* state, const char * message);
+void handle_error(YDKState* state);
+
 Capability CapabilityCreate(YDKStatePtr state, const char* mod, const char* rev);
 void CapabilityFree(Capability);
 
@@ -112,7 +117,10 @@ ServiceProvider NetconfServiceProviderInitWithOnDemand(YDKStatePtr state, const 
 ServiceProvider NetconfServiceProviderInitWithRepo(YDKStatePtr state, Repository repo, const char * address, const char * username, const char * password, int port, const char * protocol);
 ServiceProvider NetconfServiceProviderInitWithOnDemandRepo(YDKStatePtr state, Repository repo, const char * address, const char * username, const char * password, int port, const char * protocol, boolean on_demand);
 RootSchemaNode ServiceProviderGetRootSchema(YDKStatePtr, ServiceProvider);
+RootSchemaWrapper ServiceProviderGetRootSchemaNode(YDKStatePtr, ServiceProvider);
 EncodingFormat ServiceProviderGetEncoding(ServiceProvider);
+Session ServiceProviderGetSession(ServiceProvider);
+RootSchemaNode SessionGetRootSchema(YDKStatePtr, Session);
 void NetconfServiceProviderFree(ServiceProvider);
 int NetconfServiceProviderGetNumCapabilities(ServiceProvider);
 const char* NetconfServiceProviderGetCapabilityByIndex(ServiceProvider, int);
@@ -124,6 +132,8 @@ OpenDaylightServiceProvider OpenDaylightServiceProviderInitWithRepo(YDKStatePtr 
 void OpenDaylightServiceProviderFree(OpenDaylightServiceProvider);
 ServiceProvider OpenDaylightServiceProviderGetNodeProvider(YDKStatePtr state, OpenDaylightServiceProvider provider, const char * node_id);
 const char* OpenDaylightServiceProviderGetNodeIDByIndex(YDKStatePtr state, OpenDaylightServiceProvider provider, int idx);
+
+const char * ServiceProviderType(ServiceProvider);
 
 Codec CodecInit();
 void CodecFree(Codec);

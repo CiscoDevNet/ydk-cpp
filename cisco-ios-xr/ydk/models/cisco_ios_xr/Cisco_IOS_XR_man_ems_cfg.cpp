@@ -105,7 +105,7 @@ std::vector<std::pair<std::string, LeafData> > Grpc::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Grpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Grpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-layer")
     {
@@ -128,21 +128,21 @@ std::shared_ptr<Entity> Grpc::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Grpc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Grpc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_layer != nullptr)
     {
-        children["service-layer"] = service_layer;
+        _children["service-layer"] = service_layer;
     }
 
     if(tls_cipher != nullptr)
     {
-        children["tls-cipher"] = tls_cipher;
+        _children["tls-cipher"] = tls_cipher;
     }
 
-    return children;
+    return _children;
 }
 
 void Grpc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -273,7 +273,7 @@ void Grpc::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Grpc::clone_ptr() const
+std::shared_ptr<ydk::Entity> Grpc::clone_ptr() const
 {
     return std::make_shared<Grpc>();
 }
@@ -353,16 +353,16 @@ std::vector<std::pair<std::string, LeafData> > Grpc::ServiceLayer::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Grpc::ServiceLayer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Grpc::ServiceLayer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Grpc::ServiceLayer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Grpc::ServiceLayer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Grpc::ServiceLayer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -446,16 +446,16 @@ std::vector<std::pair<std::string, LeafData> > Grpc::TlsCipher::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Grpc::TlsCipher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Grpc::TlsCipher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Grpc::TlsCipher::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Grpc::TlsCipher::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Grpc::TlsCipher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

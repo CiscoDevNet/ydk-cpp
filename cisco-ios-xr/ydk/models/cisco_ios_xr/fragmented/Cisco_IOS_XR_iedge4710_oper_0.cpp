@@ -57,7 +57,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Subscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "manager")
     {
@@ -80,21 +80,21 @@ std::shared_ptr<Entity> Subscriber::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(manager != nullptr)
     {
-        children["manager"] = manager;
+        _children["manager"] = manager;
     }
 
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -105,7 +105,7 @@ void Subscriber::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Subscriber::clone_ptr() const
+std::shared_ptr<ydk::Entity> Subscriber::clone_ptr() const
 {
     return std::make_shared<Subscriber>();
 }
@@ -185,7 +185,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -199,16 +199,16 @@ std::shared_ptr<Entity> Subscriber::Manager::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -282,33 +282,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::get_n
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Subscriber::Manager::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriber::Manager::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -380,7 +380,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -394,16 +394,16 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -480,7 +480,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aaa")
     {
@@ -512,26 +512,26 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aaa != nullptr)
     {
-        children["aaa"] = aaa;
+        _children["aaa"] = aaa;
     }
 
     if(aggregate_summary != nullptr)
     {
-        children["aggregate-summary"] = aggregate_summary;
+        _children["aggregate-summary"] = aggregate_summary;
     }
 
     if(srg != nullptr)
     {
-        children["srg"] = srg;
+        _children["srg"] = srg;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -634,7 +634,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregate-accounting")
     {
@@ -747,71 +747,71 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aggregate_accounting != nullptr)
     {
-        children["aggregate-accounting"] = aggregate_accounting;
+        _children["aggregate-accounting"] = aggregate_accounting;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(aggregate_mobility != nullptr)
     {
-        children["aggregate-mobility"] = aggregate_mobility;
+        _children["aggregate-mobility"] = aggregate_mobility;
     }
 
     if(aggregate_authentication != nullptr)
     {
-        children["aggregate-authentication"] = aggregate_authentication;
+        _children["aggregate-authentication"] = aggregate_authentication;
     }
 
     if(accounting_stats_all != nullptr)
     {
-        children["accounting-stats-all"] = accounting_stats_all;
+        _children["accounting-stats-all"] = accounting_stats_all;
     }
 
     if(change_of_authorization != nullptr)
     {
-        children["change-of-authorization"] = change_of_authorization;
+        _children["change-of-authorization"] = change_of_authorization;
     }
 
     if(authorization != nullptr)
     {
-        children["authorization"] = authorization;
+        _children["authorization"] = authorization;
     }
 
     if(aggregate_authorization != nullptr)
     {
-        children["aggregate-authorization"] = aggregate_authorization;
+        _children["aggregate-authorization"] = aggregate_authorization;
     }
 
     if(aggregate_accounting_stats_all != nullptr)
     {
-        children["aggregate-accounting-stats-all"] = aggregate_accounting_stats_all;
+        _children["aggregate-accounting-stats-all"] = aggregate_accounting_stats_all;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(mobility != nullptr)
     {
-        children["mobility"] = mobility;
+        _children["mobility"] = mobility;
     }
 
     if(aggregate_change_of_authorization != nullptr)
     {
-        children["aggregate-change-of-authorization"] = aggregate_change_of_authorization;
+        _children["aggregate-change-of-authorization"] = aggregate_change_of_authorization;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -911,7 +911,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start")
     {
@@ -970,41 +970,41 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Aggre
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(start != nullptr)
     {
-        children["start"] = start;
+        _children["start"] = start;
     }
 
     if(stop != nullptr)
     {
-        children["stop"] = stop;
+        _children["stop"] = stop;
     }
 
     if(interim != nullptr)
     {
-        children["interim"] = interim;
+        _children["interim"] = interim;
     }
 
     if(pass_through != nullptr)
     {
-        children["pass-through"] = pass_through;
+        _children["pass-through"] = pass_through;
     }
 
     if(update != nullptr)
     {
-        children["update"] = update;
+        _children["update"] = update;
     }
 
     if(interim_inflight != nullptr)
     {
-        children["interim-inflight"] = interim_inflight;
+        _children["interim-inflight"] = interim_inflight;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1133,16 +1133,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Start::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1281,16 +1281,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Stop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1429,16 +1429,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Interim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1577,16 +1577,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThrough::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThrough::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThrough::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThrough::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::PassThrough::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1725,16 +1725,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::Update::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1873,16 +1873,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimInflight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimInflight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimInflight::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimInflight::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccounting::InterimInflight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2029,16 +2029,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2189,16 +2189,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateMobility::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2325,16 +2325,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2489,7 +2489,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting-statistics")
     {
@@ -2539,36 +2539,36 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accou
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting_statistics != nullptr)
     {
-        children["accounting-statistics"] = accounting_statistics;
+        _children["accounting-statistics"] = accounting_statistics;
     }
 
     if(authentication_statistics != nullptr)
     {
-        children["authentication-statistics"] = authentication_statistics;
+        _children["authentication-statistics"] = authentication_statistics;
     }
 
     if(authorization_statistics != nullptr)
     {
-        children["authorization-statistics"] = authorization_statistics;
+        _children["authorization-statistics"] = authorization_statistics;
     }
 
     if(change_of_authorization_statistics != nullptr)
     {
-        children["change-of-authorization-statistics"] = change_of_authorization_statistics;
+        _children["change-of-authorization-statistics"] = change_of_authorization_statistics;
     }
 
     if(mobility_statistics != nullptr)
     {
-        children["mobility-statistics"] = mobility_statistics;
+        _children["mobility-statistics"] = mobility_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2668,7 +2668,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start")
     {
@@ -2727,41 +2727,41 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accou
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(start != nullptr)
     {
-        children["start"] = start;
+        _children["start"] = start;
     }
 
     if(stop != nullptr)
     {
-        children["stop"] = stop;
+        _children["stop"] = stop;
     }
 
     if(interim != nullptr)
     {
-        children["interim"] = interim;
+        _children["interim"] = interim;
     }
 
     if(pass_through != nullptr)
     {
-        children["pass-through"] = pass_through;
+        _children["pass-through"] = pass_through;
     }
 
     if(update != nullptr)
     {
-        children["update"] = update;
+        _children["update"] = update;
     }
 
     if(interim_inflight != nullptr)
     {
-        children["interim-inflight"] = interim_inflight;
+        _children["interim-inflight"] = interim_inflight;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2890,16 +2890,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Start::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Start::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Start::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Start::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Start::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3038,16 +3038,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Stop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Stop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Stop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Stop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Stop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3186,16 +3186,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Interim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Interim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Interim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3334,16 +3334,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::PassThrough::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::PassThrough::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::PassThrough::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::PassThrough::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::PassThrough::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3482,16 +3482,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Update::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Update::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::Update::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3630,16 +3630,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::InterimInflight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::InterimInflight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::InterimInflight::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::InterimInflight::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AccountingStatistics::InterimInflight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3786,16 +3786,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthenticationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthenticationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthenticationStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthenticationStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthenticationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3962,16 +3962,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthorizationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthorizationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthorizationStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthorizationStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::AuthorizationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4179,7 +4179,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "account-logon")
     {
@@ -4256,51 +4256,51 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accou
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(account_logon != nullptr)
     {
-        children["account-logon"] = account_logon;
+        _children["account-logon"] = account_logon;
     }
 
     if(account_logoff != nullptr)
     {
-        children["account-logoff"] = account_logoff;
+        _children["account-logoff"] = account_logoff;
     }
 
     if(account_update != nullptr)
     {
-        children["account-update"] = account_update;
+        _children["account-update"] = account_update;
     }
 
     if(session_disconnect != nullptr)
     {
-        children["session-disconnect"] = session_disconnect;
+        _children["session-disconnect"] = session_disconnect;
     }
 
     if(single_service_logon != nullptr)
     {
-        children["single-service-logon"] = single_service_logon;
+        _children["single-service-logon"] = single_service_logon;
     }
 
     if(single_service_logoff != nullptr)
     {
-        children["single-service-logoff"] = single_service_logoff;
+        _children["single-service-logoff"] = single_service_logoff;
     }
 
     if(single_service_modify != nullptr)
     {
-        children["single-service-modify"] = single_service_modify;
+        _children["single-service-modify"] = single_service_modify;
     }
 
     if(service_multi != nullptr)
     {
-        children["service-multi"] = service_multi;
+        _children["service-multi"] = service_multi;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4467,16 +4467,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4573,16 +4573,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4679,16 +4679,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4785,16 +4785,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4891,16 +4891,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4997,16 +4997,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5103,16 +5103,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5209,16 +5209,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5319,16 +5319,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AccountingStatsAll::MobilityStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5496,7 +5496,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "account-logon")
     {
@@ -5573,51 +5573,51 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Chang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(account_logon != nullptr)
     {
-        children["account-logon"] = account_logon;
+        _children["account-logon"] = account_logon;
     }
 
     if(account_logoff != nullptr)
     {
-        children["account-logoff"] = account_logoff;
+        _children["account-logoff"] = account_logoff;
     }
 
     if(account_update != nullptr)
     {
-        children["account-update"] = account_update;
+        _children["account-update"] = account_update;
     }
 
     if(session_disconnect != nullptr)
     {
-        children["session-disconnect"] = session_disconnect;
+        _children["session-disconnect"] = session_disconnect;
     }
 
     if(single_service_logon != nullptr)
     {
-        children["single-service-logon"] = single_service_logon;
+        _children["single-service-logon"] = single_service_logon;
     }
 
     if(single_service_logoff != nullptr)
     {
-        children["single-service-logoff"] = single_service_logoff;
+        _children["single-service-logoff"] = single_service_logoff;
     }
 
     if(single_service_modify != nullptr)
     {
-        children["single-service-modify"] = single_service_modify;
+        _children["single-service-modify"] = single_service_modify;
     }
 
     if(service_multi != nullptr)
     {
-        children["service-multi"] = service_multi;
+        _children["service-multi"] = service_multi;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5784,16 +5784,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5890,16 +5890,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountLogoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5996,16 +5996,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountUpdate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountUpdate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::AccountUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6102,16 +6102,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SessionDisconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SessionDisconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SessionDisconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SessionDisconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SessionDisconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6208,16 +6208,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6314,16 +6314,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceLogoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6420,16 +6420,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceModify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceModify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceModify::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceModify::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::SingleServiceModify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6526,16 +6526,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::ServiceMulti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::ServiceMulti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::ServiceMulti::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::ServiceMulti::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::ChangeOfAuthorization::ServiceMulti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6652,16 +6652,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Authorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6828,16 +6828,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAuthorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6992,7 +6992,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting-statistics")
     {
@@ -7042,36 +7042,36 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Aggre
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting_statistics != nullptr)
     {
-        children["accounting-statistics"] = accounting_statistics;
+        _children["accounting-statistics"] = accounting_statistics;
     }
 
     if(authentication_statistics != nullptr)
     {
-        children["authentication-statistics"] = authentication_statistics;
+        _children["authentication-statistics"] = authentication_statistics;
     }
 
     if(authorization_statistics != nullptr)
     {
-        children["authorization-statistics"] = authorization_statistics;
+        _children["authorization-statistics"] = authorization_statistics;
     }
 
     if(change_of_authorization_statistics != nullptr)
     {
-        children["change-of-authorization-statistics"] = change_of_authorization_statistics;
+        _children["change-of-authorization-statistics"] = change_of_authorization_statistics;
     }
 
     if(mobility_statistics != nullptr)
     {
-        children["mobility-statistics"] = mobility_statistics;
+        _children["mobility-statistics"] = mobility_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7171,7 +7171,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start")
     {
@@ -7230,41 +7230,41 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Aggre
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(start != nullptr)
     {
-        children["start"] = start;
+        _children["start"] = start;
     }
 
     if(stop != nullptr)
     {
-        children["stop"] = stop;
+        _children["stop"] = stop;
     }
 
     if(interim != nullptr)
     {
-        children["interim"] = interim;
+        _children["interim"] = interim;
     }
 
     if(pass_through != nullptr)
     {
-        children["pass-through"] = pass_through;
+        _children["pass-through"] = pass_through;
     }
 
     if(update != nullptr)
     {
-        children["update"] = update;
+        _children["update"] = update;
     }
 
     if(interim_inflight != nullptr)
     {
-        children["interim-inflight"] = interim_inflight;
+        _children["interim-inflight"] = interim_inflight;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7393,16 +7393,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Start::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Start::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Start::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Start::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Start::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7541,16 +7541,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Stop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Stop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Stop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Stop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Stop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7689,16 +7689,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Interim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Interim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Interim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7837,16 +7837,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::PassThrough::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::PassThrough::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::PassThrough::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::PassThrough::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::PassThrough::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7985,16 +7985,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Update::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Update::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::Update::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8133,16 +8133,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::InterimInflight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::InterimInflight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::InterimInflight::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::InterimInflight::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AccountingStatistics::InterimInflight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8289,16 +8289,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthenticationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthenticationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthenticationStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthenticationStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthenticationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8465,16 +8465,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthorizationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthorizationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthorizationStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthorizationStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::AuthorizationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8682,7 +8682,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "account-logon")
     {
@@ -8759,51 +8759,51 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Aggre
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(account_logon != nullptr)
     {
-        children["account-logon"] = account_logon;
+        _children["account-logon"] = account_logon;
     }
 
     if(account_logoff != nullptr)
     {
-        children["account-logoff"] = account_logoff;
+        _children["account-logoff"] = account_logoff;
     }
 
     if(account_update != nullptr)
     {
-        children["account-update"] = account_update;
+        _children["account-update"] = account_update;
     }
 
     if(session_disconnect != nullptr)
     {
-        children["session-disconnect"] = session_disconnect;
+        _children["session-disconnect"] = session_disconnect;
     }
 
     if(single_service_logon != nullptr)
     {
-        children["single-service-logon"] = single_service_logon;
+        _children["single-service-logon"] = single_service_logon;
     }
 
     if(single_service_logoff != nullptr)
     {
-        children["single-service-logoff"] = single_service_logoff;
+        _children["single-service-logoff"] = single_service_logoff;
     }
 
     if(single_service_modify != nullptr)
     {
-        children["single-service-modify"] = single_service_modify;
+        _children["single-service-modify"] = single_service_modify;
     }
 
     if(service_multi != nullptr)
     {
-        children["service-multi"] = service_multi;
+        _children["service-multi"] = service_multi;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8970,16 +8970,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9076,16 +9076,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountLogoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9182,16 +9182,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::AccountUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9288,16 +9288,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SessionDisconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9394,16 +9394,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9500,16 +9500,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceLogoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9606,16 +9606,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::SingleServiceModify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9712,16 +9712,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::ChangeOfAuthorizationStatistics::ServiceMulti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9822,16 +9822,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::MobilityStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::MobilityStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::MobilityStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::MobilityStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateAccountingStatsAll::MobilityStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9971,7 +9971,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start")
     {
@@ -10030,41 +10030,41 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accou
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(start != nullptr)
     {
-        children["start"] = start;
+        _children["start"] = start;
     }
 
     if(stop != nullptr)
     {
-        children["stop"] = stop;
+        _children["stop"] = stop;
     }
 
     if(interim != nullptr)
     {
-        children["interim"] = interim;
+        _children["interim"] = interim;
     }
 
     if(pass_through != nullptr)
     {
-        children["pass-through"] = pass_through;
+        _children["pass-through"] = pass_through;
     }
 
     if(update != nullptr)
     {
-        children["update"] = update;
+        _children["update"] = update;
     }
 
     if(interim_inflight != nullptr)
     {
-        children["interim-inflight"] = interim_inflight;
+        _children["interim-inflight"] = interim_inflight;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10193,16 +10193,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Start::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10341,16 +10341,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Stop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10489,16 +10489,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Interim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10637,16 +10637,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::PassThrough::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10785,16 +10785,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::Update::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10933,16 +10933,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Accounting::InterimInflight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11073,16 +11073,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::Mobility::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11250,7 +11250,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "account-logon")
     {
@@ -11327,51 +11327,51 @@ std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::Aggre
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(account_logon != nullptr)
     {
-        children["account-logon"] = account_logon;
+        _children["account-logon"] = account_logon;
     }
 
     if(account_logoff != nullptr)
     {
-        children["account-logoff"] = account_logoff;
+        _children["account-logoff"] = account_logoff;
     }
 
     if(account_update != nullptr)
     {
-        children["account-update"] = account_update;
+        _children["account-update"] = account_update;
     }
 
     if(session_disconnect != nullptr)
     {
-        children["session-disconnect"] = session_disconnect;
+        _children["session-disconnect"] = session_disconnect;
     }
 
     if(single_service_logon != nullptr)
     {
-        children["single-service-logon"] = single_service_logon;
+        _children["single-service-logon"] = single_service_logon;
     }
 
     if(single_service_logoff != nullptr)
     {
-        children["single-service-logoff"] = single_service_logoff;
+        _children["single-service-logoff"] = single_service_logoff;
     }
 
     if(single_service_modify != nullptr)
     {
-        children["single-service-modify"] = single_service_modify;
+        _children["single-service-modify"] = single_service_modify;
     }
 
     if(service_multi != nullptr)
     {
-        children["service-multi"] = service_multi;
+        _children["service-multi"] = service_multi;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11538,16 +11538,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11644,16 +11644,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountLogoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11750,16 +11750,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountUpdate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountUpdate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::AccountUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11856,16 +11856,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SessionDisconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SessionDisconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SessionDisconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SessionDisconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SessionDisconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11962,16 +11962,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12068,16 +12068,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceLogoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12174,16 +12174,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceModify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceModify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceModify::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceModify::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::SingleServiceModify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12280,16 +12280,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::ServiceMulti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::ServiceMulti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::ServiceMulti::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::ServiceMulti::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Aaa::AggregateChangeOfAuthorization::ServiceMulti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12450,16 +12450,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::AggregateSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12916,16 +12916,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Manager::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Manager::Nodes::Node::Statistics::Srg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Manager::Nodes::Node::Statistics::Srg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Manager::Nodes::Node::Statistics::Srg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Manager::Nodes::Node::Statistics::Srg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Manager::Nodes::Node::Statistics::Srg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13521,7 +13521,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -13535,16 +13535,16 @@ std::shared_ptr<Entity> Subscriber::Session::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13618,33 +13618,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::get_n
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriber::Session::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13764,7 +13764,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "author-summaries")
     {
@@ -13886,76 +13886,76 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(author_summaries != nullptr)
     {
-        children["author-summaries"] = author_summaries;
+        _children["author-summaries"] = author_summaries;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(mac_summaries != nullptr)
     {
-        children["mac-summaries"] = mac_summaries;
+        _children["mac-summaries"] = mac_summaries;
     }
 
     if(interface_summaries != nullptr)
     {
-        children["interface-summaries"] = interface_summaries;
+        _children["interface-summaries"] = interface_summaries;
     }
 
     if(authentication_summaries != nullptr)
     {
-        children["authentication-summaries"] = authentication_summaries;
+        _children["authentication-summaries"] = authentication_summaries;
     }
 
     if(state_summaries != nullptr)
     {
-        children["state-summaries"] = state_summaries;
+        _children["state-summaries"] = state_summaries;
     }
 
     if(ipv4_address_vrf_summaries != nullptr)
     {
-        children["ipv4-address-vrf-summaries"] = ipv4_address_vrf_summaries;
+        _children["ipv4-address-vrf-summaries"] = ipv4_address_vrf_summaries;
     }
 
     if(address_family_summaries != nullptr)
     {
-        children["address-family-summaries"] = address_family_summaries;
+        _children["address-family-summaries"] = address_family_summaries;
     }
 
     if(username_summaries != nullptr)
     {
-        children["username-summaries"] = username_summaries;
+        _children["username-summaries"] = username_summaries;
     }
 
     if(access_interface_summaries != nullptr)
     {
-        children["access-interface-summaries"] = access_interface_summaries;
+        _children["access-interface-summaries"] = access_interface_summaries;
     }
 
     if(ipv4_address_summaries != nullptr)
     {
-        children["ipv4-address-summaries"] = ipv4_address_summaries;
+        _children["ipv4-address-summaries"] = ipv4_address_summaries;
     }
 
     if(vrf_summaries != nullptr)
     {
-        children["vrf-summaries"] = vrf_summaries;
+        _children["vrf-summaries"] = vrf_summaries;
     }
 
     if(sessions != nullptr)
     {
-        children["sessions"] = sessions;
+        _children["sessions"] = sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14032,33 +14032,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "author-summary")
     {
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary>();
-        c->parent = this;
-        author_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary>();
+        ent_->parent = this;
+        author_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : author_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : author_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14127,7 +14127,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state-xr")
     {
@@ -14150,21 +14150,21 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::Autho
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state_xr != nullptr)
     {
-        children["state-xr"] = state_xr;
+        _children["state-xr"] = state_xr;
     }
 
     if(address_family_xr != nullptr)
     {
-        children["address-family-xr"] = address_family_xr;
+        _children["address-family-xr"] = address_family_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14241,7 +14241,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -14273,26 +14273,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::Autho
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14375,16 +14375,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14537,16 +14537,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14699,16 +14699,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14845,7 +14845,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -14877,26 +14877,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::Autho
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14975,16 +14975,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15123,16 +15123,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15271,16 +15271,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthorSummaries::AuthorSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15403,7 +15403,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state-xr")
     {
@@ -15426,21 +15426,21 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state_xr != nullptr)
     {
-        children["state-xr"] = state_xr;
+        _children["state-xr"] = state_xr;
     }
 
     if(address_family_xr != nullptr)
     {
-        children["address-family-xr"] = address_family_xr;
+        _children["address-family-xr"] = address_family_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15507,7 +15507,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -15539,26 +15539,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Summary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15641,16 +15641,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Summary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15803,16 +15803,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15965,16 +15965,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Summary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16111,7 +16111,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -16143,26 +16143,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamily
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16241,16 +16241,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16389,16 +16389,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16537,16 +16537,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Summary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16673,33 +16673,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-summary")
     {
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary>();
-        c->parent = this;
-        mac_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriber::Session::Nodes::Node::MacSummaries::MacSummary>();
+        ent_->parent = this;
+        mac_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mac_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mac_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16768,7 +16768,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state-xr")
     {
@@ -16791,21 +16791,21 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state_xr != nullptr)
     {
-        children["state-xr"] = state_xr;
+        _children["state-xr"] = state_xr;
     }
 
     if(address_family_xr != nullptr)
     {
-        children["address-family-xr"] = address_family_xr;
+        _children["address-family-xr"] = address_family_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16882,7 +16882,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -16914,26 +16914,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17016,16 +17016,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17178,16 +17178,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17340,16 +17340,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17486,7 +17486,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -17518,26 +17518,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17616,16 +17616,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17764,16 +17764,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17912,16 +17912,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::MacSummaries::MacSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18048,33 +18048,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-summary")
     {
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary>();
-        c->parent = this;
-        interface_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary>();
+        ent_->parent = this;
+        interface_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18143,7 +18143,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state-xr")
     {
@@ -18166,21 +18166,21 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state_xr != nullptr)
     {
-        children["state-xr"] = state_xr;
+        _children["state-xr"] = state_xr;
     }
 
     if(address_family_xr != nullptr)
     {
-        children["address-family-xr"] = address_family_xr;
+        _children["address-family-xr"] = address_family_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18257,7 +18257,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -18289,26 +18289,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18391,16 +18391,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18553,16 +18553,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18715,16 +18715,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18861,7 +18861,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -18893,26 +18893,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18991,16 +18991,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19139,16 +19139,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19287,16 +19287,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::InterfaceSummaries::InterfaceSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19423,33 +19423,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication-summary")
     {
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary>();
-        c->parent = this;
-        authentication_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary>();
+        ent_->parent = this;
+        authentication_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : authentication_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : authentication_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19518,7 +19518,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state-xr")
     {
@@ -19541,21 +19541,21 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummarie
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state_xr != nullptr)
     {
-        children["state-xr"] = state_xr;
+        _children["state-xr"] = state_xr;
     }
 
     if(address_family_xr != nullptr)
     {
-        children["address-family-xr"] = address_family_xr;
+        _children["address-family-xr"] = address_family_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19632,7 +19632,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -19664,26 +19664,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummarie
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19766,16 +19766,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19928,16 +19928,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20090,16 +20090,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20236,7 +20236,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -20268,26 +20268,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummarie
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20366,16 +20366,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20514,16 +20514,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20662,16 +20662,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::AuthenticationSummaries::AuthenticationSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20798,33 +20798,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state-summary")
     {
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary>();
-        c->parent = this;
-        state_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriber::Session::Nodes::Node::StateSummaries::StateSummary>();
+        ent_->parent = this;
+        state_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : state_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : state_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20893,7 +20893,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state-xr")
     {
@@ -20916,21 +20916,21 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state_xr != nullptr)
     {
-        children["state-xr"] = state_xr;
+        _children["state-xr"] = state_xr;
     }
 
     if(address_family_xr != nullptr)
     {
-        children["address-family-xr"] = address_family_xr;
+        _children["address-family-xr"] = address_family_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21007,7 +21007,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -21039,26 +21039,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21141,16 +21141,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21303,16 +21303,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21465,16 +21465,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::StateXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21611,7 +21611,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe")
     {
@@ -21643,26 +21643,26 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
     if(ip_subscriber_dhcp != nullptr)
     {
-        children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
+        _children["ip-subscriber-dhcp"] = ip_subscriber_dhcp;
     }
 
     if(ip_subscriber_packet != nullptr)
     {
-        children["ip-subscriber-packet"] = ip_subscriber_packet;
+        _children["ip-subscriber-packet"] = ip_subscriber_packet;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21741,16 +21741,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21889,16 +21889,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberDhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22037,16 +22037,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::StateSummaries::StateSummary::AddressFamilyXr::IpSubscriberPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22173,33 +22173,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-address-vrf-summary")
     {
-        auto c = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary>();
-        c->parent = this;
-        ipv4_address_vrf_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary>();
+        ent_->parent = this;
+        ipv4_address_vrf_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_address_vrf_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_address_vrf_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22271,7 +22271,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriber::Session::Nodes::Node:
 
 }
 
-std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state-xr")
     {
@@ -22294,21 +22294,21 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummarie
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state_xr != nullptr)
     {
-        children["state-xr"] = state_xr;
+        _children["state-xr"] = state_xr;
     }
 
     if(address_family_xr != nullptr)
     {
-        children["address-family-xr"] = address_family_xr;
+        _children["address-family-xr"] = address_family_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

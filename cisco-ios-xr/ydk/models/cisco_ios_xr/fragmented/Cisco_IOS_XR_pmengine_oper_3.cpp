@@ -61,33 +61,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-minute15otn")
     {
-        auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn>();
-        c->parent = this;
-        otu_minute15otn.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn>();
+        ent_->parent = this;
+        otu_minute15otn.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otu_minute15otn.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otu_minute15otn.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lbc")
     {
@@ -406,96 +406,96 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lbc != nullptr)
     {
-        children["lbc"] = lbc;
+        _children["lbc"] = lbc;
     }
 
     if(es_ne != nullptr)
     {
-        children["es-ne"] = es_ne;
+        _children["es-ne"] = es_ne;
     }
 
     if(esr_ne != nullptr)
     {
-        children["esr-ne"] = esr_ne;
+        _children["esr-ne"] = esr_ne;
     }
 
     if(ses_ne != nullptr)
     {
-        children["ses-ne"] = ses_ne;
+        _children["ses-ne"] = ses_ne;
     }
 
     if(sesr_ne != nullptr)
     {
-        children["sesr-ne"] = sesr_ne;
+        _children["sesr-ne"] = sesr_ne;
     }
 
     if(uas_ne != nullptr)
     {
-        children["uas-ne"] = uas_ne;
+        _children["uas-ne"] = uas_ne;
     }
 
     if(bbe_ne != nullptr)
     {
-        children["bbe-ne"] = bbe_ne;
+        _children["bbe-ne"] = bbe_ne;
     }
 
     if(bber_ne != nullptr)
     {
-        children["bber-ne"] = bber_ne;
+        _children["bber-ne"] = bber_ne;
     }
 
     if(fc_ne != nullptr)
     {
-        children["fc-ne"] = fc_ne;
+        _children["fc-ne"] = fc_ne;
     }
 
     if(es_fe != nullptr)
     {
-        children["es-fe"] = es_fe;
+        _children["es-fe"] = es_fe;
     }
 
     if(esr_fe != nullptr)
     {
-        children["esr-fe"] = esr_fe;
+        _children["esr-fe"] = esr_fe;
     }
 
     if(ses_fe != nullptr)
     {
-        children["ses-fe"] = ses_fe;
+        _children["ses-fe"] = ses_fe;
     }
 
     if(sesr_fe != nullptr)
     {
-        children["sesr-fe"] = sesr_fe;
+        _children["sesr-fe"] = sesr_fe;
     }
 
     if(uas_fe != nullptr)
     {
-        children["uas-fe"] = uas_fe;
+        _children["uas-fe"] = uas_fe;
     }
 
     if(bbe_fe != nullptr)
     {
-        children["bbe-fe"] = bbe_fe;
+        _children["bbe-fe"] = bbe_fe;
     }
 
     if(bber_fe != nullptr)
     {
-        children["bber-fe"] = bber_fe;
+        _children["bber-fe"] = bber_fe;
     }
 
     if(fc_fe != nullptr)
     {
-        children["fc-fe"] = fc_fe;
+        _children["fc-fe"] = fc_fe;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -652,16 +652,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::Lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::Lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -758,16 +758,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -864,16 +864,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -970,16 +970,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1076,16 +1076,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1182,16 +1182,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1288,16 +1288,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1394,16 +1394,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1500,16 +1500,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1606,16 +1606,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1712,16 +1712,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1818,16 +1818,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1924,16 +1924,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2030,16 +2030,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2136,16 +2136,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2242,16 +2242,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2348,16 +2348,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15otns::OtuMinute15otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2454,33 +2454,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-minute15prbs")
     {
-        auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs>();
-        c->parent = this;
-        otu_minute15prbs.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs>();
+        ent_->parent = this;
+        otu_minute15prbs.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otu_minute15prbs.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otu_minute15prbs.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2597,7 +2597,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rcv-patt")
     {
@@ -2620,21 +2620,21 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rcv_patt != nullptr)
     {
-        children["rcv-patt"] = rcv_patt;
+        _children["rcv-patt"] = rcv_patt;
     }
 
     if(prbs_status != nullptr)
     {
-        children["prbs-status"] = prbs_status;
+        _children["prbs-status"] = prbs_status;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2827,16 +2827,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::RcvPatt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::RcvPatt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::RcvPatt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2919,16 +2919,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::PrbsStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::PrbsStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::PrbsStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::PrbsStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuMinute15::OtuMinute15prbses::OtuMinute15prbs::PrbsStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3011,7 +3011,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-second30fecs")
     {
@@ -3034,21 +3034,21 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(otu_second30fecs != nullptr)
     {
-        children["otu-second30fecs"] = otu_second30fecs;
+        _children["otu-second30fecs"] = otu_second30fecs;
     }
 
     if(otu_second30otns != nullptr)
     {
-        children["otu-second30otns"] = otu_second30otns;
+        _children["otu-second30otns"] = otu_second30otns;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3115,33 +3115,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-second30fec")
     {
-        auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec>();
-        c->parent = this;
-        otu_second30fec.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec>();
+        ent_->parent = this;
+        otu_second30fec.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otu_second30fec.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otu_second30fec.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3258,7 +3258,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ec-bits")
     {
@@ -3317,41 +3317,41 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ec_bits != nullptr)
     {
-        children["ec-bits"] = ec_bits;
+        _children["ec-bits"] = ec_bits;
     }
 
     if(uc_words != nullptr)
     {
-        children["uc-words"] = uc_words;
+        _children["uc-words"] = uc_words;
     }
 
     if(pre_fec_ber != nullptr)
     {
-        children["pre-fec-ber"] = pre_fec_ber;
+        _children["pre-fec-ber"] = pre_fec_ber;
     }
 
     if(post_fec_ber != nullptr)
     {
-        children["post-fec-ber"] = post_fec_ber;
+        _children["post-fec-ber"] = post_fec_ber;
     }
 
     if(q != nullptr)
     {
-        children["q"] = q;
+        _children["q"] = q;
     }
 
     if(qmargin != nullptr)
     {
-        children["qmargin"] = qmargin;
+        _children["qmargin"] = qmargin;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3512,16 +3512,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::EcBits::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::EcBits::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3632,16 +3632,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::UcWords::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::UcWords::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3768,16 +3768,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PreFecBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3944,16 +3944,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PostFecBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4120,16 +4120,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Q::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Q::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4296,16 +4296,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Qmargin::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30fecs::OtuSecond30fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4452,33 +4452,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-second30otn")
     {
-        auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn>();
-        c->parent = this;
-        otu_second30otn.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn>();
+        ent_->parent = this;
+        otu_second30otn.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otu_second30otn.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otu_second30otn.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4639,7 +4639,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lbc")
     {
@@ -4797,96 +4797,96 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lbc != nullptr)
     {
-        children["lbc"] = lbc;
+        _children["lbc"] = lbc;
     }
 
     if(es_ne != nullptr)
     {
-        children["es-ne"] = es_ne;
+        _children["es-ne"] = es_ne;
     }
 
     if(esr_ne != nullptr)
     {
-        children["esr-ne"] = esr_ne;
+        _children["esr-ne"] = esr_ne;
     }
 
     if(ses_ne != nullptr)
     {
-        children["ses-ne"] = ses_ne;
+        _children["ses-ne"] = ses_ne;
     }
 
     if(sesr_ne != nullptr)
     {
-        children["sesr-ne"] = sesr_ne;
+        _children["sesr-ne"] = sesr_ne;
     }
 
     if(uas_ne != nullptr)
     {
-        children["uas-ne"] = uas_ne;
+        _children["uas-ne"] = uas_ne;
     }
 
     if(bbe_ne != nullptr)
     {
-        children["bbe-ne"] = bbe_ne;
+        _children["bbe-ne"] = bbe_ne;
     }
 
     if(bber_ne != nullptr)
     {
-        children["bber-ne"] = bber_ne;
+        _children["bber-ne"] = bber_ne;
     }
 
     if(fc_ne != nullptr)
     {
-        children["fc-ne"] = fc_ne;
+        _children["fc-ne"] = fc_ne;
     }
 
     if(es_fe != nullptr)
     {
-        children["es-fe"] = es_fe;
+        _children["es-fe"] = es_fe;
     }
 
     if(esr_fe != nullptr)
     {
-        children["esr-fe"] = esr_fe;
+        _children["esr-fe"] = esr_fe;
     }
 
     if(ses_fe != nullptr)
     {
-        children["ses-fe"] = ses_fe;
+        _children["ses-fe"] = ses_fe;
     }
 
     if(sesr_fe != nullptr)
     {
-        children["sesr-fe"] = sesr_fe;
+        _children["sesr-fe"] = sesr_fe;
     }
 
     if(uas_fe != nullptr)
     {
-        children["uas-fe"] = uas_fe;
+        _children["uas-fe"] = uas_fe;
     }
 
     if(bbe_fe != nullptr)
     {
-        children["bbe-fe"] = bbe_fe;
+        _children["bbe-fe"] = bbe_fe;
     }
 
     if(bber_fe != nullptr)
     {
-        children["bber-fe"] = bber_fe;
+        _children["bber-fe"] = bber_fe;
     }
 
     if(fc_fe != nullptr)
     {
-        children["fc-fe"] = fc_fe;
+        _children["fc-fe"] = fc_fe;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5043,16 +5043,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::Lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::Lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5149,16 +5149,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5255,16 +5255,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5361,16 +5361,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5467,16 +5467,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5573,16 +5573,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5679,16 +5679,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5785,16 +5785,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5891,16 +5891,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5997,16 +5997,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6103,16 +6103,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6209,16 +6209,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6315,16 +6315,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6421,16 +6421,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6527,16 +6527,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6633,16 +6633,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6739,16 +6739,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuSecond30::OtuSecond30otns::OtuSecond30otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6845,7 +6845,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-hour24fecs")
     {
@@ -6877,26 +6877,26 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(otu_hour24fecs != nullptr)
     {
-        children["otu-hour24fecs"] = otu_hour24fecs;
+        _children["otu-hour24fecs"] = otu_hour24fecs;
     }
 
     if(otu_hour24prbses != nullptr)
     {
-        children["otu-hour24prbses"] = otu_hour24prbses;
+        _children["otu-hour24prbses"] = otu_hour24prbses;
     }
 
     if(otu_hour24otns != nullptr)
     {
-        children["otu-hour24otns"] = otu_hour24otns;
+        _children["otu-hour24otns"] = otu_hour24otns;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6963,33 +6963,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-hour24fec")
     {
-        auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec>();
-        c->parent = this;
-        otu_hour24fec.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec>();
+        ent_->parent = this;
+        otu_hour24fec.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otu_hour24fec.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otu_hour24fec.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7106,7 +7106,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ec-bits")
     {
@@ -7165,41 +7165,41 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ec_bits != nullptr)
     {
-        children["ec-bits"] = ec_bits;
+        _children["ec-bits"] = ec_bits;
     }
 
     if(uc_words != nullptr)
     {
-        children["uc-words"] = uc_words;
+        _children["uc-words"] = uc_words;
     }
 
     if(pre_fec_ber != nullptr)
     {
-        children["pre-fec-ber"] = pre_fec_ber;
+        _children["pre-fec-ber"] = pre_fec_ber;
     }
 
     if(post_fec_ber != nullptr)
     {
-        children["post-fec-ber"] = post_fec_ber;
+        _children["post-fec-ber"] = post_fec_ber;
     }
 
     if(q != nullptr)
     {
-        children["q"] = q;
+        _children["q"] = q;
     }
 
     if(qmargin != nullptr)
     {
-        children["qmargin"] = qmargin;
+        _children["qmargin"] = qmargin;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7360,16 +7360,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::EcBits::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::EcBits::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7480,16 +7480,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::UcWords::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::UcWords::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7616,16 +7616,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PreFecBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7792,16 +7792,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PostFecBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7968,16 +7968,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Q::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Q::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8144,16 +8144,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Qmargin::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24fecs::OtuHour24fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8300,33 +8300,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-hour24prbs")
     {
-        auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs>();
-        c->parent = this;
-        otu_hour24prbs.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs>();
+        ent_->parent = this;
+        otu_hour24prbs.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otu_hour24prbs.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otu_hour24prbs.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8443,7 +8443,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rcv-patt")
     {
@@ -8466,21 +8466,21 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rcv_patt != nullptr)
     {
-        children["rcv-patt"] = rcv_patt;
+        _children["rcv-patt"] = rcv_patt;
     }
 
     if(prbs_status != nullptr)
     {
-        children["prbs-status"] = prbs_status;
+        _children["prbs-status"] = prbs_status;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8673,16 +8673,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::RcvPatt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::RcvPatt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::RcvPatt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::RcvPatt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8765,16 +8765,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::PrbsStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::PrbsStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::PrbsStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::PrbsStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24prbses::OtuHour24prbs::PrbsStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8861,33 +8861,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otu-hour24otn")
     {
-        auto c = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn>();
-        c->parent = this;
-        otu_hour24otn.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn>();
+        ent_->parent = this;
+        otu_hour24otn.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otu_hour24otn.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otu_hour24otn.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9048,7 +9048,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lbc")
     {
@@ -9206,96 +9206,96 @@ std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lbc != nullptr)
     {
-        children["lbc"] = lbc;
+        _children["lbc"] = lbc;
     }
 
     if(es_ne != nullptr)
     {
-        children["es-ne"] = es_ne;
+        _children["es-ne"] = es_ne;
     }
 
     if(esr_ne != nullptr)
     {
-        children["esr-ne"] = esr_ne;
+        _children["esr-ne"] = esr_ne;
     }
 
     if(ses_ne != nullptr)
     {
-        children["ses-ne"] = ses_ne;
+        _children["ses-ne"] = ses_ne;
     }
 
     if(sesr_ne != nullptr)
     {
-        children["sesr-ne"] = sesr_ne;
+        _children["sesr-ne"] = sesr_ne;
     }
 
     if(uas_ne != nullptr)
     {
-        children["uas-ne"] = uas_ne;
+        _children["uas-ne"] = uas_ne;
     }
 
     if(bbe_ne != nullptr)
     {
-        children["bbe-ne"] = bbe_ne;
+        _children["bbe-ne"] = bbe_ne;
     }
 
     if(bber_ne != nullptr)
     {
-        children["bber-ne"] = bber_ne;
+        _children["bber-ne"] = bber_ne;
     }
 
     if(fc_ne != nullptr)
     {
-        children["fc-ne"] = fc_ne;
+        _children["fc-ne"] = fc_ne;
     }
 
     if(es_fe != nullptr)
     {
-        children["es-fe"] = es_fe;
+        _children["es-fe"] = es_fe;
     }
 
     if(esr_fe != nullptr)
     {
-        children["esr-fe"] = esr_fe;
+        _children["esr-fe"] = esr_fe;
     }
 
     if(ses_fe != nullptr)
     {
-        children["ses-fe"] = ses_fe;
+        _children["ses-fe"] = ses_fe;
     }
 
     if(sesr_fe != nullptr)
     {
-        children["sesr-fe"] = sesr_fe;
+        _children["sesr-fe"] = sesr_fe;
     }
 
     if(uas_fe != nullptr)
     {
-        children["uas-fe"] = uas_fe;
+        _children["uas-fe"] = uas_fe;
     }
 
     if(bbe_fe != nullptr)
     {
-        children["bbe-fe"] = bbe_fe;
+        _children["bbe-fe"] = bbe_fe;
     }
 
     if(bber_fe != nullptr)
     {
-        children["bber-fe"] = bber_fe;
+        _children["bber-fe"] = bber_fe;
     }
 
     if(fc_fe != nullptr)
     {
-        children["fc-fe"] = fc_fe;
+        _children["fc-fe"] = fc_fe;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9452,16 +9452,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::Lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::Lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9558,16 +9558,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9664,16 +9664,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9770,16 +9770,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9876,16 +9876,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9982,16 +9982,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10088,16 +10088,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10194,16 +10194,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10300,16 +10300,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcNe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcNe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcNe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10406,16 +10406,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10512,16 +10512,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10618,16 +10618,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10724,16 +10724,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10830,16 +10830,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10936,16 +10936,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11042,16 +11042,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11148,16 +11148,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Otu::OtuPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcFe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcFe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcFe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Otu::OtuPorts::OtuPort::OtuCurrent::OtuHour24::OtuHour24otns::OtuHour24otn::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11253,7 +11253,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::get_n
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-ports")
     {
@@ -11267,16 +11267,16 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_ports != nullptr)
     {
-        children["stm-ports"] = stm_ports;
+        _children["stm-ports"] = stm_ports;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11350,33 +11350,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-port")
     {
-        auto c = std::make_shared<PerformanceManagement::Stm::StmPorts::StmPort>();
-        c->parent = this;
-        stm_port.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Stm::StmPorts::StmPort>();
+        ent_->parent = this;
+        stm_port.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stm_port.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stm_port.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11448,7 +11448,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-current")
     {
@@ -11462,16 +11462,16 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_current != nullptr)
     {
-        children["stm-current"] = stm_current;
+        _children["stm-current"] = stm_current;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11544,7 +11544,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-hour24")
     {
@@ -11567,21 +11567,21 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_hour24 != nullptr)
     {
-        children["stm-hour24"] = stm_hour24;
+        _children["stm-hour24"] = stm_hour24;
     }
 
     if(stm_minute15 != nullptr)
     {
-        children["stm-minute15"] = stm_minute15;
+        _children["stm-minute15"] = stm_minute15;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11640,7 +11640,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-hour24stms")
     {
@@ -11654,16 +11654,16 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_hour24stms != nullptr)
     {
-        children["stm-hour24stms"] = stm_hour24stms;
+        _children["stm-hour24stms"] = stm_hour24stms;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11730,33 +11730,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-hour24stm")
     {
-        auto c = std::make_shared<PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm>();
-        c->parent = this;
-        stm_hour24stm.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm>();
+        ent_->parent = this;
+        stm_hour24stm.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stm_hour24stm.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stm_hour24stm.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11853,7 +11853,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
@@ -11885,26 +11885,26 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section != nullptr)
     {
-        children["section"] = section;
+        _children["section"] = section;
     }
 
     if(line != nullptr)
     {
-        children["line"] = line;
+        _children["line"] = line;
     }
 
     if(fe_line != nullptr)
     {
-        children["fe-line"] = fe_line;
+        _children["fe-line"] = fe_line;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12066,7 +12066,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
@@ -12143,51 +12143,51 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section_e_ss != nullptr)
     {
-        children["section-e-ss"] = section_e_ss;
+        _children["section-e-ss"] = section_e_ss;
     }
 
     if(section_es_rs != nullptr)
     {
-        children["section-es-rs"] = section_es_rs;
+        _children["section-es-rs"] = section_es_rs;
     }
 
     if(section_bb_es != nullptr)
     {
-        children["section-bb-es"] = section_bb_es;
+        _children["section-bb-es"] = section_bb_es;
     }
 
     if(section_bbe_rs != nullptr)
     {
-        children["section-bbe-rs"] = section_bbe_rs;
+        _children["section-bbe-rs"] = section_bbe_rs;
     }
 
     if(section_se_ss != nullptr)
     {
-        children["section-se-ss"] = section_se_ss;
+        _children["section-se-ss"] = section_se_ss;
     }
 
     if(section_ses_rs != nullptr)
     {
-        children["section-ses-rs"] = section_ses_rs;
+        _children["section-ses-rs"] = section_ses_rs;
     }
 
     if(section_ua_ss != nullptr)
     {
-        children["section-ua-ss"] = section_ua_ss;
+        _children["section-ua-ss"] = section_ua_ss;
     }
 
     if(section_e_bs != nullptr)
     {
-        children["section-e-bs"] = section_e_bs;
+        _children["section-e-bs"] = section_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12264,16 +12264,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12370,16 +12370,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12476,16 +12476,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12582,16 +12582,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12688,16 +12688,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12794,16 +12794,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12900,16 +12900,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13006,16 +13006,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Section::SectionEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13137,7 +13137,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
@@ -13214,51 +13214,51 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(line_e_ss != nullptr)
     {
-        children["line-e-ss"] = line_e_ss;
+        _children["line-e-ss"] = line_e_ss;
     }
 
     if(line_es_rs != nullptr)
     {
-        children["line-es-rs"] = line_es_rs;
+        _children["line-es-rs"] = line_es_rs;
     }
 
     if(line_bb_es != nullptr)
     {
-        children["line-bb-es"] = line_bb_es;
+        _children["line-bb-es"] = line_bb_es;
     }
 
     if(line_bbe_rs != nullptr)
     {
-        children["line-bbe-rs"] = line_bbe_rs;
+        _children["line-bbe-rs"] = line_bbe_rs;
     }
 
     if(line_se_ss != nullptr)
     {
-        children["line-se-ss"] = line_se_ss;
+        _children["line-se-ss"] = line_se_ss;
     }
 
     if(line_ses_rs != nullptr)
     {
-        children["line-ses-rs"] = line_ses_rs;
+        _children["line-ses-rs"] = line_ses_rs;
     }
 
     if(line_ua_ss != nullptr)
     {
-        children["line-ua-ss"] = line_ua_ss;
+        _children["line-ua-ss"] = line_ua_ss;
     }
 
     if(line_e_bs != nullptr)
     {
-        children["line-e-bs"] = line_e_bs;
+        _children["line-e-bs"] = line_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13335,16 +13335,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13441,16 +13441,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13547,16 +13547,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13653,16 +13653,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13759,16 +13759,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13865,16 +13865,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13971,16 +13971,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14077,16 +14077,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::Line::LineEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14203,7 +14203,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
@@ -14280,51 +14280,51 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(far_end_line_e_ss != nullptr)
     {
-        children["far-end-line-e-ss"] = far_end_line_e_ss;
+        _children["far-end-line-e-ss"] = far_end_line_e_ss;
     }
 
     if(far_end_line_es_rs != nullptr)
     {
-        children["far-end-line-es-rs"] = far_end_line_es_rs;
+        _children["far-end-line-es-rs"] = far_end_line_es_rs;
     }
 
     if(far_end_line_ebb_es != nullptr)
     {
-        children["far-end-line-ebb-es"] = far_end_line_ebb_es;
+        _children["far-end-line-ebb-es"] = far_end_line_ebb_es;
     }
 
     if(far_end_line_bbe_rs != nullptr)
     {
-        children["far-end-line-bbe-rs"] = far_end_line_bbe_rs;
+        _children["far-end-line-bbe-rs"] = far_end_line_bbe_rs;
     }
 
     if(far_end_line_se_ss != nullptr)
     {
-        children["far-end-line-se-ss"] = far_end_line_se_ss;
+        _children["far-end-line-se-ss"] = far_end_line_se_ss;
     }
 
     if(far_end_line_ses_rs != nullptr)
     {
-        children["far-end-line-ses-rs"] = far_end_line_ses_rs;
+        _children["far-end-line-ses-rs"] = far_end_line_ses_rs;
     }
 
     if(far_end_line_ua_ss != nullptr)
     {
-        children["far-end-line-ua-ss"] = far_end_line_ua_ss;
+        _children["far-end-line-ua-ss"] = far_end_line_ua_ss;
     }
 
     if(far_end_line_e_bs != nullptr)
     {
-        children["far-end-line-e-bs"] = far_end_line_e_bs;
+        _children["far-end-line-e-bs"] = far_end_line_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14391,16 +14391,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14497,16 +14497,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14603,16 +14603,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEbbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEbbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEbbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEbbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEbbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14709,16 +14709,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14815,16 +14815,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14921,16 +14921,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15027,16 +15027,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15133,16 +15133,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmHour24::StmHour24stms::StmHour24stm::FeLine::FarEndLineEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15231,7 +15231,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-minute15stms")
     {
@@ -15245,16 +15245,16 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_minute15stms != nullptr)
     {
-        children["stm-minute15stms"] = stm_minute15stms;
+        _children["stm-minute15stms"] = stm_minute15stms;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15321,33 +15321,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-minute15stm")
     {
-        auto c = std::make_shared<PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm>();
-        c->parent = this;
-        stm_minute15stm.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm>();
+        ent_->parent = this;
+        stm_minute15stm.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stm_minute15stm.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stm_minute15stm.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15444,7 +15444,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
@@ -15476,26 +15476,26 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section != nullptr)
     {
-        children["section"] = section;
+        _children["section"] = section;
     }
 
     if(line != nullptr)
     {
-        children["line"] = line;
+        _children["line"] = line;
     }
 
     if(fe_line != nullptr)
     {
-        children["fe-line"] = fe_line;
+        _children["fe-line"] = fe_line;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15657,7 +15657,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
@@ -15734,51 +15734,51 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section_e_ss != nullptr)
     {
-        children["section-e-ss"] = section_e_ss;
+        _children["section-e-ss"] = section_e_ss;
     }
 
     if(section_es_rs != nullptr)
     {
-        children["section-es-rs"] = section_es_rs;
+        _children["section-es-rs"] = section_es_rs;
     }
 
     if(section_bb_es != nullptr)
     {
-        children["section-bb-es"] = section_bb_es;
+        _children["section-bb-es"] = section_bb_es;
     }
 
     if(section_bbe_rs != nullptr)
     {
-        children["section-bbe-rs"] = section_bbe_rs;
+        _children["section-bbe-rs"] = section_bbe_rs;
     }
 
     if(section_se_ss != nullptr)
     {
-        children["section-se-ss"] = section_se_ss;
+        _children["section-se-ss"] = section_se_ss;
     }
 
     if(section_ses_rs != nullptr)
     {
-        children["section-ses-rs"] = section_ses_rs;
+        _children["section-ses-rs"] = section_ses_rs;
     }
 
     if(section_ua_ss != nullptr)
     {
-        children["section-ua-ss"] = section_ua_ss;
+        _children["section-ua-ss"] = section_ua_ss;
     }
 
     if(section_e_bs != nullptr)
     {
-        children["section-e-bs"] = section_e_bs;
+        _children["section-e-bs"] = section_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15855,16 +15855,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15961,16 +15961,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16067,16 +16067,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16173,16 +16173,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16279,16 +16279,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16385,16 +16385,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16491,16 +16491,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16597,16 +16597,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Section::SectionEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16728,7 +16728,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
@@ -16805,51 +16805,51 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(line_e_ss != nullptr)
     {
-        children["line-e-ss"] = line_e_ss;
+        _children["line-e-ss"] = line_e_ss;
     }
 
     if(line_es_rs != nullptr)
     {
-        children["line-es-rs"] = line_es_rs;
+        _children["line-es-rs"] = line_es_rs;
     }
 
     if(line_bb_es != nullptr)
     {
-        children["line-bb-es"] = line_bb_es;
+        _children["line-bb-es"] = line_bb_es;
     }
 
     if(line_bbe_rs != nullptr)
     {
-        children["line-bbe-rs"] = line_bbe_rs;
+        _children["line-bbe-rs"] = line_bbe_rs;
     }
 
     if(line_se_ss != nullptr)
     {
-        children["line-se-ss"] = line_se_ss;
+        _children["line-se-ss"] = line_se_ss;
     }
 
     if(line_ses_rs != nullptr)
     {
-        children["line-ses-rs"] = line_ses_rs;
+        _children["line-ses-rs"] = line_ses_rs;
     }
 
     if(line_ua_ss != nullptr)
     {
-        children["line-ua-ss"] = line_ua_ss;
+        _children["line-ua-ss"] = line_ua_ss;
     }
 
     if(line_e_bs != nullptr)
     {
-        children["line-e-bs"] = line_e_bs;
+        _children["line-e-bs"] = line_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16926,16 +16926,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17032,16 +17032,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17138,16 +17138,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17244,16 +17244,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17350,16 +17350,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17456,16 +17456,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17562,16 +17562,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17668,16 +17668,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::Line::LineEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17794,7 +17794,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
@@ -17871,51 +17871,51 @@ std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurren
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(far_end_line_e_ss != nullptr)
     {
-        children["far-end-line-e-ss"] = far_end_line_e_ss;
+        _children["far-end-line-e-ss"] = far_end_line_e_ss;
     }
 
     if(far_end_line_es_rs != nullptr)
     {
-        children["far-end-line-es-rs"] = far_end_line_es_rs;
+        _children["far-end-line-es-rs"] = far_end_line_es_rs;
     }
 
     if(far_end_line_ebb_es != nullptr)
     {
-        children["far-end-line-ebb-es"] = far_end_line_ebb_es;
+        _children["far-end-line-ebb-es"] = far_end_line_ebb_es;
     }
 
     if(far_end_line_bbe_rs != nullptr)
     {
-        children["far-end-line-bbe-rs"] = far_end_line_bbe_rs;
+        _children["far-end-line-bbe-rs"] = far_end_line_bbe_rs;
     }
 
     if(far_end_line_se_ss != nullptr)
     {
-        children["far-end-line-se-ss"] = far_end_line_se_ss;
+        _children["far-end-line-se-ss"] = far_end_line_se_ss;
     }
 
     if(far_end_line_ses_rs != nullptr)
     {
-        children["far-end-line-ses-rs"] = far_end_line_ses_rs;
+        _children["far-end-line-ses-rs"] = far_end_line_ses_rs;
     }
 
     if(far_end_line_ua_ss != nullptr)
     {
-        children["far-end-line-ua-ss"] = far_end_line_ua_ss;
+        _children["far-end-line-ua-ss"] = far_end_line_ua_ss;
     }
 
     if(far_end_line_e_bs != nullptr)
     {
-        children["far-end-line-e-bs"] = far_end_line_e_bs;
+        _children["far-end-line-e-bs"] = far_end_line_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17982,16 +17982,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18088,16 +18088,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18194,16 +18194,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEbbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEbbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEbbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEbbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEbbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18300,16 +18300,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18406,16 +18406,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18512,16 +18512,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18618,16 +18618,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18724,16 +18724,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Stm::StmPo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Stm::StmPorts::StmPort::StmCurrent::StmMinute15::StmMinute15stms::StmMinute15stm::FeLine::FarEndLineEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18829,7 +18829,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::get
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Sonet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sonet-ports")
     {
@@ -18843,16 +18843,16 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Sonet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sonet_ports != nullptr)
     {
-        children["sonet-ports"] = sonet_ports;
+        _children["sonet-ports"] = sonet_ports;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Sonet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18926,33 +18926,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Sonet::SonetPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sonet-port")
     {
-        auto c = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort>();
-        c->parent = this;
-        sonet_port.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Sonet::SonetPorts::SonetPort>();
+        ent_->parent = this;
+        sonet_port.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Sonet::SonetPorts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sonet_port.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sonet_port.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Sonet::SonetPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19024,7 +19024,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Sonet::Son
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sonet-current")
     {
@@ -19038,16 +19038,16 @@ std::shared_ptr<Entity> PerformanceManagement::Sonet::SonetPorts::SonetPort::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Sonet::SonetPorts::SonetPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sonet_current != nullptr)
     {
-        children["sonet-current"] = sonet_current;
+        _children["sonet-current"] = sonet_current;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Sonet::SonetPorts::SonetPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

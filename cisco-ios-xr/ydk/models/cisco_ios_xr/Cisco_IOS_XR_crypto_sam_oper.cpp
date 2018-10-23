@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Sam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "system-information")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> Sam::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(system_information != nullptr)
     {
-        children["system-information"] = system_information;
+        _children["system-information"] = system_information;
     }
 
     if(log_contents != nullptr)
     {
-        children["log-contents"] = log_contents;
+        _children["log-contents"] = log_contents;
     }
 
     if(devices != nullptr)
     {
-        children["devices"] = devices;
+        _children["devices"] = devices;
     }
 
     if(packages != nullptr)
     {
-        children["packages"] = packages;
+        _children["packages"] = packages;
     }
 
     if(certificate_revocations != nullptr)
     {
-        children["certificate-revocations"] = certificate_revocations;
+        _children["certificate-revocations"] = certificate_revocations;
     }
 
     if(certificate_revocation_list_summary != nullptr)
     {
-        children["certificate-revocation-list-summary"] = certificate_revocation_list_summary;
+        _children["certificate-revocation-list-summary"] = certificate_revocation_list_summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void Sam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Sam::clone_ptr() const
+std::shared_ptr<ydk::Entity> Sam::clone_ptr() const
 {
     return std::make_shared<Sam>();
 }
@@ -264,16 +264,16 @@ std::vector<std::pair<std::string, LeafData> > Sam::SystemInformation::get_name_
 
 }
 
-std::shared_ptr<Entity> Sam::SystemInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::SystemInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::SystemInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::SystemInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sam::SystemInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -377,33 +377,33 @@ std::vector<std::pair<std::string, LeafData> > Sam::LogContents::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Sam::LogContents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::LogContents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-content")
     {
-        auto c = std::make_shared<Sam::LogContents::LogContent>();
-        c->parent = this;
-        log_content.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sam::LogContents::LogContent>();
+        ent_->parent = this;
+        log_content.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::LogContents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_content.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_content.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::LogContents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -490,33 +490,33 @@ std::vector<std::pair<std::string, LeafData> > Sam::LogContents::LogContent::get
 
 }
 
-std::shared_ptr<Entity> Sam::LogContents::LogContent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::LogContents::LogContent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logs")
     {
-        auto c = std::make_shared<Sam::LogContents::LogContent::Logs>();
-        c->parent = this;
-        logs.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sam::LogContents::LogContent::Logs>();
+        ent_->parent = this;
+        logs.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::LogContent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::LogContents::LogContent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : logs.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : logs.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::LogContents::LogContent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -645,16 +645,16 @@ std::vector<std::pair<std::string, LeafData> > Sam::LogContents::LogContent::Log
 
 }
 
-std::shared_ptr<Entity> Sam::LogContents::LogContent::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::LogContents::LogContent::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::LogContent::Logs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::LogContents::LogContent::Logs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sam::LogContents::LogContent::Logs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -838,33 +838,33 @@ std::vector<std::pair<std::string, LeafData> > Sam::Devices::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Sam::Devices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Devices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "device")
     {
-        auto c = std::make_shared<Sam::Devices::Device>();
-        c->parent = this;
-        device.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sam::Devices::Device>();
+        ent_->parent = this;
+        device.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Devices::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : device.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : device.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::Devices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -936,7 +936,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::get_name_le
 
 }
 
-std::shared_ptr<Entity> Sam::Devices::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Devices::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "certificate")
     {
@@ -950,16 +950,16 @@ std::shared_ptr<Entity> Sam::Devices::Device::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Devices::Device::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(certificate != nullptr)
     {
-        children["certificate"] = certificate;
+        _children["certificate"] = certificate;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::Devices::Device::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1032,7 +1032,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate
 
 }
 
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Devices::Device::Certificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
@@ -1055,21 +1055,21 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Devices::Device::Certificate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(brief != nullptr)
     {
-        children["brief"] = brief;
+        _children["brief"] = brief;
     }
 
     if(certificate_indexes != nullptr)
     {
-        children["certificate-indexes"] = certificate_indexes;
+        _children["certificate-indexes"] = certificate_indexes;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::Devices::Device::Certificate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1137,7 +1137,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate
 
 }
 
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Devices::Device::Certificate::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "certificate-flags")
     {
@@ -1151,16 +1151,16 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Devices::Device::Certificate::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(certificate_flags != nullptr)
     {
-        children["certificate-flags"] = certificate_flags;
+        _children["certificate-flags"] = certificate_flags;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::Devices::Device::Certificate::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1251,16 +1251,16 @@ std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate
 
 }
 
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sam::Devices::Device::Certificate::Brief::CertificateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1367,33 +1367,33 @@ std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate
 
 }
 
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Devices::Device::Certificate::CertificateIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "certificate-index")
     {
-        auto c = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex>();
-        c->parent = this;
-        certificate_index.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex>();
+        ent_->parent = this;
+        certificate_index.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : certificate_index.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : certificate_index.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::Devices::Device::Certificate::CertificateIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1458,7 +1458,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate
 
 }
 
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -1472,16 +1472,16 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::C
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1559,7 +1559,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate
 
 }
 
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "certificate-flags")
     {
@@ -1573,16 +1573,16 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::C
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(certificate_flags != nullptr)
     {
-        children["certificate-flags"] = certificate_flags;
+        _children["certificate-flags"] = certificate_flags;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1673,16 +1673,16 @@ std::vector<std::pair<std::string, LeafData> > Sam::Devices::Device::Certificate
 
 }
 
-std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1796,33 +1796,33 @@ std::vector<std::pair<std::string, LeafData> > Sam::Packages::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Sam::Packages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Packages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "package")
     {
-        auto c = std::make_shared<Sam::Packages::Package>();
-        c->parent = this;
-        package.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sam::Packages::Package>();
+        ent_->parent = this;
+        package.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Packages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : package.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : package.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::Packages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1902,7 +1902,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::Packages::Package::get_name_
 
 }
 
-std::shared_ptr<Entity> Sam::Packages::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Packages::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "certificate-flags")
     {
@@ -1916,16 +1916,16 @@ std::shared_ptr<Entity> Sam::Packages::Package::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::Package::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Packages::Package::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(certificate_flags != nullptr)
     {
-        children["certificate-flags"] = certificate_flags;
+        _children["certificate-flags"] = certificate_flags;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::Packages::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2026,16 +2026,16 @@ std::vector<std::pair<std::string, LeafData> > Sam::Packages::Package::Certifica
 
 }
 
-std::shared_ptr<Entity> Sam::Packages::Package::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::Packages::Package::CertificateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::Package::CertificateFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::Packages::Package::CertificateFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sam::Packages::Package::CertificateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2149,33 +2149,33 @@ std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocations::get_
 
 }
 
-std::shared_ptr<Entity> Sam::CertificateRevocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::CertificateRevocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "certificate-revocation")
     {
-        auto c = std::make_shared<Sam::CertificateRevocations::CertificateRevocation>();
-        c->parent = this;
-        certificate_revocation.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sam::CertificateRevocations::CertificateRevocation>();
+        ent_->parent = this;
+        certificate_revocation.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::CertificateRevocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : certificate_revocation.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : certificate_revocation.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::CertificateRevocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2247,7 +2247,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocations::Cert
 
 }
 
-std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::CertificateRevocations::CertificateRevocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "certificate-revocation-list-detail")
     {
@@ -2261,16 +2261,16 @@ std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::CertificateRevocations::CertificateRevocation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(certificate_revocation_list_detail != nullptr)
     {
-        children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
+        _children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::CertificateRevocations::CertificateRevocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2348,7 +2348,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocations::Cert
 
 }
 
-std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "issuer")
     {
@@ -2362,16 +2362,16 @@ std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::Cert
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(issuer != nullptr)
     {
-        children["issuer"] = issuer;
+        _children["issuer"] = issuer;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2458,16 +2458,16 @@ std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocations::Cert
 
 }
 
-std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2572,7 +2572,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocationListSum
 
 }
 
-std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::CertificateRevocationListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "issuer")
     {
@@ -2586,16 +2586,16 @@ std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::CertificateRevocationListSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(issuer != nullptr)
     {
-        children["issuer"] = issuer;
+        _children["issuer"] = issuer;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::CertificateRevocationListSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2689,16 +2689,16 @@ std::vector<std::pair<std::string, LeafData> > Sam::CertificateRevocationListSum
 
 }
 
-std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::CertificateRevocationListSummary::Issuer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::Issuer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::CertificateRevocationListSummary::Issuer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sam::CertificateRevocationListSummary::Issuer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

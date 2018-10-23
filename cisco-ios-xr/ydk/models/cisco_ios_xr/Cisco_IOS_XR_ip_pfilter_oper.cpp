@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> PfilterMa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> PfilterMa::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void PfilterMa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> PfilterMa::clone_ptr() const
+std::shared_ptr<ydk::Entity> PfilterMa::clone_ptr() const
 {
     return std::make_shared<PfilterMa>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<PfilterMa::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<PfilterMa::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::get_name_
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
@@ -286,16 +286,16 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(process != nullptr)
     {
-        children["process"] = process;
+        _children["process"] = process;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -368,7 +368,7 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
@@ -391,21 +391,21 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -464,7 +464,7 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::Process::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl-info-table")
     {
@@ -478,16 +478,16 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::Process::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(acl_info_table != nullptr)
     {
-        children["acl-info-table"] = acl_info_table;
+        _children["acl-info-table"] = acl_info_table;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::Process::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -546,7 +546,7 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-infos")
     {
@@ -560,16 +560,16 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_infos != nullptr)
     {
-        children["interface-infos"] = interface_infos;
+        _children["interface-infos"] = interface_infos;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -636,33 +636,33 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-info")
     {
-        auto c = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo>();
-        c->parent = this;
-        interface_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo>();
+        ent_->parent = this;
+        interface_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -726,16 +726,16 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -814,7 +814,7 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::Process::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl-info-table")
     {
@@ -828,16 +828,16 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::Process::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(acl_info_table != nullptr)
     {
-        children["acl-info-table"] = acl_info_table;
+        _children["acl-info-table"] = acl_info_table;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::Process::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -896,7 +896,7 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-infos")
     {
@@ -910,16 +910,16 @@ std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_infos != nullptr)
     {
-        children["interface-infos"] = interface_infos;
+        _children["interface-infos"] = interface_infos;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -986,33 +986,33 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-info")
     {
-        auto c = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo>();
-        c->parent = this;
-        interface_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo>();
+        ent_->parent = this;
+        interface_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1076,16 +1076,16 @@ std::vector<std::pair<std::string, LeafData> > PfilterMa::Nodes::Node::Process::
 
 }
 
-std::shared_ptr<Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

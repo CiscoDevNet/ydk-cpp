@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcMplsObjects")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cpwvcmplsobjects != nullptr)
     {
-        children["cpwVcMplsObjects"] = cpwvcmplsobjects;
+        _children["cpwVcMplsObjects"] = cpwvcmplsobjects;
     }
 
     if(cpwvcmplstable != nullptr)
     {
-        children["cpwVcMplsTable"] = cpwvcmplstable;
+        _children["cpwVcMplsTable"] = cpwvcmplstable;
     }
 
     if(cpwvcmplsoutboundtable != nullptr)
     {
-        children["cpwVcMplsOutboundTable"] = cpwvcmplsoutboundtable;
+        _children["cpwVcMplsOutboundTable"] = cpwvcmplsoutboundtable;
     }
 
     if(cpwvcmplsinboundtable != nullptr)
     {
-        children["cpwVcMplsInboundTable"] = cpwvcmplsinboundtable;
+        _children["cpwVcMplsInboundTable"] = cpwvcmplsinboundtable;
     }
 
     if(cpwvcmplsnontemappingtable != nullptr)
     {
-        children["cpwVcMplsNonTeMappingTable"] = cpwvcmplsnontemappingtable;
+        _children["cpwVcMplsNonTeMappingTable"] = cpwvcmplsnontemappingtable;
     }
 
     if(cpwvcmplstemappingtable != nullptr)
     {
-        children["cpwVcMplsTeMappingTable"] = cpwvcmplstemappingtable;
+        _children["cpwVcMplsTeMappingTable"] = cpwvcmplstemappingtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void CISCOIETFPWMPLSMIB::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIETFPWMPLSMIB>();
 }
@@ -260,16 +260,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsObje
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -363,33 +363,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcMplsEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsTable::CpwVcMplsEntry>();
-        c->parent = this;
-        cpwvcmplsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsTable::CpwVcMplsEntry>();
+        ent_->parent = this;
+        cpwvcmplsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcmplsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcmplsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -488,16 +488,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsTable::CpwVcMplsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsTable::CpwVcMplsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsTable::CpwVcMplsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsTable::CpwVcMplsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsTable::CpwVcMplsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -659,33 +659,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsOutb
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcMplsOutboundEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::CpwVcMplsOutboundEntry>();
-        c->parent = this;
-        cpwvcmplsoutboundentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::CpwVcMplsOutboundEntry>();
+        ent_->parent = this;
+        cpwvcmplsoutboundentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcmplsoutboundentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcmplsoutboundentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -789,16 +789,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsOutb
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::CpwVcMplsOutboundEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::CpwVcMplsOutboundEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::CpwVcMplsOutboundEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::CpwVcMplsOutboundEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsOutboundTable::CpwVcMplsOutboundEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -972,33 +972,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsInbo
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcMplsInboundEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::CpwVcMplsInboundEntry>();
-        c->parent = this;
-        cpwvcmplsinboundentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::CpwVcMplsInboundEntry>();
+        ent_->parent = this;
+        cpwvcmplsinboundentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcmplsinboundentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcmplsinboundentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1102,16 +1102,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsInbo
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::CpwVcMplsInboundEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::CpwVcMplsInboundEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::CpwVcMplsInboundEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::CpwVcMplsInboundEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsInboundTable::CpwVcMplsInboundEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1285,33 +1285,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsNonT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcMplsNonTeMappingEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::CpwVcMplsNonTeMappingEntry>();
-        c->parent = this;
-        cpwvcmplsnontemappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::CpwVcMplsNonTeMappingEntry>();
+        ent_->parent = this;
+        cpwvcmplsnontemappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcmplsnontemappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcmplsnontemappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1393,16 +1393,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsNonT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::CpwVcMplsNonTeMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::CpwVcMplsNonTeMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::CpwVcMplsNonTeMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::CpwVcMplsNonTeMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsNonTeMappingTable::CpwVcMplsNonTeMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1516,33 +1516,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsTeMa
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcMplsTeMappingEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::CpwVcMplsTeMappingEntry>();
-        c->parent = this;
-        cpwvcmplstemappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::CpwVcMplsTeMappingEntry>();
+        ent_->parent = this;
+        cpwvcmplstemappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcmplstemappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcmplstemappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1634,16 +1634,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMPLSMIB::CpwVcMplsTeMa
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::CpwVcMplsTeMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::CpwVcMplsTeMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::CpwVcMplsTeMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::CpwVcMplsTeMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMPLSMIB::CpwVcMplsTeMappingTable::CpwVcMplsTeMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

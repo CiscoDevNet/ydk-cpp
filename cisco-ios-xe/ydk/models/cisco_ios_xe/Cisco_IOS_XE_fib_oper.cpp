@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > FibOperData::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> FibOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FibOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-ni-entry")
     {
-        auto c = std::make_shared<FibOperData::FibNiEntry>();
-        c->parent = this;
-        fib_ni_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<FibOperData::FibNiEntry>();
+        ent_->parent = this;
+        fib_ni_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FibOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FibOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fib_ni_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fib_ni_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FibOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void FibOperData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> FibOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> FibOperData::clone_ptr() const
 {
     return std::make_shared<FibOperData>();
 }
@@ -206,33 +206,33 @@ std::vector<std::pair<std::string, LeafData> > FibOperData::FibNiEntry::get_name
 
 }
 
-std::shared_ptr<Entity> FibOperData::FibNiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FibOperData::FibNiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-entries")
     {
-        auto c = std::make_shared<FibOperData::FibNiEntry::FibEntries>();
-        c->parent = this;
-        fib_entries.append(c);
-        return c;
+        auto ent_ = std::make_shared<FibOperData::FibNiEntry::FibEntries>();
+        ent_->parent = this;
+        fib_entries.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FibOperData::FibNiEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FibOperData::FibNiEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fib_entries.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fib_entries.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FibOperData::FibNiEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -374,33 +374,33 @@ std::vector<std::pair<std::string, LeafData> > FibOperData::FibNiEntry::FibEntri
 
 }
 
-std::shared_ptr<Entity> FibOperData::FibNiEntry::FibEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FibOperData::FibNiEntry::FibEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-nexthop-entries")
     {
-        auto c = std::make_shared<FibOperData::FibNiEntry::FibEntries::FibNexthopEntries>();
-        c->parent = this;
-        fib_nexthop_entries.append(c);
-        return c;
+        auto ent_ = std::make_shared<FibOperData::FibNiEntry::FibEntries::FibNexthopEntries>();
+        ent_->parent = this;
+        fib_nexthop_entries.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FibOperData::FibNiEntry::FibEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FibOperData::FibNiEntry::FibEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fib_nexthop_entries.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fib_nexthop_entries.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FibOperData::FibNiEntry::FibEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -556,16 +556,16 @@ std::vector<std::pair<std::string, LeafData> > FibOperData::FibNiEntry::FibEntri
 
 }
 
-std::shared_ptr<Entity> FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

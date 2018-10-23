@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRoute")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipmroute != nullptr)
     {
-        children["ipMRoute"] = ipmroute;
+        _children["ipMRoute"] = ipmroute;
     }
 
     if(ipmroutetable != nullptr)
     {
-        children["ipMRouteTable"] = ipmroutetable;
+        _children["ipMRouteTable"] = ipmroutetable;
     }
 
     if(ipmroutenexthoptable != nullptr)
     {
-        children["ipMRouteNextHopTable"] = ipmroutenexthoptable;
+        _children["ipMRouteNextHopTable"] = ipmroutenexthoptable;
     }
 
     if(ipmrouteinterfacetable != nullptr)
     {
-        children["ipMRouteInterfaceTable"] = ipmrouteinterfacetable;
+        _children["ipMRouteInterfaceTable"] = ipmrouteinterfacetable;
     }
 
     if(ipmrouteboundarytable != nullptr)
     {
-        children["ipMRouteBoundaryTable"] = ipmrouteboundarytable;
+        _children["ipMRouteBoundaryTable"] = ipmrouteboundarytable;
     }
 
     if(ipmroutescopenametable != nullptr)
     {
-        children["ipMRouteScopeNameTable"] = ipmroutescopenametable;
+        _children["ipMRouteScopeNameTable"] = ipmroutescopenametable;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMROUTESTDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void IPMROUTESTDMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::clone_ptr() const
 {
     return std::make_shared<IPMROUTESTDMIB>();
 }
@@ -260,16 +260,16 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRoute::get_nam
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -363,33 +363,33 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteTable::ge
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry>();
-        c->parent = this;
-        ipmrouteentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry>();
+        ent_->parent = this;
+        ipmrouteentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipmrouteentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipmrouteentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -602,16 +602,16 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteTable::Ip
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1055,33 +1055,33 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteNextHopTa
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteNextHopEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry>();
-        c->parent = this;
-        ipmroutenexthopentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry>();
+        ent_->parent = this;
+        ipmroutenexthopentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteNextHopTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteNextHopTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipmroutenexthopentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipmroutenexthopentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteNextHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1204,16 +1204,16 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteNextHopTa
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1427,33 +1427,33 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteInterface
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteInterfaceEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry>();
-        c->parent = this;
-        ipmrouteinterfaceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry>();
+        ent_->parent = this;
+        ipmrouteinterfaceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteInterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteInterfaceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipmrouteinterfaceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipmrouteinterfaceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1572,16 +1572,16 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteInterface
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteInterfaceTable::IpMRouteInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1795,33 +1795,33 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteBoundaryT
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteBoundaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteBoundaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteBoundaryEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry>();
-        c->parent = this;
-        ipmrouteboundaryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry>();
+        ent_->parent = this;
+        ipmrouteboundaryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteBoundaryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteBoundaryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipmrouteboundaryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipmrouteboundaryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteBoundaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1902,16 +1902,16 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteBoundaryT
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteBoundaryTable::IpMRouteBoundaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2025,33 +2025,33 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteScopeName
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteScopeNameTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteScopeNameTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipMRouteScopeNameEntry")
     {
-        auto c = std::make_shared<IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry>();
-        c->parent = this;
-        ipmroutescopenameentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry>();
+        ent_->parent = this;
+        ipmroutescopenameentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteScopeNameTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteScopeNameTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipmroutescopenameentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipmroutescopenameentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteScopeNameTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2140,16 +2140,16 @@ std::vector<std::pair<std::string, LeafData> > IPMROUTESTDMIB::IpMRouteScopeName
 
 }
 
-std::shared_ptr<Entity> IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMROUTESTDMIB::IpMRouteScopeNameTable::IpMRouteScopeNameEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

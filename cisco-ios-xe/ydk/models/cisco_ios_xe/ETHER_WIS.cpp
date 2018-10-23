@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ETHERWIS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etherWisDeviceTable")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> ETHERWIS::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ETHERWIS::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(etherwisdevicetable != nullptr)
     {
-        children["etherWisDeviceTable"] = etherwisdevicetable;
+        _children["etherWisDeviceTable"] = etherwisdevicetable;
     }
 
     if(etherwissectioncurrenttable != nullptr)
     {
-        children["etherWisSectionCurrentTable"] = etherwissectioncurrenttable;
+        _children["etherWisSectionCurrentTable"] = etherwissectioncurrenttable;
     }
 
     if(etherwispathcurrenttable != nullptr)
     {
-        children["etherWisPathCurrentTable"] = etherwispathcurrenttable;
+        _children["etherWisPathCurrentTable"] = etherwispathcurrenttable;
     }
 
     if(etherwisfarendpathcurrenttable != nullptr)
     {
-        children["etherWisFarEndPathCurrentTable"] = etherwisfarendpathcurrenttable;
+        _children["etherWisFarEndPathCurrentTable"] = etherwisfarendpathcurrenttable;
     }
 
-    return children;
+    return _children;
 }
 
 void ETHERWIS::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void ETHERWIS::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ETHERWIS::clone_ptr() const
+std::shared_ptr<ydk::Entity> ETHERWIS::clone_ptr() const
 {
     return std::make_shared<ETHERWIS>();
 }
@@ -228,33 +228,33 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisDeviceTable::ge
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::EtherWisDeviceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ETHERWIS::EtherWisDeviceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etherWisDeviceEntry")
     {
-        auto c = std::make_shared<ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry>();
-        c->parent = this;
-        etherwisdeviceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry>();
+        ent_->parent = this;
+        etherwisdeviceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisDeviceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ETHERWIS::EtherWisDeviceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : etherwisdeviceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : etherwisdeviceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ETHERWIS::EtherWisDeviceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -333,16 +333,16 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisDeviceTable::Et
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ETHERWIS::EtherWisDeviceTable::EtherWisDeviceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -456,33 +456,33 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisSectionCurrentT
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::EtherWisSectionCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ETHERWIS::EtherWisSectionCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etherWisSectionCurrentEntry")
     {
-        auto c = std::make_shared<ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry>();
-        c->parent = this;
-        etherwissectioncurrententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry>();
+        ent_->parent = this;
+        etherwissectioncurrententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisSectionCurrentTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ETHERWIS::EtherWisSectionCurrentTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : etherwissectioncurrententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : etherwissectioncurrententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ETHERWIS::EtherWisSectionCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -557,16 +557,16 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisSectionCurrentT
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ETHERWIS::EtherWisSectionCurrentTable::EtherWisSectionCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -670,33 +670,33 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisPathCurrentTabl
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::EtherWisPathCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ETHERWIS::EtherWisPathCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etherWisPathCurrentEntry")
     {
-        auto c = std::make_shared<ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry>();
-        c->parent = this;
-        etherwispathcurrententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry>();
+        ent_->parent = this;
+        etherwispathcurrententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisPathCurrentTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ETHERWIS::EtherWisPathCurrentTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : etherwispathcurrententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : etherwispathcurrententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ETHERWIS::EtherWisPathCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -775,16 +775,16 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisPathCurrentTabl
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ETHERWIS::EtherWisPathCurrentTable::EtherWisPathCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -896,33 +896,33 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisFarEndPathCurre
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::EtherWisFarEndPathCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ETHERWIS::EtherWisFarEndPathCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etherWisFarEndPathCurrentEntry")
     {
-        auto c = std::make_shared<ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry>();
-        c->parent = this;
-        etherwisfarendpathcurrententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry>();
+        ent_->parent = this;
+        etherwisfarendpathcurrententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisFarEndPathCurrentTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ETHERWIS::EtherWisFarEndPathCurrentTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : etherwisfarendpathcurrententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : etherwisfarendpathcurrententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ETHERWIS::EtherWisFarEndPathCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -993,16 +993,16 @@ std::vector<std::pair<std::string, LeafData> > ETHERWIS::EtherWisFarEndPathCurre
 
 }
 
-std::shared_ptr<Entity> ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ETHERWIS::EtherWisFarEndPathCurrentTable::EtherWisFarEndPathCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

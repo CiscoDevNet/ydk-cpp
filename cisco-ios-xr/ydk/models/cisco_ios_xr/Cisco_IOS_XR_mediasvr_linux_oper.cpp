@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > MediaSvr::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> MediaSvr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MediaSvr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> MediaSvr::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MediaSvr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MediaSvr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
     if(location_descriptions != nullptr)
     {
-        children["location-descriptions"] = location_descriptions;
+        _children["location-descriptions"] = location_descriptions;
     }
 
-    return children;
+    return _children;
 }
 
 void MediaSvr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void MediaSvr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MediaSvr::clone_ptr() const
+std::shared_ptr<ydk::Entity> MediaSvr::clone_ptr() const
 {
     return std::make_shared<MediaSvr>();
 }
@@ -184,16 +184,16 @@ std::vector<std::pair<std::string, LeafData> > MediaSvr::All::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> MediaSvr::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MediaSvr::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MediaSvr::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MediaSvr::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MediaSvr::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -277,33 +277,33 @@ std::vector<std::pair<std::string, LeafData> > MediaSvr::LocationDescriptions::g
 
 }
 
-std::shared_ptr<Entity> MediaSvr::LocationDescriptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MediaSvr::LocationDescriptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location-description")
     {
-        auto c = std::make_shared<MediaSvr::LocationDescriptions::LocationDescription>();
-        c->parent = this;
-        location_description.append(c);
-        return c;
+        auto ent_ = std::make_shared<MediaSvr::LocationDescriptions::LocationDescription>();
+        ent_->parent = this;
+        location_description.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MediaSvr::LocationDescriptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MediaSvr::LocationDescriptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location_description.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location_description.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MediaSvr::LocationDescriptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -374,16 +374,16 @@ std::vector<std::pair<std::string, LeafData> > MediaSvr::LocationDescriptions::L
 
 }
 
-std::shared_ptr<Entity> MediaSvr::LocationDescriptions::LocationDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MediaSvr::LocationDescriptions::LocationDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MediaSvr::LocationDescriptions::LocationDescription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MediaSvr::LocationDescriptions::LocationDescription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MediaSvr::LocationDescriptions::LocationDescription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

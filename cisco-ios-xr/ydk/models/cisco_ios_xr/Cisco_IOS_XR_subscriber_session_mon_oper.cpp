@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> SessionMon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionMon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> SessionMon::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionMon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionMon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionMon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void SessionMon::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SessionMon::clone_ptr() const
+std::shared_ptr<ydk::Entity> SessionMon::clone_ptr() const
 {
     return std::make_shared<SessionMon>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> SessionMon::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionMon::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<SessionMon::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionMon::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionMon::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionMon::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,7 +280,7 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::get_name
 
 }
 
-std::shared_ptr<Entity> SessionMon::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionMon::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-mon-statistics")
     {
@@ -312,26 +312,26 @@ std::shared_ptr<Entity> SessionMon::Nodes::Node::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionMon::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session_mon_statistics != nullptr)
     {
-        children["session-mon-statistics"] = session_mon_statistics;
+        _children["session-mon-statistics"] = session_mon_statistics;
     }
 
     if(interface_all_statistics != nullptr)
     {
-        children["interface-all-statistics"] = interface_all_statistics;
+        _children["interface-all-statistics"] = interface_all_statistics;
     }
 
     if(license_statistics != nullptr)
     {
-        children["license-statistics"] = license_statistics;
+        _children["license-statistics"] = license_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionMon::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -448,16 +448,16 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::SessionM
 
 }
 
-std::shared_ptr<Entity> SessionMon::Nodes::Node::SessionMonStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionMon::Nodes::Node::SessionMonStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::SessionMonStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionMon::Nodes::Node::SessionMonStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionMon::Nodes::Node::SessionMonStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -654,33 +654,33 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::Interfac
 
 }
 
-std::shared_ptr<Entity> SessionMon::Nodes::Node::InterfaceAllStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionMon::Nodes::Node::InterfaceAllStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-all-statistic")
     {
-        auto c = std::make_shared<SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic>();
-        c->parent = this;
-        interface_all_statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic>();
+        ent_->parent = this;
+        interface_all_statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::InterfaceAllStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionMon::Nodes::Node::InterfaceAllStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_all_statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_all_statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionMon::Nodes::Node::InterfaceAllStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -792,16 +792,16 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::Interfac
 
 }
 
-std::shared_ptr<Entity> SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1048,16 +1048,16 @@ std::vector<std::pair<std::string, LeafData> > SessionMon::Nodes::Node::LicenseS
 
 }
 
-std::shared_ptr<Entity> SessionMon::Nodes::Node::LicenseStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionMon::Nodes::Node::LicenseStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::LicenseStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionMon::Nodes::Node::LicenseStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionMon::Nodes::Node::LicenseStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

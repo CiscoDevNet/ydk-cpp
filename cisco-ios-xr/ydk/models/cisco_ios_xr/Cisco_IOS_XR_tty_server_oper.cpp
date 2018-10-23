@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "console-nodes")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> Tty::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(console_nodes != nullptr)
     {
-        children["console-nodes"] = console_nodes;
+        _children["console-nodes"] = console_nodes;
     }
 
     if(vty_lines != nullptr)
     {
-        children["vty-lines"] = vty_lines;
+        _children["vty-lines"] = vty_lines;
     }
 
     if(auxiliary_nodes != nullptr)
     {
-        children["auxiliary-nodes"] = auxiliary_nodes;
+        _children["auxiliary-nodes"] = auxiliary_nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void Tty::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Tty::clone_ptr() const
+std::shared_ptr<ydk::Entity> Tty::clone_ptr() const
 {
     return std::make_shared<Tty>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "console-node")
     {
-        auto c = std::make_shared<Tty::ConsoleNodes::ConsoleNode>();
-        c->parent = this;
-        console_node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tty::ConsoleNodes::ConsoleNode>();
+        ent_->parent = this;
+        console_node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : console_node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : console_node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::ConsoleNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -308,7 +308,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::g
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "console-line")
     {
@@ -322,16 +322,16 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(console_line != nullptr)
     {
-        children["console-line"] = console_line;
+        _children["console-line"] = console_line;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -408,7 +408,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "console-statistics")
     {
@@ -440,26 +440,26 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(console_statistics != nullptr)
     {
-        children["console-statistics"] = console_statistics;
+        _children["console-statistics"] = console_statistics;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(configuration != nullptr)
     {
-        children["configuration"] = configuration;
+        _children["configuration"] = configuration;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -530,7 +530,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rs232")
     {
@@ -571,31 +571,31 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rs232 != nullptr)
     {
-        children["rs232"] = rs232;
+        _children["rs232"] = rs232;
     }
 
     if(general_statistics != nullptr)
     {
-        children["general-statistics"] = general_statistics;
+        _children["general-statistics"] = general_statistics;
     }
 
     if(exec != nullptr)
     {
-        children["exec"] = exec;
+        _children["exec"] = exec;
     }
 
     if(aaa != nullptr)
     {
-        children["aaa"] = aaa;
+        _children["aaa"] = aaa;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -686,16 +686,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -884,16 +884,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1062,16 +1062,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1140,16 +1140,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1222,7 +1222,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "template")
     {
@@ -1245,21 +1245,21 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(template_ != nullptr)
     {
-        children["template"] = template_;
+        _children["template"] = template_;
     }
 
     if(general != nullptr)
     {
-        children["general"] = general;
+        _children["general"] = general;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1318,16 +1318,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1400,16 +1400,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1488,7 +1488,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "connection-configuration")
     {
@@ -1502,16 +1502,16 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configurati
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(connection_configuration != nullptr)
     {
-        children["connection-configuration"] = connection_configuration;
+        _children["connection-configuration"] = connection_configuration;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1579,7 +1579,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport-input")
     {
@@ -1593,16 +1593,16 @@ std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configurati
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transport_input != nullptr)
     {
-        children["transport-input"] = transport_input;
+        _children["transport-input"] = transport_input;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1693,16 +1693,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::ConsoleNodes::ConsoleNode::C
 
 }
 
-std::shared_ptr<Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1816,33 +1816,33 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vty-line")
     {
-        auto c = std::make_shared<Tty::VtyLines::VtyLine>();
-        c->parent = this;
-        vty_line.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tty::VtyLines::VtyLine>();
+        ent_->parent = this;
+        vty_line.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vty_line.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vty_line.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::VtyLines::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1926,7 +1926,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::get_name_
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vty-statistics")
     {
@@ -1967,31 +1967,31 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vty_statistics != nullptr)
     {
-        children["vty-statistics"] = vty_statistics;
+        _children["vty-statistics"] = vty_statistics;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(configuration != nullptr)
     {
-        children["configuration"] = configuration;
+        _children["configuration"] = configuration;
     }
 
     if(sessions != nullptr)
     {
-        children["Cisco-IOS-XR-tty-management-oper:sessions"] = sessions;
+        _children["Cisco-IOS-XR-tty-management-oper:sessions"] = sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2072,7 +2072,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::VtyStatis
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::VtyStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "connection")
     {
@@ -2113,31 +2113,31 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::VtyStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(connection != nullptr)
     {
-        children["connection"] = connection;
+        _children["connection"] = connection;
     }
 
     if(general_statistics != nullptr)
     {
-        children["general-statistics"] = general_statistics;
+        _children["general-statistics"] = general_statistics;
     }
 
     if(exec != nullptr)
     {
-        children["exec"] = exec;
+        _children["exec"] = exec;
     }
 
     if(aaa != nullptr)
     {
-        children["aaa"] = aaa;
+        _children["aaa"] = aaa;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::VtyStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2204,16 +2204,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::VtyStatis
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::Connection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::VtyStatistics::Connection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::Connection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::VtyStatistics::Connection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::VtyStatistics::Connection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2342,16 +2342,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::VtyStatis
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2520,16 +2520,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::VtyStatis
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::VtyStatistics::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::Exec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::VtyStatistics::Exec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::VtyStatistics::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2598,16 +2598,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::VtyStatis
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::VtyStatistics::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::VtyStatistics::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatistics::Aaa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::VtyStatistics::Aaa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::VtyStatistics::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2680,7 +2680,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::State::ge
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "template")
     {
@@ -2703,21 +2703,21 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::State::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(template_ != nullptr)
     {
-        children["template"] = template_;
+        _children["template"] = template_;
     }
 
     if(general != nullptr)
     {
-        children["general"] = general;
+        _children["general"] = general;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2776,16 +2776,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::State::Te
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::State::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::State::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::Template::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::State::Template::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::State::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2858,16 +2858,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::State::Ge
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::State::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::State::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::General::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::State::General::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::State::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2946,7 +2946,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::Configura
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "connection-configuration")
     {
@@ -2960,16 +2960,16 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Configuration::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Configuration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::Configuration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(connection_configuration != nullptr)
     {
-        children["connection-configuration"] = connection_configuration;
+        _children["connection-configuration"] = connection_configuration;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3037,7 +3037,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::Configura
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport-input")
     {
@@ -3051,16 +3051,16 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Configuration::ConnectionConfigu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transport_input != nullptr)
     {
-        children["transport-input"] = transport_input;
+        _children["transport-input"] = transport_input;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3151,16 +3151,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::Configura
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3267,33 +3267,33 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::Sessions:
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "outgoing-connection")
     {
-        auto c = std::make_shared<Tty::VtyLines::VtyLine::Sessions::OutgoingConnection>();
-        c->parent = this;
-        outgoing_connection.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tty::VtyLines::VtyLine::Sessions::OutgoingConnection>();
+        ent_->parent = this;
+        outgoing_connection.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::Sessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : outgoing_connection.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : outgoing_connection.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3373,7 +3373,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::Sessions:
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "host-address")
     {
@@ -3387,16 +3387,16 @@ std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(host_address != nullptr)
     {
-        children["host-address"] = host_address;
+        _children["host-address"] = host_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3513,16 +3513,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::VtyLines::VtyLine::Sessions:
 
 }
 
-std::shared_ptr<Entity> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3626,33 +3626,33 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auxiliary-node")
     {
-        auto c = std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode>();
-        c->parent = this;
-        auxiliary_node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tty::AuxiliaryNodes::AuxiliaryNode>();
+        ent_->parent = this;
+        auxiliary_node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : auxiliary_node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : auxiliary_node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3724,7 +3724,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auxiliary-line")
     {
@@ -3738,16 +3738,16 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auxiliary_line != nullptr)
     {
-        children["auxiliary-line"] = auxiliary_line;
+        _children["auxiliary-line"] = auxiliary_line;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3824,7 +3824,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auxiliary-statistics")
     {
@@ -3856,26 +3856,26 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auxiliary_statistics != nullptr)
     {
-        children["auxiliary-statistics"] = auxiliary_statistics;
+        _children["auxiliary-statistics"] = auxiliary_statistics;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(configuration != nullptr)
     {
-        children["configuration"] = configuration;
+        _children["configuration"] = configuration;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3946,7 +3946,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rs232")
     {
@@ -3987,31 +3987,31 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Auxil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rs232 != nullptr)
     {
-        children["rs232"] = rs232;
+        _children["rs232"] = rs232;
     }
 
     if(general_statistics != nullptr)
     {
-        children["general-statistics"] = general_statistics;
+        _children["general-statistics"] = general_statistics;
     }
 
     if(exec != nullptr)
     {
-        children["exec"] = exec;
+        _children["exec"] = exec;
     }
 
     if(aaa != nullptr)
     {
-        children["aaa"] = aaa;
+        _children["aaa"] = aaa;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4102,16 +4102,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4300,16 +4300,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4478,16 +4478,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4556,16 +4556,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4638,7 +4638,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "template")
     {
@@ -4661,21 +4661,21 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(template_ != nullptr)
     {
-        children["template"] = template_;
+        _children["template"] = template_;
     }
 
     if(general != nullptr)
     {
-        children["general"] = general;
+        _children["general"] = general;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4734,16 +4734,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4816,16 +4816,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4904,7 +4904,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "connection-configuration")
     {
@@ -4918,16 +4918,16 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Confi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(connection_configuration != nullptr)
     {
-        children["connection-configuration"] = connection_configuration;
+        _children["connection-configuration"] = connection_configuration;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4995,7 +4995,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport-input")
     {
@@ -5009,16 +5009,16 @@ std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Confi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transport_input != nullptr)
     {
-        children["transport-input"] = transport_input;
+        _children["transport-input"] = transport_input;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5109,16 +5109,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::AuxiliaryNodes::AuxiliaryNod
 
 }
 
-std::shared_ptr<Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

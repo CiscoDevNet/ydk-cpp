@@ -64,16 +64,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Community::CommunityWellKnown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Community::CommunityWellKnown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Community::CommunityWellKnown::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Community::CommunityWellKnown::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Community::CommunityWellKnown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -152,16 +152,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::CommList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::CommList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::CommList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::CommList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::CommList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -268,33 +268,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dampening-list")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::DampeningList>();
-        c->parent = this;
-        dampening_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::DampeningList>();
+        ent_->parent = this;
+        dampening_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dampening_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dampening_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -369,16 +369,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::DampeningList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::DampeningList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::DampeningList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::DampeningList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Dampening::DampeningList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -477,7 +477,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
@@ -491,16 +491,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -704,7 +704,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ATM-subinterface")
     {
@@ -745,31 +745,31 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(atm_subinterface != nullptr)
     {
-        children["ATM-subinterface"] = atm_subinterface;
+        _children["ATM-subinterface"] = atm_subinterface;
     }
 
     if(atm_acrsubinterface != nullptr)
     {
-        children["ATM-ACRsubinterface"] = atm_acrsubinterface;
+        _children["ATM-ACRsubinterface"] = atm_acrsubinterface;
     }
 
     if(lisp_subinterface != nullptr)
     {
-        children["LISP-subinterface"] = lisp_subinterface;
+        _children["LISP-subinterface"] = lisp_subinterface;
     }
 
     if(port_channel_subinterface != nullptr)
     {
-        children["Port-channel-subinterface"] = port_channel_subinterface;
+        _children["Port-channel-subinterface"] = port_channel_subinterface;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1158,16 +1158,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1236,16 +1236,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMACRsubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMACRsubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1314,16 +1314,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::LISPSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::LISPSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1392,16 +1392,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::PortChannelSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::PortChannelSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Default::Interface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1489,50 +1489,50 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ext-range")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExtRange>();
-        c->parent = this;
-        ext_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExtRange>();
+        ent_->parent = this;
+        ext_range.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "excomm-list-name")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExcommListName>();
-        c->parent = this;
-        excomm_list_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExcommListName>();
+        ent_->parent = this;
+        excomm_list_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ext_range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ext_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : excomm_list_name.entities())
+    count_ = 0;
+    for (auto ent_ : excomm_list_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1596,16 +1596,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExtRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExtRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExtRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExtRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExtRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1689,16 +1689,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExcommListName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExcommListName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExcommListName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExcommListName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::ExtcommList::ExcommListName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1789,7 +1789,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cost")
     {
@@ -1830,31 +1830,31 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cost != nullptr)
     {
-        children["cost"] = cost;
+        _children["cost"] = cost;
     }
 
     if(rt != nullptr)
     {
-        children["rt"] = rt;
+        _children["rt"] = rt;
     }
 
     if(soo != nullptr)
     {
-        children["soo"] = soo;
+        _children["soo"] = soo;
     }
 
     if(vpn_distinguisher != nullptr)
     {
-        children["vpn-distinguisher"] = vpn_distinguisher;
+        _children["vpn-distinguisher"] = vpn_distinguisher;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1928,14 +1928,14 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "community-id")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::CommunityId>();
-        c->parent = this;
-        community_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::CommunityId>();
+        ent_->parent = this;
+        community_id.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "igp")
@@ -1959,30 +1959,30 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : community_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : community_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(igp != nullptr)
     {
-        children["igp"] = igp;
+        _children["igp"] = igp;
     }
 
     if(pre_bestpath != nullptr)
     {
-        children["pre-bestpath"] = pre_bestpath;
+        _children["pre-bestpath"] = pre_bestpath;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2047,16 +2047,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::CommunityId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::CommunityId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::CommunityId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::CommunityId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::CommunityId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2143,33 +2143,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "community-id")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::CommunityId>();
-        c->parent = this;
-        community_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::CommunityId>();
+        ent_->parent = this;
+        community_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : community_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : community_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2234,16 +2234,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::CommunityId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::CommunityId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::CommunityId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::CommunityId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::Igp::CommunityId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2330,33 +2330,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "community-id")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::CommunityId>();
-        c->parent = this;
-        community_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::CommunityId>();
+        ent_->parent = this;
+        community_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : community_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : community_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2421,16 +2421,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::CommunityId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::CommunityId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::CommunityId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::CommunityId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Cost::PreBestpath::CommunityId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2524,7 +2524,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
@@ -2538,16 +2538,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(range != nullptr)
     {
-        children["range"] = range;
+        _children["range"] = range;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2622,16 +2622,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2720,16 +2720,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2803,7 +2803,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
@@ -2817,16 +2817,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(range != nullptr)
     {
-        children["range"] = range;
+        _children["range"] = range;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2903,16 +2903,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3146,7 +3146,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ATM-subinterface")
     {
@@ -3187,31 +3187,31 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interfac
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(atm_subinterface != nullptr)
     {
-        children["ATM-subinterface"] = atm_subinterface;
+        _children["ATM-subinterface"] = atm_subinterface;
     }
 
     if(atm_acrsubinterface != nullptr)
     {
-        children["ATM-ACRsubinterface"] = atm_acrsubinterface;
+        _children["ATM-ACRsubinterface"] = atm_acrsubinterface;
     }
 
     if(lisp_subinterface != nullptr)
     {
-        children["LISP-subinterface"] = lisp_subinterface;
+        _children["LISP-subinterface"] = lisp_subinterface;
     }
 
     if(port_channel_subinterface != nullptr)
     {
-        children["Port-channel-subinterface"] = port_channel_subinterface;
+        _children["Port-channel-subinterface"] = port_channel_subinterface;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3600,16 +3600,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3678,16 +3678,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3756,16 +3756,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3834,16 +3834,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3942,7 +3942,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -4019,51 +4019,51 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
     if(precedence != nullptr)
     {
-        children["precedence"] = precedence;
+        _children["precedence"] = precedence;
     }
 
     if(qos_group != nullptr)
     {
-        children["qos-group"] = qos_group;
+        _children["qos-group"] = qos_group;
     }
 
     if(tos != nullptr)
     {
-        children["tos"] = tos;
+        _children["tos"] = tos;
     }
 
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4132,16 +4132,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4218,7 +4218,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -4250,26 +4250,26 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Defa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4328,7 +4328,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -4342,16 +4342,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Defa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4421,16 +4421,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4508,16 +4508,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4592,33 +4592,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs>();
-        c->parent = this;
-        vrfs.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs>();
+        ent_->parent = this;
+        vrfs.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrfs.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrfs.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4683,7 +4683,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -4697,16 +4697,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Defa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4786,16 +4786,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4862,7 +4862,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -4876,16 +4876,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Glob
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4955,16 +4955,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5055,7 +5055,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -5096,31 +5096,31 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Next
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
     if(encapsulate != nullptr)
     {
-        children["encapsulate"] = encapsulate;
+        _children["encapsulate"] = encapsulate;
     }
 
     if(recursive != nullptr)
     {
-        children["recursive"] = recursive;
+        _children["recursive"] = recursive;
     }
 
     if(verify_availability != nullptr)
     {
-        children["verify-availability"] = verify_availability;
+        _children["verify-availability"] = verify_availability;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5209,16 +5209,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5287,16 +5287,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5374,7 +5374,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -5388,16 +5388,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Next
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5484,33 +5484,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs>();
-        c->parent = this;
-        vrfs.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs>();
+        ent_->parent = this;
+        vrfs.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrfs.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrfs.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5574,16 +5574,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5670,33 +5670,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4>();
-        c->parent = this;
-        ipv4.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4>();
+        ent_->parent = this;
+        ipv4.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5764,16 +5764,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5866,16 +5866,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5954,16 +5954,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::QosGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::QosGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::QosGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::QosGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::QosGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6036,16 +6036,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6132,33 +6132,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs>();
-        c->parent = this;
-        vrfs.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs>();
+        ent_->parent = this;
+        vrfs.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrfs.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrfs.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6223,7 +6223,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -6237,16 +6237,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6326,16 +6326,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6430,7 +6430,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -6470,49 +6470,49 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::ge
 
     if(child_yang_name == "bvrf")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf>();
-        c->parent = this;
-        bvrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf>();
+        ent_->parent = this;
+        bvrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    count = 0;
-    for (auto c : bvrf.entities())
+    count_ = 0;
+    for (auto ent_ : bvrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6592,16 +6592,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6683,7 +6683,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -6705,39 +6705,39 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::De
 
     if(child_yang_name == "dvrf")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf>();
-        c->parent = this;
-        dvrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf>();
+        ent_->parent = this;
+        dvrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    count = 0;
-    for (auto c : dvrf.entities())
+    count_ = 0;
+    for (auto ent_ : dvrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6796,16 +6796,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6886,33 +6886,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6s")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s>();
-        c->parent = this;
-        ipv6s.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s>();
+        ent_->parent = this;
+        ipv6s.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6s.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6s.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6982,16 +6982,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7073,33 +7073,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dvrf0")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0>();
-        c->parent = this;
-        dvrf0.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0>();
+        ent_->parent = this;
+        dvrf0.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dvrf0.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dvrf0.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7173,16 +7173,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7261,7 +7261,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -7275,16 +7275,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Gl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7355,33 +7355,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-ipv6")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6>();
-        c->parent = this;
-        nh_ipv6.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6>();
+        ent_->parent = this;
+        nh_ipv6.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nh_ipv6.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nh_ipv6.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7455,16 +7455,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7567,14 +7567,14 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nha-ipv6")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6>();
-        c->parent = this;
-        nha_ipv6.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6>();
+        ent_->parent = this;
+        nha_ipv6.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "encapsulate")
@@ -7598,30 +7598,30 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Ne
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nha_ipv6.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nha_ipv6.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(encapsulate != nullptr)
     {
-        children["encapsulate"] = encapsulate;
+        _children["encapsulate"] = encapsulate;
     }
 
     if(verify_availability != nullptr)
     {
-        children["verify-availability"] = verify_availability;
+        _children["verify-availability"] = verify_availability;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7713,33 +7713,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nha-ipv60")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60>();
-        c->parent = this;
-        nha_ipv60.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60>();
+        ent_->parent = this;
+        nha_ipv60.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nha_ipv60.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nha_ipv60.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7813,16 +7813,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7901,16 +7901,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7987,33 +7987,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "va-ipv6")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6>();
-        c->parent = this;
-        va_ipv6.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6>();
+        ent_->parent = this;
+        va_ipv6.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : va_ipv6.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : va_ipv6.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8077,16 +8077,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8178,33 +8178,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bvrf0")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0>();
-        c->parent = this;
-        bvrf0.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0>();
+        ent_->parent = this;
+        bvrf0.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bvrf0.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bvrf0.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8279,7 +8279,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -8293,16 +8293,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bv
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8375,16 +8375,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8475,16 +8475,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Level::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Level::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8583,16 +8583,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Lisp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Lisp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Lisp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8666,7 +8666,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "values")
     {
@@ -8680,16 +8680,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(values != nullptr)
     {
-        children["values"] = values;
+        _children["values"] = values;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8774,16 +8774,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::Values::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::Values::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::Values::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::Values::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Metric::Values::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8896,16 +8896,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8988,16 +8988,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Tag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Tag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9148,7 +9148,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "additional-paths")
     {
@@ -9306,96 +9306,96 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(additional_paths != nullptr)
     {
-        children["additional-paths"] = additional_paths;
+        _children["additional-paths"] = additional_paths;
     }
 
     if(as_path != nullptr)
     {
-        children["as-path"] = as_path;
+        _children["as-path"] = as_path;
     }
 
     if(clns != nullptr)
     {
-        children["clns"] = clns;
+        _children["clns"] = clns;
     }
 
     if(community != nullptr)
     {
-        children["community"] = community;
+        _children["community"] = community;
     }
 
     if(extcommunity != nullptr)
     {
-        children["extcommunity"] = extcommunity;
+        _children["extcommunity"] = extcommunity;
     }
 
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(length != nullptr)
     {
-        children["length"] = length;
+        _children["length"] = length;
     }
 
     if(local_preference != nullptr)
     {
-        children["local-preference"] = local_preference;
+        _children["local-preference"] = local_preference;
     }
 
     if(mdt_group != nullptr)
     {
-        children["mdt-group"] = mdt_group;
+        _children["mdt-group"] = mdt_group;
     }
 
     if(metric != nullptr)
     {
-        children["metric"] = metric;
+        _children["metric"] = metric;
     }
 
     if(policy_list != nullptr)
     {
-        children["policy-list"] = policy_list;
+        _children["policy-list"] = policy_list;
     }
 
     if(route_type != nullptr)
     {
-        children["route-type"] = route_type;
+        _children["route-type"] = route_type;
     }
 
     if(rpki != nullptr)
     {
-        children["rpki"] = rpki;
+        _children["rpki"] = rpki;
     }
 
     if(source_protocol != nullptr)
     {
-        children["source-protocol"] = source_protocol;
+        _children["source-protocol"] = source_protocol;
     }
 
     if(tag != nullptr)
     {
-        children["tag"] = tag;
+        _children["tag"] = tag;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9474,7 +9474,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "advertise-set")
     {
@@ -9488,16 +9488,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Additi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(advertise_set != nullptr)
     {
-        children["advertise-set"] = advertise_set;
+        _children["advertise-set"] = advertise_set;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9566,7 +9566,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -9607,31 +9607,31 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Additi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
     if(best != nullptr)
     {
-        children["best"] = best;
+        _children["best"] = best;
     }
 
     if(best_range != nullptr)
     {
-        children["best-range"] = best_range;
+        _children["best-range"] = best_range;
     }
 
     if(group_best != nullptr)
     {
-        children["group-best"] = group_best;
+        _children["group-best"] = group_best;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9698,7 +9698,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-best")
     {
@@ -9712,16 +9712,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Additi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_best != nullptr)
     {
-        children["group-best"] = group_best;
+        _children["group-best"] = group_best;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9804,16 +9804,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::GroupBest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::GroupBest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::GroupBest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9900,33 +9900,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "best-range")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange>();
-        c->parent = this;
-        best_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange>();
+        ent_->parent = this;
+        best_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : best_range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : best_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9994,16 +9994,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10100,33 +10100,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adv-path")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath>();
-        c->parent = this;
-        adv_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath>();
+        ent_->parent = this;
+        adv_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : adv_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : adv_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10190,16 +10190,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10286,16 +10286,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::GroupBest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::GroupBest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::GroupBest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10395,16 +10395,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10482,16 +10482,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10569,16 +10569,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10656,16 +10656,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10743,16 +10743,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10835,7 +10835,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -10885,36 +10885,36 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
     if(flowspec != nullptr)
     {
-        children["flowspec"] = flowspec;
+        _children["flowspec"] = flowspec;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
     if(redistribution_source != nullptr)
     {
-        children["redistribution-source"] = redistribution_source;
+        _children["redistribution-source"] = redistribution_source;
     }
 
     if(route_source != nullptr)
     {
-        children["route-source"] = route_source;
+        _children["route-source"] = route_source;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10998,16 +10998,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11086,7 +11086,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dest-pfx")
     {
@@ -11109,21 +11109,21 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Fl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dest_pfx != nullptr)
     {
-        children["dest-pfx"] = dest_pfx;
+        _children["dest-pfx"] = dest_pfx;
     }
 
     if(src_pfx != nullptr)
     {
-        children["src-pfx"] = src_pfx;
+        _children["src-pfx"] = src_pfx;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11207,16 +11207,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11316,16 +11316,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11425,16 +11425,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11534,16 +11534,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11643,16 +11643,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11739,7 +11739,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -11780,31 +11780,31 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
     if(flowspec != nullptr)
     {
-        children["flowspec"] = flowspec;
+        _children["flowspec"] = flowspec;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
     if(route_source != nullptr)
     {
-        children["route-source"] = route_source;
+        _children["route-source"] = route_source;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11867,16 +11867,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11959,7 +11959,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dest-pfx")
     {
@@ -11982,21 +11982,21 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dest_pfx != nullptr)
     {
-        children["dest-pfx"] = dest_pfx;
+        _children["dest-pfx"] = dest_pfx;
     }
 
     if(src_pfx != nullptr)
     {
-        children["src-pfx"] = src_pfx;
+        _children["src-pfx"] = src_pfx;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12059,16 +12059,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12151,16 +12151,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12243,16 +12243,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12335,16 +12335,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12431,33 +12431,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lengths")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths>();
-        c->parent = this;
-        lengths.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths>();
+        ent_->parent = this;
+        lengths.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lengths.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lengths.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12522,16 +12522,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12621,16 +12621,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12708,16 +12708,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12788,16 +12788,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12887,16 +12887,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12982,7 +12982,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "external")
     {
@@ -13005,21 +13005,21 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteT
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(external != nullptr)
     {
-        children["external"] = external;
+        _children["external"] = external;
     }
 
     if(nssa_external != nullptr)
     {
-        children["nssa-external"] = nssa_external;
+        _children["nssa-external"] = nssa_external;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13122,16 +13122,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::External::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::External::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13214,16 +13214,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::NssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::NssaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::NssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13310,16 +13310,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13484,16 +13484,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13673,7 +13673,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "list")
     {
@@ -13687,16 +13687,16 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(list != nullptr)
     {
-        children["list"] = list;
+        _children["list"] = list;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13782,16 +13782,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13869,7 +13869,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-eigrp:list")
     {
@@ -13892,21 +13892,21 @@ std::shared_ptr<Entity> Native::RouteTag::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(list != nullptr)
     {
-        children["Cisco-IOS-XE-eigrp:list"] = list;
+        _children["Cisco-IOS-XE-eigrp:list"] = list;
     }
 
     if(notation != nullptr)
     {
-        children["Cisco-IOS-XE-eigrp:notation"] = notation;
+        _children["Cisco-IOS-XE-eigrp:notation"] = notation;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13980,33 +13980,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::get_name_
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rt-name")
     {
-        auto c = std::make_shared<Native::RouteTag::List::RtName>();
-        c->parent = this;
-        rt_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteTag::List::RtName>();
+        ent_->parent = this;
+        rt_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rt_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rt_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteTag::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14086,7 +14086,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::RtName::g
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::RtName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::RtName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "deny")
     {
@@ -14118,26 +14118,26 @@ std::shared_ptr<Entity> Native::RouteTag::List::RtName::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::RtName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(deny != nullptr)
     {
-        children["deny"] = deny;
+        _children["deny"] = deny;
     }
 
     if(permit != nullptr)
     {
-        children["permit"] = permit;
+        _children["permit"] = permit;
     }
 
     if(seq != nullptr)
     {
-        children["seq"] = seq;
+        _children["seq"] = seq;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteTag::List::RtName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14214,33 +14214,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::RtName::D
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::RtName::Deny::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::RtName::Deny::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        auto c = std::make_shared<Native::RouteTag::List::RtName::Deny::Ipv4>();
-        c->parent = this;
-        ipv4.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteTag::List::RtName::Deny::Ipv4>();
+        ent_->parent = this;
+        ipv4.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::Deny::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::RtName::Deny::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteTag::List::RtName::Deny::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14304,16 +14304,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::RtName::D
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::RtName::Deny::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::RtName::Deny::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::Deny::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::RtName::Deny::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteTag::List::RtName::Deny::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14400,33 +14400,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::RtName::P
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::RtName::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::RtName::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        auto c = std::make_shared<Native::RouteTag::List::RtName::Permit::Ipv4>();
-        c->parent = this;
-        ipv4.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteTag::List::RtName::Permit::Ipv4>();
+        ent_->parent = this;
+        ipv4.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::Permit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::RtName::Permit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteTag::List::RtName::Permit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14490,16 +14490,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::RtName::P
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::RtName::Permit::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::RtName::Permit::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::Permit::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::RtName::Permit::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteTag::List::RtName::Permit::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14586,33 +14586,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::RtName::S
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::RtName::Seq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::RtName::Seq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "seq-num")
     {
-        auto c = std::make_shared<Native::RouteTag::List::RtName::Seq::SeqNum>();
-        c->parent = this;
-        seq_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RouteTag::List::RtName::Seq::SeqNum>();
+        ent_->parent = this;
+        seq_num.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::Seq::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::RtName::Seq::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : seq_num.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : seq_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteTag::List::RtName::Seq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14681,7 +14681,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::RtName::S
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::RtName::Seq::SeqNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::RtName::Seq::SeqNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "deny")
     {
@@ -14704,21 +14704,21 @@ std::shared_ptr<Entity> Native::RouteTag::List::RtName::Seq::SeqNum::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::Seq::SeqNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::RtName::Seq::SeqNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(deny != nullptr)
     {
-        children["deny"] = deny;
+        _children["deny"] = deny;
     }
 
     if(permit != nullptr)
     {
-        children["permit"] = permit;
+        _children["permit"] = permit;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RouteTag::List::RtName::Seq::SeqNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14791,16 +14791,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::RtName::S
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::RtName::Seq::SeqNum::Deny::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::RtName::Seq::SeqNum::Deny::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::Seq::SeqNum::Deny::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::RtName::Seq::SeqNum::Deny::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteTag::List::RtName::Seq::SeqNum::Deny::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14883,16 +14883,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::List::RtName::S
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::List::RtName::Seq::SeqNum::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::List::RtName::Seq::SeqNum::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::Seq::SeqNum::Permit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::List::RtName::Seq::SeqNum::Permit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteTag::List::RtName::Seq::SeqNum::Permit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14978,16 +14978,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteTag::Notation::get_n
 
 }
 
-std::shared_ptr<Entity> Native::RouteTag::Notation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RouteTag::Notation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::Notation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RouteTag::Notation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RouteTag::Notation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15080,33 +15080,33 @@ std::vector<std::pair<std::string, LeafData> > Native::TableMap::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Native::TableMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::TableMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-qos:map")
     {
-        auto c = std::make_shared<Native::TableMap::Map>();
-        c->parent = this;
-        map.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::TableMap::Map>();
+        ent_->parent = this;
+        map.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::TableMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::TableMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : map.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : map.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::TableMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15191,16 +15191,16 @@ std::vector<std::pair<std::string, LeafData> > Native::TableMap::Map::get_name_l
 
 }
 
-std::shared_ptr<Entity> Native::TableMap::Map::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::TableMap::Map::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::TableMap::Map::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::TableMap::Map::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::TableMap::Map::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15285,7 +15285,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Sdm::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Native::Sdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Sdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-switch:prefer")
     {
@@ -15299,16 +15299,16 @@ std::shared_ptr<Entity> Native::Sdm::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Sdm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Sdm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefer != nullptr)
     {
-        children["Cisco-IOS-XE-switch:prefer"] = prefer;
+        _children["Cisco-IOS-XE-switch:prefer"] = prefer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Sdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15378,16 +15378,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Sdm::Prefer::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Native::Sdm::Prefer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Sdm::Prefer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Sdm::Prefer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Sdm::Prefer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Sdm::Prefer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15469,16 +15469,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Mls::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Native::Mls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Mls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Mls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Mls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Mls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15572,67 +15572,67 @@ std::vector<std::pair<std::string, LeafData> > Native::ObjectGroup::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Native::ObjectGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ObjectGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-object-group:network")
     {
-        auto c = std::make_shared<Native::ObjectGroup::Network>();
-        c->parent = this;
-        network.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::ObjectGroup::Network>();
+        ent_->parent = this;
+        network.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-object-group:security")
     {
-        auto c = std::make_shared<Native::ObjectGroup::Security>();
-        c->parent = this;
-        security.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::ObjectGroup::Security>();
+        ent_->parent = this;
+        security.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-object-group:service")
     {
-        auto c = std::make_shared<Native::ObjectGroup::Service>();
-        c->parent = this;
-        service.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::ObjectGroup::Service>();
+        ent_->parent = this;
+        service.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ObjectGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : security.entities())
+    count_ = 0;
+    for (auto ent_ : security.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : service.entities())
+    count_ = 0;
+    for (auto ent_ : service.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::ObjectGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15704,7 +15704,7 @@ std::vector<std::pair<std::string, LeafData> > Native::ObjectGroup::Network::get
 
 }
 
-std::shared_ptr<Entity> Native::ObjectGroup::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ObjectGroup::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "obj-Mode-config-network-group")
     {
@@ -15718,16 +15718,16 @@ std::shared_ptr<Entity> Native::ObjectGroup::Network::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ObjectGroup::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(obj_mode_config_network_group != nullptr)
     {
-        children["obj-Mode-config-network-group"] = obj_mode_config_network_group;
+        _children["obj-Mode-config-network-group"] = obj_mode_config_network_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::ObjectGroup::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15827,22 +15827,22 @@ std::vector<std::pair<std::string, LeafData> > Native::ObjectGroup::Network::Obj
 
 }
 
-std::shared_ptr<Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network_address")
     {
-        auto c = std::make_shared<Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress>();
-        c->parent = this;
-        network_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress>();
+        ent_->parent = this;
+        network_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "host")
     {
-        auto c = std::make_shared<Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host>();
-        c->parent = this;
-        host.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host>();
+        ent_->parent = this;
+        host.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "range")
@@ -15857,34 +15857,34 @@ std::shared_ptr<Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : host.entities())
+    count_ = 0;
+    for (auto ent_ : host.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(range != nullptr)
     {
-        children["range"] = range;
+        _children["range"] = range;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15969,16 +15969,16 @@ std::vector<std::pair<std::string, LeafData> > Native::ObjectGroup::Network::Obj
 
 }
 
-std::shared_ptr<Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16058,16 +16058,16 @@ std::vector<std::pair<std::string, LeafData> > Native::ObjectGroup::Network::Obj
 
 }
 
-std::shared_ptr<Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16140,16 +16140,16 @@ std::vector<std::pair<std::string, LeafData> > Native::ObjectGroup::Network::Obj
 
 }
 
-std::shared_ptr<Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16241,7 +16241,7 @@ std::vector<std::pair<std::string, LeafData> > Native::ObjectGroup::Security::ge
 
 }
 
-std::shared_ptr<Entity> Native::ObjectGroup::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ObjectGroup::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "security-group")
     {
@@ -16255,16 +16255,16 @@ std::shared_ptr<Entity> Native::ObjectGroup::Security::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Security::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ObjectGroup::Security::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(security_group != nullptr)
     {
-        children["security-group"] = security_group;
+        _children["security-group"] = security_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::ObjectGroup::Security::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16342,7 +16342,7 @@ std::vector<std::pair<std::string, LeafData> > Native::ObjectGroup::Security::Se
 
 }
 
-std::shared_ptr<Entity> Native::ObjectGroup::Security::SecurityGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ObjectGroup::Security::SecurityGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "security-group")
     {
@@ -16356,16 +16356,16 @@ std::shared_ptr<Entity> Native::ObjectGroup::Security::SecurityGroup::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Security::SecurityGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ObjectGroup::Security::SecurityGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(security_group != nullptr)
     {
-        children["security-group"] = security_group;
+        _children["security-group"] = security_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::ObjectGroup::Security::SecurityGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16444,16 +16444,16 @@ std::vector<std::pair<std::string, LeafData> > Native::ObjectGroup::Security::Se
 
 }
 
-std::shared_ptr<Entity> Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

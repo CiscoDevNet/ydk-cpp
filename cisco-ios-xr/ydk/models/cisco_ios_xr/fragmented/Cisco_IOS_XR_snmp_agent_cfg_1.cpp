@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::Inform
 
 }
 
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inform-user-community")
     {
-        auto c = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity>();
-        c->parent = this;
-        inform_user_community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity>();
+        ent_->parent = this;
+        inform_user_community.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : inform_user_community.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : inform_user_community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -170,16 +170,16 @@ std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::Inform
 
 }
 
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -316,33 +316,33 @@ std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::Inform
 
 }
 
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inform-encrypted-user-community")
     {
-        auto c = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity>();
-        c->parent = this;
-        inform_encrypted_user_community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity>();
+        ent_->parent = this;
+        inform_encrypted_user_community.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : inform_encrypted_user_community.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : inform_encrypted_user_community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -426,16 +426,16 @@ std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::Inform
 
 }
 
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -572,33 +572,33 @@ std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::Defaul
 
 }
 
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default-user-community")
     {
-        auto c = std::make_shared<Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity>();
-        c->parent = this;
-        default_user_community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity>();
+        ent_->parent = this;
+        default_user_community.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : default_user_community.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : default_user_community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Snmp::TrapHosts::TrapHost::DefaultUserCommunities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -682,16 +682,16 @@ std::vector<std::pair<std::string, LeafData> > Snmp::TrapHosts::TrapHost::Defaul
 
 }
 
-std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -835,33 +835,33 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Contexts::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Snmp::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context")
     {
-        auto c = std::make_shared<Snmp::Contexts::Context>();
-        c->parent = this;
-        context.append(c);
-        return c;
+        auto ent_ = std::make_shared<Snmp::Contexts::Context>();
+        ent_->parent = this;
+        context.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Contexts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::Contexts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : context.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : context.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Snmp::Contexts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -928,16 +928,16 @@ std::vector<std::pair<std::string, LeafData> > Snmp::Contexts::Context::get_name
 
 }
 
-std::shared_ptr<Entity> Snmp::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::Contexts::Context::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::Contexts::Context::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Snmp::Contexts::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1021,33 +1021,33 @@ std::vector<std::pair<std::string, LeafData> > Snmp::ContextMappings::get_name_l
 
 }
 
-std::shared_ptr<Entity> Snmp::ContextMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::ContextMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context-mapping")
     {
-        auto c = std::make_shared<Snmp::ContextMappings::ContextMapping>();
-        c->parent = this;
-        context_mapping.append(c);
-        return c;
+        auto ent_ = std::make_shared<Snmp::ContextMappings::ContextMapping>();
+        ent_->parent = this;
+        context_mapping.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::ContextMappings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::ContextMappings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : context_mapping.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : context_mapping.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Snmp::ContextMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1130,16 +1130,16 @@ std::vector<std::pair<std::string, LeafData> > Snmp::ContextMappings::ContextMap
 
 }
 
-std::shared_ptr<Entity> Snmp::ContextMappings::ContextMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Snmp::ContextMappings::ContextMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Snmp::ContextMappings::ContextMapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Snmp::ContextMappings::ContextMapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Snmp::ContextMappings::ContextMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1289,7 +1289,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-qos-mibs-cfg:cb-qosmib")
     {
@@ -1384,61 +1384,61 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cb_qosmib != nullptr)
     {
-        children["Cisco-IOS-XR-qos-mibs-cfg:cb-qosmib"] = cb_qosmib;
+        _children["Cisco-IOS-XR-qos-mibs-cfg:cb-qosmib"] = cb_qosmib;
     }
 
     if(subscriber != nullptr)
     {
-        children["Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber"] = subscriber;
+        _children["Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber"] = subscriber;
     }
 
     if(interface_mib != nullptr)
     {
-        children["Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib"] = interface_mib;
+        _children["Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib"] = interface_mib;
     }
 
     if(entity_mib != nullptr)
     {
-        children["Cisco-IOS-XR-snmp-entitymib-cfg:entity-mib"] = entity_mib;
+        _children["Cisco-IOS-XR-snmp-entitymib-cfg:entity-mib"] = entity_mib;
     }
 
     if(notification_log_mib != nullptr)
     {
-        children["Cisco-IOS-XR-infra-notification-log-mib-cfg:notification-log-mib"] = notification_log_mib;
+        _children["Cisco-IOS-XR-infra-notification-log-mib-cfg:notification-log-mib"] = notification_log_mib;
     }
 
     if(mpls_te_mib != nullptr)
     {
-        children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-mib"] = mpls_te_mib;
+        _children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-mib"] = mpls_te_mib;
     }
 
     if(mpls_p2mp_mib != nullptr)
     {
-        children["Cisco-IOS-XR-mpls-te-cfg:mpls-p2mp-mib"] = mpls_p2mp_mib;
+        _children["Cisco-IOS-XR-mpls-te-cfg:mpls-p2mp-mib"] = mpls_p2mp_mib;
     }
 
     if(mpls_te_ext_std_mib != nullptr)
     {
-        children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-std-mib"] = mpls_te_ext_std_mib;
+        _children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-std-mib"] = mpls_te_ext_std_mib;
     }
 
     if(mpls_te_ext_mib != nullptr)
     {
-        children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-mib"] = mpls_te_ext_mib;
+        _children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-mib"] = mpls_te_ext_mib;
     }
 
     if(mpls_frr_mib != nullptr)
     {
-        children["Cisco-IOS-XR-mpls-te-cfg:mpls-frr-mib"] = mpls_frr_mib;
+        _children["Cisco-IOS-XR-mpls-te-cfg:mpls-frr-mib"] = mpls_frr_mib;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1459,7 +1459,7 @@ void Mib::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Mib::clone_ptr() const
+std::shared_ptr<ydk::Entity> Mib::clone_ptr() const
 {
     return std::make_shared<Mib>();
 }
@@ -1548,7 +1548,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::CbQosmib::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Mib::CbQosmib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::CbQosmib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cache")
     {
@@ -1562,16 +1562,16 @@ std::shared_ptr<Entity> Mib::CbQosmib::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::CbQosmib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::CbQosmib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cache != nullptr)
     {
-        children["cache"] = cache;
+        _children["cache"] = cache;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::CbQosmib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1665,16 +1665,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::CbQosmib::Cache::get_name_le
 
 }
 
-std::shared_ptr<Entity> Mib::CbQosmib::Cache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::CbQosmib::Cache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::CbQosmib::Cache::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::CbQosmib::Cache::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::CbQosmib::Cache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1770,7 +1770,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
@@ -1784,16 +1784,16 @@ std::shared_ptr<Entity> Mib::Subscriber::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold != nullptr)
     {
-        children["threshold"] = threshold;
+        _children["threshold"] = threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1871,7 +1871,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::get_n
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delta")
     {
@@ -1912,31 +1912,31 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delta != nullptr)
     {
-        children["delta"] = delta;
+        _children["delta"] = delta;
     }
 
     if(access_interface_sub != nullptr)
     {
-        children["access-interface-sub"] = access_interface_sub;
+        _children["access-interface-sub"] = access_interface_sub;
     }
 
     if(falling != nullptr)
     {
-        children["falling"] = falling;
+        _children["falling"] = falling;
     }
 
     if(rising != nullptr)
     {
-        children["rising"] = rising;
+        _children["rising"] = rising;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2006,7 +2006,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evaluation")
     {
@@ -2029,21 +2029,21 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(evaluation != nullptr)
     {
-        children["evaluation"] = evaluation;
+        _children["evaluation"] = evaluation;
     }
 
     if(percent != nullptr)
     {
-        children["percent"] = percent;
+        _children["percent"] = percent;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2113,7 +2113,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Evaluation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interfaces")
     {
@@ -2136,21 +2136,21 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_interfaces != nullptr)
     {
-        children["access-interfaces"] = access_interfaces;
+        _children["access-interfaces"] = access_interfaces;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Evaluation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2224,33 +2224,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interface")
     {
-        auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface>();
-        c->parent = this;
-        access_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface>();
+        ent_->parent = this;
+        access_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2325,16 +2325,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2438,33 +2438,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2539,16 +2539,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2648,7 +2648,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Percent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interfaces")
     {
@@ -2671,21 +2671,21 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Percent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_interfaces != nullptr)
     {
-        children["access-interfaces"] = access_interfaces;
+        _children["access-interfaces"] = access_interfaces;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Percent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2759,33 +2759,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interface")
     {
-        auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface>();
-        c->parent = this;
-        access_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface>();
+        ent_->parent = this;
+        access_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2860,16 +2860,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2973,33 +2973,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Percent::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3074,16 +3074,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Delta
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3179,7 +3179,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Acces
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subsets")
     {
@@ -3193,16 +3193,16 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(subsets != nullptr)
     {
-        children["subsets"] = subsets;
+        _children["subsets"] = subsets;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::AccessInterfaceSub::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3276,33 +3276,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Acces
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subset")
     {
-        auto c = std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset>();
-        c->parent = this;
-        subset.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset>();
+        ent_->parent = this;
+        subset.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subset.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subset.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3374,7 +3374,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Acces
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "regular-expression")
     {
@@ -3388,16 +3388,16 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(regular_expression != nullptr)
     {
-        children["regular-expression"] = regular_expression;
+        _children["regular-expression"] = regular_expression;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3466,7 +3466,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Acces
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "notification")
     {
@@ -3480,16 +3480,16 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(notification != nullptr)
     {
-        children["notification"] = notification;
+        _children["notification"] = notification;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3548,7 +3548,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Acces
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rising-falling")
     {
@@ -3562,16 +3562,16 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rising_falling != nullptr)
     {
-        children["rising-falling"] = rising_falling;
+        _children["rising-falling"] = rising_falling;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3630,16 +3630,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Acces
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3719,7 +3719,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falli
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Falling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interfaces")
     {
@@ -3742,21 +3742,21 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Falling::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_interfaces != nullptr)
     {
-        children["access-interfaces"] = access_interfaces;
+        _children["access-interfaces"] = access_interfaces;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Falling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3830,33 +3830,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falli
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interface")
     {
-        auto c = std::make_shared<Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface>();
-        c->parent = this;
-        access_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface>();
+        ent_->parent = this;
+        access_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Falling::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3931,16 +3931,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falli
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4044,33 +4044,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falli
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Falling::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Mib::Subscriber::Threshold::Falling::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::Subscriber::Threshold::Falling::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Falling::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Falling::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4145,16 +4145,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Falli
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Falling::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Falling::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Falling::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4254,7 +4254,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Risin
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Rising::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interfaces")
     {
@@ -4277,21 +4277,21 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Rising::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_interfaces != nullptr)
     {
-        children["access-interfaces"] = access_interfaces;
+        _children["access-interfaces"] = access_interfaces;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Rising::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4365,33 +4365,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Risin
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interface")
     {
-        auto c = std::make_shared<Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface>();
-        c->parent = this;
-        access_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface>();
+        ent_->parent = this;
+        access_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Rising::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4466,16 +4466,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Risin
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4579,33 +4579,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Risin
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Rising::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Mib::Subscriber::Threshold::Rising::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::Subscriber::Threshold::Rising::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Rising::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Rising::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4680,16 +4680,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::Subscriber::Threshold::Risin
 
 }
 
-std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::Subscriber::Threshold::Rising::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::Subscriber::Threshold::Rising::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::Subscriber::Threshold::Rising::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4814,7 +4814,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Mib::InterfaceMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::InterfaceMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -4846,26 +4846,26 @@ std::shared_ptr<Entity> Mib::InterfaceMib::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::InterfaceMib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(notification != nullptr)
     {
-        children["notification"] = notification;
+        _children["notification"] = notification;
     }
 
     if(subsets != nullptr)
     {
-        children["subsets"] = subsets;
+        _children["subsets"] = subsets;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::InterfaceMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4989,33 +4989,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Interfaces::ge
 
 }
 
-std::shared_ptr<Entity> Mib::InterfaceMib::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::InterfaceMib::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mib::InterfaceMib::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::InterfaceMib::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::InterfaceMib::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::InterfaceMib::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5090,16 +5090,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Interfaces::In
 
 }
 
-std::shared_ptr<Entity> Mib::InterfaceMib::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::InterfaceMib::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::InterfaceMib::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::InterfaceMib::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5195,16 +5195,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Notification::
 
 }
 
-std::shared_ptr<Entity> Mib::InterfaceMib::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::InterfaceMib::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Notification::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::InterfaceMib::Notification::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::InterfaceMib::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5288,33 +5288,33 @@ std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Subsets::get_n
 
 }
 
-std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::InterfaceMib::Subsets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subset")
     {
-        auto c = std::make_shared<Mib::InterfaceMib::Subsets::Subset>();
-        c->parent = this;
-        subset.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mib::InterfaceMib::Subsets::Subset>();
+        ent_->parent = this;
+        subset.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Subsets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::InterfaceMib::Subsets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subset.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subset.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::InterfaceMib::Subsets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5386,7 +5386,7 @@ std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Subsets::Subse
 
 }
 
-std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::Subset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::InterfaceMib::Subsets::Subset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-up-down")
     {
@@ -5400,16 +5400,16 @@ std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::Subset::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Subsets::Subset::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::InterfaceMib::Subsets::Subset::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(link_up_down != nullptr)
     {
-        children["link-up-down"] = link_up_down;
+        _children["link-up-down"] = link_up_down;
     }
 
-    return children;
+    return _children;
 }
 
 void Mib::InterfaceMib::Subsets::Subset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5482,16 +5482,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::InterfaceMib::Subsets::Subse
 
 }
 
-std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::InterfaceMib::Subsets::Subset::LinkUpDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5577,16 +5577,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::EntityMib::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Mib::EntityMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::EntityMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::EntityMib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::EntityMib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::EntityMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5678,16 +5678,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::NotificationLogMib::get_name
 
 }
 
-std::shared_ptr<Entity> Mib::NotificationLogMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::NotificationLogMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::NotificationLogMib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::NotificationLogMib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::NotificationLogMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5807,16 +5807,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::MplsTeMib::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Mib::MplsTeMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::MplsTeMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::MplsTeMib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsTeMib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::MplsTeMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5902,16 +5902,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::MplsP2mpMib::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Mib::MplsP2mpMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::MplsP2mpMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::MplsP2mpMib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsP2mpMib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::MplsP2mpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5987,16 +5987,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::MplsTeExtStdMib::get_name_le
 
 }
 
-std::shared_ptr<Entity> Mib::MplsTeExtStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::MplsTeExtStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::MplsTeExtStdMib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsTeExtStdMib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::MplsTeExtStdMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6072,16 +6072,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::MplsTeExtMib::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Mib::MplsTeExtMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::MplsTeExtMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::MplsTeExtMib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsTeExtMib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::MplsTeExtMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6157,16 +6157,16 @@ std::vector<std::pair<std::string, LeafData> > Mib::MplsFrrMib::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Mib::MplsFrrMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mib::MplsFrrMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mib::MplsFrrMib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsFrrMib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mib::MplsFrrMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

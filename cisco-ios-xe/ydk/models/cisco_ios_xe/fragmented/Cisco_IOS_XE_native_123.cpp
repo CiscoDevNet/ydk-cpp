@@ -64,16 +64,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Errdisable::FlapSetting::
 
 }
 
-std::shared_ptr<Entity> Native::Errdisable::FlapSetting::Cause::DtpFlap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Errdisable::FlapSetting::Cause::DtpFlap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Errdisable::FlapSetting::Cause::DtpFlap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Errdisable::FlapSetting::Cause::DtpFlap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Errdisable::FlapSetting::Cause::DtpFlap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -163,16 +163,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Errdisable::FlapSetting::
 
 }
 
-std::shared_ptr<Entity> Native::Errdisable::FlapSetting::Cause::LinkFlap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Errdisable::FlapSetting::Cause::LinkFlap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Errdisable::FlapSetting::Cause::LinkFlap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Errdisable::FlapSetting::Cause::LinkFlap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Errdisable::FlapSetting::Cause::LinkFlap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -262,16 +262,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Errdisable::FlapSetting::
 
 }
 
-std::shared_ptr<Entity> Native::Errdisable::FlapSetting::Cause::PagpFlap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Errdisable::FlapSetting::Cause::PagpFlap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Errdisable::FlapSetting::Cause::PagpFlap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Errdisable::FlapSetting::Cause::PagpFlap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Errdisable::FlapSetting::Cause::PagpFlap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -362,7 +362,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Errdisable::Recovery::get
 
 }
 
-std::shared_ptr<Entity> Native::Errdisable::Recovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Errdisable::Recovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cause")
     {
@@ -376,16 +376,16 @@ std::shared_ptr<Entity> Native::Errdisable::Recovery::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Errdisable::Recovery::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Errdisable::Recovery::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cause != nullptr)
     {
-        children["cause"] = cause;
+        _children["cause"] = cause;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Errdisable::Recovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -565,7 +565,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Errdisable::Recovery::Cau
 
 }
 
-std::shared_ptr<Entity> Native::Errdisable::Recovery::Cause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Errdisable::Recovery::Cause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oam-remote-failure")
     {
@@ -579,16 +579,16 @@ std::shared_ptr<Entity> Native::Errdisable::Recovery::Cause::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Errdisable::Recovery::Cause::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Errdisable::Recovery::Cause::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oam_remote_failure != nullptr)
     {
-        children["oam-remote-failure"] = oam_remote_failure;
+        _children["oam-remote-failure"] = oam_remote_failure;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Errdisable::Recovery::Cause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -922,16 +922,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Errdisable::Recovery::Cau
 
 }
 
-std::shared_ptr<Entity> Native::Errdisable::Recovery::Cause::OamRemoteFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Errdisable::Recovery::Cause::OamRemoteFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Errdisable::Recovery::Cause::OamRemoteFailure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Errdisable::Recovery::Cause::OamRemoteFailure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Errdisable::Recovery::Cause::OamRemoteFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1038,14 +1038,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Native::Identity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy")
     {
-        auto c = std::make_shared<Native::Identity::Policy>();
-        c->parent = this;
-        policy.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Identity::Policy>();
+        ent_->parent = this;
+        policy.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "profile")
@@ -1060,25 +1060,25 @@ std::shared_ptr<Entity> Native::Identity::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(profile != nullptr)
     {
-        children["profile"] = profile;
+        _children["profile"] = profile;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Identity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1202,7 +1202,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::get_nam
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "no")
     {
@@ -1261,41 +1261,41 @@ std::shared_ptr<Entity> Native::Identity::Policy::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(no != nullptr)
     {
-        children["no"] = no;
+        _children["no"] = no;
     }
 
     if(linksec != nullptr)
     {
-        children["linksec"] = linksec;
+        _children["linksec"] = linksec;
     }
 
     if(redirect != nullptr)
     {
-        children["redirect"] = redirect;
+        _children["redirect"] = redirect;
     }
 
     if(service_policy != nullptr)
     {
-        children["service-policy"] = service_policy;
+        _children["service-policy"] = service_policy;
     }
 
     if(tunnel != nullptr)
     {
-        children["tunnel"] = tunnel;
+        _children["tunnel"] = tunnel;
     }
 
     if(voice != nullptr)
     {
-        children["voice"] = voice;
+        _children["voice"] = voice;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Identity::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1493,7 +1493,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::No::get
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::No::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::No::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "linksec")
     {
@@ -1543,36 +1543,36 @@ std::shared_ptr<Entity> Native::Identity::Policy::No::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::No::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::No::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(linksec != nullptr)
     {
-        children["linksec"] = linksec;
+        _children["linksec"] = linksec;
     }
 
     if(redirect != nullptr)
     {
-        children["redirect"] = redirect;
+        _children["redirect"] = redirect;
     }
 
     if(service_policy != nullptr)
     {
-        children["service-policy"] = service_policy;
+        _children["service-policy"] = service_policy;
     }
 
     if(tunnel != nullptr)
     {
-        children["tunnel"] = tunnel;
+        _children["tunnel"] = tunnel;
     }
 
     if(voice != nullptr)
     {
-        children["voice"] = voice;
+        _children["voice"] = voice;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Identity::Policy::No::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1711,16 +1711,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::No::Lin
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::No::Linksec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::No::Linksec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::No::Linksec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::No::Linksec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::No::Linksec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1789,16 +1789,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::No::Red
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::No::Redirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::No::Redirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::No::Redirect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::No::Redirect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::No::Redirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1875,33 +1875,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::No::Ser
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::No::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::No::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qos")
     {
-        auto c = std::make_shared<Native::Identity::Policy::No::ServicePolicy::Qos>();
-        c->parent = this;
-        qos.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Identity::Policy::No::ServicePolicy::Qos>();
+        ent_->parent = this;
+        qos.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::No::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::No::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qos.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qos.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Identity::Policy::No::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1965,16 +1965,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::No::Ser
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::No::ServicePolicy::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::No::ServicePolicy::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::No::ServicePolicy::Qos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::No::ServicePolicy::Qos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::No::ServicePolicy::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2053,7 +2053,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::No::Tun
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::No::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::No::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "type")
     {
@@ -2067,16 +2067,16 @@ std::shared_ptr<Entity> Native::Identity::Policy::No::Tunnel::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::No::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::No::Tunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(type != nullptr)
     {
-        children["type"] = type;
+        _children["type"] = type;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Identity::Policy::No::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2135,7 +2135,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::No::Tun
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::No::Tunnel::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::No::Tunnel::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capwap")
     {
@@ -2149,16 +2149,16 @@ std::shared_ptr<Entity> Native::Identity::Policy::No::Tunnel::Type::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::No::Tunnel::Type::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::No::Tunnel::Type::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(capwap != nullptr)
     {
-        children["capwap"] = capwap;
+        _children["capwap"] = capwap;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Identity::Policy::No::Tunnel::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2217,16 +2217,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::No::Tun
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::No::Tunnel::Type::Capwap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::No::Tunnel::Type::Capwap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::No::Tunnel::Type::Capwap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::No::Tunnel::Type::Capwap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::No::Tunnel::Type::Capwap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2295,16 +2295,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::No::Voi
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::No::Voice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::No::Voice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::No::Voice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::No::Voice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::No::Voice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2373,16 +2373,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::Linksec
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::Linksec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::Linksec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::Linksec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::Linksec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::Linksec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2451,16 +2451,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::Redirec
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::Redirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::Redirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::Redirect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::Redirect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::Redirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2537,33 +2537,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::Service
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qos")
     {
-        auto c = std::make_shared<Native::Identity::Policy::ServicePolicy::Qos>();
-        c->parent = this;
-        qos.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Identity::Policy::ServicePolicy::Qos>();
+        ent_->parent = this;
+        qos.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qos.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qos.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Identity::Policy::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2627,16 +2627,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::Service
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::ServicePolicy::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::ServicePolicy::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::ServicePolicy::Qos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::ServicePolicy::Qos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::ServicePolicy::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2715,7 +2715,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::Tunnel:
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "type")
     {
@@ -2729,16 +2729,16 @@ std::shared_ptr<Entity> Native::Identity::Policy::Tunnel::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::Tunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(type != nullptr)
     {
-        children["type"] = type;
+        _children["type"] = type;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Identity::Policy::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2797,7 +2797,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::Tunnel:
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::Tunnel::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::Tunnel::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capwap")
     {
@@ -2811,16 +2811,16 @@ std::shared_ptr<Entity> Native::Identity::Policy::Tunnel::Type::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::Tunnel::Type::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::Tunnel::Type::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(capwap != nullptr)
     {
-        children["capwap"] = capwap;
+        _children["capwap"] = capwap;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Identity::Policy::Tunnel::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2879,16 +2879,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::Tunnel:
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::Tunnel::Type::Capwap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::Tunnel::Type::Capwap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::Tunnel::Type::Capwap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::Tunnel::Type::Capwap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::Tunnel::Type::Capwap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2957,16 +2957,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Policy::Voice::
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Policy::Voice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Policy::Voice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Policy::Voice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Policy::Voice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Policy::Voice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3046,16 +3046,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Identity::Profile::get_na
 
 }
 
-std::shared_ptr<Entity> Native::Identity::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Identity::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Identity::Profile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Identity::Profile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Identity::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3152,7 +3152,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event-trace")
     {
@@ -3165,34 +3165,34 @@ std::shared_ptr<Entity> Native::Monitor::get_child_by_name(const std::string & c
 
     if(child_yang_name == "session")
     {
-        auto c = std::make_shared<Native::Monitor::Session>();
-        c->parent = this;
-        session.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session>();
+        ent_->parent = this;
+        session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(event_trace != nullptr)
     {
-        children["event-trace"] = event_trace;
+        _children["event-trace"] = event_trace;
     }
 
-    count = 0;
-    for (auto c : session.entities())
+    count_ = 0;
+    for (auto ent_ : session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3266,7 +3266,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::EventTrace::get_
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::EventTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::EventTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timestamps")
     {
@@ -3289,21 +3289,21 @@ std::shared_ptr<Entity> Native::Monitor::EventTrace::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::EventTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::EventTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(timestamps != nullptr)
     {
-        children["timestamps"] = timestamps;
+        _children["timestamps"] = timestamps;
     }
 
     if(atom != nullptr)
     {
-        children["atom"] = atom;
+        _children["atom"] = atom;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::EventTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3379,16 +3379,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::EventTrace::Time
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::EventTrace::Timestamps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::EventTrace::Timestamps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::EventTrace::Timestamps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::EventTrace::Timestamps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::EventTrace::Timestamps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3472,7 +3472,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::EventTrace::Atom
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::EventTrace::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::EventTrace::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "error")
     {
@@ -3504,26 +3504,26 @@ std::shared_ptr<Entity> Native::Monitor::EventTrace::Atom::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::EventTrace::Atom::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::EventTrace::Atom::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(error != nullptr)
     {
-        children["error"] = error;
+        _children["error"] = error;
     }
 
     if(event != nullptr)
     {
-        children["event"] = event;
+        _children["event"] = event;
     }
 
     if(major_ != nullptr)
     {
-        children["major"] = major_;
+        _children["major"] = major_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::EventTrace::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3607,16 +3607,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::EventTrace::Atom
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::EventTrace::Atom::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::EventTrace::Atom::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::EventTrace::Atom::Error::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::EventTrace::Atom::Error::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::EventTrace::Atom::Error::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3732,16 +3732,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::EventTrace::Atom
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::EventTrace::Atom::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::EventTrace::Atom::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::EventTrace::Atom::Event::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::EventTrace::Atom::Event::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::EventTrace::Atom::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3863,16 +3863,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::EventTrace::Atom
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::EventTrace::Atom::Major::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::EventTrace::Atom::Major::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::EventTrace::Atom::Major::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::EventTrace::Atom::Major::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::EventTrace::Atom::Major::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3984,7 +3984,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::get_nam
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
@@ -4025,31 +4025,31 @@ std::shared_ptr<Entity> Native::Monitor::Session::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(type != nullptr)
     {
-        children["type"] = type;
+        _children["type"] = type;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4129,14 +4129,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Destina
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Destination::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Destination::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "remote")
@@ -4151,25 +4151,25 @@ std::shared_ptr<Entity> Native::Monitor::Session::Destination::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(remote != nullptr)
     {
-        children["remote"] = remote;
+        _children["remote"] = remote;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4245,16 +4245,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Destina
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Destination::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Destination::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Destination::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Destination::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Destination::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4363,16 +4363,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Destina
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Destination::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Destination::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Destination::Remote::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Destination::Remote::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Destination::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4445,7 +4445,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Filter:
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "packet-type")
     {
@@ -4468,21 +4468,21 @@ std::shared_ptr<Entity> Native::Monitor::Session::Filter::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(packet_type != nullptr)
     {
-        children["packet-type"] = packet_type;
+        _children["packet-type"] = packet_type;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4545,16 +4545,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Filter:
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Filter::PacketType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Filter::PacketType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Filter::PacketType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Filter::PacketType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Filter::PacketType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4633,7 +4633,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Filter:
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Filter::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Filter::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-group")
     {
@@ -4647,16 +4647,16 @@ std::shared_ptr<Entity> Native::Monitor::Session::Filter::Ip::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Filter::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Filter::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_group != nullptr)
     {
-        children["access-group"] = access_group;
+        _children["access-group"] = access_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Filter::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4715,16 +4715,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Filter:
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Filter::Ip::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Filter::Ip::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Filter::Ip::AccessGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Filter::Ip::AccessGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Filter::Ip::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4808,14 +4808,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Source:
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Source::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Source::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vlan")
@@ -4839,30 +4839,30 @@ std::shared_ptr<Entity> Native::Monitor::Session::Source::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
     if(remote != nullptr)
     {
-        children["remote"] = remote;
+        _children["remote"] = remote;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4926,16 +4926,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Source:
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Source::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Source::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Source::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Source::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Source::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5018,16 +5018,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Source:
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Source::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Source::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Source::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Source::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Source::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5106,16 +5106,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Source:
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Source::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Source::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Source::Remote::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Source::Remote::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Source::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5189,7 +5189,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::g
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "erspan-source")
     {
@@ -5221,26 +5221,26 @@ std::shared_ptr<Entity> Native::Monitor::Session::Type::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(erspan_source != nullptr)
     {
-        children["erspan-source"] = erspan_source;
+        _children["erspan-source"] = erspan_source;
     }
 
     if(erspan_destination != nullptr)
     {
-        children["erspan-destination"] = erspan_destination;
+        _children["erspan-destination"] = erspan_destination;
     }
 
     if(local != nullptr)
     {
-        children["local"] = local;
+        _children["local"] = local;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5319,7 +5319,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -5351,26 +5351,26 @@ std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5478,50 +5478,50 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Type::ErspanSource::Source::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Type::ErspanSource::Source::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vlan")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Type::ErspanSource::Source::Vlan>();
-        c->parent = this;
-        vlan.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Type::ErspanSource::Source::Vlan>();
+        ent_->parent = this;
+        vlan.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vlan.entities())
+    count_ = 0;
+    for (auto ent_ : vlan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5585,16 +5585,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Source::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Source::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Source::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Source::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Source::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5678,16 +5678,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Source::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Source::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Source::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Source::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Source::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5782,14 +5782,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Type::ErspanSource::Filter::Vlan>();
-        c->parent = this;
-        vlan.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Type::ErspanSource::Filter::Vlan>();
+        ent_->parent = this;
+        vlan.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ip")
@@ -5804,25 +5804,25 @@ std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Filter::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vlan.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5892,16 +5892,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Filter::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Filter::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Filter::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Filter::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Filter::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5970,7 +5970,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Filter::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Filter::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-group")
     {
@@ -5984,16 +5984,16 @@ std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Filter::Ip
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Filter::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Filter::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_group != nullptr)
     {
-        children["access-group"] = access_group;
+        _children["access-group"] = access_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Filter::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6052,16 +6052,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Filter::Ip::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Filter::Ip::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Filter::Ip::AccessGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Filter::Ip::AccessGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Filter::Ip::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6139,7 +6139,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -6162,21 +6162,21 @@ std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Destinatio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(origin != nullptr)
     {
-        children["origin"] = origin;
+        _children["origin"] = origin;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6249,16 +6249,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Destination::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Destination::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Destination::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Destination::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Destination::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6337,7 +6337,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Destination::Origin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Destination::Origin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -6351,16 +6351,16 @@ std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Destinatio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Destination::Origin::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Destination::Origin::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Destination::Origin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6419,16 +6419,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanSource::Destination::Origin::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanSource::Destination::Origin::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanSource::Destination::Origin::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanSource::Destination::Origin::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanSource::Destination::Origin::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6509,7 +6509,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanDestination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanDestination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
@@ -6532,21 +6532,21 @@ std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanDestination::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanDestination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanDestination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanDestination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6637,33 +6637,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanDestination::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanDestination::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Type::ErspanDestination::Destination::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Type::ErspanDestination::Destination::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanDestination::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanDestination::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanDestination::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6733,16 +6733,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanDestination::Destination::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanDestination::Destination::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanDestination::Destination::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanDestination::Destination::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanDestination::Destination::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6820,7 +6820,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanDestination::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanDestination::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -6834,16 +6834,16 @@ std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanDestination::Sourc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanDestination::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanDestination::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanDestination::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6922,16 +6922,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::E
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::ErspanDestination::Source::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::ErspanDestination::Source::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::ErspanDestination::Source::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::ErspanDestination::Source::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::ErspanDestination::Source::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7017,7 +7017,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::L
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -7049,26 +7049,26 @@ std::shared_ptr<Entity> Native::Monitor::Session::Type::Local::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::Local::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::Local::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7166,50 +7166,50 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::L
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::Local::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::Local::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Type::Local::Source::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Type::Local::Source::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vlan")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Type::Local::Source::Vlan>();
-        c->parent = this;
-        vlan.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Type::Local::Source::Vlan>();
+        ent_->parent = this;
+        vlan.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::Local::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::Local::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vlan.entities())
+    count_ = 0;
+    for (auto ent_ : vlan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::Local::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7273,16 +7273,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::L
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::Local::Source::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::Local::Source::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::Local::Source::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::Local::Source::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::Local::Source::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7366,16 +7366,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::L
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::Local::Source::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::Local::Source::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::Local::Source::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::Local::Source::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::Local::Source::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7462,33 +7462,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::L
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::Local::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::Local::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Type::Local::Destination::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Type::Local::Destination::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::Local::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::Local::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::Local::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7548,16 +7548,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::L
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::Local::Destination::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::Local::Destination::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::Local::Destination::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::Local::Destination::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::Local::Destination::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7634,33 +7634,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::L
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::Local::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::Local::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan")
     {
-        auto c = std::make_shared<Native::Monitor::Session::Type::Local::Filter::Vlan>();
-        c->parent = this;
-        vlan.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Monitor::Session::Type::Local::Filter::Vlan>();
+        ent_->parent = this;
+        vlan.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::Local::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::Local::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vlan.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::Local::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7720,16 +7720,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Monitor::Session::Type::L
 
 }
 
-std::shared_ptr<Entity> Native::Monitor::Session::Type::Local::Filter::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Monitor::Session::Type::Local::Filter::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Monitor::Session::Type::Local::Filter::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Monitor::Session::Type::Local::Filter::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Monitor::Session::Type::Local::Filter::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7806,16 +7806,16 @@ std::vector<std::pair<std::string, LeafData> > Native::TftpServer::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Native::TftpServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::TftpServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::TftpServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::TftpServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::TftpServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7938,14 +7938,14 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::get_name_le
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-aaa:attribute")
     {
-        auto c = std::make_shared<Native::RadiusServer::Attribute>();
-        c->parent = this;
-        attribute.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RadiusServer::Attribute>();
+        ent_->parent = this;
+        attribute.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-aaa:dead-criteria")
@@ -7959,10 +7959,10 @@ std::shared_ptr<Entity> Native::RadiusServer::get_child_by_name(const std::strin
 
     if(child_yang_name == "Cisco-IOS-XE-aaa:host")
     {
-        auto c = std::make_shared<Native::RadiusServer::Host>();
-        c->parent = this;
-        host.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RadiusServer::Host>();
+        ent_->parent = this;
+        host.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-aaa:key")
@@ -7995,49 +7995,49 @@ std::shared_ptr<Entity> Native::RadiusServer::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : attribute.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : attribute.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(dead_criteria != nullptr)
     {
-        children["Cisco-IOS-XE-aaa:dead-criteria"] = dead_criteria;
+        _children["Cisco-IOS-XE-aaa:dead-criteria"] = dead_criteria;
     }
 
-    count = 0;
-    for (auto c : host.entities())
+    count_ = 0;
+    for (auto ent_ : host.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(key != nullptr)
     {
-        children["Cisco-IOS-XE-aaa:key"] = key;
+        _children["Cisco-IOS-XE-aaa:key"] = key;
     }
 
     if(source_ports != nullptr)
     {
-        children["Cisco-IOS-XE-aaa:source-ports"] = source_ports;
+        _children["Cisco-IOS-XE-aaa:source-ports"] = source_ports;
     }
 
     if(vsa != nullptr)
     {
-        children["Cisco-IOS-XE-aaa:vsa"] = vsa;
+        _children["Cisco-IOS-XE-aaa:vsa"] = vsa;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RadiusServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8157,7 +8157,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Attribute::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Attribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Attribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-request")
     {
@@ -8180,21 +8180,21 @@ std::shared_ptr<Entity> Native::RadiusServer::Attribute::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Attribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Attribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_request != nullptr)
     {
-        children["access-request"] = access_request;
+        _children["access-request"] = access_request;
     }
 
     if(attri31 != nullptr)
     {
-        children["attri31"] = attri31;
+        _children["attri31"] = attri31;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RadiusServer::Attribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8271,16 +8271,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Attribute::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Attribute::AccessRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Attribute::AccessRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Attribute::AccessRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Attribute::AccessRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::Attribute::AccessRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8357,33 +8357,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Attribute::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Attribute::Attri31::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Attribute::Attri31::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "attri31-list")
     {
-        auto c = std::make_shared<Native::RadiusServer::Attribute::Attri31::Attri31List>();
-        c->parent = this;
-        attri31_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RadiusServer::Attribute::Attri31::Attri31List>();
+        ent_->parent = this;
+        attri31_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Attribute::Attri31::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Attribute::Attri31::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : attri31_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : attri31_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RadiusServer::Attribute::Attri31::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8452,7 +8452,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Attribute::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Attribute::Attri31::Attri31List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Attribute::Attri31::Attri31List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id-mac")
     {
@@ -8475,21 +8475,21 @@ std::shared_ptr<Entity> Native::RadiusServer::Attribute::Attri31::Attri31List::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Attribute::Attri31::Attri31List::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Attribute::Attri31::Attri31List::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(id_mac != nullptr)
     {
-        children["id-mac"] = id_mac;
+        _children["id-mac"] = id_mac;
     }
 
     if(id_send != nullptr)
     {
-        children["id-send"] = id_send;
+        _children["id-send"] = id_send;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RadiusServer::Attribute::Attri31::Attri31List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8562,16 +8562,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Attribute::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Attribute::Attri31::Attri31List::IdMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Attribute::Attri31::Attri31List::IdMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Attribute::Attri31::Attri31List::IdMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Attribute::Attri31::Attri31List::IdMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::Attribute::Attri31::Attri31List::IdMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8654,16 +8654,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Attribute::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Attribute::Attri31::Attri31List::IdSend::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Attribute::Attri31::Attri31List::IdSend::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Attribute::Attri31::Attri31List::IdSend::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Attribute::Attri31::Attri31List::IdSend::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::Attribute::Attri31::Attri31List::IdSend::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8753,16 +8753,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::DeadCriteri
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::DeadCriteria::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::DeadCriteria::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::DeadCriteria::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::DeadCriteria::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::DeadCriteria::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8878,7 +8878,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Host::get_n
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "test")
     {
@@ -8892,16 +8892,16 @@ std::shared_ptr<Entity> Native::RadiusServer::Host::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(test != nullptr)
     {
-        children["test"] = test;
+        _children["test"] = test;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RadiusServer::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9038,33 +9038,33 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Host::Test:
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Host::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Host::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "username")
     {
-        auto c = std::make_shared<Native::RadiusServer::Host::Test::Username>();
-        c->parent = this;
-        username.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::RadiusServer::Host::Test::Username>();
+        ent_->parent = this;
+        username.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Host::Test::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Host::Test::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : username.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : username.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RadiusServer::Host::Test::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9129,7 +9129,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Host::Test:
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Host::Test::Username::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Host::Test::Username::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
@@ -9143,16 +9143,16 @@ std::shared_ptr<Entity> Native::RadiusServer::Host::Test::Username::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Host::Test::Username::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Host::Test::Username::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RadiusServer::Host::Test::Username::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9225,16 +9225,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Host::Test:
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Host::Test::Username::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Host::Test::Username::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Host::Test::Username::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Host::Test::Username::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::Host::Test::Username::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9324,16 +9324,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Key::get_na
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9419,16 +9419,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::SourcePorts
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::SourcePorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::SourcePorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::SourcePorts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::SourcePorts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::SourcePorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9507,7 +9507,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Vsa::get_na
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Vsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Vsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disallow")
     {
@@ -9530,21 +9530,21 @@ std::shared_ptr<Entity> Native::RadiusServer::Vsa::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Vsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Vsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disallow != nullptr)
     {
-        children["disallow"] = disallow;
+        _children["disallow"] = disallow;
     }
 
     if(send != nullptr)
     {
-        children["send"] = send;
+        _children["send"] = send;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RadiusServer::Vsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9610,16 +9610,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Vsa::Disall
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Vsa::Disallow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Vsa::Disallow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Vsa::Disallow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Vsa::Disallow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::Vsa::Disallow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9700,7 +9700,7 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Vsa::Send::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Vsa::Send::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Vsa::Send::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting")
     {
@@ -9732,26 +9732,26 @@ std::shared_ptr<Entity> Native::RadiusServer::Vsa::Send::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Vsa::Send::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Vsa::Send::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(cisco_nas_port != nullptr)
     {
-        children["cisco-nas-port"] = cisco_nas_port;
+        _children["cisco-nas-port"] = cisco_nas_port;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::RadiusServer::Vsa::Send::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9817,16 +9817,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Vsa::Send::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Vsa::Send::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Vsa::Send::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Vsa::Send::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Vsa::Send::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::Vsa::Send::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9902,16 +9902,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Vsa::Send::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Vsa::Send::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Vsa::Send::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Vsa::Send::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Vsa::Send::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::Vsa::Send::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9987,16 +9987,16 @@ std::vector<std::pair<std::string, LeafData> > Native::RadiusServer::Vsa::Send::
 
 }
 
-std::shared_ptr<Entity> Native::RadiusServer::Vsa::Send::CiscoNasPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::RadiusServer::Vsa::Send::CiscoNasPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RadiusServer::Vsa::Send::CiscoNasPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::RadiusServer::Vsa::Send::CiscoNasPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::RadiusServer::Vsa::Send::CiscoNasPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10091,50 +10091,50 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Native::Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-aaa:filter")
     {
-        auto c = std::make_shared<Native::Radius::Filter>();
-        c->parent = this;
-        filter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Radius::Filter>();
+        ent_->parent = this;
+        filter.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-aaa:server")
     {
-        auto c = std::make_shared<Native::Radius::Server>();
-        c->parent = this;
-        server.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Radius::Server>();
+        ent_->parent = this;
+        server.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : filter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : filter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : server.entities())
+    count_ = 0;
+    for (auto ent_ : server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Radius::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10205,16 +10205,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Filter::get_name_
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Radius::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10330,7 +10330,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Server::get_name_
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -10380,36 +10380,36 @@ std::shared_ptr<Entity> Native::Radius::Server::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Server::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Server::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
     if(automate_tester != nullptr)
     {
-        children["automate-tester"] = automate_tester;
+        _children["automate-tester"] = automate_tester;
     }
 
     if(backoff != nullptr)
     {
-        children["backoff"] = backoff;
+        _children["backoff"] = backoff;
     }
 
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
     if(pac != nullptr)
     {
-        children["pac"] = pac;
+        _children["pac"] = pac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Radius::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10498,7 +10498,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Server::Address::
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Server::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Server::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -10512,16 +10512,16 @@ std::shared_ptr<Entity> Native::Radius::Server::Address::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Server::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Server::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Radius::Server::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10588,16 +10588,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Server::Address::
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Server::Address::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Server::Address::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Server::Address::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Server::Address::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Radius::Server::Address::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10690,16 +10690,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Server::AutomateT
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Server::AutomateTester::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Server::AutomateTester::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Server::AutomateTester::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Server::AutomateTester::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Radius::Server::AutomateTester::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10777,7 +10777,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Server::Backoff::
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Server::Backoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Server::Backoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exponential")
     {
@@ -10791,16 +10791,16 @@ std::shared_ptr<Entity> Native::Radius::Server::Backoff::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Server::Backoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Server::Backoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exponential != nullptr)
     {
-        children["exponential"] = exponential;
+        _children["exponential"] = exponential;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Radius::Server::Backoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10863,16 +10863,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Server::Backoff::
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Server::Backoff::Exponential::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Server::Backoff::Exponential::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Server::Backoff::Exponential::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Server::Backoff::Exponential::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Radius::Server::Backoff::Exponential::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10955,16 +10955,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Server::Key::get_
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Server::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Server::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Server::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Server::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Radius::Server::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11043,7 +11043,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Server::Pac::get_
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Server::Pac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Server::Pac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
@@ -11057,16 +11057,16 @@ std::shared_ptr<Entity> Native::Radius::Server::Pac::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Server::Pac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Server::Pac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Radius::Server::Pac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11129,16 +11129,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Radius::Server::Pac::Key:
 
 }
 
-std::shared_ptr<Entity> Native::Radius::Server::Pac::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Radius::Server::Pac::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Radius::Server::Pac::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Radius::Server::Pac::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Radius::Server::Pac::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11232,33 +11232,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Zone::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Native::Zone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Zone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-zone:security")
     {
-        auto c = std::make_shared<Native::Zone::Security>();
-        c->parent = this;
-        security.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Zone::Security>();
+        ent_->parent = this;
+        security.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Zone::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Zone::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : security.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : security.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Zone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11333,16 +11333,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Zone::Security::get_name_
 
 }
 
-std::shared_ptr<Entity> Native::Zone::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Zone::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Zone::Security::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Zone::Security::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Zone::Security::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11446,33 +11446,33 @@ std::vector<std::pair<std::string, LeafData> > Native::ZonePair::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Native::ZonePair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ZonePair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-zone:security")
     {
-        auto c = std::make_shared<Native::ZonePair::Security>();
-        c->parent = this;
-        security.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::ZonePair::Security>();
+        ent_->parent = this;
+        security.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ZonePair::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ZonePair::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : security.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : security.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::ZonePair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11556,7 +11556,7 @@ std::vector<std::pair<std::string, LeafData> > Native::ZonePair::Security::get_n
 
 }
 
-std::shared_ptr<Entity> Native::ZonePair::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ZonePair::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy")
     {
@@ -11570,16 +11570,16 @@ std::shared_ptr<Entity> Native::ZonePair::Security::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ZonePair::Security::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ZonePair::Security::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_policy != nullptr)
     {
-        children["service-policy"] = service_policy;
+        _children["service-policy"] = service_policy;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::ZonePair::Security::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11678,7 +11678,7 @@ std::vector<std::pair<std::string, LeafData> > Native::ZonePair::Security::Servi
 
 }
 
-std::shared_ptr<Entity> Native::ZonePair::Security::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ZonePair::Security::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "type")
     {
@@ -11692,16 +11692,16 @@ std::shared_ptr<Entity> Native::ZonePair::Security::ServicePolicy::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ZonePair::Security::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ZonePair::Security::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(type != nullptr)
     {
-        children["type"] = type;
+        _children["type"] = type;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::ZonePair::Security::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11760,16 +11760,16 @@ std::vector<std::pair<std::string, LeafData> > Native::ZonePair::Security::Servi
 
 }
 
-std::shared_ptr<Entity> Native::ZonePair::Security::ServicePolicy::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::ZonePair::Security::ServicePolicy::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::ZonePair::Security::ServicePolicy::Type::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::ZonePair::Security::ServicePolicy::Type::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::ZonePair::Security::ServicePolicy::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11858,16 +11858,16 @@ std::vector<std::pair<std::string, LeafData> > Native::AlarmContact::get_name_le
 
 }
 
-std::shared_ptr<Entity> Native::AlarmContact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::AlarmContact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::AlarmContact::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::AlarmContact::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::AlarmContact::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11988,14 +11988,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-ethernet:evc")
     {
-        auto c = std::make_shared<Native::Ethernet::Evc>();
-        c->parent = this;
-        evc.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Ethernet::Evc>();
+        ent_->parent = this;
+        evc.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-ethernet:lmi")
@@ -12019,30 +12019,30 @@ std::shared_ptr<Entity> Native::Ethernet::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : evc.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : evc.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(lmi != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:lmi"] = lmi;
+        _children["Cisco-IOS-XE-ethernet:lmi"] = lmi;
     }
 
     if(cfm != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:cfm"] = cfm;
+        _children["Cisco-IOS-XE-ethernet:cfm"] = cfm;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12109,16 +12109,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Evc::get_name_l
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Evc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Evc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Evc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Evc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Ethernet::Evc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12198,16 +12198,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Lmi::get_name_l
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Lmi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Lmi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Lmi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Lmi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Ethernet::Lmi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12332,7 +12332,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::get_name_l
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ais")
     {
@@ -12354,10 +12354,10 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::get_child_by_name(const std::stri
 
     if(child_yang_name == "domain")
     {
-        auto c = std::make_shared<Native::Ethernet::Cfm::Domain>();
-        c->parent = this;
-        domain.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Ethernet::Cfm::Domain>();
+        ent_->parent = this;
+        domain.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "logging")
@@ -12399,50 +12399,50 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ais != nullptr)
     {
-        children["ais"] = ais;
+        _children["ais"] = ais;
     }
 
     if(alarm != nullptr)
     {
-        children["alarm"] = alarm;
+        _children["alarm"] = alarm;
     }
 
-    count = 0;
-    for (auto c : domain.entities())
+    count_ = 0;
+    for (auto ent_ : domain.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(logging != nullptr)
     {
-        children["logging"] = logging;
+        _children["logging"] = logging;
     }
 
     if(mep != nullptr)
     {
-        children["mep"] = mep;
+        _children["mep"] = mep;
     }
 
     if(mip != nullptr)
     {
-        children["mip"] = mip;
+        _children["mip"] = mip;
     }
 
     if(traceroute != nullptr)
     {
-        children["traceroute"] = traceroute;
+        _children["traceroute"] = traceroute;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12528,7 +12528,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Ais::get_n
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-status")
     {
@@ -12542,16 +12542,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Ais::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Ais::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Ais::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(link_status != nullptr)
     {
-        children["link-status"] = link_status;
+        _children["link-status"] = link_status;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Ais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12616,7 +12616,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Ais::LinkS
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Ais::LinkStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Ais::LinkStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -12630,16 +12630,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Ais::LinkStatus::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Ais::LinkStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Ais::LinkStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Ais::LinkStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12705,7 +12705,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Ais::LinkS
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Ais::LinkStatus::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Ais::LinkStatus::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cfm-Mode__config-ais-link-cfm")
     {
@@ -12719,16 +12719,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Ais::LinkStatus::Global::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Ais::LinkStatus::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Ais::LinkStatus::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cfm_mode__config_ais_link_cfm != nullptr)
     {
-        children["cfm-Mode__config-ais-link-cfm"] = cfm_mode__config_ais_link_cfm;
+        _children["cfm-Mode__config-ais-link-cfm"] = cfm_mode__config_ais_link_cfm;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Ais::LinkStatus::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12803,7 +12803,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Ais::LinkS
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "period")
     {
@@ -12817,16 +12817,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeC
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(period != nullptr)
     {
-        children["period"] = period;
+        _children["period"] = period;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12916,16 +12916,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Ais::LinkS
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::Period::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::Period::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::Period::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::Period::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Ais::LinkStatus::Global::CfmModeConfigAisLinkCfm::Period::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13024,7 +13024,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Alarm::get
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Alarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Alarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "notification")
     {
@@ -13038,16 +13038,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Alarm::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Alarm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Alarm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(notification != nullptr)
     {
-        children["notification"] = notification;
+        _children["notification"] = notification;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Alarm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13163,16 +13163,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Alarm::Not
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Alarm::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Alarm::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Alarm::Notification::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Alarm::Notification::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Alarm::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13315,33 +13315,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Domain::ge
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service")
     {
-        auto c = std::make_shared<Native::Ethernet::Cfm::Domain::Service>();
-        c->parent = this;
-        service.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Ethernet::Cfm::Domain::Service>();
+        ent_->parent = this;
+        service.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Domain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Domain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13433,7 +13433,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Domain::Se
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Domain::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Domain::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "continuity-check")
     {
@@ -13447,16 +13447,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Domain::Service::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Domain::Service::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Domain::Service::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(continuity_check != nullptr)
     {
-        children["continuity-check"] = continuity_check;
+        _children["continuity-check"] = continuity_check;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Domain::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13541,16 +13541,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Domain::Se
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Domain::Service::ContinuityCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Domain::Service::ContinuityCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Domain::Service::ContinuityCheck::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Domain::Service::ContinuityCheck::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Domain::Service::ContinuityCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13619,7 +13619,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Logging::g
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alarm")
     {
@@ -13633,16 +13633,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Logging::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Logging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Logging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(alarm != nullptr)
     {
-        children["alarm"] = alarm;
+        _children["alarm"] = alarm;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13722,16 +13722,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Logging::A
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Logging::Alarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Logging::Alarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Logging::Alarm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Logging::Alarm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Logging::Alarm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13817,7 +13817,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Mep::get_n
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Mep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Mep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "crosscheck")
     {
@@ -13831,16 +13831,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Mep::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Mep::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Mep::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(crosscheck != nullptr)
     {
-        children["crosscheck"] = crosscheck;
+        _children["crosscheck"] = crosscheck;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Mep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13906,16 +13906,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Mep::Cross
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Mep::Crosscheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Mep::Crosscheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Mep::Crosscheck::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Mep::Crosscheck::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Mep::Crosscheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13996,7 +13996,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Mip::get_n
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Mip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Mip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto-create")
     {
@@ -14010,16 +14010,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Mip::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Mip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Mip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_create != nullptr)
     {
-        children["auto-create"] = auto_create;
+        _children["auto-create"] = auto_create;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Mip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14095,7 +14095,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Mip::AutoC
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Mip::AutoCreate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Mip::AutoCreate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "level")
     {
@@ -14109,16 +14109,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Mip::AutoCreate::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Mip::AutoCreate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Mip::AutoCreate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(level != nullptr)
     {
-        children["level"] = level;
+        _children["level"] = level;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Mip::AutoCreate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14192,33 +14192,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Mip::AutoC
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Mip::AutoCreate::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Mip::AutoCreate::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mef-num")
     {
-        auto c = std::make_shared<Native::Ethernet::Cfm::Mip::AutoCreate::Level::MefNum>();
-        c->parent = this;
-        mef_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Ethernet::Cfm::Mip::AutoCreate::Level::MefNum>();
+        ent_->parent = this;
+        mef_num.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Mip::AutoCreate::Level::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Mip::AutoCreate::Level::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mef_num.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mef_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Mip::AutoCreate::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14293,16 +14293,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Mip::AutoC
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Mip::AutoCreate::Level::MefNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Mip::AutoCreate::Level::MefNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Mip::AutoCreate::Level::MefNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Mip::AutoCreate::Level::MefNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Mip::AutoCreate::Level::MefNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14397,7 +14397,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Traceroute
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Traceroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Traceroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cache")
     {
@@ -14411,16 +14411,16 @@ std::shared_ptr<Entity> Native::Ethernet::Cfm::Traceroute::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Traceroute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Traceroute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cache != nullptr)
     {
-        children["cache"] = cache;
+        _children["cache"] = cache;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Traceroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14490,16 +14490,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Ethernet::Cfm::Traceroute
 
 }
 
-std::shared_ptr<Entity> Native::Ethernet::Cfm::Traceroute::Cache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ethernet::Cfm::Traceroute::Cache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Ethernet::Cfm::Traceroute::Cache::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ethernet::Cfm::Traceroute::Cache::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Ethernet::Cfm::Traceroute::Cache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14604,14 +14604,14 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::get_name_le
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-bridge-domain:brd-id")
     {
-        auto c = std::make_shared<Native::BridgeDomain::BrdId>();
-        c->parent = this;
-        brd_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::BridgeDomain::BrdId>();
+        ent_->parent = this;
+        brd_id.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-bridge-domain:c-mac")
@@ -14644,35 +14644,35 @@ std::shared_ptr<Entity> Native::BridgeDomain::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brd_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brd_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(c_mac != nullptr)
     {
-        children["Cisco-IOS-XE-bridge-domain:c-mac"] = c_mac;
+        _children["Cisco-IOS-XE-bridge-domain:c-mac"] = c_mac;
     }
 
     if(otv != nullptr)
     {
-        children["Cisco-IOS-XE-bridge-domain:otv"] = otv;
+        _children["Cisco-IOS-XE-bridge-domain:otv"] = otv;
     }
 
     if(parameterized != nullptr)
     {
-        children["Cisco-IOS-XE-bridge-domain:parameterized"] = parameterized;
+        _children["Cisco-IOS-XE-bridge-domain:parameterized"] = parameterized;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14756,7 +14756,7 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::get_
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -14788,26 +14788,26 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
     if(member != nullptr)
     {
-        children["member"] = member;
+        _children["member"] = member;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14886,7 +14886,7 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Ip::
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igmp")
     {
@@ -14900,16 +14900,16 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(igmp != nullptr)
     {
-        children["igmp"] = igmp;
+        _children["igmp"] = igmp;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14967,7 +14967,7 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Ip::
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Ip::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snooping")
     {
@@ -14981,16 +14981,16 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::Igmp::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snooping != nullptr)
     {
-        children["snooping"] = snooping;
+        _children["snooping"] = snooping;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Ip::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15085,7 +15085,7 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Ip::
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "check")
     {
@@ -15126,31 +15126,31 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(check != nullptr)
     {
-        children["check"] = check;
+        _children["check"] = check;
     }
 
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
     if(mrouter != nullptr)
     {
-        children["mrouter"] = mrouter;
+        _children["mrouter"] = mrouter;
     }
 
     if(querier != nullptr)
     {
-        children["querier"] = querier;
+        _children["querier"] = querier;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15273,16 +15273,16 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Ip::
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Check::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15361,16 +15361,16 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Ip::
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15439,16 +15439,16 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Ip::
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Mrouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15537,16 +15537,16 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Ip::
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Querier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Querier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Querier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Querier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Ip::Igmp::Snooping::Querier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15674,7 +15674,7 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Mac:
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "limit")
     {
@@ -15688,16 +15688,16 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Mac::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(limit != nullptr)
     {
-        children["limit"] = limit;
+        _children["limit"] = limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15780,7 +15780,7 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Mac:
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Mac::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Mac::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
@@ -15803,21 +15803,21 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Mac::Limit::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Mac::Limit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Mac::Limit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action != nullptr)
     {
-        children["action"] = action;
+        _children["action"] = action;
     }
 
     if(maximum != nullptr)
     {
-        children["maximum"] = maximum;
+        _children["maximum"] = maximum;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Mac::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15876,7 +15876,7 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Mac:
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Mac::Limit::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Mac::Limit::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flooding")
     {
@@ -15890,16 +15890,16 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Mac::Limit::Action::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Mac::Limit::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Mac::Limit::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flooding != nullptr)
     {
-        children["flooding"] = flooding;
+        _children["flooding"] = flooding;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Mac::Limit::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15958,16 +15958,16 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Mac:
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Mac::Limit::Action::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Mac::Limit::Action::Flooding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Mac::Limit::Action::Flooding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Mac::Limit::Action::Flooding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Mac::Limit::Action::Flooding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16036,16 +16036,16 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Mac:
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Mac::Limit::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Mac::Limit::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Mac::Limit::Maximum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Mac::Limit::Maximum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Mac::Limit::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16200,67 +16200,67 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Memb
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mem-ipv4")
     {
-        auto c = std::make_shared<Native::BridgeDomain::BrdId::Member::MemIpv4>();
-        c->parent = this;
-        mem_ipv4.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::BridgeDomain::BrdId::Member::MemIpv4>();
+        ent_->parent = this;
+        mem_ipv4.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ACR")
     {
-        auto c = std::make_shared<Native::BridgeDomain::BrdId::Member::ACR>();
-        c->parent = this;
-        acr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::BridgeDomain::BrdId::Member::ACR>();
+        ent_->parent = this;
+        acr.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "member-interface")
     {
-        auto c = std::make_shared<Native::BridgeDomain::BrdId::Member::MemberInterface>();
-        c->parent = this;
-        member_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::BridgeDomain::BrdId::Member::MemberInterface>();
+        ent_->parent = this;
+        member_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Member::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Member::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mem_ipv4.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mem_ipv4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : acr.entities())
+    count_ = 0;
+    for (auto ent_ : acr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : member_interface.entities())
+    count_ = 0;
+    for (auto ent_ : member_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16480,14 +16480,14 @@ std::vector<std::pair<std::string, LeafData> > Native::BridgeDomain::BrdId::Memb
 
 }
 
-std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Member::MemIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::BridgeDomain::BrdId::Member::MemIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mem-vcid")
     {
-        auto c = std::make_shared<Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid>();
-        c->parent = this;
-        mem_vcid.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid>();
+        ent_->parent = this;
+        mem_vcid.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "encapsulation")
@@ -16502,25 +16502,25 @@ std::shared_ptr<Entity> Native::BridgeDomain::BrdId::Member::MemIpv4::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::BridgeDomain::BrdId::Member::MemIpv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::BridgeDomain::BrdId::Member::MemIpv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mem_vcid.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mem_vcid.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(encapsulation != nullptr)
     {
-        children["encapsulation"] = encapsulation;
+        _children["encapsulation"] = encapsulation;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::BridgeDomain::BrdId::Member::MemIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOMPLSLSREXTSTDMIB::get_name_l
 
 }
 
-std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMPLSLSREXTSTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsXCExtTable")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMPLSLSREXTSTDMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cmplsxcexttable != nullptr)
     {
-        children["cmplsXCExtTable"] = cmplsxcexttable;
+        _children["cmplsXCExtTable"] = cmplsxcexttable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMPLSLSREXTSTDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void CISCOMPLSLSREXTSTDMIB::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOMPLSLSREXTSTDMIB::clone_ptr() const
 {
     return std::make_shared<CISCOMPLSLSREXTSTDMIB>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOMPLSLSREXTSTDMIB::CmplsXCExt
 
 }
 
-std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsXCExtEntry")
     {
-        auto c = std::make_shared<CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry>();
-        c->parent = this;
-        cmplsxcextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry>();
+        ent_->parent = this;
+        cmplsxcextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmplsxcextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmplsxcextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -285,16 +285,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOMPLSLSREXTSTDMIB::CmplsXCExt
 
 }
 
-std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

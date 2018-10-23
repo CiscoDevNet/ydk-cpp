@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> TcpConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> TcpConnection::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void TcpConnection::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> TcpConnection::clone_ptr() const
+std::shared_ptr<ydk::Entity> TcpConnection::clone_ptr() const
 {
     return std::make_shared<TcpConnection>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::get_name_le
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -288,7 +288,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::get_n
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -338,36 +338,36 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(extended_information != nullptr)
     {
-        children["extended-information"] = extended_information;
+        _children["extended-information"] = extended_information;
     }
 
     if(detail_informations != nullptr)
     {
-        children["detail-informations"] = detail_informations;
+        _children["detail-informations"] = detail_informations;
     }
 
     if(keychains != nullptr)
     {
-        children["keychains"] = keychains;
+        _children["keychains"] = keychains;
     }
 
     if(brief_informations != nullptr)
     {
-        children["brief-informations"] = brief_informations;
+        _children["brief-informations"] = brief_informations;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -444,7 +444,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clients")
     {
@@ -476,26 +476,26 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clients != nullptr)
     {
-        children["clients"] = clients;
+        _children["clients"] = clients;
     }
 
     if(pcbs != nullptr)
     {
-        children["pcbs"] = pcbs;
+        _children["pcbs"] = pcbs;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -562,33 +562,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Clients::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Clients::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Clients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Clients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -672,16 +672,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Clients::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Clients::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Clients::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -818,33 +818,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pcb")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb>();
-        c->parent = this;
-        pcb.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb>();
+        ent_->parent = this;
+        pcb.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pcb.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pcb.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -981,7 +981,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "read-io-counts")
     {
@@ -1013,26 +1013,26 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(read_io_counts != nullptr)
     {
-        children["read-io-counts"] = read_io_counts;
+        _children["read-io-counts"] = read_io_counts;
     }
 
     if(write_io_counts != nullptr)
     {
-        children["write-io-counts"] = write_io_counts;
+        _children["write-io-counts"] = write_io_counts;
     }
 
     if(async_session_stats != nullptr)
     {
-        children["async-session-stats"] = async_session_stats;
+        _children["async-session-stats"] = async_session_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1273,16 +1273,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1393,16 +1393,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1612,186 +1612,186 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data-write-success-num")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum>();
-        c->parent = this;
-        data_write_success_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum>();
+        ent_->parent = this;
+        data_write_success_num.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "data-read-success-num")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum>();
-        c->parent = this;
-        data_read_success_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum>();
+        ent_->parent = this;
+        data_read_success_num.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "data-write-error-num")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum>();
-        c->parent = this;
-        data_write_error_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum>();
+        ent_->parent = this;
+        data_write_error_num.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "data-read-error-num")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum>();
-        c->parent = this;
-        data_read_error_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum>();
+        ent_->parent = this;
+        data_read_error_num.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "control-write-success-num")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum>();
-        c->parent = this;
-        control_write_success_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum>();
+        ent_->parent = this;
+        control_write_success_num.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "control-read-success-num")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum>();
-        c->parent = this;
-        control_read_success_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum>();
+        ent_->parent = this;
+        control_read_success_num.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "control-write-error-num")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum>();
-        c->parent = this;
-        control_write_error_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum>();
+        ent_->parent = this;
+        control_write_error_num.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "control-read-error-num")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum>();
-        c->parent = this;
-        control_read_error_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum>();
+        ent_->parent = this;
+        control_read_error_num.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "data-write-byte")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte>();
-        c->parent = this;
-        data_write_byte.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte>();
+        ent_->parent = this;
+        data_write_byte.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "data-read-byte")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte>();
-        c->parent = this;
-        data_read_byte.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte>();
+        ent_->parent = this;
+        data_read_byte.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : data_write_success_num.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : data_write_success_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : data_read_success_num.entities())
+    count_ = 0;
+    for (auto ent_ : data_read_success_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : data_write_error_num.entities())
+    count_ = 0;
+    for (auto ent_ : data_write_error_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : data_read_error_num.entities())
+    count_ = 0;
+    for (auto ent_ : data_read_error_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : control_write_success_num.entities())
+    count_ = 0;
+    for (auto ent_ : control_write_success_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : control_read_success_num.entities())
+    count_ = 0;
+    for (auto ent_ : control_read_success_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : control_write_error_num.entities())
+    count_ = 0;
+    for (auto ent_ : control_write_error_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : control_read_error_num.entities())
+    count_ = 0;
+    for (auto ent_ : control_read_error_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : data_write_byte.entities())
+    count_ = 0;
+    for (auto ent_ : data_write_byte.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : data_read_byte.entities())
+    count_ = 0;
+    for (auto ent_ : data_read_byte.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1860,16 +1860,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1938,16 +1938,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2016,16 +2016,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2094,16 +2094,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2172,16 +2172,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2250,16 +2250,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2328,16 +2328,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2406,16 +2406,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2484,16 +2484,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2562,16 +2562,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3011,50 +3011,50 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "iqs-total-ingpacket")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket>();
-        c->parent = this;
-        iqs_total_ingpacket.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket>();
+        ent_->parent = this;
+        iqs_total_ingpacket.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "iqs-total-egpacket")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket>();
-        c->parent = this;
-        iqs_total_egpacket.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket>();
+        ent_->parent = this;
+        iqs_total_egpacket.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : iqs_total_ingpacket.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : iqs_total_ingpacket.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : iqs_total_egpacket.entities())
+    count_ = 0;
+    for (auto ent_ : iqs_total_egpacket.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3993,16 +3993,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4071,16 +4071,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4149,7 +4149,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "display-types")
     {
@@ -4163,16 +4163,16 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(display_types != nullptr)
     {
-        children["display-types"] = display_types;
+        _children["display-types"] = display_types;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4239,33 +4239,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "display-type")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType>();
-        c->parent = this;
-        display_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType>();
+        ent_->parent = this;
+        display_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : display_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : display_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4337,33 +4337,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "connection-id")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId>();
-        c->parent = this;
-        connection_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId>();
+        ent_->parent = this;
+        connection_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : connection_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : connection_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4458,7 +4458,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-address")
     {
@@ -4490,26 +4490,26 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_address != nullptr)
     {
-        children["local-address"] = local_address;
+        _children["local-address"] = local_address;
     }
 
     if(foreign_address != nullptr)
     {
-        children["foreign-address"] = foreign_address;
+        _children["foreign-address"] = foreign_address;
     }
 
     if(common != nullptr)
     {
-        children["common"] = common;
+        _children["common"] = common;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4616,16 +4616,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4722,16 +4722,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4825,7 +4825,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lpts-pcb")
     {
@@ -4839,16 +4839,16 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lpts_pcb != nullptr)
     {
-        children["lpts-pcb"] = lpts_pcb;
+        _children["lpts-pcb"] = lpts_pcb;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4945,7 +4945,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "options")
     {
@@ -4976,44 +4976,44 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
 
     if(child_yang_name == "filter")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter>();
-        c->parent = this;
-        filter.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter>();
+        ent_->parent = this;
+        filter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(options != nullptr)
     {
-        children["options"] = options;
+        _children["options"] = options;
     }
 
     if(lpts_flags != nullptr)
     {
-        children["lpts-flags"] = lpts_flags;
+        _children["lpts-flags"] = lpts_flags;
     }
 
     if(accept_mask != nullptr)
     {
-        children["accept-mask"] = accept_mask;
+        _children["accept-mask"] = accept_mask;
     }
 
-    count = 0;
-    for (auto c : filter.entities())
+    count_ = 0;
+    for (auto ent_ : filter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5096,16 +5096,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5192,16 +5192,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5310,16 +5310,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5479,7 +5479,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "packet-type")
     {
@@ -5511,26 +5511,26 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(packet_type != nullptr)
     {
-        children["packet-type"] = packet_type;
+        _children["packet-type"] = packet_type;
     }
 
     if(remote_address != nullptr)
     {
-        children["remote-address"] = remote_address;
+        _children["remote-address"] = remote_address;
     }
 
     if(local_address != nullptr)
     {
-        children["local-address"] = local_address;
+        _children["local-address"] = local_address;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5685,16 +5685,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5811,16 +5811,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5917,16 +5917,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Exten
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6023,33 +6023,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-information")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation>();
-        c->parent = this;
-        detail_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation>();
+        ent_->parent = this;
+        detail_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6501,7 +6501,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-address")
     {
@@ -6586,142 +6586,142 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
 
     if(child_yang_name == "fib-pd-ctx")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx>();
-        c->parent = this;
-        fib_pd_ctx.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx>();
+        ent_->parent = this;
+        fib_pd_ctx.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "fib-label-output")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput>();
-        c->parent = this;
-        fib_label_output.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput>();
+        ent_->parent = this;
+        fib_label_output.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "timer")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer>();
-        c->parent = this;
-        timer.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer>();
+        ent_->parent = this;
+        timer.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "sack-blk")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk>();
-        c->parent = this;
-        sack_blk.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk>();
+        ent_->parent = this;
+        sack_blk.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "send-sack-hole")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole>();
-        c->parent = this;
-        send_sack_hole.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole>();
+        ent_->parent = this;
+        send_sack_hole.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_address != nullptr)
     {
-        children["local-address"] = local_address;
+        _children["local-address"] = local_address;
     }
 
     if(foreign_address != nullptr)
     {
-        children["foreign-address"] = foreign_address;
+        _children["foreign-address"] = foreign_address;
     }
 
     if(socket_option_flags != nullptr)
     {
-        children["socket-option-flags"] = socket_option_flags;
+        _children["socket-option-flags"] = socket_option_flags;
     }
 
     if(socket_state_flags != nullptr)
     {
-        children["socket-state-flags"] = socket_state_flags;
+        _children["socket-state-flags"] = socket_state_flags;
     }
 
     if(feature_flags != nullptr)
     {
-        children["feature-flags"] = feature_flags;
+        _children["feature-flags"] = feature_flags;
     }
 
     if(state_flags != nullptr)
     {
-        children["state-flags"] = state_flags;
+        _children["state-flags"] = state_flags;
     }
 
     if(request_flags != nullptr)
     {
-        children["request-flags"] = request_flags;
+        _children["request-flags"] = request_flags;
     }
 
     if(receive_buf_state_flags != nullptr)
     {
-        children["receive-buf-state-flags"] = receive_buf_state_flags;
+        _children["receive-buf-state-flags"] = receive_buf_state_flags;
     }
 
     if(send_buf_state_flags != nullptr)
     {
-        children["send-buf-state-flags"] = send_buf_state_flags;
+        _children["send-buf-state-flags"] = send_buf_state_flags;
     }
 
-    count = 0;
-    for (auto c : fib_pd_ctx.entities())
+    count_ = 0;
+    for (auto ent_ : fib_pd_ctx.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : fib_label_output.entities())
+    count_ = 0;
+    for (auto ent_ : fib_label_output.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : timer.entities())
+    count_ = 0;
+    for (auto ent_ : timer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : sack_blk.entities())
+    count_ = 0;
+    for (auto ent_ : sack_blk.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : send_sack_hole.entities())
+    count_ = 0;
+    for (auto ent_ : send_sack_hole.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7548,16 +7548,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7654,16 +7654,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7792,16 +7792,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8026,16 +8026,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8276,16 +8276,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8462,16 +8462,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8642,16 +8642,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8844,16 +8844,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9076,16 +9076,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9264,16 +9264,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9342,16 +9342,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9432,16 +9432,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9544,16 +9544,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9644,16 +9644,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9760,33 +9760,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Keych
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Keychains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Keychains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keychain")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain>();
-        c->parent = this;
-        keychain.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain>();
+        ent_->parent = this;
+        keychain.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Keychains::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Keychains::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : keychain.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : keychain.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Keychains::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9907,84 +9907,84 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Keych
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Keychains::Keychain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Keychains::Keychain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keys")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::Keys>();
-        c->parent = this;
-        keys.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::Keys>();
+        ent_->parent = this;
+        keys.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "active-key")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey>();
-        c->parent = this;
-        active_key.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey>();
+        ent_->parent = this;
+        active_key.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "send-id")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::SendId>();
-        c->parent = this;
-        send_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::SendId>();
+        ent_->parent = this;
+        send_id.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "receive-id")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId>();
-        c->parent = this;
-        receive_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId>();
+        ent_->parent = this;
+        receive_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : keys.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : keys.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : active_key.entities())
+    count_ = 0;
+    for (auto ent_ : active_key.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : send_id.entities())
+    count_ = 0;
+    for (auto ent_ : send_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : receive_id.entities())
+    count_ = 0;
+    for (auto ent_ : receive_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Keychains::Keychain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10145,33 +10145,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Keych
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Keychains::Keychain::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Keychains::Keychain::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "invalidated-key")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey>();
-        c->parent = this;
-        invalidated_key.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey>();
+        ent_->parent = this;
+        invalidated_key.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::Keys::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::Keys::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : invalidated_key.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : invalidated_key.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Keychains::Keychain::Keys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10340,16 +10340,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Keych
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10418,16 +10418,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Keych
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10508,33 +10508,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Keych
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Keychains::Keychain::SendId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Keychains::Keychain::SendId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keys")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys>();
-        c->parent = this;
-        keys.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys>();
+        ent_->parent = this;
+        keys.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::SendId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::SendId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : keys.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : keys.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Keychains::Keychain::SendId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10603,16 +10603,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Keych
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10693,33 +10693,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Keych
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keys")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys>();
-        c->parent = this;
-        keys.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys>();
+        ent_->parent = this;
+        keys.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : keys.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : keys.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10788,16 +10788,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Keych
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10874,33 +10874,33 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Brief
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::BriefInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief-information")
     {
-        auto c = std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation>();
-        c->parent = this;
-        brief_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation>();
+        ent_->parent = this;
+        brief_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::BriefInformations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::BriefInformations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brief_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brief_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::BriefInformations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11005,7 +11005,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Brief
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-address")
     {
@@ -11028,21 +11028,21 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_address != nullptr)
     {
-        children["local-address"] = local_address;
+        _children["local-address"] = local_address;
     }
 
     if(foreign_address != nullptr)
     {
-        children["foreign-address"] = foreign_address;
+        _children["foreign-address"] = foreign_address;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::BriefInformations::BriefInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11209,16 +11209,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Brief
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11315,16 +11315,16 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Brief
 
 }
 
-std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11413,7 +11413,7 @@ std::vector<std::pair<std::string, LeafData> > Tcp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -11427,16 +11427,16 @@ std::shared_ptr<Entity> Tcp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11447,7 +11447,7 @@ void Tcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Tcp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Tcp::clone_ptr() const
 {
     return std::make_shared<Tcp>();
 }
@@ -11535,33 +11535,33 @@ std::vector<std::pair<std::string, LeafData> > Tcp::Nodes::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Tcp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tcp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Tcp::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tcp::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tcp::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tcp::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11633,7 +11633,7 @@ std::vector<std::pair<std::string, LeafData> > Tcp::Nodes::Node::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Tcp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tcp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -11647,16 +11647,16 @@ std::shared_ptr<Entity> Tcp::Nodes::Node::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tcp::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Tcp::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11729,7 +11729,7 @@ std::vector<std::pair<std::string, LeafData> > Tcp::Nodes::Node::Statistics::get
 
 }
 
-std::shared_ptr<Entity> Tcp::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tcp::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-traffic")
     {
@@ -11752,21 +11752,21 @@ std::shared_ptr<Entity> Tcp::Nodes::Node::Statistics::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::Node::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tcp::Nodes::Node::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_traffic != nullptr)
     {
-        children["ipv4-traffic"] = ipv4_traffic;
+        _children["ipv4-traffic"] = ipv4_traffic;
     }
 
     if(ipv6_traffic != nullptr)
     {
-        children["ipv6-traffic"] = ipv6_traffic;
+        _children["ipv6-traffic"] = ipv6_traffic;
     }
 
-    return children;
+    return _children;
 }
 
 void Tcp::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11841,16 +11841,16 @@ std::vector<std::pair<std::string, LeafData> > Tcp::Nodes::Node::Statistics::Ipv
 
 }
 
-std::shared_ptr<Entity> Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tcp::Nodes::Node::Statistics::Ipv4Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11975,16 +11975,16 @@ std::vector<std::pair<std::string, LeafData> > Tcp::Nodes::Node::Statistics::Ipv
 
 }
 
-std::shared_ptr<Entity> Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tcp::Nodes::Node::Statistics::Ipv6Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12093,7 +12093,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> TcpNsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -12107,16 +12107,16 @@ std::shared_ptr<Entity> TcpNsr::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12127,7 +12127,7 @@ void TcpNsr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> TcpNsr::clone_ptr() const
+std::shared_ptr<ydk::Entity> TcpNsr::clone_ptr() const
 {
     return std::make_shared<TcpNsr>();
 }
@@ -12215,33 +12215,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12325,7 +12325,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::get_name_lea
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -12366,31 +12366,31 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(client != nullptr)
     {
-        children["client"] = client;
+        _children["client"] = client;
     }
 
     if(session_set != nullptr)
     {
-        children["session-set"] = session_set;
+        _children["session-set"] = session_set;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12463,7 +12463,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::get
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief-sessions")
     {
@@ -12486,21 +12486,21 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(brief_sessions != nullptr)
     {
-        children["brief-sessions"] = brief_sessions;
+        _children["brief-sessions"] = brief_sessions;
     }
 
     if(detail_sessions != nullptr)
     {
-        children["detail-sessions"] = detail_sessions;
+        _children["detail-sessions"] = detail_sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12567,33 +12567,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Bri
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::BriefSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief-session")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession>();
-        c->parent = this;
-        brief_session.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession>();
+        ent_->parent = this;
+        brief_session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brief_session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brief_session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::BriefSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12716,50 +12716,50 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Bri
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-address")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress>();
-        c->parent = this;
-        local_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress>();
+        ent_->parent = this;
+        local_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "foreign-address")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress>();
-        c->parent = this;
-        foreign_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress>();
+        ent_->parent = this;
+        foreign_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : local_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : local_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : foreign_address.entities())
+    count_ = 0;
+    for (auto ent_ : foreign_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12928,16 +12928,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Bri
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13006,16 +13006,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Bri
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13092,33 +13092,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Det
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::DetailSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-session")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession>();
-        c->parent = this;
-        detail_session.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession>();
+        ent_->parent = this;
+        detail_session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail_session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail_session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::DetailSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13399,7 +13399,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Det
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "set-information")
     {
@@ -13412,85 +13412,85 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSess
 
     if(child_yang_name == "local-address")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress>();
-        c->parent = this;
-        local_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress>();
+        ent_->parent = this;
+        local_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "foreign-address")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress>();
-        c->parent = this;
-        foreign_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress>();
+        ent_->parent = this;
+        foreign_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "packet-hold-queue")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue>();
-        c->parent = this;
-        packet_hold_queue.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue>();
+        ent_->parent = this;
+        packet_hold_queue.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "internal-ack-hold-queue")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue>();
-        c->parent = this;
-        internal_ack_hold_queue.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue>();
+        ent_->parent = this;
+        internal_ack_hold_queue.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(set_information != nullptr)
     {
-        children["set-information"] = set_information;
+        _children["set-information"] = set_information;
     }
 
-    count = 0;
-    for (auto c : local_address.entities())
+    count_ = 0;
+    for (auto ent_ : local_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : foreign_address.entities())
+    count_ = 0;
+    for (auto ent_ : foreign_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : packet_hold_queue.entities())
+    count_ = 0;
+    for (auto ent_ : packet_hold_queue.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : internal_ack_hold_queue.entities())
+    count_ = 0;
+    for (auto ent_ : internal_ack_hold_queue.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14057,16 +14057,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Det
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14305,16 +14305,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Det
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14383,16 +14383,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Det
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14469,16 +14469,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Det
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14575,16 +14575,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Session::Det
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14677,7 +14677,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Client::get_
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-clients")
     {
@@ -14700,21 +14700,21 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail_clients != nullptr)
     {
-        children["detail-clients"] = detail_clients;
+        _children["detail-clients"] = detail_clients;
     }
 
     if(brief_clients != nullptr)
     {
-        children["brief-clients"] = brief_clients;
+        _children["brief-clients"] = brief_clients;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14781,33 +14781,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Client::Deta
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::DetailClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Client::DetailClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-client")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Client::DetailClients::DetailClient>();
-        c->parent = this;
-        detail_client.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Client::DetailClients::DetailClient>();
+        ent_->parent = this;
+        detail_client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::DetailClients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Client::DetailClients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail_client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail_client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Client::DetailClients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14907,16 +14907,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Client::Deta
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15093,33 +15093,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Client::Brie
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::BriefClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Client::BriefClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief-client")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Client::BriefClients::BriefClient>();
-        c->parent = this;
-        brief_client.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Client::BriefClients::BriefClient>();
+        ent_->parent = this;
+        brief_client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::BriefClients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Client::BriefClients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brief_client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brief_client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Client::BriefClients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15211,16 +15211,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Client::Brie
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15373,7 +15373,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::SessionSet::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::SessionSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-sets")
     {
@@ -15396,21 +15396,21 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::SessionSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail_sets != nullptr)
     {
-        children["detail-sets"] = detail_sets;
+        _children["detail-sets"] = detail_sets;
     }
 
     if(brief_sets != nullptr)
     {
-        children["brief-sets"] = brief_sets;
+        _children["brief-sets"] = brief_sets;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::SessionSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15477,33 +15477,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::SessionSet::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::DetailSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::SessionSet::DetailSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-set")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet>();
-        c->parent = this;
-        detail_set.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet>();
+        ent_->parent = this;
+        detail_set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::DetailSets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::SessionSet::DetailSets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail_set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail_set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::SessionSet::DetailSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15695,16 +15695,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::SessionSet::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16111,33 +16111,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::SessionSet::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::BriefSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::SessionSet::BriefSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief-set")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet>();
-        c->parent = this;
-        brief_set.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet>();
+        ent_->parent = this;
+        brief_set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::BriefSets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::SessionSet::BriefSets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brief_set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brief_set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::SessionSet::BriefSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16269,16 +16269,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::SessionSet::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16539,7 +16539,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -16580,31 +16580,31 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(statistic_clients != nullptr)
     {
-        children["statistic-clients"] = statistic_clients;
+        _children["statistic-clients"] = statistic_clients;
     }
 
     if(statistic_sets != nullptr)
     {
-        children["statistic-sets"] = statistic_sets;
+        _children["statistic-sets"] = statistic_sets;
     }
 
     if(statistic_sessions != nullptr)
     {
-        children["statistic-sessions"] = statistic_sessions;
+        _children["statistic-sessions"] = statistic_sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16811,7 +16811,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snd-counters")
     {
@@ -16833,39 +16833,39 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::get_child_by_n
 
     if(child_yang_name == "notification-statistic")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic>();
-        c->parent = this;
-        notification_statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic>();
+        ent_->parent = this;
+        notification_statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snd_counters != nullptr)
     {
-        children["snd-counters"] = snd_counters;
+        _children["snd-counters"] = snd_counters;
     }
 
     if(audit_counters != nullptr)
     {
-        children["audit-counters"] = audit_counters;
+        _children["audit-counters"] = audit_counters;
     }
 
-    count = 0;
-    for (auto c : notification_statistic.entities())
+    count_ = 0;
+    for (auto ent_ : notification_statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17258,7 +17258,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common")
     {
@@ -17281,21 +17281,21 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common != nullptr)
     {
-        children["common"] = common;
+        _children["common"] = common;
     }
 
     if(aggr_only != nullptr)
     {
-        children["aggr-only"] = aggr_only;
+        _children["aggr-only"] = aggr_only;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17450,16 +17450,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17796,16 +17796,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17948,7 +17948,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common")
     {
@@ -17971,21 +17971,21 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common != nullptr)
     {
-        children["common"] = common;
+        _children["common"] = common;
     }
 
     if(aggr_only != nullptr)
     {
-        children["aggr-only"] = aggr_only;
+        _children["aggr-only"] = aggr_only;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18140,16 +18140,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18478,16 +18478,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18618,16 +18618,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18734,33 +18734,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistic-client")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient>();
-        c->parent = this;
-        statistic_client.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient>();
+        ent_->parent = this;
+        statistic_client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticClients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::StatisticClients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistic_client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistic_client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::StatisticClients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18868,33 +18868,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "notification-statistic")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic>();
-        c->parent = this;
-        notification_statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic>();
+        ent_->parent = this;
+        notification_statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : notification_statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : notification_statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19065,16 +19065,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19181,33 +19181,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::StatisticSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistic-set")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet>();
-        c->parent = this;
-        statistic_set.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet>();
+        ent_->parent = this;
+        statistic_set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistic_set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistic_set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::StatisticSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19299,16 +19299,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19465,33 +19465,33 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistic-session")
     {
-        auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession>();
-        c->parent = this;
-        statistic_session.append(c);
-        return c;
+        auto ent_ = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession>();
+        ent_->parent = this;
+        statistic_session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistic_session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistic_session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::StatisticSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19596,7 +19596,7 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snd-counters")
     {
@@ -19610,16 +19610,16 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::Stat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snd_counters != nullptr)
     {
-        children["snd-counters"] = snd_counters;
+        _children["snd-counters"] = snd_counters;
     }
 
-    return children;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19884,16 +19884,16 @@ std::vector<std::pair<std::string, LeafData> > TcpNsr::Nodes::Node::Statistics::
 
 }
 
-std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ppps")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> DynamicTemplate::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ppps != nullptr)
     {
-        children["ppps"] = ppps;
+        _children["ppps"] = ppps;
     }
 
     if(ip_subscribers != nullptr)
     {
-        children["ip-subscribers"] = ip_subscribers;
+        _children["ip-subscribers"] = ip_subscribers;
     }
 
     if(subscriber_services != nullptr)
     {
-        children["subscriber-services"] = subscriber_services;
+        _children["subscriber-services"] = subscriber_services;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void DynamicTemplate::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> DynamicTemplate::clone_ptr() const
+std::shared_ptr<ydk::Entity> DynamicTemplate::clone_ptr() const
 {
     return std::make_shared<DynamicTemplate>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::get_name_l
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ppp")
     {
-        auto c = std::make_shared<DynamicTemplate::Ppps::Ppp>();
-        c->parent = this;
-        ppp.append(c);
-        return c;
+        auto ent_ = std::make_shared<DynamicTemplate::Ppps::Ppp>();
+        ent_->parent = this;
+        ppp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ppp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ppp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -351,7 +351,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::get_n
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-subscriber-pppoe-ma-gbl-cfg:pppoe-template")
     {
@@ -455,66 +455,66 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe_template != nullptr)
     {
-        children["Cisco-IOS-XR-subscriber-pppoe-ma-gbl-cfg:pppoe-template"] = pppoe_template;
+        _children["Cisco-IOS-XR-subscriber-pppoe-ma-gbl-cfg:pppoe-template"] = pppoe_template;
     }
 
     if(dhcpv6 != nullptr)
     {
-        children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
+        _children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
     }
 
     if(pbr != nullptr)
     {
-        children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
+        _children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
     }
 
     if(ipv6_neighbor != nullptr)
     {
-        children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
+        _children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
     if(igmp != nullptr)
     {
-        children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
+        _children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
     }
 
     if(ipv4_network != nullptr)
     {
-        children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
+        _children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
     }
 
     if(ipv4_packet_filter != nullptr)
     {
-        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
+        _children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
     }
 
     if(ipv6_packet_filter != nullptr)
     {
-        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
+        _children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
     }
 
     if(ipv6_network != nullptr)
     {
-        children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
+        _children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
     }
 
     if(ppp_template != nullptr)
     {
-        children["Cisco-IOS-XR-ppp-ma-gbl-cfg:ppp-template"] = ppp_template;
+        _children["Cisco-IOS-XR-ppp-ma-gbl-cfg:ppp-template"] = ppp_template;
     }
 
     if(accounting != nullptr)
     {
-        children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
+        _children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -593,16 +593,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Pppoe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppoeTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppoeTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppoeTemplate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppoeTemplate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppoeTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -703,7 +703,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Dhcpv
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Dhcpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Dhcpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delegated-prefix")
     {
@@ -717,16 +717,16 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Dhcpv6::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Dhcpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Dhcpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delegated_prefix != nullptr)
     {
-        children["delegated-prefix"] = delegated_prefix;
+        _children["delegated-prefix"] = delegated_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Dhcpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -869,16 +869,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Dhcpv
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -962,7 +962,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Pbr::
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy")
     {
@@ -976,16 +976,16 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Pbr::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Pbr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Pbr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_policy != nullptr)
     {
-        children["service-policy"] = service_policy;
+        _children["service-policy"] = service_policy;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1054,16 +1054,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Pbr::
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1198,7 +1198,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6N
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ra-interval")
     {
@@ -1239,31 +1239,31 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ra_interval != nullptr)
     {
-        children["ra-interval"] = ra_interval;
+        _children["ra-interval"] = ra_interval;
     }
 
     if(framed_prefix != nullptr)
     {
-        children["framed-prefix"] = framed_prefix;
+        _children["framed-prefix"] = framed_prefix;
     }
 
     if(duplicate_address_detection != nullptr)
     {
-        children["duplicate-address-detection"] = duplicate_address_detection;
+        _children["duplicate-address-detection"] = duplicate_address_detection;
     }
 
     if(ra_initial != nullptr)
     {
-        children["ra-initial"] = ra_initial;
+        _children["ra-initial"] = ra_initial;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1466,16 +1466,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6N
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1558,16 +1558,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6N
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1646,16 +1646,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6N
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1728,16 +1728,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6N
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1816,7 +1816,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Igmp:
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default-vrf")
     {
@@ -1830,16 +1830,16 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Igmp::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Igmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Igmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_vrf != nullptr)
     {
-        children["default-vrf"] = default_vrf;
+        _children["default-vrf"] = default_vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1922,7 +1922,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Igmp:
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "explicit-tracking")
     {
@@ -1936,16 +1936,16 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2068,16 +2068,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Igmp:
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2168,16 +2168,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv4N
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2280,7 +2280,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv4P
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "outbound")
     {
@@ -2303,21 +2303,21 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(outbound != nullptr)
     {
-        children["outbound"] = outbound;
+        _children["outbound"] = outbound;
     }
 
     if(inbound != nullptr)
     {
-        children["inbound"] = inbound;
+        _children["inbound"] = inbound;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2388,16 +2388,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv4P
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2508,16 +2508,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv4P
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2620,7 +2620,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6P
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inbound")
     {
@@ -2643,21 +2643,21 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inbound != nullptr)
     {
-        children["inbound"] = inbound;
+        _children["inbound"] = inbound;
     }
 
     if(outbound != nullptr)
     {
-        children["outbound"] = outbound;
+        _children["outbound"] = outbound;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2724,16 +2724,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6P
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2830,16 +2830,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6P
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2941,7 +2941,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6N
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addresses")
     {
@@ -2955,16 +2955,16 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addresses != nullptr)
     {
-        children["addresses"] = addresses;
+        _children["addresses"] = addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3053,7 +3053,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6N
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto-configuration")
     {
@@ -3067,16 +3067,16 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_configuration != nullptr)
     {
-        children["auto-configuration"] = auto_configuration;
+        _children["auto-configuration"] = auto_configuration;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3135,16 +3135,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv6N
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3225,7 +3225,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fsm")
     {
@@ -3266,31 +3266,31 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fsm != nullptr)
     {
-        children["fsm"] = fsm;
+        _children["fsm"] = fsm;
     }
 
     if(lcp != nullptr)
     {
-        children["lcp"] = lcp;
+        _children["lcp"] = lcp;
     }
 
     if(ipv6cp != nullptr)
     {
-        children["ipv6cp"] = ipv6cp;
+        _children["ipv6cp"] = ipv6cp;
     }
 
     if(ipcp != nullptr)
     {
-        children["ipcp"] = ipcp;
+        _children["ipcp"] = ipcp;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3361,16 +3361,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3498,7 +3498,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "absolute-timeout")
     {
@@ -3539,31 +3539,31 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(absolute_timeout != nullptr)
     {
-        children["absolute-timeout"] = absolute_timeout;
+        _children["absolute-timeout"] = absolute_timeout;
     }
 
     if(delay != nullptr)
     {
-        children["delay"] = delay;
+        _children["delay"] = delay;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(keepalive != nullptr)
     {
-        children["keepalive"] = keepalive;
+        _children["keepalive"] = keepalive;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3666,16 +3666,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3758,16 +3758,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3867,7 +3867,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "methods")
     {
@@ -3881,16 +3881,16 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentica
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(methods != nullptr)
     {
-        children["methods"] = methods;
+        _children["methods"] = methods;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4010,16 +4010,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4094,16 +4094,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4204,16 +4204,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6cp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6cp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6cp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6cp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6cp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4337,7 +4337,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "wins")
     {
@@ -4369,26 +4369,26 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(wins != nullptr)
     {
-        children["wins"] = wins;
+        _children["wins"] = wins;
     }
 
     if(dns != nullptr)
     {
-        children["dns"] = dns;
+        _children["dns"] = dns;
     }
 
     if(peer_address != nullptr)
     {
-        children["peer-address"] = peer_address;
+        _children["peer-address"] = peer_address;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4487,7 +4487,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "wins-addresses")
     {
@@ -4501,16 +4501,16 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(wins_addresses != nullptr)
     {
-        children["wins-addresses"] = wins_addresses;
+        _children["wins-addresses"] = wins_addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4573,16 +4573,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4661,7 +4661,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dns-addresses")
     {
@@ -4675,16 +4675,16 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dns_addresses != nullptr)
     {
-        children["dns-addresses"] = dns_addresses;
+        _children["dns-addresses"] = dns_addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4747,16 +4747,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4839,16 +4839,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::PppTe
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4944,7 +4944,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accou
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idle-timeout")
     {
@@ -4976,26 +4976,26 @@ std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Accounting::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(idle_timeout != nullptr)
     {
-        children["idle-timeout"] = idle_timeout;
+        _children["idle-timeout"] = idle_timeout;
     }
 
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(service_accounting != nullptr)
     {
-        children["service-accounting"] = service_accounting;
+        _children["service-accounting"] = service_accounting;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5082,16 +5082,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accou
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5192,16 +5192,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accou
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5304,16 +5304,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accou
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5407,33 +5407,33 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::g
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-subscriber")
     {
-        auto c = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber>();
-        c->parent = this;
-        ip_subscriber.append(c);
-        return c;
+        auto ent_ = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber>();
+        ent_->parent = this;
+        ip_subscriber.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_subscriber.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_subscriber.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5545,7 +5545,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6")
     {
@@ -5640,61 +5640,61 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dhcpv6 != nullptr)
     {
-        children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
+        _children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
     }
 
     if(pbr != nullptr)
     {
-        children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
+        _children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
     }
 
     if(ipv6_neighbor != nullptr)
     {
-        children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
+        _children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
     if(igmp != nullptr)
     {
-        children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
+        _children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
     }
 
     if(dhcpd != nullptr)
     {
-        children["Cisco-IOS-XR-ipv4-dhcpd-subscriber-cfg:dhcpd"] = dhcpd;
+        _children["Cisco-IOS-XR-ipv4-dhcpd-subscriber-cfg:dhcpd"] = dhcpd;
     }
 
     if(ipv4_network != nullptr)
     {
-        children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
+        _children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
     }
 
     if(ipv4_packet_filter != nullptr)
     {
-        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
+        _children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
     }
 
     if(ipv6_packet_filter != nullptr)
     {
-        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
+        _children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
     }
 
     if(ipv6_network != nullptr)
     {
-        children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
+        _children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
     }
 
     if(accounting != nullptr)
     {
-        children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
+        _children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5805,7 +5805,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delegated-prefix")
     {
@@ -5819,16 +5819,16 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delegated_prefix != nullptr)
     {
-        children["delegated-prefix"] = delegated_prefix;
+        _children["delegated-prefix"] = delegated_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5971,16 +5971,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6064,7 +6064,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy")
     {
@@ -6078,16 +6078,16 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_policy != nullptr)
     {
-        children["service-policy"] = service_policy;
+        _children["service-policy"] = service_policy;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6156,16 +6156,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6300,7 +6300,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ra-interval")
     {
@@ -6341,31 +6341,31 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighb
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ra_interval != nullptr)
     {
-        children["ra-interval"] = ra_interval;
+        _children["ra-interval"] = ra_interval;
     }
 
     if(framed_prefix != nullptr)
     {
-        children["framed-prefix"] = framed_prefix;
+        _children["framed-prefix"] = framed_prefix;
     }
 
     if(duplicate_address_detection != nullptr)
     {
-        children["duplicate-address-detection"] = duplicate_address_detection;
+        _children["duplicate-address-detection"] = duplicate_address_detection;
     }
 
     if(ra_initial != nullptr)
     {
-        children["ra-initial"] = ra_initial;
+        _children["ra-initial"] = ra_initial;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6568,16 +6568,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6660,16 +6660,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6748,16 +6748,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6830,16 +6830,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6918,7 +6918,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default-vrf")
     {
@@ -6932,16 +6932,16 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_vrf != nullptr)
     {
-        children["default-vrf"] = default_vrf;
+        _children["default-vrf"] = default_vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7024,7 +7024,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "explicit-tracking")
     {
@@ -7038,16 +7038,16 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::Defa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7170,16 +7170,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7274,16 +7274,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7404,16 +7404,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7516,7 +7516,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "outbound")
     {
@@ -7539,21 +7539,21 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Packet
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(outbound != nullptr)
     {
-        children["outbound"] = outbound;
+        _children["outbound"] = outbound;
     }
 
     if(inbound != nullptr)
     {
-        children["inbound"] = inbound;
+        _children["inbound"] = inbound;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7624,16 +7624,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7744,16 +7744,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7856,7 +7856,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inbound")
     {
@@ -7879,21 +7879,21 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Packet
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inbound != nullptr)
     {
-        children["inbound"] = inbound;
+        _children["inbound"] = inbound;
     }
 
     if(outbound != nullptr)
     {
-        children["outbound"] = outbound;
+        _children["outbound"] = outbound;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7960,16 +7960,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8066,16 +8066,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8177,7 +8177,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addresses")
     {
@@ -8191,16 +8191,16 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Networ
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addresses != nullptr)
     {
-        children["addresses"] = addresses;
+        _children["addresses"] = addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8289,7 +8289,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto-configuration")
     {
@@ -8303,16 +8303,16 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Networ
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_configuration != nullptr)
     {
-        children["auto-configuration"] = auto_configuration;
+        _children["auto-configuration"] = auto_configuration;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8371,16 +8371,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8466,7 +8466,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-accounting")
     {
@@ -8498,26 +8498,26 @@ std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_accounting != nullptr)
     {
-        children["service-accounting"] = service_accounting;
+        _children["service-accounting"] = service_accounting;
     }
 
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(idle_timeout != nullptr)
     {
-        children["idle-timeout"] = idle_timeout;
+        _children["idle-timeout"] = idle_timeout;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8600,16 +8600,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8700,16 +8700,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8816,16 +8816,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8929,33 +8929,33 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subscriber-service")
     {
-        auto c = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService>();
-        c->parent = this;
-        subscriber_service.append(c);
-        return c;
+        auto ent_ = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService>();
+        ent_->parent = this;
+        subscriber_service.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subscriber_service.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subscriber_service.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9055,7 +9055,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-pbr-subscriber-cfg:pbr")
     {
@@ -9123,46 +9123,46 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbr != nullptr)
     {
-        children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
+        _children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
     }
 
     if(ipv6_neighbor != nullptr)
     {
-        children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
+        _children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
     if(ipv4_network != nullptr)
     {
-        children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
+        _children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
     }
 
     if(ipv4_packet_filter != nullptr)
     {
-        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
+        _children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter"] = ipv4_packet_filter;
     }
 
     if(ipv6_packet_filter != nullptr)
     {
-        children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
+        _children["Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv6-packet-filter"] = ipv6_packet_filter;
     }
 
     if(ipv6_network != nullptr)
     {
-        children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
+        _children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
     }
 
     if(accounting != nullptr)
     {
-        children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
+        _children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9246,7 +9246,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy")
     {
@@ -9260,16 +9260,16 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_policy != nullptr)
     {
-        children["service-policy"] = service_policy;
+        _children["service-policy"] = service_policy;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9338,16 +9338,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9482,7 +9482,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ra-interval")
     {
@@ -9523,31 +9523,31 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ra_interval != nullptr)
     {
-        children["ra-interval"] = ra_interval;
+        _children["ra-interval"] = ra_interval;
     }
 
     if(framed_prefix != nullptr)
     {
-        children["framed-prefix"] = framed_prefix;
+        _children["framed-prefix"] = framed_prefix;
     }
 
     if(duplicate_address_detection != nullptr)
     {
-        children["duplicate-address-detection"] = duplicate_address_detection;
+        _children["duplicate-address-detection"] = duplicate_address_detection;
     }
 
     if(ra_initial != nullptr)
     {
-        children["ra-initial"] = ra_initial;
+        _children["ra-initial"] = ra_initial;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9750,16 +9750,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9842,16 +9842,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9930,16 +9930,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10012,16 +10012,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10112,16 +10112,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10224,7 +10224,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "outbound")
     {
@@ -10247,21 +10247,21 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(outbound != nullptr)
     {
-        children["outbound"] = outbound;
+        _children["outbound"] = outbound;
     }
 
     if(inbound != nullptr)
     {
-        children["inbound"] = inbound;
+        _children["inbound"] = inbound;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10332,16 +10332,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10452,16 +10452,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10564,7 +10564,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inbound")
     {
@@ -10587,21 +10587,21 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inbound != nullptr)
     {
-        children["inbound"] = inbound;
+        _children["inbound"] = inbound;
     }
 
     if(outbound != nullptr)
     {
-        children["outbound"] = outbound;
+        _children["outbound"] = outbound;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10668,16 +10668,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10774,16 +10774,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10885,7 +10885,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addresses")
     {
@@ -10899,16 +10899,16 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addresses != nullptr)
     {
-        children["addresses"] = addresses;
+        _children["addresses"] = addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10997,7 +10997,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto-configuration")
     {
@@ -11011,16 +11011,16 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_configuration != nullptr)
     {
-        children["auto-configuration"] = auto_configuration;
+        _children["auto-configuration"] = auto_configuration;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11079,16 +11079,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11174,7 +11174,7 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-accounting")
     {
@@ -11206,26 +11206,26 @@ std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_accounting != nullptr)
     {
-        children["service-accounting"] = service_accounting;
+        _children["service-accounting"] = service_accounting;
     }
 
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(idle_timeout != nullptr)
     {
-        children["idle-timeout"] = idle_timeout;
+        _children["idle-timeout"] = idle_timeout;
     }
 
-    return children;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11308,16 +11308,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11408,16 +11408,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11524,16 +11524,16 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServic
 
 }
 
-std::shared_ptr<Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

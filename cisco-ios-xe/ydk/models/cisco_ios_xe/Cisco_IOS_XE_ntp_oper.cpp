@@ -51,7 +51,7 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> NtpOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ntp-status-info")
     {
@@ -65,16 +65,16 @@ std::shared_ptr<Entity> NtpOperData::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ntp_status_info != nullptr)
     {
-        children["ntp-status-info"] = ntp_status_info;
+        _children["ntp-status-info"] = ntp_status_info;
     }
 
-    return children;
+    return _children;
 }
 
 void NtpOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -85,7 +85,7 @@ void NtpOperData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> NtpOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> NtpOperData::clone_ptr() const
 {
     return std::make_shared<NtpOperData>();
 }
@@ -205,7 +205,7 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::get_n
 
 }
 
-std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::NtpStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "refid")
     {
@@ -218,34 +218,34 @@ std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::get_child_by_name(const std:
 
     if(child_yang_name == "ntp-associations")
     {
-        auto c = std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations>();
-        c->parent = this;
-        ntp_associations.append(c);
-        return c;
+        auto ent_ = std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations>();
+        ent_->parent = this;
+        ntp_associations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::NtpStatusInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(refid != nullptr)
     {
-        children["refid"] = refid;
+        _children["refid"] = refid;
     }
 
-    count = 0;
-    for (auto c : ntp_associations.entities())
+    count_ = 0;
+    for (auto ent_ : ntp_associations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NtpOperData::NtpStatusInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -394,7 +394,7 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::Refid
 
 }
 
-std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::Refid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::NtpStatusInfo::Refid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "kod-data")
     {
@@ -417,21 +417,21 @@ std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::Refid::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::Refid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::NtpStatusInfo::Refid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(kod_data != nullptr)
     {
-        children["kod-data"] = kod_data;
+        _children["kod-data"] = kod_data;
     }
 
     if(ref_clk_src_data != nullptr)
     {
-        children["ref-clk-src-data"] = ref_clk_src_data;
+        _children["ref-clk-src-data"] = ref_clk_src_data;
     }
 
-    return children;
+    return _children;
 }
 
 void NtpOperData::NtpStatusInfo::Refid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -517,16 +517,16 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::Refid
 
 }
 
-std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::Refid::KodData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::NtpStatusInfo::Refid::KodData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::Refid::KodData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::NtpStatusInfo::Refid::KodData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NtpOperData::NtpStatusInfo::Refid::KodData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -602,16 +602,16 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::Refid
 
 }
 
-std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::Refid::RefClkSrcData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::NtpStatusInfo::Refid::RefClkSrcData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::Refid::RefClkSrcData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::NtpStatusInfo::Refid::RefClkSrcData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NtpOperData::NtpStatusInfo::Refid::RefClkSrcData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -753,7 +753,7 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::NtpAs
 
 }
 
-std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::NtpAssociations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::NtpStatusInfo::NtpAssociations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "refid")
     {
@@ -776,21 +776,21 @@ std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::NtpAssociations::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(refid != nullptr)
     {
-        children["refid"] = refid;
+        _children["refid"] = refid;
     }
 
     if(ntp_address != nullptr)
     {
-        children["ntp-address"] = ntp_address;
+        _children["ntp-address"] = ntp_address;
     }
 
-    return children;
+    return _children;
 }
 
 void NtpOperData::NtpStatusInfo::NtpAssociations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1012,7 +1012,7 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::NtpAs
 
 }
 
-std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "kod-data")
     {
@@ -1035,21 +1035,21 @@ std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(kod_data != nullptr)
     {
-        children["kod-data"] = kod_data;
+        _children["kod-data"] = kod_data;
     }
 
     if(ref_clk_src_data != nullptr)
     {
-        children["ref-clk-src-data"] = ref_clk_src_data;
+        _children["ref-clk-src-data"] = ref_clk_src_data;
     }
 
-    return children;
+    return _children;
 }
 
 void NtpOperData::NtpStatusInfo::NtpAssociations::Refid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1128,16 +1128,16 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::NtpAs
 
 }
 
-std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1206,16 +1206,16 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::NtpAs
 
 }
 
-std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1288,16 +1288,16 @@ std::vector<std::pair<std::string, LeafData> > NtpOperData::NtpStatusInfo::NtpAs
 
 }
 
-std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > SystemMonitoring::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> SystemMonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SystemMonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpu-utilization")
     {
-        auto c = std::make_shared<SystemMonitoring::CpuUtilization>();
-        c->parent = this;
-        cpu_utilization.append(c);
-        return c;
+        auto ent_ = std::make_shared<SystemMonitoring::CpuUtilization>();
+        ent_->parent = this;
+        cpu_utilization.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SystemMonitoring::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpu_utilization.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpu_utilization.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SystemMonitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void SystemMonitoring::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> SystemMonitoring::clone_ptr() const
+std::shared_ptr<ydk::Entity> SystemMonitoring::clone_ptr() const
 {
     return std::make_shared<SystemMonitoring>();
 }
@@ -202,33 +202,33 @@ std::vector<std::pair<std::string, LeafData> > SystemMonitoring::CpuUtilization:
 
 }
 
-std::shared_ptr<Entity> SystemMonitoring::CpuUtilization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SystemMonitoring::CpuUtilization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process-cpu")
     {
-        auto c = std::make_shared<SystemMonitoring::CpuUtilization::ProcessCpu>();
-        c->parent = this;
-        process_cpu.append(c);
-        return c;
+        auto ent_ = std::make_shared<SystemMonitoring::CpuUtilization::ProcessCpu>();
+        ent_->parent = this;
+        process_cpu.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::CpuUtilization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SystemMonitoring::CpuUtilization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process_cpu.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process_cpu.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SystemMonitoring::CpuUtilization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -343,16 +343,16 @@ std::vector<std::pair<std::string, LeafData> > SystemMonitoring::CpuUtilization:
 
 }
 
-std::shared_ptr<Entity> SystemMonitoring::CpuUtilization::ProcessCpu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SystemMonitoring::CpuUtilization::ProcessCpu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::CpuUtilization::ProcessCpu::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SystemMonitoring::CpuUtilization::ProcessCpu::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SystemMonitoring::CpuUtilization::ProcessCpu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

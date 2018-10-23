@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> MobileIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "domains")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> MobileIp::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(domains != nullptr)
     {
-        children["domains"] = domains;
+        _children["domains"] = domains;
     }
 
     if(lmas != nullptr)
     {
-        children["lmas"] = lmas;
+        _children["lmas"] = lmas;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void MobileIp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MobileIp::clone_ptr() const
+std::shared_ptr<ydk::Entity> MobileIp::clone_ptr() const
 {
     return std::make_shared<MobileIp>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> MobileIp::Domains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Domains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "domain")
     {
-        auto c = std::make_shared<MobileIp::Domains::Domain>();
-        c->parent = this;
-        domain.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Domains::Domain>();
+        ent_->parent = this;
+        domain.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Domains::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : domain.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : domain.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Domains::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -306,7 +306,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::get_na
 
 }
 
-std::shared_ptr<Entity> MobileIp::Domains::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Domains::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mags")
     {
@@ -347,31 +347,31 @@ std::shared_ptr<Entity> MobileIp::Domains::Domain::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Domains::Domain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mags != nullptr)
     {
-        children["mags"] = mags;
+        _children["mags"] = mags;
     }
 
     if(nais != nullptr)
     {
-        children["nais"] = nais;
+        _children["nais"] = nais;
     }
 
     if(authenticate_option != nullptr)
     {
-        children["authenticate-option"] = authenticate_option;
+        _children["authenticate-option"] = authenticate_option;
     }
 
     if(lmas != nullptr)
     {
-        children["lmas"] = lmas;
+        _children["lmas"] = lmas;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Domains::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -458,33 +458,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Mags::
 
 }
 
-std::shared_ptr<Entity> MobileIp::Domains::Domain::Mags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Domains::Domain::Mags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mag")
     {
-        auto c = std::make_shared<MobileIp::Domains::Domain::Mags::Mag>();
-        c->parent = this;
-        mag.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Domains::Domain::Mags::Mag>();
+        ent_->parent = this;
+        mag.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Mags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Domains::Domain::Mags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Domains::Domain::Mags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -544,16 +544,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Mags::
 
 }
 
-std::shared_ptr<Entity> MobileIp::Domains::Domain::Mags::Mag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Domains::Domain::Mags::Mag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Mags::Mag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Domains::Domain::Mags::Mag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Domains::Domain::Mags::Mag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -630,33 +630,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Nais::
 
 }
 
-std::shared_ptr<Entity> MobileIp::Domains::Domain::Nais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Domains::Domain::Nais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nai")
     {
-        auto c = std::make_shared<MobileIp::Domains::Domain::Nais::Nai>();
-        c->parent = this;
-        nai.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Domains::Domain::Nais::Nai>();
+        ent_->parent = this;
+        nai.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Nais::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Domains::Domain::Nais::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nai.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nai.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Domains::Domain::Nais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -736,16 +736,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Nais::
 
 }
 
-std::shared_ptr<Entity> MobileIp::Domains::Domain::Nais::Nai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Domains::Domain::Nais::Nai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Nais::Nai::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Domains::Domain::Nais::Nai::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Domains::Domain::Nais::Nai::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -868,16 +868,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Authen
 
 }
 
-std::shared_ptr<Entity> MobileIp::Domains::Domain::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Domains::Domain::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::AuthenticateOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Domains::Domain::AuthenticateOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Domains::Domain::AuthenticateOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -964,33 +964,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Lmas::
 
 }
 
-std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Domains::Domain::Lmas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lma")
     {
-        auto c = std::make_shared<MobileIp::Domains::Domain::Lmas::Lma>();
-        c->parent = this;
-        lma.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Domains::Domain::Lmas::Lma>();
+        ent_->parent = this;
+        lma.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Lmas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Domains::Domain::Lmas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lma.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lma.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Domains::Domain::Lmas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1050,16 +1050,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Domains::Domain::Lmas::
 
 }
 
-std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Domains::Domain::Lmas::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Lmas::Lma::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Domains::Domain::Lmas::Lma::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Domains::Domain::Lmas::Lma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1143,33 +1143,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lma")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma>();
-        c->parent = this;
-        lma.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma>();
+        ent_->parent = this;
+        lma.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lma.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lma.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1346,7 +1346,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::get_name_lea
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding-revocation-attributes")
     {
@@ -1495,91 +1495,91 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(binding_revocation_attributes != nullptr)
     {
-        children["binding-revocation-attributes"] = binding_revocation_attributes;
+        _children["binding-revocation-attributes"] = binding_revocation_attributes;
     }
 
     if(rat_attributes != nullptr)
     {
-        children["rat-attributes"] = rat_attributes;
+        _children["rat-attributes"] = rat_attributes;
     }
 
     if(heart_beat_attributes != nullptr)
     {
-        children["heart-beat-attributes"] = heart_beat_attributes;
+        _children["heart-beat-attributes"] = heart_beat_attributes;
     }
 
     if(lmaipv6_addresses != nullptr)
     {
-        children["lmaipv6-addresses"] = lmaipv6_addresses;
+        _children["lmaipv6-addresses"] = lmaipv6_addresses;
     }
 
     if(hnp != nullptr)
     {
-        children["hnp"] = hnp;
+        _children["hnp"] = hnp;
     }
 
     if(redistribute != nullptr)
     {
-        children["redistribute"] = redistribute;
+        _children["redistribute"] = redistribute;
     }
 
     if(aaa != nullptr)
     {
-        children["aaa"] = aaa;
+        _children["aaa"] = aaa;
     }
 
     if(dscp != nullptr)
     {
-        children["dscp"] = dscp;
+        _children["dscp"] = dscp;
     }
 
     if(lmaipv4_addresses != nullptr)
     {
-        children["lmaipv4-addresses"] = lmaipv4_addresses;
+        _children["lmaipv4-addresses"] = lmaipv4_addresses;
     }
 
     if(roles != nullptr)
     {
-        children["roles"] = roles;
+        _children["roles"] = roles;
     }
 
     if(binding_attributes != nullptr)
     {
-        children["binding-attributes"] = binding_attributes;
+        _children["binding-attributes"] = binding_attributes;
     }
 
     if(mags != nullptr)
     {
-        children["mags"] = mags;
+        _children["mags"] = mags;
     }
 
     if(tunnel_attributes != nullptr)
     {
-        children["tunnel-attributes"] = tunnel_attributes;
+        _children["tunnel-attributes"] = tunnel_attributes;
     }
 
     if(services != nullptr)
     {
-        children["services"] = services;
+        _children["services"] = services;
     }
 
     if(networks != nullptr)
     {
-        children["networks"] = networks;
+        _children["networks"] = networks;
     }
 
     if(replay_protection != nullptr)
     {
-        children["replay-protection"] = replay_protection;
+        _children["replay-protection"] = replay_protection;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1763,7 +1763,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::BindingRevoc
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delay")
     {
@@ -1777,16 +1777,16 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delay != nullptr)
     {
-        children["delay"] = delay;
+        _children["delay"] = delay;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::BindingRevocationAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1859,16 +1859,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::BindingRevoc
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1951,16 +1951,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::RatAttribute
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::RatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::RatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::RatAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::RatAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::RatAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2047,16 +2047,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::HeartBeatAtt
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::HeartBeatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::HeartBeatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::HeartBeatAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::HeartBeatAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::HeartBeatAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2153,33 +2153,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Lmaipv6Addre
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lmaipv6-address")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address>();
-        c->parent = this;
-        lmaipv6_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address>();
+        ent_->parent = this;
+        lmaipv6_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lmaipv6_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lmaipv6_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Lmaipv6Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2239,16 +2239,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Lmaipv6Addre
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2317,16 +2317,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Hnp::get_nam
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Hnp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Hnp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Hnp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Hnp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Hnp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2399,16 +2399,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Redistribute
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Redistribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Redistribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Redistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2487,7 +2487,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Aaa::get_nam
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting")
     {
@@ -2501,16 +2501,16 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Aaa::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Aaa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Aaa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2573,16 +2573,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Aaa::Account
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Aaa::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Aaa::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Aaa::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2665,16 +2665,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Dscp::get_na
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Dscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2761,33 +2761,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Lmaipv4Addre
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lmaipv4-address")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address>();
-        c->parent = this;
-        lmaipv4_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address>();
+        ent_->parent = this;
+        lmaipv4_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lmaipv4_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lmaipv4_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Lmaipv4Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2847,16 +2847,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Lmaipv4Addre
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2933,33 +2933,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Roles::get_n
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Roles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "role")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Roles::Role>();
-        c->parent = this;
-        role.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Roles::Role>();
+        ent_->parent = this;
+        role.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Roles::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Roles::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : role.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : role.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Roles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3019,16 +3019,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Roles::Role:
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::Role::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Roles::Role::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Roles::Role::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Roles::Role::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Roles::Role::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3113,16 +3113,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::BindingAttri
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::BindingAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::BindingAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::BindingAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::BindingAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::BindingAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3239,33 +3239,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Mags::get_na
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Mags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mag")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Mags::Mag>();
-        c->parent = this;
-        mag.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Mags::Mag>();
+        ent_->parent = this;
+        mag.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Mags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Mags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Mags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3355,7 +3355,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Mags::Mag::g
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::Mag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Mags::Mag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authenticate-option")
     {
@@ -3378,21 +3378,21 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::Mag::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Mags::Mag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Mags::Mag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authenticate_option != nullptr)
     {
-        children["authenticate-option"] = authenticate_option;
+        _children["authenticate-option"] = authenticate_option;
     }
 
     if(dscp != nullptr)
     {
-        children["dscp"] = dscp;
+        _children["dscp"] = dscp;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Mags::Mag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3515,16 +3515,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Mags::Mag::A
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3607,16 +3607,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Mags::Mag::D
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Mags::Mag::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3699,16 +3699,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::TunnelAttrib
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::TunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::TunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::TunnelAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::TunnelAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::TunnelAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3795,33 +3795,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::ge
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service>();
-        c->parent = this;
-        service.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Services::Service>();
+        ent_->parent = this;
+        service.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3914,7 +3914,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "customers")
     {
@@ -3928,16 +3928,16 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(customers != nullptr)
     {
-        children["customers"] = customers;
+        _children["customers"] = customers;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4084,33 +4084,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "customer")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer>();
-        c->parent = this;
-        customer.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer>();
+        ent_->parent = this;
+        customer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : customer.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : customer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4232,7 +4232,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authenticate-option")
     {
@@ -4291,41 +4291,41 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authenticate_option != nullptr)
     {
-        children["authenticate-option"] = authenticate_option;
+        _children["authenticate-option"] = authenticate_option;
     }
 
     if(heart_beat_attributes != nullptr)
     {
-        children["heart-beat-attributes"] = heart_beat_attributes;
+        _children["heart-beat-attributes"] = heart_beat_attributes;
     }
 
     if(transports != nullptr)
     {
-        children["transports"] = transports;
+        _children["transports"] = transports;
     }
 
     if(network_attributes != nullptr)
     {
-        children["network-attributes"] = network_attributes;
+        _children["network-attributes"] = network_attributes;
     }
 
     if(gre_key != nullptr)
     {
-        children["gre-key"] = gre_key;
+        _children["gre-key"] = gre_key;
     }
 
     if(binding_attributes != nullptr)
     {
-        children["binding-attributes"] = binding_attributes;
+        _children["binding-attributes"] = binding_attributes;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4488,16 +4488,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4584,16 +4584,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4690,33 +4690,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport>();
-        c->parent = this;
-        transport.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport>();
+        ent_->parent = this;
+        transport.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : transport.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : transport.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4784,16 +4784,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4887,7 +4887,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authorizes")
     {
@@ -4901,16 +4901,16 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authorizes != nullptr)
     {
-        children["authorizes"] = authorizes;
+        _children["authorizes"] = authorizes;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4987,33 +4987,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authorize")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize>();
-        c->parent = this;
-        authorize.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize>();
+        ent_->parent = this;
+        authorize.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : authorize.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : authorize.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5078,7 +5078,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pool-attributes")
     {
@@ -5092,16 +5092,16 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pool_attributes != nullptr)
     {
-        children["pool-attributes"] = pool_attributes;
+        _children["pool-attributes"] = pool_attributes;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5174,7 +5174,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mobile-node")
     {
@@ -5197,21 +5197,21 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mobile_node != nullptr)
     {
-        children["mobile-node"] = mobile_node;
+        _children["mobile-node"] = mobile_node;
     }
 
     if(mobile_network != nullptr)
     {
-        children["mobile-network"] = mobile_network;
+        _children["mobile-network"] = mobile_network;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5274,7 +5274,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-pool")
     {
@@ -5297,21 +5297,21 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_pool != nullptr)
     {
-        children["ipv4-pool"] = ipv4_pool;
+        _children["ipv4-pool"] = ipv4_pool;
     }
 
     if(ipv6_pool != nullptr)
     {
-        children["ipv6-pool"] = ipv6_pool;
+        _children["ipv6-pool"] = ipv6_pool;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5374,16 +5374,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5466,16 +5466,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5558,7 +5558,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mripv6-pools")
     {
@@ -5581,21 +5581,21 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mripv6_pools != nullptr)
     {
-        children["mripv6-pools"] = mripv6_pools;
+        _children["mripv6-pools"] = mripv6_pools;
     }
 
     if(mripv4_pools != nullptr)
     {
-        children["mripv4-pools"] = mripv4_pools;
+        _children["mripv4-pools"] = mripv4_pools;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5662,33 +5662,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mripv6-pool")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
-        c->parent = this;
-        mripv6_pool.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
+        ent_->parent = this;
+        mripv6_pool.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mripv6_pool.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mripv6_pool.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5756,16 +5756,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5862,33 +5862,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mripv4-pool")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
-        c->parent = this;
-        mripv4_pool.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
+        ent_->parent = this;
+        mripv4_pool.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mripv4_pool.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mripv4_pool.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5956,16 +5956,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6058,16 +6058,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6146,16 +6146,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Services::Se
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6232,33 +6232,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::ge
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network>();
-        c->parent = this;
-        network.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Networks::Network>();
+        ent_->parent = this;
+        network.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6323,7 +6323,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pool-attributes")
     {
@@ -6337,16 +6337,16 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pool_attributes != nullptr)
     {
-        children["pool-attributes"] = pool_attributes;
+        _children["pool-attributes"] = pool_attributes;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6419,7 +6419,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mobile-node")
     {
@@ -6442,21 +6442,21 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mobile_node != nullptr)
     {
-        children["mobile-node"] = mobile_node;
+        _children["mobile-node"] = mobile_node;
     }
 
     if(mobile_network != nullptr)
     {
-        children["mobile-network"] = mobile_network;
+        _children["mobile-network"] = mobile_network;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6519,7 +6519,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-pool")
     {
@@ -6542,21 +6542,21 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_pool != nullptr)
     {
-        children["ipv4-pool"] = ipv4_pool;
+        _children["ipv4-pool"] = ipv4_pool;
     }
 
     if(ipv6_pool != nullptr)
     {
-        children["ipv6-pool"] = ipv6_pool;
+        _children["ipv6-pool"] = ipv6_pool;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6619,16 +6619,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6711,16 +6711,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6803,7 +6803,7 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mripv6-pools")
     {
@@ -6826,21 +6826,21 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mripv6_pools != nullptr)
     {
-        children["mripv6-pools"] = mripv6_pools;
+        _children["mripv6-pools"] = mripv6_pools;
     }
 
     if(mripv4_pools != nullptr)
     {
-        children["mripv4-pools"] = mripv4_pools;
+        _children["mripv4-pools"] = mripv4_pools;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6907,33 +6907,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mripv6-pool")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
-        c->parent = this;
-        mripv6_pool.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
+        ent_->parent = this;
+        mripv6_pool.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mripv6_pool.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mripv6_pool.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7001,16 +7001,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7107,33 +7107,33 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mripv4-pool")
     {
-        auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
-        c->parent = this;
-        mripv4_pool.append(c);
-        return c;
+        auto ent_ = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
+        ent_->parent = this;
+        mripv4_pool.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mripv4_pool.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mripv4_pool.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7201,16 +7201,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::Networks::Ne
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7299,16 +7299,16 @@ std::vector<std::pair<std::string, LeafData> > MobileIp::Lmas::Lma::ReplayProtec
 
 }
 
-std::shared_ptr<Entity> MobileIp::Lmas::Lma::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MobileIp::Lmas::Lma::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::ReplayProtection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MobileIp::Lmas::Lma::ReplayProtection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MobileIp::Lmas::Lma::ReplayProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

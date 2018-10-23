@@ -80,33 +80,33 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Classifiers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Classifiers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "classifier-entry")
     {
-        auto c = std::make_shared<Classifiers::ClassifierEntry>();
-        c->parent = this;
-        classifier_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Classifiers::ClassifierEntry>();
+        ent_->parent = this;
+        classifier_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Classifiers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : classifier_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : classifier_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Classifiers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -117,7 +117,7 @@ void Classifiers::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Classifiers::clone_ptr() const
+std::shared_ptr<ydk::Entity> Classifiers::clone_ptr() const
 {
     return std::make_shared<Classifiers>();
 }
@@ -218,33 +218,33 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::get
 
 }
 
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Classifiers::ClassifierEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "filter-entry")
     {
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry>();
-        c->parent = this;
-        filter_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Classifiers::ClassifierEntry::FilterEntry>();
+        ent_->parent = this;
+        filter_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Classifiers::ClassifierEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : filter_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : filter_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Classifiers::ClassifierEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -406,118 +406,118 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::Fil
 
 }
 
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Classifiers::ClassifierEntry::FilterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dscp-cfg")
     {
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DscpCfg>();
-        c->parent = this;
-        dscp_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DscpCfg>();
+        ent_->parent = this;
+        dscp_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "source-ip-address-cfg")
     {
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg>();
-        c->parent = this;
-        source_ip_address_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg>();
+        ent_->parent = this;
+        source_ip_address_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "destination-ip-address-cfg")
     {
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg>();
-        c->parent = this;
-        destination_ip_address_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg>();
+        ent_->parent = this;
+        destination_ip_address_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "source-port-cfg")
     {
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg>();
-        c->parent = this;
-        source_port_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg>();
+        ent_->parent = this;
+        source_port_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "destination-port-cfg")
     {
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg>();
-        c->parent = this;
-        destination_port_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg>();
+        ent_->parent = this;
+        destination_port_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "protocol-cfg")
     {
-        auto c = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg>();
-        c->parent = this;
-        protocol_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg>();
+        ent_->parent = this;
+        protocol_cfg.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Classifiers::ClassifierEntry::FilterEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dscp_cfg.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dscp_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : source_ip_address_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : source_ip_address_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : destination_ip_address_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : destination_ip_address_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : source_port_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : source_port_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : destination_port_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : destination_port_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : protocol_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : protocol_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Classifiers::ClassifierEntry::FilterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -602,16 +602,16 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::Fil
 
 }
 
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Classifiers::ClassifierEntry::FilterEntry::DscpCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Classifiers::ClassifierEntry::FilterEntry::DscpCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -691,16 +691,16 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::Fil
 
 }
 
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Classifiers::ClassifierEntry::FilterEntry::SourceIpAddressCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -770,16 +770,16 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::Fil
 
 }
 
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Classifiers::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -854,16 +854,16 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::Fil
 
 }
 
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Classifiers::ClassifierEntry::FilterEntry::SourcePortCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -948,16 +948,16 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::Fil
 
 }
 
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Classifiers::ClassifierEntry::FilterEntry::DestinationPortCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1042,16 +1042,16 @@ std::vector<std::pair<std::string, LeafData> > Classifiers::ClassifierEntry::Fil
 
 }
 
-std::shared_ptr<Entity> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

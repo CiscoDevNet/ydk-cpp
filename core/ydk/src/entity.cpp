@@ -101,7 +101,7 @@ bool Entity::operator == (Entity & other) const
     if(!has_data() || !other.has_data())
         return false;
 
-    YLOG_DEBUG("Comparing equality {} and {}", get_segment_path(), other.get_segment_path());
+    YLOG_DEBUG("Comparing equality of '{}' and '{}'", get_segment_path(), other.get_segment_path());
 
     auto const this_children = get_children();
     auto const other_children = other.get_children();
@@ -116,7 +116,7 @@ bool Entity::operator == (Entity & other) const
             {
                 if(*(rit->second) != *(lit->second))
                 {
-                    YLOG_DEBUG("Children not equal {} and {}", rit->first, lit->first);
+                    YLOG_DEBUG("Children are not equal: '{}' and '{}'", rit->first, lit->first);
                     return false;
                 }
             }
@@ -124,7 +124,7 @@ bool Entity::operator == (Entity & other) const
     }
     else
     {
-        YLOG_DEBUG("Entity path not equal {} and {}", yang_name, other.yang_name);
+        YLOG_DEBUG("Entity paths are not equal: '{}' and '{}'", yang_name, other.yang_name);
         return false;
     }
 
@@ -139,7 +139,7 @@ bool Entity::operator != (Entity & other) const
     if(!has_data() && other.has_data())
         return true;
 
-    YLOG_DEBUG("Comparing inequality {} and {}", get_segment_path(), other.get_segment_path());
+    YLOG_DEBUG("Comparing inequality of '{}' and '{}'", get_segment_path(), other.get_segment_path());
 
     auto const & this_children = get_children();
     auto const & other_children = other.get_children();
@@ -161,7 +161,7 @@ bool Entity::operator != (Entity & other) const
     }
     else
     {
-        YLOG_DEBUG("Entity path not equal: {} and {}", yang_name, other.yang_name);
+        YLOG_DEBUG("Entity paths are not equal: '{}' and '{}'", yang_name, other.yang_name);
         return true;
     }
 
@@ -200,7 +200,7 @@ bool EntityPath::operator == (EntityPath & other) const
     ostringstream os1, os2;
     os1<<*this;
     os2<<other;
-    YLOG_DEBUG("Comparing equality {} and {}", os1.str(), os2.str());
+    YLOG_DEBUG("Comparing equality '{}' and '{}'", os1.str(), os2.str());
     return path == other.path && value_paths == other.value_paths;
 }
 
@@ -209,7 +209,7 @@ bool EntityPath::operator == (const EntityPath & other) const
     ostringstream os1, os2;
     os1<<*this;
     os2<<other;
-    YLOG_DEBUG("Comparing const equality {} and {}", os1.str(), os2.str());
+    YLOG_DEBUG("Comparing const equality of '{}' and '{}'", os1.str(), os2.str());
     return path == other.path && value_paths == other.value_paths;
 }
 
@@ -218,7 +218,7 @@ bool EntityPath::operator != (EntityPath & other) const
     ostringstream os1, os2;
     os1<<*this;
     os2<<other;
-    YLOG_DEBUG("Comparing inequality {} and {}", os1.str(), os2.str());
+    YLOG_DEBUG("Comparing inequality of '{}' and '{}'", os1.str(), os2.str());
     return path != other.path || value_paths != other.value_paths;
 }
 
@@ -227,7 +227,7 @@ bool EntityPath::operator != (const EntityPath & other) const
     ostringstream os1, os2;
     os1<<*this;
     os2<<other;
-    YLOG_DEBUG("Comparing const inequality {} and {}", os1.str(), os2.str());
+    YLOG_DEBUG("Comparing const inequality of '{}' and '{}'", os1.str(), os2.str());
     return path != other.path || value_paths != other.value_paths;
 }
 

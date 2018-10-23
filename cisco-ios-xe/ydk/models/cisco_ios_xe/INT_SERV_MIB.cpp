@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> INTSERVMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "intSrvGenObjects")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> INTSERVMIB::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> INTSERVMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(intsrvgenobjects != nullptr)
     {
-        children["intSrvGenObjects"] = intsrvgenobjects;
+        _children["intSrvGenObjects"] = intsrvgenobjects;
     }
 
     if(intsrvifattribtable != nullptr)
     {
-        children["intSrvIfAttribTable"] = intsrvifattribtable;
+        _children["intSrvIfAttribTable"] = intsrvifattribtable;
     }
 
     if(intsrvflowtable != nullptr)
     {
-        children["intSrvFlowTable"] = intsrvflowtable;
+        _children["intSrvFlowTable"] = intsrvflowtable;
     }
 
-    return children;
+    return _children;
 }
 
 void INTSERVMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void INTSERVMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> INTSERVMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> INTSERVMIB::clone_ptr() const
 {
     return std::make_shared<INTSERVMIB>();
 }
@@ -202,16 +202,16 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvGenObjects::get
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::IntSrvGenObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> INTSERVMIB::IntSrvGenObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvGenObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> INTSERVMIB::IntSrvGenObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void INTSERVMIB::IntSrvGenObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -295,33 +295,33 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvIfAttribTable::
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::IntSrvIfAttribTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> INTSERVMIB::IntSrvIfAttribTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "intSrvIfAttribEntry")
     {
-        auto c = std::make_shared<INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry>();
-        c->parent = this;
-        intsrvifattribentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry>();
+        ent_->parent = this;
+        intsrvifattribentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvIfAttribTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> INTSERVMIB::IntSrvIfAttribTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : intsrvifattribentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : intsrvifattribentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void INTSERVMIB::IntSrvIfAttribTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -412,16 +412,16 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvIfAttribTable::
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -565,33 +565,33 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvFlowTable::get_
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::IntSrvFlowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> INTSERVMIB::IntSrvFlowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "intSrvFlowEntry")
     {
-        auto c = std::make_shared<INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry>();
-        c->parent = this;
-        intsrvflowentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry>();
+        ent_->parent = this;
+        intsrvflowentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvFlowTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> INTSERVMIB::IntSrvFlowTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : intsrvflowentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : intsrvflowentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void INTSERVMIB::IntSrvFlowTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -754,16 +754,16 @@ std::vector<std::pair<std::string, LeafData> > INTSERVMIB::IntSrvFlowTable::IntS
 
 }
 
-std::shared_ptr<Entity> INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

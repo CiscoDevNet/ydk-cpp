@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Radius::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Radius::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Radius::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Radius::clone_ptr() const
+std::shared_ptr<ydk::Entity> Radius::clone_ptr() const
 {
     return std::make_shared<Radius>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Radius::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Radius::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -296,7 +296,7 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
@@ -364,46 +364,46 @@ std::shared_ptr<Entity> Radius::Nodes::Node::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(client != nullptr)
     {
-        children["client"] = client;
+        _children["client"] = client;
     }
 
     if(dead_criteria != nullptr)
     {
-        children["dead-criteria"] = dead_criteria;
+        _children["dead-criteria"] = dead_criteria;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(dynamic_authorization_clients != nullptr)
     {
-        children["dynamic-authorization-clients"] = dynamic_authorization_clients;
+        _children["dynamic-authorization-clients"] = dynamic_authorization_clients;
     }
 
     if(server_groups != nullptr)
     {
-        children["server-groups"] = server_groups;
+        _children["server-groups"] = server_groups;
     }
 
     if(dynamic_authorization != nullptr)
     {
-        children["dynamic-authorization"] = dynamic_authorization;
+        _children["dynamic-authorization"] = dynamic_authorization;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -480,16 +480,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Client::get_
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -578,7 +578,7 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::DeadCriteria::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hosts")
     {
@@ -592,16 +592,16 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::DeadCriteria::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hosts != nullptr)
     {
-        children["hosts"] = hosts;
+        _children["hosts"] = hosts;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::DeadCriteria::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -668,33 +668,33 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "host")
     {
-        auto c = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host>();
-        c->parent = this;
-        host.append(c);
-        return c;
+        auto ent_ = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host>();
+        ent_->parent = this;
+        host.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : host.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : host.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::DeadCriteria::Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -770,7 +770,7 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "time")
     {
@@ -793,21 +793,21 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(time != nullptr)
     {
-        children["time"] = time;
+        _children["time"] = time;
     }
 
     if(tries != nullptr)
     {
-        children["tries"] = tries;
+        _children["tries"] = tries;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::DeadCriteria::Hosts::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -900,16 +900,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -992,16 +992,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DeadCriteria
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1088,33 +1088,33 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Authenticati
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication-group")
     {
-        auto c = std::make_shared<Radius::Nodes::Node::Authentication::AuthenticationGroup>();
-        c->parent = this;
-        authentication_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Radius::Nodes::Node::Authentication::AuthenticationGroup>();
+        ent_->parent = this;
+        authentication_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : authentication_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : authentication_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1190,7 +1190,7 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Authenticati
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::AuthenticationGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::Authentication::AuthenticationGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication")
     {
@@ -1204,16 +1204,16 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::AuthenticationGroup
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authentication::AuthenticationGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Authentication::AuthenticationGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::Authentication::AuthenticationGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1380,16 +1380,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Authenticati
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1636,33 +1636,33 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Accounting::
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting-group")
     {
-        auto c = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup>();
-        c->parent = this;
-        accounting_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup>();
+        ent_->parent = this;
+        accounting_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : accounting_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : accounting_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1738,7 +1738,7 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Accounting::
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::Accounting::AccountingGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting")
     {
@@ -1752,16 +1752,16 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::Accounting::AccountingGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1920,16 +1920,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::Accounting::
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2156,33 +2156,33 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DynamicAutho
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DynamicAuthorizationClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::DynamicAuthorizationClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic-author-client")
     {
-        auto c = std::make_shared<Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient>();
-        c->parent = this;
-        dynamic_author_client.append(c);
-        return c;
+        auto ent_ = std::make_shared<Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient>();
+        ent_->parent = this;
+        dynamic_author_client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DynamicAuthorizationClients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::DynamicAuthorizationClients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dynamic_author_client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dynamic_author_client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::DynamicAuthorizationClients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2337,16 +2337,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DynamicAutho
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2663,33 +2663,33 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::ServerGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "server-group")
     {
-        auto c = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup>();
-        c->parent = this;
-        server_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup>();
+        ent_->parent = this;
+        server_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::ServerGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : server_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : server_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::ServerGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2777,33 +2777,33 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "server-group")
     {
-        auto c = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_>();
-        c->parent = this;
-        server_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_>();
+        ent_->parent = this;
+        server_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : server_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : server_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::ServerGroups::ServerGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2949,7 +2949,7 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting")
     {
@@ -2981,26 +2981,26 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(authorization != nullptr)
     {
-        children["authorization"] = authorization;
+        _children["authorization"] = authorization;
     }
 
-    return children;
+    return _children;
 }
 
 void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3189,16 +3189,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3485,16 +3485,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3761,16 +3761,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::ServerGroups
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3921,16 +3921,16 @@ std::vector<std::pair<std::string, LeafData> > Radius::Nodes::Node::DynamicAutho
 
 }
 
-std::shared_ptr<Entity> Radius::Nodes::Node::DynamicAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Radius::Nodes::Node::DynamicAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DynamicAuthorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Radius::Nodes::Node::DynamicAuthorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Radius::Nodes::Node::DynamicAuthorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > FRAMERELAYDTEMIB::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> FRAMERELAYDTEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FRAMERELAYDTEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frameRelayTrapControl")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FRAMERELAYDTEMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(framerelaytrapcontrol != nullptr)
     {
-        children["frameRelayTrapControl"] = framerelaytrapcontrol;
+        _children["frameRelayTrapControl"] = framerelaytrapcontrol;
     }
 
     if(frdlcmitable != nullptr)
     {
-        children["frDlcmiTable"] = frdlcmitable;
+        _children["frDlcmiTable"] = frdlcmitable;
     }
 
     if(frcircuittable != nullptr)
     {
-        children["frCircuitTable"] = frcircuittable;
+        _children["frCircuitTable"] = frcircuittable;
     }
 
     if(frerrtable != nullptr)
     {
-        children["frErrTable"] = frerrtable;
+        _children["frErrTable"] = frerrtable;
     }
 
-    return children;
+    return _children;
 }
 
 void FRAMERELAYDTEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void FRAMERELAYDTEMIB::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> FRAMERELAYDTEMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> FRAMERELAYDTEMIB::clone_ptr() const
 {
     return std::make_shared<FRAMERELAYDTEMIB>();
 }
@@ -224,16 +224,16 @@ std::vector<std::pair<std::string, LeafData> > FRAMERELAYDTEMIB::FrameRelayTrapC
 
 }
 
-std::shared_ptr<Entity> FRAMERELAYDTEMIB::FrameRelayTrapControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FRAMERELAYDTEMIB::FrameRelayTrapControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::FrameRelayTrapControl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FRAMERELAYDTEMIB::FrameRelayTrapControl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FRAMERELAYDTEMIB::FrameRelayTrapControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -327,33 +327,33 @@ std::vector<std::pair<std::string, LeafData> > FRAMERELAYDTEMIB::FrDlcmiTable::g
 
 }
 
-std::shared_ptr<Entity> FRAMERELAYDTEMIB::FrDlcmiTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FRAMERELAYDTEMIB::FrDlcmiTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frDlcmiEntry")
     {
-        auto c = std::make_shared<FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry>();
-        c->parent = this;
-        frdlcmientry.append(c);
-        return c;
+        auto ent_ = std::make_shared<FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry>();
+        ent_->parent = this;
+        frdlcmientry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::FrDlcmiTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FRAMERELAYDTEMIB::FrDlcmiTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : frdlcmientry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frdlcmientry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FRAMERELAYDTEMIB::FrDlcmiTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -464,16 +464,16 @@ std::vector<std::pair<std::string, LeafData> > FRAMERELAYDTEMIB::FrDlcmiTable::F
 
 }
 
-std::shared_ptr<Entity> FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FRAMERELAYDTEMIB::FrDlcmiTable::FrDlcmiEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -667,33 +667,33 @@ std::vector<std::pair<std::string, LeafData> > FRAMERELAYDTEMIB::FrCircuitTable:
 
 }
 
-std::shared_ptr<Entity> FRAMERELAYDTEMIB::FrCircuitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FRAMERELAYDTEMIB::FrCircuitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frCircuitEntry")
     {
-        auto c = std::make_shared<FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry>();
-        c->parent = this;
-        frcircuitentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry>();
+        ent_->parent = this;
+        frcircuitentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::FrCircuitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FRAMERELAYDTEMIB::FrCircuitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : frcircuitentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frcircuitentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FRAMERELAYDTEMIB::FrCircuitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -841,16 +841,16 @@ std::vector<std::pair<std::string, LeafData> > FRAMERELAYDTEMIB::FrCircuitTable:
 
 }
 
-std::shared_ptr<Entity> FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FRAMERELAYDTEMIB::FrCircuitTable::FrCircuitEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1134,33 +1134,33 @@ std::vector<std::pair<std::string, LeafData> > FRAMERELAYDTEMIB::FrErrTable::get
 
 }
 
-std::shared_ptr<Entity> FRAMERELAYDTEMIB::FrErrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FRAMERELAYDTEMIB::FrErrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frErrEntry")
     {
-        auto c = std::make_shared<FRAMERELAYDTEMIB::FrErrTable::FrErrEntry>();
-        c->parent = this;
-        frerrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<FRAMERELAYDTEMIB::FrErrTable::FrErrEntry>();
+        ent_->parent = this;
+        frerrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::FrErrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FRAMERELAYDTEMIB::FrErrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : frerrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frerrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FRAMERELAYDTEMIB::FrErrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1247,16 +1247,16 @@ std::vector<std::pair<std::string, LeafData> > FRAMERELAYDTEMIB::FrErrTable::FrE
 
 }
 
-std::shared_ptr<Entity> FRAMERELAYDTEMIB::FrErrTable::FrErrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FRAMERELAYDTEMIB::FrErrTable::FrErrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::FrErrTable::FrErrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FRAMERELAYDTEMIB::FrErrTable::FrErrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FRAMERELAYDTEMIB::FrErrTable::FrErrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

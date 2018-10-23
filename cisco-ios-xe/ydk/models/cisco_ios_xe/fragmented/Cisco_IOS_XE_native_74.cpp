@@ -52,16 +52,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Snmp::Ifindex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Snmp::Ifindex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Snmp::Ifindex::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Snmp::Ifindex::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Snmp::Ifindex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -139,7 +139,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::BridgeDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::BridgeDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "split-horizon")
     {
@@ -153,16 +153,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Bridg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::BridgeDomain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::BridgeDomain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(split_horizon != nullptr)
     {
-        children["split-horizon"] = split_horizon;
+        _children["split-horizon"] = split_horizon;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::BridgeDomain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -241,16 +241,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::BridgeDomain::SplitHorizon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::BridgeDomain::SplitHorizon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::BridgeDomain::SplitHorizon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::BridgeDomain::SplitHorizon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::BridgeDomain::SplitHorizon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -329,7 +329,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "security")
     {
@@ -342,34 +342,34 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Mac::
 
     if(child_yang_name == "access-group")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE::Service::Instance::Mac::AccessGroup>();
-        c->parent = this;
-        access_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE::Service::Instance::Mac::AccessGroup>();
+        ent_->parent = this;
+        access_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(security != nullptr)
     {
-        children["security"] = security;
+        _children["security"] = security;
     }
 
-    count = 0;
-    for (auto c : access_group.entities())
+    count_ = 0;
+    for (auto ent_ : access_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -433,7 +433,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Mac::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Mac::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "maximum")
     {
@@ -447,16 +447,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Mac::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Mac::Security::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Mac::Security::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(maximum != nullptr)
     {
-        children["maximum"] = maximum;
+        _children["maximum"] = maximum;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Mac::Security::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -525,16 +525,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Mac::Security::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Mac::Security::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Mac::Security::Maximum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Mac::Security::Maximum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Mac::Security::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -612,16 +612,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Mac::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Mac::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Mac::AccessGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Mac::AccessGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Mac::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -729,50 +729,50 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Input>();
-        c->parent = this;
-        input.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Input>();
+        ent_->parent = this;
+        input.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "output")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Output>();
-        c->parent = this;
-        output.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Output>();
+        ent_->parent = this;
+        output.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : input.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : input.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : output.entities())
+    count_ = 0;
+    for (auto ent_ : output.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -832,16 +832,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -911,16 +911,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::ServicePolicy::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -997,7 +997,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "encapsulation")
     {
@@ -1029,26 +1029,26 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(encapsulation != nullptr)
     {
-        children["encapsulation"] = encapsulation;
+        _children["encapsulation"] = encapsulation;
     }
 
     if(mep != nullptr)
     {
-        children["mep"] = mep;
+        _children["mep"] = mep;
     }
 
     if(mip != nullptr)
     {
-        children["mip"] = mip;
+        _children["mip"] = mip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Cfm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1111,7 +1111,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1ad")
     {
@@ -1134,21 +1134,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dot1ad != nullptr)
     {
-        children["dot1ad"] = dot1ad;
+        _children["dot1ad"] = dot1ad;
     }
 
     if(dot1q != nullptr)
     {
-        children["dot1q"] = dot1q;
+        _children["dot1q"] = dot1q;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1215,16 +1215,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1ad::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1ad::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1321,16 +1321,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1q::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1q::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Cfm::Encapsulation::Dot1q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1423,16 +1423,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Mep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Mep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Mep::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Mep::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Cfm::Mep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1511,16 +1511,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Mip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Cfm::Mip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Mip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Cfm::Mip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Cfm::Mip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1597,7 +1597,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "discard")
     {
@@ -1638,31 +1638,31 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::L2pro
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(discard != nullptr)
     {
-        children["discard"] = discard;
+        _children["discard"] = discard;
     }
 
     if(peer != nullptr)
     {
-        children["peer"] = peer;
+        _children["peer"] = peer;
     }
 
     if(forward != nullptr)
     {
-        children["forward"] = forward;
+        _children["forward"] = forward;
     }
 
     if(tunnel != nullptr)
     {
-        children["tunnel"] = tunnel;
+        _children["tunnel"] = tunnel;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::L2protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1732,16 +1732,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::Discard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::Discard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::Discard::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::Discard::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::L2protocol::Discard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1819,16 +1819,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::L2protocol::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1906,16 +1906,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::Forward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::Forward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::Forward::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::Forward::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::L2protocol::Forward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1993,16 +1993,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::L2protocol::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::L2protocol::Tunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::L2protocol::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2098,7 +2098,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup")
     {
@@ -2112,16 +2112,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Xconn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Xconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Xconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(backup != nullptr)
     {
-        children["backup"] = backup;
+        _children["backup"] = backup;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2254,7 +2254,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer")
     {
@@ -2277,21 +2277,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Xconn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer != nullptr)
     {
-        children["peer"] = peer;
+        _children["peer"] = peer;
     }
 
     if(delay != nullptr)
     {
-        children["delay"] = delay;
+        _children["delay"] = delay;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2362,16 +2362,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2474,16 +2474,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Delay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Delay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::Xconnect::Backup::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2562,7 +2562,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "xconnect")
     {
@@ -2576,16 +2576,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Xconn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(xconnect != nullptr)
     {
-        children["xconnect"] = xconnect;
+        _children["xconnect"] = xconnect;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2657,7 +2657,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp")
     {
@@ -2671,16 +2671,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Xconn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp != nullptr)
     {
-        children["udp"] = udp;
+        _children["udp"] = udp;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2769,7 +2769,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port")
     {
@@ -2783,16 +2783,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::Xconn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(port != nullptr)
     {
-        children["port"] = port;
+        _children["port"] = port;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2855,16 +2855,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::Port::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::Port::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Service::Instance::XconnectPwClass::Xconnect::Udp::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2943,7 +2943,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec")
     {
@@ -2957,16 +2957,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsec
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec != nullptr)
     {
-        children["macsec"] = macsec;
+        _children["macsec"] = macsec;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3030,7 +3030,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "replay-protection")
     {
@@ -3044,16 +3044,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsec
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(replay_protection != nullptr)
     {
-        children["replay-protection"] = replay_protection;
+        _children["replay-protection"] = replay_protection;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3122,16 +3122,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::ReplayProtection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::ReplayProtection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::CiscoIOSXEEthernetMacsecOption::Macsec::ReplayProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3213,7 +3213,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "type")
     {
@@ -3227,16 +3227,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(type != nullptr)
     {
-        children["type"] = type;
+        _children["type"] = type;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3333,7 +3333,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::ServicePolicy::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "control")
     {
@@ -3365,26 +3365,26 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::Type::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(control != nullptr)
     {
-        children["control"] = control;
+        _children["control"] = control;
     }
 
     if(performance_monitor != nullptr)
     {
-        children["performance-monitor"] = performance_monitor;
+        _children["performance-monitor"] = performance_monitor;
     }
 
     if(service_chain != nullptr)
     {
-        children["service-chain"] = service_chain;
+        _children["service-chain"] = service_chain;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::ServicePolicy::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3443,16 +3443,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::Type::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::ServicePolicy::Type::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::Control::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::Control::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::ServicePolicy::Type::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3525,16 +3525,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::Type::PerformanceMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::ServicePolicy::Type::PerformanceMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::PerformanceMonitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::PerformanceMonitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::ServicePolicy::Type::PerformanceMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3617,7 +3617,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -3640,21 +3640,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::Type::Ser
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3713,16 +3713,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3791,16 +3791,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::ServicePolicy::Type::ServiceChain::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3869,7 +3869,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qos")
     {
@@ -3883,16 +3883,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Auto::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Auto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Auto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        _children["qos"] = qos;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3960,7 +3960,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Auto::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Auto::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "classify")
     {
@@ -4001,31 +4001,31 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Auto::Qos::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Auto::Qos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Auto::Qos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(classify != nullptr)
     {
-        children["classify"] = classify;
+        _children["classify"] = classify;
     }
 
     if(trust != nullptr)
     {
-        children["trust"] = trust;
+        _children["trust"] = trust;
     }
 
     if(video != nullptr)
     {
-        children["video"] = video;
+        _children["video"] = video;
     }
 
     if(voip != nullptr)
     {
-        children["voip"] = voip;
+        _children["voip"] = voip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Auto::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4084,16 +4084,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Auto::Qos::Classify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Auto::Qos::Classify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Auto::Qos::Classify::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Auto::Qos::Classify::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Auto::Qos::Classify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4166,16 +4166,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Auto::Qos::Trust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Auto::Qos::Trust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Auto::Qos::Trust::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Auto::Qos::Trust::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Auto::Qos::Trust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4262,16 +4262,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Auto::Qos::Video::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Auto::Qos::Video::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Auto::Qos::Video::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Auto::Qos::Video::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Auto::Qos::Video::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4368,16 +4368,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Auto::Qos::Voip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Auto::Qos::Voip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Auto::Qos::Voip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Auto::Qos::Voip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Auto::Qos::Voip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4466,7 +4466,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::D
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Datalink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Datalink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow")
     {
@@ -4480,16 +4480,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Datalink::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Datalink::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Datalink::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow != nullptr)
     {
-        children["flow"] = flow;
+        _children["flow"] = flow;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Datalink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4547,7 +4547,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::D
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Datalink::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Datalink::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "monitor")
     {
@@ -4561,16 +4561,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Datalink::Flow::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Datalink::Flow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Datalink::Flow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(monitor != nullptr)
     {
-        children["monitor"] = monitor;
+        _children["monitor"] = monitor;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Datalink::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4633,16 +4633,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::D
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Datalink::Flow::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Datalink::Flow::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Datalink::Flow::Monitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Datalink::Flow::Monitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Datalink::Flow::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4733,33 +4733,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Energywise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Energywise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "level")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE::Energywise::Level>();
-        c->parent = this;
-        level.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE::Energywise::Level>();
+        ent_->parent = this;
+        level.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Energywise::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Energywise::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : level.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : level.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Energywise::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4834,7 +4834,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Energywise::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Energywise::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "recurrence")
     {
@@ -4848,16 +4848,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Energywise::Level::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Energywise::Level::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Energywise::Level::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(recurrence != nullptr)
     {
-        children["recurrence"] = recurrence;
+        _children["recurrence"] = recurrence;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Energywise::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4934,33 +4934,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Energywise::Level::Recurrence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Energywise::Level::Recurrence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "importance")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance>();
-        c->parent = this;
-        importance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance>();
+        ent_->parent = this;
+        importance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Energywise::Level::Recurrence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Energywise::Level::Recurrence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : importance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : importance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Energywise::Level::Recurrence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5025,7 +5025,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "at")
     {
@@ -5039,16 +5039,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Energywise::Level::Recur
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(at != nullptr)
     {
-        children["at"] = at;
+        _children["at"] = at;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5133,16 +5133,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::At::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::At::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::At::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::At::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Energywise::Level::Recurrence::Importance::At::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5251,7 +5251,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "civic-location-id")
     {
@@ -5265,16 +5265,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Location::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(civic_location_id != nullptr)
     {
-        children["civic-location-id"] = civic_location_id;
+        _children["civic-location-id"] = civic_location_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5340,7 +5340,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Location::CivicLocationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Location::CivicLocationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "host")
     {
@@ -5363,21 +5363,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Location::CivicLocationI
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Location::CivicLocationId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Location::CivicLocationId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
     if(none != nullptr)
     {
-        children["none"] = none;
+        _children["none"] = none;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Location::CivicLocationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5446,16 +5446,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Location::CivicLocationId::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Location::CivicLocationId::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Location::CivicLocationId::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Location::CivicLocationId::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Location::CivicLocationId::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5524,16 +5524,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Location::CivicLocationId::None::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Location::CivicLocationId::None::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Location::CivicLocationId::None::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Location::CivicLocationId::None::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Location::CivicLocationId::None::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5610,33 +5610,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-group")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE::Mac::AccessGroup>();
-        c->parent = this;
-        access_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE::Mac::AccessGroup>();
+        ent_->parent = this;
+        access_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5700,16 +5700,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mac::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mac::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mac::AccessGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mac::AccessGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mac::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5793,7 +5793,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Macro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Macro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto")
     {
@@ -5807,16 +5807,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Macro::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Macro::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Macro::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_ != nullptr)
     {
-        children["auto"] = auto_;
+        _children["auto"] = auto_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Macro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5894,7 +5894,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Macro::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Macro::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port")
     {
@@ -5917,21 +5917,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Macro::Auto::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Macro::Auto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Macro::Auto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(port != nullptr)
     {
-        children["port"] = port;
+        _children["port"] = port;
     }
 
     if(control != nullptr)
     {
-        children["control"] = control;
+        _children["control"] = control;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Macro::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6000,16 +6000,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Macro::Auto::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Macro::Auto::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Macro::Auto::Port::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Macro::Auto::Port::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Macro::Auto::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6078,7 +6078,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Macro::Auto::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Macro::Auto::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "device")
     {
@@ -6092,16 +6092,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Macro::Auto::Control::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Macro::Auto::Control::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Macro::Auto::Control::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(device != nullptr)
     {
-        children["device"] = device;
+        _children["device"] = device;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Macro::Auto::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6160,16 +6160,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Macro::Auto::Control::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Macro::Auto::Control::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Macro::Auto::Control::Device::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Macro::Auto::Control::Device::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Macro::Auto::Control::Device::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6238,16 +6238,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::D
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::DualActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::DualActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::DualActive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::DualActive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::DualActive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6320,16 +6320,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::LoadBalancing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::LoadBalancing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::LoadBalancing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::LoadBalancing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::LoadBalancing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6414,7 +6414,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::V
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy")
     {
@@ -6428,16 +6428,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::VlanRange::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::VlanRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_policy != nullptr)
     {
-        children["service-policy"] = service_policy;
+        _children["service-policy"] = service_policy;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6510,16 +6510,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::V
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::VlanRange::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::VlanRange::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::VlanRange::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::VlanRange::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::VlanRange::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6598,7 +6598,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "virtual")
     {
@@ -6612,16 +6612,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Switch::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Switch::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Switch::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(virtual_ != nullptr)
     {
-        children["virtual"] = virtual_;
+        _children["virtual"] = virtual_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6680,16 +6680,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Switch::Virtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Switch::Virtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Switch::Virtual::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Switch::Virtual::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Switch::Virtual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6758,7 +6758,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::SrrQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::SrrQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bandwidth")
     {
@@ -6772,16 +6772,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::SrrQueue::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SrrQueue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::SrrQueue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bandwidth != nullptr)
     {
-        children["bandwidth"] = bandwidth;
+        _children["bandwidth"] = bandwidth;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::SrrQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6844,7 +6844,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::SrrQueue::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::SrrQueue::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "shape")
     {
@@ -6867,21 +6867,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::SrrQueue::Bandwidth::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SrrQueue::Bandwidth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::SrrQueue::Bandwidth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(shape != nullptr)
     {
-        children["shape"] = shape;
+        _children["shape"] = shape;
     }
 
     if(share != nullptr)
     {
-        children["share"] = share;
+        _children["share"] = share;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::SrrQueue::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6952,16 +6952,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::SrrQueue::Bandwidth::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7072,16 +7072,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::SrrQueue::Bandwidth::Share::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7180,7 +7180,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec")
     {
@@ -7194,16 +7194,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec != nullptr)
     {
-        children["macsec"] = macsec;
+        _children["macsec"] = macsec;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7267,7 +7267,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "replay-protection")
     {
@@ -7281,16 +7281,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(replay_protection != nullptr)
     {
-        children["replay-protection"] = replay_protection;
+        _children["replay-protection"] = replay_protection;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7359,16 +7359,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::CiscoIOSXESwitchMacsecOption::Macsec::ReplayProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7441,7 +7441,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifindex")
     {
@@ -7464,21 +7464,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Snmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Snmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ifindex != nullptr)
     {
-        children["ifindex"] = ifindex;
+        _children["ifindex"] = ifindex;
     }
 
     if(trap != nullptr)
     {
-        children["trap"] = trap;
+        _children["trap"] = trap;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7541,16 +7541,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::Ifindex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Snmp::Ifindex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Snmp::Ifindex::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Snmp::Ifindex::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Snmp::Ifindex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7634,7 +7634,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::Trap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Snmp::Trap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-status-capas")
     {
@@ -7648,16 +7648,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::Trap::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Snmp::Trap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Snmp::Trap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(link_status_capas != nullptr)
     {
-        children["link-status-capas"] = link_status_capas;
+        _children["link-status-capas"] = link_status_capas;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Snmp::Trap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7726,7 +7726,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-status")
     {
@@ -7740,16 +7740,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(link_status != nullptr)
     {
-        children["link-status"] = link_status;
+        _children["link-status"] = link_status;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7808,7 +7808,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "permit")
     {
@@ -7822,16 +7822,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(permit != nullptr)
     {
-        children["permit"] = permit;
+        _children["permit"] = permit;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7890,16 +7890,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::S
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7972,7 +7972,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Crypto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Crypto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map")
     {
@@ -7995,21 +7995,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Crypto::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Crypto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Crypto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map != nullptr)
     {
-        children["map"] = map;
+        _children["map"] = map;
     }
 
     if(ipsec != nullptr)
     {
-        children["ipsec"] = ipsec;
+        _children["ipsec"] = ipsec;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Crypto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8076,16 +8076,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Crypto::Map::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Crypto::Map::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Crypto::Map::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Crypto::Map::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Crypto::Map::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8178,16 +8178,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Crypto::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Crypto::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Crypto::Ipsec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Crypto::Ipsec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Crypto::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8270,7 +8270,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mka::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mka::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy")
     {
@@ -8293,21 +8293,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Mka::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mka::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mka::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policy != nullptr)
     {
-        children["policy"] = policy;
+        _children["policy"] = policy;
     }
 
     if(pre_shared_key != nullptr)
     {
-        children["pre-shared-key"] = pre_shared_key;
+        _children["pre-shared-key"] = pre_shared_key;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mka::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8366,16 +8366,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mka::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mka::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mka::Policy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mka::Policy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mka::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8444,7 +8444,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mka::PreSharedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mka::PreSharedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-chain")
     {
@@ -8458,16 +8458,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Mka::PreSharedKey::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mka::PreSharedKey::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mka::PreSharedKey::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_chain != nullptr)
     {
-        children["key-chain"] = key_chain;
+        _children["key-chain"] = key_chain;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mka::PreSharedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8526,16 +8526,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mka::PreSharedKey::KeyChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mka::PreSharedKey::KeyChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mka::PreSharedKey::KeyChain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mka::PreSharedKey::KeyChain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mka::PreSharedKey::KeyChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8604,16 +8604,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::EtAnalytics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::EtAnalytics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::EtAnalytics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::EtAnalytics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::EtAnalytics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8682,16 +8682,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::Z
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::ZoneMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::ZoneMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::ZoneMember::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::ZoneMember::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::ZoneMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8760,16 +8760,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::U
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Utd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Utd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Utd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8858,16 +8858,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::X
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Xconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Xconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8994,33 +8994,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Evpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Evpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE::Evpn::EthernetSegment>();
-        c->parent = this;
-        ethernet_segment.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE::Evpn::EthernetSegment>();
+        ent_->parent = this;
+        ethernet_segment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Evpn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Evpn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ethernet_segment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ethernet_segment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Evpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9093,7 +9093,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Evpn::EthernetSegment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Evpn::EthernetSegment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "df-election")
     {
@@ -9116,21 +9116,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Evpn::EthernetSegment::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Evpn::EthernetSegment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Evpn::EthernetSegment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(df_election != nullptr)
     {
-        children["df-election"] = df_election;
+        _children["df-election"] = df_election;
     }
 
     if(redundancy != nullptr)
     {
-        children["redundancy"] = redundancy;
+        _children["redundancy"] = redundancy;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Evpn::EthernetSegment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9209,16 +9209,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Evpn::EthernetSegment::DfElection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Evpn::EthernetSegment::DfElection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Evpn::EthernetSegment::DfElection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Evpn::EthernetSegment::DfElection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Evpn::EthernetSegment::DfElection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9291,16 +9291,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::E
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Evpn::EthernetSegment::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Evpn::EthernetSegment::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Evpn::EthernetSegment::Redundancy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Evpn::EthernetSegment::Redundancy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Evpn::EthernetSegment::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9379,7 +9379,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::F
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::FabricDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::FabricDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "iwan-fabric")
     {
@@ -9393,16 +9393,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::FabricDomain::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::FabricDomain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::FabricDomain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(iwan_fabric != nullptr)
     {
-        children["iwan-fabric"] = iwan_fabric;
+        _children["iwan-fabric"] = iwan_fabric;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::FabricDomain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9469,33 +9469,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::F
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::FabricDomain::IwanFabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::FabricDomain::IwanFabric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "word")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE::FabricDomain::IwanFabric::Word>();
-        c->parent = this;
-        word.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE::FabricDomain::IwanFabric::Word>();
+        ent_->parent = this;
+        word.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::FabricDomain::IwanFabric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::FabricDomain::IwanFabric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : word.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : word.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::FabricDomain::IwanFabric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9559,16 +9559,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::F
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::FabricDomain::IwanFabric::Word::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::FabricDomain::IwanFabric::Word::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::FabricDomain::IwanFabric::Word::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::FabricDomain::IwanFabric::Word::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::FabricDomain::IwanFabric::Word::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9656,7 +9656,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mvrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mvrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "registration")
     {
@@ -9679,21 +9679,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Mvrp::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mvrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mvrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(registration != nullptr)
     {
-        children["registration"] = registration;
+        _children["registration"] = registration;
     }
 
     if(timer != nullptr)
     {
-        children["timer"] = timer;
+        _children["timer"] = timer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mvrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9770,16 +9770,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mvrp::Registration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mvrp::Registration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mvrp::Registration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mvrp::Registration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mvrp::Registration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9878,7 +9878,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mvrp::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mvrp::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "join")
     {
@@ -9910,26 +9910,26 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Mvrp::Timer::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mvrp::Timer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mvrp::Timer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(join != nullptr)
     {
-        children["join"] = join;
+        _children["join"] = join;
     }
 
     if(leave != nullptr)
     {
-        children["leave"] = leave;
+        _children["leave"] = leave;
     }
 
     if(leave_all != nullptr)
     {
-        children["leave-all"] = leave_all;
+        _children["leave-all"] = leave_all;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mvrp::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9998,16 +9998,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mvrp::Timer::Join::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mvrp::Timer::Join::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mvrp::Timer::Join::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mvrp::Timer::Join::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mvrp::Timer::Join::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10076,16 +10076,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mvrp::Timer::Leave::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mvrp::Timer::Leave::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mvrp::Timer::Leave::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mvrp::Timer::Leave::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mvrp::Timer::Leave::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10154,16 +10154,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mvrp::Timer::LeaveAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mvrp::Timer::LeaveAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mvrp::Timer::LeaveAll::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mvrp::Timer::LeaveAll::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mvrp::Timer::LeaveAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10237,7 +10237,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mobility")
     {
@@ -10251,16 +10251,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Lisp::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Lisp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Lisp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mobility != nullptr)
     {
-        children["mobility"] = mobility;
+        _children["mobility"] = mobility;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Lisp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10344,14 +10344,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Lisp::Mobility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Lisp::Mobility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic-eid")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid>();
-        c->parent = this;
-        dynamic_eid.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid>();
+        ent_->parent = this;
+        dynamic_eid.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "discover")
@@ -10375,30 +10375,30 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Lisp::Mobility::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Lisp::Mobility::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Lisp::Mobility::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dynamic_eid.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dynamic_eid.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(discover != nullptr)
     {
-        children["discover"] = discover;
+        _children["discover"] = discover;
     }
 
     if(liveness != nullptr)
     {
-        children["liveness"] = liveness;
+        _children["liveness"] = liveness;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Lisp::Mobility::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10462,7 +10462,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nbr-proxy-reply")
     {
@@ -10476,16 +10476,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Lisp::Mobility::DynamicE
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nbr_proxy_reply != nullptr)
     {
-        children["nbr-proxy-reply"] = nbr_proxy_reply;
+        _children["nbr-proxy-reply"] = nbr_proxy_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10554,16 +10554,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::NbrProxyReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::NbrProxyReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::NbrProxyReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::NbrProxyReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Lisp::Mobility::DynamicEid::NbrProxyReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10632,16 +10632,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Lisp::Mobility::Discover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Lisp::Mobility::Discover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Lisp::Mobility::Discover::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Lisp::Mobility::Discover::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Lisp::Mobility::Discover::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10714,16 +10714,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::L
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Lisp::Mobility::Liveness::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Lisp::Mobility::Liveness::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Lisp::Mobility::Liveness::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Lisp::Mobility::Liveness::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Lisp::Mobility::Liveness::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10802,7 +10802,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::P
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inline")
     {
@@ -10816,16 +10816,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inline_ != nullptr)
     {
-        children["inline"] = inline_;
+        _children["inline"] = inline_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10906,7 +10906,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::P
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::Inline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Power::Inline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto")
     {
@@ -10956,36 +10956,36 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::Inline::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Power::Inline::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Power::Inline::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_ != nullptr)
     {
-        children["auto"] = auto_;
+        _children["auto"] = auto_;
     }
 
     if(four_pair != nullptr)
     {
-        children["four-pair"] = four_pair;
+        _children["four-pair"] = four_pair;
     }
 
     if(police != nullptr)
     {
-        children["police"] = police;
+        _children["police"] = police;
     }
 
     if(port != nullptr)
     {
-        children["port"] = port;
+        _children["port"] = port;
     }
 
     if(static_ != nullptr)
     {
-        children["static"] = static_;
+        _children["static"] = static_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Power::Inline::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11064,16 +11064,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::P
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::Inline::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Power::Inline::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Power::Inline::Auto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Power::Inline::Auto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Power::Inline::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11142,16 +11142,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::P
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::Inline::FourPair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Power::Inline::FourPair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Power::Inline::FourPair::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Power::Inline::FourPair::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Power::Inline::FourPair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11220,7 +11220,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::P
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::Inline::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Power::Inline::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
@@ -11234,16 +11234,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::Inline::Police::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Power::Inline::Police::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Power::Inline::Police::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action != nullptr)
     {
-        children["action"] = action;
+        _children["action"] = action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Power::Inline::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11306,16 +11306,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::P
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::Inline::Police::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Power::Inline::Police::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Power::Inline::Police::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Power::Inline::Police::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Power::Inline::Police::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11402,16 +11402,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::P
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::Inline::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Power::Inline::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Power::Inline::Port::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Power::Inline::Port::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Power::Inline::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11500,16 +11500,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::P
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Power::Inline::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Power::Inline::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Power::Inline::Static::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Power::Inline::Static::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Power::Inline::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11583,7 +11583,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Cdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Cdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv")
     {
@@ -11597,16 +11597,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Cdp::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Cdp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Cdp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tlv != nullptr)
     {
-        children["tlv"] = tlv;
+        _children["tlv"] = tlv;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Cdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11683,7 +11683,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Cdp::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Cdp::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "app")
     {
@@ -11697,16 +11697,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Cdp::Tlv::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Cdp::Tlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Cdp::Tlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(app != nullptr)
     {
-        children["app"] = app;
+        _children["app"] = app;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Cdp::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11789,16 +11789,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::C
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Cdp::Tlv::App::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Cdp::Tlv::App::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Cdp::Tlv::App::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Cdp::Tlv::App::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Cdp::Tlv::App::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11882,7 +11882,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::N
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "broadcast-option")
     {
@@ -11896,16 +11896,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ntp::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ntp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Ntp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(broadcast_option != nullptr)
     {
-        children["broadcast-option"] = broadcast_option;
+        _children["broadcast-option"] = broadcast_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11974,7 +11974,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::N
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Ntp::BroadcastOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Ntp::BroadcastOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "broadcast")
     {
@@ -11988,16 +11988,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ntp::BroadcastOption::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ntp::BroadcastOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Ntp::BroadcastOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(broadcast != nullptr)
     {
-        children["broadcast"] = broadcast;
+        _children["broadcast"] = broadcast;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Ntp::BroadcastOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12056,16 +12056,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::N
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Ntp::BroadcastOption::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12175,7 +12175,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event")
     {
@@ -12216,31 +12216,31 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(event != nullptr)
     {
-        children["event"] = event;
+        _children["event"] = event;
     }
 
     if(order != nullptr)
     {
-        children["order"] = order;
+        _children["order"] = order;
     }
 
     if(priority != nullptr)
     {
-        children["priority"] = priority;
+        _children["priority"] = priority;
     }
 
     if(timer != nullptr)
     {
-        children["timer"] = timer;
+        _children["timer"] = timer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12377,7 +12377,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "server")
     {
@@ -12409,26 +12409,26 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(server != nullptr)
     {
-        children["server"] = server;
+        _children["server"] = server;
     }
 
     if(fail != nullptr)
     {
-        children["fail"] = fail;
+        _children["fail"] = fail;
     }
 
     if(no_response != nullptr)
     {
-        children["no-response"] = no_response;
+        _children["no-response"] = no_response;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12491,7 +12491,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alive")
     {
@@ -12514,21 +12514,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(alive != nullptr)
     {
-        children["alive"] = alive;
+        _children["alive"] = alive;
     }
 
     if(dead != nullptr)
     {
-        children["dead"] = dead;
+        _children["dead"] = dead;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12587,7 +12587,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Alive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Alive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
@@ -12601,16 +12601,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Alive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Alive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action != nullptr)
     {
-        children["action"] = action;
+        _children["action"] = action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Server::Alive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12669,16 +12669,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Alive::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Alive::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Alive::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Alive::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Server::Alive::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12747,7 +12747,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
@@ -12761,16 +12761,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action != nullptr)
     {
-        children["action"] = action;
+        _children["action"] = action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Server::Dead::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12832,7 +12832,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authorize")
     {
@@ -12855,21 +12855,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authorize != nullptr)
     {
-        children["authorize"] = authorize;
+        _children["authorize"] = authorize;
     }
 
     if(reinitialize != nullptr)
     {
-        children["reinitialize"] = reinitialize;
+        _children["reinitialize"] = reinitialize;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12932,16 +12932,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Authorize::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Authorize::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Authorize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13020,16 +13020,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Reinitialize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Reinitialize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Reinitialize::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Reinitialize::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Server::Dead::Action::Reinitialize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13098,7 +13098,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Fail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Fail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
@@ -13112,16 +13112,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Fail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Fail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action != nullptr)
     {
-        children["action"] = action;
+        _children["action"] = action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Fail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13180,7 +13180,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Fail::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Fail::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authorize")
     {
@@ -13194,16 +13194,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Fail::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Fail::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authorize != nullptr)
     {
-        children["authorize"] = authorize;
+        _children["authorize"] = authorize;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Fail::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13262,16 +13262,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::Fail::Action::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::Fail::Action::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::Fail::Action::Authorize::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::Fail::Action::Authorize::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::Fail::Action::Authorize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13340,7 +13340,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::NoResponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::NoResponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
@@ -13354,16 +13354,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::N
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::NoResponse::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::NoResponse::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action != nullptr)
     {
-        children["action"] = action;
+        _children["action"] = action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::NoResponse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13422,7 +13422,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authorize")
     {
@@ -13436,16 +13436,16 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::N
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authorize != nullptr)
     {
-        children["authorize"] = authorize;
+        _children["authorize"] = authorize;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13504,16 +13504,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::Authorize::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::Authorize::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Event::NoResponse::Action::Authorize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13590,16 +13590,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Order::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Order::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Order::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Order::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Order::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13696,16 +13696,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Priority::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Priority::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13803,7 +13803,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reauthenticate")
     {
@@ -13826,21 +13826,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Timer::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Timer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Timer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(reauthenticate != nullptr)
     {
-        children["reauthenticate"] = reauthenticate;
+        _children["reauthenticate"] = reauthenticate;
     }
 
     if(inactivity != nullptr)
     {
-        children["inactivity"] = inactivity;
+        _children["inactivity"] = inactivity;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13913,16 +13913,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Timer::Reauthenticate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Timer::Reauthenticate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Timer::Reauthenticate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Timer::Reauthenticate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Timer::Reauthenticate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14004,7 +14004,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
@@ -14027,21 +14027,21 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Timer::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(value_ != nullptr)
     {
-        children["value"] = value_;
+        _children["value"] = value_;
     }
 
     if(server != nullptr)
     {
-        children["server"] = server;
+        _children["server"] = server;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Timer::Inactivity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14104,16 +14104,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14192,16 +14192,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::A
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Server::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Server::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Authentication::Timer::Inactivity::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14270,16 +14270,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::HundredGigE::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::HundredGigE::Mab::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Mab::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mab::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGigE::Mab::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::HundredGigE::Mab::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> PppoeEa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> PppoeEa::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeEa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void PppoeEa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> PppoeEa::clone_ptr() const
+std::shared_ptr<ydk::Entity> PppoeEa::clone_ptr() const
 {
     return std::make_shared<PppoeEa>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<PppoeEa::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeEa::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeEa::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -276,7 +276,7 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::get_name_le
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parent-interface-ids")
     {
@@ -299,21 +299,21 @@ std::shared_ptr<Entity> PppoeEa::Nodes::Node::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(parent_interface_ids != nullptr)
     {
-        children["parent-interface-ids"] = parent_interface_ids;
+        _children["parent-interface-ids"] = parent_interface_ids;
     }
 
     if(interface_ids != nullptr)
     {
-        children["interface-ids"] = interface_ids;
+        _children["interface-ids"] = interface_ids;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeEa::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -390,33 +390,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::ParentInter
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parent-interface-id")
     {
-        auto c = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId>();
-        c->parent = this;
-        parent_interface_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId>();
+        ent_->parent = this;
+        parent_interface_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : parent_interface_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : parent_interface_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeEa::Nodes::Node::ParentInterfaceIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -489,7 +489,7 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::ParentInter
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srgv-mac")
     {
@@ -503,16 +503,16 @@ std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfac
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(srgv_mac != nullptr)
     {
-        children["srgv-mac"] = srgv_mac;
+        _children["srgv-mac"] = srgv_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -601,16 +601,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::ParentInter
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId::SrgvMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -687,33 +687,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceId
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::Node::InterfaceIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-id")
     {
-        auto c = std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId>();
-        c->parent = this;
-        interface_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeEa::Nodes::Node::InterfaceIds::InterfaceId>();
+        ent_->parent = this;
+        interface_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::Node::InterfaceIds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeEa::Nodes::Node::InterfaceIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -828,7 +828,7 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceId
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-mac")
     {
@@ -860,26 +860,26 @@ std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer_mac != nullptr)
     {
-        children["peer-mac"] = peer_mac;
+        _children["peer-mac"] = peer_mac;
     }
 
     if(local_mac != nullptr)
     {
-        children["local-mac"] = local_mac;
+        _children["local-mac"] = local_mac;
     }
 
     if(srgv_mac != nullptr)
     {
-        children["srgv-mac"] = srgv_mac;
+        _children["srgv-mac"] = srgv_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1026,16 +1026,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceId
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::PeerMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1104,16 +1104,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceId
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::LocalMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1182,16 +1182,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeEa::Nodes::Node::InterfaceId
 
 }
 
-std::shared_ptr<Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeEa::Nodes::Node::InterfaceIds::InterfaceId::SrgvMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

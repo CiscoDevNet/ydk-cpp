@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> LptsPifib_::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void LptsPifib_::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> LptsPifib_::clone_ptr() const
+std::shared_ptr<ydk::Entity> LptsPifib_::clone_ptr() const
 {
     return std::make_shared<LptsPifib_>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,7 +280,7 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::get_name
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "type-values")
     {
@@ -312,26 +312,26 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(type_values != nullptr)
     {
-        children["type-values"] = type_values;
+        _children["type-values"] = type_values;
     }
 
     if(dynamic_flows_stats != nullptr)
     {
-        children["dynamic-flows-stats"] = dynamic_flows_stats;
+        _children["dynamic-flows-stats"] = dynamic_flows_stats;
     }
 
     if(hardware != nullptr)
     {
-        children["Cisco-IOS-XR-platform-pifib-oper:hardware"] = hardware;
+        _children["Cisco-IOS-XR-platform-pifib-oper:hardware"] = hardware;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -408,33 +408,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::TypeValu
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::TypeValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::TypeValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "type-value")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::TypeValues::TypeValue>();
-        c->parent = this;
-        type_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::TypeValues::TypeValue>();
+        ent_->parent = this;
+        type_value.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::TypeValues::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::TypeValues::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : type_value.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : type_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::TypeValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -506,33 +506,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::TypeValu
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::TypeValues::TypeValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::TypeValues::TypeValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entry")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry>();
-        c->parent = this;
-        entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry>();
+        ent_->parent = this;
+        entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::TypeValues::TypeValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::TypeValues::TypeValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::TypeValues::TypeValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -706,16 +706,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::TypeValu
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1076,33 +1076,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::DynamicF
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::DynamicFlowsStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::DynamicFlowsStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow>();
-        c->parent = this;
-        flow.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow>();
+        ent_->parent = this;
+        flow.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::DynamicFlowsStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::DynamicFlowsStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::DynamicFlowsStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1253,16 +1253,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::DynamicF
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1431,7 +1431,7 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usage-entries")
     {
@@ -1490,41 +1490,41 @@ std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(usage_entries != nullptr)
     {
-        children["usage-entries"] = usage_entries;
+        _children["usage-entries"] = usage_entries;
     }
 
     if(police != nullptr)
     {
-        children["police"] = police;
+        _children["police"] = police;
     }
 
     if(static_police != nullptr)
     {
-        children["static-police"] = static_police;
+        _children["static-police"] = static_police;
     }
 
     if(bfd != nullptr)
     {
-        children["bfd"] = bfd;
+        _children["bfd"] = bfd;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(index_entries != nullptr)
     {
-        children["index-entries"] = index_entries;
+        _children["index-entries"] = index_entries;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1591,33 +1591,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::UsageEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::UsageEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usage-entry")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry>();
-        c->parent = this;
-        usage_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry>();
+        ent_->parent = this;
+        usage_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::UsageEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::UsageEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : usage_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : usage_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::UsageEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1689,33 +1689,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usage-info")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo>();
-        c->parent = this;
-        usage_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo>();
+        ent_->parent = this;
+        usage_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : usage_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : usage_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1800,16 +1800,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1926,33 +1926,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "police-info")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo>();
-        c->parent = this;
-        police_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo>();
+        ent_->parent = this;
+        police_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::Police::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::Police::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : police_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : police_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2051,16 +2051,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2237,33 +2237,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::StaticPolice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::StaticPolice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-info")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo>();
-        c->parent = this;
-        static_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo>();
+        ent_->parent = this;
+        static_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::StaticPolice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::StaticPolice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::StaticPolice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2350,16 +2350,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2506,33 +2506,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-entry-info")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo>();
-        c->parent = this;
-        bfd_entry_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo>();
+        ent_->parent = this;
+        bfd_entry_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::Bfd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bfd_entry_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bfd_entry_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2607,16 +2607,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2737,16 +2737,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2853,33 +2853,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::IndexEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::IndexEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "index-entry")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry>();
-        c->parent = this;
-        index_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry>();
+        ent_->parent = this;
+        index_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::IndexEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::IndexEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : index_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : index_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::IndexEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3135,33 +3135,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hw-info")
     {
-        auto c = std::make_shared<LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo>();
-        c->parent = this;
-        hw_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo>();
+        ent_->parent = this;
+        hw_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hw_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hw_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3710,16 +3710,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPifib_::Nodes::Node::Hardware
 
 }
 
-std::shared_ptr<Entity> LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

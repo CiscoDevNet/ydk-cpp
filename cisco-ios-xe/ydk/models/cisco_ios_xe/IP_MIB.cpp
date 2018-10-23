@@ -116,7 +116,7 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -274,96 +274,96 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(iptrafficstats != nullptr)
     {
-        children["ipTrafficStats"] = iptrafficstats;
+        _children["ipTrafficStats"] = iptrafficstats;
     }
 
     if(icmp != nullptr)
     {
-        children["icmp"] = icmp;
+        _children["icmp"] = icmp;
     }
 
     if(ipaddrtable != nullptr)
     {
-        children["ipAddrTable"] = ipaddrtable;
+        _children["ipAddrTable"] = ipaddrtable;
     }
 
     if(ipnettomediatable != nullptr)
     {
-        children["ipNetToMediaTable"] = ipnettomediatable;
+        _children["ipNetToMediaTable"] = ipnettomediatable;
     }
 
     if(ipv4interfacetable != nullptr)
     {
-        children["ipv4InterfaceTable"] = ipv4interfacetable;
+        _children["ipv4InterfaceTable"] = ipv4interfacetable;
     }
 
     if(ipv6interfacetable != nullptr)
     {
-        children["ipv6InterfaceTable"] = ipv6interfacetable;
+        _children["ipv6InterfaceTable"] = ipv6interfacetable;
     }
 
     if(ipsystemstatstable != nullptr)
     {
-        children["ipSystemStatsTable"] = ipsystemstatstable;
+        _children["ipSystemStatsTable"] = ipsystemstatstable;
     }
 
     if(ipifstatstable != nullptr)
     {
-        children["ipIfStatsTable"] = ipifstatstable;
+        _children["ipIfStatsTable"] = ipifstatstable;
     }
 
     if(ipaddressprefixtable != nullptr)
     {
-        children["ipAddressPrefixTable"] = ipaddressprefixtable;
+        _children["ipAddressPrefixTable"] = ipaddressprefixtable;
     }
 
     if(ipaddresstable != nullptr)
     {
-        children["ipAddressTable"] = ipaddresstable;
+        _children["ipAddressTable"] = ipaddresstable;
     }
 
     if(ipnettophysicaltable != nullptr)
     {
-        children["ipNetToPhysicalTable"] = ipnettophysicaltable;
+        _children["ipNetToPhysicalTable"] = ipnettophysicaltable;
     }
 
     if(ipv6scopezoneindextable != nullptr)
     {
-        children["ipv6ScopeZoneIndexTable"] = ipv6scopezoneindextable;
+        _children["ipv6ScopeZoneIndexTable"] = ipv6scopezoneindextable;
     }
 
     if(ipdefaultroutertable != nullptr)
     {
-        children["ipDefaultRouterTable"] = ipdefaultroutertable;
+        _children["ipDefaultRouterTable"] = ipdefaultroutertable;
     }
 
     if(ipv6routeradverttable != nullptr)
     {
-        children["ipv6RouterAdvertTable"] = ipv6routeradverttable;
+        _children["ipv6RouterAdvertTable"] = ipv6routeradverttable;
     }
 
     if(icmpstatstable != nullptr)
     {
-        children["icmpStatsTable"] = icmpstatstable;
+        _children["icmpStatsTable"] = icmpstatstable;
     }
 
     if(icmpmsgstatstable != nullptr)
     {
-        children["icmpMsgStatsTable"] = icmpmsgstatstable;
+        _children["icmpMsgStatsTable"] = icmpmsgstatstable;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -374,7 +374,7 @@ void IPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> IPMIB::clone_ptr() const
 {
     return std::make_shared<IPMIB>();
 }
@@ -554,16 +554,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ip::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -889,16 +889,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpTrafficStats::get_name_l
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpTrafficStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpTrafficStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpTrafficStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpTrafficStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IpTrafficStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1074,16 +1074,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Icmp::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> IPMIB::Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Icmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::Icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1417,33 +1417,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddrTable::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipAddrEntry")
     {
-        auto c = std::make_shared<IPMIB::IpAddrTable::IpAddrEntry>();
-        c->parent = this;
-        ipaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IpAddrTable::IpAddrEntry>();
+        ent_->parent = this;
+        ipaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IpAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1526,16 +1526,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddrTable::IpAddrEntry::
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpAddrTable::IpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpAddrTable::IpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddrTable::IpAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpAddrTable::IpAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IpAddrTable::IpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1659,33 +1659,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpNetToMediaTable::get_nam
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpNetToMediaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpNetToMediaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipNetToMediaEntry")
     {
-        auto c = std::make_shared<IPMIB::IpNetToMediaTable::IpNetToMediaEntry>();
-        c->parent = this;
-        ipnettomediaentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IpNetToMediaTable::IpNetToMediaEntry>();
+        ent_->parent = this;
+        ipnettomediaentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpNetToMediaTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpNetToMediaTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipnettomediaentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipnettomediaentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IpNetToMediaTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1765,16 +1765,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpNetToMediaTable::IpNetTo
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpNetToMediaTable::IpNetToMediaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpNetToMediaTable::IpNetToMediaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpNetToMediaTable::IpNetToMediaEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpNetToMediaTable::IpNetToMediaEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IpNetToMediaTable::IpNetToMediaEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1888,33 +1888,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv4InterfaceTable::get_na
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv4InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Ipv4InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4InterfaceEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry>();
-        c->parent = this;
-        ipv4interfaceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry>();
+        ent_->parent = this;
+        ipv4interfaceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv4InterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Ipv4InterfaceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4interfaceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4interfaceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::Ipv4InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1993,16 +1993,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv4InterfaceTable::Ipv4In
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::Ipv4InterfaceTable::Ipv4InterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2116,33 +2116,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6InterfaceTable::get_na
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Ipv6InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6InterfaceEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry>();
-        c->parent = this;
-        ipv6interfaceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry>();
+        ent_->parent = this;
+        ipv6interfaceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6InterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Ipv6InterfaceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6interfaceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6interfaceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::Ipv6InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2233,16 +2233,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6InterfaceTable::Ipv6In
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::Ipv6InterfaceTable::Ipv6InterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2386,33 +2386,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpSystemStatsTable::get_na
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpSystemStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpSystemStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipSystemStatsEntry")
     {
-        auto c = std::make_shared<IPMIB::IpSystemStatsTable::IpSystemStatsEntry>();
-        c->parent = this;
-        ipsystemstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IpSystemStatsTable::IpSystemStatsEntry>();
+        ent_->parent = this;
+        ipsystemstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpSystemStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpSystemStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipsystemstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipsystemstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IpSystemStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2659,16 +2659,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpSystemStatsTable::IpSyst
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpSystemStatsTable::IpSystemStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpSystemStatsTable::IpSystemStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpSystemStatsTable::IpSystemStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpSystemStatsTable::IpSystemStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IpSystemStatsTable::IpSystemStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3202,33 +3202,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpIfStatsTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpIfStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpIfStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipIfStatsEntry")
     {
-        auto c = std::make_shared<IPMIB::IpIfStatsTable::IpIfStatsEntry>();
-        c->parent = this;
-        ipifstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IpIfStatsTable::IpIfStatsEntry>();
+        ent_->parent = this;
+        ipifstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpIfStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpIfStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipifstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipifstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IpIfStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3476,16 +3476,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpIfStatsTable::IpIfStatsE
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpIfStatsTable::IpIfStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpIfStatsTable::IpIfStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpIfStatsTable::IpIfStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpIfStatsTable::IpIfStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IpIfStatsTable::IpIfStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4019,33 +4019,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddressPrefixTable::get_
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpAddressPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpAddressPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipAddressPrefixEntry")
     {
-        auto c = std::make_shared<IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry>();
-        c->parent = this;
-        ipaddressprefixentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry>();
+        ent_->parent = this;
+        ipaddressprefixentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddressPrefixTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpAddressPrefixTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipaddressprefixentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipaddressprefixentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IpAddressPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4147,16 +4147,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddressPrefixTable::IpAd
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IpAddressPrefixTable::IpAddressPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4320,33 +4320,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddressTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpAddressTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpAddressTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipAddressEntry")
     {
-        auto c = std::make_shared<IPMIB::IpAddressTable::IpAddressEntry>();
-        c->parent = this;
-        ipaddressentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IpAddressTable::IpAddressEntry>();
+        ent_->parent = this;
+        ipaddressentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddressTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpAddressTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipaddressentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipaddressentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IpAddressTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4454,16 +4454,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpAddressTable::IpAddressE
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpAddressTable::IpAddressEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpAddressTable::IpAddressEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpAddressTable::IpAddressEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpAddressTable::IpAddressEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IpAddressTable::IpAddressEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4647,33 +4647,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpNetToPhysicalTable::get_
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpNetToPhysicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpNetToPhysicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipNetToPhysicalEntry")
     {
-        auto c = std::make_shared<IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry>();
-        c->parent = this;
-        ipnettophysicalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry>();
+        ent_->parent = this;
+        ipnettophysicalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpNetToPhysicalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpNetToPhysicalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipnettophysicalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipnettophysicalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IpNetToPhysicalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4770,16 +4770,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpNetToPhysicalTable::IpNe
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IpNetToPhysicalTable::IpNetToPhysicalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4933,33 +4933,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6ScopeZoneIndexTable::g
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6ScopeZoneIndexTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Ipv6ScopeZoneIndexTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6ScopeZoneIndexEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry>();
-        c->parent = this;
-        ipv6scopezoneindexentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry>();
+        ent_->parent = this;
+        ipv6scopezoneindexentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6ScopeZoneIndexTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Ipv6ScopeZoneIndexTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6scopezoneindexentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6scopezoneindexentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::Ipv6ScopeZoneIndexTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5074,16 +5074,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6ScopeZoneIndexTable::I
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::Ipv6ScopeZoneIndexTable::Ipv6ScopeZoneIndexEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5287,33 +5287,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpDefaultRouterTable::get_
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpDefaultRouterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpDefaultRouterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipDefaultRouterEntry")
     {
-        auto c = std::make_shared<IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry>();
-        c->parent = this;
-        ipdefaultrouterentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry>();
+        ent_->parent = this;
+        ipdefaultrouterentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpDefaultRouterTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpDefaultRouterTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipdefaultrouterentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipdefaultrouterentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IpDefaultRouterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5398,16 +5398,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IpDefaultRouterTable::IpDe
 
 }
 
-std::shared_ptr<Entity> IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IpDefaultRouterTable::IpDefaultRouterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5531,33 +5531,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6RouterAdvertTable::get
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6RouterAdvertTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Ipv6RouterAdvertTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6RouterAdvertEntry")
     {
-        auto c = std::make_shared<IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry>();
-        c->parent = this;
-        ipv6routeradvertentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry>();
+        ent_->parent = this;
+        ipv6routeradvertentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6RouterAdvertTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Ipv6RouterAdvertTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6routeradvertentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6routeradvertentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::Ipv6RouterAdvertTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5668,16 +5668,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::Ipv6RouterAdvertTable::Ipv
 
 }
 
-std::shared_ptr<Entity> IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::Ipv6RouterAdvertTable::Ipv6RouterAdvertEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5871,33 +5871,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IcmpStatsTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> IPMIB::IcmpStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IcmpStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmpStatsEntry")
     {
-        auto c = std::make_shared<IPMIB::IcmpStatsTable::IcmpStatsEntry>();
-        c->parent = this;
-        icmpstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IcmpStatsTable::IcmpStatsEntry>();
+        ent_->parent = this;
+        icmpstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IcmpStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IcmpStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : icmpstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : icmpstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IcmpStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5980,16 +5980,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IcmpStatsTable::IcmpStatsE
 
 }
 
-std::shared_ptr<Entity> IPMIB::IcmpStatsTable::IcmpStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IcmpStatsTable::IcmpStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IcmpStatsTable::IcmpStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IcmpStatsTable::IcmpStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IcmpStatsTable::IcmpStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6113,33 +6113,33 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IcmpMsgStatsTable::get_nam
 
 }
 
-std::shared_ptr<Entity> IPMIB::IcmpMsgStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IcmpMsgStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmpMsgStatsEntry")
     {
-        auto c = std::make_shared<IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry>();
-        c->parent = this;
-        icmpmsgstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry>();
+        ent_->parent = this;
+        icmpmsgstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IcmpMsgStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IcmpMsgStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : icmpmsgstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : icmpmsgstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPMIB::IcmpMsgStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6219,16 +6219,16 @@ std::vector<std::pair<std::string, LeafData> > IPMIB::IcmpMsgStatsTable::IcmpMsg
 
 }
 
-std::shared_ptr<Entity> IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

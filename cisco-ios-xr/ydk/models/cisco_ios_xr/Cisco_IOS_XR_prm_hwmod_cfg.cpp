@@ -57,7 +57,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "loadbalancing")
     {
@@ -71,16 +71,16 @@ std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(loadbalancing != nullptr)
     {
-        children["loadbalancing"] = loadbalancing;
+        _children["loadbalancing"] = loadbalancing;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -101,7 +101,7 @@ void HardwareModule::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> HardwareModule::clone_ptr() const
+std::shared_ptr<ydk::Entity> HardwareModule::clone_ptr() const
 {
     return std::make_shared<HardwareModule>();
 }
@@ -181,7 +181,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Loadbalancing::ge
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Loadbalancing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Loadbalancing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp3107")
     {
@@ -195,16 +195,16 @@ std::shared_ptr<Entity> HardwareModule::Loadbalancing::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Loadbalancing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Loadbalancing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bgp3107 != nullptr)
     {
-        children["bgp3107"] = bgp3107;
+        _children["bgp3107"] = bgp3107;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Loadbalancing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -270,7 +270,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Loadbalancing::Bg
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Loadbalancing::Bgp3107::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Loadbalancing::Bgp3107::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ecmp")
     {
@@ -284,16 +284,16 @@ std::shared_ptr<Entity> HardwareModule::Loadbalancing::Bgp3107::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Loadbalancing::Bgp3107::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Loadbalancing::Bgp3107::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ecmp != nullptr)
     {
-        children["ecmp"] = ecmp;
+        _children["ecmp"] = ecmp;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Loadbalancing::Bgp3107::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -359,16 +359,16 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Loadbalancing::Bg
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Loadbalancing::Bgp3107::Ecmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Loadbalancing::Bgp3107::Ecmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Loadbalancing::Bgp3107::Ecmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Loadbalancing::Bgp3107::Ecmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HardwareModule::Loadbalancing::Bgp3107::Ecmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

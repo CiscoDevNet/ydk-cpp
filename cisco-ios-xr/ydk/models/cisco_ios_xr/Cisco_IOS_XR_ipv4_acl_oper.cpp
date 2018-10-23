@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-list-manager")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Ipv4AclAndPrefixList::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_list_manager != nullptr)
     {
-        children["access-list-manager"] = access_list_manager;
+        _children["access-list-manager"] = access_list_manager;
     }
 
     if(oor != nullptr)
     {
-        children["oor"] = oor;
+        _children["oor"] = oor;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Ipv4AclAndPrefixList::set_filter(const std::string & value_path, YFilter yf
 {
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::clone_ptr() const
 {
     return std::make_shared<Ipv4AclAndPrefixList>();
 }
@@ -192,7 +192,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefixes")
     {
@@ -224,26 +224,26 @@ std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefixes != nullptr)
     {
-        children["prefixes"] = prefixes;
+        _children["prefixes"] = prefixes;
     }
 
     if(accesses != nullptr)
     {
-        children["accesses"] = accesses;
+        _children["accesses"] = accesses;
     }
 
     if(usages != nullptr)
     {
-        children["usages"] = usages;
+        _children["usages"] = usages;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -317,33 +317,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix>();
-        c->parent = this;
-        prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix>();
+        ent_->parent = this;
+        prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Prefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Prefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -415,7 +415,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-list-sequences")
     {
@@ -429,16 +429,16 @@ std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_list_sequences != nullptr)
     {
-        children["prefix-list-sequences"] = prefix_list_sequences;
+        _children["prefix-list-sequences"] = prefix_list_sequences;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -515,33 +515,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-list-sequence")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence>();
-        c->parent = this;
-        prefix_list_sequence.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence>();
+        ent_->parent = this;
+        prefix_list_sequence.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix_list_sequence.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix_list_sequence.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -645,16 +645,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -848,33 +848,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access>();
-        c->parent = this;
-        access.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access>();
+        ent_->parent = this;
+        access.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Accesses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -950,7 +950,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-list-sequences")
     {
@@ -973,21 +973,21 @@ std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Acces
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_list_sequences != nullptr)
     {
-        children["access-list-sequences"] = access_list_sequences;
+        _children["access-list-sequences"] = access_list_sequences;
     }
 
     if(object_group != nullptr)
     {
-        children["object-group"] = object_group;
+        _children["object-group"] = object_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1064,33 +1064,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-list-sequence")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence>();
-        c->parent = this;
-        access_list_sequence.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence>();
+        ent_->parent = this;
+        access_list_sequence.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_list_sequence.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_list_sequence.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1401,7 +1401,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hw-next-hop-info")
     {
@@ -1414,51 +1414,51 @@ std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Acces
 
     if(child_yang_name == "next-hop-info")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo>();
-        c->parent = this;
-        next_hop_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo>();
+        ent_->parent = this;
+        next_hop_info.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "udf")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf>();
-        c->parent = this;
-        udf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf>();
+        ent_->parent = this;
+        udf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hw_next_hop_info != nullptr)
     {
-        children["hw-next-hop-info"] = hw_next_hop_info;
+        _children["hw-next-hop-info"] = hw_next_hop_info;
     }
 
-    count = 0;
-    for (auto c : next_hop_info.entities())
+    count_ = 0;
+    for (auto ent_ : next_hop_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : udf.entities())
+    count_ = 0;
+    for (auto ent_ : udf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2095,16 +2095,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2209,16 +2209,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2335,16 +2335,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2441,33 +2441,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "obj-grp-info")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::ObjGrpInfo>();
-        c->parent = this;
-        obj_grp_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::ObjGrpInfo>();
+        ent_->parent = this;
+        obj_grp_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : obj_grp_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : obj_grp_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2530,16 +2530,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::ObjGrpInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::ObjGrpInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::ObjGrpInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::ObjGrpInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Accesses::Access::ObjectGroup::ObjGrpInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2633,33 +2633,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Usages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Usages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usage")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Usages::Usage>();
-        c->parent = this;
-        usage.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::AccessListManager::Usages::Usage>();
+        ent_->parent = this;
+        usage.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Usages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Usages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : usage.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : usage.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Usages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2737,16 +2737,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::AccessListM
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::AccessListManager::Usages::Usage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::AccessListManager::Usages::Usage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::AccessListManager::Usages::Usage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::AccessListManager::Usages::Usage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::AccessListManager::Usages::Usage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2868,7 +2868,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::get_na
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "details")
     {
@@ -2918,36 +2918,36 @@ std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(details != nullptr)
     {
-        children["details"] = details;
+        _children["details"] = details;
     }
 
     if(oor_prefixes != nullptr)
     {
-        children["oor-prefixes"] = oor_prefixes;
+        _children["oor-prefixes"] = oor_prefixes;
     }
 
     if(oor_accesses != nullptr)
     {
-        children["oor-accesses"] = oor_accesses;
+        _children["oor-accesses"] = oor_accesses;
     }
 
     if(access_list_summary != nullptr)
     {
-        children["access-list-summary"] = access_list_summary;
+        _children["access-list-summary"] = access_list_summary;
     }
 
     if(prefix_list_summary != nullptr)
     {
-        children["prefix-list-summary"] = prefix_list_summary;
+        _children["prefix-list-summary"] = prefix_list_summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3041,16 +3041,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::Detail
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::Details::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::Details::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3204,33 +3204,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::OorPre
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::OorPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::OorPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oor-prefix")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::Oor::OorPrefixes::OorPrefix>();
-        c->parent = this;
-        oor_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::Oor::OorPrefixes::OorPrefix>();
+        ent_->parent = this;
+        oor_prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::OorPrefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::OorPrefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : oor_prefix.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oor_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::OorPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3329,16 +3329,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::OorPre
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::OorPrefixes::OorPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3502,33 +3502,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::OorAcc
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::OorAccesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::OorAccesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oor-access")
     {
-        auto c = std::make_shared<Ipv4AclAndPrefixList::Oor::OorAccesses::OorAccess>();
-        c->parent = this;
-        oor_access.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4AclAndPrefixList::Oor::OorAccesses::OorAccess>();
+        ent_->parent = this;
+        oor_access.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::OorAccesses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::OorAccesses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : oor_access.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oor_access.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::OorAccesses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3627,16 +3627,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::OorAcc
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::OorAccesses::OorAccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::OorAccesses::OorAccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::OorAccesses::OorAccess::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::OorAccesses::OorAccess::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::OorAccesses::OorAccess::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3792,7 +3792,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::Access
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::AccessListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::AccessListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "details")
     {
@@ -3806,16 +3806,16 @@ std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::AccessListSummary::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::AccessListSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::AccessListSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(details != nullptr)
     {
-        children["details"] = details;
+        _children["details"] = details;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::AccessListSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3909,16 +3909,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::Access
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::AccessListSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::AccessListSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::AccessListSummary::Details::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::AccessListSummary::Details::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::AccessListSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4064,7 +4064,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::Prefix
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::PrefixListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::PrefixListSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "details")
     {
@@ -4078,16 +4078,16 @@ std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::PrefixListSummary::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::PrefixListSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::PrefixListSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(details != nullptr)
     {
-        children["details"] = details;
+        _children["details"] = details;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::PrefixListSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4181,16 +4181,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4AclAndPrefixList::Oor::Prefix
 
 }
 
-std::shared_ptr<Entity> Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

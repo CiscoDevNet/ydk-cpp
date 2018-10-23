@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Srms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mapping")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> Srms::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mapping != nullptr)
     {
-        children["mapping"] = mapping;
+        _children["mapping"] = mapping;
     }
 
     if(adjacency_sid != nullptr)
     {
-        children["adjacency-sid"] = adjacency_sid;
+        _children["adjacency-sid"] = adjacency_sid;
     }
 
     if(policy != nullptr)
     {
-        children["policy"] = policy;
+        _children["policy"] = policy;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void Srms::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Srms::clone_ptr() const
+std::shared_ptr<ydk::Entity> Srms::clone_ptr() const
 {
     return std::make_shared<Srms>();
 }
@@ -206,7 +206,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Mapping::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Srms::Mapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Mapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mapping-ipv4")
     {
@@ -229,21 +229,21 @@ std::shared_ptr<Entity> Srms::Mapping::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Mapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mapping_ipv4 != nullptr)
     {
-        children["mapping-ipv4"] = mapping_ipv4;
+        _children["mapping-ipv4"] = mapping_ipv4;
     }
 
     if(mapping_ipv6 != nullptr)
     {
-        children["mapping-ipv6"] = mapping_ipv6;
+        _children["mapping-ipv6"] = mapping_ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Mapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -317,33 +317,33 @@ std::vector<std::pair<std::string, LeafData> > Srms::Mapping::MappingIpv4::get_n
 
 }
 
-std::shared_ptr<Entity> Srms::Mapping::MappingIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Mapping::MappingIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mapping-mi")
     {
-        auto c = std::make_shared<Srms::Mapping::MappingIpv4::MappingMi>();
-        c->parent = this;
-        mapping_mi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Srms::Mapping::MappingIpv4::MappingMi>();
+        ent_->parent = this;
+        mapping_mi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Mapping::MappingIpv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mapping_mi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mapping_mi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Mapping::MappingIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -454,7 +454,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Mapping::MappingIpv4::Mappi
 
 }
 
-std::shared_ptr<Entity> Srms::Mapping::MappingIpv4::MappingMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Mapping::MappingIpv4::MappingMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addr")
     {
@@ -468,16 +468,16 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv4::MappingMi::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv4::MappingMi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Mapping::MappingIpv4::MappingMi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addr != nullptr)
     {
-        children["addr"] = addr;
+        _children["addr"] = addr;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Mapping::MappingIpv4::MappingMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -661,16 +661,16 @@ std::vector<std::pair<std::string, LeafData> > Srms::Mapping::MappingIpv4::Mappi
 
 }
 
-std::shared_ptr<Entity> Srms::Mapping::MappingIpv4::MappingMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Mapping::MappingIpv4::MappingMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv4::MappingMi::Addr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Mapping::MappingIpv4::MappingMi::Addr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Srms::Mapping::MappingIpv4::MappingMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -774,33 +774,33 @@ std::vector<std::pair<std::string, LeafData> > Srms::Mapping::MappingIpv6::get_n
 
 }
 
-std::shared_ptr<Entity> Srms::Mapping::MappingIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Mapping::MappingIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mapping-mi")
     {
-        auto c = std::make_shared<Srms::Mapping::MappingIpv6::MappingMi>();
-        c->parent = this;
-        mapping_mi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Srms::Mapping::MappingIpv6::MappingMi>();
+        ent_->parent = this;
+        mapping_mi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Mapping::MappingIpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mapping_mi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mapping_mi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Mapping::MappingIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -911,7 +911,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Mapping::MappingIpv6::Mappi
 
 }
 
-std::shared_ptr<Entity> Srms::Mapping::MappingIpv6::MappingMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Mapping::MappingIpv6::MappingMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addr")
     {
@@ -925,16 +925,16 @@ std::shared_ptr<Entity> Srms::Mapping::MappingIpv6::MappingMi::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv6::MappingMi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Mapping::MappingIpv6::MappingMi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addr != nullptr)
     {
-        children["addr"] = addr;
+        _children["addr"] = addr;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Mapping::MappingIpv6::MappingMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1118,16 +1118,16 @@ std::vector<std::pair<std::string, LeafData> > Srms::Mapping::MappingIpv6::Mappi
 
 }
 
-std::shared_ptr<Entity> Srms::Mapping::MappingIpv6::MappingMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Mapping::MappingIpv6::MappingMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Mapping::MappingIpv6::MappingMi::Addr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Mapping::MappingIpv6::MappingMi::Addr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Srms::Mapping::MappingIpv6::MappingMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1223,7 +1223,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2-adjacency")
     {
@@ -1237,16 +1237,16 @@ std::shared_ptr<Entity> Srms::AdjacencySid::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2_adjacency != nullptr)
     {
-        children["l2-adjacency"] = l2_adjacency;
+        _children["l2-adjacency"] = l2_adjacency;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1312,7 +1312,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -1326,16 +1326,16 @@ std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1409,33 +1409,33 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1507,7 +1507,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address-family")
     {
@@ -1521,16 +1521,16 @@ std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address_family != nullptr)
     {
-        children["address-family"] = address_family;
+        _children["address-family"] = address_family;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1603,7 +1603,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -1626,21 +1626,21 @@ std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1707,33 +1707,33 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid-record")
     {
-        auto c = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord>();
-        c->parent = this;
-        sid_record.append(c);
-        return c;
+        auto ent_ = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord>();
+        ent_->parent = this;
+        sid_record.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sid_record.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sid_record.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1829,7 +1829,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop-address")
     {
@@ -1843,16 +1843,16 @@ std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop_address != nullptr)
     {
-        children["nexthop-address"] = nexthop_address;
+        _children["nexthop-address"] = nexthop_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2009,16 +2009,16 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord::NexthopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2115,33 +2115,33 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid-record")
     {
-        auto c = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord>();
-        c->parent = this;
-        sid_record.append(c);
-        return c;
+        auto ent_ = std::make_shared<Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord>();
+        ent_->parent = this;
+        sid_record.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sid_record.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sid_record.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2237,7 +2237,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop-address")
     {
@@ -2251,16 +2251,16 @@ std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop_address != nullptr)
     {
-        children["nexthop-address"] = nexthop_address;
+        _children["nexthop-address"] = nexthop_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2417,16 +2417,16 @@ std::vector<std::pair<std::string, LeafData> > Srms::AdjacencySid::L2Adjacency::
 
 }
 
-std::shared_ptr<Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord::NexthopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2526,7 +2526,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-ipv4")
     {
@@ -2549,21 +2549,21 @@ std::shared_ptr<Entity> Srms::Policy::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policy_ipv4 != nullptr)
     {
-        children["policy-ipv4"] = policy_ipv4;
+        _children["policy-ipv4"] = policy_ipv4;
     }
 
     if(policy_ipv6 != nullptr)
     {
-        children["policy-ipv6"] = policy_ipv6;
+        _children["policy-ipv6"] = policy_ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2633,7 +2633,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::get_nam
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-ipv4-backup")
     {
@@ -2656,21 +2656,21 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policy_ipv4_backup != nullptr)
     {
-        children["policy-ipv4-backup"] = policy_ipv4_backup;
+        _children["policy-ipv4-backup"] = policy_ipv4_backup;
     }
 
     if(policy_ipv4_active != nullptr)
     {
-        children["policy-ipv4-active"] = policy_ipv4_active;
+        _children["policy-ipv4-active"] = policy_ipv4_active;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2744,33 +2744,33 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-mi")
     {
-        auto c = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi>();
-        c->parent = this;
-        policy_mi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi>();
+        ent_->parent = this;
+        policy_mi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_mi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_mi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv4::PolicyIpv4Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2878,7 +2878,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addr")
     {
@@ -2892,16 +2892,16 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addr != nullptr)
     {
-        children["addr"] = addr;
+        _children["addr"] = addr;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3068,16 +3068,16 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3181,33 +3181,33 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-mi")
     {
-        auto c = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi>();
-        c->parent = this;
-        policy_mi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi>();
+        ent_->parent = this;
+        policy_mi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_mi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_mi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv4::PolicyIpv4Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3315,7 +3315,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addr")
     {
@@ -3329,16 +3329,16 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addr != nullptr)
     {
-        children["addr"] = addr;
+        _children["addr"] = addr;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3505,16 +3505,16 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv4::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3614,7 +3614,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::get_nam
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-ipv6-backup")
     {
@@ -3637,21 +3637,21 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policy_ipv6_backup != nullptr)
     {
-        children["policy-ipv6-backup"] = policy_ipv6_backup;
+        _children["policy-ipv6-backup"] = policy_ipv6_backup;
     }
 
     if(policy_ipv6_active != nullptr)
     {
-        children["policy-ipv6-active"] = policy_ipv6_active;
+        _children["policy-ipv6-active"] = policy_ipv6_active;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3725,33 +3725,33 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-mi")
     {
-        auto c = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi>();
-        c->parent = this;
-        policy_mi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi>();
+        ent_->parent = this;
+        policy_mi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_mi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_mi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv6::PolicyIpv6Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3859,7 +3859,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addr")
     {
@@ -3873,16 +3873,16 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addr != nullptr)
     {
-        children["addr"] = addr;
+        _children["addr"] = addr;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4049,16 +4049,16 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4162,33 +4162,33 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-mi")
     {
-        auto c = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi>();
-        c->parent = this;
-        policy_mi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi>();
+        ent_->parent = this;
+        policy_mi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_mi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_mi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv6::PolicyIpv6Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4296,7 +4296,7 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addr")
     {
@@ -4310,16 +4310,16 @@ std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addr != nullptr)
     {
-        children["addr"] = addr;
+        _children["addr"] = addr;
     }
 
-    return children;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4486,16 +4486,16 @@ std::vector<std::pair<std::string, LeafData> > Srms::Policy::PolicyIpv6::PolicyI
 
 }
 
-std::shared_ptr<Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4584,7 +4584,7 @@ std::vector<std::pair<std::string, LeafData> > Srlb::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Srlb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srlb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srlb-inconsistency")
     {
@@ -4598,16 +4598,16 @@ std::shared_ptr<Entity> Srlb::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srlb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srlb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(srlb_inconsistency != nullptr)
     {
-        children["srlb-inconsistency"] = srlb_inconsistency;
+        _children["srlb-inconsistency"] = srlb_inconsistency;
     }
 
-    return children;
+    return _children;
 }
 
 void Srlb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4618,7 +4618,7 @@ void Srlb::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Srlb::clone_ptr() const
+std::shared_ptr<ydk::Entity> Srlb::clone_ptr() const
 {
     return std::make_shared<Srlb>();
 }
@@ -4702,16 +4702,16 @@ std::vector<std::pair<std::string, LeafData> > Srlb::SrlbInconsistency::get_name
 
 }
 
-std::shared_ptr<Entity> Srlb::SrlbInconsistency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Srlb::SrlbInconsistency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Srlb::SrlbInconsistency::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Srlb::SrlbInconsistency::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Srlb::SrlbInconsistency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

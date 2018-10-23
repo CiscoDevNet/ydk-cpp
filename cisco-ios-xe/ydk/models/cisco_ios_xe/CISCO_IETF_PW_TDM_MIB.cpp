@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwCTDMObjects")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cpwctdmobjects != nullptr)
     {
-        children["cpwCTDMObjects"] = cpwctdmobjects;
+        _children["cpwCTDMObjects"] = cpwctdmobjects;
     }
 
     if(cpwctdmtable != nullptr)
     {
-        children["cpwCTDMTable"] = cpwctdmtable;
+        _children["cpwCTDMTable"] = cpwctdmtable;
     }
 
     if(cpwctdmcfgtable != nullptr)
     {
-        children["cpwCTDMCfgTable"] = cpwctdmcfgtable;
+        _children["cpwCTDMCfgTable"] = cpwctdmcfgtable;
     }
 
     if(cpwctdmperfcurrenttable != nullptr)
     {
-        children["cpwCTDMPerfCurrentTable"] = cpwctdmperfcurrenttable;
+        _children["cpwCTDMPerfCurrentTable"] = cpwctdmperfcurrenttable;
     }
 
     if(cpwctdmperfintervaltable != nullptr)
     {
-        children["cpwCTDMPerfIntervalTable"] = cpwctdmperfintervaltable;
+        _children["cpwCTDMPerfIntervalTable"] = cpwctdmperfintervaltable;
     }
 
     if(cpwctdmperf1dayintervaltable != nullptr)
     {
-        children["cpwCTDMPerf1DayIntervalTable"] = cpwctdmperf1dayintervaltable;
+        _children["cpwCTDMPerf1DayIntervalTable"] = cpwctdmperf1dayintervaltable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void CISCOIETFPWTDMMIB::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIETFPWTDMMIB>();
 }
@@ -256,16 +256,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMObjects
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -349,33 +349,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMTable::
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwCTDMEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry>();
-        c->parent = this;
-        cpwctdmentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry>();
+        ent_->parent = this;
+        cpwctdmentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwctdmentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwctdmentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -486,16 +486,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMTable::
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -683,33 +683,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMCfgTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwCTDMCfgEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry>();
-        c->parent = this;
-        cpwctdmcfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry>();
+        ent_->parent = this;
+        cpwctdmcfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwctdmcfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwctdmcfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -848,16 +848,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMCfgTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1119,33 +1119,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMPerfCur
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwCTDMPerfCurrentEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry>();
-        c->parent = this;
-        cpwctdmperfcurrententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry>();
+        ent_->parent = this;
+        cpwctdmperfcurrententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwctdmperfcurrententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwctdmperfcurrententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1248,16 +1248,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMPerfCur
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1431,33 +1431,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMPerfInt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwCTDMPerfIntervalEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry>();
-        c->parent = this;
-        cpwctdmperfintervalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry>();
+        ent_->parent = this;
+        cpwctdmperfintervalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwctdmperfintervalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwctdmperfintervalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1573,16 +1573,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMPerfInt
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1786,33 +1786,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMPerf1Da
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwCTDMPerf1DayIntervalEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry>();
-        c->parent = this;
-        cpwctdmperf1dayintervalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry>();
+        ent_->parent = this;
+        cpwctdmperf1dayintervalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwctdmperf1dayintervalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwctdmperf1dayintervalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1928,16 +1928,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWTDMMIB::CpwCTDMPerf1Da
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

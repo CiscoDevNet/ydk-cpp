@@ -156,7 +156,7 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocolDir")
     {
@@ -404,146 +404,146 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocoldir != nullptr)
     {
-        children["protocolDir"] = protocoldir;
+        _children["protocolDir"] = protocoldir;
     }
 
     if(addressmap != nullptr)
     {
-        children["addressMap"] = addressmap;
+        _children["addressMap"] = addressmap;
     }
 
     if(probeconfig != nullptr)
     {
-        children["probeConfig"] = probeconfig;
+        _children["probeConfig"] = probeconfig;
     }
 
     if(protocoldirtable != nullptr)
     {
-        children["protocolDirTable"] = protocoldirtable;
+        _children["protocolDirTable"] = protocoldirtable;
     }
 
     if(protocoldistcontroltable != nullptr)
     {
-        children["protocolDistControlTable"] = protocoldistcontroltable;
+        _children["protocolDistControlTable"] = protocoldistcontroltable;
     }
 
     if(protocoldiststatstable != nullptr)
     {
-        children["protocolDistStatsTable"] = protocoldiststatstable;
+        _children["protocolDistStatsTable"] = protocoldiststatstable;
     }
 
     if(addressmapcontroltable != nullptr)
     {
-        children["addressMapControlTable"] = addressmapcontroltable;
+        _children["addressMapControlTable"] = addressmapcontroltable;
     }
 
     if(addressmaptable != nullptr)
     {
-        children["addressMapTable"] = addressmaptable;
+        _children["addressMapTable"] = addressmaptable;
     }
 
     if(hlhostcontroltable != nullptr)
     {
-        children["hlHostControlTable"] = hlhostcontroltable;
+        _children["hlHostControlTable"] = hlhostcontroltable;
     }
 
     if(nlhosttable != nullptr)
     {
-        children["nlHostTable"] = nlhosttable;
+        _children["nlHostTable"] = nlhosttable;
     }
 
     if(hlmatrixcontroltable != nullptr)
     {
-        children["hlMatrixControlTable"] = hlmatrixcontroltable;
+        _children["hlMatrixControlTable"] = hlmatrixcontroltable;
     }
 
     if(nlmatrixsdtable != nullptr)
     {
-        children["nlMatrixSDTable"] = nlmatrixsdtable;
+        _children["nlMatrixSDTable"] = nlmatrixsdtable;
     }
 
     if(nlmatrixdstable != nullptr)
     {
-        children["nlMatrixDSTable"] = nlmatrixdstable;
+        _children["nlMatrixDSTable"] = nlmatrixdstable;
     }
 
     if(nlmatrixtopncontroltable != nullptr)
     {
-        children["nlMatrixTopNControlTable"] = nlmatrixtopncontroltable;
+        _children["nlMatrixTopNControlTable"] = nlmatrixtopncontroltable;
     }
 
     if(nlmatrixtopntable != nullptr)
     {
-        children["nlMatrixTopNTable"] = nlmatrixtopntable;
+        _children["nlMatrixTopNTable"] = nlmatrixtopntable;
     }
 
     if(alhosttable != nullptr)
     {
-        children["alHostTable"] = alhosttable;
+        _children["alHostTable"] = alhosttable;
     }
 
     if(almatrixsdtable != nullptr)
     {
-        children["alMatrixSDTable"] = almatrixsdtable;
+        _children["alMatrixSDTable"] = almatrixsdtable;
     }
 
     if(almatrixdstable != nullptr)
     {
-        children["alMatrixDSTable"] = almatrixdstable;
+        _children["alMatrixDSTable"] = almatrixdstable;
     }
 
     if(almatrixtopncontroltable != nullptr)
     {
-        children["alMatrixTopNControlTable"] = almatrixtopncontroltable;
+        _children["alMatrixTopNControlTable"] = almatrixtopncontroltable;
     }
 
     if(almatrixtopntable != nullptr)
     {
-        children["alMatrixTopNTable"] = almatrixtopntable;
+        _children["alMatrixTopNTable"] = almatrixtopntable;
     }
 
     if(usrhistorycontroltable != nullptr)
     {
-        children["usrHistoryControlTable"] = usrhistorycontroltable;
+        _children["usrHistoryControlTable"] = usrhistorycontroltable;
     }
 
     if(usrhistoryobjecttable != nullptr)
     {
-        children["usrHistoryObjectTable"] = usrhistoryobjecttable;
+        _children["usrHistoryObjectTable"] = usrhistoryobjecttable;
     }
 
     if(usrhistorytable != nullptr)
     {
-        children["usrHistoryTable"] = usrhistorytable;
+        _children["usrHistoryTable"] = usrhistorytable;
     }
 
     if(serialconfigtable != nullptr)
     {
-        children["serialConfigTable"] = serialconfigtable;
+        _children["serialConfigTable"] = serialconfigtable;
     }
 
     if(netconfigtable != nullptr)
     {
-        children["netConfigTable"] = netconfigtable;
+        _children["netConfigTable"] = netconfigtable;
     }
 
     if(trapdesttable != nullptr)
     {
-        children["trapDestTable"] = trapdesttable;
+        _children["trapDestTable"] = trapdesttable;
     }
 
     if(serialconnectiontable != nullptr)
     {
-        children["serialConnectionTable"] = serialconnectiontable;
+        _children["serialConnectionTable"] = serialconnectiontable;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -554,7 +554,7 @@ void RMON2MIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> RMON2MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> RMON2MIB::clone_ptr() const
 {
     return std::make_shared<RMON2MIB>();
 }
@@ -634,16 +634,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDir::get_name_l
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::ProtocolDir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::ProtocolDir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDir::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::ProtocolDir::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::ProtocolDir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -727,16 +727,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMap::get_name_le
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AddressMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AddressMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AddressMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::AddressMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -868,16 +868,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProbeConfig::get_name_l
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::ProbeConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::ProbeConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProbeConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::ProbeConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::ProbeConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1051,33 +1051,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDirTable::get_n
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::ProtocolDirTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::ProtocolDirTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocolDirEntry")
     {
-        auto c = std::make_shared<RMON2MIB::ProtocolDirTable::ProtocolDirEntry>();
-        c->parent = this;
-        protocoldirentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::ProtocolDirTable::ProtocolDirEntry>();
+        ent_->parent = this;
+        protocoldirentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDirTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::ProtocolDirTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : protocoldirentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : protocoldirentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::ProtocolDirTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1181,16 +1181,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDirTable::Proto
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::ProtocolDirTable::ProtocolDirEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::ProtocolDirTable::ProtocolDirEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDirTable::ProtocolDirEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::ProtocolDirTable::ProtocolDirEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::ProtocolDirTable::ProtocolDirEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1364,33 +1364,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDistControlTabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::ProtocolDistControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::ProtocolDistControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocolDistControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry>();
-        c->parent = this;
-        protocoldistcontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry>();
+        ent_->parent = this;
+        protocoldistcontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDistControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::ProtocolDistControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : protocoldistcontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : protocoldistcontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::ProtocolDistControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1477,16 +1477,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDistControlTabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1620,33 +1620,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDistStatsTable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::ProtocolDistStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::ProtocolDistStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocolDistStatsEntry")
     {
-        auto c = std::make_shared<RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry>();
-        c->parent = this;
-        protocoldiststatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry>();
+        ent_->parent = this;
+        protocoldiststatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDistStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::ProtocolDistStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : protocoldiststatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : protocoldiststatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::ProtocolDistStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1726,16 +1726,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDistStatsTable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1849,33 +1849,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMapControlTable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AddressMapControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AddressMapControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addressMapControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::AddressMapControlTable::AddressMapControlEntry>();
-        c->parent = this;
-        addressmapcontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::AddressMapControlTable::AddressMapControlEntry>();
+        ent_->parent = this;
+        addressmapcontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMapControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AddressMapControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : addressmapcontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : addressmapcontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::AddressMapControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1958,16 +1958,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMapControlTable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AddressMapControlTable::AddressMapControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AddressMapControlTable::AddressMapControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMapControlTable::AddressMapControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AddressMapControlTable::AddressMapControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::AddressMapControlTable::AddressMapControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2091,33 +2091,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMapTable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AddressMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AddressMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addressMapEntry")
     {
-        auto c = std::make_shared<RMON2MIB::AddressMapTable::AddressMapEntry>();
-        c->parent = this;
-        addressmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::AddressMapTable::AddressMapEntry>();
+        ent_->parent = this;
+        addressmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AddressMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : addressmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : addressmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::AddressMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2207,16 +2207,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMapTable::Addres
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AddressMapTable::AddressMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AddressMapTable::AddressMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMapTable::AddressMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AddressMapTable::AddressMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::AddressMapTable::AddressMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2350,33 +2350,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::HlHostControlTable::get
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::HlHostControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::HlHostControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hlHostControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::HlHostControlTable::HlHostControlEntry>();
-        c->parent = this;
-        hlhostcontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::HlHostControlTable::HlHostControlEntry>();
+        ent_->parent = this;
+        hlhostcontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::HlHostControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::HlHostControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hlhostcontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hlhostcontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::HlHostControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2487,16 +2487,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::HlHostControlTable::HlH
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::HlHostControlTable::HlHostControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::HlHostControlTable::HlHostControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::HlHostControlTable::HlHostControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::HlHostControlTable::HlHostControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::HlHostControlTable::HlHostControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2690,33 +2690,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlHostTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlHostTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlHostTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlHostEntry")
     {
-        auto c = std::make_shared<RMON2MIB::NlHostTable::NlHostEntry>();
-        c->parent = this;
-        nlhostentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::NlHostTable::NlHostEntry>();
+        ent_->parent = this;
+        nlhostentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlHostTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlHostTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nlhostentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nlhostentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::NlHostTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2822,16 +2822,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlHostTable::NlHostEntr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlHostTable::NlHostEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlHostTable::NlHostEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlHostTable::NlHostEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlHostTable::NlHostEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::NlHostTable::NlHostEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3005,33 +3005,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::HlMatrixControlTable::g
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::HlMatrixControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::HlMatrixControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hlMatrixControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry>();
-        c->parent = this;
-        hlmatrixcontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry>();
+        ent_->parent = this;
+        hlmatrixcontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::HlMatrixControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::HlMatrixControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hlmatrixcontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hlmatrixcontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::HlMatrixControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3142,16 +3142,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::HlMatrixControlTable::H
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3345,33 +3345,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixSDTable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlMatrixSDTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlMatrixSDTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlMatrixSDEntry")
     {
-        auto c = std::make_shared<RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry>();
-        c->parent = this;
-        nlmatrixsdentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry>();
+        ent_->parent = this;
+        nlmatrixsdentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixSDTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlMatrixSDTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nlmatrixsdentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nlmatrixsdentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::NlMatrixSDTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3470,16 +3470,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixSDTable::NlMatr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3633,33 +3633,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixDSTable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlMatrixDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlMatrixDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlMatrixDSEntry")
     {
-        auto c = std::make_shared<RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry>();
-        c->parent = this;
-        nlmatrixdsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry>();
+        ent_->parent = this;
+        nlmatrixdsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixDSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlMatrixDSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nlmatrixdsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nlmatrixdsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::NlMatrixDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3758,16 +3758,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixDSTable::NlMatr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3921,33 +3921,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixTopNControlTabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlMatrixTopNControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlMatrixTopNControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlMatrixTopNControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry>();
-        c->parent = this;
-        nlmatrixtopncontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry>();
+        ent_->parent = this;
+        nlmatrixtopncontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixTopNControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlMatrixTopNControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nlmatrixtopncontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nlmatrixtopncontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::NlMatrixTopNControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4054,16 +4054,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixTopNControlTabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4247,33 +4247,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixTopNTable::get_
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlMatrixTopNTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlMatrixTopNTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlMatrixTopNEntry")
     {
-        auto c = std::make_shared<RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry>();
-        c->parent = this;
-        nlmatrixtopnentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry>();
+        ent_->parent = this;
+        nlmatrixtopnentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixTopNTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlMatrixTopNTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nlmatrixtopnentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nlmatrixtopnentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::NlMatrixTopNTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4373,16 +4373,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixTopNTable::NlMa
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4546,33 +4546,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlHostTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlHostTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlHostTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alHostEntry")
     {
-        auto c = std::make_shared<RMON2MIB::AlHostTable::AlHostEntry>();
-        c->parent = this;
-        alhostentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::AlHostTable::AlHostEntry>();
+        ent_->parent = this;
+        alhostentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlHostTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlHostTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alhostentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : alhostentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::AlHostTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4679,16 +4679,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlHostTable::AlHostEntr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlHostTable::AlHostEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlHostTable::AlHostEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlHostTable::AlHostEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlHostTable::AlHostEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::AlHostTable::AlHostEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4862,33 +4862,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixSDTable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlMatrixSDTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlMatrixSDTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alMatrixSDEntry")
     {
-        auto c = std::make_shared<RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry>();
-        c->parent = this;
-        almatrixsdentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry>();
+        ent_->parent = this;
+        almatrixsdentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixSDTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlMatrixSDTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : almatrixsdentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : almatrixsdentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::AlMatrixSDTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4992,16 +4992,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixSDTable::AlMatr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5165,33 +5165,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixDSTable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlMatrixDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlMatrixDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alMatrixDSEntry")
     {
-        auto c = std::make_shared<RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry>();
-        c->parent = this;
-        almatrixdsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry>();
+        ent_->parent = this;
+        almatrixdsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixDSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlMatrixDSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : almatrixdsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : almatrixdsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::AlMatrixDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5295,16 +5295,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixDSTable::AlMatr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5468,33 +5468,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixTopNControlTabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlMatrixTopNControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlMatrixTopNControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alMatrixTopNControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry>();
-        c->parent = this;
-        almatrixtopncontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry>();
+        ent_->parent = this;
+        almatrixtopncontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixTopNControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlMatrixTopNControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : almatrixtopncontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : almatrixtopncontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::AlMatrixTopNControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5601,16 +5601,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixTopNControlTabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5794,33 +5794,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixTopNTable::get_
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlMatrixTopNTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlMatrixTopNTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alMatrixTopNEntry")
     {
-        auto c = std::make_shared<RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry>();
-        c->parent = this;
-        almatrixtopnentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry>();
+        ent_->parent = this;
+        almatrixtopnentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixTopNTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlMatrixTopNTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : almatrixtopnentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : almatrixtopnentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::AlMatrixTopNTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5924,16 +5924,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixTopNTable::AlMa
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6107,33 +6107,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryControlTable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::UsrHistoryControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::UsrHistoryControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usrHistoryControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry>();
-        c->parent = this;
-        usrhistorycontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry>();
+        ent_->parent = this;
+        usrhistorycontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::UsrHistoryControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : usrhistorycontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : usrhistorycontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::UsrHistoryControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6224,16 +6224,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryControlTable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6377,33 +6377,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryObjectTable::
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::UsrHistoryObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::UsrHistoryObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usrHistoryObjectEntry")
     {
-        auto c = std::make_shared<RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry>();
-        c->parent = this;
-        usrhistoryobjectentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry>();
+        ent_->parent = this;
+        usrhistoryobjectentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryObjectTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::UsrHistoryObjectTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : usrhistoryobjectentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : usrhistoryobjectentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::UsrHistoryObjectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6483,16 +6483,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryObjectTable::
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6606,33 +6606,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryTable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::UsrHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::UsrHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usrHistoryEntry")
     {
-        auto c = std::make_shared<RMON2MIB::UsrHistoryTable::UsrHistoryEntry>();
-        c->parent = this;
-        usrhistoryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::UsrHistoryTable::UsrHistoryEntry>();
+        ent_->parent = this;
+        usrhistoryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::UsrHistoryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : usrhistoryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : usrhistoryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::UsrHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6725,16 +6725,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryTable::UsrHis
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::UsrHistoryTable::UsrHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::UsrHistoryTable::UsrHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryTable::UsrHistoryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::UsrHistoryTable::UsrHistoryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::UsrHistoryTable::UsrHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6878,33 +6878,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::SerialConfigTable::get_
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::SerialConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::SerialConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "serialConfigEntry")
     {
-        auto c = std::make_shared<RMON2MIB::SerialConfigTable::SerialConfigEntry>();
-        c->parent = this;
-        serialconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::SerialConfigTable::SerialConfigEntry>();
+        ent_->parent = this;
+        serialconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::SerialConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::SerialConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : serialconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : serialconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::SerialConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7007,16 +7007,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::SerialConfigTable::Seri
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::SerialConfigTable::SerialConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::SerialConfigTable::SerialConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::SerialConfigTable::SerialConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::SerialConfigTable::SerialConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::SerialConfigTable::SerialConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7190,33 +7190,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NetConfigTable::get_nam
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NetConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NetConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "netConfigEntry")
     {
-        auto c = std::make_shared<RMON2MIB::NetConfigTable::NetConfigEntry>();
-        c->parent = this;
-        netconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::NetConfigTable::NetConfigEntry>();
+        ent_->parent = this;
+        netconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NetConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NetConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : netconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : netconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::NetConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7295,16 +7295,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::NetConfigTable::NetConf
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::NetConfigTable::NetConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::NetConfigTable::NetConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NetConfigTable::NetConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::NetConfigTable::NetConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::NetConfigTable::NetConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7418,33 +7418,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::TrapDestTable::get_name
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::TrapDestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::TrapDestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trapDestEntry")
     {
-        auto c = std::make_shared<RMON2MIB::TrapDestTable::TrapDestEntry>();
-        c->parent = this;
-        trapdestentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::TrapDestTable::TrapDestEntry>();
+        ent_->parent = this;
+        trapdestentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::TrapDestTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::TrapDestTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trapdestentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trapdestentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::TrapDestTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7531,16 +7531,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::TrapDestTable::TrapDest
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::TrapDestTable::TrapDestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::TrapDestTable::TrapDestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::TrapDestTable::TrapDestEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::TrapDestTable::TrapDestEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::TrapDestTable::TrapDestEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7674,33 +7674,33 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::SerialConnectionTable::
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::SerialConnectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::SerialConnectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "serialConnectionEntry")
     {
-        auto c = std::make_shared<RMON2MIB::SerialConnectionTable::SerialConnectionEntry>();
-        c->parent = this;
-        serialconnectionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RMON2MIB::SerialConnectionTable::SerialConnectionEntry>();
+        ent_->parent = this;
+        serialconnectionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::SerialConnectionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::SerialConnectionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : serialconnectionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : serialconnectionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RMON2MIB::SerialConnectionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7799,16 +7799,16 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::SerialConnectionTable::
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::SerialConnectionTable::SerialConnectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RMON2MIB::SerialConnectionTable::SerialConnectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::SerialConnectionTable::SerialConnectionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RMON2MIB::SerialConnectionTable::SerialConnectionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RMON2MIB::SerialConnectionTable::SerialConnectionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

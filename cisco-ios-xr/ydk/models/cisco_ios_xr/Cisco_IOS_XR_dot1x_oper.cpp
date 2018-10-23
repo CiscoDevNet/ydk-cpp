@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> Dot1x::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void Dot1x::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Dot1x::clone_ptr() const
+std::shared_ptr<ydk::Entity> Dot1x::clone_ptr() const
 {
     return std::make_shared<Dot1x>();
 }
@@ -202,7 +202,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Dot1x::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-statistics")
     {
@@ -216,16 +216,16 @@ std::shared_ptr<Entity> Dot1x::Statistics::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_statistics != nullptr)
     {
-        children["interface-statistics"] = interface_statistics;
+        _children["interface-statistics"] = interface_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -299,33 +299,33 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Statistics::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-statistic")
     {
-        auto c = std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic>();
-        c->parent = this;
-        interface_statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic>();
+        ent_->parent = this;
+        interface_statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Statistics::InterfaceStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Statistics::InterfaceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -417,7 +417,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idb")
     {
@@ -458,31 +458,31 @@ std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatist
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(idb != nullptr)
     {
-        children["idb"] = idb;
+        _children["idb"] = idb;
     }
 
     if(auth != nullptr)
     {
-        children["auth"] = auth;
+        _children["auth"] = auth;
     }
 
     if(supp != nullptr)
     {
-        children["supp"] = supp;
+        _children["supp"] = supp;
     }
 
     if(local_eap != nullptr)
     {
-        children["local-eap"] = local_eap;
+        _children["local-eap"] = local_eap;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -579,16 +579,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Idb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -726,7 +726,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port-control")
     {
@@ -740,16 +740,16 @@ std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatist
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(port_control != nullptr)
     {
-        children["port-control"] = port_control;
+        _children["port-control"] = port_control;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -948,16 +948,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Auth::PortControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1108,16 +1108,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::Supp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1290,16 +1290,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Statistics::InterfaceStati
 
 }
 
-std::shared_ptr<Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Statistics::InterfaceStatistics::InterfaceStatistic::LocalEap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1443,33 +1443,33 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Dot1x::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dot1x::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1545,7 +1545,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1x-defaults")
     {
@@ -1568,21 +1568,21 @@ std::shared_ptr<Entity> Dot1x::Nodes::Node::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dot1x_defaults != nullptr)
     {
-        children["dot1x-defaults"] = dot1x_defaults;
+        _children["dot1x-defaults"] = dot1x_defaults;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1660,7 +1660,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Dot1xDefaults
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Dot1xDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Dot1xDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auth-timers")
     {
@@ -1683,21 +1683,21 @@ std::shared_ptr<Entity> Dot1x::Nodes::Node::Dot1xDefaults::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Dot1xDefaults::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Dot1xDefaults::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auth_timers != nullptr)
     {
-        children["auth-timers"] = auth_timers;
+        _children["auth-timers"] = auth_timers;
     }
 
     if(supp_timers != nullptr)
     {
-        children["supp-timers"] = supp_timers;
+        _children["supp-timers"] = supp_timers;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Dot1xDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1786,16 +1786,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Dot1xDefaults
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Dot1xDefaults::AuthTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1926,16 +1926,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Dot1xDefaults
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Dot1xDefaults::SuppTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2045,7 +2045,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::g
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gl-stats")
     {
@@ -2058,34 +2058,34 @@ std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::get_child_by_name(const 
 
     if(child_yang_name == "if-stats")
     {
-        auto c = std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats>();
-        c->parent = this;
-        if_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dot1x::Nodes::Node::Statistics::IfStats>();
+        ent_->parent = this;
+        if_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(gl_stats != nullptr)
     {
-        children["gl-stats"] = gl_stats;
+        _children["gl-stats"] = gl_stats;
     }
 
-    count = 0;
-    for (auto c : if_stats.entities())
+    count_ = 0;
+    for (auto ent_ : if_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2161,7 +2161,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::G
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::GlStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Statistics::GlStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port-control")
     {
@@ -2175,16 +2175,16 @@ std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::GlStats::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::GlStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Statistics::GlStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(port_control != nullptr)
     {
-        children["port-control"] = port_control;
+        _children["port-control"] = port_control;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Statistics::GlStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2311,16 +2311,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::G
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::GlStats::PortControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Statistics::GlStats::PortControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::GlStats::PortControl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Statistics::GlStats::PortControl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Statistics::GlStats::PortControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2480,7 +2480,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Statistics::IfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idb")
     {
@@ -2521,31 +2521,31 @@ std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Statistics::IfStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(idb != nullptr)
     {
-        children["idb"] = idb;
+        _children["idb"] = idb;
     }
 
     if(auth != nullptr)
     {
-        children["auth"] = auth;
+        _children["auth"] = auth;
     }
 
     if(supp != nullptr)
     {
-        children["supp"] = supp;
+        _children["supp"] = supp;
     }
 
     if(local_eap != nullptr)
     {
-        children["local-eap"] = local_eap;
+        _children["local-eap"] = local_eap;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Statistics::IfStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2632,16 +2632,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Idb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Statistics::IfStats::Idb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Idb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Idb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Statistics::IfStats::Idb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2779,7 +2779,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port-control")
     {
@@ -2793,16 +2793,16 @@ std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Auth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(port_control != nullptr)
     {
-        children["port-control"] = port_control;
+        _children["port-control"] = port_control;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Statistics::IfStats::Auth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3001,16 +3001,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Statistics::IfStats::Auth::PortControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3161,16 +3161,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::Supp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Statistics::IfStats::Supp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Supp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Statistics::IfStats::Supp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Statistics::IfStats::Supp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3343,16 +3343,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Nodes::Node::Statistics::I
 
 }
 
-std::shared_ptr<Entity> Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Nodes::Node::Statistics::IfStats::LocalEap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3488,7 +3488,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Dot1x::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-sessions")
     {
@@ -3502,16 +3502,16 @@ std::shared_ptr<Entity> Dot1x::Session::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_sessions != nullptr)
     {
-        children["interface-sessions"] = interface_sessions;
+        _children["interface-sessions"] = interface_sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3585,33 +3585,33 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Session::InterfaceSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-session")
     {
-        auto c = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession>();
-        c->parent = this;
-        interface_session.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession>();
+        ent_->parent = this;
+        interface_session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Session::InterfaceSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Session::InterfaceSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3707,7 +3707,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "intf-info")
     {
@@ -3730,21 +3730,21 @@ std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(intf_info != nullptr)
     {
-        children["intf-info"] = intf_info;
+        _children["intf-info"] = intf_info;
     }
 
     if(mka_status_info != nullptr)
     {
-        children["mka-status-info"] = mka_status_info;
+        _children["mka-status-info"] = mka_status_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3884,7 +3884,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auth-info")
     {
@@ -3907,21 +3907,21 @@ std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::Int
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auth_info != nullptr)
     {
-        children["auth-info"] = auth_info;
+        _children["auth-info"] = auth_info;
     }
 
     if(supp_info != nullptr)
     {
-        children["supp-info"] = supp_info;
+        _children["supp-info"] = supp_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4044,33 +4044,33 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4193,16 +4193,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthInfo::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4347,33 +4347,33 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4468,16 +4468,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppInfo::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4602,16 +4602,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
 
 }
 
-std::shared_ptr<Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

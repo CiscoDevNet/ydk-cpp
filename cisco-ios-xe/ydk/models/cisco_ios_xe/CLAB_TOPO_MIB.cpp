@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CLABTOPOMIB::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> CLABTOPOMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CLABTOPOMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clabTopoFiberNodeCfgTable")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CLABTOPOMIB::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CLABTOPOMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CLABTOPOMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clabtopofibernodecfgtable != nullptr)
     {
-        children["clabTopoFiberNodeCfgTable"] = clabtopofibernodecfgtable;
+        _children["clabTopoFiberNodeCfgTable"] = clabtopofibernodecfgtable;
     }
 
     if(clabtopochfncfgtable != nullptr)
     {
-        children["clabTopoChFnCfgTable"] = clabtopochfncfgtable;
+        _children["clabTopoChFnCfgTable"] = clabtopochfncfgtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CLABTOPOMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CLABTOPOMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CLABTOPOMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CLABTOPOMIB::clone_ptr() const
 {
     return std::make_shared<CLABTOPOMIB>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > CLABTOPOMIB::ClabTopoFiberNodeCfg
 
 }
 
-std::shared_ptr<Entity> CLABTOPOMIB::ClabTopoFiberNodeCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CLABTOPOMIB::ClabTopoFiberNodeCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clabTopoFiberNodeCfgEntry")
     {
-        auto c = std::make_shared<CLABTOPOMIB::ClabTopoFiberNodeCfgTable::ClabTopoFiberNodeCfgEntry>();
-        c->parent = this;
-        clabtopofibernodecfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CLABTOPOMIB::ClabTopoFiberNodeCfgTable::ClabTopoFiberNodeCfgEntry>();
+        ent_->parent = this;
+        clabtopofibernodecfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CLABTOPOMIB::ClabTopoFiberNodeCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CLABTOPOMIB::ClabTopoFiberNodeCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clabtopofibernodecfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clabtopofibernodecfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CLABTOPOMIB::ClabTopoFiberNodeCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -293,16 +293,16 @@ std::vector<std::pair<std::string, LeafData> > CLABTOPOMIB::ClabTopoFiberNodeCfg
 
 }
 
-std::shared_ptr<Entity> CLABTOPOMIB::ClabTopoFiberNodeCfgTable::ClabTopoFiberNodeCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CLABTOPOMIB::ClabTopoFiberNodeCfgTable::ClabTopoFiberNodeCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CLABTOPOMIB::ClabTopoFiberNodeCfgTable::ClabTopoFiberNodeCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CLABTOPOMIB::ClabTopoFiberNodeCfgTable::ClabTopoFiberNodeCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CLABTOPOMIB::ClabTopoFiberNodeCfgTable::ClabTopoFiberNodeCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -406,33 +406,33 @@ std::vector<std::pair<std::string, LeafData> > CLABTOPOMIB::ClabTopoChFnCfgTable
 
 }
 
-std::shared_ptr<Entity> CLABTOPOMIB::ClabTopoChFnCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CLABTOPOMIB::ClabTopoChFnCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clabTopoChFnCfgEntry")
     {
-        auto c = std::make_shared<CLABTOPOMIB::ClabTopoChFnCfgTable::ClabTopoChFnCfgEntry>();
-        c->parent = this;
-        clabtopochfncfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CLABTOPOMIB::ClabTopoChFnCfgTable::ClabTopoChFnCfgEntry>();
+        ent_->parent = this;
+        clabtopochfncfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CLABTOPOMIB::ClabTopoChFnCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CLABTOPOMIB::ClabTopoChFnCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clabtopochfncfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clabtopochfncfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CLABTOPOMIB::ClabTopoChFnCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -508,16 +508,16 @@ std::vector<std::pair<std::string, LeafData> > CLABTOPOMIB::ClabTopoChFnCfgTable
 
 }
 
-std::shared_ptr<Entity> CLABTOPOMIB::ClabTopoChFnCfgTable::ClabTopoChFnCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CLABTOPOMIB::ClabTopoChFnCfgTable::ClabTopoChFnCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CLABTOPOMIB::ClabTopoChFnCfgTable::ClabTopoChFnCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CLABTOPOMIB::ClabTopoChFnCfgTable::ClabTopoChFnCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CLABTOPOMIB::ClabTopoChFnCfgTable::ClabTopoChFnCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

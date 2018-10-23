@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> CISCOIPTAPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPTAPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "citapStreamEncodePacket")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOIPTAPMIB::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPTAPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(citapstreamencodepacket != nullptr)
     {
-        children["citapStreamEncodePacket"] = citapstreamencodepacket;
+        _children["citapStreamEncodePacket"] = citapstreamencodepacket;
     }
 
     if(citapstreamtable != nullptr)
     {
-        children["citapStreamTable"] = citapstreamtable;
+        _children["citapStreamTable"] = citapstreamtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPTAPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOIPTAPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOIPTAPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIPTAPMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIPTAPMIB>();
 }
@@ -184,16 +184,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::CitapStreamEncodeP
 
 }
 
-std::shared_ptr<Entity> CISCOIPTAPMIB::CitapStreamEncodePacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPTAPMIB::CitapStreamEncodePacket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::CitapStreamEncodePacket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPTAPMIB::CitapStreamEncodePacket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPTAPMIB::CitapStreamEncodePacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -275,33 +275,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::CitapStreamTable::
 
 }
 
-std::shared_ptr<Entity> CISCOIPTAPMIB::CitapStreamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPTAPMIB::CitapStreamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "citapStreamEntry")
     {
-        auto c = std::make_shared<CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry>();
-        c->parent = this;
-        citapstreamentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry>();
+        ent_->parent = this;
+        citapstreamentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::CitapStreamTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPTAPMIB::CitapStreamTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : citapstreamentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : citapstreamentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPTAPMIB::CitapStreamTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -437,16 +437,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPTAPMIB::CitapStreamTable::
 
 }
 
-std::shared_ptr<Entity> CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> VirtualServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "virtual-service")
     {
-        auto c = std::make_shared<VirtualServices::VirtualService>();
-        c->parent = this;
-        virtual_service.append(c);
-        return c;
+        auto ent_ = std::make_shared<VirtualServices::VirtualService>();
+        ent_->parent = this;
+        virtual_service.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : virtual_service.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : virtual_service.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void VirtualServices::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> VirtualServices::clone_ptr() const
+std::shared_ptr<ydk::Entity> VirtualServices::clone_ptr() const
 {
     return std::make_shared<VirtualServices>();
 }
@@ -211,7 +211,7 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "details")
     {
@@ -288,51 +288,51 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(details != nullptr)
     {
-        children["details"] = details;
+        _children["details"] = details;
     }
 
     if(utilization != nullptr)
     {
-        children["utilization"] = utilization;
+        _children["utilization"] = utilization;
     }
 
     if(network_utils != nullptr)
     {
-        children["network-utils"] = network_utils;
+        _children["network-utils"] = network_utils;
     }
 
     if(storage_utils != nullptr)
     {
-        children["storage-utils"] = storage_utils;
+        _children["storage-utils"] = storage_utils;
     }
 
     if(processes != nullptr)
     {
-        children["processes"] = processes;
+        _children["processes"] = processes;
     }
 
     if(attached_devices != nullptr)
     {
-        children["attached-devices"] = attached_devices;
+        _children["attached-devices"] = attached_devices;
     }
 
     if(network_interfaces != nullptr)
     {
-        children["network-interfaces"] = network_interfaces;
+        _children["network-interfaces"] = network_interfaces;
     }
 
     if(guest_routes != nullptr)
     {
-        children["guest-routes"] = guest_routes;
+        _children["guest-routes"] = guest_routes;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -426,7 +426,7 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "package-information")
     {
@@ -467,31 +467,31 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Details::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(package_information != nullptr)
     {
-        children["package-information"] = package_information;
+        _children["package-information"] = package_information;
     }
 
     if(detailed_guest_status != nullptr)
     {
-        children["detailed-guest-status"] = detailed_guest_status;
+        _children["detailed-guest-status"] = detailed_guest_status;
     }
 
     if(resource_reservation != nullptr)
     {
-        children["resource-reservation"] = resource_reservation;
+        _children["resource-reservation"] = resource_reservation;
     }
 
     if(resource_admission != nullptr)
     {
-        children["resource-admission"] = resource_admission;
+        _children["resource-admission"] = resource_admission;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -597,7 +597,7 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Details::PackageInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application")
     {
@@ -629,26 +629,26 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::PackageInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Details::PackageInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(application != nullptr)
     {
-        children["application"] = application;
+        _children["application"] = application;
     }
 
     if(signing != nullptr)
     {
-        children["signing"] = signing;
+        _children["signing"] = signing;
     }
 
     if(licensing != nullptr)
     {
-        children["licensing"] = licensing;
+        _children["licensing"] = licensing;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Details::PackageInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -743,16 +743,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInformation::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Details::PackageInformation::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::PackageInformation::Application::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Details::PackageInformation::Application::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Details::PackageInformation::Application::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -865,16 +865,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInformation::Signing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Details::PackageInformation::Signing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::PackageInformation::Signing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Details::PackageInformation::Signing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Details::PackageInformation::Signing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -957,16 +957,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Details::PackageInformation::Licensing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Details::PackageInformation::Licensing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::PackageInformation::Licensing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Details::PackageInformation::Licensing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Details::PackageInformation::Licensing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1045,7 +1045,7 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Details::DetailedGuestStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Details::DetailedGuestStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "processes")
     {
@@ -1059,16 +1059,16 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Details::DetailedGuestS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::DetailedGuestStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Details::DetailedGuestStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(processes != nullptr)
     {
-        children["processes"] = processes;
+        _children["processes"] = processes;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Details::DetailedGuestStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1143,16 +1143,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1269,16 +1269,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Details::ResourceReservation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Details::ResourceReservation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::ResourceReservation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Details::ResourceReservation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Details::ResourceReservation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1383,16 +1383,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Details::ResourceAdmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Details::ResourceAdmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Details::ResourceAdmission::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Details::ResourceAdmission::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Details::ResourceAdmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1510,7 +1510,7 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Utilization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Utilization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpu-util")
     {
@@ -1533,21 +1533,21 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Utilization::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Utilization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Utilization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cpu_util != nullptr)
     {
-        children["cpu-util"] = cpu_util;
+        _children["cpu-util"] = cpu_util;
     }
 
     if(memory_util != nullptr)
     {
-        children["memory-util"] = memory_util;
+        _children["memory-util"] = memory_util;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Utilization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1624,16 +1624,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Utilization::CpuUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Utilization::CpuUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Utilization::CpuUtil::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Utilization::CpuUtil::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Utilization::CpuUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1726,16 +1726,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Utilization::MemoryUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Utilization::MemoryUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Utilization::MemoryUtil::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Utilization::MemoryUtil::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Utilization::MemoryUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1822,33 +1822,33 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkUtils::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::NetworkUtils::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-util")
     {
-        auto c = std::make_shared<VirtualServices::VirtualService::NetworkUtils::NetworkUtil>();
-        c->parent = this;
-        network_util.append(c);
-        return c;
+        auto ent_ = std::make_shared<VirtualServices::VirtualService::NetworkUtils::NetworkUtil>();
+        ent_->parent = this;
+        network_util.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkUtils::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::NetworkUtils::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network_util.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network_util.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::NetworkUtils::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1936,16 +1936,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkUtils::NetworkUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::NetworkUtils::NetworkUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkUtils::NetworkUtil::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::NetworkUtils::NetworkUtil::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::NetworkUtils::NetworkUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2092,33 +2092,33 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::StorageUtils::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::StorageUtils::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "storage-util")
     {
-        auto c = std::make_shared<VirtualServices::VirtualService::StorageUtils::StorageUtil>();
-        c->parent = this;
-        storage_util.append(c);
-        return c;
+        auto ent_ = std::make_shared<VirtualServices::VirtualService::StorageUtils::StorageUtil>();
+        ent_->parent = this;
+        storage_util.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::StorageUtils::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::StorageUtils::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : storage_util.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : storage_util.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::StorageUtils::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2218,16 +2218,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::StorageUtils::StorageUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::StorageUtils::StorageUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::StorageUtils::StorageUtil::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::StorageUtils::StorageUtil::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::StorageUtils::StorageUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2404,33 +2404,33 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
-        auto c = std::make_shared<VirtualServices::VirtualService::Processes::Process>();
-        c->parent = this;
-        process.append(c);
-        return c;
+        auto ent_ = std::make_shared<VirtualServices::VirtualService::Processes::Process>();
+        ent_->parent = this;
+        process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Processes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Processes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Processes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2506,16 +2506,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::Processes::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::Processes::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::Processes::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2632,33 +2632,33 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::AttachedDevices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::AttachedDevices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "attached-device")
     {
-        auto c = std::make_shared<VirtualServices::VirtualService::AttachedDevices::AttachedDevice>();
-        c->parent = this;
-        attached_device.append(c);
-        return c;
+        auto ent_ = std::make_shared<VirtualServices::VirtualService::AttachedDevices::AttachedDevice>();
+        ent_->parent = this;
+        attached_device.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::AttachedDevices::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::AttachedDevices::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : attached_device.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : attached_device.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::AttachedDevices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2726,16 +2726,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::AttachedDevices::AttachedDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::AttachedDevices::AttachedDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::AttachedDevices::AttachedDevice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::AttachedDevices::AttachedDevice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::AttachedDevices::AttachedDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2832,33 +2832,33 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::NetworkInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-interface")
     {
-        auto c = std::make_shared<VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface>();
-        c->parent = this;
-        network_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface>();
+        ent_->parent = this;
+        network_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::NetworkInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::NetworkInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2926,16 +2926,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3032,33 +3032,33 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::GuestRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::GuestRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "guest-route")
     {
-        auto c = std::make_shared<VirtualServices::VirtualService::GuestRoutes::GuestRoute>();
-        c->parent = this;
-        guest_route.append(c);
-        return c;
+        auto ent_ = std::make_shared<VirtualServices::VirtualService::GuestRoutes::GuestRoute>();
+        ent_->parent = this;
+        guest_route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::GuestRoutes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::GuestRoutes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : guest_route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : guest_route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServices::VirtualService::GuestRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3118,16 +3118,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServices::VirtualService::
 
 }
 
-std::shared_ptr<Entity> VirtualServices::VirtualService::GuestRoutes::GuestRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServices::VirtualService::GuestRoutes::GuestRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::GuestRoutes::GuestRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServices::VirtualService::GuestRoutes::GuestRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServices::VirtualService::GuestRoutes::GuestRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

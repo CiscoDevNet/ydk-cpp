@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Otu::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Otu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "controllers")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Otu::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(controllers != nullptr)
     {
-        children["controllers"] = controllers;
+        _children["controllers"] = controllers;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Otu::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Otu::clone_ptr() const
+std::shared_ptr<ydk::Entity> Otu::clone_ptr() const
 {
     return std::make_shared<Otu>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "controller")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller>();
-        c->parent = this;
-        controller.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller>();
+        ent_->parent = this;
+        controller.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : controller.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : controller.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -276,7 +276,7 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::get
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prbs")
     {
@@ -299,21 +299,21 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prbs != nullptr)
     {
-        children["prbs"] = prbs;
+        _children["prbs"] = prbs;
     }
 
     if(info != nullptr)
     {
-        children["info"] = info;
+        _children["info"] = info;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::Controller::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -394,16 +394,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Prb
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Prbs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Prbs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -635,7 +635,7 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
@@ -712,51 +712,51 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local != nullptr)
     {
-        children["local"] = local;
+        _children["local"] = local;
     }
 
     if(remote != nullptr)
     {
-        children["remote"] = remote;
+        _children["remote"] = remote;
     }
 
     if(tti_mode != nullptr)
     {
-        children["tti-mode"] = tti_mode;
+        _children["tti-mode"] = tti_mode;
     }
 
     if(network_srlg != nullptr)
     {
-        children["network-srlg"] = network_srlg;
+        _children["network-srlg"] = network_srlg;
     }
 
     if(otu_alarm_info != nullptr)
     {
-        children["otu-alarm-info"] = otu_alarm_info;
+        _children["otu-alarm-info"] = otu_alarm_info;
     }
 
     if(proactive != nullptr)
     {
-        children["proactive"] = proactive;
+        _children["proactive"] = proactive;
     }
 
     if(otu_fec_satistics != nullptr)
     {
-        children["otu-fec-satistics"] = otu_fec_satistics;
+        _children["otu-fec-satistics"] = otu_fec_satistics;
     }
 
     if(ains_info != nullptr)
     {
-        children["ains-info"] = ains_info;
+        _children["ains-info"] = ains_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1079,16 +1079,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::Local::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::Local::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1171,16 +1171,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::Remote::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::Remote::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1292,7 +1292,7 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx")
     {
@@ -1324,26 +1324,26 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx != nullptr)
     {
-        children["tx"] = tx;
+        _children["tx"] = tx;
     }
 
     if(exp != nullptr)
     {
-        children["exp"] = exp;
+        _children["exp"] = exp;
     }
 
     if(rec != nullptr)
     {
-        children["rec"] = rec;
+        _children["rec"] = rec;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1496,67 +1496,67 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sapi")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi>();
-        c->parent = this;
-        sapi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi>();
+        ent_->parent = this;
+        sapi.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "dapi")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi>();
-        c->parent = this;
-        dapi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi>();
+        ent_->parent = this;
+        dapi.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "operator-specific")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific>();
-        c->parent = this;
-        operator_specific.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific>();
+        ent_->parent = this;
+        operator_specific.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sapi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sapi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : dapi.entities())
+    count_ = 0;
+    for (auto ent_ : dapi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : operator_specific.entities())
+    count_ = 0;
+    for (auto ent_ : operator_specific.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Tx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1625,16 +1625,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1703,16 +1703,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1781,16 +1781,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1893,67 +1893,67 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sapi")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi>();
-        c->parent = this;
-        sapi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi>();
+        ent_->parent = this;
+        sapi.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "dapi")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi>();
-        c->parent = this;
-        dapi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi>();
+        ent_->parent = this;
+        dapi.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "operator-specific")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific>();
-        c->parent = this;
-        operator_specific.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific>();
+        ent_->parent = this;
+        operator_specific.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sapi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sapi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : dapi.entities())
+    count_ = 0;
+    for (auto ent_ : dapi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : operator_specific.entities())
+    count_ = 0;
+    for (auto ent_ : operator_specific.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Exp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2022,16 +2022,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2100,16 +2100,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2178,16 +2178,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2290,67 +2290,67 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sapi")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi>();
-        c->parent = this;
-        sapi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi>();
+        ent_->parent = this;
+        sapi.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "dapi")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi>();
-        c->parent = this;
-        dapi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi>();
+        ent_->parent = this;
+        dapi.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "operator-specific")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific>();
-        c->parent = this;
-        operator_specific.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific>();
+        ent_->parent = this;
+        operator_specific.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sapi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sapi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : dapi.entities())
+    count_ = 0;
+    for (auto ent_ : dapi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : operator_specific.entities())
+    count_ = 0;
+    for (auto ent_ : operator_specific.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Rec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2419,16 +2419,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2497,16 +2497,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2575,16 +2575,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2661,33 +2661,33 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::NetworkSrlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srlg-info")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo>();
-        c->parent = this;
-        srlg_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo>();
+        ent_->parent = this;
+        srlg_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : srlg_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srlg_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::NetworkSrlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2758,33 +2758,33 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srlg")
     {
-        auto c = std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg>();
-        c->parent = this;
-        srlg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg>();
+        ent_->parent = this;
+        srlg.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : srlg.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srlg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2853,16 +2853,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2995,7 +2995,7 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "los")
     {
@@ -3153,96 +3153,96 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(los != nullptr)
     {
-        children["los"] = los;
+        _children["los"] = los;
     }
 
     if(lof != nullptr)
     {
-        children["lof"] = lof;
+        _children["lof"] = lof;
     }
 
     if(lom != nullptr)
     {
-        children["lom"] = lom;
+        _children["lom"] = lom;
     }
 
     if(oof != nullptr)
     {
-        children["oof"] = oof;
+        _children["oof"] = oof;
     }
 
     if(oom != nullptr)
     {
-        children["oom"] = oom;
+        _children["oom"] = oom;
     }
 
     if(ais != nullptr)
     {
-        children["ais"] = ais;
+        _children["ais"] = ais;
     }
 
     if(iae != nullptr)
     {
-        children["iae"] = iae;
+        _children["iae"] = iae;
     }
 
     if(biae != nullptr)
     {
-        children["biae"] = biae;
+        _children["biae"] = biae;
     }
 
     if(bdi != nullptr)
     {
-        children["bdi"] = bdi;
+        _children["bdi"] = bdi;
     }
 
     if(tim != nullptr)
     {
-        children["tim"] = tim;
+        _children["tim"] = tim;
     }
 
     if(eoc != nullptr)
     {
-        children["eoc"] = eoc;
+        _children["eoc"] = eoc;
     }
 
     if(fec_mismatch != nullptr)
     {
-        children["fec-mismatch"] = fec_mismatch;
+        _children["fec-mismatch"] = fec_mismatch;
     }
 
     if(sf_ber != nullptr)
     {
-        children["sf-ber"] = sf_ber;
+        _children["sf-ber"] = sf_ber;
     }
 
     if(sd_ber != nullptr)
     {
-        children["sd-ber"] = sd_ber;
+        _children["sd-ber"] = sd_ber;
     }
 
     if(ec != nullptr)
     {
-        children["ec"] = ec;
+        _children["ec"] = ec;
     }
 
     if(uc != nullptr)
     {
-        children["uc"] = uc;
+        _children["uc"] = uc;
     }
 
     if(fecunc != nullptr)
     {
-        children["fecunc"] = fecunc;
+        _children["fecunc"] = fecunc;
     }
 
-    return children;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3313,16 +3313,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3433,16 +3433,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3553,16 +3553,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3673,16 +3673,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3793,16 +3793,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3913,16 +3913,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4033,16 +4033,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4153,16 +4153,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4273,16 +4273,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4393,16 +4393,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4513,16 +4513,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4633,16 +4633,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4753,16 +4753,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4873,16 +4873,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4993,16 +4993,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5113,16 +5113,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5233,16 +5233,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5381,16 +5381,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::Proactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::Proactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::Proactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::Proactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::Proactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5563,16 +5563,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuFecSatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::OtuFecSatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuFecSatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::OtuFecSatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::OtuFecSatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5659,16 +5659,16 @@ std::vector<std::pair<std::string, LeafData> > Otu::Controllers::Controller::Inf
 
 }
 
-std::shared_ptr<Entity> Otu::Controllers::Controller::Info::AinsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Otu::Controllers::Controller::Info::AinsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::AinsInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Otu::Controllers::Controller::Info::AinsInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Otu::Controllers::Controller::Info::AinsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

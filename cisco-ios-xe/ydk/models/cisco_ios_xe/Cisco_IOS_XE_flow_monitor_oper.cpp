@@ -93,84 +93,84 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-monitor")
     {
-        auto c = std::make_shared<FlowMonitors::FlowMonitor>();
-        c->parent = this;
-        flow_monitor.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowMonitors::FlowMonitor>();
+        ent_->parent = this;
+        flow_monitor.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "flow-export-statistics")
     {
-        auto c = std::make_shared<FlowMonitors::FlowExportStatistics>();
-        c->parent = this;
-        flow_export_statistics.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowMonitors::FlowExportStatistics>();
+        ent_->parent = this;
+        flow_export_statistics.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "flow-cache-statistics")
     {
-        auto c = std::make_shared<FlowMonitors::FlowCacheStatistics>();
-        c->parent = this;
-        flow_cache_statistics.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowMonitors::FlowCacheStatistics>();
+        ent_->parent = this;
+        flow_cache_statistics.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "flow-monitor-statistics")
     {
-        auto c = std::make_shared<FlowMonitors::FlowMonitorStatistics>();
-        c->parent = this;
-        flow_monitor_statistics.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowMonitors::FlowMonitorStatistics>();
+        ent_->parent = this;
+        flow_monitor_statistics.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow_monitor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow_monitor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : flow_export_statistics.entities())
+    count_ = 0;
+    for (auto ent_ : flow_export_statistics.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : flow_cache_statistics.entities())
+    count_ = 0;
+    for (auto ent_ : flow_cache_statistics.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : flow_monitor_statistics.entities())
+    count_ = 0;
+    for (auto ent_ : flow_monitor_statistics.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowMonitors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -181,7 +181,7 @@ void FlowMonitors::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> FlowMonitors::clone_ptr() const
+std::shared_ptr<ydk::Entity> FlowMonitors::clone_ptr() const
 {
     return std::make_shared<FlowMonitors>();
 }
@@ -271,7 +271,7 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowMonitor::get_na
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flows")
     {
@@ -285,16 +285,16 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowMonitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flows != nullptr)
     {
-        children["flows"] = flows;
+        _children["flows"] = flows;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowMonitors::FlowMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -381,33 +381,33 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowMonitor::Flows:
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowMonitor::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowMonitor::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow")
     {
-        auto c = std::make_shared<FlowMonitors::FlowMonitor::Flows::Flow>();
-        c->parent = this;
-        flow.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowMonitors::FlowMonitor::Flows::Flow>();
+        ent_->parent = this;
+        flow.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitor::Flows::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowMonitor::Flows::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowMonitors::FlowMonitor::Flows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -519,16 +519,16 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowMonitor::Flows:
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowMonitor::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowMonitor::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitor::Flows::Flow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowMonitor::Flows::Flow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowMonitors::FlowMonitor::Flows::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -731,7 +731,7 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowExportStatistic
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowExportStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowExportStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport-stats")
     {
@@ -744,34 +744,34 @@ std::shared_ptr<Entity> FlowMonitors::FlowExportStatistics::get_child_by_name(co
 
     if(child_yang_name == "export-client")
     {
-        auto c = std::make_shared<FlowMonitors::FlowExportStatistics::ExportClient>();
-        c->parent = this;
-        export_client.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowMonitors::FlowExportStatistics::ExportClient>();
+        ent_->parent = this;
+        export_client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowExportStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowExportStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transport_stats != nullptr)
     {
-        children["transport-stats"] = transport_stats;
+        _children["transport-stats"] = transport_stats;
     }
 
-    count = 0;
-    for (auto c : export_client.entities())
+    count_ = 0;
+    for (auto ent_ : export_client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowMonitors::FlowExportStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -852,33 +852,33 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowExportStatistic
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowExportStatistics::TransportStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowExportStatistics::TransportStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-exporter-stats")
     {
-        auto c = std::make_shared<FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats>();
-        c->parent = this;
-        flow_exporter_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats>();
+        ent_->parent = this;
+        flow_exporter_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowExportStatistics::TransportStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowExportStatistics::TransportStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow_exporter_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow_exporter_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowMonitors::FlowExportStatistics::TransportStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -955,16 +955,16 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowExportStatistic
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1062,7 +1062,7 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowExportStatistic
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowExportStatistics::ExportClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowExportStatistics::ExportClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol-stats")
     {
@@ -1076,16 +1076,16 @@ std::shared_ptr<Entity> FlowMonitors::FlowExportStatistics::ExportClient::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowExportStatistics::ExportClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowExportStatistics::ExportClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocol_stats != nullptr)
     {
-        children["protocol-stats"] = protocol_stats;
+        _children["protocol-stats"] = protocol_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowMonitors::FlowExportStatistics::ExportClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1184,16 +1184,16 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowExportStatistic
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1348,16 +1348,16 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowCacheStatistics
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowCacheStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowCacheStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowCacheStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowCacheStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowMonitors::FlowCacheStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1585,7 +1585,7 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowMonitorStatisti
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowMonitorStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowMonitorStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cache-data")
     {
@@ -1599,16 +1599,16 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitorStatistics::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitorStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowMonitorStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cache_data != nullptr)
     {
-        children["cache-data"] = cache_data;
+        _children["cache-data"] = cache_data;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowMonitors::FlowMonitorStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1833,16 +1833,16 @@ std::vector<std::pair<std::string, LeafData> > FlowMonitors::FlowMonitorStatisti
 
 }
 
-std::shared_ptr<Entity> FlowMonitors::FlowMonitorStatistics::CacheData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowMonitors::FlowMonitorStatistics::CacheData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitorStatistics::CacheData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowMonitors::FlowMonitorStatistics::CacheData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowMonitors::FlowMonitorStatistics::CacheData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

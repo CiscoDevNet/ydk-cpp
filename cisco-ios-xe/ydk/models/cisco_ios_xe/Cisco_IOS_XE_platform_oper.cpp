@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Components::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Components::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "component")
     {
-        auto c = std::make_shared<Components::Component>();
-        c->parent = this;
-        component.append(c);
-        return c;
+        auto ent_ = std::make_shared<Components::Component>();
+        ent_->parent = this;
+        component.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : component.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : component.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void Components::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Components::clone_ptr() const
+std::shared_ptr<ydk::Entity> Components::clone_ptr() const
 {
     return std::make_shared<Components>();
 }
@@ -191,7 +191,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::get_name_l
 
 }
 
-std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -223,26 +223,26 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(platform_properties != nullptr)
     {
-        children["platform-properties"] = platform_properties;
+        _children["platform-properties"] = platform_properties;
     }
 
     if(platform_subcomponents != nullptr)
     {
-        children["platform-subcomponents"] = platform_subcomponents;
+        _children["platform-subcomponents"] = platform_subcomponents;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -340,7 +340,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::State::get
 
 }
 
-std::shared_ptr<Entity> Components::Component::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "temp")
     {
@@ -354,16 +354,16 @@ std::shared_ptr<Entity> Components::Component::State::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(temp != nullptr)
     {
-        children["temp"] = temp;
+        _children["temp"] = temp;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -504,16 +504,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::State::Tem
 
 }
 
-std::shared_ptr<Entity> Components::Component::State::Temp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::State::Temp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::Temp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::State::Temp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::State::Temp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -620,33 +620,33 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformPr
 
 }
 
-std::shared_ptr<Entity> Components::Component::PlatformProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::PlatformProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "platform-property")
     {
-        auto c = std::make_shared<Components::Component::PlatformProperties::PlatformProperty>();
-        c->parent = this;
-        platform_property.append(c);
-        return c;
+        auto ent_ = std::make_shared<Components::Component::PlatformProperties::PlatformProperty>();
+        ent_->parent = this;
+        platform_property.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::PlatformProperties::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : platform_property.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : platform_property.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::PlatformProperties::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -715,7 +715,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformPr
 
 }
 
-std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformProperty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::PlatformProperties::PlatformProperty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
@@ -729,16 +729,16 @@ std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformPrope
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::PlatformProperty::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::PlatformProperties::PlatformProperty::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(value_ != nullptr)
     {
-        children["value"] = value_;
+        _children["value"] = value_;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::PlatformProperties::PlatformProperty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -833,16 +833,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformPr
 
 }
 
-std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformProperty::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::PlatformProperties::PlatformProperty::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::PlatformProperty::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::PlatformProperties::PlatformProperty::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::PlatformProperties::PlatformProperty::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -959,33 +959,33 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformSu
 
 }
 
-std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::PlatformSubcomponents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "platform-subcomponent")
     {
-        auto c = std::make_shared<Components::Component::PlatformSubcomponents::PlatformSubcomponent>();
-        c->parent = this;
-        platform_subcomponent.append(c);
-        return c;
+        auto ent_ = std::make_shared<Components::Component::PlatformSubcomponents::PlatformSubcomponent>();
+        ent_->parent = this;
+        platform_subcomponent.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformSubcomponents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::PlatformSubcomponents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : platform_subcomponent.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : platform_subcomponent.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::PlatformSubcomponents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1045,16 +1045,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformSu
 
 }
 
-std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::PlatformSubcomponents::PlatformSubcomponent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

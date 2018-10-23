@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> CISCOFTPCLIENTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFTPCLIENTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cfcRequest")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOFTPCLIENTMIB::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFTPCLIENTMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cfcrequest != nullptr)
     {
-        children["cfcRequest"] = cfcrequest;
+        _children["cfcRequest"] = cfcrequest;
     }
 
     if(cfcrequesttable != nullptr)
     {
-        children["cfcRequestTable"] = cfcrequesttable;
+        _children["cfcRequestTable"] = cfcrequesttable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFTPCLIENTMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOFTPCLIENTMIB::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> CISCOFTPCLIENTMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOFTPCLIENTMIB::clone_ptr() const
 {
     return std::make_shared<CISCOFTPCLIENTMIB>();
 }
@@ -196,16 +196,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::CfcRequest::ge
 
 }
 
-std::shared_ptr<Entity> CISCOFTPCLIENTMIB::CfcRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFTPCLIENTMIB::CfcRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::CfcRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFTPCLIENTMIB::CfcRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFTPCLIENTMIB::CfcRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -319,33 +319,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::CfcRequestTabl
 
 }
 
-std::shared_ptr<Entity> CISCOFTPCLIENTMIB::CfcRequestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFTPCLIENTMIB::CfcRequestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cfcRequestEntry")
     {
-        auto c = std::make_shared<CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry>();
-        c->parent = this;
-        cfcrequestentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry>();
+        ent_->parent = this;
+        cfcrequestentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::CfcRequestTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFTPCLIENTMIB::CfcRequestTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cfcrequestentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cfcrequestentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFTPCLIENTMIB::CfcRequestTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -456,16 +456,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::CfcRequestTabl
 
 }
 
-std::shared_ptr<Entity> CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

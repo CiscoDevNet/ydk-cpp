@@ -67,33 +67,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Esi::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Esi::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "set")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::Esi::Sets_::Set>();
-        c->parent = this;
-        set.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::Esi::Sets_::Set>();
+        ent_->parent = this;
+        set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Esi::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -169,7 +169,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Esi::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "used-by")
     {
@@ -192,21 +192,21 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(used_by != nullptr)
     {
-        children["used-by"] = used_by;
+        _children["used-by"] = used_by;
     }
 
     if(attached != nullptr)
     {
-        children["attached"] = attached;
+        _children["attached"] = attached;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Esi::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -283,33 +283,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Esi::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reference")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::Reference>();
-        c->parent = this;
-        reference.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::Reference>();
+        ent_->parent = this;
+        reference.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reference.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reference.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -376,16 +376,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Esi::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::Reference::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::Reference::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -482,33 +482,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Esi::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::Binding>();
-        c->parent = this;
-        binding.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::Binding>();
+        ent_->parent = this;
+        binding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : binding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : binding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -643,16 +643,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Esi::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::Binding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::Binding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -929,16 +929,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Esi::U
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Esi::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Esi::Unused::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Esi::Unused::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Esi::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1023,16 +1023,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Esi::I
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Esi::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Esi::Inactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Esi::Inactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Esi::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1117,16 +1117,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Esi::A
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Esi::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Esi::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Esi::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Esi::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Esi::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1208,7 +1208,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sets")
     {
@@ -1240,26 +1240,26 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sets != nullptr)
     {
-        children["sets"] = sets;
+        _children["sets"] = sets;
     }
 
     if(unused != nullptr)
     {
-        children["unused"] = unused;
+        _children["unused"] = unused;
     }
 
     if(inactive != nullptr)
     {
-        children["inactive"] = inactive;
+        _children["inactive"] = inactive;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1333,33 +1333,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "set")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set>();
-        c->parent = this;
-        set.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set>();
+        ent_->parent = this;
+        set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1435,7 +1435,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "used-by")
     {
@@ -1458,21 +1458,21 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(used_by != nullptr)
     {
-        children["used-by"] = used_by;
+        _children["used-by"] = used_by;
     }
 
     if(attached != nullptr)
     {
-        children["attached"] = attached;
+        _children["attached"] = attached;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1549,33 +1549,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reference")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference>();
-        c->parent = this;
-        reference.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference>();
+        ent_->parent = this;
+        reference.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reference.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reference.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1642,16 +1642,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1748,33 +1748,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding>();
-        c->parent = this;
-        binding.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding>();
+        ent_->parent = this;
+        binding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : binding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : binding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1909,16 +1909,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2195,16 +2195,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Unused::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Unused::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2289,16 +2289,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Inactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Inactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2384,7 +2384,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sets")
     {
@@ -2425,31 +2425,31 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sets != nullptr)
     {
-        children["sets"] = sets;
+        _children["sets"] = sets;
     }
 
     if(unused != nullptr)
     {
-        children["unused"] = unused;
+        _children["unused"] = unused;
     }
 
     if(inactive != nullptr)
     {
-        children["inactive"] = inactive;
+        _children["inactive"] = inactive;
     }
 
     if(active != nullptr)
     {
-        children["active"] = active;
+        _children["active"] = active;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2523,33 +2523,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "set")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set>();
-        c->parent = this;
-        set.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set>();
+        ent_->parent = this;
+        set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2625,7 +2625,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "used-by")
     {
@@ -2648,21 +2648,21 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(used_by != nullptr)
     {
-        children["used-by"] = used_by;
+        _children["used-by"] = used_by;
     }
 
     if(attached != nullptr)
     {
-        children["attached"] = attached;
+        _children["attached"] = attached;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2739,33 +2739,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reference")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference>();
-        c->parent = this;
-        reference.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference>();
+        ent_->parent = this;
+        reference.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reference.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reference.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2832,16 +2832,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2938,33 +2938,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding>();
-        c->parent = this;
-        binding.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding>();
+        ent_->parent = this;
+        binding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : binding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : binding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3099,16 +3099,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3385,16 +3385,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Unused::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Unused::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3479,16 +3479,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Inactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Inactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3573,16 +3573,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityRt::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityRt::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3668,7 +3668,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::ge
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sets")
     {
@@ -3709,31 +3709,31 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sets != nullptr)
     {
-        children["sets"] = sets;
+        _children["sets"] = sets;
     }
 
     if(unused != nullptr)
     {
-        children["unused"] = unused;
+        _children["unused"] = unused;
     }
 
     if(inactive != nullptr)
     {
-        children["inactive"] = inactive;
+        _children["inactive"] = inactive;
     }
 
     if(active != nullptr)
     {
-        children["active"] = active;
+        _children["active"] = active;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3807,33 +3807,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::Se
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "set")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::Rd::Sets_::Set>();
-        c->parent = this;
-        set.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::Rd::Sets_::Set>();
+        ent_->parent = this;
+        set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3909,7 +3909,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::Se
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "used-by")
     {
@@ -3932,21 +3932,21 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(used_by != nullptr)
     {
-        children["used-by"] = used_by;
+        _children["used-by"] = used_by;
     }
 
     if(attached != nullptr)
     {
-        children["attached"] = attached;
+        _children["attached"] = attached;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4023,33 +4023,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::Se
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reference")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::Reference>();
-        c->parent = this;
-        reference.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::Reference>();
+        ent_->parent = this;
+        reference.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reference.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reference.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4116,16 +4116,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::Se
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::Reference::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::Reference::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4222,33 +4222,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::Se
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::Binding>();
-        c->parent = this;
-        binding.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::Binding>();
+        ent_->parent = this;
+        binding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : binding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : binding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4383,16 +4383,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::Se
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::Binding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::Binding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4669,16 +4669,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::Un
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::Unused::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::Unused::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4763,16 +4763,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::In
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::Inactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::Inactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4857,16 +4857,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Rd::Ac
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Rd::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Rd::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Rd::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Rd::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Rd::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4952,7 +4952,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::g
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sets")
     {
@@ -4993,31 +4993,31 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sets != nullptr)
     {
-        children["sets"] = sets;
+        _children["sets"] = sets;
     }
 
     if(unused != nullptr)
     {
-        children["unused"] = unused;
+        _children["unused"] = unused;
     }
 
     if(inactive != nullptr)
     {
-        children["inactive"] = inactive;
+        _children["inactive"] = inactive;
     }
 
     if(active != nullptr)
     {
-        children["active"] = active;
+        _children["active"] = active;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5091,33 +5091,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "set")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::Mac::Sets_::Set>();
-        c->parent = this;
-        set.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::Mac::Sets_::Set>();
+        ent_->parent = this;
+        set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5193,7 +5193,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "used-by")
     {
@@ -5216,21 +5216,21 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(used_by != nullptr)
     {
-        children["used-by"] = used_by;
+        _children["used-by"] = used_by;
     }
 
     if(attached != nullptr)
     {
-        children["attached"] = attached;
+        _children["attached"] = attached;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5307,33 +5307,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reference")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::Reference>();
-        c->parent = this;
-        reference.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::Reference>();
+        ent_->parent = this;
+        reference.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reference.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reference.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5400,16 +5400,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::Reference::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::Reference::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5506,33 +5506,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::Binding>();
-        c->parent = this;
-        binding.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::Binding>();
+        ent_->parent = this;
+        binding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : binding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : binding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5667,16 +5667,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::S
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::Binding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::Binding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5953,16 +5953,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::U
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::Unused::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::Unused::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6047,16 +6047,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::I
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::Inactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::Inactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6141,16 +6141,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Mac::A
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::Mac::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::Mac::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::Mac::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::Mac::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::Mac::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6236,7 +6236,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sets")
     {
@@ -6277,31 +6277,31 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sets != nullptr)
     {
-        children["sets"] = sets;
+        _children["sets"] = sets;
     }
 
     if(unused != nullptr)
     {
-        children["unused"] = unused;
+        _children["unused"] = unused;
     }
 
     if(inactive != nullptr)
     {
-        children["inactive"] = inactive;
+        _children["inactive"] = inactive;
     }
 
     if(active != nullptr)
     {
-        children["active"] = active;
+        _children["active"] = active;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6375,33 +6375,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "set")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set>();
-        c->parent = this;
-        set.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set>();
+        ent_->parent = this;
+        set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6477,7 +6477,7 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "used-by")
     {
@@ -6500,21 +6500,21 @@ std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(used_by != nullptr)
     {
-        children["used-by"] = used_by;
+        _children["used-by"] = used_by;
     }
 
     if(attached != nullptr)
     {
-        children["attached"] = attached;
+        _children["attached"] = attached;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6591,33 +6591,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reference")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference>();
-        c->parent = this;
-        reference.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference>();
+        ent_->parent = this;
+        reference.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reference.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reference.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6684,16 +6684,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6790,33 +6790,33 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding")
     {
-        auto c = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding>();
-        c->parent = this;
-        binding.append(c);
-        return c;
+        auto ent_ = std::make_shared<RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding>();
+        ent_->parent = this;
+        binding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : binding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : binding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6951,16 +6951,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7237,16 +7237,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Unused::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Unused::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Unused::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7331,16 +7331,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Inactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Inactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7425,16 +7425,16 @@ std::vector<std::pair<std::string, LeafData> > RoutingPolicyShadow::Sets::Extend
 
 }
 
-std::shared_ptr<Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RoutingPolicyShadow::Sets::ExtendedCommunityCost::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RoutingPolicyShadow::Sets::ExtendedCommunityCost::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

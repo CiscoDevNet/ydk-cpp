@@ -84,7 +84,7 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pim")
     {
@@ -170,56 +170,56 @@ std::shared_ptr<Entity> PIMMIB::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pim != nullptr)
     {
-        children["pim"] = pim;
+        _children["pim"] = pim;
     }
 
     if(piminterfacetable != nullptr)
     {
-        children["pimInterfaceTable"] = piminterfacetable;
+        _children["pimInterfaceTable"] = piminterfacetable;
     }
 
     if(pimneighbortable != nullptr)
     {
-        children["pimNeighborTable"] = pimneighbortable;
+        _children["pimNeighborTable"] = pimneighbortable;
     }
 
     if(pimipmroutetable != nullptr)
     {
-        children["pimIpMRouteTable"] = pimipmroutetable;
+        _children["pimIpMRouteTable"] = pimipmroutetable;
     }
 
     if(pimrptable != nullptr)
     {
-        children["pimRPTable"] = pimrptable;
+        _children["pimRPTable"] = pimrptable;
     }
 
     if(pimrpsettable != nullptr)
     {
-        children["pimRPSetTable"] = pimrpsettable;
+        _children["pimRPSetTable"] = pimrpsettable;
     }
 
     if(pimipmroutenexthoptable != nullptr)
     {
-        children["pimIpMRouteNextHopTable"] = pimipmroutenexthoptable;
+        _children["pimIpMRouteNextHopTable"] = pimipmroutenexthoptable;
     }
 
     if(pimcandidaterptable != nullptr)
     {
-        children["pimCandidateRPTable"] = pimcandidaterptable;
+        _children["pimCandidateRPTable"] = pimcandidaterptable;
     }
 
     if(pimcomponenttable != nullptr)
     {
-        children["pimComponentTable"] = pimcomponenttable;
+        _children["pimComponentTable"] = pimcomponenttable;
     }
 
-    return children;
+    return _children;
 }
 
 void PIMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -230,7 +230,7 @@ void PIMMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> PIMMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> PIMMIB::clone_ptr() const
 {
     return std::make_shared<PIMMIB>();
 }
@@ -310,16 +310,16 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::Pim::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> PIMMIB::Pim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::Pim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::Pim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::Pim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PIMMIB::Pim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -403,33 +403,33 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimInterfaceTable::get_na
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimInterfaceEntry")
     {
-        auto c = std::make_shared<PIMMIB::PimInterfaceTable::PimInterfaceEntry>();
-        c->parent = this;
-        piminterfaceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PIMMIB::PimInterfaceTable::PimInterfaceEntry>();
+        ent_->parent = this;
+        piminterfaceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimInterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimInterfaceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : piminterfaceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : piminterfaceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PIMMIB::PimInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -528,16 +528,16 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimInterfaceTable::PimInt
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimInterfaceTable::PimInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimInterfaceTable::PimInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimInterfaceTable::PimInterfaceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimInterfaceTable::PimInterfaceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PIMMIB::PimInterfaceTable::PimInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -701,33 +701,33 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimNeighborTable::get_nam
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimNeighborTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimNeighborTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimNeighborEntry")
     {
-        auto c = std::make_shared<PIMMIB::PimNeighborTable::PimNeighborEntry>();
-        c->parent = this;
-        pimneighborentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PIMMIB::PimNeighborTable::PimNeighborEntry>();
+        ent_->parent = this;
+        pimneighborentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimNeighborTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimNeighborTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pimneighborentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pimneighborentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PIMMIB::PimNeighborTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -810,16 +810,16 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimNeighborTable::PimNeig
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimNeighborTable::PimNeighborEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimNeighborTable::PimNeighborEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimNeighborTable::PimNeighborEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimNeighborTable::PimNeighborEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PIMMIB::PimNeighborTable::PimNeighborEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -943,33 +943,33 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimIpMRouteTable::get_nam
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimIpMRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimIpMRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimIpMRouteEntry")
     {
-        auto c = std::make_shared<PIMMIB::PimIpMRouteTable::PimIpMRouteEntry>();
-        c->parent = this;
-        pimipmrouteentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PIMMIB::PimIpMRouteTable::PimIpMRouteEntry>();
+        ent_->parent = this;
+        pimipmrouteentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimIpMRouteTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimIpMRouteTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pimipmrouteentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pimipmrouteentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PIMMIB::PimIpMRouteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1066,16 +1066,16 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimIpMRouteTable::PimIpMR
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PIMMIB::PimIpMRouteTable::PimIpMRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1229,33 +1229,33 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimRPTable::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimRPTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimRPTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimRPEntry")
     {
-        auto c = std::make_shared<PIMMIB::PimRPTable::PimRPEntry>();
-        c->parent = this;
-        pimrpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PIMMIB::PimRPTable::PimRPEntry>();
+        ent_->parent = this;
+        pimrpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimRPTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimRPTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pimrpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pimrpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PIMMIB::PimRPTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1343,16 +1343,16 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimRPTable::PimRPEntry::g
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimRPTable::PimRPEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimRPTable::PimRPEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimRPTable::PimRPEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimRPTable::PimRPEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PIMMIB::PimRPTable::PimRPEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1486,33 +1486,33 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimRPSetTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimRPSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimRPSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimRPSetEntry")
     {
-        auto c = std::make_shared<PIMMIB::PimRPSetTable::PimRPSetEntry>();
-        c->parent = this;
-        pimrpsetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PIMMIB::PimRPSetTable::PimRPSetEntry>();
+        ent_->parent = this;
+        pimrpsetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimRPSetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimRPSetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pimrpsetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pimrpsetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PIMMIB::PimRPSetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1602,16 +1602,16 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimRPSetTable::PimRPSetEn
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimRPSetTable::PimRPSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimRPSetTable::PimRPSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimRPSetTable::PimRPSetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimRPSetTable::PimRPSetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PIMMIB::PimRPSetTable::PimRPSetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1745,33 +1745,33 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimIpMRouteNextHopTable::
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimIpMRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimIpMRouteNextHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimIpMRouteNextHopEntry")
     {
-        auto c = std::make_shared<PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry>();
-        c->parent = this;
-        pimipmroutenexthopentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry>();
+        ent_->parent = this;
+        pimipmroutenexthopentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimIpMRouteNextHopTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimIpMRouteNextHopTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pimipmroutenexthopentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pimipmroutenexthopentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PIMMIB::PimIpMRouteNextHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1862,16 +1862,16 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimIpMRouteNextHopTable::
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2005,33 +2005,33 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimCandidateRPTable::get_
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimCandidateRPTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimCandidateRPTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimCandidateRPEntry")
     {
-        auto c = std::make_shared<PIMMIB::PimCandidateRPTable::PimCandidateRPEntry>();
-        c->parent = this;
-        pimcandidaterpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PIMMIB::PimCandidateRPTable::PimCandidateRPEntry>();
+        ent_->parent = this;
+        pimcandidaterpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimCandidateRPTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimCandidateRPTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pimcandidaterpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pimcandidaterpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PIMMIB::PimCandidateRPTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2111,16 +2111,16 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimCandidateRPTable::PimC
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PIMMIB::PimCandidateRPTable::PimCandidateRPEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2234,33 +2234,33 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimComponentTable::get_na
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimComponentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimComponentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pimComponentEntry")
     {
-        auto c = std::make_shared<PIMMIB::PimComponentTable::PimComponentEntry>();
-        c->parent = this;
-        pimcomponententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PIMMIB::PimComponentTable::PimComponentEntry>();
+        ent_->parent = this;
+        pimcomponententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimComponentTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimComponentTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pimcomponententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pimcomponententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PIMMIB::PimComponentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2343,16 +2343,16 @@ std::vector<std::pair<std::string, LeafData> > PIMMIB::PimComponentTable::PimCom
 
 }
 
-std::shared_ptr<Entity> PIMMIB::PimComponentTable::PimComponentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PIMMIB::PimComponentTable::PimComponentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PIMMIB::PimComponentTable::PimComponentEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PIMMIB::PimComponentTable::PimComponentEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PIMMIB::PimComponentTable::PimComponentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

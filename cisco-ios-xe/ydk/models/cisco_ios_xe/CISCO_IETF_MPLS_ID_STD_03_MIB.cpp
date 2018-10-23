@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSIDSTD03MIB::get_name
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSIDSTD03MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSIDSTD03MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsIdObjects")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> CISCOIETFMPLSIDSTD03MIB::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSIDSTD03MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSIDSTD03MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cmplsidobjects != nullptr)
     {
-        children["cmplsIdObjects"] = cmplsidobjects;
+        _children["cmplsIdObjects"] = cmplsidobjects;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFMPLSIDSTD03MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void CISCOIETFMPLSIDSTD03MIB::set_filter(const std::string & value_path, YFilter
 {
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSIDSTD03MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSIDSTD03MIB::clone_ptr() const
 {
     return std::make_shared<CISCOIETFMPLSIDSTD03MIB>();
 }
@@ -174,16 +174,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSIDSTD03MIB::CmplsIdO
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFMPLSIDSTD03MIB::CmplsIdObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

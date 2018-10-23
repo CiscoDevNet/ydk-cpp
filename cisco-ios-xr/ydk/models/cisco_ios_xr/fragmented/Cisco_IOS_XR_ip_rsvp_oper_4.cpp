@@ -58,7 +58,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::Auth
 
 }
 
-std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -72,16 +72,16 @@ std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::Direc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -162,16 +162,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::Auth
 
 }
 
-std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -294,7 +294,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::Auth
 
 }
 
-std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -307,34 +307,34 @@ std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::Direc
 
     if(child_yang_name == "sequence-window")
     {
-        auto c = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow>();
-        c->parent = this;
-        sequence_window.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow>();
+        ent_->parent = this;
+        sequence_window.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    count = 0;
-    for (auto c : sequence_window.entities())
+    count_ = 0;
+    for (auto ent_ : sequence_window.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -483,16 +483,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::Auth
 
 }
 
-std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -711,16 +711,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::AuthenticationDetails::Auth
 
 }
 
-std::shared_ptr<Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -804,33 +804,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsb-brief")
     {
-        auto c = std::make_shared<Rsvp::RsbBriefs::RsbBrief>();
-        c->parent = this;
-        rsb_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::RsbBriefs::RsbBrief>();
+        ent_->parent = this;
+        rsb_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rsb_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rsb_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -965,7 +965,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::get_na
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -1024,41 +1024,41 @@ std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(s2l_sub_lsp != nullptr)
     {
-        children["s2l-sub-lsp"] = s2l_sub_lsp;
+        _children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
     if(flow_spec != nullptr)
     {
-        children["flow-spec"] = flow_spec;
+        _children["flow-spec"] = flow_spec;
     }
 
     if(generic_flow_spec != nullptr)
     {
-        children["generic-flow-spec"] = generic_flow_spec;
+        _children["generic-flow-spec"] = generic_flow_spec;
     }
 
     if(style != nullptr)
     {
-        children["style"] = style;
+        _children["style"] = style;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1244,7 +1244,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Sessio
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-session")
     {
@@ -1258,16 +1258,16 @@ std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Session::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_session != nullptr)
     {
-        children["rsvp-session"] = rsvp_session;
+        _children["rsvp-session"] = rsvp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1350,7 +1350,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Sessio
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -1391,31 +1391,31 @@ std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv4_lsp_session != nullptr)
     {
-        children["ipv4-lsp-session"] = ipv4_lsp_session;
+        _children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
     if(ipv4_uni_session != nullptr)
     {
-        children["ipv4-uni-session"] = ipv4_uni_session;
+        _children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     if(ipv4_p2mp_lsp_session != nullptr)
     {
-        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+        _children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1499,16 +1499,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Sessio
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1612,16 +1612,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Sessio
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1725,16 +1725,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Sessio
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1838,16 +1838,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Sessio
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2mpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1943,16 +1943,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::S2lSub
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::S2lSubLsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::S2lSubLsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::S2lSubLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2056,16 +2056,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::FlowSp
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::FlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::FlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::FlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2216,7 +2216,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Generi
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "g709otn-flow-spec")
     {
@@ -2230,16 +2230,16 @@ std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(g709otn_flow_spec != nullptr)
     {
-        children["g709otn-flow-spec"] = g709otn_flow_spec;
+        _children["g709otn-flow-spec"] = g709otn_flow_spec;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2327,16 +2327,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Generi
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709otnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709otnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709otnFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709otnFlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709otnFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2442,16 +2442,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Style:
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Style::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Style::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Style::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2527,7 +2527,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Filter
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-filter")
     {
@@ -2541,16 +2541,16 @@ std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Filter::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_filter != nullptr)
     {
-        children["rsvp-filter"] = rsvp_filter;
+        _children["rsvp-filter"] = rsvp_filter;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2625,7 +2625,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Filter
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp-ipv4-session")
     {
@@ -2648,21 +2648,21 @@ std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp_ipv4_session != nullptr)
     {
-        children["udp-ipv4-session"] = udp_ipv4_session;
+        _children["udp-ipv4-session"] = udp_ipv4_session;
     }
 
     if(p2mp_ipv4_session != nullptr)
     {
-        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
+        _children["p2mp-ipv4-session"] = p2mp_ipv4_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2742,16 +2742,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Filter
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2849,16 +2849,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RsbBriefs::RsbBrief::Filter
 
 }
 
-std::shared_ptr<Entity> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2mpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2mpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2mpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2996,7 +2996,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-messages")
     {
@@ -3082,56 +3082,56 @@ std::shared_ptr<Entity> Rsvp::Counters::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_messages != nullptr)
     {
-        children["interface-messages"] = interface_messages;
+        _children["interface-messages"] = interface_messages;
     }
 
     if(message_summary != nullptr)
     {
-        children["message-summary"] = message_summary;
+        _children["message-summary"] = message_summary;
     }
 
     if(prefix_filtering != nullptr)
     {
-        children["prefix-filtering"] = prefix_filtering;
+        _children["prefix-filtering"] = prefix_filtering;
     }
 
     if(out_of_resource != nullptr)
     {
-        children["out-of-resource"] = out_of_resource;
+        _children["out-of-resource"] = out_of_resource;
     }
 
     if(interface_events != nullptr)
     {
-        children["interface-events"] = interface_events;
+        _children["interface-events"] = interface_events;
     }
 
     if(nsr != nullptr)
     {
-        children["nsr"] = nsr;
+        _children["nsr"] = nsr;
     }
 
     if(issu != nullptr)
     {
-        children["issu"] = issu;
+        _children["issu"] = issu;
     }
 
     if(database != nullptr)
     {
-        children["database"] = database;
+        _children["database"] = database;
     }
 
     if(event_syncs != nullptr)
     {
-        children["event-syncs"] = event_syncs;
+        _children["event-syncs"] = event_syncs;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3205,33 +3205,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::InterfaceMessages
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::InterfaceMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::InterfaceMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-message")
     {
-        auto c = std::make_shared<Rsvp::Counters::InterfaceMessages::InterfaceMessage>();
-        c->parent = this;
-        interface_message.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::Counters::InterfaceMessages::InterfaceMessage>();
+        ent_->parent = this;
+        interface_message.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::InterfaceMessages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::InterfaceMessages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_message.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_message.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::InterfaceMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3327,7 +3327,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::InterfaceMessages
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "received-messages")
     {
@@ -3368,31 +3368,31 @@ std::shared_ptr<Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(received_messages != nullptr)
     {
-        children["received-messages"] = received_messages;
+        _children["received-messages"] = received_messages;
     }
 
     if(transmitted_messages != nullptr)
     {
-        children["transmitted-messages"] = transmitted_messages;
+        _children["transmitted-messages"] = transmitted_messages;
     }
 
     if(bundle_received_messages != nullptr)
     {
-        children["bundle-received-messages"] = bundle_received_messages;
+        _children["bundle-received-messages"] = bundle_received_messages;
     }
 
     if(bundle_transmitted_messages != nullptr)
     {
-        children["bundle-transmitted-messages"] = bundle_transmitted_messages;
+        _children["bundle-transmitted-messages"] = bundle_transmitted_messages;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::InterfaceMessages::InterfaceMessage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3539,16 +3539,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::InterfaceMessages
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3785,16 +3785,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::InterfaceMessages
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4031,16 +4031,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::InterfaceMessages
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4277,16 +4277,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::InterfaceMessages
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmittedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmittedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmittedMessages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmittedMessages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmittedMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4507,7 +4507,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::MessageSummary::g
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::MessageSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::MessageSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "received-messages")
     {
@@ -4548,31 +4548,31 @@ std::shared_ptr<Entity> Rsvp::Counters::MessageSummary::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::MessageSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::MessageSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(received_messages != nullptr)
     {
-        children["received-messages"] = received_messages;
+        _children["received-messages"] = received_messages;
     }
 
     if(transmitted_messages != nullptr)
     {
-        children["transmitted-messages"] = transmitted_messages;
+        _children["transmitted-messages"] = transmitted_messages;
     }
 
     if(bundle_received_messages != nullptr)
     {
-        children["bundle-received-messages"] = bundle_received_messages;
+        _children["bundle-received-messages"] = bundle_received_messages;
     }
 
     if(bundle_transmitted_messages != nullptr)
     {
-        children["bundle-transmitted-messages"] = bundle_transmitted_messages;
+        _children["bundle-transmitted-messages"] = bundle_transmitted_messages;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::MessageSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4716,16 +4716,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::MessageSummary::R
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::MessageSummary::ReceivedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::MessageSummary::ReceivedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::MessageSummary::ReceivedMessages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::MessageSummary::ReceivedMessages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::MessageSummary::ReceivedMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4969,16 +4969,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::MessageSummary::T
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::MessageSummary::TransmittedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::MessageSummary::TransmittedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::MessageSummary::TransmittedMessages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::MessageSummary::TransmittedMessages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::MessageSummary::TransmittedMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5222,16 +5222,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::MessageSummary::B
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::MessageSummary::BundleReceivedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::MessageSummary::BundleReceivedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::MessageSummary::BundleReceivedMessages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::MessageSummary::BundleReceivedMessages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::MessageSummary::BundleReceivedMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5475,16 +5475,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::MessageSummary::B
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::MessageSummary::BundleTransmittedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::MessageSummary::BundleTransmittedMessages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::MessageSummary::BundleTransmittedMessages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::MessageSummary::BundleTransmittedMessages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::MessageSummary::BundleTransmittedMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5684,7 +5684,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accesses")
     {
@@ -5707,21 +5707,21 @@ std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accesses != nullptr)
     {
-        children["accesses"] = accesses;
+        _children["accesses"] = accesses;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5795,33 +5795,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Accesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Accesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
-        auto c = std::make_shared<Rsvp::Counters::PrefixFiltering::Accesses::Access>();
-        c->parent = this;
-        access.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::Counters::PrefixFiltering::Accesses::Access>();
+        ent_->parent = this;
+        access.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Accesses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Accesses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Accesses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5905,7 +5905,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forwarded")
     {
@@ -5946,31 +5946,31 @@ std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(forwarded != nullptr)
     {
-        children["forwarded"] = forwarded;
+        _children["forwarded"] = forwarded;
     }
 
     if(locally_destined != nullptr)
     {
-        children["locally-destined"] = locally_destined;
+        _children["locally-destined"] = locally_destined;
     }
 
     if(dropped != nullptr)
     {
-        children["dropped"] = dropped;
+        _children["dropped"] = dropped;
     }
 
     if(total != nullptr)
     {
-        children["total"] = total;
+        _children["total"] = total;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Accesses::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6051,16 +6051,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6171,16 +6171,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6291,16 +6291,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6411,16 +6411,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Accesses::Access::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::Total::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Accesses::Access::Total::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Accesses::Access::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6530,7 +6530,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -6553,21 +6553,21 @@ std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6653,7 +6653,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forwarded")
     {
@@ -6712,41 +6712,41 @@ std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(forwarded != nullptr)
     {
-        children["forwarded"] = forwarded;
+        _children["forwarded"] = forwarded;
     }
 
     if(locally_destined != nullptr)
     {
-        children["locally-destined"] = locally_destined;
+        _children["locally-destined"] = locally_destined;
     }
 
     if(dropped != nullptr)
     {
-        children["dropped"] = dropped;
+        _children["dropped"] = dropped;
     }
 
     if(default_action_dropped != nullptr)
     {
-        children["default-action-dropped"] = default_action_dropped;
+        _children["default-action-dropped"] = default_action_dropped;
     }
 
     if(default_action_processed != nullptr)
     {
-        children["default-action-processed"] = default_action_processed;
+        _children["default-action-processed"] = default_action_processed;
     }
 
     if(total != nullptr)
     {
-        children["total"] = total;
+        _children["total"] = total;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6824,16 +6824,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Forwarded::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6951,16 +6951,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7078,16 +7078,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Dropped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Dropped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Dropped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7205,16 +7205,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7332,16 +7332,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7459,16 +7459,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Total::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Total::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7582,33 +7582,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7700,7 +7700,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forwarded")
     {
@@ -7759,41 +7759,41 @@ std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(forwarded != nullptr)
     {
-        children["forwarded"] = forwarded;
+        _children["forwarded"] = forwarded;
     }
 
     if(locally_destined != nullptr)
     {
-        children["locally-destined"] = locally_destined;
+        _children["locally-destined"] = locally_destined;
     }
 
     if(dropped != nullptr)
     {
-        children["dropped"] = dropped;
+        _children["dropped"] = dropped;
     }
 
     if(default_action_dropped != nullptr)
     {
-        children["default-action-dropped"] = default_action_dropped;
+        _children["default-action-dropped"] = default_action_dropped;
     }
 
     if(default_action_processed != nullptr)
     {
-        children["default-action-processed"] = default_action_processed;
+        _children["default-action-processed"] = default_action_processed;
     }
 
     if(total != nullptr)
     {
-        children["total"] = total;
+        _children["total"] = total;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7874,16 +7874,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Forwarded::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7994,16 +7994,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::LocallyDestined::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8114,16 +8114,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Dropped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8234,16 +8234,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionDropped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8354,16 +8354,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::DefaultActionProcessed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8474,16 +8474,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::PrefixFiltering::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8589,7 +8589,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::OutOfResource::ge
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::OutOfResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::OutOfResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -8603,16 +8603,16 @@ std::shared_ptr<Entity> Rsvp::Counters::OutOfResource::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::OutOfResource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::OutOfResource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::OutOfResource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8682,7 +8682,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::OutOfResource::In
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::OutOfResource::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::OutOfResource::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -8705,21 +8705,21 @@ std::shared_ptr<Entity> Rsvp::Counters::OutOfResource::Interfaces::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::OutOfResource::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::OutOfResource::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::OutOfResource::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8785,16 +8785,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::OutOfResource::In
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::OutOfResource::Interfaces::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::OutOfResource::Interfaces::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::OutOfResource::Interfaces::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::OutOfResource::Interfaces::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::OutOfResource::Interfaces::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8878,33 +8878,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::OutOfResource::In
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8975,16 +8975,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::OutOfResource::In
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::OutOfResource::Interfaces::Interfaces_::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9078,33 +9078,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::InterfaceEvents::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::InterfaceEvents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::InterfaceEvents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-event")
     {
-        auto c = std::make_shared<Rsvp::Counters::InterfaceEvents::InterfaceEvent>();
-        c->parent = this;
-        interface_event.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::Counters::InterfaceEvents::InterfaceEvent>();
+        ent_->parent = this;
+        interface_event.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::InterfaceEvents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::InterfaceEvents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_event.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_event.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::InterfaceEvents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9183,16 +9183,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::InterfaceEvents::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::InterfaceEvents::InterfaceEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::InterfaceEvents::InterfaceEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::InterfaceEvents::InterfaceEvent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::InterfaceEvents::InterfaceEvent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::InterfaceEvents::InterfaceEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9322,16 +9322,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::Nsr::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::Nsr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::Nsr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::Nsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9491,16 +9491,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::Issu::get_name_le
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::Issu::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::Issu::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::Issu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9656,16 +9656,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::Database::get_nam
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::Database::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::Database::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::Database::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::Database::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::Database::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9799,33 +9799,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::EventSyncs::get_n
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::EventSyncs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::EventSyncs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event-sync")
     {
-        auto c = std::make_shared<Rsvp::Counters::EventSyncs::EventSync>();
-        c->parent = this;
-        event_sync.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::Counters::EventSyncs::EventSync>();
+        ent_->parent = this;
+        event_sync.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::EventSyncs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::EventSyncs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : event_sync.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : event_sync.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Counters::EventSyncs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9904,16 +9904,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Counters::EventSyncs::Event
 
 }
 
-std::shared_ptr<Entity> Rsvp::Counters::EventSyncs::EventSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Counters::EventSyncs::EventSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Counters::EventSyncs::EventSync::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Counters::EventSyncs::EventSync::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Counters::EventSyncs::EventSync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10027,33 +10027,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceDetaileds::get_nam
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-detailed")
     {
-        auto c = std::make_shared<Rsvp::InterfaceDetaileds::InterfaceDetailed>();
-        c->parent = this;
-        interface_detailed.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::InterfaceDetaileds::InterfaceDetailed>();
+        ent_->parent = this;
+        interface_detailed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceDetaileds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceDetaileds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_detailed.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_detailed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::InterfaceDetaileds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10232,7 +10232,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceDetaileds::Interfa
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bandwidth-information")
     {
@@ -10254,39 +10254,39 @@ std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::get_child_b
 
     if(child_yang_name == "neighbor-array")
     {
-        auto c = std::make_shared<Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray>();
-        c->parent = this;
-        neighbor_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray>();
+        ent_->parent = this;
+        neighbor_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bandwidth_information != nullptr)
     {
-        children["bandwidth-information"] = bandwidth_information;
+        _children["bandwidth-information"] = bandwidth_information;
     }
 
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    count = 0;
-    for (auto c : neighbor_array.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::InterfaceDetaileds::InterfaceDetailed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10594,7 +10594,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceDetaileds::Interfa
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pre-standard-dste-interface")
     {
@@ -10617,21 +10617,21 @@ std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthIn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pre_standard_dste_interface != nullptr)
     {
-        children["pre-standard-dste-interface"] = pre_standard_dste_interface;
+        _children["pre-standard-dste-interface"] = pre_standard_dste_interface;
     }
 
     if(standard_dste_interface != nullptr)
     {
-        children["standard-dste-interface"] = standard_dste_interface;
+        _children["standard-dste-interface"] = standard_dste_interface;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10720,16 +10720,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceDetaileds::Interfa
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::PreStandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10876,16 +10876,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceDetaileds::Interfa
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::InterfaceDetaileds::InterfaceDetailed::BandwidthInformation::StandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11068,16 +11068,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceDetaileds::Interfa
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::InterfaceDetaileds::InterfaceDetailed::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11284,7 +11284,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceDetaileds::Interfa
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expiry-time")
     {
@@ -11297,34 +11297,34 @@ std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArr
 
     if(child_yang_name == "neighbor-message-id")
     {
-        auto c = std::make_shared<Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId>();
-        c->parent = this;
-        neighbor_message_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId>();
+        ent_->parent = this;
+        neighbor_message_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(expiry_time != nullptr)
     {
-        children["expiry-time"] = expiry_time;
+        _children["expiry-time"] = expiry_time;
     }
 
-    count = 0;
-    for (auto c : neighbor_message_id.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor_message_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11427,16 +11427,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceDetaileds::Interfa
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::ExpiryTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11515,16 +11515,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceDetaileds::Interfa
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::InterfaceDetaileds::InterfaceDetailed::NeighborArray::NeighborMessageId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11608,33 +11608,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::ControllerBriefs::get_name_
 
 }
 
-std::shared_ptr<Entity> Rsvp::ControllerBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::ControllerBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "controller-brief")
     {
-        auto c = std::make_shared<Rsvp::ControllerBriefs::ControllerBrief>();
-        c->parent = this;
-        controller_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::ControllerBriefs::ControllerBrief>();
+        ent_->parent = this;
+        controller_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::ControllerBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::ControllerBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : controller_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : controller_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::ControllerBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11710,7 +11710,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::ControllerBriefs::Controlle
 
 }
 
-std::shared_ptr<Entity> Rsvp::ControllerBriefs::ControllerBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::ControllerBriefs::ControllerBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bandwidth-information")
     {
@@ -11724,16 +11724,16 @@ std::shared_ptr<Entity> Rsvp::ControllerBriefs::ControllerBrief::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::ControllerBriefs::ControllerBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::ControllerBriefs::ControllerBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bandwidth_information != nullptr)
     {
-        children["bandwidth-information"] = bandwidth_information;
+        _children["bandwidth-information"] = bandwidth_information;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::ControllerBriefs::ControllerBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11821,7 +11821,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::ControllerBriefs::Controlle
 
 }
 
-std::shared_ptr<Entity> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pre-standard-dste-interface")
     {
@@ -11844,21 +11844,21 @@ std::shared_ptr<Entity> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInform
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pre_standard_dste_interface != nullptr)
     {
-        children["pre-standard-dste-interface"] = pre_standard_dste_interface;
+        _children["pre-standard-dste-interface"] = pre_standard_dste_interface;
     }
 
     if(standard_dste_interface != nullptr)
     {
-        children["standard-dste-interface"] = standard_dste_interface;
+        _children["standard-dste-interface"] = standard_dste_interface;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11947,16 +11947,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::ControllerBriefs::Controlle
 
 }
 
-std::shared_ptr<Entity> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::PreStandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::PreStandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12103,16 +12103,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::ControllerBriefs::Controlle
 
 }
 
-std::shared_ptr<Entity> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::StandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::StandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::ControllerBriefs::ControllerBrief::BandwidthInformation::StandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12306,7 +12306,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::GracefulRestart::get_name_l
 
 }
 
-std::shared_ptr<Entity> Rsvp::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "recovery-time-left")
     {
@@ -12328,39 +12328,39 @@ std::shared_ptr<Entity> Rsvp::GracefulRestart::get_child_by_name(const std::stri
 
     if(child_yang_name == "local-node-address")
     {
-        auto c = std::make_shared<Rsvp::GracefulRestart::LocalNodeAddress>();
-        c->parent = this;
-        local_node_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::GracefulRestart::LocalNodeAddress>();
+        ent_->parent = this;
+        local_node_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GracefulRestart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::GracefulRestart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(recovery_time_left != nullptr)
     {
-        children["recovery-time-left"] = recovery_time_left;
+        _children["recovery-time-left"] = recovery_time_left;
     }
 
     if(recovery_timer_exp_time != nullptr)
     {
-        children["recovery-timer-exp-time"] = recovery_timer_exp_time;
+        _children["recovery-timer-exp-time"] = recovery_timer_exp_time;
     }
 
-    count = 0;
-    for (auto c : local_node_address.entities())
+    count_ = 0;
+    for (auto ent_ : local_node_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12510,16 +12510,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::GracefulRestart::RecoveryTi
 
 }
 
-std::shared_ptr<Entity> Rsvp::GracefulRestart::RecoveryTimeLeft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::GracefulRestart::RecoveryTimeLeft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GracefulRestart::RecoveryTimeLeft::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::GracefulRestart::RecoveryTimeLeft::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::GracefulRestart::RecoveryTimeLeft::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12609,16 +12609,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::GracefulRestart::RecoveryTi
 
 }
 
-std::shared_ptr<Entity> Rsvp::GracefulRestart::RecoveryTimerExpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::GracefulRestart::RecoveryTimerExpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GracefulRestart::RecoveryTimerExpTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::GracefulRestart::RecoveryTimerExpTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::GracefulRestart::RecoveryTimerExpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12708,16 +12708,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::GracefulRestart::LocalNodeA
 
 }
 
-std::shared_ptr<Entity> Rsvp::GracefulRestart::LocalNodeAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::GracefulRestart::LocalNodeAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::GracefulRestart::LocalNodeAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::GracefulRestart::LocalNodeAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::GracefulRestart::LocalNodeAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12811,33 +12811,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::HelloInterfaceInstanceBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::HelloInterfaceInstanceBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::HelloInterfaceInstanceBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hello-interface-instance-brief")
     {
-        auto c = std::make_shared<Rsvp::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief>();
-        c->parent = this;
-        hello_interface_instance_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief>();
+        ent_->parent = this;
+        hello_interface_instance_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInterfaceInstanceBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::HelloInterfaceInstanceBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hello_interface_instance_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hello_interface_instance_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::HelloInterfaceInstanceBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12925,16 +12925,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::HelloInterfaceInstanceBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::HelloInterfaceInstanceBriefs::HelloInterfaceInstanceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13068,33 +13068,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::HelloInterfaceInstanceDetai
 
 }
 
-std::shared_ptr<Entity> Rsvp::HelloInterfaceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::HelloInterfaceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hello-interface-instance-detail")
     {
-        auto c = std::make_shared<Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail>();
-        c->parent = this;
-        hello_interface_instance_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail>();
+        ent_->parent = this;
+        hello_interface_instance_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInterfaceInstanceDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::HelloInterfaceInstanceDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hello_interface_instance_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hello_interface_instance_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::HelloInterfaceInstanceDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13207,7 +13207,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::HelloInterfaceInstanceDetai
 
 }
 
-std::shared_ptr<Entity> Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "last-message-sent-time")
     {
@@ -13221,16 +13221,16 @@ std::shared_ptr<Entity> Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInsta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(last_message_sent_time != nullptr)
     {
-        children["last-message-sent-time"] = last_message_sent_time;
+        _children["last-message-sent-time"] = last_message_sent_time;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13403,16 +13403,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::HelloInterfaceInstanceDetai
 
 }
 
-std::shared_ptr<Entity> Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::HelloInterfaceInstanceDetails::HelloInterfaceInstanceDetail::LastMessageSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13506,33 +13506,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceNeighborDetails::g
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceNeighborDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceNeighborDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-neighbor-detail")
     {
-        auto c = std::make_shared<Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail>();
-        c->parent = this;
-        interface_neighbor_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail>();
+        ent_->parent = this;
+        interface_neighbor_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceNeighborDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceNeighborDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_neighbor_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_neighbor_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::InterfaceNeighborDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13615,33 +13615,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceNeighborDetails::I
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-neighbor-list-detail")
     {
-        auto c = std::make_shared<Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail>();
-        c->parent = this;
-        interface_neighbor_list_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail>();
+        ent_->parent = this;
+        interface_neighbor_list_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_neighbor_list_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_neighbor_list_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13740,16 +13740,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::InterfaceNeighborDetails::I
 
 }
 
-std::shared_ptr<Entity> Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::InterfaceNeighborDetails::InterfaceNeighborDetail::InterfaceNeighborListDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13875,7 +13875,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Nsr::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Rsvp::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status")
     {
@@ -13889,16 +13889,16 @@ std::shared_ptr<Entity> Rsvp::Nsr::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Nsr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Nsr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(status != nullptr)
     {
-        children["status"] = status;
+        _children["status"] = status;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Nsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13973,7 +13973,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Nsr::Status::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Rsvp::Nsr::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Nsr::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idt-status")
     {
@@ -13996,21 +13996,21 @@ std::shared_ptr<Entity> Rsvp::Nsr::Status::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Nsr::Status::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Nsr::Status::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(idt_status != nullptr)
     {
-        children["idt-status"] = idt_status;
+        _children["idt-status"] = idt_status;
     }
 
     if(previous_idt_status != nullptr)
     {
-        children["previous-idt-status"] = previous_idt_status;
+        _children["previous-idt-status"] = previous_idt_status;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Nsr::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14106,16 +14106,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Nsr::Status::IdtStatus::get
 
 }
 
-std::shared_ptr<Entity> Rsvp::Nsr::Status::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Nsr::Status::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Nsr::Status::IdtStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Nsr::Status::IdtStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Nsr::Status::IdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14261,16 +14261,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Nsr::Status::PreviousIdtSta
 
 }
 
-std::shared_ptr<Entity> Rsvp::Nsr::Status::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Nsr::Status::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Nsr::Status::PreviousIdtStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Nsr::Status::PreviousIdtStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Nsr::Status::PreviousIdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14413,7 +14413,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Summary::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Rsvp::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "issu-status")
     {
@@ -14445,26 +14445,26 @@ std::shared_ptr<Entity> Rsvp::Summary::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(issu_status != nullptr)
     {
-        children["issu-status"] = issu_status;
+        _children["issu-status"] = issu_status;
     }
 
     if(nsr_status != nullptr)
     {
-        children["nsr-status"] = nsr_status;
+        _children["nsr-status"] = nsr_status;
     }
 
     if(database_counters != nullptr)
     {
-        children["database-counters"] = database_counters;
+        _children["database-counters"] = database_counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14559,7 +14559,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Summary::IssuStatus::get_na
 
 }
 
-std::shared_ptr<Entity> Rsvp::Summary::IssuStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Summary::IssuStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idt-status")
     {
@@ -14582,21 +14582,21 @@ std::shared_ptr<Entity> Rsvp::Summary::IssuStatus::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Summary::IssuStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Summary::IssuStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(idt_status != nullptr)
     {
-        children["idt-status"] = idt_status;
+        _children["idt-status"] = idt_status;
     }
 
     if(previous_idt_status != nullptr)
     {
-        children["previous-idt-status"] = previous_idt_status;
+        _children["previous-idt-status"] = previous_idt_status;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Summary::IssuStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14692,16 +14692,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Summary::IssuStatus::IdtSta
 
 }
 
-std::shared_ptr<Entity> Rsvp::Summary::IssuStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Summary::IssuStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Summary::IssuStatus::IdtStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Summary::IssuStatus::IdtStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Summary::IssuStatus::IdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14847,16 +14847,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Summary::IssuStatus::Previo
 
 }
 
-std::shared_ptr<Entity> Rsvp::Summary::IssuStatus::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Summary::IssuStatus::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Summary::IssuStatus::PreviousIdtStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Summary::IssuStatus::PreviousIdtStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Summary::IssuStatus::PreviousIdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14991,7 +14991,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Summary::NsrStatus::get_nam
 
 }
 
-std::shared_ptr<Entity> Rsvp::Summary::NsrStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Summary::NsrStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idt-status")
     {
@@ -15014,21 +15014,21 @@ std::shared_ptr<Entity> Rsvp::Summary::NsrStatus::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Summary::NsrStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Summary::NsrStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(idt_status != nullptr)
     {
-        children["idt-status"] = idt_status;
+        _children["idt-status"] = idt_status;
     }
 
     if(previous_idt_status != nullptr)
     {
-        children["previous-idt-status"] = previous_idt_status;
+        _children["previous-idt-status"] = previous_idt_status;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Summary::NsrStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15124,16 +15124,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Summary::NsrStatus::IdtStat
 
 }
 
-std::shared_ptr<Entity> Rsvp::Summary::NsrStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Summary::NsrStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Summary::NsrStatus::IdtStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Summary::NsrStatus::IdtStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Summary::NsrStatus::IdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15279,16 +15279,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Summary::NsrStatus::Previou
 
 }
 
-std::shared_ptr<Entity> Rsvp::Summary::NsrStatus::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Summary::NsrStatus::PreviousIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Summary::NsrStatus::PreviousIdtStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Summary::NsrStatus::PreviousIdtStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Summary::NsrStatus::PreviousIdtStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15434,16 +15434,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Summary::DatabaseCounters::
 
 }
 
-std::shared_ptr<Entity> Rsvp::Summary::DatabaseCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Summary::DatabaseCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Summary::DatabaseCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Summary::DatabaseCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Summary::DatabaseCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15577,33 +15577,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Frrs::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Rsvp::Frrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Frrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frr")
     {
-        auto c = std::make_shared<Rsvp::Frrs::Frr>();
-        c->parent = this;
-        frr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::Frrs::Frr>();
+        ent_->parent = this;
+        frr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Frrs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Frrs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : frr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Frrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15726,7 +15726,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Frrs::Frr::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Rsvp::Frrs::Frr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Frrs::Frr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -15749,21 +15749,21 @@ std::shared_ptr<Entity> Rsvp::Frrs::Frr::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Frrs::Frr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Frrs::Frr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(s2l_sub_lsp != nullptr)
     {
-        children["s2l-sub-lsp"] = s2l_sub_lsp;
+        _children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Frrs::Frr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15959,7 +15959,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Frrs::Frr::Session::get_nam
 
 }
 
-std::shared_ptr<Entity> Rsvp::Frrs::Frr::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Frrs::Frr::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-session")
     {
@@ -15973,16 +15973,16 @@ std::shared_ptr<Entity> Rsvp::Frrs::Frr::Session::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Frrs::Frr::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Frrs::Frr::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_session != nullptr)
     {
-        children["rsvp-session"] = rsvp_session;
+        _children["rsvp-session"] = rsvp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Frrs::Frr::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16065,7 +16065,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Frrs::Frr::Session::RsvpSes
 
 }
 
-std::shared_ptr<Entity> Rsvp::Frrs::Frr::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Frrs::Frr::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -16106,31 +16106,31 @@ std::shared_ptr<Entity> Rsvp::Frrs::Frr::Session::RsvpSession::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv4_lsp_session != nullptr)
     {
-        children["ipv4-lsp-session"] = ipv4_lsp_session;
+        _children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
     if(ipv4_uni_session != nullptr)
     {
-        children["ipv4-uni-session"] = ipv4_uni_session;
+        _children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     if(ipv4_p2mp_lsp_session != nullptr)
     {
-        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+        _children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::Frrs::Frr::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16214,16 +16214,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Frrs::Frr::Session::RsvpSes
 
 }
 
-std::shared_ptr<Entity> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16327,16 +16327,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Frrs::Frr::Session::RsvpSes
 
 }
 
-std::shared_ptr<Entity> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16440,16 +16440,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Frrs::Frr::Session::RsvpSes
 
 }
 
-std::shared_ptr<Entity> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16553,16 +16553,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Frrs::Frr::Session::RsvpSes
 
 }
 
-std::shared_ptr<Entity> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Frrs::Frr::Session::RsvpSession::Ipv4P2mpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16658,16 +16658,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::Frrs::Frr::S2lSubLsp::get_n
 
 }
 
-std::shared_ptr<Entity> Rsvp::Frrs::Frr::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::Frrs::Frr::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::Frrs::Frr::S2lSubLsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::Frrs::Frr::S2lSubLsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::Frrs::Frr::S2lSubLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16751,33 +16751,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "request-brief")
     {
-        auto c = std::make_shared<Rsvp::RequestBriefs::RequestBrief>();
-        c->parent = this;
-        request_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::RequestBriefs::RequestBrief>();
+        ent_->parent = this;
+        request_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : request_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : request_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16912,7 +16912,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -16971,41 +16971,41 @@ std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(s2l_sub_lsp != nullptr)
     {
-        children["s2l-sub-lsp"] = s2l_sub_lsp;
+        _children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
     if(flow_spec != nullptr)
     {
-        children["flow-spec"] = flow_spec;
+        _children["flow-spec"] = flow_spec;
     }
 
     if(generic_flow_spec != nullptr)
     {
-        children["generic-flow-spec"] = generic_flow_spec;
+        _children["generic-flow-spec"] = generic_flow_spec;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
     if(style != nullptr)
     {
-        children["style"] = style;
+        _children["style"] = style;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17191,7 +17191,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-session")
     {
@@ -17205,16 +17205,16 @@ std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Session::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_session != nullptr)
     {
-        children["rsvp-session"] = rsvp_session;
+        _children["rsvp-session"] = rsvp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17297,7 +17297,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -17338,31 +17338,31 @@ std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv4_lsp_session != nullptr)
     {
-        children["ipv4-lsp-session"] = ipv4_lsp_session;
+        _children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
     if(ipv4_uni_session != nullptr)
     {
-        children["ipv4-uni-session"] = ipv4_uni_session;
+        _children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     if(ipv4_p2mp_lsp_session != nullptr)
     {
-        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+        _children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17446,16 +17446,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17559,16 +17559,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17672,16 +17672,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17785,16 +17785,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Session::RsvpSession::Ipv4P2mpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17890,16 +17890,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::S2lSubLsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::S2lSubLsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::S2lSubLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18003,16 +18003,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::FlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::FlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::FlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18163,7 +18163,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "g709otn-flow-spec")
     {
@@ -18177,16 +18177,16 @@ std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(g709otn_flow_spec != nullptr)
     {
-        children["g709otn-flow-spec"] = g709otn_flow_spec;
+        _children["g709otn-flow-spec"] = g709otn_flow_spec;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18274,16 +18274,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::G709otnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::G709otnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::G709otnFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::G709otnFlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::GenericFlowSpec::G709otnFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18389,7 +18389,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-filter")
     {
@@ -18403,16 +18403,16 @@ std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Filter::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_filter != nullptr)
     {
-        children["rsvp-filter"] = rsvp_filter;
+        _children["rsvp-filter"] = rsvp_filter;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18487,7 +18487,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp-ipv4-session")
     {
@@ -18510,21 +18510,21 @@ std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp_ipv4_session != nullptr)
     {
-        children["udp-ipv4-session"] = udp_ipv4_session;
+        _children["udp-ipv4-session"] = udp_ipv4_session;
     }
 
     if(p2mp_ipv4_session != nullptr)
     {
-        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
+        _children["p2mp-ipv4-session"] = p2mp_ipv4_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18604,16 +18604,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::UdpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18711,16 +18711,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2mpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2mpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Filter::RsvpFilter::P2mpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18826,16 +18826,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestBriefs::RequestBrief
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestBriefs::RequestBrief::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestBriefs::RequestBrief::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestBriefs::RequestBrief::Style::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestBriefs::RequestBrief::Style::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestBriefs::RequestBrief::Style::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18919,33 +18919,33 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::get_name_le
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "request-detail")
     {
-        auto c = std::make_shared<Rsvp::RequestDetails::RequestDetail>();
-        c->parent = this;
-        request_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::RequestDetails::RequestDetail>();
+        ent_->parent = this;
+        request_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : request_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : request_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19126,7 +19126,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -19238,106 +19238,106 @@ std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::get_child_by_name(c
 
     if(child_yang_name == "psb-key")
     {
-        auto c = std::make_shared<Rsvp::RequestDetails::RequestDetail::PsbKey>();
-        c->parent = this;
-        psb_key.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::RequestDetails::RequestDetail::PsbKey>();
+        ent_->parent = this;
+        psb_key.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "rsb-key")
     {
-        auto c = std::make_shared<Rsvp::RequestDetails::RequestDetail::RsbKey>();
-        c->parent = this;
-        rsb_key.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rsvp::RequestDetails::RequestDetail::RsbKey>();
+        ent_->parent = this;
+        rsb_key.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(s2l_sub_lsp != nullptr)
     {
-        children["s2l-sub-lsp"] = s2l_sub_lsp;
+        _children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
     if(flow_spec != nullptr)
     {
-        children["flow-spec"] = flow_spec;
+        _children["flow-spec"] = flow_spec;
     }
 
     if(generic_flow_spec != nullptr)
     {
-        children["generic-flow-spec"] = generic_flow_spec;
+        _children["generic-flow-spec"] = generic_flow_spec;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
     if(style != nullptr)
     {
-        children["style"] = style;
+        _children["style"] = style;
     }
 
     if(req_flags != nullptr)
     {
-        children["req-flags"] = req_flags;
+        _children["req-flags"] = req_flags;
     }
 
     if(hop != nullptr)
     {
-        children["hop"] = hop;
+        _children["hop"] = hop;
     }
 
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(policy_sources != nullptr)
     {
-        children["policy-sources"] = policy_sources;
+        _children["policy-sources"] = policy_sources;
     }
 
     if(policy_flags != nullptr)
     {
-        children["policy-flags"] = policy_flags;
+        _children["policy-flags"] = policy_flags;
     }
 
     if(policy_query_flags != nullptr)
     {
-        children["policy-query-flags"] = policy_query_flags;
+        _children["policy-query-flags"] = policy_query_flags;
     }
 
-    count = 0;
-    for (auto c : psb_key.entities())
+    count_ = 0;
+    for (auto ent_ : psb_key.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : rsb_key.entities())
+    count_ = 0;
+    for (auto ent_ : rsb_key.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19523,7 +19523,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-session")
     {
@@ -19537,16 +19537,16 @@ std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Session::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_session != nullptr)
     {
-        children["rsvp-session"] = rsvp_session;
+        _children["rsvp-session"] = rsvp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19629,7 +19629,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -19670,31 +19670,31 @@ std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSessio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv4_lsp_session != nullptr)
     {
-        children["ipv4-lsp-session"] = ipv4_lsp_session;
+        _children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
     if(ipv4_uni_session != nullptr)
     {
-        children["ipv4-uni-session"] = ipv4_uni_session;
+        _children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     if(ipv4_p2mp_lsp_session != nullptr)
     {
-        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+        _children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19778,16 +19778,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19891,16 +19891,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20004,16 +20004,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20117,16 +20117,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Session::RsvpSession::Ipv4P2mpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20222,16 +20222,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::S2lSubLsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::S2lSubLsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::S2lSubLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20335,16 +20335,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::FlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::FlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::FlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20495,7 +20495,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "g709otn-flow-spec")
     {
@@ -20509,16 +20509,16 @@ std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(g709otn_flow_spec != nullptr)
     {
-        children["g709otn-flow-spec"] = g709otn_flow_spec;
+        _children["g709otn-flow-spec"] = g709otn_flow_spec;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20606,16 +20606,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::GenericFlowSpec::G709otnFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20721,7 +20721,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-filter")
     {
@@ -20735,16 +20735,16 @@ std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_filter != nullptr)
     {
-        children["rsvp-filter"] = rsvp_filter;
+        _children["rsvp-filter"] = rsvp_filter;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20819,7 +20819,7 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp-ipv4-session")
     {
@@ -20842,21 +20842,21 @@ std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp_ipv4_session != nullptr)
     {
-        children["udp-ipv4-session"] = udp_ipv4_session;
+        _children["udp-ipv4-session"] = udp_ipv4_session;
     }
 
     if(p2mp_ipv4_session != nullptr)
     {
-        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
+        _children["p2mp-ipv4-session"] = p2mp_ipv4_session;
     }
 
-    return children;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20936,16 +20936,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::UdpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21043,16 +21043,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Filter::RsvpFilter::P2mpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21158,16 +21158,16 @@ std::vector<std::pair<std::string, LeafData> > Rsvp::RequestDetails::RequestDeta
 
 }
 
-std::shared_ptr<Entity> Rsvp::RequestDetails::RequestDetail::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rsvp::RequestDetails::RequestDetail::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rsvp::RequestDetails::RequestDetail::Style::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rsvp::RequestDetails::RequestDetail::Style::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rsvp::RequestDetails::RequestDetail::Style::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

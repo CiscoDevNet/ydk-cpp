@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Components::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Components::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "component")
     {
-        auto c = std::make_shared<Components::Component>();
-        c->parent = this;
-        component.append(c);
-        return c;
+        auto ent_ = std::make_shared<Components::Component>();
+        ent_->parent = this;
+        component.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : component.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : component.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void Components::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Components::clone_ptr() const
+std::shared_ptr<ydk::Entity> Components::clone_ptr() const
 {
     return std::make_shared<Components>();
 }
@@ -207,7 +207,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::get_name_l
 
 }
 
-std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -275,46 +275,46 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(properties != nullptr)
     {
-        children["properties"] = properties;
+        _children["properties"] = properties;
     }
 
     if(subcomponents != nullptr)
     {
-        children["subcomponents"] = subcomponents;
+        _children["subcomponents"] = subcomponents;
     }
 
     if(optical_port != nullptr)
     {
-        children["openconfig-transport-line-common:optical-port"] = optical_port;
+        _children["openconfig-transport-line-common:optical-port"] = optical_port;
     }
 
     if(transceiver != nullptr)
     {
-        children["openconfig-platform-transceiver:transceiver"] = transceiver;
+        _children["openconfig-platform-transceiver:transceiver"] = transceiver;
     }
 
     if(optical_channel != nullptr)
     {
-        children["openconfig-terminal-device:optical-channel"] = optical_channel;
+        _children["openconfig-terminal-device:optical-channel"] = optical_channel;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -383,16 +383,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Config::ge
 
 }
 
-std::shared_ptr<Entity> Components::Component::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -489,16 +489,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::State::get
 
 }
 
-std::shared_ptr<Entity> Components::Component::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -645,33 +645,33 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Properties
 
 }
 
-std::shared_ptr<Entity> Components::Component::Properties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Properties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "property")
     {
-        auto c = std::make_shared<Components::Component::Properties::Property>();
-        c->parent = this;
-        property.append(c);
-        return c;
+        auto ent_ = std::make_shared<Components::Component::Properties::Property>();
+        ent_->parent = this;
+        property.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Properties::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : property.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : property.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::Properties::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -740,7 +740,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Properties
 
 }
 
-std::shared_ptr<Entity> Components::Component::Properties::Property::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Properties::Property::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -763,21 +763,21 @@ std::shared_ptr<Entity> Components::Component::Properties::Property::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::Property::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Properties::Property::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::Properties::Property::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -850,16 +850,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Properties
 
 }
 
-std::shared_ptr<Entity> Components::Component::Properties::Property::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Properties::Property::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::Property::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Properties::Property::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Properties::Property::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -946,16 +946,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Properties
 
 }
 
-std::shared_ptr<Entity> Components::Component::Properties::Property::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Properties::Property::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Properties::Property::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Properties::Property::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Properties::Property::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1052,33 +1052,33 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Subcompone
 
 }
 
-std::shared_ptr<Entity> Components::Component::Subcomponents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Subcomponents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subcomponent")
     {
-        auto c = std::make_shared<Components::Component::Subcomponents::Subcomponent>();
-        c->parent = this;
-        subcomponent.append(c);
-        return c;
+        auto ent_ = std::make_shared<Components::Component::Subcomponents::Subcomponent>();
+        ent_->parent = this;
+        subcomponent.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Subcomponents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subcomponent.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subcomponent.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::Subcomponents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1147,7 +1147,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Subcompone
 
 }
 
-std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Subcomponents::Subcomponent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1170,21 +1170,21 @@ std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::Subcomponent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Subcomponents::Subcomponent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::Subcomponents::Subcomponent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1253,16 +1253,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Subcompone
 
 }
 
-std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Subcomponents::Subcomponent::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::Subcomponent::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Subcomponents::Subcomponent::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Subcomponents::Subcomponent::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1331,16 +1331,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Subcompone
 
 }
 
-std::shared_ptr<Entity> Components::Component::Subcomponents::Subcomponent::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Subcomponents::Subcomponent::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Subcomponents::Subcomponent::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Subcomponents::Subcomponent::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Subcomponents::Subcomponent::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1413,7 +1413,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPor
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1436,21 +1436,21 @@ std::shared_ptr<Entity> Components::Component::OpticalPort::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::OpticalPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1509,16 +1509,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPor
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalPort::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalPort::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalPort::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalPort::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1600,7 +1600,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPor
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalPort::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalPort::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input-power")
     {
@@ -1623,21 +1623,21 @@ std::shared_ptr<Entity> Components::Component::OpticalPort::State::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalPort::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input_power != nullptr)
     {
-        children["input-power"] = input_power;
+        _children["input-power"] = input_power;
     }
 
     if(output_power != nullptr)
     {
-        children["output-power"] = output_power;
+        _children["output-power"] = output_power;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::OpticalPort::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1728,16 +1728,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPor
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalPort::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalPort::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::InputPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalPort::State::InputPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalPort::State::InputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1848,16 +1848,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalPor
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalPort::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalPort::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalPort::State::OutputPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalPort::State::OutputPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalPort::State::OutputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1964,7 +1964,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1996,26 +1996,26 @@ std::shared_ptr<Entity> Components::Component::Transceiver::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(physical_channels != nullptr)
     {
-        children["physical-channels"] = physical_channels;
+        _children["physical-channels"] = physical_channels;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::Transceiver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2078,16 +2078,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Transceiver::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2218,16 +2218,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Transceiver::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2434,33 +2434,33 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::PhysicalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "channel")
     {
-        auto c = std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel>();
-        c->parent = this;
-        channel.append(c);
-        return c;
+        auto ent_ = std::make_shared<Components::Component::Transceiver::PhysicalChannels::Channel>();
+        ent_->parent = this;
+        channel.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::PhysicalChannels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : channel.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : channel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::Transceiver::PhysicalChannels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2529,7 +2529,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::PhysicalChannels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2552,21 +2552,21 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::Transceiver::PhysicalChannels::Channel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2647,16 +2647,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Transceiver::PhysicalChannels::Channel::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2784,7 +2784,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output-power")
     {
@@ -2816,26 +2816,26 @@ std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(output_power != nullptr)
     {
-        children["output-power"] = output_power;
+        _children["output-power"] = output_power;
     }
 
     if(input_power != nullptr)
     {
-        children["input-power"] = input_power;
+        _children["input-power"] = input_power;
     }
 
     if(laser_bias_current != nullptr)
     {
-        children["laser-bias-current"] = laser_bias_current;
+        _children["laser-bias-current"] = laser_bias_current;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::Transceiver::PhysicalChannels::Channel::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2956,16 +2956,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Transceiver::PhysicalChannels::Channel::State::OutputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3076,16 +3076,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Transceiver::PhysicalChannels::Channel::State::InputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3196,16 +3196,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::Transceive
 
 }
 
-std::shared_ptr<Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::Transceiver::PhysicalChannels::Channel::State::LaserBiasCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3308,7 +3308,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3331,21 +3331,21 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3416,16 +3416,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3569,7 +3569,7 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output-power")
     {
@@ -3637,46 +3637,46 @@ std::shared_ptr<Entity> Components::Component::OpticalChannel::State::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(output_power != nullptr)
     {
-        children["output-power"] = output_power;
+        _children["output-power"] = output_power;
     }
 
     if(input_power != nullptr)
     {
-        children["input-power"] = input_power;
+        _children["input-power"] = input_power;
     }
 
     if(laser_bias_current != nullptr)
     {
-        children["laser-bias-current"] = laser_bias_current;
+        _children["laser-bias-current"] = laser_bias_current;
     }
 
     if(chromatic_dispersion != nullptr)
     {
-        children["chromatic-dispersion"] = chromatic_dispersion;
+        _children["chromatic-dispersion"] = chromatic_dispersion;
     }
 
     if(polarization_mode_dispersion != nullptr)
     {
-        children["polarization-mode-dispersion"] = polarization_mode_dispersion;
+        _children["polarization-mode-dispersion"] = polarization_mode_dispersion;
     }
 
     if(second_order_polarization_mode_dispersion != nullptr)
     {
-        children["second-order-polarization-mode-dispersion"] = second_order_polarization_mode_dispersion;
+        _children["second-order-polarization-mode-dispersion"] = second_order_polarization_mode_dispersion;
     }
 
     if(polarization_dependent_loss != nullptr)
     {
-        children["polarization-dependent-loss"] = polarization_dependent_loss;
+        _children["polarization-dependent-loss"] = polarization_dependent_loss;
     }
 
-    return children;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3797,16 +3797,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::OutputPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::State::OutputPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::State::OutputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3917,16 +3917,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::InputPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::State::InputPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::State::InputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4037,16 +4037,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::LaserBiasCurrent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::State::LaserBiasCurrent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::State::LaserBiasCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4157,16 +4157,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::State::ChromaticDispersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::State::ChromaticDispersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::ChromaticDispersion::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::State::ChromaticDispersion::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::State::ChromaticDispersion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4277,16 +4277,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::State::PolarizationModeDispersion::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::State::PolarizationModeDispersion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4397,16 +4397,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::State::SecondOrderPolarizationModeDispersion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4517,16 +4517,16 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::OpticalCha
 
 }
 
-std::shared_ptr<Entity> Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Components::Component::OpticalChannel::State::PolarizationDependentLoss::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Components::Component::OpticalChannel::State::PolarizationDependentLoss::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

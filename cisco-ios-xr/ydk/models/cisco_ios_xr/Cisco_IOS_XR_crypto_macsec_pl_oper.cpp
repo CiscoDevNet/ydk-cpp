@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> MacsecPlatform::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void MacsecPlatform::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MacsecPlatform::clone_ptr() const
+std::shared_ptr<ydk::Entity> MacsecPlatform::clone_ptr() const
 {
     return std::make_shared<MacsecPlatform>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::get_name_l
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<MacsecPlatform::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<MacsecPlatform::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::get_
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -286,16 +286,16 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -372,33 +372,33 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -475,7 +475,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hw-statistics")
     {
@@ -516,31 +516,31 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hw_statistics != nullptr)
     {
-        children["hw-statistics"] = hw_statistics;
+        _children["hw-statistics"] = hw_statistics;
     }
 
     if(hw_sas != nullptr)
     {
-        children["hw-sas"] = hw_sas;
+        _children["hw-sas"] = hw_sas;
     }
 
     if(hw_flow_s != nullptr)
     {
-        children["hw-flow-s"] = hw_flow_s;
+        _children["hw-flow-s"] = hw_flow_s;
     }
 
     if(sw_statistics != nullptr)
     {
-        children["sw-statistics"] = sw_statistics;
+        _children["sw-statistics"] = sw_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -609,7 +609,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ext")
     {
@@ -623,16 +623,16 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ext != nullptr)
     {
-        children["ext"] = ext;
+        _children["ext"] = ext;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -704,7 +704,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msfpga-stats")
     {
@@ -736,26 +736,26 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(msfpga_stats != nullptr)
     {
-        children["msfpga-stats"] = msfpga_stats;
+        _children["msfpga-stats"] = msfpga_stats;
     }
 
     if(xlfpga_stats != nullptr)
     {
-        children["xlfpga-stats"] = xlfpga_stats;
+        _children["xlfpga-stats"] = xlfpga_stats;
     }
 
     if(es200_stats != nullptr)
     {
-        children["es200-stats"] = es200_stats;
+        _children["es200-stats"] = es200_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -836,7 +836,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx-sa-stats")
     {
@@ -877,31 +877,31 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx_sa_stats != nullptr)
     {
-        children["tx-sa-stats"] = tx_sa_stats;
+        _children["tx-sa-stats"] = tx_sa_stats;
     }
 
     if(rx_sa_stats != nullptr)
     {
-        children["rx-sa-stats"] = rx_sa_stats;
+        _children["rx-sa-stats"] = rx_sa_stats;
     }
 
     if(tx_interface_macsec_stats != nullptr)
     {
-        children["tx-interface-macsec-stats"] = tx_interface_macsec_stats;
+        _children["tx-interface-macsec-stats"] = tx_interface_macsec_stats;
     }
 
     if(rx_interface_macsec_stats != nullptr)
     {
-        children["rx-interface-macsec-stats"] = rx_interface_macsec_stats;
+        _children["rx-interface-macsec-stats"] = rx_interface_macsec_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -972,16 +972,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxSaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxSaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxSaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1116,16 +1116,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxSaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxSaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxSaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1292,16 +1292,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1418,16 +1418,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1570,7 +1570,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-tx-stats")
     {
@@ -1593,21 +1593,21 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_tx_stats != nullptr)
     {
-        children["macsec-tx-stats"] = macsec_tx_stats;
+        _children["macsec-tx-stats"] = macsec_tx_stats;
     }
 
     if(macsec_rx_stats != nullptr)
     {
-        children["macsec-rx-stats"] = macsec_rx_stats;
+        _children["macsec-rx-stats"] = macsec_rx_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1702,16 +1702,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecTxStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecTxStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecTxStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecTxStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecTxStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1950,33 +1950,33 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rx-sa-stat")
     {
-        auto c = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat>();
-        c->parent = this;
-        rx_sa_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat>();
+        ent_->parent = this;
+        rx_sa_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rx_sa_stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rx_sa_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2235,16 +2235,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2391,7 +2391,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx-sa-stats")
     {
@@ -2468,51 +2468,51 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx_sa_stats != nullptr)
     {
-        children["tx-sa-stats"] = tx_sa_stats;
+        _children["tx-sa-stats"] = tx_sa_stats;
     }
 
     if(rx_sa_stats != nullptr)
     {
-        children["rx-sa-stats"] = rx_sa_stats;
+        _children["rx-sa-stats"] = rx_sa_stats;
     }
 
     if(tx_sc_macsec_stats != nullptr)
     {
-        children["tx-sc-macsec-stats"] = tx_sc_macsec_stats;
+        _children["tx-sc-macsec-stats"] = tx_sc_macsec_stats;
     }
 
     if(rx_sc_macsec_stats != nullptr)
     {
-        children["rx-sc-macsec-stats"] = rx_sc_macsec_stats;
+        _children["rx-sc-macsec-stats"] = rx_sc_macsec_stats;
     }
 
     if(tx_interface_macsec_stats != nullptr)
     {
-        children["tx-interface-macsec-stats"] = tx_interface_macsec_stats;
+        _children["tx-interface-macsec-stats"] = tx_interface_macsec_stats;
     }
 
     if(rx_interface_macsec_stats != nullptr)
     {
-        children["rx-interface-macsec-stats"] = rx_interface_macsec_stats;
+        _children["rx-interface-macsec-stats"] = rx_interface_macsec_stats;
     }
 
     if(tx_port_stats != nullptr)
     {
-        children["tx-port-stats"] = tx_port_stats;
+        _children["tx-port-stats"] = tx_port_stats;
     }
 
     if(rx_port_stats != nullptr)
     {
-        children["rx-port-stats"] = rx_port_stats;
+        _children["rx-port-stats"] = rx_port_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2579,16 +2579,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxSaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxSaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxSaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2713,16 +2713,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxSaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxSaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxSaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2881,16 +2881,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxScMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxScMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxScMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxScMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxScMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2959,16 +2959,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxScMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxScMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxScMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxScMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxScMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3105,16 +3105,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3437,16 +3437,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3749,16 +3749,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxPortStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxPortStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxPortStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxPortStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::TxPortStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3911,16 +3911,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxPortStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxPortStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxPortStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxPortStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ext::Es200Stats::RxPortStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4057,33 +4057,33 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hw-sa")
     {
-        auto c = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa>();
-        c->parent = this;
-        hw_sa.append(c);
-        return c;
+        auto ent_ = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa>();
+        ent_->parent = this;
+        hw_sa.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hw_sa.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hw_sa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4148,7 +4148,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ext")
     {
@@ -4162,16 +4162,16 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ext != nullptr)
     {
-        children["ext"] = ext;
+        _children["ext"] = ext;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4253,7 +4253,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msfpga-sa")
     {
@@ -4285,26 +4285,26 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(msfpga_sa != nullptr)
     {
-        children["msfpga-sa"] = msfpga_sa;
+        _children["msfpga-sa"] = msfpga_sa;
     }
 
     if(xlfpga_sa != nullptr)
     {
-        children["xlfpga-sa"] = xlfpga_sa;
+        _children["xlfpga-sa"] = xlfpga_sa;
     }
 
     if(es200_sa != nullptr)
     {
-        children["es200-sa"] = es200_sa;
+        _children["es200-sa"] = es200_sa;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4377,7 +4377,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx-sa")
     {
@@ -4400,21 +4400,21 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx_sa != nullptr)
     {
-        children["tx-sa"] = tx_sa;
+        _children["tx-sa"] = tx_sa;
     }
 
     if(rx_sa != nullptr)
     {
-        children["rx-sa"] = rx_sa;
+        _children["rx-sa"] = rx_sa;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4525,16 +4525,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::TxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::TxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::TxSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::TxSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::TxSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4785,16 +4785,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::RxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::RxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::RxSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::RxSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::MsfpgaSa::RxSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4997,7 +4997,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx-sa")
     {
@@ -5020,21 +5020,21 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx_sa != nullptr)
     {
-        children["tx-sa"] = tx_sa;
+        _children["tx-sa"] = tx_sa;
     }
 
     if(rx_sa != nullptr)
     {
-        children["rx-sa"] = rx_sa;
+        _children["rx-sa"] = rx_sa;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5141,16 +5141,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::TxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::TxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::TxSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::TxSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::TxSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5463,16 +5463,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::RxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::RxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::RxSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::RxSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::XlfpgaSa::RxSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5754,7 +5754,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx-sa")
     {
@@ -5767,34 +5767,34 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSa
 
     if(child_yang_name == "rx-sa")
     {
-        auto c = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa>();
-        c->parent = this;
-        rx_sa.append(c);
-        return c;
+        auto ent_ = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa>();
+        ent_->parent = this;
+        rx_sa.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx_sa != nullptr)
     {
-        children["tx-sa"] = tx_sa;
+        _children["tx-sa"] = tx_sa;
     }
 
-    count = 0;
-    for (auto c : rx_sa.entities())
+    count_ = 0;
+    for (auto ent_ : rx_sa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5890,7 +5890,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "xform-params")
     {
@@ -5904,16 +5904,16 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(xform_params != nullptr)
     {
-        children["xform-params"] = xform_params;
+        _children["xform-params"] = xform_params;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6086,16 +6086,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::XformParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::XformParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::XformParams::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::XformParams::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::XformParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6277,7 +6277,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "xform-params")
     {
@@ -6291,16 +6291,16 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(xform_params != nullptr)
     {
-        children["xform-params"] = xform_params;
+        _children["xform-params"] = xform_params;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6513,16 +6513,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::XformParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::XformParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::XformParams::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::XformParams::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::XformParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6659,33 +6659,33 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hw-flow")
     {
-        auto c = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow>();
-        c->parent = this;
-        hw_flow.append(c);
-        return c;
+        auto ent_ = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow>();
+        ent_->parent = this;
+        hw_flow.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hw_flow.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hw_flow.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6750,7 +6750,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ext")
     {
@@ -6764,16 +6764,16 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ext != nullptr)
     {
-        children["ext"] = ext;
+        _children["ext"] = ext;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6851,7 +6851,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msfpga-flow")
     {
@@ -6874,21 +6874,21 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(msfpga_flow != nullptr)
     {
-        children["msfpga-flow"] = msfpga_flow;
+        _children["msfpga-flow"] = msfpga_flow;
     }
 
     if(es200_flow != nullptr)
     {
-        children["es200-flow"] = es200_flow;
+        _children["es200-flow"] = es200_flow;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6961,7 +6961,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx-flow")
     {
@@ -6984,21 +6984,21 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx_flow != nullptr)
     {
-        children["tx-flow"] = tx_flow;
+        _children["tx-flow"] = tx_flow;
     }
 
     if(rx_flow != nullptr)
     {
-        children["rx-flow"] = rx_flow;
+        _children["rx-flow"] = rx_flow;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7221,16 +7221,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::TxFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::TxFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::TxFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::TxFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::TxFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7819,16 +7819,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::RxFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::RxFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::RxFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::RxFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::MsfpgaFlow::RxFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8257,7 +8257,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx-flow")
     {
@@ -8280,21 +8280,21 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx_flow != nullptr)
     {
-        children["tx-flow"] = tx_flow;
+        _children["tx-flow"] = tx_flow;
     }
 
     if(rx_flow != nullptr)
     {
-        children["rx-flow"] = rx_flow;
+        _children["rx-flow"] = rx_flow;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8515,16 +8515,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::TxFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::TxFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::TxFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::TxFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::TxFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9133,16 +9133,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::RxFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::RxFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::RxFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::RxFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwFlowS::HwFlow::Ext::Es200Flow::RxFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9589,7 +9589,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ext")
     {
@@ -9603,16 +9603,16 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ext != nullptr)
     {
-        children["ext"] = ext;
+        _children["ext"] = ext;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9684,7 +9684,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msfpga-stats")
     {
@@ -9716,26 +9716,26 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(msfpga_stats != nullptr)
     {
-        children["msfpga-stats"] = msfpga_stats;
+        _children["msfpga-stats"] = msfpga_stats;
     }
 
     if(xlfpga_stats != nullptr)
     {
-        children["xlfpga-stats"] = xlfpga_stats;
+        _children["xlfpga-stats"] = xlfpga_stats;
     }
 
     if(es200_stats != nullptr)
     {
-        children["es200-stats"] = es200_stats;
+        _children["es200-stats"] = es200_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9816,7 +9816,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx-sa-stats")
     {
@@ -9857,31 +9857,31 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx_sa_stats != nullptr)
     {
-        children["tx-sa-stats"] = tx_sa_stats;
+        _children["tx-sa-stats"] = tx_sa_stats;
     }
 
     if(rx_sa_stats != nullptr)
     {
-        children["rx-sa-stats"] = rx_sa_stats;
+        _children["rx-sa-stats"] = rx_sa_stats;
     }
 
     if(tx_interface_macsec_stats != nullptr)
     {
-        children["tx-interface-macsec-stats"] = tx_interface_macsec_stats;
+        _children["tx-interface-macsec-stats"] = tx_interface_macsec_stats;
     }
 
     if(rx_interface_macsec_stats != nullptr)
     {
-        children["rx-interface-macsec-stats"] = rx_interface_macsec_stats;
+        _children["rx-interface-macsec-stats"] = rx_interface_macsec_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9952,16 +9952,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxSaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxSaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxSaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10096,16 +10096,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxSaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxSaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxSaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10272,16 +10272,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::TxInterfaceMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10398,16 +10398,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::MsfpgaStats::RxInterfaceMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10550,7 +10550,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-tx-stats")
     {
@@ -10573,21 +10573,21 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_tx_stats != nullptr)
     {
-        children["macsec-tx-stats"] = macsec_tx_stats;
+        _children["macsec-tx-stats"] = macsec_tx_stats;
     }
 
     if(macsec_rx_stats != nullptr)
     {
-        children["macsec-rx-stats"] = macsec_rx_stats;
+        _children["macsec-rx-stats"] = macsec_rx_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10682,16 +10682,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecTxStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecTxStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecTxStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecTxStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecTxStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10930,33 +10930,33 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rx-sa-stat")
     {
-        auto c = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat>();
-        c->parent = this;
-        rx_sa_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat>();
+        ent_->parent = this;
+        rx_sa_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rx_sa_stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rx_sa_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11215,16 +11215,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::XlfpgaStats::MacsecRxStats::RxSaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11371,7 +11371,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tx-sa-stats")
     {
@@ -11448,51 +11448,51 @@ std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwSt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tx_sa_stats != nullptr)
     {
-        children["tx-sa-stats"] = tx_sa_stats;
+        _children["tx-sa-stats"] = tx_sa_stats;
     }
 
     if(rx_sa_stats != nullptr)
     {
-        children["rx-sa-stats"] = rx_sa_stats;
+        _children["rx-sa-stats"] = rx_sa_stats;
     }
 
     if(tx_sc_macsec_stats != nullptr)
     {
-        children["tx-sc-macsec-stats"] = tx_sc_macsec_stats;
+        _children["tx-sc-macsec-stats"] = tx_sc_macsec_stats;
     }
 
     if(rx_sc_macsec_stats != nullptr)
     {
-        children["rx-sc-macsec-stats"] = rx_sc_macsec_stats;
+        _children["rx-sc-macsec-stats"] = rx_sc_macsec_stats;
     }
 
     if(tx_interface_macsec_stats != nullptr)
     {
-        children["tx-interface-macsec-stats"] = tx_interface_macsec_stats;
+        _children["tx-interface-macsec-stats"] = tx_interface_macsec_stats;
     }
 
     if(rx_interface_macsec_stats != nullptr)
     {
-        children["rx-interface-macsec-stats"] = rx_interface_macsec_stats;
+        _children["rx-interface-macsec-stats"] = rx_interface_macsec_stats;
     }
 
     if(tx_port_stats != nullptr)
     {
-        children["tx-port-stats"] = tx_port_stats;
+        _children["tx-port-stats"] = tx_port_stats;
     }
 
     if(rx_port_stats != nullptr)
     {
-        children["rx-port-stats"] = rx_port_stats;
+        _children["rx-port-stats"] = rx_port_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11559,16 +11559,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxSaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxSaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxSaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11693,16 +11693,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxSaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxSaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxSaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxSaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11861,16 +11861,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxScMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxScMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxScMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxScMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxScMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11939,16 +11939,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxScMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxScMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxScMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxScMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxScMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12085,16 +12085,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxInterfaceMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12417,16 +12417,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxInterfaceMacsecStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12729,16 +12729,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxPortStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxPortStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxPortStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxPortStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::TxPortStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12891,16 +12891,16 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
 
 }
 
-std::shared_ptr<Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxPortStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxPortStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxPortStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxPortStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ext::Es200Stats::RxPortStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

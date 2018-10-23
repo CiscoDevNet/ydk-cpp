@@ -170,7 +170,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-neighbor-briefs")
     {
@@ -445,161 +445,161 @@ std::shared_ptr<Entity> RsvpStandby::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_neighbor_briefs != nullptr)
     {
-        children["interface-neighbor-briefs"] = interface_neighbor_briefs;
+        _children["interface-neighbor-briefs"] = interface_neighbor_briefs;
     }
 
     if(controller_summaries != nullptr)
     {
-        children["controller-summaries"] = controller_summaries;
+        _children["controller-summaries"] = controller_summaries;
     }
 
     if(authentication_briefs != nullptr)
     {
-        children["authentication-briefs"] = authentication_briefs;
+        _children["authentication-briefs"] = authentication_briefs;
     }
 
     if(session_briefs != nullptr)
     {
-        children["session-briefs"] = session_briefs;
+        _children["session-briefs"] = session_briefs;
     }
 
     if(psb_detaileds != nullptr)
     {
-        children["psb-detaileds"] = psb_detaileds;
+        _children["psb-detaileds"] = psb_detaileds;
     }
 
     if(controller_detaileds != nullptr)
     {
-        children["controller-detaileds"] = controller_detaileds;
+        _children["controller-detaileds"] = controller_detaileds;
     }
 
     if(frr_summary != nullptr)
     {
-        children["frr-summary"] = frr_summary;
+        _children["frr-summary"] = frr_summary;
     }
 
     if(rsb_detaileds != nullptr)
     {
-        children["rsb-detaileds"] = rsb_detaileds;
+        _children["rsb-detaileds"] = rsb_detaileds;
     }
 
     if(interface_summaries != nullptr)
     {
-        children["interface-summaries"] = interface_summaries;
+        _children["interface-summaries"] = interface_summaries;
     }
 
     if(hello_instance_briefs != nullptr)
     {
-        children["hello-instance-briefs"] = hello_instance_briefs;
+        _children["hello-instance-briefs"] = hello_instance_briefs;
     }
 
     if(authentication_details != nullptr)
     {
-        children["authentication-details"] = authentication_details;
+        _children["authentication-details"] = authentication_details;
     }
 
     if(rsb_briefs != nullptr)
     {
-        children["rsb-briefs"] = rsb_briefs;
+        _children["rsb-briefs"] = rsb_briefs;
     }
 
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
     if(interface_detaileds != nullptr)
     {
-        children["interface-detaileds"] = interface_detaileds;
+        _children["interface-detaileds"] = interface_detaileds;
     }
 
     if(controller_briefs != nullptr)
     {
-        children["controller-briefs"] = controller_briefs;
+        _children["controller-briefs"] = controller_briefs;
     }
 
     if(graceful_restart != nullptr)
     {
-        children["graceful-restart"] = graceful_restart;
+        _children["graceful-restart"] = graceful_restart;
     }
 
     if(hello_interface_instance_briefs != nullptr)
     {
-        children["hello-interface-instance-briefs"] = hello_interface_instance_briefs;
+        _children["hello-interface-instance-briefs"] = hello_interface_instance_briefs;
     }
 
     if(hello_interface_instance_details != nullptr)
     {
-        children["hello-interface-instance-details"] = hello_interface_instance_details;
+        _children["hello-interface-instance-details"] = hello_interface_instance_details;
     }
 
     if(interface_neighbor_details != nullptr)
     {
-        children["interface-neighbor-details"] = interface_neighbor_details;
+        _children["interface-neighbor-details"] = interface_neighbor_details;
     }
 
     if(nsr != nullptr)
     {
-        children["nsr"] = nsr;
+        _children["nsr"] = nsr;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(frrs != nullptr)
     {
-        children["frrs"] = frrs;
+        _children["frrs"] = frrs;
     }
 
     if(request_briefs != nullptr)
     {
-        children["request-briefs"] = request_briefs;
+        _children["request-briefs"] = request_briefs;
     }
 
     if(request_details != nullptr)
     {
-        children["request-details"] = request_details;
+        _children["request-details"] = request_details;
     }
 
     if(interface_briefs != nullptr)
     {
-        children["interface-briefs"] = interface_briefs;
+        _children["interface-briefs"] = interface_briefs;
     }
 
     if(session_detaileds != nullptr)
     {
-        children["session-detaileds"] = session_detaileds;
+        _children["session-detaileds"] = session_detaileds;
     }
 
     if(hello_instance_details != nullptr)
     {
-        children["hello-instance-details"] = hello_instance_details;
+        _children["hello-instance-details"] = hello_instance_details;
     }
 
     if(global_neighbor_details != nullptr)
     {
-        children["global-neighbor-details"] = global_neighbor_details;
+        _children["global-neighbor-details"] = global_neighbor_details;
     }
 
     if(psb_briefs != nullptr)
     {
-        children["psb-briefs"] = psb_briefs;
+        _children["psb-briefs"] = psb_briefs;
     }
 
     if(global_neighbor_briefs != nullptr)
     {
-        children["global-neighbor-briefs"] = global_neighbor_briefs;
+        _children["global-neighbor-briefs"] = global_neighbor_briefs;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -610,7 +610,7 @@ void RsvpStandby::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> RsvpStandby::clone_ptr() const
+std::shared_ptr<ydk::Entity> RsvpStandby::clone_ptr() const
 {
     return std::make_shared<RsvpStandby>();
 }
@@ -698,33 +698,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::InterfaceNeighborBri
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::InterfaceNeighborBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-neighbor-brief")
     {
-        auto c = std::make_shared<RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief>();
-        c->parent = this;
-        interface_neighbor_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief>();
+        ent_->parent = this;
+        interface_neighbor_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceNeighborBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::InterfaceNeighborBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_neighbor_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_neighbor_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::InterfaceNeighborBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -807,33 +807,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::InterfaceNeighborBri
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-neighbor-list-compact")
     {
-        auto c = std::make_shared<RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact>();
-        c->parent = this;
-        interface_neighbor_list_compact.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact>();
+        ent_->parent = this;
+        interface_neighbor_list_compact.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_neighbor_list_compact.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_neighbor_list_compact.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -916,16 +916,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::InterfaceNeighborBri
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeighborListCompact::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1019,33 +1019,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerSummaries:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "controller-summary")
     {
-        auto c = std::make_shared<RsvpStandby::ControllerSummaries::ControllerSummary>();
-        c->parent = this;
-        controller_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::ControllerSummaries::ControllerSummary>();
+        ent_->parent = this;
+        controller_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : controller_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : controller_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::ControllerSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1137,7 +1137,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerSummaries:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerSummaries::ControllerSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bandwidth-information")
     {
@@ -1151,16 +1151,16 @@ std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bandwidth_information != nullptr)
     {
-        children["bandwidth-information"] = bandwidth_information;
+        _children["bandwidth-information"] = bandwidth_information;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::ControllerSummaries::ControllerSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1288,7 +1288,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerSummaries:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pre-standard-dste-interface")
     {
@@ -1311,21 +1311,21 @@ std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::Ban
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pre_standard_dste_interface != nullptr)
     {
-        children["pre-standard-dste-interface"] = pre_standard_dste_interface;
+        _children["pre-standard-dste-interface"] = pre_standard_dste_interface;
     }
 
     if(standard_dste_interface != nullptr)
     {
-        children["standard-dste-interface"] = standard_dste_interface;
+        _children["standard-dste-interface"] = standard_dste_interface;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1414,16 +1414,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerSummaries:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::PreStandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::PreStandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1570,16 +1570,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerSummaries:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::StandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::StandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::ControllerSummaries::ControllerSummary::BandwidthInformation::StandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1733,33 +1733,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationBriefs
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication-brief")
     {
-        auto c = std::make_shared<RsvpStandby::AuthenticationBriefs::AuthenticationBrief>();
-        c->parent = this;
-        authentication_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::AuthenticationBriefs::AuthenticationBrief>();
+        ent_->parent = this;
+        authentication_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : authentication_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : authentication_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1873,16 +1873,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationBriefs
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationBriefs::AuthenticationBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationBriefs::AuthenticationBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationBriefs::AuthenticationBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationBriefs::AuthenticationBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationBriefs::AuthenticationBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2076,33 +2076,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::get_n
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::SessionBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::SessionBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-brief")
     {
-        auto c = std::make_shared<RsvpStandby::SessionBriefs::SessionBrief>();
-        c->parent = this;
-        session_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::SessionBriefs::SessionBrief>();
+        ent_->parent = this;
+        session_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::SessionBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::SessionBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2213,7 +2213,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::Sessi
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::SessionBriefs::SessionBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -2227,16 +2227,16 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::SessionBriefs::SessionBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::SessionBriefs::SessionBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2412,7 +2412,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::Sessi
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-session")
     {
@@ -2426,16 +2426,16 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_session != nullptr)
     {
-        children["rsvp-session"] = rsvp_session;
+        _children["rsvp-session"] = rsvp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::SessionBriefs::SessionBrief::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2518,7 +2518,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::Sessi
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -2559,31 +2559,31 @@ std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv4_lsp_session != nullptr)
     {
-        children["ipv4-lsp-session"] = ipv4_lsp_session;
+        _children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
     if(ipv4_uni_session != nullptr)
     {
-        children["ipv4-uni-session"] = ipv4_uni_session;
+        _children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     if(ipv4_p2mp_lsp_session != nullptr)
     {
-        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+        _children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2667,16 +2667,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::Sessi
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2780,16 +2780,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::Sessi
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2893,16 +2893,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::Sessi
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3006,16 +3006,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::SessionBriefs::Sessi
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2mpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3119,33 +3119,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::get_na
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "psb-detailed")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed>();
-        c->parent = this;
-        psb_detailed.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed>();
+        ent_->parent = this;
+        psb_detailed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : psb_detailed.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : psb_detailed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3361,7 +3361,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -3500,138 +3500,138 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::get_child_by_nam
 
     if(child_yang_name == "pfc")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Pfc>();
-        c->parent = this;
-        pfc.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::Pfc>();
+        ent_->parent = this;
+        pfc.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "in-ero")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::InEro>();
-        c->parent = this;
-        in_ero.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::InEro>();
+        ent_->parent = this;
+        in_ero.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "out-ero")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::OutEro>();
-        c->parent = this;
-        out_ero.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::OutEro>();
+        ent_->parent = this;
+        out_ero.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(s2l_sub_lsp != nullptr)
     {
-        children["s2l-sub-lsp"] = s2l_sub_lsp;
+        _children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
     if(template_ != nullptr)
     {
-        children["template"] = template_;
+        _children["template"] = template_;
     }
 
     if(session_attribute != nullptr)
     {
-        children["session-attribute"] = session_attribute;
+        _children["session-attribute"] = session_attribute;
     }
 
     if(traffic_spec != nullptr)
     {
-        children["traffic-spec"] = traffic_spec;
+        _children["traffic-spec"] = traffic_spec;
     }
 
     if(generic_traffic_spec != nullptr)
     {
-        children["generic-traffic-spec"] = generic_traffic_spec;
+        _children["generic-traffic-spec"] = generic_traffic_spec;
     }
 
     if(path_flags != nullptr)
     {
-        children["path-flags"] = path_flags;
+        _children["path-flags"] = path_flags;
     }
 
     if(hop != nullptr)
     {
-        children["hop"] = hop;
+        _children["hop"] = hop;
     }
 
     if(policy_source_info != nullptr)
     {
-        children["policy-source-info"] = policy_source_info;
+        _children["policy-source-info"] = policy_source_info;
     }
 
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(expiry_time != nullptr)
     {
-        children["expiry-time"] = expiry_time;
+        _children["expiry-time"] = expiry_time;
     }
 
     if(policy_flags != nullptr)
     {
-        children["policy-flags"] = policy_flags;
+        _children["policy-flags"] = policy_flags;
     }
 
     if(policy_query_flags != nullptr)
     {
-        children["policy-query-flags"] = policy_query_flags;
+        _children["policy-query-flags"] = policy_query_flags;
     }
 
     if(label_info != nullptr)
     {
-        children["label-info"] = label_info;
+        _children["label-info"] = label_info;
     }
 
     if(class_type != nullptr)
     {
-        children["class-type"] = class_type;
+        _children["class-type"] = class_type;
     }
 
-    count = 0;
-    for (auto c : pfc.entities())
+    count_ = 0;
+    for (auto ent_ : pfc.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : in_ero.entities())
+    count_ = 0;
+    for (auto ent_ : in_ero.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : out_ero.entities())
+    count_ = 0;
+    for (auto ent_ : out_ero.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3847,7 +3847,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-session")
     {
@@ -3861,16 +3861,16 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_session != nullptr)
     {
-        children["rsvp-session"] = rsvp_session;
+        _children["rsvp-session"] = rsvp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3953,7 +3953,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -3994,31 +3994,31 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSes
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv4_lsp_session != nullptr)
     {
-        children["ipv4-lsp-session"] = ipv4_lsp_session;
+        _children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
     if(ipv4_uni_session != nullptr)
     {
-        children["ipv4-uni-session"] = ipv4_uni_session;
+        _children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     if(ipv4_p2mp_lsp_session != nullptr)
     {
-        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+        _children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4102,16 +4102,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4215,16 +4215,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4328,16 +4328,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4441,16 +4441,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4546,16 +4546,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::S2lSubLsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::S2lSubLsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::S2lSubLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4631,7 +4631,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-filter")
     {
@@ -4645,16 +4645,16 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_filter != nullptr)
     {
-        children["rsvp-filter"] = rsvp_filter;
+        _children["rsvp-filter"] = rsvp_filter;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4729,7 +4729,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp-ipv4-session")
     {
@@ -4752,21 +4752,21 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp_ipv4_session != nullptr)
     {
-        children["udp-ipv4-session"] = udp_ipv4_session;
+        _children["udp-ipv4-session"] = udp_ipv4_session;
     }
 
     if(p2mp_ipv4_session != nullptr)
     {
-        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
+        _children["p2mp-ipv4-session"] = p2mp_ipv4_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4846,16 +4846,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::UdpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4953,16 +4953,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2mpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2mpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Template::RsvpFilter::P2mpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5077,7 +5077,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sess-attribute-flags")
     {
@@ -5091,16 +5091,16 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sess_attribute_flags != nullptr)
     {
-        children["sess-attribute-flags"] = sess_attribute_flags;
+        _children["sess-attribute-flags"] = sess_attribute_flags;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5202,16 +5202,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5343,16 +5343,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::TrafficSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5477,7 +5477,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "g709otn-tspec")
     {
@@ -5500,21 +5500,21 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(g709otn_tspec != nullptr)
     {
-        children["g709otn-tspec"] = g709otn_tspec;
+        _children["g709otn-tspec"] = g709otn_tspec;
     }
 
     if(intsrv_tspec != nullptr)
     {
-        children["intsrv-tspec"] = intsrv_tspec;
+        _children["intsrv-tspec"] = intsrv_tspec;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5602,16 +5602,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709otnTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709otnTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709otnTspec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709otnTspec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709otnTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5733,16 +5733,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5878,16 +5878,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PathFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PathFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PathFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PathFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::PathFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6017,16 +6017,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Hop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Hop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Hop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6128,16 +6128,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PolicySourceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PolicySourceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PolicySourceInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PolicySourceInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::PolicySourceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6277,16 +6277,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6426,16 +6426,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::ExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::ExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::ExpiryTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::ExpiryTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::ExpiryTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6529,16 +6529,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::PolicyFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6646,16 +6646,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyQueryFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyQueryFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyQueryFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::PolicyQueryFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::PolicyQueryFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6814,7 +6814,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generic-local-downstream-label")
     {
@@ -6873,41 +6873,41 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generic_local_downstream_label != nullptr)
     {
-        children["generic-local-downstream-label"] = generic_local_downstream_label;
+        _children["generic-local-downstream-label"] = generic_local_downstream_label;
     }
 
     if(generic_outgoing_downstream_label != nullptr)
     {
-        children["generic-outgoing-downstream-label"] = generic_outgoing_downstream_label;
+        _children["generic-outgoing-downstream-label"] = generic_outgoing_downstream_label;
     }
 
     if(generic_merge_point_label != nullptr)
     {
-        children["generic-merge-point-label"] = generic_merge_point_label;
+        _children["generic-merge-point-label"] = generic_merge_point_label;
     }
 
     if(generic_outgoing_upstream_label != nullptr)
     {
-        children["generic-outgoing-upstream-label"] = generic_outgoing_upstream_label;
+        _children["generic-outgoing-upstream-label"] = generic_outgoing_upstream_label;
     }
 
     if(generic_local_upstream_label != nullptr)
     {
-        children["generic-local-upstream-label"] = generic_local_upstream_label;
+        _children["generic-local-upstream-label"] = generic_local_upstream_label;
     }
 
     if(generic_recovery_label != nullptr)
     {
-        children["generic-recovery-label"] = generic_recovery_label;
+        _children["generic-recovery-label"] = generic_recovery_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7058,7 +7058,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -7072,16 +7072,16 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7165,33 +7165,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7257,16 +7257,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7347,7 +7347,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -7361,16 +7361,16 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7454,33 +7454,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7546,16 +7546,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7636,7 +7636,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -7650,16 +7650,16 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7743,33 +7743,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7835,16 +7835,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7925,7 +7925,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -7939,16 +7939,16 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8032,33 +8032,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8124,16 +8124,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8214,7 +8214,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -8228,16 +8228,16 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8321,33 +8321,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8413,16 +8413,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8503,7 +8503,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -8517,16 +8517,16 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8610,33 +8610,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8702,16 +8702,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8791,16 +8791,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::ClassType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::ClassType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::ClassType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::ClassType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::ClassType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8895,7 +8895,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-flags")
     {
@@ -8918,21 +8918,21 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policy_flags != nullptr)
     {
-        children["policy-flags"] = policy_flags;
+        _children["policy-flags"] = policy_flags;
     }
 
     if(policy_query_flags != nullptr)
     {
-        children["policy-query-flags"] = policy_query_flags;
+        _children["policy-query-flags"] = policy_query_flags;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9016,16 +9016,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9133,16 +9133,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9257,7 +9257,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4ero-sub-object")
     {
@@ -9280,21 +9280,21 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4ero_sub_object != nullptr)
     {
-        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
+        _children["ipv4ero-sub-object"] = ipv4ero_sub_object;
     }
 
     if(unnumbered_ero_sub_object != nullptr)
     {
-        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
+        _children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::InEro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9378,16 +9378,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4eroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4eroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4eroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4eroSubObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::InEro::Ipv4eroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9495,16 +9495,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9619,7 +9619,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4ero-sub-object")
     {
@@ -9642,21 +9642,21 @@ std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4ero_sub_object != nullptr)
     {
-        children["ipv4ero-sub-object"] = ipv4ero_sub_object;
+        _children["ipv4ero-sub-object"] = ipv4ero_sub_object;
     }
 
     if(unnumbered_ero_sub_object != nullptr)
     {
-        children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
+        _children["unnumbered-ero-sub-object"] = unnumbered_ero_sub_object;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9740,16 +9740,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4eroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4eroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4eroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4eroSubObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::Ipv4eroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9857,16 +9857,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::PsbDetaileds::PsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9980,33 +9980,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerDetaileds:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "controller-detailed")
     {
-        auto c = std::make_shared<RsvpStandby::ControllerDetaileds::ControllerDetailed>();
-        c->parent = this;
-        controller_detailed.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::ControllerDetaileds::ControllerDetailed>();
+        ent_->parent = this;
+        controller_detailed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerDetaileds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : controller_detailed.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : controller_detailed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::ControllerDetaileds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10185,7 +10185,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerDetaileds:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bandwidth-information")
     {
@@ -10207,39 +10207,39 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::ge
 
     if(child_yang_name == "neighbor-array")
     {
-        auto c = std::make_shared<RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray>();
-        c->parent = this;
-        neighbor_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray>();
+        ent_->parent = this;
+        neighbor_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bandwidth_information != nullptr)
     {
-        children["bandwidth-information"] = bandwidth_information;
+        _children["bandwidth-information"] = bandwidth_information;
     }
 
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    count = 0;
-    for (auto c : neighbor_array.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::ControllerDetaileds::ControllerDetailed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10547,7 +10547,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerDetaileds:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pre-standard-dste-interface")
     {
@@ -10570,21 +10570,21 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Ba
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pre_standard_dste_interface != nullptr)
     {
-        children["pre-standard-dste-interface"] = pre_standard_dste_interface;
+        _children["pre-standard-dste-interface"] = pre_standard_dste_interface;
     }
 
     if(standard_dste_interface != nullptr)
     {
-        children["standard-dste-interface"] = standard_dste_interface;
+        _children["standard-dste-interface"] = standard_dste_interface;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10673,16 +10673,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerDetaileds:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10829,16 +10829,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerDetaileds:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11021,16 +11021,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerDetaileds:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::ControllerDetaileds::ControllerDetailed::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11237,7 +11237,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerDetaileds:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expiry-time")
     {
@@ -11250,34 +11250,34 @@ std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::Ne
 
     if(child_yang_name == "neighbor-message-id")
     {
-        auto c = std::make_shared<RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId>();
-        c->parent = this;
-        neighbor_message_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId>();
+        ent_->parent = this;
+        neighbor_message_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(expiry_time != nullptr)
     {
-        children["expiry-time"] = expiry_time;
+        _children["expiry-time"] = expiry_time;
     }
 
-    count = 0;
-    for (auto c : neighbor_message_id.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor_message_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11380,16 +11380,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerDetaileds:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11468,16 +11468,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::ControllerDetaileds:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11557,7 +11557,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::FrrSummary::get_name
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::FrrSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::FrrSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-states")
     {
@@ -11580,21 +11580,21 @@ std::shared_ptr<Entity> RsvpStandby::FrrSummary::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::FrrSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::FrrSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_states != nullptr)
     {
-        children["path-states"] = path_states;
+        _children["path-states"] = path_states;
     }
 
     if(reservation_states != nullptr)
     {
-        children["reservation-states"] = reservation_states;
+        _children["reservation-states"] = reservation_states;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::FrrSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11672,16 +11672,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::FrrSummary::PathStat
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::FrrSummary::PathStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::FrrSummary::PathStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::FrrSummary::PathStates::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::FrrSummary::PathStates::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::FrrSummary::PathStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11799,16 +11799,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::FrrSummary::Reservat
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::FrrSummary::ReservationStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::FrrSummary::ReservationStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::FrrSummary::ReservationStates::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::FrrSummary::ReservationStates::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::FrrSummary::ReservationStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11922,33 +11922,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::get_na
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsb-detailed")
     {
-        auto c = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed>();
-        c->parent = this;
-        rsb_detailed.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed>();
+        ent_->parent = this;
+        rsb_detailed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rsb_detailed.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rsb_detailed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12119,7 +12119,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-spec")
     {
@@ -12250,81 +12250,81 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow_spec != nullptr)
     {
-        children["flow-spec"] = flow_spec;
+        _children["flow-spec"] = flow_spec;
     }
 
     if(generic_flow_spec != nullptr)
     {
-        children["generic-flow-spec"] = generic_flow_spec;
+        _children["generic-flow-spec"] = generic_flow_spec;
     }
 
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(s2l_sub_lsp != nullptr)
     {
-        children["s2l-sub-lsp"] = s2l_sub_lsp;
+        _children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
     if(style != nullptr)
     {
-        children["style"] = style;
+        _children["style"] = style;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
     if(rsb_flags != nullptr)
     {
-        children["rsb-flags"] = rsb_flags;
+        _children["rsb-flags"] = rsb_flags;
     }
 
     if(hop != nullptr)
     {
-        children["hop"] = hop;
+        _children["hop"] = hop;
     }
 
     if(policy_sources != nullptr)
     {
-        children["policy-sources"] = policy_sources;
+        _children["policy-sources"] = policy_sources;
     }
 
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(policy_flags != nullptr)
     {
-        children["policy-flags"] = policy_flags;
+        _children["policy-flags"] = policy_flags;
     }
 
     if(expiry_time != nullptr)
     {
-        children["expiry-time"] = expiry_time;
+        _children["expiry-time"] = expiry_time;
     }
 
     if(policy_query_flags != nullptr)
     {
-        children["policy-query-flags"] = policy_query_flags;
+        _children["policy-query-flags"] = policy_query_flags;
     }
 
     if(label_info != nullptr)
     {
-        children["label-info"] = label_info;
+        _children["label-info"] = label_info;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12548,16 +12548,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::FlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::FlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::FlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12708,7 +12708,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "g709otn-flow-spec")
     {
@@ -12722,16 +12722,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(g709otn_flow_spec != nullptr)
     {
-        children["g709otn-flow-spec"] = g709otn_flow_spec;
+        _children["g709otn-flow-spec"] = g709otn_flow_spec;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12819,16 +12819,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709otnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709otnFlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709otnFlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709otnFlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709otnFlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12934,7 +12934,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-session")
     {
@@ -12948,16 +12948,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_session != nullptr)
     {
-        children["rsvp-session"] = rsvp_session;
+        _children["rsvp-session"] = rsvp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13040,7 +13040,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -13081,31 +13081,31 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSes
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv4_lsp_session != nullptr)
     {
-        children["ipv4-lsp-session"] = ipv4_lsp_session;
+        _children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
     if(ipv4_uni_session != nullptr)
     {
-        children["ipv4-uni-session"] = ipv4_uni_session;
+        _children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     if(ipv4_p2mp_lsp_session != nullptr)
     {
-        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+        _children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13189,16 +13189,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13302,16 +13302,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13415,16 +13415,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13528,16 +13528,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2mpLspSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13633,16 +13633,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::S2lSubLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::S2lSubLsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::S2lSubLsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::S2lSubLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13718,16 +13718,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Style::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Style::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Style::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Style::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13803,7 +13803,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-filter")
     {
@@ -13817,16 +13817,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_filter != nullptr)
     {
-        children["rsvp-filter"] = rsvp_filter;
+        _children["rsvp-filter"] = rsvp_filter;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13901,7 +13901,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp-ipv4-session")
     {
@@ -13924,21 +13924,21 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp_ipv4_session != nullptr)
     {
-        children["udp-ipv4-session"] = udp_ipv4_session;
+        _children["udp-ipv4-session"] = udp_ipv4_session;
     }
 
     if(p2mp_ipv4_session != nullptr)
     {
-        children["p2mp-ipv4-session"] = p2mp_ipv4_session;
+        _children["p2mp-ipv4-session"] = p2mp_ipv4_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14018,16 +14018,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14125,16 +14125,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2mpIpv4Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2mpIpv4Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2mpIpv4Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2mpIpv4Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14256,16 +14256,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::RsbFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14385,16 +14385,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Hop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Hop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Hop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14496,16 +14496,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::PolicySources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::PolicySources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::PolicySources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::PolicySources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::PolicySources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14645,16 +14645,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14798,16 +14798,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::PolicyFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14907,16 +14907,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::ExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::ExpiryTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::ExpiryTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::ExpiryTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::ExpiryTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15014,16 +15014,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyQueryFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyQueryFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyQueryFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::PolicyQueryFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::PolicyQueryFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15182,7 +15182,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generic-local-downstream-label")
     {
@@ -15241,41 +15241,41 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generic_local_downstream_label != nullptr)
     {
-        children["generic-local-downstream-label"] = generic_local_downstream_label;
+        _children["generic-local-downstream-label"] = generic_local_downstream_label;
     }
 
     if(generic_outgoing_downstream_label != nullptr)
     {
-        children["generic-outgoing-downstream-label"] = generic_outgoing_downstream_label;
+        _children["generic-outgoing-downstream-label"] = generic_outgoing_downstream_label;
     }
 
     if(generic_merge_point_label != nullptr)
     {
-        children["generic-merge-point-label"] = generic_merge_point_label;
+        _children["generic-merge-point-label"] = generic_merge_point_label;
     }
 
     if(generic_outgoing_upstream_label != nullptr)
     {
-        children["generic-outgoing-upstream-label"] = generic_outgoing_upstream_label;
+        _children["generic-outgoing-upstream-label"] = generic_outgoing_upstream_label;
     }
 
     if(generic_local_upstream_label != nullptr)
     {
-        children["generic-local-upstream-label"] = generic_local_upstream_label;
+        _children["generic-local-upstream-label"] = generic_local_upstream_label;
     }
 
     if(generic_recovery_label != nullptr)
     {
-        children["generic-recovery-label"] = generic_recovery_label;
+        _children["generic-recovery-label"] = generic_recovery_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15426,7 +15426,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -15440,16 +15440,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15533,33 +15533,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15625,16 +15625,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15715,7 +15715,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -15729,16 +15729,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15822,33 +15822,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15914,16 +15914,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16004,7 +16004,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -16018,16 +16018,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16111,33 +16111,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16203,16 +16203,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16293,7 +16293,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -16307,16 +16307,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16400,33 +16400,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16492,16 +16492,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16582,7 +16582,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -16596,16 +16596,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16689,33 +16689,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16781,16 +16781,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16871,7 +16871,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generalized-label")
     {
@@ -16885,16 +16885,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::Gener
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generalized_label != nullptr)
     {
-        children["generalized-label"] = generalized_label;
+        _children["generalized-label"] = generalized_label;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16978,33 +16978,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
-        auto c = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value>();
-        c->parent = this;
-        value_.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value>();
+        ent_->parent = this;
+        value_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : value_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : value_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17070,16 +17070,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbDetaileds::RsbDet
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17163,33 +17163,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::InterfaceSummaries::
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::InterfaceSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-summary")
     {
-        auto c = std::make_shared<RsvpStandby::InterfaceSummaries::InterfaceSummary>();
-        c->parent = this;
-        interface_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::InterfaceSummaries::InterfaceSummary>();
+        ent_->parent = this;
+        interface_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::InterfaceSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::InterfaceSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17281,7 +17281,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::InterfaceSummaries::
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bandwidth-information")
     {
@@ -17295,16 +17295,16 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bandwidth_information != nullptr)
     {
-        children["bandwidth-information"] = bandwidth_information;
+        _children["bandwidth-information"] = bandwidth_information;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::InterfaceSummaries::InterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17432,7 +17432,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::InterfaceSummaries::
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pre-standard-dste-interface")
     {
@@ -17455,21 +17455,21 @@ std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::Bandw
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pre_standard_dste_interface != nullptr)
     {
-        children["pre-standard-dste-interface"] = pre_standard_dste_interface;
+        _children["pre-standard-dste-interface"] = pre_standard_dste_interface;
     }
 
     if(standard_dste_interface != nullptr)
     {
-        children["standard-dste-interface"] = standard_dste_interface;
+        _children["standard-dste-interface"] = standard_dste_interface;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17558,16 +17558,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::InterfaceSummaries::
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17714,16 +17714,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::InterfaceSummaries::
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17877,33 +17877,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::HelloInstanceBriefs:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::HelloInstanceBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::HelloInstanceBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hello-instance-brief")
     {
-        auto c = std::make_shared<RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief>();
-        c->parent = this;
-        hello_instance_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief>();
+        ent_->parent = this;
+        hello_instance_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::HelloInstanceBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::HelloInstanceBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hello_instance_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hello_instance_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::HelloInstanceBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17999,16 +17999,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::HelloInstanceBriefs:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::HelloInstanceBriefs::HelloInstanceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18162,33 +18162,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationDetail
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication-detail")
     {
-        auto c = std::make_shared<RsvpStandby::AuthenticationDetails::AuthenticationDetail>();
-        c->parent = this;
-        authentication_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::AuthenticationDetails::AuthenticationDetail>();
+        ent_->parent = this;
+        authentication_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : authentication_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : authentication_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18299,7 +18299,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationDetail
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auth-compact")
     {
@@ -18322,21 +18322,21 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auth_compact != nullptr)
     {
-        children["auth-compact"] = auth_compact;
+        _children["auth-compact"] = auth_compact;
     }
 
     if(direction_info != nullptr)
     {
-        children["direction-info"] = direction_info;
+        _children["direction-info"] = direction_info;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationDetails::AuthenticationDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18513,16 +18513,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationDetail
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::AuthCompact::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationDetails::AuthenticationDetail::AuthCompact::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18670,7 +18670,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationDetail
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "send-info")
     {
@@ -18693,21 +18693,21 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(send_info != nullptr)
     {
-        children["send-info"] = send_info;
+        _children["send-info"] = send_info;
     }
 
     if(receive_info != nullptr)
     {
-        children["receive-info"] = receive_info;
+        _children["receive-info"] = receive_info;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18781,7 +18781,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationDetail
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -18795,16 +18795,16 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18885,16 +18885,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationDetail
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19017,7 +19017,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationDetail
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -19030,34 +19030,34 @@ std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail
 
     if(child_yang_name == "sequence-window")
     {
-        auto c = std::make_shared<RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow>();
-        c->parent = this;
-        sequence_window.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow>();
+        ent_->parent = this;
+        sequence_window.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    count = 0;
-    for (auto c : sequence_window.entities())
+    count_ = 0;
+    for (auto ent_ : sequence_window.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19206,16 +19206,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationDetail
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19434,16 +19434,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::AuthenticationDetail
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::SequenceWindow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19527,33 +19527,33 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbBriefs::get_name_
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsb-brief")
     {
-        auto c = std::make_shared<RsvpStandby::RsbBriefs::RsbBrief>();
-        c->parent = this;
-        rsb_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<RsvpStandby::RsbBriefs::RsbBrief>();
+        ent_->parent = this;
+        rsb_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rsb_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rsb_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19688,7 +19688,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbBriefs::RsbBrief:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbBriefs::RsbBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -19747,41 +19747,41 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbBriefs::RsbBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(s2l_sub_lsp != nullptr)
     {
-        children["s2l-sub-lsp"] = s2l_sub_lsp;
+        _children["s2l-sub-lsp"] = s2l_sub_lsp;
     }
 
     if(flow_spec != nullptr)
     {
-        children["flow-spec"] = flow_spec;
+        _children["flow-spec"] = flow_spec;
     }
 
     if(generic_flow_spec != nullptr)
     {
-        children["generic-flow-spec"] = generic_flow_spec;
+        _children["generic-flow-spec"] = generic_flow_spec;
     }
 
     if(style != nullptr)
     {
-        children["style"] = style;
+        _children["style"] = style;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbBriefs::RsbBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19967,7 +19967,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbBriefs::RsbBrief:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-session")
     {
@@ -19981,16 +19981,16 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_session != nullptr)
     {
-        children["rsvp-session"] = rsvp_session;
+        _children["rsvp-session"] = rsvp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbBriefs::RsbBrief::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20073,7 +20073,7 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbBriefs::RsbBrief:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -20114,31 +20114,31 @@ std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv4_lsp_session != nullptr)
     {
-        children["ipv4-lsp-session"] = ipv4_lsp_session;
+        _children["ipv4-lsp-session"] = ipv4_lsp_session;
     }
 
     if(ipv4_uni_session != nullptr)
     {
-        children["ipv4-uni-session"] = ipv4_uni_session;
+        _children["ipv4-uni-session"] = ipv4_uni_session;
     }
 
     if(ipv4_p2mp_lsp_session != nullptr)
     {
-        children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
+        _children["ipv4-p2mp-lsp-session"] = ipv4_p2mp_lsp_session;
     }
 
-    return children;
+    return _children;
 }
 
 void RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20222,16 +20222,16 @@ std::vector<std::pair<std::string, LeafData> > RsvpStandby::RsbBriefs::RsbBrief:
 
 }
 
-std::shared_ptr<Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RsvpStandby::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

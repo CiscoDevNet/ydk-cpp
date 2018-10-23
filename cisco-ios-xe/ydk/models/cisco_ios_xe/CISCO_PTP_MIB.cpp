@@ -108,7 +108,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoPtpMIBSystemInfo")
     {
@@ -248,86 +248,86 @@ std::shared_ptr<Entity> CISCOPTPMIB::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciscoptpmibsysteminfo != nullptr)
     {
-        children["ciscoPtpMIBSystemInfo"] = ciscoptpmibsysteminfo;
+        _children["ciscoPtpMIBSystemInfo"] = ciscoptpmibsysteminfo;
     }
 
     if(cptpsystemtable != nullptr)
     {
-        children["cPtpSystemTable"] = cptpsystemtable;
+        _children["cPtpSystemTable"] = cptpsystemtable;
     }
 
     if(cptpsystemdomaintable != nullptr)
     {
-        children["cPtpSystemDomainTable"] = cptpsystemdomaintable;
+        _children["cPtpSystemDomainTable"] = cptpsystemdomaintable;
     }
 
     if(cptpclocknodetable != nullptr)
     {
-        children["cPtpClockNodeTable"] = cptpclocknodetable;
+        _children["cPtpClockNodeTable"] = cptpclocknodetable;
     }
 
     if(cptpclockcurrentdstable != nullptr)
     {
-        children["cPtpClockCurrentDSTable"] = cptpclockcurrentdstable;
+        _children["cPtpClockCurrentDSTable"] = cptpclockcurrentdstable;
     }
 
     if(cptpclockparentdstable != nullptr)
     {
-        children["cPtpClockParentDSTable"] = cptpclockparentdstable;
+        _children["cPtpClockParentDSTable"] = cptpclockparentdstable;
     }
 
     if(cptpclockdefaultdstable != nullptr)
     {
-        children["cPtpClockDefaultDSTable"] = cptpclockdefaultdstable;
+        _children["cPtpClockDefaultDSTable"] = cptpclockdefaultdstable;
     }
 
     if(cptpclockrunningtable != nullptr)
     {
-        children["cPtpClockRunningTable"] = cptpclockrunningtable;
+        _children["cPtpClockRunningTable"] = cptpclockrunningtable;
     }
 
     if(cptpclocktimepropertiesdstable != nullptr)
     {
-        children["cPtpClockTimePropertiesDSTable"] = cptpclocktimepropertiesdstable;
+        _children["cPtpClockTimePropertiesDSTable"] = cptpclocktimepropertiesdstable;
     }
 
     if(cptpclocktransdefaultdstable != nullptr)
     {
-        children["cPtpClockTransDefaultDSTable"] = cptpclocktransdefaultdstable;
+        _children["cPtpClockTransDefaultDSTable"] = cptpclocktransdefaultdstable;
     }
 
     if(cptpclockporttable != nullptr)
     {
-        children["cPtpClockPortTable"] = cptpclockporttable;
+        _children["cPtpClockPortTable"] = cptpclockporttable;
     }
 
     if(cptpclockportdstable != nullptr)
     {
-        children["cPtpClockPortDSTable"] = cptpclockportdstable;
+        _children["cPtpClockPortDSTable"] = cptpclockportdstable;
     }
 
     if(cptpclockportrunningtable != nullptr)
     {
-        children["cPtpClockPortRunningTable"] = cptpclockportrunningtable;
+        _children["cPtpClockPortRunningTable"] = cptpclockportrunningtable;
     }
 
     if(cptpclockporttransdstable != nullptr)
     {
-        children["cPtpClockPortTransDSTable"] = cptpclockporttransdstable;
+        _children["cPtpClockPortTransDSTable"] = cptpclockporttransdstable;
     }
 
     if(cptpclockportassociatetable != nullptr)
     {
-        children["cPtpClockPortAssociateTable"] = cptpclockportassociatetable;
+        _children["cPtpClockPortAssociateTable"] = cptpclockportassociatetable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -338,7 +338,7 @@ void CISCOPTPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::clone_ptr() const
 {
     return std::make_shared<CISCOPTPMIB>();
 }
@@ -418,16 +418,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CiscoPtpMIBSystemInf
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CiscoPtpMIBSystemInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CiscoPtpMIBSystemInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CiscoPtpMIBSystemInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CiscoPtpMIBSystemInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CiscoPtpMIBSystemInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -511,33 +511,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpSystemTable::get
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpSystemTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpSystemTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpSystemEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry>();
-        c->parent = this;
-        cptpsystementry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry>();
+        ent_->parent = this;
+        cptpsystementry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpSystemTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpSystemTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpsystementry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpsystementry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpSystemTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -617,16 +617,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpSystemTable::CPt
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpSystemTable::CPtpSystemEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -740,33 +740,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpSystemDomainTabl
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpSystemDomainTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpSystemDomainTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpSystemDomainEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry>();
-        c->parent = this;
-        cptpsystemdomainentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry>();
+        ent_->parent = this;
+        cptpsystemdomainentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpSystemDomainTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpSystemDomainTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpsystemdomainentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpsystemdomainentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpSystemDomainTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -837,16 +837,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpSystemDomainTabl
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpSystemDomainTable::CPtpSystemDomainEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -940,33 +940,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockNodeTable::
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockNodeEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry>();
-        c->parent = this;
-        cptpclocknodeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry>();
+        ent_->parent = this;
+        cptpclocknodeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockNodeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockNodeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclocknodeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclocknodeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockNodeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1083,16 +1083,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockNodeTable::
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockNodeTable::CPtpClockNodeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1296,33 +1296,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockCurrentDSTa
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockCurrentDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockCurrentDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockCurrentDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry>();
-        c->parent = this;
-        cptpclockcurrentdsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry>();
+        ent_->parent = this;
+        cptpclockcurrentdsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockCurrentDSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockCurrentDSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclockcurrentdsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclockcurrentdsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockCurrentDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1411,16 +1411,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockCurrentDSTa
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockCurrentDSTable::CPtpClockCurrentDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1554,33 +1554,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockParentDSTab
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockParentDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockParentDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockParentDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry>();
-        c->parent = this;
-        cptpclockparentdsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry>();
+        ent_->parent = this;
+        cptpclockparentdsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockParentDSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockParentDSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclockparentdsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclockparentdsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockParentDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1697,16 +1697,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockParentDSTab
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockParentDSTable::CPtpClockParentDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1910,33 +1910,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockDefaultDSTa
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockDefaultDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockDefaultDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockDefaultDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry>();
-        c->parent = this;
-        cptpclockdefaultdsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry>();
+        ent_->parent = this;
+        cptpclockdefaultdsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockDefaultDSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockDefaultDSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclockdefaultdsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclockdefaultdsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockDefaultDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2045,16 +2045,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockDefaultDSTa
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockDefaultDSTable::CPtpClockDefaultDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2238,33 +2238,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockRunningTabl
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockRunningTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockRunningTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockRunningEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry>();
-        c->parent = this;
-        cptpclockrunningentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry>();
+        ent_->parent = this;
+        cptpclockrunningentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockRunningTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockRunningTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclockrunningentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclockrunningentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockRunningTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2353,16 +2353,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockRunningTabl
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockRunningTable::CPtpClockRunningEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2496,33 +2496,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockTimePropert
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockTimePropertiesDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry>();
-        c->parent = this;
-        cptpclocktimepropertiesdsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry>();
+        ent_->parent = this;
+        cptpclocktimepropertiesdsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclocktimepropertiesdsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclocktimepropertiesdsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockTimePropertiesDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2631,16 +2631,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockTimePropert
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockTimePropertiesDSTable::CPtpClockTimePropertiesDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2824,33 +2824,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockTransDefaul
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockTransDefaultDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockTransDefaultDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockTransDefaultDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry>();
-        c->parent = this;
-        cptpclocktransdefaultdsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry>();
+        ent_->parent = this;
+        cptpclocktransdefaultdsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockTransDefaultDSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockTransDefaultDSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclocktransdefaultdsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclocktransdefaultdsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockTransDefaultDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2938,16 +2938,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockTransDefaul
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockTransDefaultDSTable::CPtpClockTransDefaultDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3081,33 +3081,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortTable::
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry>();
-        c->parent = this;
-        cptpclockportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry>();
+        ent_->parent = this;
+        cptpclockportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclockportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclockportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3213,16 +3213,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortTable::
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortTable::CPtpClockPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3396,33 +3396,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortDSTable
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry>();
-        c->parent = this;
-        cptpclockportdsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry>();
+        ent_->parent = this;
+        cptpclockportdsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortDSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortDSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclockportdsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclockportdsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3548,16 +3548,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortDSTable
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortDSTable::CPtpClockPortDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3781,33 +3781,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortRunning
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortRunningTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortRunningTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortRunningEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry>();
-        c->parent = this;
-        cptpclockportrunningentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry>();
+        ent_->parent = this;
+        cptpclockportrunningentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortRunningTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortRunningTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclockportrunningentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclockportrunningentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortRunningTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3929,16 +3929,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortRunning
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortRunningTable::CPtpClockPortRunningEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4152,33 +4152,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortTransDS
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortTransDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortTransDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortTransDSEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry>();
-        c->parent = this;
-        cptpclockporttransdsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry>();
+        ent_->parent = this;
+        cptpclockporttransdsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortTransDSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortTransDSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclockporttransdsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclockporttransdsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortTransDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4271,16 +4271,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortTransDS
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortTransDSTable::CPtpClockPortTransDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4424,33 +4424,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortAssocia
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortAssociateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortAssociateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPtpClockPortAssociateEntry")
     {
-        auto c = std::make_shared<CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry>();
-        c->parent = this;
-        cptpclockportassociateentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry>();
+        ent_->parent = this;
+        cptpclockportassociateentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortAssociateTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortAssociateTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cptpclockportassociateentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cptpclockportassociateentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortAssociateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4561,16 +4561,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPTPMIB::CPtpClockPortAssocia
 
 }
 
-std::shared_ptr<Entity> CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPTPMIB::CPtpClockPortAssociateTable::CPtpClockPortAssociateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

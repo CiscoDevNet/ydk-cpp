@@ -110,7 +110,7 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -142,26 +142,26 @@ std::shared_ptr<Entity> PseudowireConfig::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(pw_templates != nullptr)
     {
-        children["pw-templates"] = pw_templates;
+        _children["pw-templates"] = pw_templates;
     }
 
     if(pw_static_oam_classes != nullptr)
     {
-        children["pw-static-oam-classes"] = pw_static_oam_classes;
+        _children["pw-static-oam-classes"] = pw_static_oam_classes;
     }
 
-    return children;
+    return _children;
 }
 
 void PseudowireConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -172,7 +172,7 @@ void PseudowireConfig::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> PseudowireConfig::clone_ptr() const
+std::shared_ptr<ydk::Entity> PseudowireConfig::clone_ptr() const
 {
     return std::make_shared<PseudowireConfig>();
 }
@@ -276,16 +276,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::Global::get_nam
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireConfig::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -429,33 +429,33 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::ge
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pw-template")
     {
-        auto c = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate>();
-        c->parent = this;
-        pw_template.append(c);
-        return c;
+        auto ent_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate>();
+        ent_->parent = this;
+        pw_template.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pw_template.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pw_template.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -583,7 +583,7 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::Pw
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::PwTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "load-balance")
     {
@@ -651,46 +651,46 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::PwTemplate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(load_balance != nullptr)
     {
-        children["load-balance"] = load_balance;
+        _children["load-balance"] = load_balance;
     }
 
     if(preferred_path != nullptr)
     {
-        children["preferred-path"] = preferred_path;
+        _children["preferred-path"] = preferred_path;
     }
 
     if(sequencing != nullptr)
     {
-        children["sequencing"] = sequencing;
+        _children["sequencing"] = sequencing;
     }
 
     if(vccv != nullptr)
     {
-        children["vccv"] = vccv;
+        _children["vccv"] = vccv;
     }
 
     if(switchover_delay != nullptr)
     {
-        children["switchover-delay"] = switchover_delay;
+        _children["switchover-delay"] = switchover_delay;
     }
 
     if(status != nullptr)
     {
-        children["status"] = status;
+        _children["status"] = status;
     }
 
     if(port_profile_spec != nullptr)
     {
-        children["port-profile-spec"] = port_profile_spec;
+        _children["port-profile-spec"] = port_profile_spec;
     }
 
-    return children;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::PwTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -848,7 +848,7 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::Pw
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-label")
     {
@@ -862,16 +862,16 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow_label != nullptr)
     {
-        children["flow-label"] = flow_label;
+        _children["flow-label"] = flow_label;
     }
 
-    return children;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -958,16 +958,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::Pw
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1068,16 +1068,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::Pw
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1180,16 +1180,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::Pw
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::PwTemplate::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1268,16 +1268,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::Pw
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::PwTemplate::Vccv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1354,16 +1354,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::Pw
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1468,16 +1468,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::Pw
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::PwTemplate::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::Status::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::PwTemplate::Status::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::PwTemplate::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1606,16 +1606,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwTemplates::Pw
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1749,33 +1749,33 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwStaticOamClas
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pw-static-oam-class")
     {
-        auto c = std::make_shared<PseudowireConfig::PwStaticOamClasses::PwStaticOamClass>();
-        c->parent = this;
-        pw_static_oam_class.append(c);
-        return c;
+        auto ent_ = std::make_shared<PseudowireConfig::PwStaticOamClasses::PwStaticOamClass>();
+        ent_->parent = this;
+        pw_static_oam_class.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwStaticOamClasses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pw_static_oam_class.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pw_static_oam_class.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PseudowireConfig::PwStaticOamClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1858,16 +1858,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireConfig::PwStaticOamClas
 
 }
 
-std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1984,33 +1984,33 @@ std::vector<std::pair<std::string, LeafData> > PseudowireState::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pseudowires")
     {
-        auto c = std::make_shared<PseudowireState::Pseudowires>();
-        c->parent = this;
-        pseudowires.append(c);
-        return c;
+        auto ent_ = std::make_shared<PseudowireState::Pseudowires>();
+        ent_->parent = this;
+        pseudowires.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pseudowires.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pseudowires.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PseudowireState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2021,7 +2021,7 @@ void PseudowireState::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> PseudowireState::clone_ptr() const
+std::shared_ptr<ydk::Entity> PseudowireState::clone_ptr() const
 {
     return std::make_shared<PseudowireState>();
 }
@@ -2183,7 +2183,7 @@ std::vector<std::pair<std::string, LeafData> > PseudowireState::Pseudowires::get
 
 }
 
-std::shared_ptr<Entity> PseudowireState::Pseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireState::Pseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -2197,16 +2197,16 @@ std::shared_ptr<Entity> PseudowireState::Pseudowires::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireState::Pseudowires::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireState::Pseudowires::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void PseudowireState::Pseudowires::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2487,16 +2487,16 @@ std::vector<std::pair<std::string, LeafData> > PseudowireState::Pseudowires::Sta
 
 }
 
-std::shared_ptr<Entity> PseudowireState::Pseudowires::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PseudowireState::Pseudowires::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PseudowireState::Pseudowires::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PseudowireState::Pseudowires::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PseudowireState::Pseudowires::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

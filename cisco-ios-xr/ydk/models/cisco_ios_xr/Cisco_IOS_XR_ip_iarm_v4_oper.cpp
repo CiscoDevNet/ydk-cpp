@@ -69,7 +69,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addresses")
     {
@@ -110,31 +110,31 @@ std::shared_ptr<Entity> Ipv4arm::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addresses != nullptr)
     {
-        children["addresses"] = addresses;
+        _children["addresses"] = addresses;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(vrf_summaries != nullptr)
     {
-        children["vrf-summaries"] = vrf_summaries;
+        _children["vrf-summaries"] = vrf_summaries;
     }
 
     if(router_id != nullptr)
     {
-        children["router-id"] = router_id;
+        _children["router-id"] = router_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -155,7 +155,7 @@ void Ipv4arm::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Ipv4arm::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ipv4arm::clone_ptr() const
 {
     return std::make_shared<Ipv4arm>();
 }
@@ -235,7 +235,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -249,16 +249,16 @@ std::shared_ptr<Entity> Ipv4arm::Addresses::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -332,33 +332,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::get_nam
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -434,7 +434,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::ge
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "networks")
     {
@@ -457,21 +457,21 @@ std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(networks != nullptr)
     {
-        children["networks"] = networks;
+        _children["networks"] = networks;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -548,33 +548,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Ne
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
-        auto c = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network>();
-        c->parent = this;
-        network.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network>();
+        ent_->parent = this;
+        network.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::Vrf::Networks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -658,7 +658,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Ne
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address-xr")
     {
@@ -672,16 +672,16 @@ std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address_xr != nullptr)
     {
-        children["address-xr"] = address_xr;
+        _children["address-xr"] = address_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -825,7 +825,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Ne
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -839,16 +839,16 @@ std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::Addres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -975,16 +975,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Ne
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1081,33 +1081,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::In
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1187,33 +1187,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::In
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address>();
-        c->parent = this;
-        address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address>();
+        ent_->parent = this;
+        address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1327,7 +1327,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::In
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -1341,16 +1341,16 @@ std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Ad
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1477,16 +1477,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::In
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1598,16 +1598,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Summary::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4arm::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1731,33 +1731,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::VrfSummaries::get_name_l
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::VrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::VrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-summary")
     {
-        auto c = std::make_shared<Ipv4arm::VrfSummaries::VrfSummary>();
-        c->parent = this;
-        vrf_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv4arm::VrfSummaries::VrfSummary>();
+        ent_->parent = this;
+        vrf_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::VrfSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::VrfSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4arm::VrfSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1832,16 +1832,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::VrfSummaries::VrfSummary
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::VrfSummaries::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::VrfSummaries::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::VrfSummaries::VrfSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::VrfSummaries::VrfSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4arm::VrfSummaries::VrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1949,16 +1949,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::RouterId::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Ipv4arm::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4arm::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::RouterId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4arm::RouterId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4arm::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

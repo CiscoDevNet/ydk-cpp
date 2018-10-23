@@ -71,7 +71,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Environment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oper")
     {
@@ -102,44 +102,44 @@ std::shared_ptr<Entity> Environment::get_child_by_name(const std::string & child
 
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<Environment::Trace>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Trace>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oper != nullptr)
     {
-        children["oper"] = oper;
+        _children["oper"] = oper;
     }
 
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
-    count = 0;
-    for (auto c : trace.entities())
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -150,7 +150,7 @@ void Environment::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Environment::clone_ptr() const
+std::shared_ptr<ydk::Entity> Environment::clone_ptr() const
 {
     return std::make_shared<Environment>();
 }
@@ -250,7 +250,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "temperatures")
     {
@@ -309,41 +309,41 @@ std::shared_ptr<Entity> Environment::Oper::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(temperatures != nullptr)
     {
-        children["temperatures"] = temperatures;
+        _children["temperatures"] = temperatures;
     }
 
     if(voltages != nullptr)
     {
-        children["voltages"] = voltages;
+        _children["voltages"] = voltages;
     }
 
     if(current != nullptr)
     {
-        children["current"] = current;
+        _children["current"] = current;
     }
 
     if(fan != nullptr)
     {
-        children["fan"] = fan;
+        _children["fan"] = fan;
     }
 
     if(power != nullptr)
     {
-        children["power"] = power;
+        _children["power"] = power;
     }
 
     if(altitude != nullptr)
     {
-        children["altitude"] = altitude;
+        _children["altitude"] = altitude;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -417,33 +417,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Temperatures::
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Temperatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Temperatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Oper::Temperatures::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Temperatures::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Temperatures::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Temperatures::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Temperatures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -530,33 +530,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Temperatures::
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Temperatures::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Temperatures::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor_attributes")
     {
-        auto c = std::make_shared<Environment::Oper::Temperatures::Location::SensorAttributes>();
-        c->parent = this;
-        sensor_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Temperatures::Location::SensorAttributes>();
+        ent_->parent = this;
+        sensor_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Temperatures::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Temperatures::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Temperatures::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -686,16 +686,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Temperatures::
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Temperatures::Location::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Temperatures::Location::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Temperatures::Location::SensorAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Temperatures::Location::SensorAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Oper::Temperatures::Location::SensorAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -879,33 +879,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Voltages::get_
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Voltages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Voltages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Oper::Voltages::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Voltages::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Voltages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Voltages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Voltages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -992,33 +992,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Voltages::Loca
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Voltages::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Voltages::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor_attributes")
     {
-        auto c = std::make_shared<Environment::Oper::Voltages::Location::SensorAttributes>();
-        c->parent = this;
-        sensor_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Voltages::Location::SensorAttributes>();
+        ent_->parent = this;
+        sensor_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Voltages::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Voltages::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Voltages::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1148,16 +1148,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Voltages::Loca
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Voltages::Location::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Voltages::Location::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Voltages::Location::SensorAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Voltages::Location::SensorAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Oper::Voltages::Location::SensorAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1341,33 +1341,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Current::get_n
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Current::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Current::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Oper::Current::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Current::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Current::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Current::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Current::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1454,33 +1454,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Current::Locat
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Current::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Current::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor_attributes")
     {
-        auto c = std::make_shared<Environment::Oper::Current::Location::SensorAttributes>();
-        c->parent = this;
-        sensor_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Current::Location::SensorAttributes>();
+        ent_->parent = this;
+        sensor_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Current::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Current::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Current::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1586,16 +1586,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Current::Locat
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Current::Location::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Current::Location::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Current::Location::SensorAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Current::Location::SensorAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Oper::Current::Location::SensorAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1719,33 +1719,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Fan::get_name_
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Fan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Fan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Oper::Fan::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Fan::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Fan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Fan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Fan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1832,33 +1832,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Fan::Location:
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Fan::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Fan::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fan_attributes")
     {
-        auto c = std::make_shared<Environment::Oper::Fan::Location::FanAttributes>();
-        c->parent = this;
-        fan_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Fan::Location::FanAttributes>();
+        ent_->parent = this;
+        fan_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Fan::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Fan::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fan_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fan_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Fan::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1972,16 +1972,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Fan::Location:
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Fan::Location::FanAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Fan::Location::FanAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Fan::Location::FanAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Fan::Location::FanAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Oper::Fan::Location::FanAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2125,33 +2125,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Power::get_nam
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Oper::Power::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Power::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2230,33 +2230,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Power::Locatio
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Power::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Power::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pem_attributes")
     {
-        auto c = std::make_shared<Environment::Oper::Power::Location::PemAttributes>();
-        c->parent = this;
-        pem_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Power::Location::PemAttributes>();
+        ent_->parent = this;
+        pem_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Power::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Power::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pem_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pem_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Power::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2434,16 +2434,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Power::Locatio
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Power::Location::PemAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Power::Location::PemAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Power::Location::PemAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Power::Location::PemAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Oper::Power::Location::PemAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2797,33 +2797,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Altitude::get_
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Altitude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Altitude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Oper::Altitude::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Altitude::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Altitude::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Altitude::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Altitude::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2902,33 +2902,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Altitude::Loca
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Altitude::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Altitude::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alt_attributes")
     {
-        auto c = std::make_shared<Environment::Oper::Altitude::Location::AltAttributes>();
-        c->parent = this;
-        alt_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Oper::Altitude::Location::AltAttributes>();
+        ent_->parent = this;
+        alt_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Altitude::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Altitude::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alt_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : alt_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Oper::Altitude::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3014,16 +3014,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Oper::Altitude::Loca
 
 }
 
-std::shared_ptr<Entity> Environment::Oper::Altitude::Location::AltAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Oper::Altitude::Location::AltAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Oper::Altitude::Location::AltAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Oper::Altitude::Location::AltAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Oper::Altitude::Location::AltAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3147,33 +3147,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Environment::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::All::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3307,118 +3307,118 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::get_n
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "temperatures")
     {
-        auto c = std::make_shared<Environment::All::Location::Temperatures>();
-        c->parent = this;
-        temperatures.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Temperatures>();
+        ent_->parent = this;
+        temperatures.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "voltages")
     {
-        auto c = std::make_shared<Environment::All::Location::Voltages>();
-        c->parent = this;
-        voltages.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Voltages>();
+        ent_->parent = this;
+        voltages.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "current")
     {
-        auto c = std::make_shared<Environment::All::Location::Current>();
-        c->parent = this;
-        current.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Current>();
+        ent_->parent = this;
+        current.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "fan")
     {
-        auto c = std::make_shared<Environment::All::Location::Fan>();
-        c->parent = this;
-        fan.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Fan>();
+        ent_->parent = this;
+        fan.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "power")
     {
-        auto c = std::make_shared<Environment::All::Location::Power>();
-        c->parent = this;
-        power.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Power>();
+        ent_->parent = this;
+        power.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "altitude")
     {
-        auto c = std::make_shared<Environment::All::Location::Altitude>();
-        c->parent = this;
-        altitude.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Altitude>();
+        ent_->parent = this;
+        altitude.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : temperatures.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : temperatures.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : voltages.entities())
+    count_ = 0;
+    for (auto ent_ : voltages.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : current.entities())
+    count_ = 0;
+    for (auto ent_ : current.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : fan.entities())
+    count_ = 0;
+    for (auto ent_ : fan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : power.entities())
+    count_ = 0;
+    for (auto ent_ : power.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : altitude.entities())
+    count_ = 0;
+    for (auto ent_ : altitude.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::All::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3504,33 +3504,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Tempe
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Temperatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Temperatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor_attributes")
     {
-        auto c = std::make_shared<Environment::All::Location::Temperatures::SensorAttributes>();
-        c->parent = this;
-        sensor_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Temperatures::SensorAttributes>();
+        ent_->parent = this;
+        sensor_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Temperatures::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Temperatures::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::All::Location::Temperatures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3650,16 +3650,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Tempe
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Temperatures::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Temperatures::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Temperatures::SensorAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Temperatures::SensorAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::All::Location::Temperatures::SensorAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3845,33 +3845,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Volta
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Voltages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Voltages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor_attributes")
     {
-        auto c = std::make_shared<Environment::All::Location::Voltages::SensorAttributes>();
-        c->parent = this;
-        sensor_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Voltages::SensorAttributes>();
+        ent_->parent = this;
+        sensor_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Voltages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Voltages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::All::Location::Voltages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3991,16 +3991,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Volta
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Voltages::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Voltages::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Voltages::SensorAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Voltages::SensorAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::All::Location::Voltages::SensorAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4186,33 +4186,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Curre
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Current::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Current::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor_attributes")
     {
-        auto c = std::make_shared<Environment::All::Location::Current::SensorAttributes>();
-        c->parent = this;
-        sensor_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Current::SensorAttributes>();
+        ent_->parent = this;
+        sensor_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Current::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Current::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::All::Location::Current::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4300,16 +4300,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Curre
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Current::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Current::SensorAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Current::SensorAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Current::SensorAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::All::Location::Current::SensorAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4411,33 +4411,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Fan::
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Fan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Fan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fan_attributes")
     {
-        auto c = std::make_shared<Environment::All::Location::Fan::FanAttributes>();
-        c->parent = this;
-        fan_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Fan::FanAttributes>();
+        ent_->parent = this;
+        fan_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Fan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Fan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fan_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fan_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::All::Location::Fan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4531,16 +4531,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Fan::
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Fan::FanAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Fan::FanAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Fan::FanAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Fan::FanAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::All::Location::Fan::FanAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4682,33 +4682,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Power
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pem_attributes")
     {
-        auto c = std::make_shared<Environment::All::Location::Power::PemAttributes>();
-        c->parent = this;
-        pem_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Power::PemAttributes>();
+        ent_->parent = this;
+        pem_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pem_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pem_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::All::Location::Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4886,16 +4886,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Power
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Power::PemAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Power::PemAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Power::PemAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Power::PemAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::All::Location::Power::PemAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5247,33 +5247,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Altit
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Altitude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Altitude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alt_attributes")
     {
-        auto c = std::make_shared<Environment::All::Location::Altitude::AltAttributes>();
-        c->parent = this;
-        alt_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::All::Location::Altitude::AltAttributes>();
+        ent_->parent = this;
+        alt_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Altitude::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Altitude::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alt_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : alt_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::All::Location::Altitude::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5359,16 +5359,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::All::Location::Altit
 
 }
 
-std::shared_ptr<Entity> Environment::All::Location::Altitude::AltAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::All::Location::Altitude::AltAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::All::Location::Altitude::AltAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::All::Location::Altitude::AltAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::All::Location::Altitude::AltAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5513,7 +5513,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Environment::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "router")
     {
@@ -5563,36 +5563,36 @@ std::shared_ptr<Entity> Environment::Config::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(router != nullptr)
     {
-        children["router"] = router;
+        _children["router"] = router;
     }
 
     if(air_filter != nullptr)
     {
-        children["air-filter"] = air_filter;
+        _children["air-filter"] = air_filter;
     }
 
     if(fan_ctrl != nullptr)
     {
-        children["fan-ctrl"] = fan_ctrl;
+        _children["fan-ctrl"] = fan_ctrl;
     }
 
     if(temperature != nullptr)
     {
-        children["temperature"] = temperature;
+        _children["temperature"] = temperature;
     }
 
     if(monitoring != nullptr)
     {
-        children["monitoring"] = monitoring;
+        _children["monitoring"] = monitoring;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5688,7 +5688,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Router::get_
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Router::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Router::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "altitude")
     {
@@ -5702,16 +5702,16 @@ std::shared_ptr<Entity> Environment::Config::Router::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Router::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Router::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(altitude != nullptr)
     {
-        children["altitude"] = altitude;
+        _children["altitude"] = altitude;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::Router::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5781,7 +5781,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Router::Alti
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Router::Altitude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Router::Altitude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -5804,21 +5804,21 @@ std::shared_ptr<Entity> Environment::Config::Router::Altitude::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Router::Altitude::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Router::Altitude::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
     if(rack_loc != nullptr)
     {
-        children["rack_loc"] = rack_loc;
+        _children["rack_loc"] = rack_loc;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::Router::Altitude::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5884,16 +5884,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Router::Alti
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Router::Altitude::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Router::Altitude::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Router::Altitude::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Router::Altitude::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Config::Router::Altitude::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5977,33 +5977,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Router::Alti
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Router::Altitude::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Router::Altitude::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Config::Router::Altitude::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Config::Router::Altitude::RackLoc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Router::Altitude::RackLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Router::Altitude::RackLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::Router::Altitude::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6074,16 +6074,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Router::Alti
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Router::Altitude::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Router::Altitude::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Router::Altitude::RackLoc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Router::Altitude::RackLoc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Config::Router::Altitude::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6169,7 +6169,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::AirFilter::g
 
 }
 
-std::shared_ptr<Entity> Environment::Config::AirFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::AirFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "replaced")
     {
@@ -6183,16 +6183,16 @@ std::shared_ptr<Entity> Environment::Config::AirFilter::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::AirFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::AirFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(replaced != nullptr)
     {
-        children["replaced"] = replaced;
+        _children["replaced"] = replaced;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::AirFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6262,7 +6262,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::AirFilter::R
 
 }
 
-std::shared_ptr<Entity> Environment::Config::AirFilter::Replaced::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::AirFilter::Replaced::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -6285,21 +6285,21 @@ std::shared_ptr<Entity> Environment::Config::AirFilter::Replaced::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::AirFilter::Replaced::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::AirFilter::Replaced::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
     if(rack_loc != nullptr)
     {
-        children["rack_loc"] = rack_loc;
+        _children["rack_loc"] = rack_loc;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::AirFilter::Replaced::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6365,16 +6365,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::AirFilter::R
 
 }
 
-std::shared_ptr<Entity> Environment::Config::AirFilter::Replaced::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::AirFilter::Replaced::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::AirFilter::Replaced::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::AirFilter::Replaced::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Config::AirFilter::Replaced::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6458,33 +6458,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::AirFilter::R
 
 }
 
-std::shared_ptr<Entity> Environment::Config::AirFilter::Replaced::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::AirFilter::Replaced::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Config::AirFilter::Replaced::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Config::AirFilter::Replaced::RackLoc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::AirFilter::Replaced::RackLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::AirFilter::Replaced::RackLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::AirFilter::Replaced::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6555,16 +6555,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::AirFilter::R
 
 }
 
-std::shared_ptr<Entity> Environment::Config::AirFilter::Replaced::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::AirFilter::Replaced::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::AirFilter::Replaced::RackLoc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::AirFilter::Replaced::RackLoc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Config::AirFilter::Replaced::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6650,7 +6650,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::FanCtrl::get
 
 }
 
-std::shared_ptr<Entity> Environment::Config::FanCtrl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::FanCtrl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disable")
     {
@@ -6664,16 +6664,16 @@ std::shared_ptr<Entity> Environment::Config::FanCtrl::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::FanCtrl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::FanCtrl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disable != nullptr)
     {
-        children["disable"] = disable;
+        _children["disable"] = disable;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::FanCtrl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6739,7 +6739,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::FanCtrl::Dis
 
 }
 
-std::shared_ptr<Entity> Environment::Config::FanCtrl::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::FanCtrl::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack_loc")
     {
@@ -6753,16 +6753,16 @@ std::shared_ptr<Entity> Environment::Config::FanCtrl::Disable::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::FanCtrl::Disable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::FanCtrl::Disable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rack_loc != nullptr)
     {
-        children["rack_loc"] = rack_loc;
+        _children["rack_loc"] = rack_loc;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::FanCtrl::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6840,33 +6840,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::FanCtrl::Dis
 
 }
 
-std::shared_ptr<Entity> Environment::Config::FanCtrl::Disable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::FanCtrl::Disable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Config::FanCtrl::Disable::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Config::FanCtrl::Disable::RackLoc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::FanCtrl::Disable::RackLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::FanCtrl::Disable::RackLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::FanCtrl::Disable::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6943,16 +6943,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::FanCtrl::Dis
 
 }
 
-std::shared_ptr<Entity> Environment::Config::FanCtrl::Disable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::FanCtrl::Disable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::FanCtrl::Disable::RackLoc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::FanCtrl::Disable::RackLoc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Config::FanCtrl::Disable::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7028,7 +7028,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Temperature:
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Temperature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Temperature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disable")
     {
@@ -7042,16 +7042,16 @@ std::shared_ptr<Entity> Environment::Config::Temperature::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Temperature::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Temperature::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disable != nullptr)
     {
-        children["disable"] = disable;
+        _children["disable"] = disable;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::Temperature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7117,7 +7117,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Temperature:
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Temperature::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Temperature::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack_loc")
     {
@@ -7131,16 +7131,16 @@ std::shared_ptr<Entity> Environment::Config::Temperature::Disable::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Temperature::Disable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Temperature::Disable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rack_loc != nullptr)
     {
-        children["rack_loc"] = rack_loc;
+        _children["rack_loc"] = rack_loc;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::Temperature::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7218,33 +7218,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Temperature:
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Temperature::Disable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Temperature::Disable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Config::Temperature::Disable::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Config::Temperature::Disable::RackLoc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Temperature::Disable::RackLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Temperature::Disable::RackLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::Temperature::Disable::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7321,16 +7321,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Temperature:
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Temperature::Disable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Temperature::Disable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Temperature::Disable::RackLoc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Temperature::Disable::RackLoc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Config::Temperature::Disable::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7406,7 +7406,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Monitoring::
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Monitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Monitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disable")
     {
@@ -7420,16 +7420,16 @@ std::shared_ptr<Entity> Environment::Config::Monitoring::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Monitoring::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Monitoring::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disable != nullptr)
     {
-        children["disable"] = disable;
+        _children["disable"] = disable;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::Monitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7495,7 +7495,7 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Monitoring::
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Monitoring::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Monitoring::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack_loc")
     {
@@ -7509,16 +7509,16 @@ std::shared_ptr<Entity> Environment::Config::Monitoring::Disable::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Monitoring::Disable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Monitoring::Disable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rack_loc != nullptr)
     {
-        children["rack_loc"] = rack_loc;
+        _children["rack_loc"] = rack_loc;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::Monitoring::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7596,33 +7596,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Monitoring::
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Monitoring::Disable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Monitoring::Disable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Config::Monitoring::Disable::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Config::Monitoring::Disable::RackLoc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Monitoring::Disable::RackLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Monitoring::Disable::RackLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Config::Monitoring::Disable::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7699,16 +7699,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Config::Monitoring::
 
 }
 
-std::shared_ptr<Entity> Environment::Config::Monitoring::Disable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Config::Monitoring::Disable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Config::Monitoring::Disable::RackLoc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Config::Monitoring::Disable::RackLoc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Config::Monitoring::Disable::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7797,33 +7797,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Trace::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Environment::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Environment::Trace::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Trace::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7905,33 +7905,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Trace::Location::get
 
 }
 
-std::shared_ptr<Entity> Environment::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<Environment::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Trace::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Trace::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Trace::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8013,33 +8013,33 @@ std::vector<std::pair<std::string, LeafData> > Environment::Trace::Location::All
 
 }
 
-std::shared_ptr<Entity> Environment::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<Environment::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<Environment::Trace::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Trace::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Trace::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Environment::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8108,16 +8108,16 @@ std::vector<std::pair<std::string, LeafData> > Environment::Trace::Location::All
 
 }
 
-std::shared_ptr<Entity> Environment::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Environment::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Environment::Trace::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Environment::Trace::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Environment::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8186,7 +8186,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8200,16 +8200,16 @@ std::shared_ptr<Entity> PowerMgmt::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8220,7 +8220,7 @@ void PowerMgmt::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> PowerMgmt::clone_ptr() const
+std::shared_ptr<ydk::Entity> PowerMgmt::clone_ptr() const
 {
     return std::make_shared<PowerMgmt>();
 }
@@ -8316,7 +8316,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
@@ -8366,36 +8366,36 @@ std::shared_ptr<Entity> PowerMgmt::Config::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action != nullptr)
     {
-        children["action"] = action;
+        _children["action"] = action;
     }
 
     if(single_feed_mode != nullptr)
     {
-        children["single-feed-mode"] = single_feed_mode;
+        _children["single-feed-mode"] = single_feed_mode;
     }
 
     if(extended_temp != nullptr)
     {
-        children["extended-temp"] = extended_temp;
+        _children["extended-temp"] = extended_temp;
     }
 
     if(redundancy_num_pms != nullptr)
     {
-        children["redundancy-num-pms"] = redundancy_num_pms;
+        _children["redundancy-num-pms"] = redundancy_num_pms;
     }
 
     if(progressive != nullptr)
     {
-        children["progressive"] = progressive;
+        _children["progressive"] = progressive;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8461,7 +8461,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Action::get_na
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disable")
     {
@@ -8475,16 +8475,16 @@ std::shared_ptr<Entity> PowerMgmt::Config::Action::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disable != nullptr)
     {
-        children["disable"] = disable;
+        _children["disable"] = disable;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8550,7 +8550,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Action::Disabl
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::Action::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::Action::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack_loc")
     {
@@ -8564,16 +8564,16 @@ std::shared_ptr<Entity> PowerMgmt::Config::Action::Disable::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Action::Disable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::Action::Disable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rack_loc != nullptr)
     {
-        children["rack_loc"] = rack_loc;
+        _children["rack_loc"] = rack_loc;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::Action::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8651,33 +8651,33 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Action::Disabl
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::Action::Disable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::Action::Disable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<PowerMgmt::Config::Action::Disable::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<PowerMgmt::Config::Action::Disable::RackLoc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Action::Disable::RackLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::Action::Disable::RackLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::Action::Disable::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8754,16 +8754,16 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Action::Disabl
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::Action::Disable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::Action::Disable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Action::Disable::RackLoc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::Action::Disable::RackLoc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PowerMgmt::Config::Action::Disable::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8839,7 +8839,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::SingleFeedMode
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::SingleFeedMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::SingleFeedMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "enable")
     {
@@ -8853,16 +8853,16 @@ std::shared_ptr<Entity> PowerMgmt::Config::SingleFeedMode::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::SingleFeedMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::SingleFeedMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(enable != nullptr)
     {
-        children["enable"] = enable;
+        _children["enable"] = enable;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::SingleFeedMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8928,7 +8928,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::SingleFeedMode
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::SingleFeedMode::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::SingleFeedMode::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack_loc")
     {
@@ -8942,16 +8942,16 @@ std::shared_ptr<Entity> PowerMgmt::Config::SingleFeedMode::Enable::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::SingleFeedMode::Enable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::SingleFeedMode::Enable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rack_loc != nullptr)
     {
-        children["rack_loc"] = rack_loc;
+        _children["rack_loc"] = rack_loc;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::SingleFeedMode::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9029,33 +9029,33 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::SingleFeedMode
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9132,16 +9132,16 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::SingleFeedMode
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9217,7 +9217,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::ExtendedTemp::
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::ExtendedTemp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::ExtendedTemp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "enable")
     {
@@ -9231,16 +9231,16 @@ std::shared_ptr<Entity> PowerMgmt::Config::ExtendedTemp::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::ExtendedTemp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::ExtendedTemp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(enable != nullptr)
     {
-        children["enable"] = enable;
+        _children["enable"] = enable;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::ExtendedTemp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9306,7 +9306,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::ExtendedTemp::
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::ExtendedTemp::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::ExtendedTemp::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack_loc")
     {
@@ -9320,16 +9320,16 @@ std::shared_ptr<Entity> PowerMgmt::Config::ExtendedTemp::Enable::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::ExtendedTemp::Enable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::ExtendedTemp::Enable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rack_loc != nullptr)
     {
-        children["rack_loc"] = rack_loc;
+        _children["rack_loc"] = rack_loc;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::ExtendedTemp::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9407,33 +9407,33 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::ExtendedTemp::
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9510,16 +9510,16 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::ExtendedTemp::
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9599,7 +9599,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::RedundancyNumP
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::RedundancyNumPms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::RedundancyNumPms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -9622,21 +9622,21 @@ std::shared_ptr<Entity> PowerMgmt::Config::RedundancyNumPms::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::RedundancyNumPms::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::RedundancyNumPms::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
     if(rack_loc != nullptr)
     {
-        children["rack_loc"] = rack_loc;
+        _children["rack_loc"] = rack_loc;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::RedundancyNumPms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9702,16 +9702,16 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::RedundancyNumP
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::RedundancyNumPms::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::RedundancyNumPms::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::RedundancyNumPms::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::RedundancyNumPms::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PowerMgmt::Config::RedundancyNumPms::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9795,33 +9795,33 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::RedundancyNumP
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::RedundancyNumPms::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::RedundancyNumPms::RackLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<PowerMgmt::Config::RedundancyNumPms::RackLoc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<PowerMgmt::Config::RedundancyNumPms::RackLoc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::RedundancyNumPms::RackLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::RedundancyNumPms::RackLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::RedundancyNumPms::RackLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9892,16 +9892,16 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::RedundancyNumP
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::RedundancyNumPms::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::RedundancyNumPms::RackLoc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::RedundancyNumPms::RackLoc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::RedundancyNumPms::RackLoc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PowerMgmt::Config::RedundancyNumPms::RackLoc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9995,33 +9995,33 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Progressive::g
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::Progressive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::Progressive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "enable")
     {
-        auto c = std::make_shared<PowerMgmt::Config::Progressive::Enable>();
-        c->parent = this;
-        enable.append(c);
-        return c;
+        auto ent_ = std::make_shared<PowerMgmt::Config::Progressive::Enable>();
+        ent_->parent = this;
+        enable.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Progressive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::Progressive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : enable.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : enable.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::Progressive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10101,7 +10101,7 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Progressive::E
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::Progressive::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::Progressive::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "priority")
     {
@@ -10115,16 +10115,16 @@ std::shared_ptr<Entity> PowerMgmt::Config::Progressive::Enable::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Progressive::Enable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::Progressive::Enable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(priority != nullptr)
     {
-        children["priority"] = priority;
+        _children["priority"] = priority;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::Progressive::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10221,33 +10221,33 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Progressive::E
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::Progressive::Enable::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::Progressive::Enable::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<PowerMgmt::Config::Progressive::Enable::Priority::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<PowerMgmt::Config::Progressive::Enable::Priority::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Progressive::Enable::Priority::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::Progressive::Enable::Priority::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PowerMgmt::Config::Progressive::Enable::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10311,16 +10311,16 @@ std::vector<std::pair<std::string, LeafData> > PowerMgmt::Config::Progressive::E
 
 }
 
-std::shared_ptr<Entity> PowerMgmt::Config::Progressive::Enable::Priority::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PowerMgmt::Config::Progressive::Enable::Priority::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PowerMgmt::Config::Progressive::Enable::Priority::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PowerMgmt::Config::Progressive::Enable::Priority::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PowerMgmt::Config::Progressive::Enable::Priority::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

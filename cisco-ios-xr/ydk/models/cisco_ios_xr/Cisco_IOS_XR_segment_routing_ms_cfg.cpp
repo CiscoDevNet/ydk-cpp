@@ -70,7 +70,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Sr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-block")
     {
@@ -120,36 +120,36 @@ std::shared_ptr<Entity> Sr::get_child_by_name(const std::string & child_yang_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_block != nullptr)
     {
-        children["local-block"] = local_block;
+        _children["local-block"] = local_block;
     }
 
     if(mappings != nullptr)
     {
-        children["mappings"] = mappings;
+        _children["mappings"] = mappings;
     }
 
     if(adjacency_sid != nullptr)
     {
-        children["adjacency-sid"] = adjacency_sid;
+        _children["adjacency-sid"] = adjacency_sid;
     }
 
     if(global_block != nullptr)
     {
-        children["global-block"] = global_block;
+        _children["global-block"] = global_block;
     }
 
     if(traffic_engineering != nullptr)
     {
-        children["Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering"] = traffic_engineering;
+        _children["Cisco-IOS-XR-infra-xtc-agent-cfg:traffic-engineering"] = traffic_engineering;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -170,7 +170,7 @@ void Sr::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Sr::clone_ptr() const
+std::shared_ptr<ydk::Entity> Sr::clone_ptr() const
 {
     return std::make_shared<Sr>();
 }
@@ -254,16 +254,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::LocalBlock::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Sr::LocalBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::LocalBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::LocalBlock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::LocalBlock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::LocalBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -357,33 +357,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::Mappings::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Sr::Mappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::Mappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mapping")
     {
-        auto c = std::make_shared<Sr::Mappings::Mapping>();
-        c->parent = this;
-        mapping.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::Mappings::Mapping>();
+        ent_->parent = this;
+        mapping.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::Mappings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::Mappings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mapping.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mapping.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::Mappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -472,16 +472,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::Mappings::Mapping::get_name_l
 
 }
 
-std::shared_ptr<Entity> Sr::Mappings::Mapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::Mappings::Mapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::Mappings::Mapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::Mappings::Mapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::Mappings::Mapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -607,7 +607,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Sr::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -621,16 +621,16 @@ std::shared_ptr<Entity> Sr::AdjacencySid::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::AdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -704,33 +704,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::get
 
 }
 
-std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::AdjacencySid::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Sr::AdjacencySid::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::AdjacencySid::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::AdjacencySid::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::AdjacencySid::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -802,7 +802,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Int
 
 }
 
-std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::AdjacencySid::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address-families")
     {
@@ -816,16 +816,16 @@ std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::AdjacencySid::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address_families != nullptr)
     {
-        children["address-families"] = address_families;
+        _children["address-families"] = address_families;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::AdjacencySid::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -902,33 +902,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Int
 
 }
 
-std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address-family")
     {
-        auto c = std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily>();
-        c->parent = this;
-        address_family.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily>();
+        ent_->parent = this;
+        address_family.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : address_family.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : address_family.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -993,7 +993,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Int
 
 }
 
-std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hops")
     {
@@ -1007,16 +1007,16 @@ std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hops != nullptr)
     {
-        children["next-hops"] = next_hops;
+        _children["next-hops"] = next_hops;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1093,33 +1093,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Int
 
 }
 
-std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1184,7 +1184,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Int
 
 }
 
-std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2-adjacency-sid")
     {
@@ -1198,16 +1198,16 @@ std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2_adjacency_sid != nullptr)
     {
-        children["l2-adjacency-sid"] = l2_adjacency_sid;
+        _children["l2-adjacency-sid"] = l2_adjacency_sid;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1288,16 +1288,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::AdjacencySid::Interfaces::Int
 
 }
 
-std::shared_ptr<Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::AdjacencySid::Interfaces::Interface::AddressFamilies::AddressFamily::NextHops::NextHop::L2AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1407,16 +1407,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::GlobalBlock::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Sr::GlobalBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::GlobalBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::GlobalBlock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::GlobalBlock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::GlobalBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1542,7 +1542,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::get_name_
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-demand-colors")
     {
@@ -1619,51 +1619,51 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(on_demand_colors != nullptr)
     {
-        children["on-demand-colors"] = on_demand_colors;
+        _children["on-demand-colors"] = on_demand_colors;
     }
 
     if(segments != nullptr)
     {
-        children["segments"] = segments;
+        _children["segments"] = segments;
     }
 
     if(logging != nullptr)
     {
-        children["logging"] = logging;
+        _children["logging"] = logging;
     }
 
     if(binding_sid_rules != nullptr)
     {
-        children["binding-sid-rules"] = binding_sid_rules;
+        _children["binding-sid-rules"] = binding_sid_rules;
     }
 
     if(policies != nullptr)
     {
-        children["policies"] = policies;
+        _children["policies"] = policies;
     }
 
     if(srte_interfaces != nullptr)
     {
-        children["srte-interfaces"] = srte_interfaces;
+        _children["srte-interfaces"] = srte_interfaces;
     }
 
     if(pcc != nullptr)
     {
-        children["pcc"] = pcc;
+        _children["pcc"] = pcc;
     }
 
     if(affinity_maps != nullptr)
     {
-        children["affinity-maps"] = affinity_maps;
+        _children["affinity-maps"] = affinity_maps;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1767,33 +1767,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandC
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::OnDemandColors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-demand-color")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor>();
-        c->parent = this;
-        on_demand_color.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::OnDemandColors::OnDemandColor>();
+        ent_->parent = this;
+        on_demand_color.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::OnDemandColors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : on_demand_color.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : on_demand_color.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::OnDemandColors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1872,7 +1872,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandC
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-demand-color-dyn-mpls")
     {
@@ -1886,16 +1886,16 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(on_demand_color_dyn_mpls != nullptr)
     {
-        children["on-demand-color-dyn-mpls"] = on_demand_color_dyn_mpls;
+        _children["on-demand-color-dyn-mpls"] = on_demand_color_dyn_mpls;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1999,7 +1999,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandC
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-demand-color-dyn-mpls-metric")
     {
@@ -2031,26 +2031,26 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::O
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(on_demand_color_dyn_mpls_metric != nullptr)
     {
-        children["on-demand-color-dyn-mpls-metric"] = on_demand_color_dyn_mpls_metric;
+        _children["on-demand-color-dyn-mpls-metric"] = on_demand_color_dyn_mpls_metric;
     }
 
     if(on_demand_color_dyn_mpls_pce != nullptr)
     {
-        children["on-demand-color-dyn-mpls-pce"] = on_demand_color_dyn_mpls_pce;
+        _children["on-demand-color-dyn-mpls-pce"] = on_demand_color_dyn_mpls_pce;
     }
 
     if(disjoint_path != nullptr)
     {
-        children["disjoint-path"] = disjoint_path;
+        _children["disjoint-path"] = disjoint_path;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2133,16 +2133,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandC
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2221,16 +2221,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandC
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::OnDemandColorDynMplsPce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2307,16 +2307,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::OnDemandC
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::OnDemandColors::OnDemandColor::OnDemandColorDynMpls::DisjointPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2420,33 +2420,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Segments:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "segment")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Segments::Segment>();
-        c->parent = this;
-        segment.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Segments::Segment>();
+        ent_->parent = this;
+        segment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Segments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Segments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : segment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : segment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2522,7 +2522,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Segments:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Segments::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Segments::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "segments")
     {
@@ -2536,16 +2536,16 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Segments::Segment::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Segments::Segment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Segments::Segment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(segments != nullptr)
     {
-        children["segments"] = segments;
+        _children["segments"] = segments;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Segments::Segment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2632,33 +2632,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Segments:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Segments::Segment::Segments_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Segments::Segment::Segments_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "segment")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_>();
-        c->parent = this;
-        segment.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_>();
+        ent_->parent = this;
+        segment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Segments::Segment::Segments_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Segments::Segment::Segments_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : segment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : segment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Segments::Segment::Segments_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2730,16 +2730,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Segments:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Segments::Segment::Segments_::Segment_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2845,16 +2845,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Logging::
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Logging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Logging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2929,7 +2929,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::BindingSi
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::BindingSidRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::BindingSidRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "explicit")
     {
@@ -2943,16 +2943,16 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::BindingSidRules::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::BindingSidRules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::BindingSidRules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(explicit_ != nullptr)
     {
-        children["explicit"] = explicit_;
+        _children["explicit"] = explicit_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::BindingSidRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3018,16 +3018,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::BindingSi
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::BindingSidRules::Explicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::BindingSidRules::Explicit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::BindingSidRules::Explicit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::BindingSidRules::Explicit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::BindingSidRules::Explicit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3111,33 +3111,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy>();
-        c->parent = this;
-        policy.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Policies::Policy>();
+        ent_->parent = this;
+        policy.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3244,7 +3244,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "steering")
     {
@@ -3294,36 +3294,36 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(steering != nullptr)
     {
-        children["steering"] = steering;
+        _children["steering"] = steering;
     }
 
     if(binding_sid != nullptr)
     {
-        children["binding-sid"] = binding_sid;
+        _children["binding-sid"] = binding_sid;
     }
 
     if(policy_color_endpoint != nullptr)
     {
-        children["policy-color-endpoint"] = policy_color_endpoint;
+        _children["policy-color-endpoint"] = policy_color_endpoint;
     }
 
     if(auto_route != nullptr)
     {
-        children["auto-route"] = auto_route;
+        _children["auto-route"] = auto_route;
     }
 
     if(candidate_paths != nullptr)
     {
-        children["candidate-paths"] = candidate_paths;
+        _children["candidate-paths"] = candidate_paths;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3442,7 +3442,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::Steering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::Steering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "applications")
     {
@@ -3456,16 +3456,16 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::Steering::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::Steering::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::Steering::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(applications != nullptr)
     {
-        children["applications"] = applications;
+        _children["applications"] = applications;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::Steering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3532,33 +3532,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::Steering::Applications::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::Steering::Applications::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy::Steering::Applications::Application>();
-        c->parent = this;
-        application.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Policies::Policy::Steering::Applications::Application>();
+        ent_->parent = this;
+        application.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::Steering::Applications::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::Steering::Applications::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : application.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : application.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::Steering::Applications::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3622,16 +3622,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::Steering::Applications::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::Steering::Applications::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::Steering::Applications::Application::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::Steering::Applications::Application::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::Steering::Applications::Application::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3714,16 +3714,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::BindingSid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::BindingSid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3810,16 +3810,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::PolicyColorEndpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3917,7 +3917,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::AutoRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::AutoRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto-route-metric")
     {
@@ -3940,21 +3940,21 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::AutoRoute::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::AutoRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::AutoRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_route_metric != nullptr)
     {
-        children["auto-route-metric"] = auto_route_metric;
+        _children["auto-route-metric"] = auto_route_metric;
     }
 
     if(include_prefixes != nullptr)
     {
-        children["include-prefixes"] = include_prefixes;
+        _children["include-prefixes"] = include_prefixes;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::AutoRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4031,16 +4031,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::AutoRoute::AutoRouteMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::AutoRoute::AutoRouteMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::AutoRoute::AutoRouteMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::AutoRoute::AutoRouteMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::AutoRoute::AutoRouteMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4137,33 +4137,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "include-prefix")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::IncludePrefix>();
-        c->parent = this;
-        include_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::IncludePrefix>();
+        ent_->parent = this;
+        include_prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : include_prefix.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : include_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4233,16 +4233,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::IncludePrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::IncludePrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::IncludePrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::IncludePrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::AutoRoute::IncludePrefixes::IncludePrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4336,7 +4336,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "preferences")
     {
@@ -4350,16 +4350,16 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(preferences != nullptr)
     {
-        children["preferences"] = preferences;
+        _children["preferences"] = preferences;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4436,33 +4436,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "preference")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference>();
-        c->parent = this;
-        preference.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference>();
+        ent_->parent = this;
+        preference.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : preference.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : preference.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4535,7 +4535,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "constraints")
     {
@@ -4558,21 +4558,21 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(constraints != nullptr)
     {
-        children["constraints"] = constraints;
+        _children["constraints"] = constraints;
     }
 
     if(path_infos != nullptr)
     {
-        children["path-infos"] = path_infos;
+        _children["path-infos"] = path_infos;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4662,7 +4662,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disjoint-path")
     {
@@ -4694,26 +4694,26 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disjoint_path != nullptr)
     {
-        children["disjoint-path"] = disjoint_path;
+        _children["disjoint-path"] = disjoint_path;
     }
 
     if(segment_rules != nullptr)
     {
-        children["segment-rules"] = segment_rules;
+        _children["segment-rules"] = segment_rules;
     }
 
     if(affinity_rules != nullptr)
     {
-        children["affinity-rules"] = affinity_rules;
+        _children["affinity-rules"] = affinity_rules;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4790,16 +4790,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::DisjointPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::DisjointPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::DisjointPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4888,16 +4888,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::SegmentRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::SegmentRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::SegmentRules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::SegmentRules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::SegmentRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4974,33 +4974,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "affinity-rule")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule>();
-        c->parent = this;
-        affinity_rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule>();
+        ent_->parent = this;
+        affinity_rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : affinity_rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : affinity_rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5065,16 +5065,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::Constraints::AffinityRules::AffinityRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5161,33 +5161,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-info")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo>();
-        c->parent = this;
-        path_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo>();
+        ent_->parent = this;
+        path_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : path_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : path_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5273,7 +5273,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
@@ -5296,21 +5296,21 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(metric != nullptr)
     {
-        children["metric"] = metric;
+        _children["metric"] = metric;
     }
 
     if(pcep != nullptr)
     {
-        children["pcep"] = pcep;
+        _children["pcep"] = pcep;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5432,7 +5432,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "margin")
     {
@@ -5446,16 +5446,16 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(margin != nullptr)
     {
-        children["margin"] = margin;
+        _children["margin"] = margin;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5552,16 +5552,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Metric::Margin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5650,16 +5650,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Policies:
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pcep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pcep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pcep::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pcep::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Policies::Policy::CandidatePaths::Preferences::Preference::PathInfos::PathInfo::Pcep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5743,33 +5743,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::SrteInter
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::SrteInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::SrteInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srte-interface")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::SrteInterfaces::SrteInterface>();
-        c->parent = this;
-        srte_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::SrteInterfaces::SrteInterface>();
+        ent_->parent = this;
+        srte_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::SrteInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::SrteInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : srte_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srte_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::SrteInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5849,7 +5849,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::SrteInter
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-affinities")
     {
@@ -5863,16 +5863,16 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_affinities != nullptr)
     {
-        children["interface-affinities"] = interface_affinities;
+        _children["interface-affinities"] = interface_affinities;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::SrteInterfaces::SrteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5969,33 +5969,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::SrteInter
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-affinity")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity>();
-        c->parent = this;
-        interface_affinity.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity>();
+        ent_->parent = this;
+        interface_affinity.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_affinity.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_affinity.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6055,16 +6055,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::SrteInter
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::SrteInterfaces::SrteInterface::InterfaceAffinities::InterfaceAffinity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6185,7 +6185,7 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::get_
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Pcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pce-peers")
     {
@@ -6208,21 +6208,21 @@ std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Pcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pce_peers != nullptr)
     {
-        children["pce-peers"] = pce_peers;
+        _children["pce-peers"] = pce_peers;
     }
 
     if(pce_addresses != nullptr)
     {
-        children["pce-addresses"] = pce_addresses;
+        _children["pce-addresses"] = pce_addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Pcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6396,33 +6396,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::PceP
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::PcePeers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Pcc::PcePeers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pce-peer")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Pcc::PcePeers::PcePeer>();
-        c->parent = this;
-        pce_peer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Pcc::PcePeers::PcePeer>();
+        ent_->parent = this;
+        pce_peer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::PcePeers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Pcc::PcePeers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pce_peer.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pce_peer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Pcc::PcePeers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6505,16 +6505,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::PceP
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Pcc::PcePeers::PcePeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6638,33 +6638,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::PceA
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::PceAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Pcc::PceAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pce-address")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress>();
-        c->parent = this;
-        pce_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress>();
+        ent_->parent = this;
+        pce_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::PceAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Pcc::PceAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pce_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pce_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Pcc::PceAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6735,16 +6735,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::Pcc::PceA
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::Pcc::PceAddresses::PceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6838,33 +6838,33 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::AffinityM
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::AffinityMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::AffinityMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "affinity-map")
     {
-        auto c = std::make_shared<Sr::TrafficEngineering::AffinityMaps::AffinityMap>();
-        c->parent = this;
-        affinity_map.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sr::TrafficEngineering::AffinityMaps::AffinityMap>();
+        ent_->parent = this;
+        affinity_map.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::AffinityMaps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::AffinityMaps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : affinity_map.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : affinity_map.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sr::TrafficEngineering::AffinityMaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6935,16 +6935,16 @@ std::vector<std::pair<std::string, LeafData> > Sr::TrafficEngineering::AffinityM
 
 }
 
-std::shared_ptr<Entity> Sr::TrafficEngineering::AffinityMaps::AffinityMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sr::TrafficEngineering::AffinityMaps::AffinityMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sr::TrafficEngineering::AffinityMaps::AffinityMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sr::TrafficEngineering::AffinityMaps::AffinityMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sr::TrafficEngineering::AffinityMaps::AffinityMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

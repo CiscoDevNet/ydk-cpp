@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Vservice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-function-locator")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> Vservice::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_function_locator != nullptr)
     {
-        children["service-function-locator"] = service_function_locator;
+        _children["service-function-locator"] = service_function_locator;
     }
 
     if(metadata_dispositions != nullptr)
     {
-        children["metadata-dispositions"] = metadata_dispositions;
+        _children["metadata-dispositions"] = metadata_dispositions;
     }
 
     if(service_function_forward_locator != nullptr)
     {
-        children["service-function-forward-locator"] = service_function_forward_locator;
+        _children["service-function-forward-locator"] = service_function_forward_locator;
     }
 
     if(metadata_templates != nullptr)
     {
-        children["metadata-templates"] = metadata_templates;
+        _children["metadata-templates"] = metadata_templates;
     }
 
     if(service_function_path != nullptr)
     {
-        children["service-function-path"] = service_function_path;
+        _children["service-function-path"] = service_function_path;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void Vservice::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Vservice::clone_ptr() const
+std::shared_ptr<ydk::Entity> Vservice::clone_ptr() const
 {
     return std::make_shared<Vservice>();
 }
@@ -238,7 +238,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionLocator:
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionLocator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionLocator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "names")
     {
@@ -252,16 +252,16 @@ std::shared_ptr<Entity> Vservice::ServiceFunctionLocator::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionLocator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionLocator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(names != nullptr)
     {
-        children["names"] = names;
+        _children["names"] = names;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionLocator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -335,33 +335,33 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionLocator:
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionLocator::Names::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionLocator::Names::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "name")
     {
-        auto c = std::make_shared<Vservice::ServiceFunctionLocator::Names::Name>();
-        c->parent = this;
-        name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vservice::ServiceFunctionLocator::Names::Name>();
+        ent_->parent = this;
+        name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionLocator::Names::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionLocator::Names::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionLocator::Names::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -438,7 +438,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionLocator:
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionLocator::Names::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionLocator::Names::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
@@ -452,16 +452,16 @@ std::shared_ptr<Entity> Vservice::ServiceFunctionLocator::Names::Name::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionLocator::Names::Name::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionLocator::Names::Name::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node != nullptr)
     {
-        children["node"] = node;
+        _children["node"] = node;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionLocator::Names::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -552,16 +552,16 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionLocator:
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionLocator::Names::Name::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionLocator::Names::Name::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionLocator::Names::Name::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionLocator::Names::Name::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vservice::ServiceFunctionLocator::Names::Name::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -675,33 +675,33 @@ std::vector<std::pair<std::string, LeafData> > Vservice::MetadataDispositions::g
 
 }
 
-std::shared_ptr<Entity> Vservice::MetadataDispositions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::MetadataDispositions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metadata-disposition")
     {
-        auto c = std::make_shared<Vservice::MetadataDispositions::MetadataDisposition>();
-        c->parent = this;
-        metadata_disposition.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vservice::MetadataDispositions::MetadataDisposition>();
+        ent_->parent = this;
+        metadata_disposition.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataDispositions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::MetadataDispositions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : metadata_disposition.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : metadata_disposition.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::MetadataDispositions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -785,33 +785,33 @@ std::vector<std::pair<std::string, LeafData> > Vservice::MetadataDispositions::M
 
 }
 
-std::shared_ptr<Entity> Vservice::MetadataDispositions::MetadataDisposition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::MetadataDispositions::MetadataDisposition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "match-entry")
     {
-        auto c = std::make_shared<Vservice::MetadataDispositions::MetadataDisposition::MatchEntry>();
-        c->parent = this;
-        match_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vservice::MetadataDispositions::MetadataDisposition::MatchEntry>();
+        ent_->parent = this;
+        match_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataDispositions::MetadataDisposition::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::MetadataDispositions::MetadataDisposition::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : match_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : match_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::MetadataDispositions::MetadataDisposition::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -896,7 +896,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::MetadataDispositions::M
 
 }
 
-std::shared_ptr<Entity> Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
@@ -910,16 +910,16 @@ std::shared_ptr<Entity> Vservice::MetadataDispositions::MetadataDisposition::Mat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node != nullptr)
     {
-        children["node"] = node;
+        _children["node"] = node;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1014,16 +1014,16 @@ std::vector<std::pair<std::string, LeafData> > Vservice::MetadataDispositions::M
 
 }
 
-std::shared_ptr<Entity> Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1137,7 +1137,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionForwardL
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionForwardLocator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionForwardLocator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "names")
     {
@@ -1151,16 +1151,16 @@ std::shared_ptr<Entity> Vservice::ServiceFunctionForwardLocator::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionForwardLocator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionForwardLocator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(names != nullptr)
     {
-        children["names"] = names;
+        _children["names"] = names;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionForwardLocator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1234,33 +1234,33 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionForwardL
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionForwardLocator::Names::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionForwardLocator::Names::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "name")
     {
-        auto c = std::make_shared<Vservice::ServiceFunctionForwardLocator::Names::Name>();
-        c->parent = this;
-        name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vservice::ServiceFunctionForwardLocator::Names::Name>();
+        ent_->parent = this;
+        name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionForwardLocator::Names::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionForwardLocator::Names::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionForwardLocator::Names::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1337,7 +1337,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionForwardL
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionForwardLocator::Names::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionForwardLocator::Names::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
@@ -1351,16 +1351,16 @@ std::shared_ptr<Entity> Vservice::ServiceFunctionForwardLocator::Names::Name::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionForwardLocator::Names::Name::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionForwardLocator::Names::Name::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node != nullptr)
     {
-        children["node"] = node;
+        _children["node"] = node;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionForwardLocator::Names::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1451,16 +1451,16 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionForwardL
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionForwardLocator::Names::Name::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionForwardLocator::Names::Name::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionForwardLocator::Names::Name::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionForwardLocator::Names::Name::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vservice::ServiceFunctionForwardLocator::Names::Name::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1574,33 +1574,33 @@ std::vector<std::pair<std::string, LeafData> > Vservice::MetadataTemplates::get_
 
 }
 
-std::shared_ptr<Entity> Vservice::MetadataTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::MetadataTemplates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metadata-template")
     {
-        auto c = std::make_shared<Vservice::MetadataTemplates::MetadataTemplate>();
-        c->parent = this;
-        metadata_template.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vservice::MetadataTemplates::MetadataTemplate>();
+        ent_->parent = this;
+        metadata_template.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataTemplates::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::MetadataTemplates::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : metadata_template.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : metadata_template.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::MetadataTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1681,16 +1681,16 @@ std::vector<std::pair<std::string, LeafData> > Vservice::MetadataTemplates::Meta
 
 }
 
-std::shared_ptr<Entity> Vservice::MetadataTemplates::MetadataTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::MetadataTemplates::MetadataTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataTemplates::MetadataTemplate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::MetadataTemplates::MetadataTemplate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vservice::MetadataTemplates::MetadataTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1796,7 +1796,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::ge
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "paths")
     {
@@ -1810,16 +1810,16 @@ std::shared_ptr<Entity> Vservice::ServiceFunctionPath::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(paths != nullptr)
     {
-        children["paths"] = paths;
+        _children["paths"] = paths;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1893,33 +1893,33 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path")
     {
-        auto c = std::make_shared<Vservice::ServiceFunctionPath::Paths::Path>();
-        c->parent = this;
-        path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vservice::ServiceFunctionPath::Paths::Path>();
+        ent_->parent = this;
+        path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1998,33 +1998,33 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-index")
     {
-        auto c = std::make_shared<Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex>();
-        c->parent = this;
-        service_index.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex>();
+        ent_->parent = this;
+        service_index.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_index.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_index.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2107,7 +2107,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "terminate")
     {
@@ -2139,26 +2139,26 @@ std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(terminate != nullptr)
     {
-        children["terminate"] = terminate;
+        _children["terminate"] = terminate;
     }
 
     if(sff_names != nullptr)
     {
-        children["sff-names"] = sff_names;
+        _children["sff-names"] = sff_names;
     }
 
     if(sf_names != nullptr)
     {
-        children["sf-names"] = sf_names;
+        _children["sf-names"] = sf_names;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2227,7 +2227,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
@@ -2241,16 +2241,16 @@ std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node != nullptr)
     {
-        children["node"] = node;
+        _children["node"] = node;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2321,16 +2321,16 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2437,33 +2437,33 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sff-name")
     {
-        auto c = std::make_shared<Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName>();
-        c->parent = this;
-        sff_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName>();
+        ent_->parent = this;
+        sff_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sff_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sff_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2528,7 +2528,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
@@ -2542,16 +2542,16 @@ std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node != nullptr)
     {
-        children["node"] = node;
+        _children["node"] = node;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2624,16 +2624,16 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2720,33 +2720,33 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sf-name")
     {
-        auto c = std::make_shared<Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName>();
-        c->parent = this;
-        sf_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName>();
+        ent_->parent = this;
+        sf_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sf_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sf_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2811,7 +2811,7 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
@@ -2825,16 +2825,16 @@ std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node != nullptr)
     {
-        children["node"] = node;
+        _children["node"] = node;
     }
 
-    return children;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2907,16 +2907,16 @@ std::vector<std::pair<std::string, LeafData> > Vservice::ServiceFunctionPath::Pa
 
 }
 
-std::shared_ptr<Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Statistics::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "period")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Statistics::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(period != nullptr)
     {
-        children["period"] = period;
+        _children["period"] = period;
     }
 
-    return children;
+    return _children;
 }
 
 void Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Statistics::clone_ptr() const
+std::shared_ptr<ydk::Entity> Statistics::clone_ptr() const
 {
     return std::make_shared<Statistics>();
 }
@@ -166,7 +166,7 @@ std::vector<std::pair<std::string, LeafData> > Statistics::Period::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Statistics::Period::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Statistics::Period::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-accounting")
     {
@@ -180,16 +180,16 @@ std::shared_ptr<Entity> Statistics::Period::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Statistics::Period::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Statistics::Period::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_accounting != nullptr)
     {
-        children["service-accounting"] = service_accounting;
+        _children["service-accounting"] = service_accounting;
     }
 
-    return children;
+    return _children;
 }
 
 void Statistics::Period::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -259,16 +259,16 @@ std::vector<std::pair<std::string, LeafData> > Statistics::Period::ServiceAccoun
 
 }
 
-std::shared_ptr<Entity> Statistics::Period::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Statistics::Period::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Statistics::Period::ServiceAccounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Statistics::Period::ServiceAccounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Statistics::Period::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

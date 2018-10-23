@@ -97,7 +97,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flap-damp")
     {
@@ -156,41 +156,41 @@ std::shared_ptr<Entity> Bfd::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flap_damp != nullptr)
     {
-        children["flap-damp"] = flap_damp;
+        _children["flap-damp"] = flap_damp;
     }
 
     if(echo_latency != nullptr)
     {
-        children["echo-latency"] = echo_latency;
+        _children["echo-latency"] = echo_latency;
     }
 
     if(echo_startup != nullptr)
     {
-        children["echo-startup"] = echo_startup;
+        _children["echo-startup"] = echo_startup;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(multi_path_includes != nullptr)
     {
-        children["multi-path-includes"] = multi_path_includes;
+        _children["multi-path-includes"] = multi_path_includes;
     }
 
     if(bundle != nullptr)
     {
-        children["bundle"] = bundle;
+        _children["bundle"] = bundle;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -261,7 +261,7 @@ void Bfd::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Bfd::clone_ptr() const
+std::shared_ptr<ydk::Entity> Bfd::clone_ptr() const
 {
     return std::make_shared<Bfd>();
 }
@@ -366,7 +366,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::FlapDamp::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Bfd::FlapDamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::FlapDamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bundle-member")
     {
@@ -389,21 +389,21 @@ std::shared_ptr<Entity> Bfd::FlapDamp::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::FlapDamp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::FlapDamp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bundle_member != nullptr)
     {
-        children["bundle-member"] = bundle_member;
+        _children["bundle-member"] = bundle_member;
     }
 
     if(extensions != nullptr)
     {
-        children["extensions"] = extensions;
+        _children["extensions"] = extensions;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::FlapDamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -531,16 +531,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::FlapDamp::BundleMember::get_
 
 }
 
-std::shared_ptr<Entity> Bfd::FlapDamp::BundleMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::FlapDamp::BundleMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::FlapDamp::BundleMember::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::FlapDamp::BundleMember::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::FlapDamp::BundleMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -646,16 +646,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::FlapDamp::Extensions::get_na
 
 }
 
-std::shared_ptr<Entity> Bfd::FlapDamp::Extensions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::FlapDamp::Extensions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::FlapDamp::Extensions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::FlapDamp::Extensions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::FlapDamp::Extensions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -731,7 +731,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::EchoLatency::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Bfd::EchoLatency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::EchoLatency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detect")
     {
@@ -745,16 +745,16 @@ std::shared_ptr<Entity> Bfd::EchoLatency::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::EchoLatency::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detect != nullptr)
     {
-        children["detect"] = detect;
+        _children["detect"] = detect;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::EchoLatency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -828,16 +828,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::EchoLatency::Detect::get_nam
 
 }
 
-std::shared_ptr<Entity> Bfd::EchoLatency::Detect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::EchoLatency::Detect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::Detect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::EchoLatency::Detect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::EchoLatency::Detect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -933,16 +933,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::EchoStartup::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Bfd::EchoStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::EchoStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoStartup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::EchoStartup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::EchoStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1026,33 +1026,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Interfaces::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Bfd::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Bfd::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1131,16 +1131,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Interfaces::Interface::get_n
 
 }
 
-std::shared_ptr<Entity> Bfd::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1254,33 +1254,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::MultiPathIncludes::get_name_
 
 }
 
-std::shared_ptr<Entity> Bfd::MultiPathIncludes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::MultiPathIncludes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "multi-path-include")
     {
-        auto c = std::make_shared<Bfd::MultiPathIncludes::MultiPathInclude>();
-        c->parent = this;
-        multi_path_include.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::MultiPathIncludes::MultiPathInclude>();
+        ent_->parent = this;
+        multi_path_include.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::MultiPathIncludes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::MultiPathIncludes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : multi_path_include.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : multi_path_include.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::MultiPathIncludes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1347,16 +1347,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::MultiPathIncludes::MultiPath
 
 }
 
-std::shared_ptr<Entity> Bfd::MultiPathIncludes::MultiPathInclude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::MultiPathIncludes::MultiPathInclude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::MultiPathIncludes::MultiPathInclude::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::MultiPathIncludes::MultiPathInclude::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::MultiPathIncludes::MultiPathInclude::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1432,7 +1432,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Bundle::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Bfd::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "coexistence")
     {
@@ -1446,16 +1446,16 @@ std::shared_ptr<Entity> Bfd::Bundle::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Bundle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(coexistence != nullptr)
     {
-        children["coexistence"] = coexistence;
+        _children["coexistence"] = coexistence;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1521,16 +1521,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Bundle::Coexistence::get_nam
 
 }
 
-std::shared_ptr<Entity> Bfd::Bundle::Coexistence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Bundle::Coexistence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::Coexistence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Bundle::Coexistence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Bundle::Coexistence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

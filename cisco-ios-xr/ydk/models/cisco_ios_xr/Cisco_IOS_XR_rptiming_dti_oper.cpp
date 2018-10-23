@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > DtiController::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> DtiController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DtiController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> DtiController::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DtiController::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DtiController::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void DtiController::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void DtiController::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DtiController::clone_ptr() const
+std::shared_ptr<ydk::Entity> DtiController::clone_ptr() const
 {
     return std::make_shared<DtiController>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > DtiController::Nodes::get_name_le
 
 }
 
-std::shared_ptr<Entity> DtiController::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DtiController::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<DtiController::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<DtiController::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DtiController::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DtiController::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DtiController::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,7 +280,7 @@ std::vector<std::pair<std::string, LeafData> > DtiController::Nodes::Node::get_n
 
 }
 
-std::shared_ptr<Entity> DtiController::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DtiController::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
@@ -312,26 +312,26 @@ std::shared_ptr<Entity> DtiController::Nodes::Node::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DtiController::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DtiController::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(client != nullptr)
     {
-        children["client"] = client;
+        _children["client"] = client;
     }
 
     if(port != nullptr)
     {
-        children["port"] = port;
+        _children["port"] = port;
     }
 
     if(time_of_day != nullptr)
     {
-        children["time-of-day"] = time_of_day;
+        _children["time-of-day"] = time_of_day;
     }
 
-    return children;
+    return _children;
 }
 
 void DtiController::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -436,16 +436,16 @@ std::vector<std::pair<std::string, LeafData> > DtiController::Nodes::Node::Clien
 
 }
 
-std::shared_ptr<Entity> DtiController::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DtiController::Nodes::Node::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DtiController::Nodes::Node::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DtiController::Nodes::Node::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DtiController::Nodes::Node::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -672,16 +672,16 @@ std::vector<std::pair<std::string, LeafData> > DtiController::Nodes::Node::Port:
 
 }
 
-std::shared_ptr<Entity> DtiController::Nodes::Node::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DtiController::Nodes::Node::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DtiController::Nodes::Node::Port::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DtiController::Nodes::Node::Port::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DtiController::Nodes::Node::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1004,16 +1004,16 @@ std::vector<std::pair<std::string, LeafData> > DtiController::Nodes::Node::TimeO
 
 }
 
-std::shared_ptr<Entity> DtiController::Nodes::Node::TimeOfDay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DtiController::Nodes::Node::TimeOfDay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DtiController::Nodes::Node::TimeOfDay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DtiController::Nodes::Node::TimeOfDay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DtiController::Nodes::Node::TimeOfDay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

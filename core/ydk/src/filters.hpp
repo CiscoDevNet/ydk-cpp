@@ -38,6 +38,7 @@ enum class YFilter
     delete_,
     replace,
     read,
+    update,
     not_set
 };
 }

@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> NetFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> NetFlow::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void NetFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void NetFlow::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> NetFlow::clone_ptr() const
+std::shared_ptr<ydk::Entity> NetFlow::clone_ptr() const
 {
     return std::make_shared<NetFlow>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::get_name_lea
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistic")
     {
-        auto c = std::make_shared<NetFlow::Statistics::Statistic>();
-        c->parent = this;
-        statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetFlow::Statistics::Statistic>();
+        ent_->parent = this;
+        statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetFlow::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -276,7 +276,7 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::g
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::Statistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::Statistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producer")
     {
@@ -299,21 +299,21 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::Statistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(producer != nullptr)
     {
-        children["producer"] = producer;
+        _children["producer"] = producer;
     }
 
     if(server != nullptr)
     {
-        children["server"] = server;
+        _children["server"] = server;
     }
 
-    return children;
+    return _children;
 }
 
 void NetFlow::Statistics::Statistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -382,7 +382,7 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::P
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::Statistic::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -396,16 +396,16 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Producer::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Producer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::Statistic::Producer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void NetFlow::Statistics::Statistic::Producer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -516,16 +516,16 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::P
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Producer::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::Statistic::Producer::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Producer::Statistics_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::Statistic::Producer::Statistics_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetFlow::Statistics::Statistic::Producer::Statistics_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -724,7 +724,7 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::S
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::Statistic::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-exporters")
     {
@@ -738,16 +738,16 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::Statistic::Server::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow_exporters != nullptr)
     {
-        children["flow-exporters"] = flow_exporters;
+        _children["flow-exporters"] = flow_exporters;
     }
 
-    return children;
+    return _children;
 }
 
 void NetFlow::Statistics::Statistic::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -814,33 +814,33 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::S
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-exporter")
     {
-        auto c = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter>();
-        c->parent = this;
-        flow_exporter.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter>();
+        ent_->parent = this;
+        flow_exporter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow_exporter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow_exporter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetFlow::Statistics::Statistic::Server::FlowExporters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -905,7 +905,7 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::S
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exporter")
     {
@@ -919,16 +919,16 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exporter != nullptr)
     {
-        children["exporter"] = exporter;
+        _children["exporter"] = exporter;
     }
 
-    return children;
+    return _children;
 }
 
 void NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1005,33 +1005,33 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::S
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistic")
     {
-        auto c = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_>();
-        c->parent = this;
-        statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_>();
+        ent_->parent = this;
+        statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1120,33 +1120,33 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::S
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "collector")
     {
-        auto c = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector>();
-        c->parent = this;
-        collector.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector>();
+        ent_->parent = this;
+        collector.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : collector.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : collector.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1373,16 +1373,16 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::Statistics::Statistic::S
 
 }
 
-std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

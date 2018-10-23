@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Mfwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default-context")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Mfwd::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_context != nullptr)
     {
-        children["default-context"] = default_context;
+        _children["default-context"] = default_context;
     }
 
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Mfwd::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Mfwd::clone_ptr() const
+std::shared_ptr<ydk::Entity> Mfwd::clone_ptr() const
 {
     return std::make_shared<Mfwd>();
 }
@@ -188,7 +188,7 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::get_name_le
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
@@ -211,21 +211,21 @@ std::shared_ptr<Entity> Mfwd::DefaultContext::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::DefaultContext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -336,7 +336,7 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv6::get_n
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-rpf-rules")
     {
@@ -359,21 +359,21 @@ std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv6::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(static_rpf_rules != nullptr)
     {
-        children["static-rpf-rules"] = static_rpf_rules;
+        _children["static-rpf-rules"] = static_rpf_rules;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -547,33 +547,33 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv6::Stati
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv6::StaticRpfRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv6::StaticRpfRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-rpf-rule")
     {
-        auto c = std::make_shared<Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule>();
-        c->parent = this;
-        static_rpf_rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule>();
+        ent_->parent = this;
+        static_rpf_rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::StaticRpfRules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv6::StaticRpfRules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_rpf_rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_rpf_rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv6::StaticRpfRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -653,16 +653,16 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv6::Stati
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -776,33 +776,33 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv6::Inter
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv6::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv6::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mfwd::DefaultContext::Ipv6::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mfwd::DefaultContext::Ipv6::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv6::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv6::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -881,16 +881,16 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv6::Inter
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv6::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv6::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv6::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1045,7 +1045,7 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv4::get_n
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-rpf-rules")
     {
@@ -1068,21 +1068,21 @@ std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv4::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(static_rpf_rules != nullptr)
     {
-        children["static-rpf-rules"] = static_rpf_rules;
+        _children["static-rpf-rules"] = static_rpf_rules;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1266,33 +1266,33 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv4::Stati
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv4::StaticRpfRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv4::StaticRpfRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-rpf-rule")
     {
-        auto c = std::make_shared<Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule>();
-        c->parent = this;
-        static_rpf_rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule>();
+        ent_->parent = this;
+        static_rpf_rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::StaticRpfRules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv4::StaticRpfRules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_rpf_rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_rpf_rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv4::StaticRpfRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1372,16 +1372,16 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv4::Stati
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1495,33 +1495,33 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv4::Inter
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv4::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv4::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mfwd::DefaultContext::Ipv4::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mfwd::DefaultContext::Ipv4::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv4::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv4::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1600,16 +1600,16 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::DefaultContext::Ipv4::Inter
 
 }
 
-std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv4::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::DefaultContext::Ipv4::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::DefaultContext::Ipv4::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mfwd::DefaultContext::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1723,33 +1723,33 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Mfwd::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mfwd::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1825,7 +1825,7 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
@@ -1848,21 +1848,21 @@ std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1956,7 +1956,7 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv6::get_name_l
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-rpf-rules")
     {
@@ -1979,21 +1979,21 @@ std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv6::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(static_rpf_rules != nullptr)
     {
-        children["static-rpf-rules"] = static_rpf_rules;
+        _children["static-rpf-rules"] = static_rpf_rules;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2110,33 +2110,33 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv6::StaticRpfR
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-rpf-rule")
     {
-        auto c = std::make_shared<Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule>();
-        c->parent = this;
-        static_rpf_rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule>();
+        ent_->parent = this;
+        static_rpf_rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_rpf_rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_rpf_rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2209,16 +2209,16 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv6::StaticRpfR
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2325,33 +2325,33 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv6::Interfaces
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv6::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv6::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv6::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv6::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2423,16 +2423,16 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv6::Interfaces
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2556,7 +2556,7 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv4::get_name_l
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-rpf-rules")
     {
@@ -2579,21 +2579,21 @@ std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv4::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(static_rpf_rules != nullptr)
     {
-        children["static-rpf-rules"] = static_rpf_rules;
+        _children["static-rpf-rules"] = static_rpf_rules;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2710,33 +2710,33 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv4::StaticRpfR
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-rpf-rule")
     {
-        auto c = std::make_shared<Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule>();
-        c->parent = this;
-        static_rpf_rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule>();
+        ent_->parent = this;
+        static_rpf_rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_rpf_rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_rpf_rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2809,16 +2809,16 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv4::StaticRpfR
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2925,33 +2925,33 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv4::Interfaces
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv4::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv4::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv4::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv4::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3023,16 +3023,16 @@ std::vector<std::pair<std::string, LeafData> > Mfwd::Vrfs::Vrf::Ipv4::Interfaces
 
 }
 
-std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

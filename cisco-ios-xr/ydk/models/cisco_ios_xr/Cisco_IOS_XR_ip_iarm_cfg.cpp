@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > IpArm::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> IpArm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpArm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> IpArm::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpArm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpArm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void IpArm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void IpArm::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IpArm::clone_ptr() const
+std::shared_ptr<ydk::Entity> IpArm::clone_ptr() const
 {
     return std::make_shared<IpArm>();
 }
@@ -188,7 +188,7 @@ std::vector<std::pair<std::string, LeafData> > IpArm::Ipv4::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> IpArm::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpArm::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conflict-policy-table")
     {
@@ -211,21 +211,21 @@ std::shared_ptr<Entity> IpArm::Ipv4::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpArm::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conflict_policy_table != nullptr)
     {
-        children["conflict-policy-table"] = conflict_policy_table;
+        _children["conflict-policy-table"] = conflict_policy_table;
     }
 
     if(multicast_host != nullptr)
     {
-        children["multicast-host"] = multicast_host;
+        _children["multicast-host"] = multicast_host;
     }
 
-    return children;
+    return _children;
 }
 
 void IpArm::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -291,16 +291,16 @@ std::vector<std::pair<std::string, LeafData> > IpArm::Ipv4::ConflictPolicyTable:
 
 }
 
-std::shared_ptr<Entity> IpArm::Ipv4::ConflictPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpArm::Ipv4::ConflictPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv4::ConflictPolicyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpArm::Ipv4::ConflictPolicyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpArm::Ipv4::ConflictPolicyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -376,16 +376,16 @@ std::vector<std::pair<std::string, LeafData> > IpArm::Ipv4::MulticastHost::get_n
 
 }
 
-std::shared_ptr<Entity> IpArm::Ipv4::MulticastHost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpArm::Ipv4::MulticastHost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv4::MulticastHost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpArm::Ipv4::MulticastHost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpArm::Ipv4::MulticastHost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -465,7 +465,7 @@ std::vector<std::pair<std::string, LeafData> > IpArm::Ipv6::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> IpArm::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpArm::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conflict-policy-table")
     {
@@ -488,21 +488,21 @@ std::shared_ptr<Entity> IpArm::Ipv6::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpArm::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conflict_policy_table != nullptr)
     {
-        children["conflict-policy-table"] = conflict_policy_table;
+        _children["conflict-policy-table"] = conflict_policy_table;
     }
 
     if(multicast_host != nullptr)
     {
-        children["multicast-host"] = multicast_host;
+        _children["multicast-host"] = multicast_host;
     }
 
-    return children;
+    return _children;
 }
 
 void IpArm::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -568,16 +568,16 @@ std::vector<std::pair<std::string, LeafData> > IpArm::Ipv6::ConflictPolicyTable:
 
 }
 
-std::shared_ptr<Entity> IpArm::Ipv6::ConflictPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpArm::Ipv6::ConflictPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv6::ConflictPolicyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpArm::Ipv6::ConflictPolicyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpArm::Ipv6::ConflictPolicyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -653,16 +653,16 @@ std::vector<std::pair<std::string, LeafData> > IpArm::Ipv6::MulticastHost::get_n
 
 }
 
-std::shared_ptr<Entity> IpArm::Ipv6::MulticastHost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpArm::Ipv6::MulticastHost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpArm::Ipv6::MulticastHost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpArm::Ipv6::MulticastHost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpArm::Ipv6::MulticastHost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

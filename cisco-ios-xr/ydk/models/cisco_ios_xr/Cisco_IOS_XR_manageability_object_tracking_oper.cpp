@@ -80,7 +80,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-type-interface")
     {
@@ -157,51 +157,51 @@ std::shared_ptr<Entity> ObjectTracking::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(track_type_interface != nullptr)
     {
-        children["track-type-interface"] = track_type_interface;
+        _children["track-type-interface"] = track_type_interface;
     }
 
     if(track_briefs != nullptr)
     {
-        children["track-briefs"] = track_briefs;
+        _children["track-briefs"] = track_briefs;
     }
 
     if(track_type_rtr_reachability != nullptr)
     {
-        children["track-type-rtr-reachability"] = track_type_rtr_reachability;
+        _children["track-type-rtr-reachability"] = track_type_rtr_reachability;
     }
 
     if(track_type_rtr_reachability_brief != nullptr)
     {
-        children["track-type-rtr-reachability-brief"] = track_type_rtr_reachability_brief;
+        _children["track-type-rtr-reachability-brief"] = track_type_rtr_reachability_brief;
     }
 
     if(tracks != nullptr)
     {
-        children["tracks"] = tracks;
+        _children["tracks"] = tracks;
     }
 
     if(track_type_ipv4_route_brief != nullptr)
     {
-        children["track-type-ipv4-route-brief"] = track_type_ipv4_route_brief;
+        _children["track-type-ipv4-route-brief"] = track_type_ipv4_route_brief;
     }
 
     if(track_type_ipv4_route != nullptr)
     {
-        children["track-type-ipv4-route"] = track_type_ipv4_route;
+        _children["track-type-ipv4-route"] = track_type_ipv4_route;
     }
 
     if(track_type_interface_brief != nullptr)
     {
-        children["track-type-interface-brief"] = track_type_interface_brief;
+        _children["track-type-interface-brief"] = track_type_interface_brief;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -212,7 +212,7 @@ void ObjectTracking::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ObjectTracking::clone_ptr() const
+std::shared_ptr<ydk::Entity> ObjectTracking::clone_ptr() const
 {
     return std::make_shared<ObjectTracking>();
 }
@@ -300,33 +300,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo>();
-        c->parent = this;
-        track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo>();
+        ent_->parent = this;
+        track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -437,7 +437,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-type-info")
     {
@@ -487,36 +487,36 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(track_type_info != nullptr)
     {
-        children["track-type-info"] = track_type_info;
+        _children["track-type-info"] = track_type_info;
     }
 
     if(bool_tracks != nullptr)
     {
-        children["bool-tracks"] = bool_tracks;
+        _children["bool-tracks"] = bool_tracks;
     }
 
     if(threshold_tracks != nullptr)
     {
-        children["threshold-tracks"] = threshold_tracks;
+        _children["threshold-tracks"] = threshold_tracks;
     }
 
     if(tracking_interaces != nullptr)
     {
-        children["tracking-interaces"] = tracking_interaces;
+        _children["tracking-interaces"] = tracking_interaces;
     }
 
     if(delayed != nullptr)
     {
-        children["delayed"] = delayed;
+        _children["delayed"] = delayed;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -669,7 +669,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracks")
     {
@@ -710,31 +710,31 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackType
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_tracks != nullptr)
     {
-        children["interface-tracks"] = interface_tracks;
+        _children["interface-tracks"] = interface_tracks;
     }
 
     if(route_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        _children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
     {
-        children["ipsla-tracks"] = ipsla_tracks;
+        _children["ipsla-tracks"] = ipsla_tracks;
     }
 
     if(bfd_tracks != nullptr)
     {
-        children["bfd-tracks"] = bfd_tracks;
+        _children["bfd-tracks"] = bfd_tracks;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -810,16 +810,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -907,16 +907,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1030,16 +1030,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1147,16 +1147,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1270,33 +1270,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bool-track-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo>();
-        c->parent = this;
-        bool_track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo>();
+        ent_->parent = this;
+        bool_track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bool_track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bool_track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1370,16 +1370,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1483,33 +1483,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-track-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
-        c->parent = this;
-        threshold_track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
+        ent_->parent = this;
+        threshold_track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : threshold_track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : threshold_track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1583,16 +1583,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1696,33 +1696,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracking-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
-        c->parent = this;
-        interface_tracking_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
+        ent_->parent = this;
+        interface_tracking_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_tracking_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_tracking_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1788,16 +1788,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1877,16 +1877,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1980,33 +1980,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::get_
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-brief")
     {
-        auto c = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief>();
-        c->parent = this;
-        track_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief>();
+        ent_->parent = this;
+        track_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2085,33 +2085,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackBriefs::TrackBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-info-brief")
     {
-        auto c = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief>();
-        c->parent = this;
-        track_info_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief>();
+        ent_->parent = this;
+        track_info_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackBriefs::TrackBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_info_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_info_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackBriefs::TrackBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2193,7 +2193,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-type-info")
     {
@@ -2207,16 +2207,16 @@ std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(track_type_info != nullptr)
     {
-        children["track-type-info"] = track_type_info;
+        _children["track-type-info"] = track_type_info;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2322,7 +2322,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracks")
     {
@@ -2363,31 +2363,31 @@ std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_tracks != nullptr)
     {
-        children["interface-tracks"] = interface_tracks;
+        _children["interface-tracks"] = interface_tracks;
     }
 
     if(route_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        _children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
     {
-        children["ipsla-tracks"] = ipsla_tracks;
+        _children["ipsla-tracks"] = ipsla_tracks;
     }
 
     if(bfd_tracks != nullptr)
     {
-        children["bfd-tracks"] = bfd_tracks;
+        _children["bfd-tracks"] = bfd_tracks;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2456,16 +2456,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2546,16 +2546,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2662,16 +2662,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2772,16 +2772,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2895,33 +2895,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo>();
-        c->parent = this;
-        track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo>();
+        ent_->parent = this;
+        track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3032,7 +3032,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-type-info")
     {
@@ -3082,36 +3082,36 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(track_type_info != nullptr)
     {
-        children["track-type-info"] = track_type_info;
+        _children["track-type-info"] = track_type_info;
     }
 
     if(bool_tracks != nullptr)
     {
-        children["bool-tracks"] = bool_tracks;
+        _children["bool-tracks"] = bool_tracks;
     }
 
     if(threshold_tracks != nullptr)
     {
-        children["threshold-tracks"] = threshold_tracks;
+        _children["threshold-tracks"] = threshold_tracks;
     }
 
     if(tracking_interaces != nullptr)
     {
-        children["tracking-interaces"] = tracking_interaces;
+        _children["tracking-interaces"] = tracking_interaces;
     }
 
     if(delayed != nullptr)
     {
-        children["delayed"] = delayed;
+        _children["delayed"] = delayed;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3264,7 +3264,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracks")
     {
@@ -3305,31 +3305,31 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Tra
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_tracks != nullptr)
     {
-        children["interface-tracks"] = interface_tracks;
+        _children["interface-tracks"] = interface_tracks;
     }
 
     if(route_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        _children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
     {
-        children["ipsla-tracks"] = ipsla_tracks;
+        _children["ipsla-tracks"] = ipsla_tracks;
     }
 
     if(bfd_tracks != nullptr)
     {
-        children["bfd-tracks"] = bfd_tracks;
+        _children["bfd-tracks"] = bfd_tracks;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3405,16 +3405,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3502,16 +3502,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3625,16 +3625,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3742,16 +3742,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3865,33 +3865,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bool-track-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo>();
-        c->parent = this;
-        bool_track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo>();
+        ent_->parent = this;
+        bool_track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bool_track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bool_track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3965,16 +3965,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4078,33 +4078,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-track-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
-        c->parent = this;
-        threshold_track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
+        ent_->parent = this;
+        threshold_track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : threshold_track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : threshold_track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4178,16 +4178,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4291,33 +4291,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracking-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
-        c->parent = this;
-        interface_tracking_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
+        ent_->parent = this;
+        interface_tracking_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_tracking_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_tracking_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4383,16 +4383,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4472,16 +4472,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4575,33 +4575,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-info-brief")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief>();
-        c->parent = this;
-        track_info_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief>();
+        ent_->parent = this;
+        track_info_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_info_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_info_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4680,7 +4680,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-type-info")
     {
@@ -4694,16 +4694,16 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(track_type_info != nullptr)
     {
-        children["track-type-info"] = track_type_info;
+        _children["track-type-info"] = track_type_info;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4816,7 +4816,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracks")
     {
@@ -4857,31 +4857,31 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_tracks != nullptr)
     {
-        children["interface-tracks"] = interface_tracks;
+        _children["interface-tracks"] = interface_tracks;
     }
 
     if(route_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        _children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
     {
-        children["ipsla-tracks"] = ipsla_tracks;
+        _children["ipsla-tracks"] = ipsla_tracks;
     }
 
     if(bfd_tracks != nullptr)
     {
-        children["bfd-tracks"] = bfd_tracks;
+        _children["bfd-tracks"] = bfd_tracks;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4957,16 +4957,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5054,16 +5054,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5177,16 +5177,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5294,16 +5294,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5417,33 +5417,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::get_name_
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track")
     {
-        auto c = std::make_shared<ObjectTracking::Tracks::Track>();
-        c->parent = this;
-        track.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::Tracks::Track>();
+        ent_->parent = this;
+        track.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::Tracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5522,33 +5522,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::ge
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-info")
     {
-        auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo>();
-        c->parent = this;
-        track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo>();
+        ent_->parent = this;
+        track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5662,7 +5662,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-type-info")
     {
@@ -5712,36 +5712,36 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(track_type_info != nullptr)
     {
-        children["track-type-info"] = track_type_info;
+        _children["track-type-info"] = track_type_info;
     }
 
     if(bool_tracks != nullptr)
     {
-        children["bool-tracks"] = bool_tracks;
+        _children["bool-tracks"] = bool_tracks;
     }
 
     if(threshold_tracks != nullptr)
     {
-        children["threshold-tracks"] = threshold_tracks;
+        _children["threshold-tracks"] = threshold_tracks;
     }
 
     if(tracking_interaces != nullptr)
     {
-        children["tracking-interaces"] = tracking_interaces;
+        _children["tracking-interaces"] = tracking_interaces;
     }
 
     if(delayed != nullptr)
     {
-        children["delayed"] = delayed;
+        _children["delayed"] = delayed;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5887,7 +5887,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracks")
     {
@@ -5928,31 +5928,31 @@ std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_tracks != nullptr)
     {
-        children["interface-tracks"] = interface_tracks;
+        _children["interface-tracks"] = interface_tracks;
     }
 
     if(route_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        _children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
     {
-        children["ipsla-tracks"] = ipsla_tracks;
+        _children["ipsla-tracks"] = ipsla_tracks;
     }
 
     if(bfd_tracks != nullptr)
     {
-        children["bfd-tracks"] = bfd_tracks;
+        _children["bfd-tracks"] = bfd_tracks;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6021,16 +6021,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6111,16 +6111,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6227,16 +6227,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6337,16 +6337,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6453,33 +6453,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bool-track-info")
     {
-        auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo>();
-        c->parent = this;
-        bool_track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo>();
+        ent_->parent = this;
+        bool_track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bool_track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bool_track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6546,16 +6546,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6652,33 +6652,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-track-info")
     {
-        auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
-        c->parent = this;
-        threshold_track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
+        ent_->parent = this;
+        threshold_track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : threshold_track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : threshold_track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6745,16 +6745,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6851,33 +6851,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracking-info")
     {
-        auto c = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
-        c->parent = this;
-        interface_tracking_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
+        ent_->parent = this;
+        interface_tracking_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_tracking_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_tracking_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6936,16 +6936,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7018,16 +7018,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::Tracks::Track::TrackInfo::Delayed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7121,33 +7121,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4RouteBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-info-brief")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief>();
-        c->parent = this;
-        track_info_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief>();
+        ent_->parent = this;
+        track_info_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_info_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_info_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4RouteBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7226,7 +7226,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-type-info")
     {
@@ -7240,16 +7240,16 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(track_type_info != nullptr)
     {
-        children["track-type-info"] = track_type_info;
+        _children["track-type-info"] = track_type_info;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7362,7 +7362,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracks")
     {
@@ -7403,31 +7403,31 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_tracks != nullptr)
     {
-        children["interface-tracks"] = interface_tracks;
+        _children["interface-tracks"] = interface_tracks;
     }
 
     if(route_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        _children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
     {
-        children["ipsla-tracks"] = ipsla_tracks;
+        _children["ipsla-tracks"] = ipsla_tracks;
     }
 
     if(bfd_tracks != nullptr)
     {
-        children["bfd-tracks"] = bfd_tracks;
+        _children["bfd-tracks"] = bfd_tracks;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7503,16 +7503,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7600,16 +7600,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7723,16 +7723,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7840,16 +7840,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7963,33 +7963,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo>();
-        c->parent = this;
-        track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo>();
+        ent_->parent = this;
+        track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8100,7 +8100,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-type-info")
     {
@@ -8150,36 +8150,36 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(track_type_info != nullptr)
     {
-        children["track-type-info"] = track_type_info;
+        _children["track-type-info"] = track_type_info;
     }
 
     if(bool_tracks != nullptr)
     {
-        children["bool-tracks"] = bool_tracks;
+        _children["bool-tracks"] = bool_tracks;
     }
 
     if(threshold_tracks != nullptr)
     {
-        children["threshold-tracks"] = threshold_tracks;
+        _children["threshold-tracks"] = threshold_tracks;
     }
 
     if(tracking_interaces != nullptr)
     {
-        children["tracking-interaces"] = tracking_interaces;
+        _children["tracking-interaces"] = tracking_interaces;
     }
 
     if(delayed != nullptr)
     {
-        children["delayed"] = delayed;
+        _children["delayed"] = delayed;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8332,7 +8332,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracks")
     {
@@ -8373,31 +8373,31 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackType
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_tracks != nullptr)
     {
-        children["interface-tracks"] = interface_tracks;
+        _children["interface-tracks"] = interface_tracks;
     }
 
     if(route_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        _children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
     {
-        children["ipsla-tracks"] = ipsla_tracks;
+        _children["ipsla-tracks"] = ipsla_tracks;
     }
 
     if(bfd_tracks != nullptr)
     {
-        children["bfd-tracks"] = bfd_tracks;
+        _children["bfd-tracks"] = bfd_tracks;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8473,16 +8473,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8570,16 +8570,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8693,16 +8693,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8810,16 +8810,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8933,33 +8933,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bool-track-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo>();
-        c->parent = this;
-        bool_track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo>();
+        ent_->parent = this;
+        bool_track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bool_track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bool_track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9033,16 +9033,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9146,33 +9146,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-track-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
-        c->parent = this;
-        threshold_track_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo>();
+        ent_->parent = this;
+        threshold_track_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : threshold_track_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : threshold_track_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9246,16 +9246,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9359,33 +9359,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracking-info")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
-        c->parent = this;
-        interface_tracking_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo>();
+        ent_->parent = this;
+        interface_tracking_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_tracking_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_tracking_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9451,16 +9451,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9540,16 +9540,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::Delayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9643,33 +9643,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-info-brief")
     {
-        auto c = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief>();
-        c->parent = this;
-        track_info_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief>();
+        ent_->parent = this;
+        track_info_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterfaceBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_info_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_info_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterfaceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9748,7 +9748,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-type-info")
     {
@@ -9762,16 +9762,16 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(track_type_info != nullptr)
     {
-        children["track-type-info"] = track_type_info;
+        _children["track-type-info"] = track_type_info;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9884,7 +9884,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-tracks")
     {
@@ -9925,31 +9925,31 @@ std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_tracks != nullptr)
     {
-        children["interface-tracks"] = interface_tracks;
+        _children["interface-tracks"] = interface_tracks;
     }
 
     if(route_tracks != nullptr)
     {
-        children["route-tracks"] = route_tracks;
+        _children["route-tracks"] = route_tracks;
     }
 
     if(ipsla_tracks != nullptr)
     {
-        children["ipsla-tracks"] = ipsla_tracks;
+        _children["ipsla-tracks"] = ipsla_tracks;
     }
 
     if(bfd_tracks != nullptr)
     {
-        children["bfd-tracks"] = bfd_tracks;
+        _children["bfd-tracks"] = bfd_tracks;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10025,16 +10025,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::InterfaceTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10122,16 +10122,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::RouteTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10245,16 +10245,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10362,16 +10362,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
 
 }
 
-std::shared_ptr<Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::BfdTracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

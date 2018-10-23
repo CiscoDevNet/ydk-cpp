@@ -116,7 +116,7 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfGeneralGroup")
     {
@@ -274,96 +274,96 @@ std::shared_ptr<Entity> OSPFMIB::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospfgeneralgroup != nullptr)
     {
-        children["ospfGeneralGroup"] = ospfgeneralgroup;
+        _children["ospfGeneralGroup"] = ospfgeneralgroup;
     }
 
     if(ospfareatable != nullptr)
     {
-        children["ospfAreaTable"] = ospfareatable;
+        _children["ospfAreaTable"] = ospfareatable;
     }
 
     if(ospfstubareatable != nullptr)
     {
-        children["ospfStubAreaTable"] = ospfstubareatable;
+        _children["ospfStubAreaTable"] = ospfstubareatable;
     }
 
     if(ospflsdbtable != nullptr)
     {
-        children["ospfLsdbTable"] = ospflsdbtable;
+        _children["ospfLsdbTable"] = ospflsdbtable;
     }
 
     if(ospfarearangetable != nullptr)
     {
-        children["ospfAreaRangeTable"] = ospfarearangetable;
+        _children["ospfAreaRangeTable"] = ospfarearangetable;
     }
 
     if(ospfhosttable != nullptr)
     {
-        children["ospfHostTable"] = ospfhosttable;
+        _children["ospfHostTable"] = ospfhosttable;
     }
 
     if(ospfiftable != nullptr)
     {
-        children["ospfIfTable"] = ospfiftable;
+        _children["ospfIfTable"] = ospfiftable;
     }
 
     if(ospfifmetrictable != nullptr)
     {
-        children["ospfIfMetricTable"] = ospfifmetrictable;
+        _children["ospfIfMetricTable"] = ospfifmetrictable;
     }
 
     if(ospfvirtiftable != nullptr)
     {
-        children["ospfVirtIfTable"] = ospfvirtiftable;
+        _children["ospfVirtIfTable"] = ospfvirtiftable;
     }
 
     if(ospfnbrtable != nullptr)
     {
-        children["ospfNbrTable"] = ospfnbrtable;
+        _children["ospfNbrTable"] = ospfnbrtable;
     }
 
     if(ospfvirtnbrtable != nullptr)
     {
-        children["ospfVirtNbrTable"] = ospfvirtnbrtable;
+        _children["ospfVirtNbrTable"] = ospfvirtnbrtable;
     }
 
     if(ospfextlsdbtable != nullptr)
     {
-        children["ospfExtLsdbTable"] = ospfextlsdbtable;
+        _children["ospfExtLsdbTable"] = ospfextlsdbtable;
     }
 
     if(ospfareaaggregatetable != nullptr)
     {
-        children["ospfAreaAggregateTable"] = ospfareaaggregatetable;
+        _children["ospfAreaAggregateTable"] = ospfareaaggregatetable;
     }
 
     if(ospflocallsdbtable != nullptr)
     {
-        children["ospfLocalLsdbTable"] = ospflocallsdbtable;
+        _children["ospfLocalLsdbTable"] = ospflocallsdbtable;
     }
 
     if(ospfvirtlocallsdbtable != nullptr)
     {
-        children["ospfVirtLocalLsdbTable"] = ospfvirtlocallsdbtable;
+        _children["ospfVirtLocalLsdbTable"] = ospfvirtlocallsdbtable;
     }
 
     if(ospfaslsdbtable != nullptr)
     {
-        children["ospfAsLsdbTable"] = ospfaslsdbtable;
+        _children["ospfAsLsdbTable"] = ospfaslsdbtable;
     }
 
     if(ospfarealsacounttable != nullptr)
     {
-        children["ospfAreaLsaCountTable"] = ospfarealsacounttable;
+        _children["ospfAreaLsaCountTable"] = ospfarealsacounttable;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -374,7 +374,7 @@ void OSPFMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> OSPFMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> OSPFMIB::clone_ptr() const
 {
     return std::make_shared<OSPFMIB>();
 }
@@ -562,16 +562,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfGeneralGroup::get_na
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfGeneralGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfGeneralGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfGeneralGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfGeneralGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfGeneralGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -925,33 +925,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAreaTable::get_name_
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAreaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAreaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfAreaEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfAreaTable::OspfAreaEntry>();
-        c->parent = this;
-        ospfareaentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfAreaTable::OspfAreaEntry>();
+        ent_->parent = this;
+        ospfareaentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAreaTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAreaTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfareaentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfareaentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfAreaTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1090,16 +1090,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAreaTable::OspfAreaE
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAreaTable::OspfAreaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAreaTable::OspfAreaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAreaTable::OspfAreaEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAreaTable::OspfAreaEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfAreaTable::OspfAreaEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1363,33 +1363,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfStubAreaTable::get_n
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfStubAreaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfStubAreaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfStubAreaEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry>();
-        c->parent = this;
-        ospfstubareaentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry>();
+        ent_->parent = this;
+        ospfstubareaentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfStubAreaTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfStubAreaTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfstubareaentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfstubareaentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfStubAreaTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1473,16 +1473,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfStubAreaTable::OspfS
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1606,33 +1606,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfLsdbTable::get_name_
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfLsdbEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfLsdbTable::OspfLsdbEntry>();
-        c->parent = this;
-        ospflsdbentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfLsdbTable::OspfLsdbEntry>();
+        ent_->parent = this;
+        ospflsdbentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfLsdbTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfLsdbTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospflsdbentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospflsdbentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1730,16 +1730,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfLsdbTable::OspfLsdbE
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfLsdbTable::OspfLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfLsdbTable::OspfLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfLsdbTable::OspfLsdbEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfLsdbTable::OspfLsdbEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfLsdbTable::OspfLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1893,33 +1893,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAreaRangeTable::get_
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAreaRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAreaRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfAreaRangeEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry>();
-        c->parent = this;
-        ospfarearangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry>();
+        ent_->parent = this;
+        ospfarearangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAreaRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAreaRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfarearangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfarearangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfAreaRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2003,16 +2003,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAreaRangeTable::Ospf
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2136,33 +2136,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfHostTable::get_name_
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfHostTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfHostTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfHostEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfHostTable::OspfHostEntry>();
-        c->parent = this;
-        ospfhostentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfHostTable::OspfHostEntry>();
+        ent_->parent = this;
+        ospfhostentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfHostTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfHostTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfhostentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfhostentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfHostTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2250,16 +2250,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfHostTable::OspfHostE
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfHostTable::OspfHostEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfHostTable::OspfHostEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfHostTable::OspfHostEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfHostTable::OspfHostEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfHostTable::OspfHostEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2393,33 +2393,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfIfTable::get_name_le
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfIfEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfIfTable::OspfIfEntry>();
-        c->parent = this;
-        ospfifentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfIfTable::OspfIfEntry>();
+        ent_->parent = this;
+        ospfifentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfIfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfIfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfifentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfifentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfIfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2587,16 +2587,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfIfTable::OspfIfEntry
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfIfTable::OspfIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfIfTable::OspfIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfIfTable::OspfIfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfIfTable::OspfIfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfIfTable::OspfIfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2930,33 +2930,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfIfMetricTable::get_n
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfIfMetricTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfIfMetricTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfIfMetricEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry>();
-        c->parent = this;
-        ospfifmetricentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry>();
+        ent_->parent = this;
+        ospfifmetricentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfIfMetricTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfIfMetricTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfifmetricentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfifmetricentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfIfMetricTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3041,16 +3041,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfIfMetricTable::OspfI
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3174,33 +3174,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfVirtIfTable::get_nam
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfVirtIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfVirtIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfVirtIfEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry>();
-        c->parent = this;
-        ospfvirtifentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry>();
+        ent_->parent = this;
+        ospfvirtifentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfVirtIfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfVirtIfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfvirtifentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfvirtifentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfVirtIfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3324,16 +3324,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfVirtIfTable::OspfVir
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3557,33 +3557,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfNbrTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfNbrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfNbrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfNbrEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfNbrTable::OspfNbrEntry>();
-        c->parent = this;
-        ospfnbrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfNbrTable::OspfNbrEntry>();
+        ent_->parent = this;
+        ospfnbrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfNbrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfNbrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfnbrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfnbrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfNbrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3703,16 +3703,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfNbrTable::OspfNbrEnt
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfNbrTable::OspfNbrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfNbrTable::OspfNbrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfNbrTable::OspfNbrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfNbrTable::OspfNbrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfNbrTable::OspfNbrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3926,33 +3926,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfVirtNbrTable::get_na
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfVirtNbrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfVirtNbrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfVirtNbrEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry>();
-        c->parent = this;
-        ospfvirtnbrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry>();
+        ent_->parent = this;
+        ospfvirtnbrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfVirtNbrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfVirtNbrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfvirtnbrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfvirtnbrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfVirtNbrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4060,16 +4060,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfVirtNbrTable::OspfVi
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4253,33 +4253,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfExtLsdbTable::get_na
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfExtLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfExtLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfExtLsdbEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry>();
-        c->parent = this;
-        ospfextlsdbentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry>();
+        ent_->parent = this;
+        ospfextlsdbentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfExtLsdbTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfExtLsdbTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfextlsdbentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfextlsdbentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfExtLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4372,16 +4372,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfExtLsdbTable::OspfEx
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4525,33 +4525,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAreaAggregateTable::
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAreaAggregateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAreaAggregateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfAreaAggregateEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry>();
-        c->parent = this;
-        ospfareaaggregateentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry>();
+        ent_->parent = this;
+        ospfareaaggregateentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAreaAggregateTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAreaAggregateTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfareaaggregateentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfareaaggregateentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfAreaAggregateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4645,16 +4645,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAreaAggregateTable::
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4798,33 +4798,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfLocalLsdbTable::get_
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfLocalLsdbEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry>();
-        c->parent = this;
-        ospflocallsdbentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry>();
+        ent_->parent = this;
+        ospflocallsdbentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfLocalLsdbTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfLocalLsdbTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospflocallsdbentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospflocallsdbentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfLocalLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4927,16 +4927,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfLocalLsdbTable::Ospf
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5100,33 +5100,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfVirtLocalLsdbTable::
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfVirtLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfVirtLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfVirtLocalLsdbEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry>();
-        c->parent = this;
-        ospfvirtlocallsdbentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry>();
+        ent_->parent = this;
+        ospfvirtlocallsdbentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfVirtLocalLsdbTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfVirtLocalLsdbTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfvirtlocallsdbentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfvirtlocallsdbentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfVirtLocalLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5229,16 +5229,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfVirtLocalLsdbTable::
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5402,33 +5402,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAsLsdbTable::get_nam
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAsLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAsLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfAsLsdbEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry>();
-        c->parent = this;
-        ospfaslsdbentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry>();
+        ent_->parent = this;
+        ospfaslsdbentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAsLsdbTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAsLsdbTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfaslsdbentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfaslsdbentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfAsLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5521,16 +5521,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAsLsdbTable::OspfAsL
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5674,33 +5674,33 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAreaLsaCountTable::g
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAreaLsaCountTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAreaLsaCountTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfAreaLsaCountEntry")
     {
-        auto c = std::make_shared<OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry>();
-        c->parent = this;
-        ospfarealsacountentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry>();
+        ent_->parent = this;
+        ospfarealsacountentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAreaLsaCountTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAreaLsaCountTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfarealsacountentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfarealsacountentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFMIB::OspfAreaLsaCountTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5776,16 +5776,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFMIB::OspfAreaLsaCountTable::O
 
 }
 
-std::shared_ptr<Entity> OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

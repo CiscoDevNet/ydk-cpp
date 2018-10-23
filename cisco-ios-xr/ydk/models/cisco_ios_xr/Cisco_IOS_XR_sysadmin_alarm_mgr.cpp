@@ -67,14 +67,14 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<AlarmMgr::Trace>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Trace>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "brief")
@@ -98,30 +98,30 @@ std::shared_ptr<Entity> AlarmMgr::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(brief != nullptr)
     {
-        children["brief"] = brief;
+        _children["brief"] = brief;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -132,7 +132,7 @@ void AlarmMgr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> AlarmMgr::clone_ptr() const
+std::shared_ptr<ydk::Entity> AlarmMgr::clone_ptr() const
 {
     return std::make_shared<AlarmMgr>();
 }
@@ -225,33 +225,33 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Trace::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AlarmMgr::Trace::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Trace::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -333,33 +333,33 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Trace::Location::get_na
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<AlarmMgr::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Trace::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Trace::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Trace::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -441,33 +441,33 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Trace::Location::AllOpt
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<AlarmMgr::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Trace::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Trace::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Trace::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -536,16 +536,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Trace::Location::AllOpt
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Trace::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Trace::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -629,7 +629,7 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "card")
     {
@@ -661,26 +661,26 @@ std::shared_ptr<Entity> AlarmMgr::Brief::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(card != nullptr)
     {
-        children["card"] = card;
+        _children["card"] = card;
     }
 
     if(rack != nullptr)
     {
-        children["rack"] = rack;
+        _children["rack"] = rack;
     }
 
     if(system != nullptr)
     {
-        children["system"] = system;
+        _children["system"] = system;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -754,33 +754,33 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Card::get_name_l
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::Card::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::Card::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Card::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Card::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Brief::Card::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -881,67 +881,67 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Card::Location::
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Card::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Card::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::Card::Location::Active>();
-        c->parent = this;
-        active.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::Card::Location::Active>();
+        ent_->parent = this;
+        active.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "history")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::Card::Location::History>();
-        c->parent = this;
-        history.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::Card::Location::History>();
+        ent_->parent = this;
+        history.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "suppressed")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::Card::Location::Suppressed>();
-        c->parent = this;
-        suppressed.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::Card::Location::Suppressed>();
+        ent_->parent = this;
+        suppressed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Card::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Card::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : history.entities())
+    count_ = 0;
+    for (auto ent_ : history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : suppressed.entities())
+    count_ = 0;
+    for (auto ent_ : suppressed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Brief::Card::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1044,16 +1044,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Card::Location::
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Card::Location::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Card::Location::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Card::Location::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Card::Location::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Brief::Card::Location::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1240,16 +1240,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Card::Location::
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Card::Location::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Card::Location::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Card::Location::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Card::Location::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Brief::Card::Location::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1446,16 +1446,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Card::Location::
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Card::Location::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Card::Location::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Card::Location::Suppressed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Card::Location::Suppressed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Brief::Card::Location::Suppressed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1629,33 +1629,33 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Rack::get_name_l
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack_locations")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::Rack::RackLocations>();
-        c->parent = this;
-        rack_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::Rack::RackLocations>();
+        ent_->parent = this;
+        rack_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Rack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Rack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rack_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rack_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Brief::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1756,67 +1756,67 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Rack::RackLocati
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Rack::RackLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Rack::RackLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::Rack::RackLocations::Active>();
-        c->parent = this;
-        active.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::Rack::RackLocations::Active>();
+        ent_->parent = this;
+        active.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "history")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::Rack::RackLocations::History>();
-        c->parent = this;
-        history.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::Rack::RackLocations::History>();
+        ent_->parent = this;
+        history.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "suppressed")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::Rack::RackLocations::Suppressed>();
-        c->parent = this;
-        suppressed.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::Rack::RackLocations::Suppressed>();
+        ent_->parent = this;
+        suppressed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Rack::RackLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Rack::RackLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : history.entities())
+    count_ = 0;
+    for (auto ent_ : history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : suppressed.entities())
+    count_ = 0;
+    for (auto ent_ : suppressed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Brief::Rack::RackLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1919,16 +1919,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Rack::RackLocati
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Rack::RackLocations::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Rack::RackLocations::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Rack::RackLocations::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Rack::RackLocations::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Brief::Rack::RackLocations::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2115,16 +2115,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Rack::RackLocati
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Rack::RackLocations::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Rack::RackLocations::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Rack::RackLocations::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Rack::RackLocations::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Brief::Rack::RackLocations::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2321,16 +2321,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::Rack::RackLocati
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::Rack::RackLocations::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::Rack::RackLocations::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Rack::RackLocations::Suppressed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::Rack::RackLocations::Suppressed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Brief::Rack::RackLocations::Suppressed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2526,67 +2526,67 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::System::get_name
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::System::Active>();
-        c->parent = this;
-        active.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::System::Active>();
+        ent_->parent = this;
+        active.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "history")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::System::History>();
-        c->parent = this;
-        history.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::System::History>();
+        ent_->parent = this;
+        history.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "suppressed")
     {
-        auto c = std::make_shared<AlarmMgr::Brief::System::Suppressed>();
-        c->parent = this;
-        suppressed.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Brief::System::Suppressed>();
+        ent_->parent = this;
+        suppressed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::System::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::System::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : history.entities())
+    count_ = 0;
+    for (auto ent_ : history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : suppressed.entities())
+    count_ = 0;
+    for (auto ent_ : suppressed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Brief::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2686,16 +2686,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::System::Active::
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::System::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::System::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::System::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::System::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Brief::System::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2889,16 +2889,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::System::History:
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::System::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::System::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::System::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::System::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Brief::System::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3102,16 +3102,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Brief::System::Suppress
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Brief::System::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Brief::System::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::System::Suppressed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Brief::System::Suppressed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Brief::System::Suppressed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3285,7 +3285,7 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "card")
     {
@@ -3317,26 +3317,26 @@ std::shared_ptr<Entity> AlarmMgr::Detail::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(card != nullptr)
     {
-        children["card"] = card;
+        _children["card"] = card;
     }
 
     if(rack != nullptr)
     {
-        children["rack"] = rack;
+        _children["rack"] = rack;
     }
 
     if(system != nullptr)
     {
-        children["system"] = system;
+        _children["system"] = system;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3410,33 +3410,33 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Card::get_name_
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Card::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Card::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Card::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Detail::Card::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3559,101 +3559,101 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Card::Location:
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Card::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Card::Location::Active>();
-        c->parent = this;
-        active.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Card::Location::Active>();
+        ent_->parent = this;
+        active.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "history")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Card::Location::History>();
-        c->parent = this;
-        history.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Card::Location::History>();
+        ent_->parent = this;
+        history.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "stats")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Card::Location::Stats>();
-        c->parent = this;
-        stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Card::Location::Stats>();
+        ent_->parent = this;
+        stats.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "clients")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Card::Location::Clients>();
-        c->parent = this;
-        clients.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Card::Location::Clients>();
+        ent_->parent = this;
+        clients.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "suppressed")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Card::Location::Suppressed>();
-        c->parent = this;
-        suppressed.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Card::Location::Suppressed>();
+        ent_->parent = this;
+        suppressed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Card::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : history.entities())
+    count_ = 0;
+    for (auto ent_ : history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : stats.entities())
+    count_ = 0;
+    for (auto ent_ : stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : clients.entities())
+    count_ = 0;
+    for (auto ent_ : clients.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : suppressed.entities())
+    count_ = 0;
+    for (auto ent_ : suppressed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Detail::Card::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3776,16 +3776,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Card::Location:
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Card::Location::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Card::Location::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Card::Location::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4038,16 +4038,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Card::Location:
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Card::Location::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Card::Location::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Card::Location::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4295,16 +4295,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Card::Location:
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Card::Location::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Card::Location::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Card::Location::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4558,16 +4558,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Card::Location:
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Card::Location::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location::Clients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Card::Location::Clients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Card::Location::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4850,16 +4850,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Card::Location:
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Card::Location::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location::Suppressed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Card::Location::Suppressed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Card::Location::Suppressed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5073,33 +5073,33 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Rack::get_name_
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack_locations")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations>();
-        c->parent = this;
-        rack_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Rack::RackLocations>();
+        ent_->parent = this;
+        rack_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Rack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rack_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rack_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Detail::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5222,101 +5222,101 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Rack::RackLocat
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Rack::RackLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Active>();
-        c->parent = this;
-        active.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Active>();
+        ent_->parent = this;
+        active.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "history")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::History>();
-        c->parent = this;
-        history.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::History>();
+        ent_->parent = this;
+        history.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "stats")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Stats>();
-        c->parent = this;
-        stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Stats>();
+        ent_->parent = this;
+        stats.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "clients")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Clients>();
-        c->parent = this;
-        clients.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Clients>();
+        ent_->parent = this;
+        clients.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "suppressed")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Suppressed>();
-        c->parent = this;
-        suppressed.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Suppressed>();
+        ent_->parent = this;
+        suppressed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Rack::RackLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : history.entities())
+    count_ = 0;
+    for (auto ent_ : history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : stats.entities())
+    count_ = 0;
+    for (auto ent_ : stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : clients.entities())
+    count_ = 0;
+    for (auto ent_ : clients.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : suppressed.entities())
+    count_ = 0;
+    for (auto ent_ : suppressed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Detail::Rack::RackLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5439,16 +5439,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Rack::RackLocat
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Rack::RackLocations::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocations::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Rack::RackLocations::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Rack::RackLocations::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5701,16 +5701,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Rack::RackLocat
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Rack::RackLocations::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocations::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Rack::RackLocations::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Rack::RackLocations::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5958,16 +5958,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Rack::RackLocat
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Rack::RackLocations::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocations::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Rack::RackLocations::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Rack::RackLocations::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6221,16 +6221,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Rack::RackLocat
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Rack::RackLocations::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocations::Clients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Rack::RackLocations::Clients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Rack::RackLocations::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6513,16 +6513,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::Rack::RackLocat
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::Rack::RackLocations::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocations::Suppressed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::Rack::RackLocations::Suppressed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::Rack::RackLocations::Suppressed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6780,101 +6780,101 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::System::get_nam
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::System::Active>();
-        c->parent = this;
-        active.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::System::Active>();
+        ent_->parent = this;
+        active.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "history")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::System::History>();
-        c->parent = this;
-        history.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::System::History>();
+        ent_->parent = this;
+        history.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "stats")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::System::Stats>();
-        c->parent = this;
-        stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::System::Stats>();
+        ent_->parent = this;
+        stats.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "clients")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::System::Clients>();
-        c->parent = this;
-        clients.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::System::Clients>();
+        ent_->parent = this;
+        clients.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "suppressed")
     {
-        auto c = std::make_shared<AlarmMgr::Detail::System::Suppressed>();
-        c->parent = this;
-        suppressed.append(c);
-        return c;
+        auto ent_ = std::make_shared<AlarmMgr::Detail::System::Suppressed>();
+        ent_->parent = this;
+        suppressed.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::System::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : history.entities())
+    count_ = 0;
+    for (auto ent_ : history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : stats.entities())
+    count_ = 0;
+    for (auto ent_ : stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : clients.entities())
+    count_ = 0;
+    for (auto ent_ : clients.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : suppressed.entities())
+    count_ = 0;
+    for (auto ent_ : suppressed.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AlarmMgr::Detail::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6994,16 +6994,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::System::Active:
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::System::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::System::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::System::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::System::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7263,16 +7263,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::System::History
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::System::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::System::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::System::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::System::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7527,16 +7527,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::System::Stats::
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::System::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::System::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::System::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::System::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7797,16 +7797,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::System::Clients
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::System::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::System::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::Clients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::System::Clients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::System::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8096,16 +8096,16 @@ std::vector<std::pair<std::string, LeafData> > AlarmMgr::Detail::System::Suppres
 
 }
 
-std::shared_ptr<Entity> AlarmMgr::Detail::System::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AlarmMgr::Detail::System::Suppressed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::Suppressed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AlarmMgr::Detail::System::Suppressed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AlarmMgr::Detail::System::Suppressed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

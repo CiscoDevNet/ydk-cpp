@@ -88,16 +88,16 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Ldp::RemoteLfaSummaries::Re
 
 }
 
-std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -268,16 +268,16 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Ldp::RemoteLfaSummaries::Re
 
 }
 
-std::shared_ptr<Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -383,7 +383,7 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Intf::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Rcmd::Intf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Intf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "events")
     {
@@ -397,16 +397,16 @@ std::shared_ptr<Entity> Rcmd::Intf::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Intf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(events != nullptr)
     {
-        children["events"] = events;
+        _children["events"] = events;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Intf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -480,33 +480,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Intf::Events::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Rcmd::Intf::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Intf::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event")
     {
-        auto c = std::make_shared<Rcmd::Intf::Events::Event>();
-        c->parent = this;
-        event.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Intf::Events::Event>();
+        ent_->parent = this;
+        event.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Intf::Events::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : event.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : event.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Intf::Events::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -597,16 +597,16 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Intf::Events::Event::get_na
 
 }
 
-std::shared_ptr<Entity> Rcmd::Intf::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Intf::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::Event::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Intf::Events::Event::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcmd::Intf::Events::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -750,7 +750,7 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis")
     {
@@ -782,26 +782,26 @@ std::shared_ptr<Entity> Rcmd::Process::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        _children["ospf"] = ospf;
     }
 
     if(ldp != nullptr)
     {
-        children["ldp"] = ldp;
+        _children["ldp"] = ldp;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -875,33 +875,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Isis::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
-        auto c = std::make_shared<Rcmd::Process::Isis::Process_>();
-        c->parent = this;
-        process.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Process::Isis::Process_>();
+        ent_->parent = this;
+        process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Isis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -983,33 +983,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Isis::Process_::ge
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Isis::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance-name")
     {
-        auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName>();
-        c->parent = this;
-        instance_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName>();
+        ent_->parent = this;
+        instance_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Isis::Process_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::Isis::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1143,33 +1143,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Isis::Process_::In
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Isis::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance")
     {
-        auto c = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName::Instance>();
-        c->parent = this;
-        instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Process::Isis::Process_::InstanceName::Instance>();
+        ent_->parent = this;
+        instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::InstanceName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Isis::Process_::InstanceName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::Isis::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1383,16 +1383,16 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Isis::Process_::In
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Isis::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Isis::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::InstanceName::Instance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Isis::Process_::InstanceName::Instance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcmd::Process::Isis::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1596,33 +1596,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ospf::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
-        auto c = std::make_shared<Rcmd::Process::Ospf::Process_>();
-        c->parent = this;
-        process.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Process::Ospf::Process_>();
+        ent_->parent = this;
+        process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1704,33 +1704,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ospf::Process_::ge
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Ospf::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance-name")
     {
-        auto c = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName>();
-        c->parent = this;
-        instance_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName>();
+        ent_->parent = this;
+        instance_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Ospf::Process_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::Ospf::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1864,33 +1864,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ospf::Process_::In
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Ospf::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance")
     {
-        auto c = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName::Instance>();
-        c->parent = this;
-        instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Process::Ospf::Process_::InstanceName::Instance>();
+        ent_->parent = this;
+        instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::InstanceName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Ospf::Process_::InstanceName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::Ospf::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2104,16 +2104,16 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ospf::Process_::In
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2317,33 +2317,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
-        auto c = std::make_shared<Rcmd::Process::Ldp::Process_>();
-        c->parent = this;
-        process.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Process::Ldp::Process_>();
+        ent_->parent = this;
+        process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Ldp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::Ldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2425,33 +2425,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::Process_::get
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Ldp::Process_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance-name")
     {
-        auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName>();
-        c->parent = this;
-        instance_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName>();
+        ent_->parent = this;
+        instance_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Ldp::Process_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::Ldp::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2585,33 +2585,33 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::Process_::Ins
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Ldp::Process_::InstanceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance")
     {
-        auto c = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName::Instance>();
-        c->parent = this;
-        instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rcmd::Process::Ldp::Process_::InstanceName::Instance>();
+        ent_->parent = this;
+        instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Ldp::Process_::InstanceName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcmd::Process::Ldp::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2825,16 +2825,16 @@ std::vector<std::pair<std::string, LeafData> > Rcmd::Process::Ldp::Process_::Ins
 
 }
 
-std::shared_ptr<Entity> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

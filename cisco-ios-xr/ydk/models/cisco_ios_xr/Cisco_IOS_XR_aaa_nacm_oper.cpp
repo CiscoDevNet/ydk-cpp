@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> AaaNacm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> AaaNacm::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
     if(users != nullptr)
     {
-        children["users"] = users;
+        _children["users"] = users;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(rules != nullptr)
     {
-        children["rules"] = rules;
+        _children["rules"] = rules;
     }
 
     if(groups != nullptr)
     {
-        children["groups"] = groups;
+        _children["groups"] = groups;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaNacm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void AaaNacm::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> AaaNacm::clone_ptr() const
+std::shared_ptr<ydk::Entity> AaaNacm::clone_ptr() const
 {
     return std::make_shared<AaaNacm>();
 }
@@ -246,16 +246,16 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Counters::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaNacm::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -359,33 +359,33 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Users::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Users::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Users::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "user")
     {
-        auto c = std::make_shared<AaaNacm::Users::User>();
-        c->parent = this;
-        user.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaNacm::Users::User>();
+        ent_->parent = this;
+        user.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Users::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Users::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : user.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : user.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaNacm::Users::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -468,33 +468,33 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Users::User::get_name_le
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Users::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Users::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-name")
     {
-        auto c = std::make_shared<AaaNacm::Users::User::GroupName>();
-        c->parent = this;
-        group_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaNacm::Users::User::GroupName>();
+        ent_->parent = this;
+        group_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Users::User::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Users::User::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaNacm::Users::User::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -573,16 +573,16 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Users::User::GroupName::
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Users::User::GroupName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Users::User::GroupName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Users::User::GroupName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Users::User::GroupName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaNacm::Users::User::GroupName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -690,16 +690,16 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Summary::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaNacm::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -863,33 +863,33 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Rules::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule")
     {
-        auto c = std::make_shared<AaaNacm::Rules::Rule>();
-        c->parent = this;
-        rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaNacm::Rules::Rule>();
+        ent_->parent = this;
+        rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Rules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Rules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaNacm::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -964,7 +964,7 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Rules::Rule::get_name_le
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rulelist-rules")
     {
@@ -978,16 +978,16 @@ std::shared_ptr<Entity> AaaNacm::Rules::Rule::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Rules::Rule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Rules::Rule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rulelist_rules != nullptr)
     {
-        children["rulelist-rules"] = rulelist_rules;
+        _children["rulelist-rules"] = rulelist_rules;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaNacm::Rules::Rule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1081,33 +1081,33 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Rules::Rule::RulelistRul
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Rules::Rule::RulelistRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Rules::Rule::RulelistRules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rulelist-rule")
     {
-        auto c = std::make_shared<AaaNacm::Rules::Rule::RulelistRules::RulelistRule>();
-        c->parent = this;
-        rulelist_rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaNacm::Rules::Rule::RulelistRules::RulelistRule>();
+        ent_->parent = this;
+        rulelist_rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Rules::Rule::RulelistRules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Rules::Rule::RulelistRules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rulelist_rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rulelist_rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaNacm::Rules::Rule::RulelistRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1214,16 +1214,16 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Rules::Rule::RulelistRul
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Rules::Rule::RulelistRules::RulelistRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Rules::Rule::RulelistRules::RulelistRule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Rules::Rule::RulelistRules::RulelistRule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Rules::Rule::RulelistRules::RulelistRule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaNacm::Rules::Rule::RulelistRules::RulelistRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1407,33 +1407,33 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Groups::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
-        auto c = std::make_shared<AaaNacm::Groups::Group>();
-        c->parent = this;
-        group.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaNacm::Groups::Group>();
+        ent_->parent = this;
+        group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Groups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Groups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaNacm::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1527,50 +1527,50 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Groups::Group::get_name_
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "user-name")
     {
-        auto c = std::make_shared<AaaNacm::Groups::Group::UserName>();
-        c->parent = this;
-        user_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaNacm::Groups::Group::UserName>();
+        ent_->parent = this;
+        user_name.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "rule-name")
     {
-        auto c = std::make_shared<AaaNacm::Groups::Group::RuleName>();
-        c->parent = this;
-        rule_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaNacm::Groups::Group::RuleName>();
+        ent_->parent = this;
+        rule_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Groups::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Groups::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : user_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : user_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : rule_name.entities())
+    count_ = 0;
+    for (auto ent_ : rule_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaNacm::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1649,16 +1649,16 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Groups::Group::UserName:
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Groups::Group::UserName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Groups::Group::UserName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Groups::Group::UserName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Groups::Group::UserName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaNacm::Groups::Group::UserName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1727,16 +1727,16 @@ std::vector<std::pair<std::string, LeafData> > AaaNacm::Groups::Group::RuleName:
 
 }
 
-std::shared_ptr<Entity> AaaNacm::Groups::Group::RuleName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaNacm::Groups::Group::RuleName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaNacm::Groups::Group::RuleName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaNacm::Groups::Group::RuleName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaNacm::Groups::Group::RuleName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

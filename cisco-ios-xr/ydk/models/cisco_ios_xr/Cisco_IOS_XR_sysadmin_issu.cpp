@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> Issu::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(status != nullptr)
     {
-        children["status"] = status;
+        _children["status"] = status;
     }
 
     if(clients != nullptr)
     {
-        children["clients"] = clients;
+        _children["clients"] = clients;
     }
 
     if(internals != nullptr)
     {
-        children["internals"] = internals;
+        _children["internals"] = internals;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void Issu::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Issu::clone_ptr() const
+std::shared_ptr<ydk::Entity> Issu::clone_ptr() const
 {
     return std::make_shared<Issu>();
 }
@@ -267,7 +267,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Status::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Issu::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prepare")
     {
@@ -299,26 +299,26 @@ std::shared_ptr<Entity> Issu::Status::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Status::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Status::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prepare != nullptr)
     {
-        children["prepare"] = prepare;
+        _children["prepare"] = prepare;
     }
 
     if(activate != nullptr)
     {
-        children["activate"] = activate;
+        _children["activate"] = activate;
     }
 
     if(error != nullptr)
     {
-        children["error"] = error;
+        _children["error"] = error;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -482,16 +482,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Status::Prepare::get_name_l
 
 }
 
-std::shared_ptr<Entity> Issu::Status::Prepare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Status::Prepare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Status::Prepare::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Status::Prepare::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Status::Prepare::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -627,16 +627,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Status::Activate::get_name_
 
 }
 
-std::shared_ptr<Entity> Issu::Status::Activate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Status::Activate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Status::Activate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Status::Activate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Status::Activate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -773,7 +773,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Status::Error::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Issu::Status::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Status::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "details")
     {
@@ -787,16 +787,16 @@ std::shared_ptr<Entity> Issu::Status::Error::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Status::Error::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Status::Error::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(details != nullptr)
     {
-        children["details"] = details;
+        _children["details"] = details;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Status::Error::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -945,16 +945,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Status::Error::Details::get
 
 }
 
-std::shared_ptr<Entity> Issu::Status::Error::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Status::Error::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Status::Error::Details::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Status::Error::Details::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Status::Error::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1068,33 +1068,33 @@ std::vector<std::pair<std::string, LeafData> > Issu::Clients::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Issu::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<Issu::Clients::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<Issu::Clients::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Clients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Clients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1216,16 +1216,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Clients::Client::get_name_l
 
 }
 
-std::shared_ptr<Entity> Issu::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Clients::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Clients::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Clients::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1367,7 +1367,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "orchestrator")
     {
@@ -1399,26 +1399,26 @@ std::shared_ptr<Entity> Issu::Internals::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(orchestrator != nullptr)
     {
-        children["orchestrator"] = orchestrator;
+        _children["orchestrator"] = orchestrator;
     }
 
     if(agents != nullptr)
     {
-        children["agents"] = agents;
+        _children["agents"] = agents;
     }
 
     if(inventory_monitor != nullptr)
     {
-        children["inventory-monitor"] = inventory_monitor;
+        _children["inventory-monitor"] = inventory_monitor;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1521,7 +1521,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Orchestrator::ge
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Orchestrator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Orchestrator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operation-start-details")
     {
@@ -1562,31 +1562,31 @@ std::shared_ptr<Entity> Issu::Internals::Orchestrator::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Orchestrator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(operation_start_details != nullptr)
     {
-        children["operation-start-details"] = operation_start_details;
+        _children["operation-start-details"] = operation_start_details;
     }
 
     if(internal_prepare != nullptr)
     {
-        children["internal-prepare"] = internal_prepare;
+        _children["internal-prepare"] = internal_prepare;
     }
 
     if(internal_activate != nullptr)
     {
-        children["internal-activate"] = internal_activate;
+        _children["internal-activate"] = internal_activate;
     }
 
     if(error != nullptr)
     {
-        children["error"] = error;
+        _children["error"] = error;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Orchestrator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1737,16 +1737,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Orchestrator::Op
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Orchestrator::OperationStartDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Orchestrator::OperationStartDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::OperationStartDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Orchestrator::OperationStartDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Internals::Orchestrator::OperationStartDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1869,7 +1869,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Orchestrator::In
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalPrepare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Orchestrator::InternalPrepare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prepare-stage-history")
     {
@@ -1883,16 +1883,16 @@ std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalPrepare::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::InternalPrepare::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Orchestrator::InternalPrepare::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prepare_stage_history != nullptr)
     {
-        children["prepare-stage-history"] = prepare_stage_history;
+        _children["prepare-stage-history"] = prepare_stage_history;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Orchestrator::InternalPrepare::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2012,33 +2012,33 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Orchestrator::In
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "historical-stage")
     {
-        auto c = std::make_shared<Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage>();
-        c->parent = this;
-        historical_stage.append(c);
-        return c;
+        auto ent_ = std::make_shared<Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage>();
+        ent_->parent = this;
+        historical_stage.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : historical_stage.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : historical_stage.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2133,16 +2133,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Orchestrator::In
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2355,7 +2355,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Orchestrator::In
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalActivate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Orchestrator::InternalActivate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "activate-stage-history")
     {
@@ -2369,16 +2369,16 @@ std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalActivate::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::InternalActivate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Orchestrator::InternalActivate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(activate_stage_history != nullptr)
     {
-        children["activate-stage-history"] = activate_stage_history;
+        _children["activate-stage-history"] = activate_stage_history;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Orchestrator::InternalActivate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2536,33 +2536,33 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Orchestrator::In
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "historical-stage")
     {
-        auto c = std::make_shared<Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage>();
-        c->parent = this;
-        historical_stage.append(c);
-        return c;
+        auto ent_ = std::make_shared<Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage>();
+        ent_->parent = this;
+        historical_stage.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : historical_stage.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : historical_stage.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2657,16 +2657,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Orchestrator::In
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2892,16 +2892,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Orchestrator::Er
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Orchestrator::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Orchestrator::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::Error::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Orchestrator::Error::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Internals::Orchestrator::Error::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3077,7 +3077,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::get_name
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "requests")
     {
@@ -3109,26 +3109,26 @@ std::shared_ptr<Entity> Issu::Internals::Agents::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(requests != nullptr)
     {
-        children["requests"] = requests;
+        _children["requests"] = requests;
     }
 
     if(inventory != nullptr)
     {
-        children["inventory"] = inventory;
+        _children["inventory"] = inventory;
     }
 
     if(reload_tracking != nullptr)
     {
-        children["reload-tracking"] = reload_tracking;
+        _children["reload-tracking"] = reload_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Agents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3202,33 +3202,33 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::Requests
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::Requests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::Requests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "request")
     {
-        auto c = std::make_shared<Issu::Internals::Agents::Requests::Request>();
-        c->parent = this;
-        request.append(c);
-        return c;
+        auto ent_ = std::make_shared<Issu::Internals::Agents::Requests::Request>();
+        ent_->parent = this;
+        request.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Requests::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::Requests::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : request.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : request.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Agents::Requests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3316,7 +3316,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::Requests
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::Requests::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::Requests::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "checkpoint")
     {
@@ -3339,21 +3339,21 @@ std::shared_ptr<Entity> Issu::Internals::Agents::Requests::Request::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Requests::Request::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::Requests::Request::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(checkpoint != nullptr)
     {
-        children["checkpoint"] = checkpoint;
+        _children["checkpoint"] = checkpoint;
     }
 
     if(agents != nullptr)
     {
-        children["agents"] = agents;
+        _children["agents"] = agents;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Agents::Requests::Request::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3460,16 +3460,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::Requests
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::Requests::Request::Checkpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::Requests::Request::Checkpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Requests::Request::Checkpoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::Requests::Request::Checkpoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Internals::Agents::Requests::Request::Checkpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3566,33 +3566,33 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::Requests
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::Requests::Request::Agents_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::Requests::Request::Agents_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "agent")
     {
-        auto c = std::make_shared<Issu::Internals::Agents::Requests::Request::Agents_::Agent>();
-        c->parent = this;
-        agent.append(c);
-        return c;
+        auto ent_ = std::make_shared<Issu::Internals::Agents::Requests::Request::Agents_::Agent>();
+        ent_->parent = this;
+        agent.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Requests::Request::Agents_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::Requests::Request::Agents_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : agent.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : agent.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Agents::Requests::Request::Agents_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3665,7 +3665,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::Requests
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::Requests::Request::Agents_::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::Requests::Request::Agents_::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "response-contents")
     {
@@ -3679,16 +3679,16 @@ std::shared_ptr<Entity> Issu::Internals::Agents::Requests::Request::Agents_::Age
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Requests::Request::Agents_::Agent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::Requests::Request::Agents_::Agent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(response_contents != nullptr)
     {
-        children["response-contents"] = response_contents;
+        _children["response-contents"] = response_contents;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Agents::Requests::Request::Agents_::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3781,16 +3781,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::Requests
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3884,33 +3884,33 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::Inventor
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "agent")
     {
-        auto c = std::make_shared<Issu::Internals::Agents::Inventory::Agent>();
-        c->parent = this;
-        agent.append(c);
-        return c;
+        auto ent_ = std::make_shared<Issu::Internals::Agents::Inventory::Agent>();
+        ent_->parent = this;
+        agent.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Inventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::Inventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : agent.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : agent.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Agents::Inventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3985,16 +3985,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::Inventor
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::Inventory::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::Inventory::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Inventory::Agent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::Inventory::Agent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Internals::Agents::Inventory::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4106,33 +4106,33 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::ReloadTr
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::ReloadTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::ReloadTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Issu::Internals::Agents::ReloadTracking::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Issu::Internals::Agents::ReloadTracking::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::ReloadTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::ReloadTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::Agents::ReloadTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4227,16 +4227,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::Agents::ReloadTr
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::Agents::ReloadTracking::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::Agents::ReloadTracking::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::ReloadTracking::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::Agents::ReloadTracking::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Internals::Agents::ReloadTracking::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4332,7 +4332,7 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::InventoryMonitor
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::InventoryMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::InventoryMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inventory")
     {
@@ -4346,16 +4346,16 @@ std::shared_ptr<Entity> Issu::Internals::InventoryMonitor::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::InventoryMonitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::InventoryMonitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inventory != nullptr)
     {
-        children["inventory"] = inventory;
+        _children["inventory"] = inventory;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::InventoryMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4429,33 +4429,33 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::InventoryMonitor
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::InventoryMonitor::Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::InventoryMonitor::Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Issu::Internals::InventoryMonitor::Inventory::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Issu::Internals::InventoryMonitor::Inventory::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::InventoryMonitor::Inventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::InventoryMonitor::Inventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Issu::Internals::InventoryMonitor::Inventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4526,16 +4526,16 @@ std::vector<std::pair<std::string, LeafData> > Issu::Internals::InventoryMonitor
 
 }
 
-std::shared_ptr<Entity> Issu::Internals::InventoryMonitor::Inventory::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Issu::Internals::InventoryMonitor::Inventory::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::InventoryMonitor::Inventory::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Issu::Internals::InventoryMonitor::Inventory::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Issu::Internals::InventoryMonitor::Inventory::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

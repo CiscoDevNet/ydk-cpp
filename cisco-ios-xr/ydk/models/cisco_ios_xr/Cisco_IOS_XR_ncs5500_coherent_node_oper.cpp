@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Coherent::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Coherent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Coherent::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Coherent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Coherent::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Coherent::clone_ptr() const
+std::shared_ptr<ydk::Entity> Coherent::clone_ptr() const
 {
     return std::make_shared<Coherent>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Coherent::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Coherent::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Coherent::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -276,7 +276,7 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::get_name_l
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "coherent-time-stats")
     {
@@ -299,21 +299,21 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(coherent_time_stats != nullptr)
     {
-        children["coherent-time-stats"] = coherent_time_stats;
+        _children["coherent-time-stats"] = coherent_time_stats;
     }
 
     if(coherenthealth != nullptr)
     {
-        children["coherenthealth"] = coherenthealth;
+        _children["coherenthealth"] = coherenthealth;
     }
 
-    return children;
+    return _children;
 }
 
 void Coherent::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -430,7 +430,7 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "opts-ea-bulk-create")
     {
@@ -470,49 +470,49 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::get_child_by_n
 
     if(child_yang_name == "port-stat")
     {
-        auto c = std::make_shared<Coherent::Nodes::Node::CoherentTimeStats::PortStat>();
-        c->parent = this;
-        port_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Coherent::Nodes::Node::CoherentTimeStats::PortStat>();
+        ent_->parent = this;
+        port_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(opts_ea_bulk_create != nullptr)
     {
-        children["opts-ea-bulk-create"] = opts_ea_bulk_create;
+        _children["opts-ea-bulk-create"] = opts_ea_bulk_create;
     }
 
     if(opts_ea_bulk_update != nullptr)
     {
-        children["opts-ea-bulk-update"] = opts_ea_bulk_update;
+        _children["opts-ea-bulk-update"] = opts_ea_bulk_update;
     }
 
     if(dsp_ea_bulk_create != nullptr)
     {
-        children["dsp-ea-bulk-create"] = dsp_ea_bulk_create;
+        _children["dsp-ea-bulk-create"] = dsp_ea_bulk_create;
     }
 
     if(dsp_ea_bulk_update != nullptr)
     {
-        children["dsp-ea-bulk-update"] = dsp_ea_bulk_update;
+        _children["dsp-ea-bulk-update"] = dsp_ea_bulk_update;
     }
 
-    count = 0;
-    for (auto c : port_stat.entities())
+    count_ = 0;
+    for (auto ent_ : port_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -643,16 +643,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -763,16 +763,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -883,16 +883,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1003,16 +1003,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1168,7 +1168,7 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "laser-on-stats")
     {
@@ -1236,46 +1236,46 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(laser_on_stats != nullptr)
     {
-        children["laser-on-stats"] = laser_on_stats;
+        _children["laser-on-stats"] = laser_on_stats;
     }
 
     if(laser_off_stats != nullptr)
     {
-        children["laser-off-stats"] = laser_off_stats;
+        _children["laser-off-stats"] = laser_off_stats;
     }
 
     if(wl_op_stats != nullptr)
     {
-        children["wl-op-stats"] = wl_op_stats;
+        _children["wl-op-stats"] = wl_op_stats;
     }
 
     if(txpwr_op_stats != nullptr)
     {
-        children["txpwr-op-stats"] = txpwr_op_stats;
+        _children["txpwr-op-stats"] = txpwr_op_stats;
     }
 
     if(cdmin_op_stats != nullptr)
     {
-        children["cdmin-op-stats"] = cdmin_op_stats;
+        _children["cdmin-op-stats"] = cdmin_op_stats;
     }
 
     if(cdmax_op_stats != nullptr)
     {
-        children["cdmax-op-stats"] = cdmax_op_stats;
+        _children["cdmax-op-stats"] = cdmax_op_stats;
     }
 
     if(traffictype_op_stats != nullptr)
     {
-        children["traffictype-op-stats"] = traffictype_op_stats;
+        _children["traffictype-op-stats"] = traffictype_op_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::PortStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1426,16 +1426,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1546,16 +1546,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1666,16 +1666,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1786,16 +1786,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1906,16 +1906,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2026,16 +2026,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2146,16 +2146,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::CoherentTi
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2362,33 +2362,33 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthe
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::Coherenthealth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port-data")
     {
-        auto c = std::make_shared<Coherent::Nodes::Node::Coherenthealth::PortData>();
-        c->parent = this;
-        port_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<Coherent::Nodes::Node::Coherenthealth::PortData>();
+        ent_->parent = this;
+        port_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::Coherenthealth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : port_data.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : port_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Coherent::Nodes::Node::Coherenthealth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2902,7 +2902,7 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthe
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::Coherenthealth::PortData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ctp-info")
     {
@@ -2925,21 +2925,21 @@ std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ctp_info != nullptr)
     {
-        children["ctp-info"] = ctp_info;
+        _children["ctp-info"] = ctp_info;
     }
 
     if(interface_info != nullptr)
     {
-        children["interface-info"] = interface_info;
+        _children["interface-info"] = interface_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Coherent::Nodes::Node::Coherenthealth::PortData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3546,16 +3546,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthe
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3752,33 +3752,33 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthe
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eth-data")
     {
-        auto c = std::make_shared<Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData>();
-        c->parent = this;
-        eth_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData>();
+        ent_->parent = this;
+        eth_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eth_data.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eth_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3853,16 +3853,16 @@ std::vector<std::pair<std::string, LeafData> > Coherent::Nodes::Node::Coherenthe
 
 }
 
-std::shared_ptr<Entity> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

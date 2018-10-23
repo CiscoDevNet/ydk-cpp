@@ -63,7 +63,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> OspfOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospf-state")
     {
@@ -76,34 +76,34 @@ std::shared_ptr<Entity> OspfOperData::get_child_by_name(const std::string & chil
 
     if(child_yang_name == "ospfv2-instance")
     {
-        auto c = std::make_shared<OspfOperData::Ospfv2Instance>();
-        c->parent = this;
-        ospfv2_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::Ospfv2Instance>();
+        ent_->parent = this;
+        ospfv2_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospf_state != nullptr)
     {
-        children["ospf-state"] = ospf_state;
+        _children["ospf-state"] = ospf_state;
     }
 
-    count = 0;
-    for (auto c : ospfv2_instance.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -114,7 +114,7 @@ void OspfOperData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> OspfOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> OspfOperData::clone_ptr() const
 {
     return std::make_shared<OspfOperData>();
 }
@@ -206,33 +206,33 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::get_name
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospf-instance")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance>();
-        c->parent = this;
-        ospf_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance>();
+        ent_->parent = this;
+        ospf_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospf_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospf_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -352,67 +352,67 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospf-area")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea>();
-        c->parent = this;
-        ospf_area.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea>();
+        ent_->parent = this;
+        ospf_area.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "link-scope-lsas")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas>();
-        c->parent = this;
-        link_scope_lsas.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas>();
+        ent_->parent = this;
+        link_scope_lsas.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "multi-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::MultiTopology>();
-        c->parent = this;
-        multi_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::MultiTopology>();
+        ent_->parent = this;
+        multi_topology.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospf_area.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospf_area.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : link_scope_lsas.entities())
+    count_ = 0;
+    for (auto ent_ : link_scope_lsas.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : multi_topology.entities())
+    count_ = 0;
+    for (auto ent_ : multi_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -525,50 +525,50 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospf-interface")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface>();
-        c->parent = this;
-        ospf_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface>();
+        ent_->parent = this;
+        ospf_interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "area-scope-lsa")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa>();
-        c->parent = this;
-        area_scope_lsa.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa>();
+        ent_->parent = this;
+        area_scope_lsa.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospf_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospf_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : area_scope_lsa.entities())
+    count_ = 0;
+    for (auto ent_ : area_scope_lsa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -779,7 +779,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "multi-area")
     {
@@ -792,10 +792,10 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
 
     if(child_yang_name == "static-neighbor")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor>();
-        c->parent = this;
-        static_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor>();
+        ent_->parent = this;
+        static_neighbor.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "fast-reroute")
@@ -827,92 +827,92 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
 
     if(child_yang_name == "ospf-neighbor")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor>();
-        c->parent = this;
-        ospf_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor>();
+        ent_->parent = this;
+        ospf_neighbor.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "intf-link-scope-lsas")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas>();
-        c->parent = this;
-        intf_link_scope_lsas.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas>();
+        ent_->parent = this;
+        intf_link_scope_lsas.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "intf-multi-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology>();
-        c->parent = this;
-        intf_multi_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology>();
+        ent_->parent = this;
+        intf_multi_topology.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(multi_area != nullptr)
     {
-        children["multi-area"] = multi_area;
+        _children["multi-area"] = multi_area;
     }
 
-    count = 0;
-    for (auto c : static_neighbor.entities())
+    count_ = 0;
+    for (auto ent_ : static_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(fast_reroute != nullptr)
     {
-        children["fast-reroute"] = fast_reroute;
+        _children["fast-reroute"] = fast_reroute;
     }
 
     if(ttl_security != nullptr)
     {
-        children["ttl-security"] = ttl_security;
+        _children["ttl-security"] = ttl_security;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
-    count = 0;
-    for (auto c : ospf_neighbor.entities())
+    count_ = 0;
+    for (auto ent_ : ospf_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : intf_link_scope_lsas.entities())
+    count_ = 0;
+    for (auto ent_ : intf_link_scope_lsas.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : intf_multi_topology.entities())
+    count_ = 0;
+    for (auto ent_ : intf_multi_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1185,16 +1185,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1282,16 +1282,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::StaticNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1388,16 +1388,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::FastReroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1490,16 +1490,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::TtlSecurity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1595,7 +1595,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "crypto-algorithm-val")
     {
@@ -1609,16 +1609,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(crypto_algorithm_val != nullptr)
     {
-        children["crypto-algorithm-val"] = crypto_algorithm_val;
+        _children["crypto-algorithm-val"] = crypto_algorithm_val;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1745,16 +1745,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::CryptoAlgorithmVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::CryptoAlgorithmVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::CryptoAlgorithmVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::CryptoAlgorithmVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::Authentication::CryptoAlgorithmVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1915,7 +1915,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats")
     {
@@ -1929,16 +1929,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stats != nullptr)
     {
-        children["stats"] = stats;
+        _children["stats"] = stats;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2051,16 +2051,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::OspfNeighbor::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2163,50 +2163,50 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-scope-lsa")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa>();
-        c->parent = this;
-        link_scope_lsa.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa>();
+        ent_->parent = this;
+        link_scope_lsa.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "area-scope-lsa")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa>();
-        c->parent = this;
-        area_scope_lsa.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa>();
+        ent_->parent = this;
+        area_scope_lsa.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : link_scope_lsa.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : link_scope_lsa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : area_scope_lsa.entities())
+    count_ = 0;
+    for (auto ent_ : area_scope_lsa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2419,7 +2419,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-lsa")
     {
@@ -2432,34 +2432,34 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
 
     if(child_yang_name == "ospfv2-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link>();
-        c->parent = this;
-        ospfv2_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link>();
+        ent_->parent = this;
+        ospfv2_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-external")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External>();
-        c->parent = this;
-        ospfv2_external.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External>();
+        ent_->parent = this;
+        ospfv2_external.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-unknown-tlv")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv>();
-        c->parent = this;
-        ospfv2_unknown_tlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv>();
+        ent_->parent = this;
+        ospfv2_unknown_tlv.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-lsa-val")
@@ -2473,34 +2473,34 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
 
     if(child_yang_name == "ospfv3-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link>();
-        c->parent = this;
-        ospfv3_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link>();
+        ent_->parent = this;
+        ospfv3_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-prefix-list")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList>();
-        c->parent = this;
-        ospfv3_prefix_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList>();
+        ent_->parent = this;
+        ospfv3_prefix_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-ia-prefix")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix>();
-        c->parent = this;
-        ospfv3_ia_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix>();
+        ent_->parent = this;
+        ospfv3_ia_prefix.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "multi-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology>();
-        c->parent = this;
-        multi_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology>();
+        ent_->parent = this;
+        multi_topology.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "tlv")
@@ -2514,116 +2514,116 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
 
     if(child_yang_name == "unknown-sub-tlv")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv>();
-        c->parent = this;
-        unknown_sub_tlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv>();
+        ent_->parent = this;
+        unknown_sub_tlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospfv2_lsa != nullptr)
     {
-        children["ospfv2-lsa"] = ospfv2_lsa;
+        _children["ospfv2-lsa"] = ospfv2_lsa;
     }
 
-    count = 0;
-    for (auto c : ospfv2_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_external.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_external.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_unknown_tlv.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_unknown_tlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ospfv3_lsa_val != nullptr)
     {
-        children["ospfv3-lsa-val"] = ospfv3_lsa_val;
+        _children["ospfv3-lsa-val"] = ospfv3_lsa_val;
     }
 
-    count = 0;
-    for (auto c : ospfv3_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_prefix_list.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_prefix_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_ia_prefix.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_ia_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : multi_topology.entities())
+    count_ = 0;
+    for (auto ent_ : multi_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(tlv != nullptr)
     {
-        children["tlv"] = tlv;
+        _children["tlv"] = tlv;
     }
 
-    count = 0;
-    for (auto c : unknown_sub_tlv.entities())
+    count_ = 0;
+    for (auto ent_ : unknown_sub_tlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2744,7 +2744,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -2767,21 +2767,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2876,16 +2876,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3059,7 +3059,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -3073,16 +3073,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3193,16 +3193,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3301,33 +3301,33 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3421,16 +3421,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3514,16 +3514,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3615,16 +3615,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3742,16 +3742,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3842,7 +3842,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -3865,21 +3865,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3947,7 +3947,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -3961,16 +3961,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4067,16 +4067,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4228,7 +4228,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -4296,46 +4296,46 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(ia_router != nullptr)
     {
-        children["ia-router"] = ia_router;
+        _children["ia-router"] = ia_router;
     }
 
     if(lsa_external != nullptr)
     {
-        children["lsa-external"] = lsa_external;
+        _children["lsa-external"] = lsa_external;
     }
 
     if(nssa != nullptr)
     {
-        children["nssa"] = nssa;
+        _children["nssa"] = nssa;
     }
 
     if(link_data != nullptr)
     {
-        children["link-data"] = link_data;
+        _children["link-data"] = link_data;
     }
 
     if(ia_prefix != nullptr)
     {
-        children["ia-prefix"] = ia_prefix;
+        _children["ia-prefix"] = ia_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4424,16 +4424,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4516,16 +4516,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4622,16 +4622,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4747,7 +4747,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -4761,16 +4761,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4899,16 +4899,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4977,7 +4977,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-nssa-external")
     {
@@ -4991,16 +4991,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_nssa_external != nullptr)
     {
-        children["lsa-nssa-external"] = lsa_nssa_external;
+        _children["lsa-nssa-external"] = lsa_nssa_external;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5088,7 +5088,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -5102,16 +5102,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5240,16 +5240,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5330,16 +5330,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5448,16 +5448,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5575,16 +5575,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5698,16 +5698,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5791,16 +5791,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5880,16 +5880,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::MultiTopology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6010,16 +6010,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6183,16 +6183,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::LinkScopeLsa::UnknownSubTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6378,7 +6378,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-lsa")
     {
@@ -6391,26 +6391,26 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
 
     if(child_yang_name == "ospfv2-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link>();
-        c->parent = this;
-        ospfv2_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link>();
+        ent_->parent = this;
+        ospfv2_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-external")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External>();
-        c->parent = this;
-        ospfv2_external.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External>();
+        ent_->parent = this;
+        ospfv2_external.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-lsa")
@@ -6424,100 +6424,100 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
 
     if(child_yang_name == "ospfv3-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link>();
-        c->parent = this;
-        ospfv3_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link>();
+        ent_->parent = this;
+        ospfv3_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-prefix")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix>();
-        c->parent = this;
-        ospfv3_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix>();
+        ent_->parent = this;
+        ospfv3_prefix.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-ia-prefix")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix>();
-        c->parent = this;
-        ospfv3_ia_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix>();
+        ent_->parent = this;
+        ospfv3_ia_prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospfv2_lsa != nullptr)
     {
-        children["ospfv2-lsa"] = ospfv2_lsa;
+        _children["ospfv2-lsa"] = ospfv2_lsa;
     }
 
-    count = 0;
-    for (auto c : ospfv2_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_external.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_external.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ospfv3_lsa != nullptr)
     {
-        children["ospfv3-lsa"] = ospfv3_lsa;
+        _children["ospfv3-lsa"] = ospfv3_lsa;
     }
 
-    count = 0;
-    for (auto c : ospfv3_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_prefix.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_ia_prefix.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_ia_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6618,7 +6618,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -6641,21 +6641,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6750,16 +6750,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6933,7 +6933,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -6947,16 +6947,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7067,16 +7067,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7175,33 +7175,33 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7295,16 +7295,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7388,16 +7388,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7489,16 +7489,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv2External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7601,7 +7601,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -7624,21 +7624,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7706,7 +7706,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -7720,16 +7720,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7826,16 +7826,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7987,7 +7987,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -8055,46 +8055,46 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(ia_router != nullptr)
     {
-        children["ia-router"] = ia_router;
+        _children["ia-router"] = ia_router;
     }
 
     if(lsa_external != nullptr)
     {
-        children["lsa-external"] = lsa_external;
+        _children["lsa-external"] = lsa_external;
     }
 
     if(nssa != nullptr)
     {
-        children["nssa"] = nssa;
+        _children["nssa"] = nssa;
     }
 
     if(link_data != nullptr)
     {
-        children["link-data"] = link_data;
+        _children["link-data"] = link_data;
     }
 
     if(ia_prefix != nullptr)
     {
-        children["ia-prefix"] = ia_prefix;
+        _children["ia-prefix"] = ia_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8183,16 +8183,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8275,16 +8275,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8381,16 +8381,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8506,7 +8506,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -8520,16 +8520,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8658,16 +8658,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8736,7 +8736,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-nssa-external")
     {
@@ -8750,16 +8750,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_nssa_external != nullptr)
     {
-        children["lsa-nssa-external"] = lsa_nssa_external;
+        _children["lsa-nssa-external"] = lsa_nssa_external;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8847,7 +8847,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -8861,16 +8861,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8999,16 +8999,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9089,16 +9089,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9207,16 +9207,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9334,16 +9334,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9457,16 +9457,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9550,16 +9550,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfLinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9639,16 +9639,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::OspfInterface::IntfMultiTopology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9730,33 +9730,33 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area-scope-lsa")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_>();
-        c->parent = this;
-        area_scope_lsa.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_>();
+        ent_->parent = this;
+        area_scope_lsa.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : area_scope_lsa.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : area_scope_lsa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9924,7 +9924,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-lsa")
     {
@@ -9937,26 +9937,26 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
 
     if(child_yang_name == "ospfv2-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link>();
-        c->parent = this;
-        ospfv2_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link>();
+        ent_->parent = this;
+        ospfv2_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-external")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External>();
-        c->parent = this;
-        ospfv2_external.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External>();
+        ent_->parent = this;
+        ospfv2_external.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-lsa")
@@ -9970,100 +9970,100 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
 
     if(child_yang_name == "ospfv3-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link>();
-        c->parent = this;
-        ospfv3_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link>();
+        ent_->parent = this;
+        ospfv3_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-prefix")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix>();
-        c->parent = this;
-        ospfv3_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix>();
+        ent_->parent = this;
+        ospfv3_prefix.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-ia-prefix")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix>();
-        c->parent = this;
-        ospfv3_ia_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix>();
+        ent_->parent = this;
+        ospfv3_ia_prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospfv2_lsa != nullptr)
     {
-        children["ospfv2-lsa"] = ospfv2_lsa;
+        _children["ospfv2-lsa"] = ospfv2_lsa;
     }
 
-    count = 0;
-    for (auto c : ospfv2_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_external.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_external.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ospfv3_lsa != nullptr)
     {
-        children["ospfv3-lsa"] = ospfv3_lsa;
+        _children["ospfv3-lsa"] = ospfv3_lsa;
     }
 
-    count = 0;
-    for (auto c : ospfv3_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_prefix.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_ia_prefix.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_ia_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10164,7 +10164,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -10187,21 +10187,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10296,16 +10296,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10479,7 +10479,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -10493,16 +10493,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10613,16 +10613,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Lsa::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10721,33 +10721,33 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10841,16 +10841,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Link::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10934,16 +10934,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11035,16 +11035,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv2External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11147,7 +11147,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -11170,21 +11170,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11252,7 +11252,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -11266,16 +11266,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11372,16 +11372,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::Header::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11533,7 +11533,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -11601,46 +11601,46 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(ia_router != nullptr)
     {
-        children["ia-router"] = ia_router;
+        _children["ia-router"] = ia_router;
     }
 
     if(lsa_external != nullptr)
     {
-        children["lsa-external"] = lsa_external;
+        _children["lsa-external"] = lsa_external;
     }
 
     if(nssa != nullptr)
     {
-        children["nssa"] = nssa;
+        _children["nssa"] = nssa;
     }
 
     if(link_data != nullptr)
     {
-        children["link-data"] = link_data;
+        _children["link-data"] = link_data;
     }
 
     if(ia_prefix != nullptr)
     {
-        children["ia-prefix"] = ia_prefix;
+        _children["ia-prefix"] = ia_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11729,16 +11729,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11821,16 +11821,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11927,16 +11927,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaRouter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaRouter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12052,7 +12052,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -12066,16 +12066,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12204,16 +12204,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LsaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12282,7 +12282,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-nssa-external")
     {
@@ -12296,16 +12296,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_nssa_external != nullptr)
     {
-        children["lsa-nssa-external"] = lsa_nssa_external;
+        _children["lsa-nssa-external"] = lsa_nssa_external;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12393,7 +12393,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -12407,16 +12407,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaSco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12545,16 +12545,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12635,16 +12635,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LinkData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LinkData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12753,16 +12753,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Lsa::LsaBody::IaPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12880,16 +12880,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13003,16 +13003,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13096,16 +13096,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::OspfArea::AreaScopeLsa::AreaScopeLsa_::Ospfv3IaPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13208,50 +13208,50 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-scope-lsa")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa>();
-        c->parent = this;
-        link_scope_lsa.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa>();
+        ent_->parent = this;
+        link_scope_lsa.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "area-scope-lsa")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa>();
-        c->parent = this;
-        area_scope_lsa.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa>();
+        ent_->parent = this;
+        area_scope_lsa.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : link_scope_lsa.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : link_scope_lsa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : area_scope_lsa.entities())
+    count_ = 0;
+    for (auto ent_ : area_scope_lsa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13464,7 +13464,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-lsa")
     {
@@ -13477,34 +13477,34 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
 
     if(child_yang_name == "ospfv2-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link>();
-        c->parent = this;
-        ospfv2_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link>();
+        ent_->parent = this;
+        ospfv2_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-external")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External>();
-        c->parent = this;
-        ospfv2_external.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External>();
+        ent_->parent = this;
+        ospfv2_external.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-unknown-tlv")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv>();
-        c->parent = this;
-        ospfv2_unknown_tlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv>();
+        ent_->parent = this;
+        ospfv2_unknown_tlv.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-lsa-val")
@@ -13518,34 +13518,34 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
 
     if(child_yang_name == "ospfv3-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link>();
-        c->parent = this;
-        ospfv3_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link>();
+        ent_->parent = this;
+        ospfv3_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-prefix-list")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList>();
-        c->parent = this;
-        ospfv3_prefix_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList>();
+        ent_->parent = this;
+        ospfv3_prefix_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-ia-prefix")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix>();
-        c->parent = this;
-        ospfv3_ia_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix>();
+        ent_->parent = this;
+        ospfv3_ia_prefix.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "multi-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology>();
-        c->parent = this;
-        multi_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology>();
+        ent_->parent = this;
+        multi_topology.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "tlv")
@@ -13559,116 +13559,116 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
 
     if(child_yang_name == "unknown-sub-tlv")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv>();
-        c->parent = this;
-        unknown_sub_tlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv>();
+        ent_->parent = this;
+        unknown_sub_tlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospfv2_lsa != nullptr)
     {
-        children["ospfv2-lsa"] = ospfv2_lsa;
+        _children["ospfv2-lsa"] = ospfv2_lsa;
     }
 
-    count = 0;
-    for (auto c : ospfv2_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_external.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_external.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_unknown_tlv.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_unknown_tlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ospfv3_lsa_val != nullptr)
     {
-        children["ospfv3-lsa-val"] = ospfv3_lsa_val;
+        _children["ospfv3-lsa-val"] = ospfv3_lsa_val;
     }
 
-    count = 0;
-    for (auto c : ospfv3_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_prefix_list.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_prefix_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_ia_prefix.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_ia_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : multi_topology.entities())
+    count_ = 0;
+    for (auto ent_ : multi_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(tlv != nullptr)
     {
-        children["tlv"] = tlv;
+        _children["tlv"] = tlv;
     }
 
-    count = 0;
-    for (auto c : unknown_sub_tlv.entities())
+    count_ = 0;
+    for (auto ent_ : unknown_sub_tlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13789,7 +13789,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -13812,21 +13812,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13921,16 +13921,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14104,7 +14104,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -14118,16 +14118,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14238,16 +14238,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Lsa::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14346,33 +14346,33 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14466,16 +14466,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Link::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14559,16 +14559,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14660,16 +14660,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14787,16 +14787,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv2UnknownTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14887,7 +14887,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -14910,21 +14910,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14992,7 +14992,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -15006,16 +15006,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15112,16 +15112,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::Header::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15273,7 +15273,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -15341,46 +15341,46 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(ia_router != nullptr)
     {
-        children["ia-router"] = ia_router;
+        _children["ia-router"] = ia_router;
     }
 
     if(lsa_external != nullptr)
     {
-        children["lsa-external"] = lsa_external;
+        _children["lsa-external"] = lsa_external;
     }
 
     if(nssa != nullptr)
     {
-        children["nssa"] = nssa;
+        _children["nssa"] = nssa;
     }
 
     if(link_data != nullptr)
     {
-        children["link-data"] = link_data;
+        _children["link-data"] = link_data;
     }
 
     if(ia_prefix != nullptr)
     {
-        children["ia-prefix"] = ia_prefix;
+        _children["ia-prefix"] = ia_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15469,16 +15469,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15561,16 +15561,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15667,16 +15667,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15792,7 +15792,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -15806,16 +15806,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15944,16 +15944,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LsaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16022,7 +16022,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-nssa-external")
     {
@@ -16036,16 +16036,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_nssa_external != nullptr)
     {
-        children["lsa-nssa-external"] = lsa_nssa_external;
+        _children["lsa-nssa-external"] = lsa_nssa_external;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16133,7 +16133,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -16147,16 +16147,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Li
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16285,16 +16285,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::Nssa::LsaNssaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16375,16 +16375,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16493,16 +16493,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3LsaVal::LsaBody::IaPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16620,16 +16620,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16743,16 +16743,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3PrefixList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16836,16 +16836,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Ospfv3IaPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16925,16 +16925,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::MultiTopology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17055,16 +17055,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17228,16 +17228,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::LinkScopeLsa::UnknownSubTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17423,7 +17423,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-lsa")
     {
@@ -17436,26 +17436,26 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
 
     if(child_yang_name == "ospfv2-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link>();
-        c->parent = this;
-        ospfv2_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link>();
+        ent_->parent = this;
+        ospfv2_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv2-external")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External>();
-        c->parent = this;
-        ospfv2_external.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External>();
+        ent_->parent = this;
+        ospfv2_external.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-lsa")
@@ -17469,100 +17469,100 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
 
     if(child_yang_name == "ospfv3-link")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Link>();
-        c->parent = this;
-        ospfv3_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Link>();
+        ent_->parent = this;
+        ospfv3_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-prefix")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Prefix>();
-        c->parent = this;
-        ospfv3_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Prefix>();
+        ent_->parent = this;
+        ospfv3_prefix.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-ia-prefix")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix>();
-        c->parent = this;
-        ospfv3_ia_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3IaPrefix>();
+        ent_->parent = this;
+        ospfv3_ia_prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospfv2_lsa != nullptr)
     {
-        children["ospfv2-lsa"] = ospfv2_lsa;
+        _children["ospfv2-lsa"] = ospfv2_lsa;
     }
 
-    count = 0;
-    for (auto c : ospfv2_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv2_external.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv2_external.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ospfv3_lsa != nullptr)
     {
-        children["ospfv3-lsa"] = ospfv3_lsa;
+        _children["ospfv3-lsa"] = ospfv3_lsa;
     }
 
-    count = 0;
-    for (auto c : ospfv3_link.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_prefix.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_ia_prefix.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_ia_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17663,7 +17663,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -17686,21 +17686,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17795,16 +17795,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17978,7 +17978,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -17992,16 +17992,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18112,16 +18112,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Lsa::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18220,33 +18220,33 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-topology")
     {
-        auto c = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology>();
-        c->parent = this;
-        ospfv2_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology>();
+        ent_->parent = this;
+        ospfv2_topology.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfv2_topology.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfv2_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18340,16 +18340,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Link::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18433,16 +18433,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18534,16 +18534,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv2External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18646,7 +18646,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -18669,21 +18669,21 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(lsa_body != nullptr)
     {
-        children["lsa-body"] = lsa_body;
+        _children["lsa-body"] = lsa_body;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18751,7 +18751,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -18765,16 +18765,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18871,16 +18871,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::Header::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19032,7 +19032,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
@@ -19100,46 +19100,46 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(ia_router != nullptr)
     {
-        children["ia-router"] = ia_router;
+        _children["ia-router"] = ia_router;
     }
 
     if(lsa_external != nullptr)
     {
-        children["lsa-external"] = lsa_external;
+        _children["lsa-external"] = lsa_external;
     }
 
     if(nssa != nullptr)
     {
-        children["nssa"] = nssa;
+        _children["nssa"] = nssa;
     }
 
     if(link_data != nullptr)
     {
-        children["link-data"] = link_data;
+        _children["link-data"] = link_data;
     }
 
     if(ia_prefix != nullptr)
     {
-        children["ia-prefix"] = ia_prefix;
+        _children["ia-prefix"] = ia_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19228,16 +19228,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19320,16 +19320,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19426,16 +19426,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::IaRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19551,7 +19551,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -19565,16 +19565,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19703,16 +19703,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::LsaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19781,7 +19781,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-nssa-external")
     {
@@ -19795,16 +19795,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_nssa_external != nullptr)
     {
-        children["lsa-nssa-external"] = lsa_nssa_external;
+        _children["lsa-nssa-external"] = lsa_nssa_external;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19892,7 +19892,7 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -19906,16 +19906,16 @@ std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::Ar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
-    return children;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20044,16 +20044,16 @@ std::vector<std::pair<std::string, LeafData> > OspfOperData::OspfState::OspfInst
 
 }
 
-std::shared_ptr<Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

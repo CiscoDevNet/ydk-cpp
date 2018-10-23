@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Rcp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Rcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rcp-client")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Rcp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rcp_client != nullptr)
     {
-        children["rcp-client"] = rcp_client;
+        _children["rcp-client"] = rcp_client;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Rcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Rcp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Rcp::clone_ptr() const
 {
     return std::make_shared<Rcp>();
 }
@@ -170,16 +170,16 @@ std::vector<std::pair<std::string, LeafData> > Rcp::RcpClient::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Rcp::RcpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcp::RcpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcp::RcpClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcp::RcpClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcp::RcpClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -258,7 +258,7 @@ std::vector<std::pair<std::string, LeafData> > Ftp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ftp-client")
     {
@@ -272,16 +272,16 @@ std::shared_ptr<Entity> Ftp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ftp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ftp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ftp_client != nullptr)
     {
-        children["ftp-client"] = ftp_client;
+        _children["ftp-client"] = ftp_client;
     }
 
-    return children;
+    return _children;
 }
 
 void Ftp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -292,7 +292,7 @@ void Ftp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Ftp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ftp::clone_ptr() const
 {
     return std::make_shared<Ftp>();
 }
@@ -393,7 +393,7 @@ std::vector<std::pair<std::string, LeafData> > Ftp::FtpClient::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Ftp::FtpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ftp::FtpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -407,16 +407,16 @@ std::shared_ptr<Entity> Ftp::FtpClient::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ftp::FtpClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ftp::FtpClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void Ftp::FtpClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -540,33 +540,33 @@ std::vector<std::pair<std::string, LeafData> > Ftp::FtpClient::Vrfs::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ftp::FtpClient::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ftp::FtpClient::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Ftp::FtpClient::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ftp::FtpClient::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ftp::FtpClient::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ftp::FtpClient::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ftp::FtpClient::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -653,16 +653,16 @@ std::vector<std::pair<std::string, LeafData> > Ftp::FtpClient::Vrfs::Vrf::get_na
 
 }
 
-std::shared_ptr<Entity> Ftp::FtpClient::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ftp::FtpClient::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ftp::FtpClient::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ftp::FtpClient::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ftp::FtpClient::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -781,7 +781,7 @@ std::vector<std::pair<std::string, LeafData> > Tftp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Tftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tftp-client")
     {
@@ -795,16 +795,16 @@ std::shared_ptr<Entity> Tftp::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tftp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tftp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tftp_client != nullptr)
     {
-        children["tftp-client"] = tftp_client;
+        _children["tftp-client"] = tftp_client;
     }
 
-    return children;
+    return _children;
 }
 
 void Tftp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -815,7 +815,7 @@ void Tftp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Tftp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Tftp::clone_ptr() const
 {
     return std::make_shared<Tftp>();
 }
@@ -908,7 +908,7 @@ std::vector<std::pair<std::string, LeafData> > Tftp::TftpClient::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Tftp::TftpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tftp::TftpClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -922,16 +922,16 @@ std::shared_ptr<Entity> Tftp::TftpClient::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tftp::TftpClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tftp::TftpClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void Tftp::TftpClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1035,33 +1035,33 @@ std::vector<std::pair<std::string, LeafData> > Tftp::TftpClient::Vrfs::get_name_
 
 }
 
-std::shared_ptr<Entity> Tftp::TftpClient::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tftp::TftpClient::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Tftp::TftpClient::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tftp::TftpClient::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tftp::TftpClient::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tftp::TftpClient::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tftp::TftpClient::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1140,16 +1140,16 @@ std::vector<std::pair<std::string, LeafData> > Tftp::TftpClient::Vrfs::Vrf::get_
 
 }
 
-std::shared_ptr<Entity> Tftp::TftpClient::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tftp::TftpClient::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tftp::TftpClient::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tftp::TftpClient::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tftp::TftpClient::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

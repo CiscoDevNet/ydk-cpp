@@ -71,50 +71,50 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mdt-subscription")
     {
-        auto c = std::make_shared<MdtConfigData::MdtSubscription>();
-        c->parent = this;
-        mdt_subscription.append(c);
-        return c;
+        auto ent_ = std::make_shared<MdtConfigData::MdtSubscription>();
+        ent_->parent = this;
+        mdt_subscription.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mdt-xfrm")
     {
-        auto c = std::make_shared<MdtConfigData::MdtXfrm>();
-        c->parent = this;
-        mdt_xfrm.append(c);
-        return c;
+        auto ent_ = std::make_shared<MdtConfigData::MdtXfrm>();
+        ent_->parent = this;
+        mdt_xfrm.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mdt_subscription.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mdt_subscription.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : mdt_xfrm.entities())
+    count_ = 0;
+    for (auto ent_ : mdt_xfrm.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MdtConfigData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -125,7 +125,7 @@ void MdtConfigData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MdtConfigData::clone_ptr() const
+std::shared_ptr<ydk::Entity> MdtConfigData::clone_ptr() const
 {
     return std::make_shared<MdtConfigData>();
 }
@@ -222,7 +222,7 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtSubscription::g
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
@@ -235,34 +235,34 @@ std::shared_ptr<Entity> MdtConfigData::MdtSubscription::get_child_by_name(const 
 
     if(child_yang_name == "mdt-receivers")
     {
-        auto c = std::make_shared<MdtConfigData::MdtSubscription::MdtReceivers>();
-        c->parent = this;
-        mdt_receivers.append(c);
-        return c;
+        auto ent_ = std::make_shared<MdtConfigData::MdtSubscription::MdtReceivers>();
+        ent_->parent = this;
+        mdt_receivers.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtSubscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtSubscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(base != nullptr)
     {
-        children["base"] = base;
+        _children["base"] = base;
     }
 
-    count = 0;
-    for (auto c : mdt_receivers.entities())
+    count_ = 0;
+    for (auto ent_ : mdt_receivers.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MdtConfigData::MdtSubscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -371,16 +371,16 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtSubscription::B
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtSubscription::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtSubscription::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtSubscription::Base::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtSubscription::Base::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MdtConfigData::MdtSubscription::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -563,16 +563,16 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtSubscription::M
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtSubscription::MdtReceivers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtSubscription::MdtReceivers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtSubscription::MdtReceivers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtSubscription::MdtReceivers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MdtConfigData::MdtSubscription::MdtReceivers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -706,50 +706,50 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtXfrm::get_name_
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtXfrm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtXfrm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mdt-xfrm-input")
     {
-        auto c = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmInput>();
-        c->parent = this;
-        mdt_xfrm_input.append(c);
-        return c;
+        auto ent_ = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmInput>();
+        ent_->parent = this;
+        mdt_xfrm_input.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mdt-xfrm-op")
     {
-        auto c = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmOp>();
-        c->parent = this;
-        mdt_xfrm_op.append(c);
-        return c;
+        auto ent_ = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmOp>();
+        ent_->parent = this;
+        mdt_xfrm_op.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtXfrm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtXfrm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mdt_xfrm_input.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mdt_xfrm_input.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : mdt_xfrm_op.entities())
+    count_ = 0;
+    for (auto ent_ : mdt_xfrm_op.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MdtConfigData::MdtXfrm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -857,33 +857,33 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtXfrm::MdtXfrmIn
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtXfrm::MdtXfrmInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtXfrm::MdtXfrmInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mdt-xfrm-input-field")
     {
-        auto c = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField>();
-        c->parent = this;
-        mdt_xfrm_input_field.append(c);
-        return c;
+        auto ent_ = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField>();
+        ent_->parent = this;
+        mdt_xfrm_input_field.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtXfrm::MdtXfrmInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtXfrm::MdtXfrmInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mdt_xfrm_input_field.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mdt_xfrm_input_field.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MdtConfigData::MdtXfrm::MdtXfrmInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -993,16 +993,16 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtXfrm::MdtXfrmIn
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MdtConfigData::MdtXfrm::MdtXfrmInput::MdtXfrmInputField::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1095,50 +1095,50 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtXfrm::MdtXfrmOp
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mdt-xfrm-op-filters")
     {
-        auto c = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters>();
-        c->parent = this;
-        mdt_xfrm_op_filters.append(c);
-        return c;
+        auto ent_ = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters>();
+        ent_->parent = this;
+        mdt_xfrm_op_filters.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mdt-xfrm-op-fields")
     {
-        auto c = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields>();
-        c->parent = this;
-        mdt_xfrm_op_fields.append(c);
-        return c;
+        auto ent_ = std::make_shared<MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields>();
+        ent_->parent = this;
+        mdt_xfrm_op_fields.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mdt_xfrm_op_filters.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mdt_xfrm_op_filters.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : mdt_xfrm_op_fields.entities())
+    count_ = 0;
+    for (auto ent_ : mdt_xfrm_op_fields.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MdtConfigData::MdtXfrm::MdtXfrmOp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1229,7 +1229,7 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtXfrm::MdtXfrmOp
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "op-event")
     {
@@ -1252,21 +1252,21 @@ std::shared_ptr<Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(op_event != nullptr)
     {
-        children["op-event"] = op_event;
+        _children["op-event"] = op_event;
     }
 
     if(condition != nullptr)
     {
-        children["condition"] = condition;
+        _children["condition"] = condition;
     }
 
-    return children;
+    return _children;
 }
 
 void MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1365,16 +1365,16 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtXfrm::MdtXfrmOp
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::OpEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1447,16 +1447,16 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtXfrm::MdtXfrmOp
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFilters::Condition::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1544,16 +1544,16 @@ std::vector<std::pair<std::string, LeafData> > MdtConfigData::MdtXfrm::MdtXfrmOp
 
 }
 
-std::shared_ptr<Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

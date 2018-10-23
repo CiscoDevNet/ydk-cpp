@@ -88,7 +88,7 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmMIBObjects")
     {
@@ -183,61 +183,61 @@ std::shared_ptr<Entity> ATMMIB::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(atmmibobjects != nullptr)
     {
-        children["atmMIBObjects"] = atmmibobjects;
+        _children["atmMIBObjects"] = atmmibobjects;
     }
 
     if(atminterfaceconftable != nullptr)
     {
-        children["atmInterfaceConfTable"] = atminterfaceconftable;
+        _children["atmInterfaceConfTable"] = atminterfaceconftable;
     }
 
     if(atminterfaceds3plcptable != nullptr)
     {
-        children["atmInterfaceDs3PlcpTable"] = atminterfaceds3plcptable;
+        _children["atmInterfaceDs3PlcpTable"] = atminterfaceds3plcptable;
     }
 
     if(atminterfacetctable != nullptr)
     {
-        children["atmInterfaceTCTable"] = atminterfacetctable;
+        _children["atmInterfaceTCTable"] = atminterfacetctable;
     }
 
     if(atmtrafficdescrparamtable != nullptr)
     {
-        children["atmTrafficDescrParamTable"] = atmtrafficdescrparamtable;
+        _children["atmTrafficDescrParamTable"] = atmtrafficdescrparamtable;
     }
 
     if(atmvpltable != nullptr)
     {
-        children["atmVplTable"] = atmvpltable;
+        _children["atmVplTable"] = atmvpltable;
     }
 
     if(atmvcltable != nullptr)
     {
-        children["atmVclTable"] = atmvcltable;
+        _children["atmVclTable"] = atmvcltable;
     }
 
     if(atmvpcrossconnecttable != nullptr)
     {
-        children["atmVpCrossConnectTable"] = atmvpcrossconnecttable;
+        _children["atmVpCrossConnectTable"] = atmvpcrossconnecttable;
     }
 
     if(atmvccrossconnecttable != nullptr)
     {
-        children["atmVcCrossConnectTable"] = atmvccrossconnecttable;
+        _children["atmVcCrossConnectTable"] = atmvccrossconnecttable;
     }
 
     if(aal5vcctable != nullptr)
     {
-        children["aal5VccTable"] = aal5vcctable;
+        _children["aal5VccTable"] = aal5vcctable;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ void ATMMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ATMMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> ATMMIB::clone_ptr() const
 {
     return std::make_shared<ATMMIB>();
 }
@@ -336,16 +336,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmMIBObjects::get_name_l
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmMIBObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmMIBObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::AtmMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -449,33 +449,33 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceConfTable::ge
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmInterfaceConfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmInterfaceConfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmInterfaceConfEntry")
     {
-        auto c = std::make_shared<ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry>();
-        c->parent = this;
-        atminterfaceconfentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry>();
+        ent_->parent = this;
+        atminterfaceconfentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceConfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmInterfaceConfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : atminterfaceconfentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : atminterfaceconfentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::AtmInterfaceConfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -726,16 +726,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceConfTable::At
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1279,33 +1279,33 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceDs3PlcpTable:
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmInterfaceDs3PlcpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmInterfaceDs3PlcpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmInterfaceDs3PlcpEntry")
     {
-        auto c = std::make_shared<ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry>();
-        c->parent = this;
-        atminterfaceds3plcpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry>();
+        ent_->parent = this;
+        atminterfaceds3plcpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceDs3PlcpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmInterfaceDs3PlcpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : atminterfaceds3plcpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : atminterfaceds3plcpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::AtmInterfaceDs3PlcpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1384,16 +1384,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceDs3PlcpTable:
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1507,33 +1507,33 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceTCTable::get_
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmInterfaceTCTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmInterfaceTCTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmInterfaceTCEntry")
     {
-        auto c = std::make_shared<ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry>();
-        c->parent = this;
-        atminterfacetcentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry>();
+        ent_->parent = this;
+        atminterfacetcentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceTCTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmInterfaceTCTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : atminterfacetcentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : atminterfacetcentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::AtmInterfaceTCTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1608,16 +1608,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceTCTable::AtmI
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1721,33 +1721,33 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmTrafficDescrParamTable
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmTrafficDescrParamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmTrafficDescrParamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmTrafficDescrParamEntry")
     {
-        auto c = std::make_shared<ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry>();
-        c->parent = this;
-        atmtrafficdescrparamentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry>();
+        ent_->parent = this;
+        atmtrafficdescrparamentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmTrafficDescrParamTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmTrafficDescrParamTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : atmtrafficdescrparamentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : atmtrafficdescrparamentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::AtmTrafficDescrParamTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1854,16 +1854,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmTrafficDescrParamTable
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2047,33 +2047,33 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVplTable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmVplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmVplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmVplEntry")
     {
-        auto c = std::make_shared<ATMMIB::AtmVplTable::AtmVplEntry>();
-        c->parent = this;
-        atmvplentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ATMMIB::AtmVplTable::AtmVplEntry>();
+        ent_->parent = this;
+        atmvplentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVplTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmVplTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : atmvplentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : atmvplentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::AtmVplTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2181,16 +2181,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVplTable::AtmVplEntry:
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmVplTable::AtmVplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmVplTable::AtmVplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVplTable::AtmVplEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmVplTable::AtmVplEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::AtmVplTable::AtmVplEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2374,33 +2374,33 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVclTable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmVclEntry")
     {
-        auto c = std::make_shared<ATMMIB::AtmVclTable::AtmVclEntry>();
-        c->parent = this;
-        atmvclentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ATMMIB::AtmVclTable::AtmVclEntry>();
+        ent_->parent = this;
+        atmvclentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVclTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmVclTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : atmvclentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : atmvclentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::AtmVclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2625,16 +2625,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVclTable::AtmVclEntry:
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmVclTable::AtmVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmVclTable::AtmVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVclTable::AtmVclEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmVclTable::AtmVclEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::AtmVclTable::AtmVclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3108,33 +3108,33 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVpCrossConnectTable::g
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmVpCrossConnectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmVpCrossConnectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmVpCrossConnectEntry")
     {
-        auto c = std::make_shared<ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry>();
-        c->parent = this;
-        atmvpcrossconnectentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry>();
+        ent_->parent = this;
+        atmvpcrossconnectentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVpCrossConnectTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmVpCrossConnectTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : atmvpcrossconnectentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : atmvpcrossconnectentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::AtmVpCrossConnectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3245,16 +3245,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVpCrossConnectTable::A
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3438,33 +3438,33 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVcCrossConnectTable::g
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmVcCrossConnectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmVcCrossConnectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmVcCrossConnectEntry")
     {
-        auto c = std::make_shared<ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry>();
-        c->parent = this;
-        atmvccrossconnectentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry>();
+        ent_->parent = this;
+        atmvccrossconnectentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVcCrossConnectTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmVcCrossConnectTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : atmvccrossconnectentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : atmvccrossconnectentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::AtmVcCrossConnectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3585,16 +3585,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmVcCrossConnectTable::A
 
 }
 
-std::shared_ptr<Entity> ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3798,33 +3798,33 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5VccTable::get_name_le
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Aal5VccTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::Aal5VccTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aal5VccEntry")
     {
-        auto c = std::make_shared<ATMMIB::Aal5VccTable::Aal5VccEntry>();
-        c->parent = this;
-        aal5vccentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ATMMIB::Aal5VccTable::Aal5VccEntry>();
+        ent_->parent = this;
+        aal5vccentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Aal5VccTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::Aal5VccTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : aal5vccentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : aal5vccentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ATMMIB::Aal5VccTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3977,16 +3977,16 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::Aal5VccTable::Aal5VccEntr
 
 }
 
-std::shared_ptr<Entity> ATMMIB::Aal5VccTable::Aal5VccEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ATMMIB::Aal5VccTable::Aal5VccEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ATMMIB::Aal5VccTable::Aal5VccEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ATMMIB::Aal5VccTable::Aal5VccEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ATMMIB::Aal5VccTable::Aal5VccEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config-status")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> OpticalInterface::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config_status != nullptr)
     {
-        children["config-status"] = config_status;
+        _children["config-status"] = config_status;
     }
 
     if(optical_channel_interfaces != nullptr)
     {
-        children["optical-channel-interfaces"] = optical_channel_interfaces;
+        _children["optical-channel-interfaces"] = optical_channel_interfaces;
     }
 
     if(graph != nullptr)
     {
-        children["graph"] = graph;
+        _children["graph"] = graph;
     }
 
     if(operational_modes != nullptr)
     {
-        children["operational-modes"] = operational_modes;
+        _children["operational-modes"] = operational_modes;
     }
 
     if(optical_logical_interfaces != nullptr)
     {
-        children["optical-logical-interfaces"] = optical_logical_interfaces;
+        _children["optical-logical-interfaces"] = optical_logical_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void OpticalInterface::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> OpticalInterface::clone_ptr() const
+std::shared_ptr<ydk::Entity> OpticalInterface::clone_ptr() const
 {
     return std::make_shared<OpticalInterface>();
 }
@@ -242,7 +242,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::g
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::ConfigStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::ConfigStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "partial-config")
     {
@@ -265,21 +265,21 @@ std::shared_ptr<Entity> OpticalInterface::ConfigStatus::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::ConfigStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(partial_config != nullptr)
     {
-        children["partial-config"] = partial_config;
+        _children["partial-config"] = partial_config;
     }
 
     if(slice_tables != nullptr)
     {
-        children["slice-tables"] = slice_tables;
+        _children["slice-tables"] = slice_tables;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::ConfigStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -345,16 +345,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::P
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::ConfigStatus::PartialConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::ConfigStatus::PartialConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::PartialConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::ConfigStatus::PartialConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalInterface::ConfigStatus::PartialConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -438,33 +438,33 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::S
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::ConfigStatus::SliceTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::ConfigStatus::SliceTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slice-table")
     {
-        auto c = std::make_shared<OpticalInterface::ConfigStatus::SliceTables::SliceTable>();
-        c->parent = this;
-        slice_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticalInterface::ConfigStatus::SliceTables::SliceTable>();
+        ent_->parent = this;
+        slice_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::SliceTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::ConfigStatus::SliceTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : slice_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : slice_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::ConfigStatus::SliceTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -536,7 +536,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::S
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::ConfigStatus::SliceTables::SliceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::ConfigStatus::SliceTables::SliceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slice-status-attr")
     {
@@ -550,16 +550,16 @@ std::shared_ptr<Entity> OpticalInterface::ConfigStatus::SliceTables::SliceTable:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::SliceTables::SliceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::ConfigStatus::SliceTables::SliceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(slice_status_attr != nullptr)
     {
-        children["slice-status-attr"] = slice_status_attr;
+        _children["slice-status-attr"] = slice_status_attr;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::ConfigStatus::SliceTables::SliceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -656,16 +656,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::ConfigStatus::S
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -819,33 +819,33 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalChannelI
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OpticalChannelInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OpticalChannelInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-channel-interface")
     {
-        auto c = std::make_shared<OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface>();
-        c->parent = this;
-        optical_channel_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface>();
+        ent_->parent = this;
+        optical_channel_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalChannelInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OpticalChannelInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : optical_channel_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optical_channel_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::OpticalChannelInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -917,7 +917,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalChannelI
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-channel-interface-attr")
     {
@@ -931,16 +931,16 @@ std::shared_ptr<Entity> OpticalInterface::OpticalChannelInterfaces::OpticalChann
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optical_channel_interface_attr != nullptr)
     {
-        children["optical-channel-interface-attr"] = optical_channel_interface_attr;
+        _children["optical-channel-interface-attr"] = optical_channel_interface_attr;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1029,16 +1029,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalChannelI
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1168,7 +1168,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::Graph::get_name
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::Graph::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::Graph::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adj-list-path")
     {
@@ -1191,21 +1191,21 @@ std::shared_ptr<Entity> OpticalInterface::Graph::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::Graph::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adj_list_path != nullptr)
     {
-        children["adj-list-path"] = adj_list_path;
+        _children["adj-list-path"] = adj_list_path;
     }
 
     if(graph_structure_path != nullptr)
     {
-        children["graph-structure-path"] = graph_structure_path;
+        _children["graph-structure-path"] = graph_structure_path;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::Graph::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1271,16 +1271,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::Graph::AdjListP
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::Graph::AdjListPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::Graph::AdjListPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::AdjListPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::Graph::AdjListPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalInterface::Graph::AdjListPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1356,16 +1356,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::Graph::GraphStr
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::Graph::GraphStructurePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::Graph::GraphStructurePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::GraphStructurePath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::Graph::GraphStructurePath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalInterface::Graph::GraphStructurePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1449,33 +1449,33 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OperationalMode
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OperationalModes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OperationalModes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operational-mode")
     {
-        auto c = std::make_shared<OpticalInterface::OperationalModes::OperationalMode>();
-        c->parent = this;
-        operational_mode.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticalInterface::OperationalModes::OperationalMode>();
+        ent_->parent = this;
+        operational_mode.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalModes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OperationalModes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : operational_mode.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : operational_mode.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::OperationalModes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1547,7 +1547,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OperationalMode
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OperationalModes::OperationalMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OperationalModes::OperationalMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operational-mode-attributes")
     {
@@ -1561,16 +1561,16 @@ std::shared_ptr<Entity> OpticalInterface::OperationalModes::OperationalMode::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalModes::OperationalMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OperationalModes::OperationalMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(operational_mode_attributes != nullptr)
     {
-        children["operational-mode-attributes"] = operational_mode_attributes;
+        _children["operational-mode-attributes"] = operational_mode_attributes;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::OperationalModes::OperationalMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1643,16 +1643,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OperationalMode
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1746,33 +1746,33 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalI
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OpticalLogicalInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OpticalLogicalInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-logical-interface")
     {
-        auto c = std::make_shared<OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface>();
-        c->parent = this;
-        optical_logical_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface>();
+        ent_->parent = this;
+        optical_logical_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OpticalLogicalInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : optical_logical_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optical_logical_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::OpticalLogicalInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1848,7 +1848,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalI
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-logical-interface-attr")
     {
@@ -1871,21 +1871,21 @@ std::shared_ptr<Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optical_logical_interface_attr != nullptr)
     {
-        children["optical-logical-interface-attr"] = optical_logical_interface_attr;
+        _children["optical-logical-interface-attr"] = optical_logical_interface_attr;
     }
 
     if(optical_logical_interface_logical_channel_assignments != nullptr)
     {
-        children["optical-logical-interface-logical-channel-assignments"] = optical_logical_interface_logical_channel_assignments;
+        _children["optical-logical-interface-logical-channel-assignments"] = optical_logical_interface_logical_channel_assignments;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1998,16 +1998,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalI
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2194,33 +2194,33 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalI
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-logical-interface-logical-channel-assignment")
     {
-        auto c = std::make_shared<OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment>();
-        c->parent = this;
-        optical_logical_interface_logical_channel_assignment.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment>();
+        ent_->parent = this;
+        optical_logical_interface_logical_channel_assignment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : optical_logical_interface_logical_channel_assignment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optical_logical_interface_logical_channel_assignment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2285,7 +2285,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalI
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-logical-interface-logical-channel-assignment-attr")
     {
@@ -2299,16 +2299,16 @@ std::shared_ptr<Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optical_logical_interface_logical_channel_assignment_attr != nullptr)
     {
-        children["optical-logical-interface-logical-channel-assignment-attr"] = optical_logical_interface_logical_channel_assignment_attr;
+        _children["optical-logical-interface-logical-channel-assignment-attr"] = optical_logical_interface_logical_channel_assignment_attr;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2401,16 +2401,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalInterface::OpticalLogicalI
 
 }
 
-std::shared_ptr<Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

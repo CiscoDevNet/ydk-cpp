@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active-node")
     {
-        auto c = std::make_shared<ActiveNodes::ActiveNode>();
-        c->parent = this;
-        active_node.append(c);
-        return c;
+        auto ent_ = std::make_shared<ActiveNodes::ActiveNode>();
+        ent_->parent = this;
+        active_node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active_node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active_node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void ActiveNodes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ActiveNodes::clone_ptr() const
+std::shared_ptr<ydk::Entity> ActiveNodes::clone_ptr() const
 {
     return std::make_shared<ActiveNodes>();
 }
@@ -199,7 +199,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::get_name
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold")
     {
@@ -249,36 +249,36 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(watchdog_node_threshold != nullptr)
     {
-        children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = watchdog_node_threshold;
+        _children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = watchdog_node_threshold;
     }
 
     if(ltrace != nullptr)
     {
-        children["Cisco-IOS-XR-infra-ltrace-cfg:ltrace"] = ltrace;
+        _children["Cisco-IOS-XR-infra-ltrace-cfg:ltrace"] = ltrace;
     }
 
     if(clock_interface != nullptr)
     {
-        children["Cisco-IOS-XR-freqsync-cfg:clock-interface"] = clock_interface;
+        _children["Cisco-IOS-XR-freqsync-cfg:clock-interface"] = clock_interface;
     }
 
     if(ssrp_group != nullptr)
     {
-        children["Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-group"] = ssrp_group;
+        _children["Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-group"] = ssrp_group;
     }
 
     if(lpts_local != nullptr)
     {
-        children["Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local"] = lpts_local;
+        _children["Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local"] = lpts_local;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -351,7 +351,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::Watchdog
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disk-threshold")
     {
@@ -374,21 +374,21 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disk_threshold != nullptr)
     {
-        children["disk-threshold"] = disk_threshold;
+        _children["disk-threshold"] = disk_threshold;
     }
 
     if(memory_threshold != nullptr)
     {
-        children["memory-threshold"] = memory_threshold;
+        _children["memory-threshold"] = memory_threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -455,16 +455,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::Watchdog
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -561,16 +561,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::Watchdog
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -659,7 +659,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::Ltrace::
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::Ltrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::Ltrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "allocation-params")
     {
@@ -673,16 +673,16 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::Ltrace::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::Ltrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::Ltrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(allocation_params != nullptr)
     {
-        children["allocation-params"] = allocation_params;
+        _children["allocation-params"] = allocation_params;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::Ltrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -745,16 +745,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::Ltrace::
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::Ltrace::AllocationParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -833,7 +833,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clocks")
     {
@@ -847,16 +847,16 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clocks != nullptr)
     {
-        children["clocks"] = clocks;
+        _children["clocks"] = clocks;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -923,33 +923,33 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock")
     {
-        auto c = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock>();
-        c->parent = this;
-        clock_.append(c);
-        return c;
+        auto ent_ = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock>();
+        ent_->parent = this;
+        clock_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clock_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clock_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::Clocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1023,7 +1023,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frequency-synchronization")
     {
@@ -1046,21 +1046,21 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(frequency_synchronization != nullptr)
     {
-        children["frequency-synchronization"] = frequency_synchronization;
+        _children["frequency-synchronization"] = frequency_synchronization;
     }
 
     if(sync_controller != nullptr)
     {
-        children["Cisco-IOS-XR-syncc-controller-cfg:sync-controller"] = sync_controller;
+        _children["Cisco-IOS-XR-syncc-controller-cfg:sync-controller"] = sync_controller;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1164,7 +1164,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output-quality-level")
     {
@@ -1187,21 +1187,21 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(output_quality_level != nullptr)
     {
-        children["output-quality-level"] = output_quality_level;
+        _children["output-quality-level"] = output_quality_level;
     }
 
     if(input_quality_level != nullptr)
     {
-        children["input-quality-level"] = input_quality_level;
+        _children["input-quality-level"] = input_quality_level;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1322,16 +1322,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1442,16 +1442,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1550,7 +1550,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport-mode")
     {
@@ -1564,16 +1564,16 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transport_mode != nullptr)
     {
-        children["transport-mode"] = transport_mode;
+        _children["transport-mode"] = transport_mode;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1632,7 +1632,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frequency-mode")
     {
@@ -1646,16 +1646,16 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(frequency_mode != nullptr)
     {
-        children["frequency-mode"] = frequency_mode;
+        _children["frequency-mode"] = frequency_mode;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1718,7 +1718,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port-mode")
     {
@@ -1732,16 +1732,16 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(port_mode != nullptr)
     {
-        children["port-mode"] = port_mode;
+        _children["port-mode"] = port_mode;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1826,16 +1826,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1944,7 +1944,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::SsrpGrou
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::SsrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "groups")
     {
@@ -1958,16 +1958,16 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::SsrpGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(groups != nullptr)
     {
-        children["groups"] = groups;
+        _children["groups"] = groups;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::SsrpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2034,33 +2034,33 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::SsrpGrou
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
-        auto c = std::make_shared<ActiveNodes::ActiveNode::SsrpGroup::Groups::Group>();
-        c->parent = this;
-        group.append(c);
-        return c;
+        auto ent_ = std::make_shared<ActiveNodes::ActiveNode::SsrpGroup::Groups::Group>();
+        ent_->parent = this;
+        group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::SsrpGroup::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2124,16 +2124,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::SsrpGrou
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2219,7 +2219,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipolicer-local-tables")
     {
@@ -2251,26 +2251,26 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipolicer_local_tables != nullptr)
     {
-        children["ipolicer-local-tables"] = ipolicer_local_tables;
+        _children["ipolicer-local-tables"] = ipolicer_local_tables;
     }
 
     if(dynamic_flows_tables != nullptr)
     {
-        children["dynamic-flows-tables"] = dynamic_flows_tables;
+        _children["dynamic-flows-tables"] = dynamic_flows_tables;
     }
 
     if(ipolicer_local != nullptr)
     {
-        children["ipolicer-local"] = ipolicer_local;
+        _children["ipolicer-local"] = ipolicer_local;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2337,33 +2337,33 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipolicer-local-table")
     {
-        auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable>();
-        c->parent = this;
-        ipolicer_local_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable>();
+        ent_->parent = this;
+        ipolicer_local_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipolicer_local_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipolicer_local_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2428,7 +2428,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "np-flows")
     {
@@ -2442,16 +2442,16 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(np_flows != nullptr)
     {
-        children["np-flows"] = np_flows;
+        _children["np-flows"] = np_flows;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2528,33 +2528,33 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "np-flow")
     {
-        auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow>();
-        c->parent = this;
-        np_flow.append(c);
-        return c;
+        auto ent_ = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow>();
+        ent_->parent = this;
+        np_flow.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : np_flow.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : np_flow.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2618,16 +2618,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2714,33 +2714,33 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic-flows-table")
     {
-        auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable>();
-        c->parent = this;
-        dynamic_flows_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable>();
+        ent_->parent = this;
+        dynamic_flows_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dynamic_flows_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dynamic_flows_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2812,33 +2812,33 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-type")
     {
-        auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType>();
-        c->parent = this;
-        flow_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType>();
+        ent_->parent = this;
+        flow_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2912,16 +2912,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3005,7 +3005,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flows")
     {
@@ -3019,16 +3019,16 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flows != nullptr)
     {
-        children["flows"] = flows;
+        _children["flows"] = flows;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3105,33 +3105,33 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow")
     {
-        auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow>();
-        c->parent = this;
-        flow.append(c);
-        return c;
+        auto ent_ = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow>();
+        ent_->parent = this;
+        flow.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3200,7 +3200,7 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "precedences")
     {
@@ -3214,16 +3214,16 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(precedences != nullptr)
     {
-        children["precedences"] = precedences;
+        _children["precedences"] = precedences;
     }
 
-    return children;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3313,16 +3313,16 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::LptsLoca
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3397,33 +3397,33 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "preconfigured-node")
     {
-        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode>();
-        c->parent = this;
-        preconfigured_node.append(c);
-        return c;
+        auto ent_ = std::make_shared<PreconfiguredNodes::PreconfiguredNode>();
+        ent_->parent = this;
+        preconfigured_node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : preconfigured_node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : preconfigured_node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3434,7 +3434,7 @@ void PreconfiguredNodes::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::clone_ptr() const
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::clone_ptr() const
 {
     return std::make_shared<PreconfiguredNodes>();
 }
@@ -3532,7 +3532,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold")
     {
@@ -3573,31 +3573,31 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(watchdog_node_threshold != nullptr)
     {
-        children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = watchdog_node_threshold;
+        _children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = watchdog_node_threshold;
     }
 
     if(ltrace != nullptr)
     {
-        children["Cisco-IOS-XR-infra-ltrace-cfg:ltrace"] = ltrace;
+        _children["Cisco-IOS-XR-infra-ltrace-cfg:ltrace"] = ltrace;
     }
 
     if(clock_interface != nullptr)
     {
-        children["Cisco-IOS-XR-freqsync-cfg:clock-interface"] = clock_interface;
+        _children["Cisco-IOS-XR-freqsync-cfg:clock-interface"] = clock_interface;
     }
 
     if(lpts_local != nullptr)
     {
-        children["Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local"] = lpts_local;
+        _children["Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local"] = lpts_local;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3670,7 +3670,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disk-threshold")
     {
@@ -3693,21 +3693,21 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disk_threshold != nullptr)
     {
-        children["disk-threshold"] = disk_threshold;
+        _children["disk-threshold"] = disk_threshold;
     }
 
     if(memory_threshold != nullptr)
     {
-        children["memory-threshold"] = memory_threshold;
+        _children["memory-threshold"] = memory_threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3774,16 +3774,16 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3880,16 +3880,16 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3978,7 +3978,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "allocation-params")
     {
@@ -3992,16 +3992,16 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(allocation_params != nullptr)
     {
-        children["allocation-params"] = allocation_params;
+        _children["allocation-params"] = allocation_params;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::Ltrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4064,16 +4064,16 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4152,7 +4152,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clocks")
     {
@@ -4166,16 +4166,16 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clocks != nullptr)
     {
-        children["clocks"] = clocks;
+        _children["clocks"] = clocks;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4242,33 +4242,33 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock")
     {
-        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock>();
-        c->parent = this;
-        clock_.append(c);
-        return c;
+        auto ent_ = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock>();
+        ent_->parent = this;
+        clock_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clock_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clock_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4342,7 +4342,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frequency-synchronization")
     {
@@ -4365,21 +4365,21 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(frequency_synchronization != nullptr)
     {
-        children["frequency-synchronization"] = frequency_synchronization;
+        _children["frequency-synchronization"] = frequency_synchronization;
     }
 
     if(sync_controller != nullptr)
     {
-        children["Cisco-IOS-XR-syncc-controller-cfg:sync-controller"] = sync_controller;
+        _children["Cisco-IOS-XR-syncc-controller-cfg:sync-controller"] = sync_controller;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4483,7 +4483,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output-quality-level")
     {
@@ -4506,21 +4506,21 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(output_quality_level != nullptr)
     {
-        children["output-quality-level"] = output_quality_level;
+        _children["output-quality-level"] = output_quality_level;
     }
 
     if(input_quality_level != nullptr)
     {
-        children["input-quality-level"] = input_quality_level;
+        _children["input-quality-level"] = input_quality_level;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4641,16 +4641,16 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4761,16 +4761,16 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4869,7 +4869,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport-mode")
     {
@@ -4883,16 +4883,16 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transport_mode != nullptr)
     {
-        children["transport-mode"] = transport_mode;
+        _children["transport-mode"] = transport_mode;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4951,7 +4951,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frequency-mode")
     {
@@ -4965,16 +4965,16 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(frequency_mode != nullptr)
     {
-        children["frequency-mode"] = frequency_mode;
+        _children["frequency-mode"] = frequency_mode;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5037,7 +5037,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port-mode")
     {
@@ -5051,16 +5051,16 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(port_mode != nullptr)
     {
-        children["port-mode"] = port_mode;
+        _children["port-mode"] = port_mode;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5145,16 +5145,16 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5270,7 +5270,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipolicer-local-tables")
     {
@@ -5302,26 +5302,26 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipolicer_local_tables != nullptr)
     {
-        children["ipolicer-local-tables"] = ipolicer_local_tables;
+        _children["ipolicer-local-tables"] = ipolicer_local_tables;
     }
 
     if(dynamic_flows_tables != nullptr)
     {
-        children["dynamic-flows-tables"] = dynamic_flows_tables;
+        _children["dynamic-flows-tables"] = dynamic_flows_tables;
     }
 
     if(ipolicer_local != nullptr)
     {
-        children["ipolicer-local"] = ipolicer_local;
+        _children["ipolicer-local"] = ipolicer_local;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5388,33 +5388,33 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipolicer-local-table")
     {
-        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable>();
-        c->parent = this;
-        ipolicer_local_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable>();
+        ent_->parent = this;
+        ipolicer_local_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipolicer_local_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipolicer_local_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5479,7 +5479,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "np-flows")
     {
@@ -5493,16 +5493,16 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(np_flows != nullptr)
     {
-        children["np-flows"] = np_flows;
+        _children["np-flows"] = np_flows;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5579,33 +5579,33 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "np-flow")
     {
-        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow>();
-        c->parent = this;
-        np_flow.append(c);
-        return c;
+        auto ent_ = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow>();
+        ent_->parent = this;
+        np_flow.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : np_flow.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : np_flow.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5669,16 +5669,16 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::NpFlows::NpFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5765,33 +5765,33 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic-flows-table")
     {
-        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable>();
-        c->parent = this;
-        dynamic_flows_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable>();
+        ent_->parent = this;
+        dynamic_flows_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dynamic_flows_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dynamic_flows_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5863,33 +5863,33 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-type")
     {
-        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType>();
-        c->parent = this;
-        flow_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType>();
+        ent_->parent = this;
+        flow_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5963,16 +5963,16 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6056,7 +6056,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flows")
     {
@@ -6070,16 +6070,16 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flows != nullptr)
     {
-        children["flows"] = flows;
+        _children["flows"] = flows;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6156,33 +6156,33 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow")
     {
-        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow>();
-        c->parent = this;
-        flow.append(c);
-        return c;
+        auto ent_ = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow>();
+        ent_->parent = this;
+        flow.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6251,7 +6251,7 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "precedences")
     {
@@ -6265,16 +6265,16 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(precedences != nullptr)
     {
-        children["precedences"] = precedences;
+        _children["precedences"] = precedences;
     }
 
-    return children;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6364,16 +6364,16 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

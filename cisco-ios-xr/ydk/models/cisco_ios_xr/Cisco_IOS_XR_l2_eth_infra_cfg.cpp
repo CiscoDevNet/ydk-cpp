@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "egress-filtering")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> EthernetFeatures::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(egress_filtering != nullptr)
     {
-        children["egress-filtering"] = egress_filtering;
+        _children["egress-filtering"] = egress_filtering;
     }
 
     if(cfm != nullptr)
     {
-        children["Cisco-IOS-XR-ethernet-cfm-cfg:cfm"] = cfm;
+        _children["Cisco-IOS-XR-ethernet-cfm-cfg:cfm"] = cfm;
     }
 
     if(ether_link_oam != nullptr)
     {
-        children["Cisco-IOS-XR-ethernet-link-oam-cfg:ether-link-oam"] = ether_link_oam;
+        _children["Cisco-IOS-XR-ethernet-link-oam-cfg:ether-link-oam"] = ether_link_oam;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void EthernetFeatures::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> EthernetFeatures::clone_ptr() const
+std::shared_ptr<ydk::Entity> EthernetFeatures::clone_ptr() const
 {
     return std::make_shared<EthernetFeatures>();
 }
@@ -202,16 +202,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EgressFiltering
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EgressFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EgressFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EgressFiltering::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EgressFiltering::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::EgressFiltering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -296,7 +296,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::get_name_l
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traceroute-cache")
     {
@@ -319,21 +319,21 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(traceroute_cache != nullptr)
     {
-        children["traceroute-cache"] = traceroute_cache;
+        _children["traceroute-cache"] = traceroute_cache;
     }
 
     if(domains != nullptr)
     {
-        children["domains"] = domains;
+        _children["domains"] = domains;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -413,16 +413,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Traceroute
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::TracerouteCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::TracerouteCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::TracerouteCache::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::TracerouteCache::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::TracerouteCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -516,33 +516,33 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::g
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "domain")
     {
-        auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain>();
-        c->parent = this;
-        domain.append(c);
-        return c;
+        auto ent_ = std::make_shared<EthernetFeatures::Cfm::Domains::Domain>();
+        ent_->parent = this;
+        domain.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : domain.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : domain.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -618,7 +618,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "services")
     {
@@ -641,21 +641,21 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(services != nullptr)
     {
-        children["services"] = services;
+        _children["services"] = services;
     }
 
     if(domain_properties != nullptr)
     {
-        children["domain-properties"] = domain_properties;
+        _children["domain-properties"] = domain_properties;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -732,33 +732,33 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service")
     {
-        auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service>();
-        c->parent = this;
-        service.append(c);
-        return c;
+        auto ent_ = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service>();
+        ent_->parent = this;
+        service.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -875,7 +875,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "efd2")
     {
@@ -934,41 +934,41 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(efd2 != nullptr)
     {
-        children["efd2"] = efd2;
+        _children["efd2"] = efd2;
     }
 
     if(continuity_check_interval != nullptr)
     {
-        children["continuity-check-interval"] = continuity_check_interval;
+        _children["continuity-check-interval"] = continuity_check_interval;
     }
 
     if(mip_auto_creation != nullptr)
     {
-        children["mip-auto-creation"] = mip_auto_creation;
+        _children["mip-auto-creation"] = mip_auto_creation;
     }
 
     if(ais != nullptr)
     {
-        children["ais"] = ais;
+        _children["ais"] = ais;
     }
 
     if(cross_check != nullptr)
     {
-        children["cross-check"] = cross_check;
+        _children["cross-check"] = cross_check;
     }
 
     if(service_properties != nullptr)
     {
-        children["service-properties"] = service_properties;
+        _children["service-properties"] = service_properties;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1131,16 +1131,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1223,16 +1223,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1315,16 +1315,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1402,7 +1402,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmission")
     {
@@ -1416,16 +1416,16 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmission != nullptr)
     {
-        children["transmission"] = transmission;
+        _children["transmission"] = transmission;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1488,16 +1488,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1581,7 +1581,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cross-check-meps")
     {
@@ -1595,16 +1595,16 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cross_check_meps != nullptr)
     {
-        children["cross-check-meps"] = cross_check_meps;
+        _children["cross-check-meps"] = cross_check_meps;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1681,33 +1681,33 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cross-check-mep")
     {
-        auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep>();
-        c->parent = this;
-        cross_check_mep.append(c);
-        return c;
+        auto ent_ = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep>();
+        ent_->parent = this;
+        cross_check_mep.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cross_check_mep.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cross_check_mep.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1775,16 +1775,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1921,16 +1921,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2135,16 +2135,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::Cfm::Domains::D
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::Cfm::Domains::Domain::DomainProperties::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2260,7 +2260,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::g
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profiles")
     {
@@ -2274,16 +2274,16 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(profiles != nullptr)
     {
-        children["profiles"] = profiles;
+        _children["profiles"] = profiles;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2357,33 +2357,33 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profile")
     {
-        auto c = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile>();
-        c->parent = this;
-        profile.append(c);
-        return c;
+        auto ent_ = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile>();
+        ent_->parent = this;
+        profile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : profile.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : profile.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2487,7 +2487,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
@@ -2519,26 +2519,26 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action != nullptr)
     {
-        children["action"] = action;
+        _children["action"] = action;
     }
 
     if(require_remote != nullptr)
     {
-        children["require-remote"] = require_remote;
+        _children["require-remote"] = require_remote;
     }
 
     if(link_monitoring != nullptr)
     {
-        children["link-monitoring"] = link_monitoring;
+        _children["link-monitoring"] = link_monitoring;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2703,16 +2703,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2883,16 +2883,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3008,7 +3008,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "symbol-period")
     {
@@ -3049,31 +3049,31 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(symbol_period != nullptr)
     {
-        children["symbol-period"] = symbol_period;
+        _children["symbol-period"] = symbol_period;
     }
 
     if(frame_period != nullptr)
     {
-        children["frame-period"] = frame_period;
+        _children["frame-period"] = frame_period;
     }
 
     if(frame_seconds != nullptr)
     {
-        children["frame-seconds"] = frame_seconds;
+        _children["frame-seconds"] = frame_seconds;
     }
 
     if(frame != nullptr)
     {
-        children["frame"] = frame;
+        _children["frame"] = frame;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3145,7 +3145,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "window")
     {
@@ -3168,21 +3168,21 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(window != nullptr)
     {
-        children["window"] = window;
+        _children["window"] = window;
     }
 
     if(threshold != nullptr)
     {
-        children["threshold"] = threshold;
+        _children["threshold"] = threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3249,16 +3249,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3363,16 +3363,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3484,7 +3484,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "window")
     {
@@ -3507,21 +3507,21 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(window != nullptr)
     {
-        children["window"] = window;
+        _children["window"] = window;
     }
 
     if(threshold != nullptr)
     {
-        children["threshold"] = threshold;
+        _children["threshold"] = threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3588,16 +3588,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3702,16 +3702,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3825,7 +3825,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
@@ -3839,16 +3839,16 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold != nullptr)
     {
-        children["threshold"] = threshold;
+        _children["threshold"] = threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3921,16 +3921,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4014,7 +4014,7 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
@@ -4028,16 +4028,16 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold != nullptr)
     {
-        children["threshold"] = threshold;
+        _children["threshold"] = threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4118,16 +4118,16 @@ std::vector<std::pair<std::string, LeafData> > EthernetFeatures::EtherLinkOam::P
 
 }
 
-std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > RegisterIdToken::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> RegisterIdToken::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RegisterIdToken::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> RegisterIdToken::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RegisterIdToken::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RegisterIdToken::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void RegisterIdToken::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void RegisterIdToken::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> RegisterIdToken::clone_ptr() const
+std::shared_ptr<ydk::Entity> RegisterIdToken::clone_ptr() const
 {
     return std::make_shared<RegisterIdToken>();
 }
@@ -188,16 +188,16 @@ std::vector<std::pair<std::string, LeafData> > RegisterIdToken::Input::get_name_
 
 }
 
-std::shared_ptr<Entity> RegisterIdToken::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RegisterIdToken::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RegisterIdToken::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RegisterIdToken::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RegisterIdToken::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -283,16 +283,16 @@ std::vector<std::pair<std::string, LeafData> > RegisterIdToken::Output::get_name
 
 }
 
-std::shared_ptr<Entity> RegisterIdToken::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RegisterIdToken::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RegisterIdToken::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RegisterIdToken::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RegisterIdToken::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -361,7 +361,7 @@ std::vector<std::pair<std::string, LeafData> > DeRegister::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> DeRegister::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DeRegister::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output")
     {
@@ -375,16 +375,16 @@ std::shared_ptr<Entity> DeRegister::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeRegister::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DeRegister::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void DeRegister::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -395,7 +395,7 @@ void DeRegister::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DeRegister::clone_ptr() const
+std::shared_ptr<ydk::Entity> DeRegister::clone_ptr() const
 {
     return std::make_shared<DeRegister>();
 }
@@ -475,16 +475,16 @@ std::vector<std::pair<std::string, LeafData> > DeRegister::Output::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> DeRegister::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DeRegister::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeRegister::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DeRegister::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DeRegister::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -553,7 +553,7 @@ std::vector<std::pair<std::string, LeafData> > RenewId::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> RenewId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RenewId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output")
     {
@@ -567,16 +567,16 @@ std::shared_ptr<Entity> RenewId::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RenewId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RenewId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void RenewId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -587,7 +587,7 @@ void RenewId::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> RenewId::clone_ptr() const
+std::shared_ptr<ydk::Entity> RenewId::clone_ptr() const
 {
     return std::make_shared<RenewId>();
 }
@@ -667,16 +667,16 @@ std::vector<std::pair<std::string, LeafData> > RenewId::Output::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> RenewId::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RenewId::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RenewId::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RenewId::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RenewId::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -745,7 +745,7 @@ std::vector<std::pair<std::string, LeafData> > RenewAuth::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> RenewAuth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RenewAuth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output")
     {
@@ -759,16 +759,16 @@ std::shared_ptr<Entity> RenewAuth::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RenewAuth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RenewAuth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void RenewAuth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -779,7 +779,7 @@ void RenewAuth::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> RenewAuth::clone_ptr() const
+std::shared_ptr<ydk::Entity> RenewAuth::clone_ptr() const
 {
     return std::make_shared<RenewAuth>();
 }
@@ -859,16 +859,16 @@ std::vector<std::pair<std::string, LeafData> > RenewAuth::Output::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> RenewAuth::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RenewAuth::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RenewAuth::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RenewAuth::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RenewAuth::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -941,7 +941,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Licensing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -964,21 +964,21 @@ std::shared_ptr<Entity> Licensing::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -989,7 +989,7 @@ void Licensing::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Licensing::clone_ptr() const
+std::shared_ptr<ydk::Entity> Licensing::clone_ptr() const
 {
     return std::make_shared<Licensing>();
 }
@@ -1086,7 +1086,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::Config::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Licensing::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "privacy")
     {
@@ -1118,26 +1118,26 @@ std::shared_ptr<Entity> Licensing::Config::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(privacy != nullptr)
     {
-        children["privacy"] = privacy;
+        _children["privacy"] = privacy;
     }
 
     if(utility != nullptr)
     {
-        children["utility"] = utility;
+        _children["utility"] = utility;
     }
 
     if(transport != nullptr)
     {
-        children["transport"] = transport;
+        _children["transport"] = transport;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1227,16 +1227,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::Config::Privacy::get_n
 
 }
 
-std::shared_ptr<Entity> Licensing::Config::Privacy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::Config::Privacy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::Config::Privacy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::Config::Privacy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::Config::Privacy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1327,7 +1327,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::Config::Utility::get_n
 
 }
 
-std::shared_ptr<Entity> Licensing::Config::Utility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::Config::Utility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "customer-info")
     {
@@ -1341,16 +1341,16 @@ std::shared_ptr<Entity> Licensing::Config::Utility::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::Config::Utility::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::Config::Utility::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(customer_info != nullptr)
     {
-        children["customer-info"] = customer_info;
+        _children["customer-info"] = customer_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::Config::Utility::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1450,16 +1450,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::Config::Utility::Custo
 
 }
 
-std::shared_ptr<Entity> Licensing::Config::Utility::CustomerInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::Config::Utility::CustomerInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::Config::Utility::CustomerInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::Config::Utility::CustomerInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::Config::Utility::CustomerInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1600,7 +1600,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::Config::Transport::get
 
 }
 
-std::shared_ptr<Entity> Licensing::Config::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::Config::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport-smart")
     {
@@ -1614,16 +1614,16 @@ std::shared_ptr<Entity> Licensing::Config::Transport::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::Config::Transport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::Config::Transport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transport_smart != nullptr)
     {
-        children["transport-smart"] = transport_smart;
+        _children["transport-smart"] = transport_smart;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::Config::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1704,7 +1704,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::Config::Transport::Tra
 
 }
 
-std::shared_ptr<Entity> Licensing::Config::Transport::TransportSmart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::Config::Transport::TransportSmart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "urls")
     {
@@ -1718,16 +1718,16 @@ std::shared_ptr<Entity> Licensing::Config::Transport::TransportSmart::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::Config::Transport::TransportSmart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::Config::Transport::TransportSmart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(urls != nullptr)
     {
-        children["urls"] = urls;
+        _children["urls"] = urls;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::Config::Transport::TransportSmart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1807,16 +1807,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::Config::Transport::Tra
 
 }
 
-std::shared_ptr<Entity> Licensing::Config::Transport::TransportSmart::Urls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::Config::Transport::TransportSmart::Urls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::Config::Transport::TransportSmart::Urls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::Config::Transport::TransportSmart::Urls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::Config::Transport::TransportSmart::Urls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1915,7 +1915,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Licensing::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state-info")
     {
@@ -1929,16 +1929,16 @@ std::shared_ptr<Entity> Licensing::State::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state_info != nullptr)
     {
-        children["state-info"] = state_info;
+        _children["state-info"] = state_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2074,7 +2074,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::get_
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "registration")
     {
@@ -2141,64 +2141,64 @@ std::shared_ptr<Entity> Licensing::State::StateInfo::get_child_by_name(const std
 
     if(child_yang_name == "usage")
     {
-        auto c = std::make_shared<Licensing::State::StateInfo::Usage>();
-        c->parent = this;
-        usage.append(c);
-        return c;
+        auto ent_ = std::make_shared<Licensing::State::StateInfo::Usage>();
+        ent_->parent = this;
+        usage.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(registration != nullptr)
     {
-        children["registration"] = registration;
+        _children["registration"] = registration;
     }
 
     if(authorization != nullptr)
     {
-        children["authorization"] = authorization;
+        _children["authorization"] = authorization;
     }
 
     if(utility != nullptr)
     {
-        children["utility"] = utility;
+        _children["utility"] = utility;
     }
 
     if(transport != nullptr)
     {
-        children["transport"] = transport;
+        _children["transport"] = transport;
     }
 
     if(privacy != nullptr)
     {
-        children["privacy"] = privacy;
+        _children["privacy"] = privacy;
     }
 
     if(evaluation != nullptr)
     {
-        children["evaluation"] = evaluation;
+        _children["evaluation"] = evaluation;
     }
 
     if(udi != nullptr)
     {
-        children["udi"] = udi;
+        _children["udi"] = udi;
     }
 
-    count = 0;
-    for (auto c : usage.entities())
+    count_ = 0;
+    for (auto ent_ : usage.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::State::StateInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2295,7 +2295,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Regi
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Registration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Registration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "registration-in-progress")
     {
@@ -2336,31 +2336,31 @@ std::shared_ptr<Entity> Licensing::State::StateInfo::Registration::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Registration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Registration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(registration_in_progress != nullptr)
     {
-        children["registration-in-progress"] = registration_in_progress;
+        _children["registration-in-progress"] = registration_in_progress;
     }
 
     if(registration_failed != nullptr)
     {
-        children["registration-failed"] = registration_failed;
+        _children["registration-failed"] = registration_failed;
     }
 
     if(registration_retry != nullptr)
     {
-        children["registration-retry"] = registration_retry;
+        _children["registration-retry"] = registration_retry;
     }
 
     if(registration_complete != nullptr)
     {
-        children["registration-complete"] = registration_complete;
+        _children["registration-complete"] = registration_complete;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Registration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2446,16 +2446,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Regi
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Registration::RegistrationInProgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Registration::RegistrationInProgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Registration::RegistrationInProgress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Registration::RegistrationInProgress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Registration::RegistrationInProgress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2535,16 +2535,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Regi
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Registration::RegistrationFailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Registration::RegistrationFailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Registration::RegistrationFailed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Registration::RegistrationFailed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Registration::RegistrationFailed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2638,16 +2638,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Regi
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Registration::RegistrationRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Registration::RegistrationRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Registration::RegistrationRetry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Registration::RegistrationRetry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Registration::RegistrationRetry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2771,16 +2771,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Regi
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Registration::RegistrationComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Registration::RegistrationComplete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Registration::RegistrationComplete::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Registration::RegistrationComplete::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Registration::RegistrationComplete::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2955,7 +2955,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Auth
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authorization-none")
     {
@@ -3023,46 +3023,46 @@ std::shared_ptr<Entity> Licensing::State::StateInfo::Authorization::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Authorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Authorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authorization_none != nullptr)
     {
-        children["authorization-none"] = authorization_none;
+        _children["authorization-none"] = authorization_none;
     }
 
     if(authorization_eval != nullptr)
     {
-        children["authorization-eval"] = authorization_eval;
+        _children["authorization-eval"] = authorization_eval;
     }
 
     if(authorization_eval_expired != nullptr)
     {
-        children["authorization-eval-expired"] = authorization_eval_expired;
+        _children["authorization-eval-expired"] = authorization_eval_expired;
     }
 
     if(authorization_authorized != nullptr)
     {
-        children["authorization-authorized"] = authorization_authorized;
+        _children["authorization-authorized"] = authorization_authorized;
     }
 
     if(authorization_authorized_reservation != nullptr)
     {
-        children["authorization-authorized-reservation"] = authorization_authorized_reservation;
+        _children["authorization-authorized-reservation"] = authorization_authorized_reservation;
     }
 
     if(authorization_out_of_compliance != nullptr)
     {
-        children["authorization-out-of-compliance"] = authorization_out_of_compliance;
+        _children["authorization-out-of-compliance"] = authorization_out_of_compliance;
     }
 
     if(authorization_authorization_expired != nullptr)
     {
-        children["authorization-authorization-expired"] = authorization_authorization_expired;
+        _children["authorization-authorization-expired"] = authorization_authorization_expired;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Authorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3134,16 +3134,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Auth
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Authorization::AuthorizationNone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Authorization::AuthorizationNone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Authorization::AuthorizationNone::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Authorization::AuthorizationNone::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Authorization::AuthorizationNone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3207,16 +3207,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Auth
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Authorization::AuthorizationEval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Authorization::AuthorizationEval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Authorization::AuthorizationEval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Authorization::AuthorizationEval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Authorization::AuthorizationEval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3292,16 +3292,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Auth
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Authorization::AuthorizationEvalExpired::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3393,16 +3393,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Auth
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Authorization::AuthorizationAuthorized::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Authorization::AuthorizationAuthorized::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Authorization::AuthorizationAuthorized::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Authorization::AuthorizationAuthorized::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Authorization::AuthorizationAuthorized::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3518,16 +3518,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Auth
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Authorization::AuthorizationAuthorizedReservation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3623,16 +3623,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Auth
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Authorization::AuthorizationOutOfCompliance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3774,16 +3774,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Auth
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Authorization::AuthorizationAuthorizationExpired::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3912,7 +3912,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Util
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Utility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Utility::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reporting-times")
     {
@@ -3935,21 +3935,21 @@ std::shared_ptr<Entity> Licensing::State::StateInfo::Utility::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Utility::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Utility::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(reporting_times != nullptr)
     {
-        children["reporting-times"] = reporting_times;
+        _children["reporting-times"] = reporting_times;
     }
 
     if(customer_info != nullptr)
     {
-        children["customer-info"] = customer_info;
+        _children["customer-info"] = customer_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Utility::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4047,16 +4047,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Util
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Utility::ReportingTimes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Utility::ReportingTimes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Utility::ReportingTimes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Utility::ReportingTimes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Utility::ReportingTimes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4186,16 +4186,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Util
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Utility::CustomerInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Utility::CustomerInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Utility::CustomerInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Utility::CustomerInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Utility::CustomerInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4336,7 +4336,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Tran
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "url-settings")
     {
@@ -4350,16 +4350,16 @@ std::shared_ptr<Entity> Licensing::State::StateInfo::Transport::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Transport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Transport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(url_settings != nullptr)
     {
-        children["url-settings"] = url_settings;
+        _children["url-settings"] = url_settings;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4439,16 +4439,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Tran
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Transport::UrlSettings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Transport::UrlSettings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Transport::UrlSettings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Transport::UrlSettings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Transport::UrlSettings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4538,16 +4538,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Priv
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Privacy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Privacy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Privacy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Privacy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Privacy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4646,7 +4646,7 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Eval
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Evaluation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Evaluation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eval-period-left")
     {
@@ -4669,21 +4669,21 @@ std::shared_ptr<Entity> Licensing::State::StateInfo::Evaluation::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Evaluation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Evaluation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(eval_period_left != nullptr)
     {
-        children["eval-period-left"] = eval_period_left;
+        _children["eval-period-left"] = eval_period_left;
     }
 
     if(eval_expire_time != nullptr)
     {
-        children["eval-expire-time"] = eval_expire_time;
+        _children["eval-expire-time"] = eval_expire_time;
     }
 
-    return children;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Evaluation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4769,16 +4769,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Eval
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Evaluation::EvalPeriodLeft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Evaluation::EvalPeriodLeft::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Evaluation::EvalPeriodLeft::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Evaluation::EvalPeriodLeft::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Evaluation::EvalPeriodLeft::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4854,16 +4854,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Eval
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Evaluation::EvalExpireTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Evaluation::EvalExpireTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Evaluation::EvalExpireTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Evaluation::EvalExpireTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Evaluation::EvalExpireTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4963,16 +4963,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Udi:
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Udi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Udi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Udi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Udi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Udi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5137,16 +5137,16 @@ std::vector<std::pair<std::string, LeafData> > Licensing::State::StateInfo::Usag
 
 }
 
-std::shared_ptr<Entity> Licensing::State::StateInfo::Usage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Licensing::State::StateInfo::Usage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Licensing::State::StateInfo::Usage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Licensing::State::StateInfo::Usage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Licensing::State::StateInfo::Usage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

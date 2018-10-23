@@ -71,50 +71,50 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingOperData::get_name_
 
 }
 
-std::shared_ptr<Entity> MplsForwardingOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsForwardingOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mpls-local-label")
     {
-        auto c = std::make_shared<MplsForwardingOperData::MplsLocalLabel>();
-        c->parent = this;
-        mpls_local_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsForwardingOperData::MplsLocalLabel>();
+        ent_->parent = this;
+        mpls_local_label.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mpls-local-label-statistics")
     {
-        auto c = std::make_shared<MplsForwardingOperData::MplsLocalLabelStatistics>();
-        c->parent = this;
-        mpls_local_label_statistics.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsForwardingOperData::MplsLocalLabelStatistics>();
+        ent_->parent = this;
+        mpls_local_label_statistics.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsForwardingOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mpls_local_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mpls_local_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : mpls_local_label_statistics.entities())
+    count_ = 0;
+    for (auto ent_ : mpls_local_label_statistics.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsForwardingOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -125,7 +125,7 @@ void MplsForwardingOperData::set_filter(const std::string & value_path, YFilter 
 {
 }
 
-std::shared_ptr<Entity> MplsForwardingOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> MplsForwardingOperData::clone_ptr() const
 {
     return std::make_shared<MplsForwardingOperData>();
 }
@@ -222,7 +222,7 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingOperData::MplsLocal
 
 }
 
-std::shared_ptr<Entity> MplsForwardingOperData::MplsLocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsForwardingOperData::MplsLocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "connection-information")
     {
@@ -235,34 +235,34 @@ std::shared_ptr<Entity> MplsForwardingOperData::MplsLocalLabel::get_child_by_nam
 
     if(child_yang_name == "forwarding-paths")
     {
-        auto c = std::make_shared<MplsForwardingOperData::MplsLocalLabel::ForwardingPaths>();
-        c->parent = this;
-        forwarding_paths.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsForwardingOperData::MplsLocalLabel::ForwardingPaths>();
+        ent_->parent = this;
+        forwarding_paths.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingOperData::MplsLocalLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsForwardingOperData::MplsLocalLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(connection_information != nullptr)
     {
-        children["connection-information"] = connection_information;
+        _children["connection-information"] = connection_information;
     }
 
-    count = 0;
-    for (auto c : forwarding_paths.entities())
+    count_ = 0;
+    for (auto ent_ : forwarding_paths.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsForwardingOperData::MplsLocalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -335,16 +335,16 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingOperData::MplsLocal
 
 }
 
-std::shared_ptr<Entity> MplsForwardingOperData::MplsLocalLabel::ConnectionInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsForwardingOperData::MplsLocalLabel::ConnectionInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingOperData::MplsLocalLabel::ConnectionInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsForwardingOperData::MplsLocalLabel::ConnectionInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsForwardingOperData::MplsLocalLabel::ConnectionInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -431,7 +431,7 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingOperData::MplsLocal
 
 }
 
-std::shared_ptr<Entity> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "outgoing-interface")
     {
@@ -463,26 +463,26 @@ std::shared_ptr<Entity> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(outgoing_interface != nullptr)
     {
-        children["outgoing-interface"] = outgoing_interface;
+        _children["outgoing-interface"] = outgoing_interface;
     }
 
     if(outgoing_label != nullptr)
     {
-        children["outgoing-label"] = outgoing_label;
+        _children["outgoing-label"] = outgoing_label;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -545,16 +545,16 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingOperData::MplsLocal
 
 }
 
-std::shared_ptr<Entity> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -653,16 +653,16 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingOperData::MplsLocal
 
 }
 
-std::shared_ptr<Entity> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::OutgoingLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -785,16 +785,16 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingOperData::MplsLocal
 
 }
 
-std::shared_ptr<Entity> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -894,16 +894,16 @@ std::vector<std::pair<std::string, LeafData> > MplsForwardingOperData::MplsLocal
 
 }
 
-std::shared_ptr<Entity> MplsForwardingOperData::MplsLocalLabelStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsForwardingOperData::MplsLocalLabelStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsForwardingOperData::MplsLocalLabelStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsForwardingOperData::MplsLocalLabelStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsForwardingOperData::MplsLocalLabelStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

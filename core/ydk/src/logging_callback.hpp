@@ -28,6 +28,8 @@ typedef void (*logging_callback)(const char *msg);
 void set_logging_callback(const char* level, logging_callback func);
 logging_callback get_logging_callback(const char* level);
 
+void set_libyang_logging_callback();
+
 static const char trace [] = "trace";
 static const char debug [] = "debug";
 static const char info [] = "info";

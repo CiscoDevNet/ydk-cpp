@@ -34,6 +34,7 @@
 #include "restconf_provider.hpp"
 #include "types.hpp"
 #include "logger.hpp"
+#include "common_utilities.hpp"
 
 using namespace std;
 
@@ -76,6 +77,44 @@ EncodingFormat RestconfServiceProvider::get_encoding() const
 const path::Session& RestconfServiceProvider::get_session() const
 {
     return session;
+}
+
+static string get_rpc(const string & operation)
+{
+    string rpc;
+    if (operation == "create") {
+        rpc = "ydk:create";
+    }
+    else if (operation == "update") {
+    	rpc = "ydk:update";
+    }
+    else if (operation == "delete") {
+    	rpc = "ydk:delete";
+    }
+    else if (operation == "read") {
+    	rpc = "ydk:read";
+    }
+    else {
+        YLOG_ERROR("RestconfServiceProvider::execute_operation: Operation '{}' is not supported", operation);
+        throw(YServiceProviderError("NetconfServiceProvider::execute_operation: Operation is not supported"));
+    }
+    return rpc;
+}
+
+shared_ptr<Entity>
+RestconfServiceProvider::execute_operation(const string & operation, Entity & entity, map<string,string> params)
+{
+    string rpc = get_rpc(operation);
+    string data_tag = (operation == "read") ? "filter" : "entity";
+    return execute_rpc(*this, entity, rpc, data_tag, (params["mode"] == "config"));
+}
+
+vector<shared_ptr<Entity>>
+RestconfServiceProvider::execute_operation(const string & operation, vector<Entity*> entity_list, map<string,string> params)
+{
+    string rpc = get_rpc(operation);
+    string data_tag = (operation == "read") ? "filter" : "entity";
+    return execute_rpc(*this, entity_list, rpc, data_tag, (params["mode"] == "config"));
 }
 
 }

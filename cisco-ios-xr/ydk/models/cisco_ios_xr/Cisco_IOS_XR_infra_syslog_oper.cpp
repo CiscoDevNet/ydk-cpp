@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > GetSyslog::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> GetSyslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSyslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> GetSyslog::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSyslog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSyslog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void GetSyslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void GetSyslog::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> GetSyslog::clone_ptr() const
+std::shared_ptr<ydk::Entity> GetSyslog::clone_ptr() const
 {
     return std::make_shared<GetSyslog>();
 }
@@ -184,7 +184,7 @@ std::vector<std::pair<std::string, LeafData> > GetSyslog::Input::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> GetSyslog::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSyslog::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "filters")
     {
@@ -198,16 +198,16 @@ std::shared_ptr<Entity> GetSyslog::Input::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSyslog::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(filters != nullptr)
     {
-        children["filters"] = filters;
+        _children["filters"] = filters;
     }
 
-    return children;
+    return _children;
 }
 
 void GetSyslog::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -277,16 +277,16 @@ std::vector<std::pair<std::string, LeafData> > GetSyslog::Input::Filters::get_na
 
 }
 
-std::shared_ptr<Entity> GetSyslog::Input::Filters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSyslog::Input::Filters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Input::Filters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSyslog::Input::Filters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GetSyslog::Input::Filters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -372,7 +372,7 @@ std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> GetSyslog::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSyslog::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -386,16 +386,16 @@ std::shared_ptr<Entity> GetSyslog::Output::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSyslog::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    return children;
+    return _children;
 }
 
 void GetSyslog::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -461,7 +461,7 @@ std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::Data::get_name
 
 }
 
-std::shared_ptr<Entity> GetSyslog::Output::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSyslog::Output::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "syslog")
     {
@@ -475,16 +475,16 @@ std::shared_ptr<Entity> GetSyslog::Output::Data::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSyslog::Output::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(syslog != nullptr)
     {
-        children["syslog"] = syslog;
+        _children["syslog"] = syslog;
     }
 
-    return children;
+    return _children;
 }
 
 void GetSyslog::Output::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -550,7 +550,7 @@ std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::Data::Syslog::
 
 }
 
-std::shared_ptr<Entity> GetSyslog::Output::Data::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSyslog::Output::Data::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "messages")
     {
@@ -564,16 +564,16 @@ std::shared_ptr<Entity> GetSyslog::Output::Data::Syslog::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::Data::Syslog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSyslog::Output::Data::Syslog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(messages != nullptr)
     {
-        children["messages"] = messages;
+        _children["messages"] = messages;
     }
 
-    return children;
+    return _children;
 }
 
 void GetSyslog::Output::Data::Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -647,33 +647,33 @@ std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::Data::Syslog::
 
 }
 
-std::shared_ptr<Entity> GetSyslog::Output::Data::Syslog::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSyslog::Output::Data::Syslog::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "message")
     {
-        auto c = std::make_shared<GetSyslog::Output::Data::Syslog::Messages::Message>();
-        c->parent = this;
-        message.append(c);
-        return c;
+        auto ent_ = std::make_shared<GetSyslog::Output::Data::Syslog::Messages::Message>();
+        ent_->parent = this;
+        message.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::Data::Syslog::Messages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSyslog::Output::Data::Syslog::Messages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : message.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : message.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GetSyslog::Output::Data::Syslog::Messages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -784,16 +784,16 @@ std::vector<std::pair<std::string, LeafData> > GetSyslog::Output::Data::Syslog::
 
 }
 
-std::shared_ptr<Entity> GetSyslog::Output::Data::Syslog::Messages::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSyslog::Output::Data::Syslog::Messages::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSyslog::Output::Data::Syslog::Messages::Message::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSyslog::Output::Data::Syslog::Messages::Message::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GetSyslog::Output::Data::Syslog::Messages::Message::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -972,7 +972,7 @@ std::vector<std::pair<std::string, LeafData> > Logging::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "history")
     {
@@ -986,16 +986,16 @@ std::shared_ptr<Entity> Logging::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Logging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Logging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(history != nullptr)
     {
-        children["history"] = history;
+        _children["history"] = history;
     }
 
-    return children;
+    return _children;
 }
 
 void Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1006,7 +1006,7 @@ void Logging::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Logging::clone_ptr() const
+std::shared_ptr<ydk::Entity> Logging::clone_ptr() const
 {
     return std::make_shared<Logging>();
 }
@@ -1090,16 +1090,16 @@ std::vector<std::pair<std::string, LeafData> > Logging::History::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Logging::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Logging::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Logging::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Logging::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Logging::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1190,7 +1190,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logging-files")
     {
@@ -1231,31 +1231,31 @@ std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(logging_files != nullptr)
     {
-        children["logging-files"] = logging_files;
+        _children["logging-files"] = logging_files;
     }
 
     if(an_remote_servers != nullptr)
     {
-        children["an-remote-servers"] = an_remote_servers;
+        _children["an-remote-servers"] = an_remote_servers;
     }
 
     if(messages != nullptr)
     {
-        children["messages"] = messages;
+        _children["messages"] = messages;
     }
 
     if(logging_statistics != nullptr)
     {
-        children["logging-statistics"] = logging_statistics;
+        _children["logging-statistics"] = logging_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1266,7 +1266,7 @@ void Syslog::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Syslog::clone_ptr() const
+std::shared_ptr<ydk::Entity> Syslog::clone_ptr() const
 {
     return std::make_shared<Syslog>();
 }
@@ -1354,33 +1354,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingFiles::get_name_le
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingFiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingFiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "file-log-detail")
     {
-        auto c = std::make_shared<Syslog::LoggingFiles::FileLogDetail>();
-        c->parent = this;
-        file_log_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::LoggingFiles::FileLogDetail>();
+        ent_->parent = this;
+        file_log_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingFiles::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : file_log_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : file_log_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::LoggingFiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1450,16 +1450,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingFiles::FileLogDeta
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingFiles::FileLogDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingFiles::FileLogDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::FileLogDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingFiles::FileLogDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingFiles::FileLogDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1553,33 +1553,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::AnRemoteServers::get_name
 
 }
 
-std::shared_ptr<Entity> Syslog::AnRemoteServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::AnRemoteServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "an-remote-log-server")
     {
-        auto c = std::make_shared<Syslog::AnRemoteServers::AnRemoteLogServer>();
-        c->parent = this;
-        an_remote_log_server.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::AnRemoteServers::AnRemoteLogServer>();
+        ent_->parent = this;
+        an_remote_log_server.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::AnRemoteServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::AnRemoteServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : an_remote_log_server.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : an_remote_log_server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::AnRemoteServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1657,16 +1657,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::AnRemoteServers::AnRemote
 
 }
 
-std::shared_ptr<Entity> Syslog::AnRemoteServers::AnRemoteLogServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::AnRemoteServers::AnRemoteLogServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::AnRemoteServers::AnRemoteLogServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::AnRemoteServers::AnRemoteLogServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::AnRemoteServers::AnRemoteLogServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1780,33 +1780,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Messages::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Syslog::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "message")
     {
-        auto c = std::make_shared<Syslog::Messages::Message>();
-        c->parent = this;
-        message.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Messages::Message>();
+        ent_->parent = this;
+        message.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Messages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : message.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : message.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Messages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1917,16 +1917,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Messages::Message::get_na
 
 }
 
-std::shared_ptr<Entity> Syslog::Messages::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Messages::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::Message::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Messages::Message::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Messages::Message::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2161,7 +2161,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::get_na
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logging-stats")
     {
@@ -2210,88 +2210,88 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
 
     if(child_yang_name == "remote-logging-stat")
     {
-        auto c = std::make_shared<Syslog::LoggingStatistics::RemoteLoggingStat>();
-        c->parent = this;
-        remote_logging_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::LoggingStatistics::RemoteLoggingStat>();
+        ent_->parent = this;
+        remote_logging_stat.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "tls-remote-logging-stat")
     {
-        auto c = std::make_shared<Syslog::LoggingStatistics::TlsRemoteLoggingStat>();
-        c->parent = this;
-        tls_remote_logging_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::LoggingStatistics::TlsRemoteLoggingStat>();
+        ent_->parent = this;
+        tls_remote_logging_stat.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "file-logging-stat")
     {
-        auto c = std::make_shared<Syslog::LoggingStatistics::FileLoggingStat>();
-        c->parent = this;
-        file_logging_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::LoggingStatistics::FileLoggingStat>();
+        ent_->parent = this;
+        file_logging_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(logging_stats != nullptr)
     {
-        children["logging-stats"] = logging_stats;
+        _children["logging-stats"] = logging_stats;
     }
 
     if(console_logging_stats != nullptr)
     {
-        children["console-logging-stats"] = console_logging_stats;
+        _children["console-logging-stats"] = console_logging_stats;
     }
 
     if(monitor_logging_stats != nullptr)
     {
-        children["monitor-logging-stats"] = monitor_logging_stats;
+        _children["monitor-logging-stats"] = monitor_logging_stats;
     }
 
     if(trap_logging_stats != nullptr)
     {
-        children["trap-logging-stats"] = trap_logging_stats;
+        _children["trap-logging-stats"] = trap_logging_stats;
     }
 
     if(buffer_logging_stats != nullptr)
     {
-        children["buffer-logging-stats"] = buffer_logging_stats;
+        _children["buffer-logging-stats"] = buffer_logging_stats;
     }
 
-    count = 0;
-    for (auto c : remote_logging_stat.entities())
+    count_ = 0;
+    for (auto ent_ : remote_logging_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : tls_remote_logging_stat.entities())
+    count_ = 0;
+    for (auto ent_ : tls_remote_logging_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : file_logging_stat.entities())
+    count_ = 0;
+    for (auto ent_ : file_logging_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::LoggingStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2369,16 +2369,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::Loggin
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::LoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingStatistics::LoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::LoggingStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingStatistics::LoggingStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingStatistics::LoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2496,16 +2496,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::Consol
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::ConsoleLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingStatistics::ConsoleLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::ConsoleLoggingStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingStatistics::ConsoleLoggingStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingStatistics::ConsoleLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2623,16 +2623,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::Monito
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::MonitorLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingStatistics::MonitorLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::MonitorLoggingStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingStatistics::MonitorLoggingStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingStatistics::MonitorLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2750,16 +2750,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::TrapLo
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::TrapLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingStatistics::TrapLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::TrapLoggingStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingStatistics::TrapLoggingStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingStatistics::TrapLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2877,16 +2877,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::Buffer
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::BufferLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingStatistics::BufferLoggingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::BufferLoggingStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingStatistics::BufferLoggingStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingStatistics::BufferLoggingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2996,16 +2996,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::Remote
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::RemoteLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingStatistics::RemoteLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::RemoteLoggingStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingStatistics::RemoteLoggingStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingStatistics::RemoteLoggingStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3095,16 +3095,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::TlsRem
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingStatistics::TlsRemoteLoggingStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3194,16 +3194,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingStatistics::FileLo
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingStatistics::FileLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingStatistics::FileLoggingStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::FileLoggingStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingStatistics::FileLoggingStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingStatistics::FileLoggingStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

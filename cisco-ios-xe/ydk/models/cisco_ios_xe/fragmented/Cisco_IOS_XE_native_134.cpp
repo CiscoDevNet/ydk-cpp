@@ -73,16 +73,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Level12::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Level12::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Level12::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Level12::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Level12::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -196,16 +196,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Intervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Intervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Intervals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Intervals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::SpfInterval::Intervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -305,16 +305,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Bfd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -408,33 +408,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-list")
     {
-        auto c = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList>();
-        c->parent = this;
-        prefix_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList>();
+        ent_->parent = this;
+        prefix_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::DistributeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -505,7 +505,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in")
     {
@@ -519,16 +519,16 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeLis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(in != nullptr)
     {
-        children["in"] = in;
+        _children["in"] = in;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -597,7 +597,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
@@ -611,16 +611,16 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeLis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -824,7 +824,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ATM-subinterface")
     {
@@ -865,31 +865,31 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeLis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(atm_subinterface != nullptr)
     {
-        children["ATM-subinterface"] = atm_subinterface;
+        _children["ATM-subinterface"] = atm_subinterface;
     }
 
     if(atm_acrsubinterface != nullptr)
     {
-        children["ATM-ACRsubinterface"] = atm_acrsubinterface;
+        _children["ATM-ACRsubinterface"] = atm_acrsubinterface;
     }
 
     if(lisp_subinterface != nullptr)
     {
-        children["LISP-subinterface"] = lisp_subinterface;
+        _children["LISP-subinterface"] = lisp_subinterface;
     }
 
     if(port_channel_subinterface != nullptr)
     {
-        children["Port-channel-subinterface"] = port_channel_subinterface;
+        _children["Port-channel-subinterface"] = port_channel_subinterface;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1278,16 +1278,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1356,16 +1356,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMACRsubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMACRsubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1434,16 +1434,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::LISPSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::LISPSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1512,16 +1512,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::PortChannelSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::PortChannelSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::DistributeList::PrefixList::In::Interface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1597,7 +1597,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
@@ -1611,16 +1611,16 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(route != nullptr)
     {
-        children["route"] = route;
+        _children["route"] = route;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1686,7 +1686,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "priority")
     {
@@ -1700,16 +1700,16 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(priority != nullptr)
     {
-        children["priority"] = priority;
+        _children["priority"] = priority;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1775,7 +1775,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high")
     {
@@ -1789,16 +1789,16 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(high != nullptr)
     {
-        children["high"] = high;
+        _children["high"] = high;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1864,16 +1864,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::High::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::High::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Ipv6_::Route::Priority::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1949,16 +1949,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::MultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::MultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::MultiTopology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::MultiTopology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::MultiTopology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2089,7 +2089,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application")
     {
@@ -2120,10 +2120,10 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute:
 
     if(child_yang_name == "eigrp")
     {
-        auto c = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Eigrp>();
-        c->parent = this;
-        eigrp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Eigrp>();
+        ent_->parent = this;
+        eigrp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "isis")
@@ -2164,18 +2164,18 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute:
 
     if(child_yang_name == "ospf")
     {
-        auto c = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf>();
-        c->parent = this;
-        ospf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf>();
+        ent_->parent = this;
+        ospf.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "rip")
     {
-        auto c = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Rip>();
-        c->parent = this;
-        rip.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Rip>();
+        ent_->parent = this;
+        rip.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static")
@@ -2190,78 +2190,78 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(application != nullptr)
     {
-        children["application"] = application;
+        _children["application"] = application;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(connected != nullptr)
     {
-        children["connected"] = connected;
+        _children["connected"] = connected;
     }
 
-    count = 0;
-    for (auto c : eigrp.entities())
+    count_ = 0;
+    for (auto ent_ : eigrp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(lisp != nullptr)
     {
-        children["lisp"] = lisp;
+        _children["lisp"] = lisp;
     }
 
     if(nd != nullptr)
     {
-        children["nd"] = nd;
+        _children["nd"] = nd;
     }
 
     if(nemo != nullptr)
     {
-        children["nemo"] = nemo;
+        _children["nemo"] = nemo;
     }
 
-    count = 0;
-    for (auto c : ospf.entities())
+    count_ = 0;
+    for (auto ent_ : ospf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : rip.entities())
+    count_ = 0;
+    for (auto ent_ : rip.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(static_ != nullptr)
     {
-        children["static"] = static_;
+        _children["static"] = static_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2343,16 +2343,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Application::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Application::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Application::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2488,16 +2488,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2635,16 +2635,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Connected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Connected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2771,16 +2771,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Eigrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2925,50 +2925,50 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis-redistribute")
     {
-        auto c = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute>();
-        c->parent = this;
-        isis_redistribute.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute>();
+        ent_->parent = this;
+        isis_redistribute.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "isis-leak")
     {
-        auto c = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak>();
-        c->parent = this;
-        isis_leak.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak>();
+        ent_->parent = this;
+        isis_leak.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : isis_redistribute.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : isis_redistribute.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : isis_leak.entities())
+    count_ = 0;
+    for (auto ent_ : isis_leak.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3055,16 +3055,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisRedistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3208,16 +3208,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Isis_::IsisLeak::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3349,16 +3349,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Lisp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Lisp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Lisp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3490,16 +3490,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3631,16 +3631,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nemo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nemo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nemo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nemo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Nemo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3782,7 +3782,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "match")
     {
@@ -3796,16 +3796,16 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(match != nullptr)
     {
-        children["match"] = match;
+        _children["match"] = match;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3929,7 +3929,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "internal")
     {
@@ -3961,26 +3961,26 @@ std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(internal != nullptr)
     {
-        children["internal"] = internal;
+        _children["internal"] = internal;
     }
 
     if(external != nullptr)
     {
-        children["external"] = external;
+        _children["external"] = external;
     }
 
     if(nssa_external != nullptr)
     {
-        children["nssa-external"] = nssa_external;
+        _children["nssa-external"] = nssa_external;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4051,16 +4051,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::Internal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::Internal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::Internal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4175,16 +4175,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::External::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::External::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4309,16 +4309,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::NssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::NssaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Ospf::Match::NssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4455,16 +4455,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Rip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Rip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4602,16 +4602,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Static::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Static::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4722,16 +4722,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::SummaryPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::SummaryPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::SummaryPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4821,16 +4821,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::AddressFami
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::AddressFamily::Ipv6::TableMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::AddressFamily::Ipv6::TableMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::AddressFamily::Ipv6::TableMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::AddressFamily::Ipv6::TableMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::AddressFamily::Ipv6::TableMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4937,33 +4937,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Distance::g
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-list")
     {
-        auto c = std::make_shared<Native::Router::Isis::Distance::IpList>();
-        c->parent = this;
-        ip_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Distance::IpList>();
+        ent_->parent = this;
+        ip_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Distance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Distance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Distance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5065,33 +5065,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Distance::I
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Distance::IpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Distance::IpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "wildcard-bits")
     {
-        auto c = std::make_shared<Native::Router::Isis::Distance::IpList::WildcardBits>();
-        c->parent = this;
-        wildcard_bits.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Distance::IpList::WildcardBits>();
+        ent_->parent = this;
+        wildcard_bits.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Distance::IpList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Distance::IpList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : wildcard_bits.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : wildcard_bits.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Distance::IpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5165,16 +5165,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Distance::I
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Distance::IpList::WildcardBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Distance::IpList::WildcardBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Distance::IpList::WildcardBits::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Distance::IpList::WildcardBits::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Distance::IpList::WildcardBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5260,7 +5260,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Ip::get_nam
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
@@ -5274,16 +5274,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Ip::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(route != nullptr)
     {
-        children["route"] = route;
+        _children["route"] = route;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5349,7 +5349,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Ip::Route::
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Ip::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Ip::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "priority")
     {
@@ -5363,16 +5363,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Ip::Route::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Ip::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Ip::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(priority != nullptr)
     {
-        children["priority"] = priority;
+        _children["priority"] = priority;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Ip::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5438,7 +5438,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Ip::Route::
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Ip::Route::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Ip::Route::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high")
     {
@@ -5452,16 +5452,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Ip::Route::Priority::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Ip::Route::Priority::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Ip::Route::Priority::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(high != nullptr)
     {
-        children["high"] = high;
+        _children["high"] = high;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Ip::Route::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5527,16 +5527,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Ip::Route::
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Ip::Route::Priority::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Ip::Route::Priority::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Ip::Route::Priority::High::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Ip::Route::Priority::High::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Ip::Route::Priority::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5689,14 +5689,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Application>();
-        c->parent = this;
-        application.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Application>();
+        ent_->parent = this;
+        application.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "bgp")
@@ -5719,10 +5719,10 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::get_child_by_name(co
 
     if(child_yang_name == "eigrp")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Eigrp>();
-        c->parent = this;
-        eigrp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Eigrp>();
+        ent_->parent = this;
+        eigrp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "isis")
@@ -5781,18 +5781,18 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::get_child_by_name(co
 
     if(child_yang_name == "ospf")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Ospf>();
-        c->parent = this;
-        ospf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Ospf>();
+        ent_->parent = this;
+        ospf.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Ospfv3>();
-        c->parent = this;
-        ospfv3.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Ospfv3>();
+        ent_->parent = this;
+        ospfv3.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "rip")
@@ -5825,102 +5825,102 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : application.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : application.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(connected != nullptr)
     {
-        children["connected"] = connected;
+        _children["connected"] = connected;
     }
 
-    count = 0;
-    for (auto c : eigrp.entities())
+    count_ = 0;
+    for (auto ent_ : eigrp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(iso_igrp != nullptr)
     {
-        children["iso-igrp"] = iso_igrp;
+        _children["iso-igrp"] = iso_igrp;
     }
 
     if(lisp != nullptr)
     {
-        children["lisp"] = lisp;
+        _children["lisp"] = lisp;
     }
 
     if(maximum_prefix != nullptr)
     {
-        children["maximum-prefix"] = maximum_prefix;
+        _children["maximum-prefix"] = maximum_prefix;
     }
 
     if(mobile != nullptr)
     {
-        children["mobile"] = mobile;
+        _children["mobile"] = mobile;
     }
 
     if(odr != nullptr)
     {
-        children["odr"] = odr;
+        _children["odr"] = odr;
     }
 
-    count = 0;
-    for (auto c : ospf.entities())
+    count_ = 0;
+    for (auto ent_ : ospf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(rip != nullptr)
     {
-        children["rip"] = rip;
+        _children["rip"] = rip;
     }
 
     if(static_ != nullptr)
     {
-        children["static"] = static_;
+        _children["static"] = static_;
     }
 
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6003,16 +6003,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Application::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Application::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Application::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6151,7 +6151,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clns")
     {
@@ -6174,21 +6174,21 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Bgp::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clns != nullptr)
     {
-        children["clns"] = clns;
+        _children["clns"] = clns;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6316,16 +6316,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Bgp::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Bgp::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Bgp::Clns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Bgp::Clns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Bgp::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6443,16 +6443,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Bgp::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Bgp::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Bgp::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Bgp::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Bgp::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6570,16 +6570,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Connected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Connected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6702,16 +6702,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Eigrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6846,50 +6846,50 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Isis_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Isis_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis-redistribute")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Isis_::IsisRedistribute>();
-        c->parent = this;
-        isis_redistribute.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Isis_::IsisRedistribute>();
+        ent_->parent = this;
+        isis_redistribute.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ip")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Isis_::Ip>();
-        c->parent = this;
-        ip.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Isis_::Ip>();
+        ent_->parent = this;
+        ip.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Isis_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Isis_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : isis_redistribute.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : isis_redistribute.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ip.entities())
+    count_ = 0;
+    for (auto ent_ : ip.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Isis_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6960,7 +6960,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -6974,16 +6974,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Isis_::IsisRedistrib
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7064,16 +7064,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Isis_::IsisRedistribute::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7197,16 +7197,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Isis_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Isis_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Isis_::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Isis_::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Isis_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7339,7 +7339,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::IsoIgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::IsoIgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area-tag-route-map-container")
     {
@@ -7353,16 +7353,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::IsoIgrp::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::IsoIgrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::IsoIgrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(area_tag_route_map_container != nullptr)
     {
-        children["area-tag-route-map-container"] = area_tag_route_map_container;
+        _children["area-tag-route-map-container"] = area_tag_route_map_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::IsoIgrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7472,16 +7472,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::IsoIgrp::AreaTagRouteMapContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::IsoIgrp::AreaTagRouteMapContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::IsoIgrp::AreaTagRouteMapContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::IsoIgrp::AreaTagRouteMapContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::IsoIgrp::AreaTagRouteMapContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7583,16 +7583,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Lisp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Lisp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Lisp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7720,16 +7720,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::MaximumPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7847,16 +7847,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Mobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Mobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Mobile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Mobile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Mobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7974,16 +7974,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Odr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Odr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Odr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Odr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Odr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8115,7 +8115,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "match")
     {
@@ -8129,16 +8129,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospf::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(match != nullptr)
     {
-        children["match"] = match;
+        _children["match"] = match;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8262,7 +8262,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospf::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospf::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "internal")
     {
@@ -8294,26 +8294,26 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospf::Match::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospf::Match::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospf::Match::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(internal != nullptr)
     {
-        children["internal"] = internal;
+        _children["internal"] = internal;
     }
 
     if(external != nullptr)
     {
-        children["external"] = external;
+        _children["external"] = external;
     }
 
     if(nssa_external != nullptr)
     {
-        children["nssa-external"] = nssa_external;
+        _children["nssa-external"] = nssa_external;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospf::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8384,16 +8384,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospf::Match::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospf::Match::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospf::Match::Internal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospf::Match::Internal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospf::Match::Internal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8508,16 +8508,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospf::Match::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospf::Match::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospf::Match::External::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospf::Match::External::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospf::Match::External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8642,16 +8642,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospf::Match::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospf::Match::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospf::Match::NssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospf::Match::NssaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospf::Match::NssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8793,7 +8793,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "match")
     {
@@ -8807,16 +8807,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospfv3::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospfv3::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospfv3::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(match != nullptr)
     {
-        children["match"] = match;
+        _children["match"] = match;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8940,7 +8940,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospfv3::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospfv3::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "internal")
     {
@@ -8972,26 +8972,26 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospfv3::Match::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospfv3::Match::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospfv3::Match::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(internal != nullptr)
     {
-        children["internal"] = internal;
+        _children["internal"] = internal;
     }
 
     if(external != nullptr)
     {
-        children["external"] = external;
+        _children["external"] = external;
     }
 
     if(nssa_external != nullptr)
     {
-        children["nssa-external"] = nssa_external;
+        _children["nssa-external"] = nssa_external;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospfv3::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9062,16 +9062,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospfv3::Match::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospfv3::Match::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospfv3::Match::Internal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospfv3::Match::Internal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospfv3::Match::Internal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9186,16 +9186,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospfv3::Match::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospfv3::Match::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospfv3::Match::External::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospfv3::Match::External::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospfv3::Match::External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9320,16 +9320,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Ospfv3::Match::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Ospfv3::Match::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Ospfv3::Match::NssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Ospfv3::Match::NssaExternal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Ospfv3::Match::NssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9457,16 +9457,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Rip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Rip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9574,7 +9574,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clns")
     {
@@ -9597,21 +9597,21 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Static::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Static::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Static::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clns != nullptr)
     {
-        children["clns"] = clns;
+        _children["clns"] = clns;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9689,16 +9689,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Static::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Static::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Static::Clns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Static::Clns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Static::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9816,16 +9816,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Static::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Static::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Static::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Static::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Static::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9942,14 +9942,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-nm")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm>();
-        c->parent = this;
-        vrf_nm.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm>();
+        ent_->parent = this;
+        vrf_nm.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "global")
@@ -9964,25 +9964,25 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf_nm.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf_nm.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10092,7 +10092,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application")
     {
@@ -10196,66 +10196,66 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(application != nullptr)
     {
-        children["application"] = application;
+        _children["application"] = application;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(connected != nullptr)
     {
-        children["connected"] = connected;
+        _children["connected"] = connected;
     }
 
     if(eigrp != nullptr)
     {
-        children["eigrp"] = eigrp;
+        _children["eigrp"] = eigrp;
     }
 
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(iso_igrp != nullptr)
     {
-        children["iso-igrp"] = iso_igrp;
+        _children["iso-igrp"] = iso_igrp;
     }
 
     if(lisp != nullptr)
     {
-        children["lisp"] = lisp;
+        _children["lisp"] = lisp;
     }
 
     if(mobile != nullptr)
     {
-        children["mobile"] = mobile;
+        _children["mobile"] = mobile;
     }
 
     if(ospfv3 != nullptr)
     {
-        children["ospfv3"] = ospfv3;
+        _children["ospfv3"] = ospfv3;
     }
 
     if(rip != nullptr)
     {
-        children["rip"] = rip;
+        _children["rip"] = rip;
     }
 
     if(static_ != nullptr)
     {
-        children["static"] = static_;
+        _children["static"] = static_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10342,33 +10342,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "appname")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::Appname>();
-        c->parent = this;
-        appname.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::Appname>();
+        ent_->parent = this;
+        appname.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : appname.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : appname.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10444,16 +10444,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::Appname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::Appname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::Appname::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::Appname::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Application::Appname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10574,33 +10574,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bp-as-num")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum>();
-        c->parent = this;
-        bp_as_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum>();
+        ent_->parent = this;
+        bp_as_num.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bp_as_num.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bp_as_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10693,7 +10693,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clns")
     {
@@ -10716,21 +10716,21 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clns != nullptr)
     {
-        children["clns"] = clns;
+        _children["clns"] = clns;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10851,16 +10851,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Clns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Clns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10971,16 +10971,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Bgp::BpAsNum::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11091,16 +11091,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Connected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Connected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11207,33 +11207,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eigrp-as")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs>();
-        c->parent = this;
-        eigrp_as.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs>();
+        ent_->parent = this;
+        eigrp_as.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eigrp_as.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eigrp_as.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11309,16 +11309,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Eigrp::EigrpAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11437,14 +11437,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis-atag")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag>();
-        c->parent = this;
-        isis_atag.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag>();
+        ent_->parent = this;
+        isis_atag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ip")
@@ -11459,25 +11459,25 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : isis_atag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : isis_atag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11542,7 +11542,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -11556,16 +11556,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11646,16 +11646,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::IsisAtag::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11766,16 +11766,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Isis_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11884,14 +11884,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "iso-atag")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::IsoAtag>();
-        c->parent = this;
-        iso_atag.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::IsoAtag>();
+        ent_->parent = this;
+        iso_atag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "route-map")
@@ -11906,25 +11906,25 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : iso_atag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : iso_atag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(route_map != nullptr)
     {
-        children["route-map"] = route_map;
+        _children["route-map"] = route_map;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11988,16 +11988,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::IsoAtag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::IsoAtag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::IsoAtag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::IsoAtag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::IsoAtag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12076,16 +12076,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::IsoIgrp::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12166,16 +12166,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Lisp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Lisp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Lisp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12286,16 +12286,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Mobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Mobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Mobile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Mobile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Mobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12402,33 +12402,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "os3-id")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id>();
-        c->parent = this;
-        os3_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id>();
+        ent_->parent = this;
+        os3_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : os3_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : os3_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12504,16 +12504,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Ospfv3::Os3Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12634,16 +12634,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12761,7 +12761,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clns")
     {
@@ -12784,21 +12784,21 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clns != nullptr)
     {
-        children["clns"] = clns;
+        _children["clns"] = clns;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12909,16 +12909,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13029,16 +13029,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::VrfNm::Static::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13183,7 +13183,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application")
     {
@@ -13287,66 +13287,66 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(application != nullptr)
     {
-        children["application"] = application;
+        _children["application"] = application;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(connected != nullptr)
     {
-        children["connected"] = connected;
+        _children["connected"] = connected;
     }
 
     if(eigrp != nullptr)
     {
-        children["eigrp"] = eigrp;
+        _children["eigrp"] = eigrp;
     }
 
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(iso_igrp != nullptr)
     {
-        children["iso-igrp"] = iso_igrp;
+        _children["iso-igrp"] = iso_igrp;
     }
 
     if(lisp != nullptr)
     {
-        children["lisp"] = lisp;
+        _children["lisp"] = lisp;
     }
 
     if(mobile != nullptr)
     {
-        children["mobile"] = mobile;
+        _children["mobile"] = mobile;
     }
 
     if(ospfv3 != nullptr)
     {
-        children["ospfv3"] = ospfv3;
+        _children["ospfv3"] = ospfv3;
     }
 
     if(rip != nullptr)
     {
-        children["rip"] = rip;
+        _children["rip"] = rip;
     }
 
     if(static_ != nullptr)
     {
-        children["static"] = static_;
+        _children["static"] = static_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13430,33 +13430,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "appname")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Application::Appname>();
-        c->parent = this;
-        appname.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Application::Appname>();
+        ent_->parent = this;
+        appname.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Application::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Application::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : appname.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : appname.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Application::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13539,16 +13539,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Application::Appname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Application::Appname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Application::Appname::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Application::Appname::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Application::Appname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13676,33 +13676,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bp-as-num")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum>();
-        c->parent = this;
-        bp_as_num.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum>();
+        ent_->parent = this;
+        bp_as_num.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bp_as_num.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bp_as_num.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13802,7 +13802,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clns")
     {
@@ -13825,21 +13825,21 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::Bp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clns != nullptr)
     {
-        children["clns"] = clns;
+        _children["clns"] = clns;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13960,16 +13960,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Clns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Clns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14080,16 +14080,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Bgp::BpAsNum::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14207,16 +14207,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Connected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Connected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14330,33 +14330,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eigrp-as")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs>();
-        c->parent = this;
-        eigrp_as.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs>();
+        ent_->parent = this;
+        eigrp_as.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eigrp_as.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eigrp_as.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14439,16 +14439,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Eigrp::EigrpAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14574,14 +14574,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis-atag")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag>();
-        c->parent = this;
-        isis_atag.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag>();
+        ent_->parent = this;
+        isis_atag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ip")
@@ -14596,25 +14596,25 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : isis_atag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : isis_atag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Isis_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14686,7 +14686,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -14700,16 +14700,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14790,16 +14790,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Isis_::IsisAtag::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14917,16 +14917,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Isis_::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Isis_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15042,14 +15042,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "iso-atag")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::IsoAtag>();
-        c->parent = this;
-        iso_atag.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::IsoAtag>();
+        ent_->parent = this;
+        iso_atag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "route-map")
@@ -15064,25 +15064,25 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : iso_atag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : iso_atag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(route_map != nullptr)
     {
-        children["route-map"] = route_map;
+        _children["route-map"] = route_map;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15153,16 +15153,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::IsoAtag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::IsoAtag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::IsoAtag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::IsoAtag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::IsoAtag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15248,16 +15248,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::IsoIgrp::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15345,16 +15345,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Lisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Lisp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Lisp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Lisp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15472,16 +15472,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Mobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Mobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Mobile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Mobile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Mobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15595,33 +15595,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "os3-id")
     {
-        auto c = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::Os3Id>();
-        c->parent = this;
-        os3_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::Os3Id>();
+        ent_->parent = this;
+        os3_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : os3_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : os3_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15704,16 +15704,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::Os3Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::Os3Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::Os3Id::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::Os3Id::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Ospfv3::Os3Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15841,16 +15841,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Rip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Rip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15975,7 +15975,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clns")
     {
@@ -15998,21 +15998,21 @@ std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Static:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Static::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Static::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clns != nullptr)
     {
-        children["clns"] = clns;
+        _children["clns"] = clns;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16130,16 +16130,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Static::Clns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16257,16 +16257,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Redistribut
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Redistribute::Vrf::Global::Static::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16372,16 +16372,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::SetAttached
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::SetAttachedBit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::SetAttachedBit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::SetAttachedBit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::SetAttachedBit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::SetAttachedBit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16465,33 +16465,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Snmp::get_n
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context")
     {
-        auto c = std::make_shared<Native::Router::Isis::Snmp::Context>();
-        c->parent = this;
-        context.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Snmp::Context>();
+        ent_->parent = this;
+        context.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Snmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Snmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : context.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : context.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16567,7 +16567,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Snmp::Conte
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Snmp::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "community")
     {
@@ -16590,21 +16590,21 @@ std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Snmp::Context::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Snmp::Context::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(community != nullptr)
     {
-        children["community"] = community;
+        _children["community"] = community;
     }
 
     if(user != nullptr)
     {
-        children["user"] = user;
+        _children["user"] = user;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Snmp::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16678,7 +16678,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Snmp::Conte
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Snmp::Context::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
@@ -16692,16 +16692,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::Community::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Snmp::Context::Community::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Snmp::Context::Community::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access != nullptr)
     {
-        children["access"] = access;
+        _children["access"] = access;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Snmp::Context::Community::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16790,16 +16790,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Snmp::Conte
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::Community::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Snmp::Context::Community::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Snmp::Context::Community::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Snmp::Context::Community::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Snmp::Context::Community::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16923,7 +16923,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Snmp::Conte
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Snmp::Context::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "permisssion")
     {
@@ -16937,16 +16937,16 @@ std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::User::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Snmp::Context::User::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Snmp::Context::User::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(permisssion != nullptr)
     {
-        children["permisssion"] = permisssion;
+        _children["permisssion"] = permisssion;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Snmp::Context::User::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17028,7 +17028,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Snmp::Conte
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::User::Permisssion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Snmp::Context::User::Permisssion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
@@ -17051,21 +17051,21 @@ std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::User::Permisssion::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Snmp::Context::User::Permisssion::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Snmp::Context::User::Permisssion::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access != nullptr)
     {
-        children["access"] = access;
+        _children["access"] = access;
     }
 
     if(auth != nullptr)
     {
-        children["auth"] = auth;
+        _children["auth"] = auth;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Snmp::Context::User::Permisssion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17152,16 +17152,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Snmp::Conte
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::User::Permisssion::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Snmp::Context::User::Permisssion::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Snmp::Context::User::Permisssion::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Snmp::Context::User::Permisssion::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Snmp::Context::User::Permisssion::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17254,16 +17254,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Snmp::Conte
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Snmp::Context::User::Permisssion::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Snmp::Context::User::Permisssion::Auth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Snmp::Context::User::Permisssion::Auth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Snmp::Context::User::Permisssion::Auth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Snmp::Context::User::Permisssion::Auth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17369,7 +17369,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::SummaryAddr
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::SummaryAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::SummaryAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "level-1")
     {
@@ -17410,31 +17410,31 @@ std::shared_ptr<Entity> Native::Router::Isis::SummaryAddress::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::SummaryAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::SummaryAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(level_1 != nullptr)
     {
-        children["level-1"] = level_1;
+        _children["level-1"] = level_1;
     }
 
     if(level_1_2 != nullptr)
     {
-        children["level-1-2"] = level_1_2;
+        _children["level-1-2"] = level_1_2;
     }
 
     if(level_2 != nullptr)
     {
-        children["level-2"] = level_2;
+        _children["level-2"] = level_2;
     }
 
     if(metric_tag_container != nullptr)
     {
-        children["metric-tag-container"] = metric_tag_container;
+        _children["metric-tag-container"] = metric_tag_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::SummaryAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17517,16 +17517,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::SummaryAddr
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::SummaryAddress::Level1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::SummaryAddress::Level1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::SummaryAddress::Level1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::SummaryAddress::Level1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::SummaryAddress::Level1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17609,16 +17609,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::SummaryAddr
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::SummaryAddress::Level12::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::SummaryAddress::Level12::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::SummaryAddress::Level12::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::SummaryAddress::Level12::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::SummaryAddress::Level12::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17701,16 +17701,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::SummaryAddr
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::SummaryAddress::Level2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::SummaryAddress::Level2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::SummaryAddress::Level2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::SummaryAddress::Level2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::SummaryAddress::Level2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17793,16 +17793,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::SummaryAddr
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::SummaryAddress::MetricTagContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::SummaryAddress::MetricTagContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::SummaryAddress::MetricTagContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::SummaryAddress::MetricTagContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::SummaryAddress::MetricTagContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17888,7 +17888,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::TrafficShar
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::TrafficShare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::TrafficShare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "min")
     {
@@ -17902,16 +17902,16 @@ std::shared_ptr<Entity> Native::Router::Isis::TrafficShare::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::TrafficShare::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::TrafficShare::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(min != nullptr)
     {
-        children["min"] = min;
+        _children["min"] = min;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::TrafficShare::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17977,16 +17977,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::TrafficShar
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::TrafficShare::Min::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::TrafficShare::Min::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::TrafficShare::Min::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::TrafficShare::Min::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::TrafficShare::Min::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18062,16 +18062,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Advertise::
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Advertise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Advertise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Advertise::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Advertise::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Advertise::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18146,7 +18146,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::DefaultInfo
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "originate")
     {
@@ -18160,16 +18160,16 @@ std::shared_ptr<Entity> Native::Router::Isis::DefaultInformation::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::DefaultInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::DefaultInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(originate != nullptr)
     {
-        children["originate"] = originate;
+        _children["originate"] = originate;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18235,16 +18235,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::DefaultInfo
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::DefaultInformation::Originate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::DefaultInformation::Originate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::DefaultInformation::Originate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::DefaultInformation::Originate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::DefaultInformation::Originate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18332,33 +18332,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Metric::get
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metrics")
     {
-        auto c = std::make_shared<Native::Router::Isis::Metric::Metrics>();
-        c->parent = this;
-        metrics.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Isis::Metric::Metrics>();
+        ent_->parent = this;
+        metrics.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Metric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Metric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : metrics.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : metrics.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18439,16 +18439,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::Metric::Met
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::Metric::Metrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::Metric::Metrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::Metric::Metrics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::Metric::Metrics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::Metric::Metrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18542,16 +18542,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::PrcInterval
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::PrcInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::PrcInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::PrcInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::PrcInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::PrcInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18651,7 +18651,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::SetOverload
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::SetOverloadBit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::SetOverloadBit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-startup")
     {
@@ -18674,21 +18674,21 @@ std::shared_ptr<Entity> Native::Router::Isis::SetOverloadBit::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::SetOverloadBit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::SetOverloadBit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(on_startup != nullptr)
     {
-        children["on-startup"] = on_startup;
+        _children["on-startup"] = on_startup;
     }
 
     if(suppress != nullptr)
     {
-        children["suppress"] = suppress;
+        _children["suppress"] = suppress;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::SetOverloadBit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18757,7 +18757,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::SetOverload
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::SetOverloadBit::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::SetOverloadBit::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "time")
     {
@@ -18780,21 +18780,21 @@ std::shared_ptr<Entity> Native::Router::Isis::SetOverloadBit::OnStartup::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::SetOverloadBit::OnStartup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::SetOverloadBit::OnStartup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(time != nullptr)
     {
-        children["time"] = time;
+        _children["time"] = time;
     }
 
     if(wait_for_bgp != nullptr)
     {
-        children["wait-for-bgp"] = wait_for_bgp;
+        _children["wait-for-bgp"] = wait_for_bgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Isis::SetOverloadBit::OnStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18872,16 +18872,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Isis::SetOverload
 
 }
 
-std::shared_ptr<Entity> Native::Router::Isis::SetOverloadBit::OnStartup::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Isis::SetOverloadBit::OnStartup::Time::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Isis::SetOverloadBit::OnStartup::Time::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Isis::SetOverloadBit::OnStartup::Time::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Isis::SetOverloadBit::OnStartup::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

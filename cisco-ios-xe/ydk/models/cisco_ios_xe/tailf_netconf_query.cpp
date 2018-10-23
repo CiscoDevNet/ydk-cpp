@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > StartQuery::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> StartQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StartQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> StartQuery::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StartQuery::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StartQuery::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void StartQuery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void StartQuery::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> StartQuery::clone_ptr() const
+std::shared_ptr<ydk::Entity> StartQuery::clone_ptr() const
 {
     return std::make_shared<StartQuery>();
 }
@@ -222,33 +222,33 @@ std::vector<std::pair<std::string, LeafData> > StartQuery::Input::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> StartQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StartQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "select")
     {
-        auto c = std::make_shared<StartQuery::Input::Select>();
-        c->parent = this;
-        select.append(c);
-        return c;
+        auto ent_ = std::make_shared<StartQuery::Input::Select>();
+        ent_->parent = this;
+        select.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StartQuery::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StartQuery::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : select.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : select.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void StartQuery::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -380,16 +380,16 @@ std::vector<std::pair<std::string, LeafData> > StartQuery::Input::Select::get_na
 
 }
 
-std::shared_ptr<Entity> StartQuery::Input::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StartQuery::Input::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StartQuery::Input::Select::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StartQuery::Input::Select::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void StartQuery::Input::Select::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -483,16 +483,16 @@ std::vector<std::pair<std::string, LeafData> > StartQuery::Output::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> StartQuery::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StartQuery::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StartQuery::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StartQuery::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void StartQuery::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -565,7 +565,7 @@ std::vector<std::pair<std::string, LeafData> > FetchQueryResult::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> FetchQueryResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FetchQueryResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -588,21 +588,21 @@ std::shared_ptr<Entity> FetchQueryResult::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FetchQueryResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void FetchQueryResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -613,7 +613,7 @@ void FetchQueryResult::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> FetchQueryResult::clone_ptr() const
+std::shared_ptr<ydk::Entity> FetchQueryResult::clone_ptr() const
 {
     return std::make_shared<FetchQueryResult>();
 }
@@ -693,16 +693,16 @@ std::vector<std::pair<std::string, LeafData> > FetchQueryResult::Input::get_name
 
 }
 
-std::shared_ptr<Entity> FetchQueryResult::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FetchQueryResult::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FetchQueryResult::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FetchQueryResult::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -778,7 +778,7 @@ std::vector<std::pair<std::string, LeafData> > FetchQueryResult::Output::get_nam
 
 }
 
-std::shared_ptr<Entity> FetchQueryResult::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FetchQueryResult::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "query-result")
     {
@@ -792,16 +792,16 @@ std::shared_ptr<Entity> FetchQueryResult::Output::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FetchQueryResult::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(query_result != nullptr)
     {
-        children["query-result"] = query_result;
+        _children["query-result"] = query_result;
     }
 
-    return children;
+    return _children;
 }
 
 void FetchQueryResult::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -875,33 +875,33 @@ std::vector<std::pair<std::string, LeafData> > FetchQueryResult::Output::QueryRe
 
 }
 
-std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FetchQueryResult::Output::QueryResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "result")
     {
-        auto c = std::make_shared<FetchQueryResult::Output::QueryResult::Result>();
-        c->parent = this;
-        result.append(c);
-        return c;
+        auto ent_ = std::make_shared<FetchQueryResult::Output::QueryResult::Result>();
+        ent_->parent = this;
+        result.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::QueryResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FetchQueryResult::Output::QueryResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : result.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : result.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FetchQueryResult::Output::QueryResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -975,33 +975,33 @@ std::vector<std::pair<std::string, LeafData> > FetchQueryResult::Output::QueryRe
 
 }
 
-std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FetchQueryResult::Output::QueryResult::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "select")
     {
-        auto c = std::make_shared<FetchQueryResult::Output::QueryResult::Result::Select>();
-        c->parent = this;
-        select.append(c);
-        return c;
+        auto ent_ = std::make_shared<FetchQueryResult::Output::QueryResult::Result::Select>();
+        ent_->parent = this;
+        select.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::QueryResult::Result::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FetchQueryResult::Output::QueryResult::Result::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : select.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : select.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FetchQueryResult::Output::QueryResult::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1079,16 +1079,16 @@ std::vector<std::pair<std::string, LeafData> > FetchQueryResult::Output::QueryRe
 
 }
 
-std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::Result::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FetchQueryResult::Output::QueryResult::Result::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::QueryResult::Result::Select::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FetchQueryResult::Output::QueryResult::Result::Select::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FetchQueryResult::Output::QueryResult::Result::Select::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1191,7 +1191,7 @@ std::vector<std::pair<std::string, LeafData> > ImmediateQuery::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> ImmediateQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ImmediateQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -1214,21 +1214,21 @@ std::shared_ptr<Entity> ImmediateQuery::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ImmediateQuery::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void ImmediateQuery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1239,7 +1239,7 @@ void ImmediateQuery::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ImmediateQuery::clone_ptr() const
+std::shared_ptr<ydk::Entity> ImmediateQuery::clone_ptr() const
 {
     return std::make_shared<ImmediateQuery>();
 }
@@ -1357,33 +1357,33 @@ std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Input::get_name_l
 
 }
 
-std::shared_ptr<Entity> ImmediateQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ImmediateQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "select")
     {
-        auto c = std::make_shared<ImmediateQuery::Input::Select>();
-        c->parent = this;
-        select.append(c);
-        return c;
+        auto ent_ = std::make_shared<ImmediateQuery::Input::Select>();
+        ent_->parent = this;
+        select.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ImmediateQuery::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : select.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : select.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ImmediateQuery::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1515,16 +1515,16 @@ std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Input::Select::ge
 
 }
 
-std::shared_ptr<Entity> ImmediateQuery::Input::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ImmediateQuery::Input::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Input::Select::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ImmediateQuery::Input::Select::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ImmediateQuery::Input::Select::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1618,7 +1618,7 @@ std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Output::get_name_
 
 }
 
-std::shared_ptr<Entity> ImmediateQuery::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ImmediateQuery::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "query-result")
     {
@@ -1632,16 +1632,16 @@ std::shared_ptr<Entity> ImmediateQuery::Output::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ImmediateQuery::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(query_result != nullptr)
     {
-        children["query-result"] = query_result;
+        _children["query-result"] = query_result;
     }
 
-    return children;
+    return _children;
 }
 
 void ImmediateQuery::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1715,33 +1715,33 @@ std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Output::QueryResu
 
 }
 
-std::shared_ptr<Entity> ImmediateQuery::Output::QueryResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ImmediateQuery::Output::QueryResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "result")
     {
-        auto c = std::make_shared<ImmediateQuery::Output::QueryResult::Result>();
-        c->parent = this;
-        result.append(c);
-        return c;
+        auto ent_ = std::make_shared<ImmediateQuery::Output::QueryResult::Result>();
+        ent_->parent = this;
+        result.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Output::QueryResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ImmediateQuery::Output::QueryResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : result.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : result.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ImmediateQuery::Output::QueryResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1815,33 +1815,33 @@ std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Output::QueryResu
 
 }
 
-std::shared_ptr<Entity> ImmediateQuery::Output::QueryResult::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ImmediateQuery::Output::QueryResult::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "select")
     {
-        auto c = std::make_shared<ImmediateQuery::Output::QueryResult::Result::Select>();
-        c->parent = this;
-        select.append(c);
-        return c;
+        auto ent_ = std::make_shared<ImmediateQuery::Output::QueryResult::Result::Select>();
+        ent_->parent = this;
+        select.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Output::QueryResult::Result::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ImmediateQuery::Output::QueryResult::Result::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : select.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : select.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ImmediateQuery::Output::QueryResult::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1919,16 +1919,16 @@ std::vector<std::pair<std::string, LeafData> > ImmediateQuery::Output::QueryResu
 
 }
 
-std::shared_ptr<Entity> ImmediateQuery::Output::QueryResult::Result::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ImmediateQuery::Output::QueryResult::Result::Select::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ImmediateQuery::Output::QueryResult::Result::Select::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ImmediateQuery::Output::QueryResult::Result::Select::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ImmediateQuery::Output::QueryResult::Result::Select::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2027,7 +2027,7 @@ std::vector<std::pair<std::string, LeafData> > ResetQuery::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> ResetQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ResetQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -2041,16 +2041,16 @@ std::shared_ptr<Entity> ResetQuery::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ResetQuery::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ResetQuery::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void ResetQuery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2061,7 +2061,7 @@ void ResetQuery::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ResetQuery::clone_ptr() const
+std::shared_ptr<ydk::Entity> ResetQuery::clone_ptr() const
 {
     return std::make_shared<ResetQuery>();
 }
@@ -2149,16 +2149,16 @@ std::vector<std::pair<std::string, LeafData> > ResetQuery::Input::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> ResetQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ResetQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ResetQuery::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ResetQuery::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ResetQuery::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2247,7 +2247,7 @@ std::vector<std::pair<std::string, LeafData> > StopQuery::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> StopQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StopQuery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -2261,16 +2261,16 @@ std::shared_ptr<Entity> StopQuery::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StopQuery::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StopQuery::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void StopQuery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2281,7 +2281,7 @@ void StopQuery::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> StopQuery::clone_ptr() const
+std::shared_ptr<ydk::Entity> StopQuery::clone_ptr() const
 {
     return std::make_shared<StopQuery>();
 }
@@ -2361,16 +2361,16 @@ std::vector<std::pair<std::string, LeafData> > StopQuery::Input::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> StopQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StopQuery::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StopQuery::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StopQuery::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void StopQuery::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

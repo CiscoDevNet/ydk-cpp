@@ -88,7 +88,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoFlashDevice")
     {
@@ -183,61 +183,61 @@ std::shared_ptr<Entity> CISCOFLASHMIB::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciscoflashdevice != nullptr)
     {
-        children["ciscoFlashDevice"] = ciscoflashdevice;
+        _children["ciscoFlashDevice"] = ciscoflashdevice;
     }
 
     if(ciscoflashcfg != nullptr)
     {
-        children["ciscoFlashCfg"] = ciscoflashcfg;
+        _children["ciscoFlashCfg"] = ciscoflashcfg;
     }
 
     if(ciscoflashdevicetable != nullptr)
     {
-        children["ciscoFlashDeviceTable"] = ciscoflashdevicetable;
+        _children["ciscoFlashDeviceTable"] = ciscoflashdevicetable;
     }
 
     if(ciscoflashchiptable != nullptr)
     {
-        children["ciscoFlashChipTable"] = ciscoflashchiptable;
+        _children["ciscoFlashChipTable"] = ciscoflashchiptable;
     }
 
     if(ciscoflashpartitiontable != nullptr)
     {
-        children["ciscoFlashPartitionTable"] = ciscoflashpartitiontable;
+        _children["ciscoFlashPartitionTable"] = ciscoflashpartitiontable;
     }
 
     if(ciscoflashfiletable != nullptr)
     {
-        children["ciscoFlashFileTable"] = ciscoflashfiletable;
+        _children["ciscoFlashFileTable"] = ciscoflashfiletable;
     }
 
     if(ciscoflashfilebytypetable != nullptr)
     {
-        children["ciscoFlashFileByTypeTable"] = ciscoflashfilebytypetable;
+        _children["ciscoFlashFileByTypeTable"] = ciscoflashfilebytypetable;
     }
 
     if(ciscoflashcopytable != nullptr)
     {
-        children["ciscoFlashCopyTable"] = ciscoflashcopytable;
+        _children["ciscoFlashCopyTable"] = ciscoflashcopytable;
     }
 
     if(ciscoflashpartitioningtable != nullptr)
     {
-        children["ciscoFlashPartitioningTable"] = ciscoflashpartitioningtable;
+        _children["ciscoFlashPartitioningTable"] = ciscoflashpartitioningtable;
     }
 
     if(ciscoflashmiscoptable != nullptr)
     {
-        children["ciscoFlashMiscOpTable"] = ciscoflashmiscoptable;
+        _children["ciscoFlashMiscOpTable"] = ciscoflashmiscoptable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFLASHMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ void CISCOFLASHMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::clone_ptr() const
 {
     return std::make_shared<CISCOFLASHMIB>();
 }
@@ -328,16 +328,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashDevice::
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashDevice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashDevice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -421,16 +421,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashCfg::get
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -534,33 +534,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashDeviceTa
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashDeviceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashDeviceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoFlashDeviceEntry")
     {
-        auto c = std::make_shared<CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry>();
-        c->parent = this;
-        ciscoflashdeviceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry>();
+        ent_->parent = this;
+        ciscoflashdeviceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashDeviceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashDeviceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoflashdeviceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoflashdeviceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashDeviceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -691,16 +691,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashDeviceTa
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashDeviceTable::CiscoFlashDeviceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -944,33 +944,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashChipTabl
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashChipTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashChipTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoFlashChipEntry")
     {
-        auto c = std::make_shared<CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry>();
-        c->parent = this;
-        ciscoflashchipentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry>();
+        ent_->parent = this;
+        ciscoflashchipentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashChipTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashChipTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoflashchipentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoflashchipentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashChipTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1066,16 +1066,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashChipTabl
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashChipTable::CiscoFlashChipEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1229,33 +1229,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashPartitio
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashPartitionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashPartitionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoFlashPartitionEntry")
     {
-        auto c = std::make_shared<CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry>();
-        c->parent = this;
-        ciscoflashpartitionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry>();
+        ent_->parent = this;
+        ciscoflashpartitionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashPartitionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashPartitionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoflashpartitionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoflashpartitionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashPartitionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1383,16 +1383,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashPartitio
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashPartitionTable::CiscoFlashPartitionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1626,33 +1626,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashFileTabl
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashFileTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashFileTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoFlashFileEntry")
     {
-        auto c = std::make_shared<CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry>();
-        c->parent = this;
-        ciscoflashfileentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry>();
+        ent_->parent = this;
+        ciscoflashfileentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashFileTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashFileTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoflashfileentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoflashfileentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashFileTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1753,16 +1753,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashFileTabl
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashFileTable::CiscoFlashFileEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1926,33 +1926,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashFileByTy
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashFileByTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashFileByTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoFlashFileByTypeEntry")
     {
-        auto c = std::make_shared<CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry>();
-        c->parent = this;
-        ciscoflashfilebytypeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry>();
+        ent_->parent = this;
+        ciscoflashfilebytypeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashFileByTypeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashFileByTypeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoflashfilebytypeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoflashfilebytypeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashFileByTypeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2054,16 +2054,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashFileByTy
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashFileByTypeTable::CiscoFlashFileByTypeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2227,33 +2227,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashCopyTabl
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashCopyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashCopyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoFlashCopyEntry")
     {
-        auto c = std::make_shared<CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry>();
-        c->parent = this;
-        ciscoflashcopyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry>();
+        ent_->parent = this;
+        ciscoflashcopyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashCopyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashCopyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoflashcopyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoflashcopyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashCopyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2376,16 +2376,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashCopyTabl
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashCopyTable::CiscoFlashCopyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2609,33 +2609,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashPartitio
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashPartitioningTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashPartitioningTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoFlashPartitioningEntry")
     {
-        auto c = std::make_shared<CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry>();
-        c->parent = this;
-        ciscoflashpartitioningentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry>();
+        ent_->parent = this;
+        ciscoflashpartitioningentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashPartitioningTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashPartitioningTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoflashpartitioningentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoflashpartitioningentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashPartitioningTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2734,16 +2734,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashPartitio
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashPartitioningTable::CiscoFlashPartitioningEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2907,33 +2907,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashMiscOpTa
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashMiscOpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashMiscOpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoFlashMiscOpEntry")
     {
-        auto c = std::make_shared<CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry>();
-        c->parent = this;
-        ciscoflashmiscopentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry>();
+        ent_->parent = this;
+        ciscoflashmiscopentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashMiscOpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashMiscOpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoflashmiscopentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoflashmiscopentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashMiscOpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3024,16 +3024,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOFLASHMIB::CiscoFlashMiscOpTa
 
 }
 
-std::shared_ptr<Entity> CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOFLASHMIB::CiscoFlashMiscOpTable::CiscoFlashMiscOpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

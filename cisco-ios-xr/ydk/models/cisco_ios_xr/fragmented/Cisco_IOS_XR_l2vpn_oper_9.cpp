@@ -57,16 +57,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -149,16 +149,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -321,16 +321,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::L2tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::L2tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::L2tpv3::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::L2tpv3::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::EncapsulationInfo::L2tpv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -622,7 +622,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parameters")
     {
@@ -636,16 +636,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(parameters != nullptr)
     {
-        children["parameters"] = parameters;
+        _children["parameters"] = parameters;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -763,7 +763,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet")
     {
@@ -831,46 +831,46 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        _children["ethernet"] = ethernet;
     }
 
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
     if(tdm != nullptr)
     {
-        children["tdm"] = tdm;
+        _children["tdm"] = tdm;
     }
 
     if(atm != nullptr)
     {
-        children["atm"] = atm;
+        _children["atm"] = atm;
     }
 
     if(fr != nullptr)
     {
-        children["fr"] = fr;
+        _children["fr"] = fr;
     }
 
     if(pseudowire_ether != nullptr)
     {
-        children["pseudowire-ether"] = pseudowire_ether;
+        _children["pseudowire-ether"] = pseudowire_ether;
     }
 
     if(pseudowire_iw != nullptr)
     {
-        children["pseudowire-iw"] = pseudowire_iw;
+        _children["pseudowire-iw"] = pseudowire_iw;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -939,16 +939,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1056,50 +1056,50 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rewrite-tag")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag>();
-        c->parent = this;
-        rewrite_tag.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag>();
+        ent_->parent = this;
+        rewrite_tag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vlan-range")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange>();
-        c->parent = this;
-        vlan_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange>();
+        ent_->parent = this;
+        vlan_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rewrite_tag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rewrite_tag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vlan_range.entities())
+    count_ = 0;
+    for (auto ent_ : vlan_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1208,16 +1208,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1290,16 +1290,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1391,7 +1391,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tdm-options")
     {
@@ -1405,16 +1405,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tdm_options != nullptr)
     {
-        children["tdm-options"] = tdm_options;
+        _children["tdm-options"] = tdm_options;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1535,16 +1535,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1709,16 +1709,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Atm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Atm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1831,16 +1831,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Fr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Fr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1928,7 +1928,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
@@ -1942,16 +1942,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2046,33 +2046,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2155,16 +2155,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2252,7 +2252,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
@@ -2266,16 +2266,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2370,33 +2370,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2479,16 +2479,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2580,7 +2580,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parameters")
     {
@@ -2594,16 +2594,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(parameters != nullptr)
     {
-        children["parameters"] = parameters;
+        _children["parameters"] = parameters;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2721,7 +2721,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet")
     {
@@ -2789,46 +2789,46 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        _children["ethernet"] = ethernet;
     }
 
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
     if(tdm != nullptr)
     {
-        children["tdm"] = tdm;
+        _children["tdm"] = tdm;
     }
 
     if(atm != nullptr)
     {
-        children["atm"] = atm;
+        _children["atm"] = atm;
     }
 
     if(fr != nullptr)
     {
-        children["fr"] = fr;
+        _children["fr"] = fr;
     }
 
     if(pseudowire_ether != nullptr)
     {
-        children["pseudowire-ether"] = pseudowire_ether;
+        _children["pseudowire-ether"] = pseudowire_ether;
     }
 
     if(pseudowire_iw != nullptr)
     {
-        children["pseudowire-iw"] = pseudowire_iw;
+        _children["pseudowire-iw"] = pseudowire_iw;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2897,16 +2897,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3014,50 +3014,50 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rewrite-tag")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag>();
-        c->parent = this;
-        rewrite_tag.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag>();
+        ent_->parent = this;
+        rewrite_tag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vlan-range")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange>();
-        c->parent = this;
-        vlan_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange>();
+        ent_->parent = this;
+        vlan_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rewrite_tag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rewrite_tag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vlan_range.entities())
+    count_ = 0;
+    for (auto ent_ : vlan_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3166,16 +3166,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3248,16 +3248,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3349,7 +3349,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tdm-options")
     {
@@ -3363,16 +3363,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tdm_options != nullptr)
     {
-        children["tdm-options"] = tdm_options;
+        _children["tdm-options"] = tdm_options;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3493,16 +3493,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3667,16 +3667,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Atm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Atm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3789,16 +3789,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Fr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Fr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3886,7 +3886,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
@@ -3900,16 +3900,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4004,33 +4004,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4113,16 +4113,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4210,7 +4210,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
@@ -4224,16 +4224,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4328,33 +4328,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4437,16 +4437,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4546,7 +4546,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srte-policy")
     {
@@ -4560,16 +4560,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(srte_policy != nullptr)
     {
-        children["srte-policy"] = srte_policy;
+        _children["srte-policy"] = srte_policy;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4678,16 +4678,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::SrtePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::SrtePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::SrtePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::SrtePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::PreferredPath::SrtePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4772,7 +4772,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status-tlv")
     {
@@ -4785,34 +4785,34 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
 
     if(child_yang_name == "tlv")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::Tlv>();
-        c->parent = this;
-        tlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::Tlv>();
+        ent_->parent = this;
+        tlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(status_tlv != nullptr)
     {
-        children["status-tlv"] = status_tlv;
+        _children["status-tlv"] = status_tlv;
     }
 
-    count = 0;
-    for (auto c : tlv.entities())
+    count_ = 0;
+    for (auto ent_ : tlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4893,16 +4893,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::StatusTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::StatusTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::StatusTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::StatusTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::StatusTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5013,16 +5013,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::Tlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::Tlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::LocalSignalling::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5137,7 +5137,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status-tlv")
     {
@@ -5150,34 +5150,34 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
 
     if(child_yang_name == "tlv")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::Tlv>();
-        c->parent = this;
-        tlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::Tlv>();
+        ent_->parent = this;
+        tlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(status_tlv != nullptr)
     {
-        children["status-tlv"] = status_tlv;
+        _children["status-tlv"] = status_tlv;
     }
 
-    count = 0;
-    for (auto c : tlv.entities())
+    count_ = 0;
+    for (auto ent_ : tlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5258,16 +5258,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::StatusTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::StatusTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::StatusTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::StatusTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::StatusTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5378,16 +5378,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::Tlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::Tlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::RemoteSignalling::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5494,7 +5494,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "impostion-stats")
     {
@@ -5526,26 +5526,26 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(impostion_stats != nullptr)
     {
-        children["impostion-stats"] = impostion_stats;
+        _children["impostion-stats"] = impostion_stats;
     }
 
     if(dispostion_stats != nullptr)
     {
-        children["dispostion-stats"] = dispostion_stats;
+        _children["dispostion-stats"] = dispostion_stats;
     }
 
     if(sequence_number != nullptr)
     {
-        children["sequence-number"] = sequence_number;
+        _children["sequence-number"] = sequence_number;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5632,7 +5632,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "imposition-stat")
     {
@@ -5709,51 +5709,51 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(imposition_stat != nullptr)
     {
-        children["imposition-stat"] = imposition_stat;
+        _children["imposition-stat"] = imposition_stat;
     }
 
     if(imposition_mtu_drop != nullptr)
     {
-        children["imposition-mtu-drop"] = imposition_mtu_drop;
+        _children["imposition-mtu-drop"] = imposition_mtu_drop;
     }
 
     if(impostion_tail_drop != nullptr)
     {
-        children["impostion-tail-drop"] = impostion_tail_drop;
+        _children["impostion-tail-drop"] = impostion_tail_drop;
     }
 
     if(l2fsbi_drop != nullptr)
     {
-        children["l2fsbi-drop"] = l2fsbi_drop;
+        _children["l2fsbi-drop"] = l2fsbi_drop;
     }
 
     if(multicast != nullptr)
     {
-        children["multicast"] = multicast;
+        _children["multicast"] = multicast;
     }
 
     if(broadcast != nullptr)
     {
-        children["broadcast"] = broadcast;
+        _children["broadcast"] = broadcast;
     }
 
     if(known_unicast != nullptr)
     {
-        children["known-unicast"] = known_unicast;
+        _children["known-unicast"] = known_unicast;
     }
 
     if(unknown_unicast != nullptr)
     {
-        children["unknown-unicast"] = unknown_unicast;
+        _children["unknown-unicast"] = unknown_unicast;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5816,16 +5816,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5908,16 +5908,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6000,16 +6000,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6092,16 +6092,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6184,16 +6184,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Multicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Multicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6276,16 +6276,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Broadcast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Broadcast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6368,16 +6368,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::KnownUnicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6460,16 +6460,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6596,7 +6596,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disposition-stat")
     {
@@ -6718,76 +6718,76 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disposition_stat != nullptr)
     {
-        children["disposition-stat"] = disposition_stat;
+        _children["disposition-stat"] = disposition_stat;
     }
 
     if(disposition_mtu_drop != nullptr)
     {
-        children["disposition-mtu-drop"] = disposition_mtu_drop;
+        _children["disposition-mtu-drop"] = disposition_mtu_drop;
     }
 
     if(disposition_tail_drop != nullptr)
     {
-        children["disposition-tail-drop"] = disposition_tail_drop;
+        _children["disposition-tail-drop"] = disposition_tail_drop;
     }
 
     if(multicast_drop != nullptr)
     {
-        children["multicast-drop"] = multicast_drop;
+        _children["multicast-drop"] = multicast_drop;
     }
 
     if(unicast_drop != nullptr)
     {
-        children["unicast-drop"] = unicast_drop;
+        _children["unicast-drop"] = unicast_drop;
     }
 
     if(broadcast_drop != nullptr)
     {
-        children["broadcast-drop"] = broadcast_drop;
+        _children["broadcast-drop"] = broadcast_drop;
     }
 
     if(received_drops != nullptr)
     {
-        children["received-drops"] = received_drops;
+        _children["received-drops"] = received_drops;
     }
 
     if(dai_drop != nullptr)
     {
-        children["dai-drop"] = dai_drop;
+        _children["dai-drop"] = dai_drop;
     }
 
     if(ipsg_drop != nullptr)
     {
-        children["ipsg-drop"] = ipsg_drop;
+        _children["ipsg-drop"] = ipsg_drop;
     }
 
     if(disposition_oo_o_drops != nullptr)
     {
-        children["disposition-oo-o-drops"] = disposition_oo_o_drops;
+        _children["disposition-oo-o-drops"] = disposition_oo_o_drops;
     }
 
     if(disposition_p2mp_stats != nullptr)
     {
-        children["disposition-p2mp-stats"] = disposition_p2mp_stats;
+        _children["disposition-p2mp-stats"] = disposition_p2mp_stats;
     }
 
     if(known_unicast != nullptr)
     {
-        children["known-unicast"] = known_unicast;
+        _children["known-unicast"] = known_unicast;
     }
 
     if(mac_move != nullptr)
     {
-        children["mac-move"] = mac_move;
+        _children["mac-move"] = mac_move;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6850,16 +6850,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6942,16 +6942,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7034,16 +7034,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7126,16 +7126,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MulticastDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MulticastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7218,16 +7218,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::UnicastDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::UnicastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7310,16 +7310,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::BroadcastDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::BroadcastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7402,16 +7402,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::ReceivedDrops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::ReceivedDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7494,16 +7494,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DaiDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DaiDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DaiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7586,16 +7586,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::IpsgDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::IpsgDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7678,16 +7678,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7770,16 +7770,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionP2mpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionP2mpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionP2mpStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionP2mpStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::DispositionP2mpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7862,16 +7862,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::KnownUnicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7954,16 +7954,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MacMove::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MacMove::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::DispostionStats::MacMove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8054,16 +8054,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::SequenceNumber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::SequenceNumber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::Statistics::SequenceNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8214,16 +8214,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::P2mpPw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::P2mpPw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::P2mpPw::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::P2mpPw::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment1::PseudoWire::P2mpPw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8431,7 +8431,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "attachment-circuit")
     {
@@ -8454,21 +8454,21 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(attachment_circuit != nullptr)
     {
-        children["attachment-circuit"] = attachment_circuit;
+        _children["attachment-circuit"] = attachment_circuit;
     }
 
     if(pseudo_wire != nullptr)
     {
-        children["pseudo-wire"] = pseudo_wire;
+        _children["pseudo-wire"] = pseudo_wire;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8634,7 +8634,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
@@ -8666,26 +8666,26 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::Attachm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(l2vpn_protection != nullptr)
     {
-        children["l2vpn-protection"] = l2vpn_protection;
+        _children["l2vpn-protection"] = l2vpn_protection;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8977,7 +8977,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parameters")
     {
@@ -8991,16 +8991,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::Attachm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(parameters != nullptr)
     {
-        children["parameters"] = parameters;
+        _children["parameters"] = parameters;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9118,7 +9118,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet")
     {
@@ -9186,46 +9186,46 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::Attachm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        _children["ethernet"] = ethernet;
     }
 
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
     if(tdm != nullptr)
     {
-        children["tdm"] = tdm;
+        _children["tdm"] = tdm;
     }
 
     if(atm != nullptr)
     {
-        children["atm"] = atm;
+        _children["atm"] = atm;
     }
 
     if(fr != nullptr)
     {
-        children["fr"] = fr;
+        _children["fr"] = fr;
     }
 
     if(pseudowire_ether != nullptr)
     {
-        children["pseudowire-ether"] = pseudowire_ether;
+        _children["pseudowire-ether"] = pseudowire_ether;
     }
 
     if(pseudowire_iw != nullptr)
     {
-        children["pseudowire-iw"] = pseudowire_iw;
+        _children["pseudowire-iw"] = pseudowire_iw;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9294,16 +9294,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9411,50 +9411,50 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rewrite-tag")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag>();
-        c->parent = this;
-        rewrite_tag.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag>();
+        ent_->parent = this;
+        rewrite_tag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vlan-range")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange>();
-        c->parent = this;
-        vlan_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange>();
+        ent_->parent = this;
+        vlan_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rewrite_tag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rewrite_tag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vlan_range.entities())
+    count_ = 0;
+    for (auto ent_ : vlan_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9563,16 +9563,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::RewriteTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9645,16 +9645,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9746,7 +9746,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tdm-options")
     {
@@ -9760,16 +9760,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::Attachm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tdm_options != nullptr)
     {
-        children["tdm-options"] = tdm_options;
+        _children["tdm-options"] = tdm_options;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9890,16 +9890,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10064,16 +10064,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Atm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Atm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10186,16 +10186,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Fr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Fr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10283,7 +10283,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
@@ -10297,16 +10297,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::Attachm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10401,33 +10401,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10510,16 +10510,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10607,7 +10607,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
@@ -10621,16 +10621,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::Attachm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10725,33 +10725,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10834,16 +10834,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10930,7 +10930,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "impostion-stats")
     {
@@ -10962,26 +10962,26 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::Attachm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(impostion_stats != nullptr)
     {
-        children["impostion-stats"] = impostion_stats;
+        _children["impostion-stats"] = impostion_stats;
     }
 
     if(dispostion_stats != nullptr)
     {
-        children["dispostion-stats"] = dispostion_stats;
+        _children["dispostion-stats"] = dispostion_stats;
     }
 
     if(sequence_number != nullptr)
     {
-        children["sequence-number"] = sequence_number;
+        _children["sequence-number"] = sequence_number;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11068,7 +11068,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "imposition-stat")
     {
@@ -11145,51 +11145,51 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::Attachm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(imposition_stat != nullptr)
     {
-        children["imposition-stat"] = imposition_stat;
+        _children["imposition-stat"] = imposition_stat;
     }
 
     if(imposition_mtu_drop != nullptr)
     {
-        children["imposition-mtu-drop"] = imposition_mtu_drop;
+        _children["imposition-mtu-drop"] = imposition_mtu_drop;
     }
 
     if(impostion_tail_drop != nullptr)
     {
-        children["impostion-tail-drop"] = impostion_tail_drop;
+        _children["impostion-tail-drop"] = impostion_tail_drop;
     }
 
     if(l2fsbi_drop != nullptr)
     {
-        children["l2fsbi-drop"] = l2fsbi_drop;
+        _children["l2fsbi-drop"] = l2fsbi_drop;
     }
 
     if(multicast != nullptr)
     {
-        children["multicast"] = multicast;
+        _children["multicast"] = multicast;
     }
 
     if(broadcast != nullptr)
     {
-        children["broadcast"] = broadcast;
+        _children["broadcast"] = broadcast;
     }
 
     if(known_unicast != nullptr)
     {
-        children["known-unicast"] = known_unicast;
+        _children["known-unicast"] = known_unicast;
     }
 
     if(unknown_unicast != nullptr)
     {
-        children["unknown-unicast"] = unknown_unicast;
+        _children["unknown-unicast"] = unknown_unicast;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11252,16 +11252,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11344,16 +11344,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11436,16 +11436,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11528,16 +11528,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11620,16 +11620,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11712,16 +11712,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11804,16 +11804,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11896,16 +11896,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12032,7 +12032,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disposition-stat")
     {
@@ -12154,76 +12154,76 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::Attachm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disposition_stat != nullptr)
     {
-        children["disposition-stat"] = disposition_stat;
+        _children["disposition-stat"] = disposition_stat;
     }
 
     if(disposition_mtu_drop != nullptr)
     {
-        children["disposition-mtu-drop"] = disposition_mtu_drop;
+        _children["disposition-mtu-drop"] = disposition_mtu_drop;
     }
 
     if(disposition_tail_drop != nullptr)
     {
-        children["disposition-tail-drop"] = disposition_tail_drop;
+        _children["disposition-tail-drop"] = disposition_tail_drop;
     }
 
     if(multicast_drop != nullptr)
     {
-        children["multicast-drop"] = multicast_drop;
+        _children["multicast-drop"] = multicast_drop;
     }
 
     if(unicast_drop != nullptr)
     {
-        children["unicast-drop"] = unicast_drop;
+        _children["unicast-drop"] = unicast_drop;
     }
 
     if(broadcast_drop != nullptr)
     {
-        children["broadcast-drop"] = broadcast_drop;
+        _children["broadcast-drop"] = broadcast_drop;
     }
 
     if(received_drops != nullptr)
     {
-        children["received-drops"] = received_drops;
+        _children["received-drops"] = received_drops;
     }
 
     if(dai_drop != nullptr)
     {
-        children["dai-drop"] = dai_drop;
+        _children["dai-drop"] = dai_drop;
     }
 
     if(ipsg_drop != nullptr)
     {
-        children["ipsg-drop"] = ipsg_drop;
+        _children["ipsg-drop"] = ipsg_drop;
     }
 
     if(disposition_oo_o_drops != nullptr)
     {
-        children["disposition-oo-o-drops"] = disposition_oo_o_drops;
+        _children["disposition-oo-o-drops"] = disposition_oo_o_drops;
     }
 
     if(disposition_p2mp_stats != nullptr)
     {
-        children["disposition-p2mp-stats"] = disposition_p2mp_stats;
+        _children["disposition-p2mp-stats"] = disposition_p2mp_stats;
     }
 
     if(known_unicast != nullptr)
     {
-        children["known-unicast"] = known_unicast;
+        _children["known-unicast"] = known_unicast;
     }
 
     if(mac_move != nullptr)
     {
-        children["mac-move"] = mac_move;
+        _children["mac-move"] = mac_move;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12286,16 +12286,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12378,16 +12378,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12470,16 +12470,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12562,16 +12562,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12654,16 +12654,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12746,16 +12746,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12838,16 +12838,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12930,16 +12930,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13022,16 +13022,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13114,16 +13114,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13206,16 +13206,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::DispositionP2mpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13298,16 +13298,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13390,16 +13390,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::DispostionStats::MacMove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13490,16 +13490,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::SequenceNumber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::SequenceNumber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::Statistics::SequenceNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13614,16 +13614,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::L2vpnProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::L2vpnProtection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::L2vpnProtection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::L2vpnProtection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::AttachmentCircuit::L2vpnProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14093,7 +14093,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-id")
     {
@@ -14179,56 +14179,56 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer_id != nullptr)
     {
-        children["peer-id"] = peer_id;
+        _children["peer-id"] = peer_id;
     }
 
     if(encapsulation_info != nullptr)
     {
-        children["encapsulation-info"] = encapsulation_info;
+        _children["encapsulation-info"] = encapsulation_info;
     }
 
     if(local_interface != nullptr)
     {
-        children["local-interface"] = local_interface;
+        _children["local-interface"] = local_interface;
     }
 
     if(remote_interface != nullptr)
     {
-        children["remote-interface"] = remote_interface;
+        _children["remote-interface"] = remote_interface;
     }
 
     if(preferred_path != nullptr)
     {
-        children["preferred-path"] = preferred_path;
+        _children["preferred-path"] = preferred_path;
     }
 
     if(local_signalling != nullptr)
     {
-        children["local-signalling"] = local_signalling;
+        _children["local-signalling"] = local_signalling;
     }
 
     if(remote_signalling != nullptr)
     {
-        children["remote-signalling"] = remote_signalling;
+        _children["remote-signalling"] = remote_signalling;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(p2mp_pw != nullptr)
     {
-        children["p2mp-pw"] = p2mp_pw;
+        _children["p2mp-pw"] = p2mp_pw;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15119,16 +15119,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::PeerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::PeerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::PeerId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::PeerId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::PeerId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15236,7 +15236,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atom")
     {
@@ -15259,21 +15259,21 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(atom != nullptr)
     {
-        children["atom"] = atom;
+        _children["atom"] = atom;
     }
 
     if(l2tpv3 != nullptr)
     {
-        children["l2tpv3"] = l2tpv3;
+        _children["l2tpv3"] = l2tpv3;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15483,7 +15483,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-agi")
     {
@@ -15515,26 +15515,26 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_agi != nullptr)
     {
-        children["local-agi"] = local_agi;
+        _children["local-agi"] = local_agi;
     }
 
     if(remote_agi != nullptr)
     {
-        children["remote-agi"] = remote_agi;
+        _children["remote-agi"] = remote_agi;
     }
 
     if(multi_segment_pseudowire_stats != nullptr)
     {
-        children["multi-segment-pseudowire-stats"] = multi_segment_pseudowire_stats;
+        _children["multi-segment-pseudowire-stats"] = multi_segment_pseudowire_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15936,7 +15936,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto")
     {
@@ -15968,26 +15968,26 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_ != nullptr)
     {
-        children["auto"] = auto_;
+        _children["auto"] = auto_;
     }
 
     if(two_byte_as != nullptr)
     {
-        children["two-byte-as"] = two_byte_as;
+        _children["two-byte-as"] = two_byte_as;
     }
 
     if(v4_addr != nullptr)
     {
-        children["v4-addr"] = v4_addr;
+        _children["v4-addr"] = v4_addr;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16060,16 +16060,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16152,16 +16152,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16244,16 +16244,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16345,7 +16345,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto")
     {
@@ -16377,26 +16377,26 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_ != nullptr)
     {
-        children["auto"] = auto_;
+        _children["auto"] = auto_;
     }
 
     if(two_byte_as != nullptr)
     {
-        children["two-byte-as"] = two_byte_as;
+        _children["two-byte-as"] = two_byte_as;
     }
 
     if(v4_addr != nullptr)
     {
-        children["v4-addr"] = v4_addr;
+        _children["v4-addr"] = v4_addr;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16469,16 +16469,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16561,16 +16561,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16653,16 +16653,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16745,16 +16745,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16917,16 +16917,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::L2tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::L2tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::L2tpv3::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::L2tpv3::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::EncapsulationInfo::L2tpv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17218,7 +17218,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parameters")
     {
@@ -17232,16 +17232,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(parameters != nullptr)
     {
-        children["parameters"] = parameters;
+        _children["parameters"] = parameters;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17359,7 +17359,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet")
     {
@@ -17427,46 +17427,46 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        _children["ethernet"] = ethernet;
     }
 
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
     if(tdm != nullptr)
     {
-        children["tdm"] = tdm;
+        _children["tdm"] = tdm;
     }
 
     if(atm != nullptr)
     {
-        children["atm"] = atm;
+        _children["atm"] = atm;
     }
 
     if(fr != nullptr)
     {
-        children["fr"] = fr;
+        _children["fr"] = fr;
     }
 
     if(pseudowire_ether != nullptr)
     {
-        children["pseudowire-ether"] = pseudowire_ether;
+        _children["pseudowire-ether"] = pseudowire_ether;
     }
 
     if(pseudowire_iw != nullptr)
     {
-        children["pseudowire-iw"] = pseudowire_iw;
+        _children["pseudowire-iw"] = pseudowire_iw;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17535,16 +17535,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17652,50 +17652,50 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rewrite-tag")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag>();
-        c->parent = this;
-        rewrite_tag.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag>();
+        ent_->parent = this;
+        rewrite_tag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vlan-range")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange>();
-        c->parent = this;
-        vlan_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange>();
+        ent_->parent = this;
+        vlan_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rewrite_tag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rewrite_tag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vlan_range.entities())
+    count_ = 0;
+    for (auto ent_ : vlan_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17804,16 +17804,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::RewriteTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17886,16 +17886,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17987,7 +17987,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tdm-options")
     {
@@ -18001,16 +18001,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tdm_options != nullptr)
     {
-        children["tdm-options"] = tdm_options;
+        _children["tdm-options"] = tdm_options;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18131,16 +18131,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18305,16 +18305,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Atm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Atm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18427,16 +18427,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Fr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Fr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Fr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18524,7 +18524,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
@@ -18538,16 +18538,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18642,33 +18642,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18751,16 +18751,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18848,7 +18848,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
@@ -18862,16 +18862,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18966,33 +18966,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19075,16 +19075,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19176,7 +19176,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parameters")
     {
@@ -19190,16 +19190,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(parameters != nullptr)
     {
-        children["parameters"] = parameters;
+        _children["parameters"] = parameters;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19317,7 +19317,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet")
     {
@@ -19385,46 +19385,46 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        _children["ethernet"] = ethernet;
     }
 
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
     if(tdm != nullptr)
     {
-        children["tdm"] = tdm;
+        _children["tdm"] = tdm;
     }
 
     if(atm != nullptr)
     {
-        children["atm"] = atm;
+        _children["atm"] = atm;
     }
 
     if(fr != nullptr)
     {
-        children["fr"] = fr;
+        _children["fr"] = fr;
     }
 
     if(pseudowire_ether != nullptr)
     {
-        children["pseudowire-ether"] = pseudowire_ether;
+        _children["pseudowire-ether"] = pseudowire_ether;
     }
 
     if(pseudowire_iw != nullptr)
     {
-        children["pseudowire-iw"] = pseudowire_iw;
+        _children["pseudowire-iw"] = pseudowire_iw;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19493,16 +19493,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19610,50 +19610,50 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rewrite-tag")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag>();
-        c->parent = this;
-        rewrite_tag.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag>();
+        ent_->parent = this;
+        rewrite_tag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vlan-range")
     {
-        auto c = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange>();
-        c->parent = this;
-        vlan_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange>();
+        ent_->parent = this;
+        vlan_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rewrite_tag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rewrite_tag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vlan_range.entities())
+    count_ = 0;
+    for (auto ent_ : vlan_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19762,16 +19762,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19844,16 +19844,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19945,7 +19945,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpnv2::Standby::Xconnects::Xcon
 
 }
 
-std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Tdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tdm-options")
     {
@@ -19959,16 +19959,16 @@ std::shared_ptr<Entity> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoW
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Tdm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Tdm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tdm_options != nullptr)
     {
-        children["tdm-options"] = tdm_options;
+        _children["tdm-options"] = tdm_options;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpnv2::Standby::Xconnects::Xconnect::Segment2::PseudoWire::RemoteInterface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

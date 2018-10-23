@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::get_name_lea
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expResource")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> DISMANEXPRESSIONMIB::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(expresource != nullptr)
     {
-        children["expResource"] = expresource;
+        _children["expResource"] = expresource;
     }
 
     if(expexpressiontable != nullptr)
     {
-        children["expExpressionTable"] = expexpressiontable;
+        _children["expExpressionTable"] = expexpressiontable;
     }
 
     if(experrortable != nullptr)
     {
-        children["expErrorTable"] = experrortable;
+        _children["expErrorTable"] = experrortable;
     }
 
     if(expobjecttable != nullptr)
     {
-        children["expObjectTable"] = expobjecttable;
+        _children["expObjectTable"] = expobjecttable;
     }
 
     if(expvaluetable != nullptr)
     {
-        children["expValueTable"] = expvaluetable;
+        _children["expValueTable"] = expvaluetable;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void DISMANEXPRESSIONMIB::set_filter(const std::string & value_path, YFilter yfi
 {
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::clone_ptr() const
 {
     return std::make_shared<DISMANEXPRESSIONMIB>();
 }
@@ -254,16 +254,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpResource:
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::ExpResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpResource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::ExpResource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::ExpResource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -387,33 +387,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpExpressio
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpExpressionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::ExpExpressionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expExpressionEntry")
     {
-        auto c = std::make_shared<DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry>();
-        c->parent = this;
-        expexpressionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry>();
+        ent_->parent = this;
+        expexpressionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpExpressionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::ExpExpressionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : expexpressionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : expexpressionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::ExpExpressionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -513,16 +513,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpExpressio
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -686,33 +686,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpErrorTabl
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpErrorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::ExpErrorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expErrorEntry")
     {
-        auto c = std::make_shared<DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry>();
-        c->parent = this;
-        experrorentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry>();
+        ent_->parent = this;
+        experrorentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpErrorTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::ExpErrorTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : experrorentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : experrorentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::ExpErrorTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -800,16 +800,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpErrorTabl
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -943,33 +943,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpObjectTab
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::ExpObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expObjectEntry")
     {
-        auto c = std::make_shared<DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry>();
-        c->parent = this;
-        expobjectentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry>();
+        ent_->parent = this;
+        expobjectentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpObjectTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::ExpObjectTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : expobjectentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : expobjectentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::ExpObjectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1082,16 +1082,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpObjectTab
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1285,33 +1285,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpValueTabl
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpValueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::ExpValueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expValueEntry")
     {
-        auto c = std::make_shared<DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry>();
-        c->parent = this;
-        expvalueentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry>();
+        ent_->parent = this;
+        expvalueentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpValueTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::ExpValueTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : expvalueentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : expvalueentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::ExpValueTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1420,16 +1420,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpValueTabl
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

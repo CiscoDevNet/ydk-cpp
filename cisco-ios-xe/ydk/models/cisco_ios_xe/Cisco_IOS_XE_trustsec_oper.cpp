@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > TrustsecState::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> TrustsecState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrustsecState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cts-rolebased-sgtmaps")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> TrustsecState::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrustsecState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrustsecState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cts_rolebased_sgtmaps != nullptr)
     {
-        children["cts-rolebased-sgtmaps"] = cts_rolebased_sgtmaps;
+        _children["cts-rolebased-sgtmaps"] = cts_rolebased_sgtmaps;
     }
 
     if(cts_rolebased_policies != nullptr)
     {
-        children["cts-rolebased-policies"] = cts_rolebased_policies;
+        _children["cts-rolebased-policies"] = cts_rolebased_policies;
     }
 
     if(cts_sxp_connections != nullptr)
     {
-        children["cts-sxp-connections"] = cts_sxp_connections;
+        _children["cts-sxp-connections"] = cts_sxp_connections;
     }
 
-    return children;
+    return _children;
 }
 
 void TrustsecState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void TrustsecState::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> TrustsecState::clone_ptr() const
+std::shared_ptr<ydk::Entity> TrustsecState::clone_ptr() const
 {
     return std::make_shared<TrustsecState>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsRolebasedSgtmap
 
 }
 
-std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrustsecState::CtsRolebasedSgtmaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cts-rolebased-sgtmap")
     {
-        auto c = std::make_shared<TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap>();
-        c->parent = this;
-        cts_rolebased_sgtmap.append(c);
-        return c;
+        auto ent_ = std::make_shared<TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap>();
+        ent_->parent = this;
+        cts_rolebased_sgtmap.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedSgtmaps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrustsecState::CtsRolebasedSgtmaps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cts_rolebased_sgtmap.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cts_rolebased_sgtmap.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TrustsecState::CtsRolebasedSgtmaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -316,16 +316,16 @@ std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsRolebasedSgtmap
 
 }
 
-std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -439,33 +439,33 @@ std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsRolebasedPolici
 
 }
 
-std::shared_ptr<Entity> TrustsecState::CtsRolebasedPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrustsecState::CtsRolebasedPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cts-rolebased-policy")
     {
-        auto c = std::make_shared<TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy>();
-        c->parent = this;
-        cts_rolebased_policy.append(c);
-        return c;
+        auto ent_ = std::make_shared<TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy>();
+        ent_->parent = this;
+        cts_rolebased_policy.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedPolicies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrustsecState::CtsRolebasedPolicies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cts_rolebased_policy.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cts_rolebased_policy.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TrustsecState::CtsRolebasedPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -589,16 +589,16 @@ std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsRolebasedPolici
 
 }
 
-std::shared_ptr<Entity> TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -822,33 +822,33 @@ std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsSxpConnections:
 
 }
 
-std::shared_ptr<Entity> TrustsecState::CtsSxpConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrustsecState::CtsSxpConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cts-sxp-connection")
     {
-        auto c = std::make_shared<TrustsecState::CtsSxpConnections::CtsSxpConnection>();
-        c->parent = this;
-        cts_sxp_connection.append(c);
-        return c;
+        auto ent_ = std::make_shared<TrustsecState::CtsSxpConnections::CtsSxpConnection>();
+        ent_->parent = this;
+        cts_sxp_connection.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsSxpConnections::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrustsecState::CtsSxpConnections::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cts_sxp_connection.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cts_sxp_connection.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TrustsecState::CtsSxpConnections::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -944,16 +944,16 @@ std::vector<std::pair<std::string, LeafData> > TrustsecState::CtsSxpConnections:
 
 }
 
-std::shared_ptr<Entity> TrustsecState::CtsSxpConnections::CtsSxpConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrustsecState::CtsSxpConnections::CtsSxpConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsSxpConnections::CtsSxpConnection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrustsecState::CtsSxpConnections::CtsSxpConnection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TrustsecState::CtsSxpConnections::CtsSxpConnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

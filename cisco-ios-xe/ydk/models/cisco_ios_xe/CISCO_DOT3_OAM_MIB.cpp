@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamTable")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cdot3oamtable != nullptr)
     {
-        children["cdot3OamTable"] = cdot3oamtable;
+        _children["cdot3OamTable"] = cdot3oamtable;
     }
 
     if(cdot3oampeertable != nullptr)
     {
-        children["cdot3OamPeerTable"] = cdot3oampeertable;
+        _children["cdot3OamPeerTable"] = cdot3oampeertable;
     }
 
     if(cdot3oamloopbacktable != nullptr)
     {
-        children["cdot3OamLoopbackTable"] = cdot3oamloopbacktable;
+        _children["cdot3OamLoopbackTable"] = cdot3oamloopbacktable;
     }
 
     if(cdot3oamstatstable != nullptr)
     {
-        children["cdot3OamStatsTable"] = cdot3oamstatstable;
+        _children["cdot3OamStatsTable"] = cdot3oamstatstable;
     }
 
     if(cdot3oameventconfigtable != nullptr)
     {
-        children["cdot3OamEventConfigTable"] = cdot3oameventconfigtable;
+        _children["cdot3OamEventConfigTable"] = cdot3oameventconfigtable;
     }
 
     if(cdot3oameventlogtable != nullptr)
     {
-        children["cdot3OamEventLogTable"] = cdot3oameventlogtable;
+        _children["cdot3OamEventLogTable"] = cdot3oameventlogtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void CISCODOT3OAMMIB::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::clone_ptr() const
 {
     return std::make_shared<CISCODOT3OAMMIB>();
 }
@@ -264,33 +264,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamTable::g
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry>();
-        c->parent = this;
-        cdot3oamentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry>();
+        ent_->parent = this;
+        cdot3oamentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdot3oamentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdot3oamentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -381,16 +381,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamTable::C
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -532,33 +532,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamPeerTabl
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamPeerEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry>();
-        c->parent = this;
-        cdot3oampeerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry>();
+        ent_->parent = this;
+        cdot3oampeerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamPeerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamPeerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdot3oampeerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdot3oampeerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -653,16 +653,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamPeerTabl
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -814,33 +814,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamLoopback
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamLoopbackEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry>();
-        c->parent = this;
-        cdot3oamloopbackentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry>();
+        ent_->parent = this;
+        cdot3oamloopbackentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdot3oamloopbackentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdot3oamloopbackentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamLoopbackTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -915,16 +915,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamLoopback
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1028,33 +1028,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamStatsTab
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamStatsEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry>();
-        c->parent = this;
-        cdot3oamstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry>();
+        ent_->parent = this;
+        cdot3oamstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdot3oamstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdot3oamstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1189,16 +1189,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamStatsTab
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1452,33 +1452,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamEventCon
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamEventConfigEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry>();
-        c->parent = this;
-        cdot3oameventconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry>();
+        ent_->parent = this;
+        cdot3oameventconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdot3oameventconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdot3oameventconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamEventConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1609,16 +1609,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamEventCon
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1862,33 +1862,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamEventLog
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamEventLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamEventLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamEventLogEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry>();
-        c->parent = this;
-        cdot3oameventlogentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry>();
+        ent_->parent = this;
+        cdot3oameventlogentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamEventLogTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamEventLogTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdot3oameventlogentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdot3oameventlogentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamEventLogTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2004,16 +2004,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamEventLog
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberManager::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> SubscriberManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> SubscriberManager::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberManager::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(srg != nullptr)
     {
-        children["srg"] = srg;
+        _children["srg"] = srg;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void SubscriberManager::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> SubscriberManager::clone_ptr() const
+std::shared_ptr<ydk::Entity> SubscriberManager::clone_ptr() const
 {
     return std::make_shared<SubscriberManager>();
 }
@@ -188,7 +188,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberManager::Accounting::ge
 
 }
 
-std::shared_ptr<Entity> SubscriberManager::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberManager::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "send-stop")
     {
@@ -211,21 +211,21 @@ std::shared_ptr<Entity> SubscriberManager::Accounting::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberManager::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(send_stop != nullptr)
     {
-        children["send-stop"] = send_stop;
+        _children["send-stop"] = send_stop;
     }
 
     if(interim != nullptr)
     {
-        children["interim"] = interim;
+        _children["interim"] = interim;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberManager::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -291,7 +291,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberManager::Accounting::Se
 
 }
 
-std::shared_ptr<Entity> SubscriberManager::Accounting::SendStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberManager::Accounting::SendStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "setup-failure")
     {
@@ -305,16 +305,16 @@ std::shared_ptr<Entity> SubscriberManager::Accounting::SendStop::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::SendStop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberManager::Accounting::SendStop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(setup_failure != nullptr)
     {
-        children["setup-failure"] = setup_failure;
+        _children["setup-failure"] = setup_failure;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberManager::Accounting::SendStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -380,16 +380,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberManager::Accounting::Se
 
 }
 
-std::shared_ptr<Entity> SubscriberManager::Accounting::SendStop::SetupFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberManager::Accounting::SendStop::SetupFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::SendStop::SetupFailure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberManager::Accounting::SendStop::SetupFailure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberManager::Accounting::SendStop::SetupFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -465,7 +465,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberManager::Accounting::In
 
 }
 
-std::shared_ptr<Entity> SubscriberManager::Accounting::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberManager::Accounting::Interim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "variation")
     {
@@ -479,16 +479,16 @@ std::shared_ptr<Entity> SubscriberManager::Accounting::Interim::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::Interim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberManager::Accounting::Interim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(variation != nullptr)
     {
-        children["variation"] = variation;
+        _children["variation"] = variation;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberManager::Accounting::Interim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -554,16 +554,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberManager::Accounting::In
 
 }
 
-std::shared_ptr<Entity> SubscriberManager::Accounting::Interim::Variation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberManager::Accounting::Interim::Variation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::Interim::Variation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberManager::Accounting::Interim::Variation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberManager::Accounting::Interim::Variation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -639,16 +639,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberManager::Srg::get_name_
 
 }
 
-std::shared_ptr<Entity> SubscriberManager::Srg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberManager::Srg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Srg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberManager::Srg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberManager::Srg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -725,33 +725,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberFeaturette::get_name_le
 
 }
 
-std::shared_ptr<Entity> SubscriberFeaturette::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberFeaturette::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "featurette-name")
     {
-        auto c = std::make_shared<SubscriberFeaturette::FeaturetteName>();
-        c->parent = this;
-        featurette_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberFeaturette::FeaturetteName>();
+        ent_->parent = this;
+        featurette_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberFeaturette::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : featurette_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : featurette_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberFeaturette::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -762,7 +762,7 @@ void SubscriberFeaturette::set_filter(const std::string & value_path, YFilter yf
 {
 }
 
-std::shared_ptr<Entity> SubscriberFeaturette::clone_ptr() const
+std::shared_ptr<ydk::Entity> SubscriberFeaturette::clone_ptr() const
 {
     return std::make_shared<SubscriberFeaturette>();
 }
@@ -847,16 +847,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberFeaturette::FeaturetteN
 
 }
 
-std::shared_ptr<Entity> SubscriberFeaturette::FeaturetteName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberFeaturette::FeaturetteName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::FeaturetteName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberFeaturette::FeaturetteName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberFeaturette::FeaturetteName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -935,16 +935,16 @@ std::vector<std::pair<std::string, LeafData> > IedgeLicenseManager::get_name_lea
 
 }
 
-std::shared_ptr<Entity> IedgeLicenseManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IedgeLicenseManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IedgeLicenseManager::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IedgeLicenseManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -965,7 +965,7 @@ void IedgeLicenseManager::set_filter(const std::string & value_path, YFilter yfi
     }
 }
 
-std::shared_ptr<Entity> IedgeLicenseManager::clone_ptr() const
+std::shared_ptr<ydk::Entity> IedgeLicenseManager::clone_ptr() const
 {
     return std::make_shared<IedgeLicenseManager>();
 }
@@ -1046,33 +1046,33 @@ std::vector<std::pair<std::string, LeafData> > SubManager::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> SubManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<SubManager::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubManager::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubManager::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubManager::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1083,7 +1083,7 @@ void SubManager::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SubManager::clone_ptr() const
+std::shared_ptr<ydk::Entity> SubManager::clone_ptr() const
 {
     return std::make_shared<SubManager>();
 }
@@ -1173,7 +1173,7 @@ std::vector<std::pair<std::string, LeafData> > SubManager::Location::get_name_le
 
 }
 
-std::shared_ptr<Entity> SubManager::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubManager::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
@@ -1187,16 +1187,16 @@ std::shared_ptr<Entity> SubManager::Location::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubManager::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubManager::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(trace != nullptr)
     {
-        children["trace"] = trace;
+        _children["trace"] = trace;
     }
 
-    return children;
+    return _children;
 }
 
 void SubManager::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1275,16 +1275,16 @@ std::vector<std::pair<std::string, LeafData> > SubManager::Location::Trace::get_
 
 }
 
-std::shared_ptr<Entity> SubManager::Location::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubManager::Location::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubManager::Location::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubManager::Location::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubManager::Location::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

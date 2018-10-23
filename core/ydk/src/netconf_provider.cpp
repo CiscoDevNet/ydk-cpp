@@ -35,6 +35,7 @@
 #include "types.hpp"
 #include "ydk_yang.hpp"
 #include "logger.hpp"
+#include "common_utilities.hpp"
 
 using namespace std;
 using namespace ydk;
@@ -111,6 +112,44 @@ const path::Session& NetconfServiceProvider::get_session() const
 std::vector<std::string> NetconfServiceProvider::get_capabilities() const
 {
     return session.get_capabilities();
+}
+
+static string get_rpc(const string & operation)
+{
+    string rpc;
+    if (operation == "create") {
+        rpc = "ydk:create";
+    }
+    else if (operation == "update") {
+    	rpc = "ydk:update";
+    }
+    else if (operation == "delete") {
+    	rpc = "ydk:delete";
+    }
+    else if (operation == "read") {
+    	rpc = "ydk:read";
+    }
+    else {
+        YLOG_ERROR("NetconfServiceProvider::execute_operation: Operation '{}' is not supported", operation);
+        throw(YServiceProviderError("NetconfServiceProvider::execute_operation: Operation is not supported"));
+    }
+    return rpc;
+}
+
+shared_ptr<Entity>
+NetconfServiceProvider::execute_operation(const string & operation, Entity & entity, map<string,string> params)
+{
+    string rpc = get_rpc(operation);
+    string data_tag = (operation == "read") ? "filter" : "entity";
+    return execute_rpc(*this, entity, rpc, data_tag, (params["mode"] == "config"));
+}
+
+vector<shared_ptr<Entity>>
+NetconfServiceProvider::execute_operation(const string & operation, vector<Entity*> entity_list, map<string,string> params)
+{
+    string rpc = get_rpc(operation);
+    string data_tag = (operation == "read") ? "filter" : "entity";
+    return execute_rpc(*this, entity_list, rpc, data_tag, (params["mode"] == "config"));
 }
 
 }

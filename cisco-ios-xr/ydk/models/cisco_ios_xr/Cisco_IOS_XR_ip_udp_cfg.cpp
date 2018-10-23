@@ -59,7 +59,7 @@ std::vector<std::pair<std::string, LeafData> > IpUdp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> IpUdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpUdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "num-thread")
     {
@@ -82,21 +82,21 @@ std::shared_ptr<Entity> IpUdp::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpUdp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpUdp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(num_thread != nullptr)
     {
-        children["num-thread"] = num_thread;
+        _children["num-thread"] = num_thread;
     }
 
     if(directory != nullptr)
     {
-        children["directory"] = directory;
+        _children["directory"] = directory;
     }
 
-    return children;
+    return _children;
 }
 
 void IpUdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -117,7 +117,7 @@ void IpUdp::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> IpUdp::clone_ptr() const
+std::shared_ptr<ydk::Entity> IpUdp::clone_ptr() const
 {
     return std::make_shared<IpUdp>();
 }
@@ -201,16 +201,16 @@ std::vector<std::pair<std::string, LeafData> > IpUdp::NumThread::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> IpUdp::NumThread::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpUdp::NumThread::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpUdp::NumThread::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpUdp::NumThread::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpUdp::NumThread::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -304,16 +304,16 @@ std::vector<std::pair<std::string, LeafData> > IpUdp::Directory::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> IpUdp::Directory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpUdp::Directory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpUdp::Directory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpUdp::Directory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpUdp::Directory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

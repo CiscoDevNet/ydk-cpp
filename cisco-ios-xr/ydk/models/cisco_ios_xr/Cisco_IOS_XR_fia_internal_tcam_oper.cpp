@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Controller::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dpa")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Controller::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dpa != nullptr)
     {
-        children["dpa"] = dpa;
+        _children["dpa"] = dpa;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Controller::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Controller::clone_ptr() const
+std::shared_ptr<ydk::Entity> Controller::clone_ptr() const
 {
     return std::make_shared<Controller>();
 }
@@ -166,7 +166,7 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -180,16 +180,16 @@ std::shared_ptr<Entity> Controller::Dpa::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::Dpa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -263,33 +263,33 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::get_name_
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Controller::Dpa::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Controller::Dpa::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -365,7 +365,7 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::get
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "external-tcam-resources")
     {
@@ -388,21 +388,21 @@ std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(external_tcam_resources != nullptr)
     {
-        children["external-tcam-resources"] = external_tcam_resources;
+        _children["external-tcam-resources"] = external_tcam_resources;
     }
 
     if(internal_tcam_resources != nullptr)
     {
-        children["internal-tcam-resources"] = internal_tcam_resources;
+        _children["internal-tcam-resources"] = internal_tcam_resources;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -479,33 +479,33 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Ext
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "npu-tcam")
     {
-        auto c = std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam>();
-        c->parent = this;
-        npu_tcam.append(c);
-        return c;
+        auto ent_ = std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam>();
+        ent_->parent = this;
+        npu_tcam.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::ExternalTcamResources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::Node::ExternalTcamResources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : npu_tcam.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : npu_tcam.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::Node::ExternalTcamResources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -576,33 +576,33 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Ext
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-bank")
     {
-        auto c = std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank>();
-        c->parent = this;
-        tcam_bank.append(c);
-        return c;
+        auto ent_ = std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank>();
+        ent_->parent = this;
+        tcam_bank.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tcam_bank.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcam_bank.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -703,33 +703,33 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Ext
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bank-db")
     {
-        auto c = std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb>();
-        c->parent = this;
-        bank_db.append(c);
-        return c;
+        auto ent_ = std::make_shared<Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb>();
+        ent_->parent = this;
+        bank_db.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bank_db.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bank_db.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -856,16 +856,16 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Ext
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBank::BankDb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -962,33 +962,33 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Int
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "npu-tcam")
     {
-        auto c = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam>();
-        c->parent = this;
-        npu_tcam.append(c);
-        return c;
+        auto ent_ = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam>();
+        ent_->parent = this;
+        npu_tcam.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : npu_tcam.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : npu_tcam.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::Node::InternalTcamResources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1059,33 +1059,33 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Int
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-bank")
     {
-        auto c = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank>();
-        c->parent = this;
-        tcam_bank.append(c);
-        return c;
+        auto ent_ = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank>();
+        ent_->parent = this;
+        tcam_bank.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tcam_bank.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcam_bank.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1186,33 +1186,33 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Int
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bank-db")
     {
-        auto c = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb>();
-        c->parent = this;
-        bank_db.append(c);
-        return c;
+        auto ent_ = std::make_shared<Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb>();
+        ent_->parent = this;
+        bank_db.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bank_db.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bank_db.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1339,16 +1339,16 @@ std::vector<std::pair<std::string, LeafData> > Controller::Dpa::Nodes::Node::Int
 
 }
 
-std::shared_ptr<Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBank::BankDb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

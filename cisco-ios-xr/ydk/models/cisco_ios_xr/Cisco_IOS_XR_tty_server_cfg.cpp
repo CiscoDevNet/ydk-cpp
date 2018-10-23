@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tty-lines")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Tty::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tty_lines != nullptr)
     {
-        children["tty-lines"] = tty_lines;
+        _children["tty-lines"] = tty_lines;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Tty::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Tty::clone_ptr() const
+std::shared_ptr<ydk::Entity> Tty::clone_ptr() const
 {
     return std::make_shared<Tty>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tty-line")
     {
-        auto c = std::make_shared<Tty::TtyLines::TtyLine>();
-        c->parent = this;
-        tty_line.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tty::TtyLines::TtyLine>();
+        ent_->parent = this;
+        tty_line.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tty_line.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tty_line.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::TtyLines::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -292,7 +292,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::get_name_
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general")
     {
@@ -351,41 +351,41 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general != nullptr)
     {
-        children["general"] = general;
+        _children["general"] = general;
     }
 
     if(telnet != nullptr)
     {
-        children["telnet"] = telnet;
+        _children["telnet"] = telnet;
     }
 
     if(aaa != nullptr)
     {
-        children["aaa"] = aaa;
+        _children["aaa"] = aaa;
     }
 
     if(exec != nullptr)
     {
-        children["exec"] = exec;
+        _children["exec"] = exec;
     }
 
     if(connection != nullptr)
     {
-        children["Cisco-IOS-XR-tty-management-cfg:connection"] = connection;
+        _children["Cisco-IOS-XR-tty-management-cfg:connection"] = connection;
     }
 
     if(exec_mode != nullptr)
     {
-        children["Cisco-IOS-XR-tty-management-cfg:exec-mode"] = exec_mode;
+        _children["Cisco-IOS-XR-tty-management-cfg:exec-mode"] = exec_mode;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -462,16 +462,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::General::
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::General::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::General::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::General::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -560,16 +560,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Telnet::g
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Telnet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Telnet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -663,7 +663,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::get_
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "user-groups")
     {
@@ -704,31 +704,31 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Aaa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(user_groups != nullptr)
     {
-        children["user-groups"] = user_groups;
+        _children["user-groups"] = user_groups;
     }
 
     if(authorization != nullptr)
     {
-        children["authorization"] = authorization;
+        _children["authorization"] = authorization;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -825,33 +825,33 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::User
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "user-group")
     {
-        auto c = std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup>();
-        c->parent = this;
-        user_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup>();
+        ent_->parent = this;
+        user_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : user_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : user_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Aaa::UserGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -915,16 +915,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::User
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1011,16 +1011,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::Auth
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Aaa::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Authorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Aaa::Authorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Aaa::Authorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1109,16 +1109,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::Auth
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Aaa::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Aaa::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Aaa::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1191,16 +1191,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Aaa::Acco
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Aaa::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Aaa::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1283,7 +1283,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Exec::get
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timeout")
     {
@@ -1297,16 +1297,16 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Exec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(timeout != nullptr)
     {
-        children["timeout"] = timeout;
+        _children["timeout"] = timeout;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1379,16 +1379,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Exec::Tim
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Exec::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Exec::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::Timeout::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Exec::Timeout::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Exec::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1502,7 +1502,7 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Connectio
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Connection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport-input")
     {
@@ -1534,26 +1534,26 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Connection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transport_input != nullptr)
     {
-        children["transport-input"] = transport_input;
+        _children["transport-input"] = transport_input;
     }
 
     if(transport_output != nullptr)
     {
-        children["transport-output"] = transport_output;
+        _children["transport-output"] = transport_output;
     }
 
     if(session_timeout != nullptr)
     {
-        children["session-timeout"] = session_timeout;
+        _children["session-timeout"] = session_timeout;
     }
 
-    return children;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Connection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1694,16 +1694,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Connectio
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::TransportInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Connection::TransportInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::TransportInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Connection::TransportInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Connection::TransportInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1814,16 +1814,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Connectio
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::TransportOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Connection::TransportOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::TransportOutput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Connection::TransportOutput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Connection::TransportOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1926,16 +1926,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::Connectio
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::Connection::SessionTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2014,16 +2014,16 @@ std::vector<std::pair<std::string, LeafData> > Tty::TtyLines::TtyLine::ExecMode:
 
 }
 
-std::shared_ptr<Entity> Tty::TtyLines::TtyLine::ExecMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tty::TtyLines::TtyLine::ExecMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::ExecMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tty::TtyLines::TtyLine::ExecMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tty::TtyLines::TtyLine::ExecMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

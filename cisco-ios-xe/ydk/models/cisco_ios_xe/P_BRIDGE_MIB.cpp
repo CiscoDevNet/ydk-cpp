@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dExtBase")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> PBRIDGEMIB::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dot1dextbase != nullptr)
     {
-        children["dot1dExtBase"] = dot1dextbase;
+        _children["dot1dExtBase"] = dot1dextbase;
     }
 
     if(dot1dtphcporttable != nullptr)
     {
-        children["dot1dTpHCPortTable"] = dot1dtphcporttable;
+        _children["dot1dTpHCPortTable"] = dot1dtphcporttable;
     }
 
     if(dot1dtpportoverflowtable != nullptr)
     {
-        children["dot1dTpPortOverflowTable"] = dot1dtpportoverflowtable;
+        _children["dot1dTpPortOverflowTable"] = dot1dtpportoverflowtable;
     }
 
     if(dot1duserpriorityregentable != nullptr)
     {
-        children["dot1dUserPriorityRegenTable"] = dot1duserpriorityregentable;
+        _children["dot1dUserPriorityRegenTable"] = dot1duserpriorityregentable;
     }
 
     if(dot1dtrafficclasstable != nullptr)
     {
-        children["dot1dTrafficClassTable"] = dot1dtrafficclasstable;
+        _children["dot1dTrafficClassTable"] = dot1dtrafficclasstable;
     }
 
     if(dot1dportoutboundaccessprioritytable != nullptr)
     {
-        children["dot1dPortOutboundAccessPriorityTable"] = dot1dportoutboundaccessprioritytable;
+        _children["dot1dPortOutboundAccessPriorityTable"] = dot1dportoutboundaccessprioritytable;
     }
 
-    return children;
+    return _children;
 }
 
 void PBRIDGEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void PBRIDGEMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::clone_ptr() const
 {
     return std::make_shared<PBRIDGEMIB>();
 }
@@ -264,16 +264,16 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dExtBase::get_nam
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dExtBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dExtBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dExtBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dExtBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dExtBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -375,33 +375,33 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dTpHCPortTable::g
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dTpHCPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dTpHCPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dTpHCPortEntry")
     {
-        auto c = std::make_shared<PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry>();
-        c->parent = this;
-        dot1dtphcportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry>();
+        ent_->parent = this;
+        dot1dtphcportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dTpHCPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dTpHCPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dot1dtphcportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dot1dtphcportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dTpHCPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -480,16 +480,16 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dTpHCPortTable::D
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dTpHCPortTable::Dot1dTpHCPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -603,33 +603,33 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dTpPortOverflowTa
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dTpPortOverflowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dTpPortOverflowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dTpPortOverflowEntry")
     {
-        auto c = std::make_shared<PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry>();
-        c->parent = this;
-        dot1dtpportoverflowentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry>();
+        ent_->parent = this;
+        dot1dtpportoverflowentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dTpPortOverflowTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dTpPortOverflowTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dot1dtpportoverflowentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dot1dtpportoverflowentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dTpPortOverflowTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -708,16 +708,16 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dTpPortOverflowTa
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dTpPortOverflowTable::Dot1dTpPortOverflowEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -831,33 +831,33 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dUserPriorityRege
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dUserPriorityRegenTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dUserPriorityRegenTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dUserPriorityRegenEntry")
     {
-        auto c = std::make_shared<PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry>();
-        c->parent = this;
-        dot1duserpriorityregenentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry>();
+        ent_->parent = this;
+        dot1duserpriorityregenentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dUserPriorityRegenTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dUserPriorityRegenTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dot1duserpriorityregenentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dot1duserpriorityregenentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dUserPriorityRegenTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -933,16 +933,16 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dUserPriorityRege
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dUserPriorityRegenTable::Dot1dUserPriorityRegenEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1046,33 +1046,33 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dTrafficClassTabl
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dTrafficClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dTrafficClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dTrafficClassEntry")
     {
-        auto c = std::make_shared<PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry>();
-        c->parent = this;
-        dot1dtrafficclassentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry>();
+        ent_->parent = this;
+        dot1dtrafficclassentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dTrafficClassTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dTrafficClassTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dot1dtrafficclassentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dot1dtrafficclassentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dTrafficClassTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1148,16 +1148,16 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dTrafficClassTabl
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dTrafficClassTable::Dot1dTrafficClassEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1261,33 +1261,33 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dPortOutboundAcce
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1dPortOutboundAccessPriorityEntry")
     {
-        auto c = std::make_shared<PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry>();
-        c->parent = this;
-        dot1dportoutboundaccesspriorityentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry>();
+        ent_->parent = this;
+        dot1dportoutboundaccesspriorityentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dot1dportoutboundaccesspriorityentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dot1dportoutboundaccesspriorityentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1363,16 +1363,16 @@ std::vector<std::pair<std::string, LeafData> > PBRIDGEMIB::Dot1dPortOutboundAcce
 
 }
 
-std::shared_ptr<Entity> PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PBRIDGEMIB::Dot1dPortOutboundAccessPriorityTable::Dot1dPortOutboundAccessPriorityEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

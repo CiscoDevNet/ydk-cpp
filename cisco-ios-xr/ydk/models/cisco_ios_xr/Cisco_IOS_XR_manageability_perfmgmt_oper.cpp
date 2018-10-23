@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "periodic")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> PerfMgmt::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(periodic != nullptr)
     {
-        children["periodic"] = periodic;
+        _children["periodic"] = periodic;
     }
 
     if(monitor != nullptr)
     {
-        children["monitor"] = monitor;
+        _children["monitor"] = monitor;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void PerfMgmt::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> PerfMgmt::clone_ptr() const
+std::shared_ptr<ydk::Entity> PerfMgmt::clone_ptr() const
 {
     return std::make_shared<PerfMgmt>();
 }
@@ -200,7 +200,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospf")
     {
@@ -250,36 +250,36 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        _children["ospf"] = ospf;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -349,7 +349,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Ospf::get_nam
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-protocol-instances")
     {
@@ -372,21 +372,21 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospfv2_protocol_instances != nullptr)
     {
-        children["ospfv2-protocol-instances"] = ospfv2_protocol_instances;
+        _children["ospfv2-protocol-instances"] = ospfv2_protocol_instances;
     }
 
     if(ospfv3_protocol_instances != nullptr)
     {
-        children["ospfv3-protocol-instances"] = ospfv3_protocol_instances;
+        _children["ospfv3-protocol-instances"] = ospfv3_protocol_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -460,33 +460,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Ospf::Ospfv2P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-protocol-instance")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance>();
-        c->parent = this;
-        ospfv2_protocol_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance>();
+        ent_->parent = this;
+        ospfv2_protocol_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfv2_protocol_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfv2_protocol_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -558,7 +558,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Ospf::Ospfv2P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -572,16 +572,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -658,33 +658,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Ospf::Ospfv2P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -832,16 +832,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Ospf::Ospfv2P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1145,33 +1145,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Ospf::Ospfv3P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv3-protocol-instance")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance>();
-        c->parent = this;
-        ospfv3_protocol_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance>();
+        ent_->parent = this;
+        ospfv3_protocol_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfv3_protocol_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfv3_protocol_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1243,7 +1243,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Ospf::Ospfv3P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -1257,16 +1257,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1343,33 +1343,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Ospf::Ospfv3P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1513,16 +1513,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Ospf::Ospfv3P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1808,7 +1808,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Mpls::get_nam
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ldp-neighbors")
     {
@@ -1822,16 +1822,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Mpls::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ldp_neighbors != nullptr)
     {
-        children["ldp-neighbors"] = ldp_neighbors;
+        _children["ldp-neighbors"] = ldp_neighbors;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1905,33 +1905,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Mpls::LdpNeig
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ldp-neighbor")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor>();
-        c->parent = this;
-        ldp_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor>();
+        ent_->parent = this;
+        ldp_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Mpls::LdpNeighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Mpls::LdpNeighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ldp_neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ldp_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Mpls::LdpNeighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2003,7 +2003,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Mpls::LdpNeig
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -2017,16 +2017,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2103,33 +2103,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Mpls::LdpNeig
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2265,16 +2265,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Mpls::LdpNeig
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2548,33 +2548,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::get_na
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2654,7 +2654,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample-xr")
     {
@@ -2686,26 +2686,26 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sample_xr != nullptr)
     {
-        children["sample-xr"] = sample_xr;
+        _children["sample-xr"] = sample_xr;
     }
 
     if(processes != nullptr)
     {
-        children["processes"] = processes;
+        _children["processes"] = processes;
     }
 
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2782,33 +2782,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::SampleXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::Node::SampleXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::SampleXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::Node::SampleXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::Node::SampleXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2880,16 +2880,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2996,33 +2996,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::Node::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes::Process>();
-        c->parent = this;
-        process.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes::Process>();
+        ent_->parent = this;
+        process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::Processes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::Node::Processes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::Node::Processes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3087,7 +3087,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::Node::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -3101,16 +3101,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Processes::Process::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::Processes::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::Node::Processes::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::Node::Processes::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3187,33 +3187,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3289,16 +3289,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3415,33 +3415,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::Node::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Nodes::Node::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Nodes::Node::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::Node::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::Node::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3513,16 +3513,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Nodes::Node::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Nodes::Node::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Nodes::Node::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Nodes::Node::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Nodes::Node::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3628,7 +3628,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Bgp::get_name
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp-neighbors")
     {
@@ -3642,16 +3642,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Bgp::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bgp_neighbors != nullptr)
     {
-        children["bgp-neighbors"] = bgp_neighbors;
+        _children["bgp-neighbors"] = bgp_neighbors;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3725,33 +3725,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Bgp::BgpNeigh
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp-neighbor")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor>();
-        c->parent = this;
-        bgp_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor>();
+        ent_->parent = this;
+        bgp_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Bgp::BgpNeighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Bgp::BgpNeighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bgp_neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bgp_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Bgp::BgpNeighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3823,7 +3823,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Bgp::BgpNeigh
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -3837,16 +3837,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3923,33 +3923,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Bgp::BgpNeigh
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4045,16 +4045,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Bgp::BgpNeigh
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4228,7 +4228,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::ge
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generic-counter-interfaces")
     {
@@ -4260,26 +4260,26 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generic_counter_interfaces != nullptr)
     {
-        children["generic-counter-interfaces"] = generic_counter_interfaces;
+        _children["generic-counter-interfaces"] = generic_counter_interfaces;
     }
 
     if(basic_counter_interfaces != nullptr)
     {
-        children["basic-counter-interfaces"] = basic_counter_interfaces;
+        _children["basic-counter-interfaces"] = basic_counter_interfaces;
     }
 
     if(data_rate_interfaces != nullptr)
     {
-        children["data-rate-interfaces"] = data_rate_interfaces;
+        _children["data-rate-interfaces"] = data_rate_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4353,33 +4353,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Ge
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generic-counter-interface")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface>();
-        c->parent = this;
-        generic_counter_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface>();
+        ent_->parent = this;
+        generic_counter_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : generic_counter_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : generic_counter_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::GenericCounterInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4451,7 +4451,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Ge
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -4465,16 +4465,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4551,33 +4551,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Ge
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4721,16 +4721,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Ge
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5024,33 +5024,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Ba
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "basic-counter-interface")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface>();
-        c->parent = this;
-        basic_counter_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface>();
+        ent_->parent = this;
+        basic_counter_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : basic_counter_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : basic_counter_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::BasicCounterInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5122,7 +5122,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Ba
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -5136,16 +5136,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::B
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5222,33 +5222,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Ba
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5352,16 +5352,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Ba
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5555,33 +5555,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Da
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data-rate-interface")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface>();
-        c->parent = this;
-        data_rate_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface>();
+        ent_->parent = this;
+        data_rate_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::DataRateInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::DataRateInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : data_rate_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : data_rate_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::DataRateInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5653,7 +5653,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Da
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -5667,16 +5667,16 @@ std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataR
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5753,33 +5753,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Da
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5879,16 +5879,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Periodic::Interface::Da
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6080,7 +6080,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospf")
     {
@@ -6130,36 +6130,36 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        _children["ospf"] = ospf;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6229,7 +6229,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Ospf::get_name
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-protocol-instances")
     {
@@ -6252,21 +6252,21 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospfv2_protocol_instances != nullptr)
     {
-        children["ospfv2-protocol-instances"] = ospfv2_protocol_instances;
+        _children["ospfv2-protocol-instances"] = ospfv2_protocol_instances;
     }
 
     if(ospfv3_protocol_instances != nullptr)
     {
-        children["ospfv3-protocol-instances"] = ospfv3_protocol_instances;
+        _children["ospfv3-protocol-instances"] = ospfv3_protocol_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6340,33 +6340,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Ospf::Ospfv2Pr
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv2-protocol-instance")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance>();
-        c->parent = this;
-        ospfv2_protocol_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance>();
+        ent_->parent = this;
+        ospfv2_protocol_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfv2_protocol_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfv2_protocol_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6438,7 +6438,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Ospf::Ospfv2Pr
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -6452,16 +6452,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6538,33 +6538,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Ospf::Ospfv2Pr
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6712,16 +6712,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Ospf::Ospfv2Pr
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7025,33 +7025,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Ospf::Ospfv3Pr
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv3-protocol-instance")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance>();
-        c->parent = this;
-        ospfv3_protocol_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance>();
+        ent_->parent = this;
+        ospfv3_protocol_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ospfv3_protocol_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ospfv3_protocol_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7123,7 +7123,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Ospf::Ospfv3Pr
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -7137,16 +7137,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7223,33 +7223,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Ospf::Ospfv3Pr
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7393,16 +7393,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Ospf::Ospfv3Pr
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7688,7 +7688,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Mpls::get_name
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ldp-neighbors")
     {
@@ -7702,16 +7702,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Mpls::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ldp_neighbors != nullptr)
     {
-        children["ldp-neighbors"] = ldp_neighbors;
+        _children["ldp-neighbors"] = ldp_neighbors;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7785,33 +7785,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Mpls::LdpNeigh
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ldp-neighbor")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor>();
-        c->parent = this;
-        ldp_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor>();
+        ent_->parent = this;
+        ldp_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Mpls::LdpNeighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Mpls::LdpNeighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ldp_neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ldp_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Mpls::LdpNeighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7883,7 +7883,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Mpls::LdpNeigh
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -7897,16 +7897,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7983,33 +7983,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Mpls::LdpNeigh
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8145,16 +8145,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Mpls::LdpNeigh
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8428,33 +8428,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::get_nam
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8534,7 +8534,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::Node::g
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample-xr")
     {
@@ -8566,26 +8566,26 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sample_xr != nullptr)
     {
-        children["sample-xr"] = sample_xr;
+        _children["sample-xr"] = sample_xr;
     }
 
     if(processes != nullptr)
     {
-        children["processes"] = processes;
+        _children["processes"] = processes;
     }
 
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8662,33 +8662,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::Node::S
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::SampleXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::Node::SampleXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::SampleXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::Node::SampleXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::Node::SampleXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8760,16 +8760,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::Node::S
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8876,33 +8876,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::Node::P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::Node::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes::Process>();
-        c->parent = this;
-        process.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes::Process>();
+        ent_->parent = this;
+        process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::Processes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::Node::Processes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::Node::Processes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8967,7 +8967,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::Node::P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::Node::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -8981,16 +8981,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Processes::Process::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::Processes::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::Node::Processes::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::Node::Processes::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9067,33 +9067,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::Node::P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9169,16 +9169,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::Node::P
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9295,33 +9295,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::Node::S
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::Node::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Nodes::Node::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Nodes::Node::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::Node::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::Node::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9393,16 +9393,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Nodes::Node::S
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Nodes::Node::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Nodes::Node::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Nodes::Node::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Nodes::Node::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Nodes::Node::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9508,7 +9508,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Bgp::get_name_
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp-neighbors")
     {
@@ -9522,16 +9522,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Bgp::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bgp_neighbors != nullptr)
     {
-        children["bgp-neighbors"] = bgp_neighbors;
+        _children["bgp-neighbors"] = bgp_neighbors;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9605,33 +9605,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Bgp::BgpNeighb
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp-neighbor")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor>();
-        c->parent = this;
-        bgp_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor>();
+        ent_->parent = this;
+        bgp_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Bgp::BgpNeighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Bgp::BgpNeighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bgp_neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bgp_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Bgp::BgpNeighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9703,7 +9703,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Bgp::BgpNeighb
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -9717,16 +9717,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9803,33 +9803,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Bgp::BgpNeighb
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9925,16 +9925,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Bgp::BgpNeighb
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10108,7 +10108,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::get
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generic-counter-interfaces")
     {
@@ -10140,26 +10140,26 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generic_counter_interfaces != nullptr)
     {
-        children["generic-counter-interfaces"] = generic_counter_interfaces;
+        _children["generic-counter-interfaces"] = generic_counter_interfaces;
     }
 
     if(basic_counter_interfaces != nullptr)
     {
-        children["basic-counter-interfaces"] = basic_counter_interfaces;
+        _children["basic-counter-interfaces"] = basic_counter_interfaces;
     }
 
     if(data_rate_interfaces != nullptr)
     {
-        children["data-rate-interfaces"] = data_rate_interfaces;
+        _children["data-rate-interfaces"] = data_rate_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10233,33 +10233,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Gen
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generic-counter-interface")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface>();
-        c->parent = this;
-        generic_counter_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface>();
+        ent_->parent = this;
+        generic_counter_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : generic_counter_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : generic_counter_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::GenericCounterInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10331,7 +10331,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Gen
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -10345,16 +10345,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10431,33 +10431,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Gen
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10601,16 +10601,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Gen
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10904,33 +10904,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Bas
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "basic-counter-interface")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface>();
-        c->parent = this;
-        basic_counter_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface>();
+        ent_->parent = this;
+        basic_counter_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : basic_counter_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : basic_counter_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::BasicCounterInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11002,7 +11002,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Bas
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -11016,16 +11016,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::Ba
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11102,33 +11102,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Bas
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11232,16 +11232,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Bas
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11435,33 +11435,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Dat
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data-rate-interface")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface>();
-        c->parent = this;
-        data_rate_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface>();
+        ent_->parent = this;
+        data_rate_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::DataRateInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::DataRateInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : data_rate_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : data_rate_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::DataRateInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11533,7 +11533,7 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Dat
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -11547,16 +11547,16 @@ std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11633,33 +11633,33 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Dat
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11759,16 +11759,16 @@ std::vector<std::pair<std::string, LeafData> > PerfMgmt::Monitor::Interface::Dat
 
 }
 
-std::shared_ptr<Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

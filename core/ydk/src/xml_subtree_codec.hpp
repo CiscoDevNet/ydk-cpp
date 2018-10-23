@@ -32,6 +32,7 @@ class XmlSubtreeCodec
 {
 public:
     XmlSubtreeCodec();
+    ~XmlSubtreeCodec();
 
     std::string encode(Entity & entity, path::RootSchemaNode & root_schema);
     std::shared_ptr<Entity> decode(const std::string & payload, std::shared_ptr<Entity> entity);

@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaAutoGroupTable")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAAUTOMEASUREMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cipslaautogrouptable != nullptr)
     {
-        children["cipslaAutoGroupTable"] = cipslaautogrouptable;
+        _children["cipslaAutoGroupTable"] = cipslaautogrouptable;
     }
 
     if(cipslaautogroupdesttable != nullptr)
     {
-        children["cipslaAutoGroupDestTable"] = cipslaautogroupdesttable;
+        _children["cipslaAutoGroupDestTable"] = cipslaautogroupdesttable;
     }
 
     if(cipslareacttable != nullptr)
     {
-        children["cipslaReactTable"] = cipslareacttable;
+        _children["cipslaReactTable"] = cipslareacttable;
     }
 
     if(cipslaautogroupschedtable != nullptr)
     {
-        children["cipslaAutoGroupSchedTable"] = cipslaautogroupschedtable;
+        _children["cipslaAutoGroupSchedTable"] = cipslaautogroupschedtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAAUTOMEASUREMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void CISCOIPSLAAUTOMEASUREMIB::set_filter(const std::string & value_path, YFilte
 {
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIPSLAAUTOMEASUREMIB>();
 }
@@ -228,33 +228,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaA
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaAutoGroupEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry>();
-        c->parent = this;
-        cipslaautogroupentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry>();
+        ent_->parent = this;
+        cipslaautogroupentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipslaautogroupentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipslaautogroupentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -369,16 +369,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaA
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -582,33 +582,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaA
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaAutoGroupDestEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry>();
-        c->parent = this;
-        cipslaautogroupdestentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry>();
+        ent_->parent = this;
+        cipslaautogroupdestentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipslaautogroupdestentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipslaautogroupdestentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -698,16 +698,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaA
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -841,33 +841,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaR
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaReactEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry>();
-        c->parent = this;
-        cipslareactentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry>();
+        ent_->parent = this;
+        cipslareactentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipslareactentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipslareactentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -980,16 +980,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaR
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1183,33 +1183,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaA
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaAutoGroupSchedEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry>();
-        c->parent = this;
-        cipslaautogroupschedentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry>();
+        ent_->parent = this;
+        cipslaautogroupschedentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipslaautogroupschedentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipslaautogroupschedentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1312,16 +1312,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAAUTOMEASUREMIB::CipslaA
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

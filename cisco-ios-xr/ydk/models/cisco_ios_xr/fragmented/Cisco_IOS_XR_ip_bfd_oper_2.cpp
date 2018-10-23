@@ -63,16 +63,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -162,16 +162,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -261,16 +261,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -372,16 +372,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -521,7 +521,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-destination-address")
     {
@@ -534,34 +534,34 @@ std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHea
 
     if(child_yang_name == "owner-information")
     {
-        auto c = std::make_shared<Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation>();
-        c->parent = this;
-        owner_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation>();
+        ent_->parent = this;
+        owner_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip_destination_address != nullptr)
     {
-        children["ip-destination-address"] = ip_destination_address;
+        _children["ip-destination-address"] = ip_destination_address;
     }
 
-    count = 0;
-    for (auto c : owner_information.entities())
+    count_ = 0;
+    for (auto ent_ : owner_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -669,16 +669,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -800,16 +800,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -933,33 +933,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::RelationBriefs::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Bfd::RelationBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::RelationBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "relation-brief")
     {
-        auto c = std::make_shared<Bfd::RelationBriefs::RelationBrief>();
-        c->parent = this;
-        relation_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::RelationBriefs::RelationBrief>();
+        ent_->parent = this;
+        relation_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::RelationBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : relation_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : relation_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::RelationBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1045,33 +1045,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::RelationBriefs::RelationBrie
 
 }
 
-std::shared_ptr<Entity> Bfd::RelationBriefs::RelationBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::RelationBriefs::RelationBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-information")
     {
-        auto c = std::make_shared<Bfd::RelationBriefs::RelationBrief::LinkInformation>();
-        c->parent = this;
-        link_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::RelationBriefs::RelationBrief::LinkInformation>();
+        ent_->parent = this;
+        link_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationBriefs::RelationBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::RelationBriefs::RelationBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : link_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : link_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::RelationBriefs::RelationBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1171,16 +1171,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::RelationBriefs::RelationBrie
 
 }
 
-std::shared_ptr<Entity> Bfd::RelationBriefs::RelationBrief::LinkInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::RelationBriefs::RelationBrief::LinkInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationBriefs::RelationBrief::LinkInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::RelationBriefs::RelationBrief::LinkInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::RelationBriefs::RelationBrief::LinkInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1274,33 +1274,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::ClientBriefs::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Bfd::ClientBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::ClientBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client-brief")
     {
-        auto c = std::make_shared<Bfd::ClientBriefs::ClientBrief>();
-        c->parent = this;
-        client_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::ClientBriefs::ClientBrief>();
+        ent_->parent = this;
+        client_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::ClientBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::ClientBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::ClientBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1379,16 +1379,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::ClientBriefs::ClientBrief::g
 
 }
 
-std::shared_ptr<Entity> Bfd::ClientBriefs::ClientBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::ClientBriefs::ClientBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::ClientBriefs::ClientBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::ClientBriefs::ClientBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::ClientBriefs::ClientBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1502,33 +1502,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadMultiPaths
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4bf-do-mplste-head-multi-path")
     {
-        auto c = std::make_shared<Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath>();
-        c->parent = this;
-        ipv4bf_do_mplste_head_multi_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath>();
+        ent_->parent = this;
+        ipv4bf_do_mplste_head_multi_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadMultiPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadMultiPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4bf_do_mplste_head_multi_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4bf_do_mplste_head_multi_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadMultiPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1670,16 +1670,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadMultiPaths
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1953,33 +1953,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::RelationDetails::get_name_le
 
 }
 
-std::shared_ptr<Entity> Bfd::RelationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::RelationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "relation-detail")
     {
-        auto c = std::make_shared<Bfd::RelationDetails::RelationDetail>();
-        c->parent = this;
-        relation_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::RelationDetails::RelationDetail>();
+        ent_->parent = this;
+        relation_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::RelationDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : relation_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : relation_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::RelationDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2080,50 +2080,50 @@ std::vector<std::pair<std::string, LeafData> > Bfd::RelationDetails::RelationDet
 
 }
 
-std::shared_ptr<Entity> Bfd::RelationDetails::RelationDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::RelationDetails::RelationDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-information")
     {
-        auto c = std::make_shared<Bfd::RelationDetails::RelationDetail::LinkInformation>();
-        c->parent = this;
-        link_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::RelationDetails::RelationDetail::LinkInformation>();
+        ent_->parent = this;
+        link_information.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "association-information")
     {
-        auto c = std::make_shared<Bfd::RelationDetails::RelationDetail::AssociationInformation>();
-        c->parent = this;
-        association_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::RelationDetails::RelationDetail::AssociationInformation>();
+        ent_->parent = this;
+        association_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::RelationDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::RelationDetails::RelationDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : link_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : link_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : association_information.entities())
+    count_ = 0;
+    for (auto ent_ : association_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::RelationDetails::RelationDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2237,16 +2237,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::RelationDetails::RelationDet
 
 }
 
-std::shared_ptr<Entity> Bfd::RelationDetails::RelationDetail::LinkInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::RelationDetails::RelationDetail::LinkInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::RelationDetail::LinkInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::RelationDetails::RelationDetail::LinkInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::RelationDetails::RelationDetail::LinkInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2366,7 +2366,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::RelationDetails::RelationDet
 
 }
 
-std::shared_ptr<Entity> Bfd::RelationDetails::RelationDetail::AssociationInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::RelationDetails::RelationDetail::AssociationInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-destination-address")
     {
@@ -2379,34 +2379,34 @@ std::shared_ptr<Entity> Bfd::RelationDetails::RelationDetail::AssociationInforma
 
     if(child_yang_name == "owner-information")
     {
-        auto c = std::make_shared<Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation>();
-        c->parent = this;
-        owner_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation>();
+        ent_->parent = this;
+        owner_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::RelationDetail::AssociationInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::RelationDetails::RelationDetail::AssociationInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip_destination_address != nullptr)
     {
-        children["ip-destination-address"] = ip_destination_address;
+        _children["ip-destination-address"] = ip_destination_address;
     }
 
-    count = 0;
-    for (auto c : owner_information.entities())
+    count_ = 0;
+    for (auto ent_ : owner_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::RelationDetails::RelationDetail::AssociationInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2514,16 +2514,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::RelationDetails::RelationDet
 
 }
 
-std::shared_ptr<Entity> Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2645,16 +2645,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::RelationDetails::RelationDet
 
 }
 
-std::shared_ptr<Entity> Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2770,7 +2770,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailCounters::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteTailCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4bf-do-mplste-tail-packet-counters")
     {
@@ -2784,16 +2784,16 @@ std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailCounters::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteTailCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4bf_do_mplste_tail_packet_counters != nullptr)
     {
-        children["ipv4bf-do-mplste-tail-packet-counters"] = ipv4bf_do_mplste_tail_packet_counters;
+        _children["ipv4bf-do-mplste-tail-packet-counters"] = ipv4bf_do_mplste_tail_packet_counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteTailCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2867,33 +2867,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailCounters::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4bf-do-mplste-tail-packet-counter")
     {
-        auto c = std::make_shared<Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter>();
-        c->parent = this;
-        ipv4bf_do_mplste_tail_packet_counter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter>();
+        ent_->parent = this;
+        ipv4bf_do_mplste_tail_packet_counter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4bf_do_mplste_tail_packet_counter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4bf_do_mplste_tail_packet_counter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3027,16 +3027,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailCounters::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3290,33 +3290,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv6SingleHopSessionBriefs::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv6SingleHopSessionBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv6SingleHopSessionBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-single-hop-session-brief")
     {
-        auto c = std::make_shared<Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief>();
-        c->parent = this;
-        ipv6_single_hop_session_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief>();
+        ent_->parent = this;
+        ipv6_single_hop_session_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv6SingleHopSessionBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6_single_hop_session_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6_single_hop_session_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv6SingleHopSessionBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3415,7 +3415,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv6SingleHopSessionBriefs::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status-brief-information")
     {
@@ -3429,16 +3429,16 @@ std::shared_ptr<Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(status_brief_information != nullptr)
     {
-        children["status-brief-information"] = status_brief_information;
+        _children["status-brief-information"] = status_brief_information;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3588,7 +3588,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv6SingleHopSessionBriefs::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "async-interval-multiplier")
     {
@@ -3611,21 +3611,21 @@ std::shared_ptr<Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(async_interval_multiplier != nullptr)
     {
-        children["async-interval-multiplier"] = async_interval_multiplier;
+        _children["async-interval-multiplier"] = async_interval_multiplier;
     }
 
     if(echo_interval_multiplier != nullptr)
     {
-        children["echo-interval-multiplier"] = echo_interval_multiplier;
+        _children["echo-interval-multiplier"] = echo_interval_multiplier;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3703,16 +3703,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv6SingleHopSessionBriefs::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3826,16 +3826,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv6SingleHopSessionBriefs::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3939,33 +3939,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailMultiPaths
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteTailMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4bf-do-mplste-tail-multi-path")
     {
-        auto c = std::make_shared<Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath>();
-        c->parent = this;
-        ipv4bf_do_mplste_tail_multi_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath>();
+        ent_->parent = this;
+        ipv4bf_do_mplste_tail_multi_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailMultiPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteTailMultiPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4bf_do_mplste_tail_multi_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4bf_do_mplste_tail_multi_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteTailMultiPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4103,16 +4103,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailMultiPaths
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4376,33 +4376,33 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4MultiHopMultiPaths::get_
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4MultiHopMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4MultiHopMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-multi-hop-multi-path")
     {
-        auto c = std::make_shared<Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath>();
-        c->parent = this;
-        ipv4_multi_hop_multi_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath>();
+        ent_->parent = this;
+        ipv4_multi_hop_multi_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4MultiHopMultiPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4MultiHopMultiPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_multi_hop_multi_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_multi_hop_multi_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv4MultiHopMultiPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4504,16 +4504,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4MultiHopMultiPaths::Ipv4
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4679,7 +4679,7 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSummary::g
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-state")
     {
@@ -4693,16 +4693,16 @@ std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSummary::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session_state != nullptr)
     {
-        children["session-state"] = session_state;
+        _children["session-state"] = session_state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4780,16 +4780,16 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSummary::S
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

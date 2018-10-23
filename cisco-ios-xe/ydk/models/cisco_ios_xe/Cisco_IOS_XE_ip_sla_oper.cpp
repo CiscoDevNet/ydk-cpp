@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sla-oper-entry")
     {
-        auto c = std::make_shared<IpSlaStats::SlaOperEntry>();
-        c->parent = this;
-        sla_oper_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpSlaStats::SlaOperEntry>();
+        ent_->parent = this;
+        sla_oper_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sla_oper_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sla_oper_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSlaStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void IpSlaStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IpSlaStats::clone_ptr() const
+std::shared_ptr<ydk::Entity> IpSlaStats::clone_ptr() const
 {
     return std::make_shared<IpSlaStats>();
 }
@@ -211,7 +211,7 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::get_nam
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rtt-info")
     {
@@ -243,26 +243,26 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rtt_info != nullptr)
     {
-        children["rtt-info"] = rtt_info;
+        _children["rtt-info"] = rtt_info;
     }
 
     if(measure_stats != nullptr)
     {
-        children["measure-stats"] = measure_stats;
+        _children["measure-stats"] = measure_stats;
     }
 
     if(stats != nullptr)
     {
-        children["stats"] = stats;
+        _children["stats"] = stats;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -385,7 +385,7 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::RttInfo
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::RttInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::RttInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "latest-rtt")
     {
@@ -408,21 +408,21 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::RttInfo::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::RttInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::RttInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(latest_rtt != nullptr)
     {
-        children["latest-rtt"] = latest_rtt;
+        _children["latest-rtt"] = latest_rtt;
     }
 
     if(time_to_live != nullptr)
     {
-        children["time-to-live"] = time_to_live;
+        _children["time-to-live"] = time_to_live;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::RttInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -489,16 +489,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::RttInfo
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::RttInfo::LatestRtt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -591,16 +591,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::RttInfo
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::RttInfo::TimeToLive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -691,16 +691,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Measure
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::MeasureStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::MeasureStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::MeasureStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::MeasureStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::MeasureStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -823,7 +823,7 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rtt")
     {
@@ -891,46 +891,46 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rtt != nullptr)
     {
-        children["rtt"] = rtt;
+        _children["rtt"] = rtt;
     }
 
     if(oneway_latency != nullptr)
     {
-        children["oneway-latency"] = oneway_latency;
+        _children["oneway-latency"] = oneway_latency;
     }
 
     if(jitter != nullptr)
     {
-        children["jitter"] = jitter;
+        _children["jitter"] = jitter;
     }
 
     if(over_threshold != nullptr)
     {
-        children["over-threshold"] = over_threshold;
+        _children["over-threshold"] = over_threshold;
     }
 
     if(packet_loss != nullptr)
     {
-        children["packet-loss"] = packet_loss;
+        _children["packet-loss"] = packet_loss;
     }
 
     if(icmp_packet_loss != nullptr)
     {
-        children["icmp-packet-loss"] = icmp_packet_loss;
+        _children["icmp-packet-loss"] = icmp_packet_loss;
     }
 
     if(voice_score != nullptr)
     {
-        children["voice-score"] = voice_score;
+        _children["voice-score"] = voice_score;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -994,7 +994,7 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Rtt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::Rtt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sla-time-values")
     {
@@ -1008,16 +1008,16 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Rtt::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Rtt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::Rtt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sla_time_values != nullptr)
     {
-        children["sla-time-values"] = sla_time_values;
+        _children["sla-time-values"] = sla_time_values;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::Rtt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1098,16 +1098,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::Rtt::SlaTimeValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1215,7 +1215,7 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sd")
     {
@@ -1238,21 +1238,21 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sd != nullptr)
     {
-        children["sd"] = sd;
+        _children["sd"] = sd;
     }
 
     if(ds != nullptr)
     {
-        children["ds"] = ds;
+        _children["ds"] = ds;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::OnewayLatency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1333,16 +1333,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Sd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1453,16 +1453,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::OnewayLatency::Ds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1574,7 +1574,7 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sd")
     {
@@ -1597,21 +1597,21 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sd != nullptr)
     {
-        children["sd"] = sd;
+        _children["sd"] = sd;
     }
 
     if(ds != nullptr)
     {
-        children["ds"] = ds;
+        _children["ds"] = ds;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::Jitter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1702,16 +1702,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::Jitter::Sd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1822,16 +1822,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::Jitter::Ds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1934,16 +1934,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::OverThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::OverThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::OverThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::OverThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::OverThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2055,7 +2055,7 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sd-loss")
     {
@@ -2078,21 +2078,21 @@ std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sd_loss != nullptr)
     {
-        children["sd-loss"] = sd_loss;
+        _children["sd-loss"] = sd_loss;
     }
 
     if(ds_loss != nullptr)
     {
-        children["ds-loss"] = ds_loss;
+        _children["ds-loss"] = ds_loss;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::PacketLoss::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2237,16 +2237,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::PacketLoss::SdLoss::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2371,16 +2371,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::PacketLoss::DsLoss::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2537,16 +2537,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::IcmpPacketLoss::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2739,16 +2739,16 @@ std::vector<std::pair<std::string, LeafData> > IpSlaStats::SlaOperEntry::Stats::
 
 }
 
-std::shared_ptr<Entity> IpSlaStats::SlaOperEntry::Stats::VoiceScore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSlaStats::SlaOperEntry::Stats::VoiceScore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSlaStats::SlaOperEntry::Stats::VoiceScore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSlaStats::SlaOperEntry::Stats::VoiceScore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSlaStats::SlaOperEntry::Stats::VoiceScore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

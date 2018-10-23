@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > UDPMIB::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> UDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> UDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> UDPMIB::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UDPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> UDPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp != nullptr)
     {
-        children["udp"] = udp;
+        _children["udp"] = udp;
     }
 
     if(udptable != nullptr)
     {
-        children["udpTable"] = udptable;
+        _children["udpTable"] = udptable;
     }
 
     if(udpendpointtable != nullptr)
     {
-        children["udpEndpointTable"] = udpendpointtable;
+        _children["udpEndpointTable"] = udpendpointtable;
     }
 
-    return children;
+    return _children;
 }
 
 void UDPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void UDPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> UDPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> UDPMIB::clone_ptr() const
 {
     return std::make_shared<UDPMIB>();
 }
@@ -222,16 +222,16 @@ std::vector<std::pair<std::string, LeafData> > UDPMIB::Udp::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> UDPMIB::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> UDPMIB::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> UDPMIB::Udp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void UDPMIB::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -365,33 +365,33 @@ std::vector<std::pair<std::string, LeafData> > UDPMIB::UdpTable::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> UDPMIB::UdpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> UDPMIB::UdpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udpEntry")
     {
-        auto c = std::make_shared<UDPMIB::UdpTable::UdpEntry>();
-        c->parent = this;
-        udpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<UDPMIB::UdpTable::UdpEntry>();
+        ent_->parent = this;
+        udpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UDPMIB::UdpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> UDPMIB::UdpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : udpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : udpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void UDPMIB::UdpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -463,16 +463,16 @@ std::vector<std::pair<std::string, LeafData> > UDPMIB::UdpTable::UdpEntry::get_n
 
 }
 
-std::shared_ptr<Entity> UDPMIB::UdpTable::UdpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> UDPMIB::UdpTable::UdpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UDPMIB::UdpTable::UdpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> UDPMIB::UdpTable::UdpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void UDPMIB::UdpTable::UdpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -566,33 +566,33 @@ std::vector<std::pair<std::string, LeafData> > UDPMIB::UdpEndpointTable::get_nam
 
 }
 
-std::shared_ptr<Entity> UDPMIB::UdpEndpointTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> UDPMIB::UdpEndpointTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udpEndpointEntry")
     {
-        auto c = std::make_shared<UDPMIB::UdpEndpointTable::UdpEndpointEntry>();
-        c->parent = this;
-        udpendpointentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<UDPMIB::UdpEndpointTable::UdpEndpointEntry>();
+        ent_->parent = this;
+        udpendpointentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UDPMIB::UdpEndpointTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> UDPMIB::UdpEndpointTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : udpendpointentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : udpendpointentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void UDPMIB::UdpEndpointTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -693,16 +693,16 @@ std::vector<std::pair<std::string, LeafData> > UDPMIB::UdpEndpointTable::UdpEndp
 
 }
 
-std::shared_ptr<Entity> UDPMIB::UdpEndpointTable::UdpEndpointEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> UDPMIB::UdpEndpointTable::UdpEndpointEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UDPMIB::UdpEndpointTable::UdpEndpointEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> UDPMIB::UdpEndpointTable::UdpEndpointEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void UDPMIB::UdpEndpointTable::UdpEndpointEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

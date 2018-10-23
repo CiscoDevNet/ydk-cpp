@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clients")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> FlowSpec::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clients != nullptr)
     {
-        children["clients"] = clients;
+        _children["clients"] = clients;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void FlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> FlowSpec::clone_ptr() const
+std::shared_ptr<ydk::Entity> FlowSpec::clone_ptr() const
 {
     return std::make_shared<FlowSpec>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Clients::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<FlowSpec::Clients::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Clients::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Clients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Clients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -314,16 +314,16 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Clients::Client::get_na
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Clients::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Clients::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowSpec::Clients::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -433,16 +433,16 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Summary::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowSpec::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -536,33 +536,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<FlowSpec::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -634,7 +634,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::get_name_lea
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "afs")
     {
@@ -648,16 +648,16 @@ std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(afs != nullptr)
     {
-        children["afs"] = afs;
+        _children["afs"] = afs;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -734,33 +734,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::get_nam
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "af")
     {
-        auto c = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af>();
-        c->parent = this;
-        af.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af>();
+        ent_->parent = this;
+        af.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : af.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -833,7 +833,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::get
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "table-summary")
     {
@@ -865,26 +865,26 @@ std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(table_summary != nullptr)
     {
-        children["table-summary"] = table_summary;
+        _children["table-summary"] = table_summary;
     }
 
     if(nlris != nullptr)
     {
-        children["nlris"] = nlris;
+        _children["nlris"] = nlris;
     }
 
     if(flows != nullptr)
     {
-        children["flows"] = flows;
+        _children["flows"] = flows;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -961,16 +961,16 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Tab
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::TableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::TableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::TableSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::TableSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::TableSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1067,33 +1067,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Nlr
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlri")
     {
-        auto c = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri>();
-        c->parent = this;
-        nlri.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri>();
+        ent_->parent = this;
+        nlri.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nlri.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nlri.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1158,7 +1158,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Nlr
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-statistics")
     {
@@ -1172,16 +1172,16 @@ std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow_statistics != nullptr)
     {
-        children["flow-statistics"] = flow_statistics;
+        _children["flow-statistics"] = flow_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1254,7 +1254,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Nlr
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "classified")
     {
@@ -1277,21 +1277,21 @@ std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(classified != nullptr)
     {
-        children["classified"] = classified;
+        _children["classified"] = classified;
     }
 
     if(dropped != nullptr)
     {
-        children["dropped"] = dropped;
+        _children["dropped"] = dropped;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1354,16 +1354,16 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Nlr
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Classified::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Classified::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Classified::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Classified::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Classified::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1446,16 +1446,16 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Nlr
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Dropped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Dropped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Nlris::Nlri::FlowStatistics::Dropped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1542,33 +1542,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Flo
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow")
     {
-        auto c = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow>();
-        c->parent = this;
-        flow.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow>();
+        ent_->parent = this;
+        flow.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Flows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1633,7 +1633,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Flo
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-statistics")
     {
@@ -1647,16 +1647,16 @@ std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow_statistics != nullptr)
     {
-        children["flow-statistics"] = flow_statistics;
+        _children["flow-statistics"] = flow_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1729,7 +1729,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Flo
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "classified")
     {
@@ -1752,21 +1752,21 @@ std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(classified != nullptr)
     {
-        children["classified"] = classified;
+        _children["classified"] = classified;
     }
 
     if(dropped != nullptr)
     {
-        children["dropped"] = dropped;
+        _children["dropped"] = dropped;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1829,16 +1829,16 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Flo
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Classified::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Classified::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Classified::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Classified::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Classified::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1921,16 +1921,16 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Flo
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Dropped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Dropped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Dropped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::Flows::Flow::FlowStatistics::Dropped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

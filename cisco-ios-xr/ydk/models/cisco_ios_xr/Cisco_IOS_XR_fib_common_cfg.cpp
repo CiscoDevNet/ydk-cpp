@@ -73,7 +73,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Fib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbts-forward-class-fallbacks")
     {
@@ -96,21 +96,21 @@ std::shared_ptr<Entity> Fib::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbts_forward_class_fallbacks != nullptr)
     {
-        children["pbts-forward-class-fallbacks"] = pbts_forward_class_fallbacks;
+        _children["pbts-forward-class-fallbacks"] = pbts_forward_class_fallbacks;
     }
 
     if(platform != nullptr)
     {
-        children["platform"] = platform;
+        _children["platform"] = platform;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -161,7 +161,7 @@ void Fib::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Fib::clone_ptr() const
+std::shared_ptr<ydk::Entity> Fib::clone_ptr() const
 {
     return std::make_shared<Fib>();
 }
@@ -249,33 +249,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::PbtsForwardClassFallbacks::g
 
 }
 
-std::shared_ptr<Entity> Fib::PbtsForwardClassFallbacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::PbtsForwardClassFallbacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbts-forward-class-fallback")
     {
-        auto c = std::make_shared<Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback>();
-        c->parent = this;
-        pbts_forward_class_fallback.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback>();
+        ent_->parent = this;
+        pbts_forward_class_fallback.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::PbtsForwardClassFallbacks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::PbtsForwardClassFallbacks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pbts_forward_class_fallback.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pbts_forward_class_fallback.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::PbtsForwardClassFallbacks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -360,16 +360,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::PbtsForwardClassFallbacks::P
 
 }
 
-std::shared_ptr<Entity> Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -463,7 +463,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Platform::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Fib::Platform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Platform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "label-switched-multicast")
     {
@@ -477,16 +477,16 @@ std::shared_ptr<Entity> Fib::Platform::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Platform::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Platform::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(label_switched_multicast != nullptr)
     {
-        children["label-switched-multicast"] = label_switched_multicast;
+        _children["label-switched-multicast"] = label_switched_multicast;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Platform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -552,16 +552,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Platform::LabelSwitchedMulti
 
 }
 
-std::shared_ptr<Entity> Fib::Platform::LabelSwitchedMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Platform::LabelSwitchedMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Platform::LabelSwitchedMulticast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Platform::LabelSwitchedMulticast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Platform::LabelSwitchedMulticast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

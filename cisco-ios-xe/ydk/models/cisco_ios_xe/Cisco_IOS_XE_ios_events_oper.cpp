@@ -48,16 +48,16 @@ std::vector<std::pair<std::string, LeafData> > IosEvents::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> IosEvents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IosEvents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IosEvents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IosEvents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IosEvents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -68,7 +68,7 @@ void IosEvents::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IosEvents::clone_ptr() const
+std::shared_ptr<ydk::Entity> IosEvents::clone_ptr() const
 {
     return std::make_shared<IosEvents>();
 }

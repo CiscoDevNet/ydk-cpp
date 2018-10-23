@@ -168,7 +168,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::get_name_l
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxUplinkFastObjects")
     {
@@ -443,161 +443,161 @@ std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stpxuplinkfastobjects != nullptr)
     {
-        children["stpxUplinkFastObjects"] = stpxuplinkfastobjects;
+        _children["stpxUplinkFastObjects"] = stpxuplinkfastobjects;
     }
 
     if(stpxbackbonefastobjects != nullptr)
     {
-        children["stpxBackboneFastObjects"] = stpxbackbonefastobjects;
+        _children["stpxBackboneFastObjects"] = stpxbackbonefastobjects;
     }
 
     if(stpxspanningtreeobjects != nullptr)
     {
-        children["stpxSpanningTreeObjects"] = stpxspanningtreeobjects;
+        _children["stpxSpanningTreeObjects"] = stpxspanningtreeobjects;
     }
 
     if(stpxmistpobjects != nullptr)
     {
-        children["stpxMISTPObjects"] = stpxmistpobjects;
+        _children["stpxMISTPObjects"] = stpxmistpobjects;
     }
 
     if(stpxloopguardobjects != nullptr)
     {
-        children["stpxLoopGuardObjects"] = stpxloopguardobjects;
+        _children["stpxLoopGuardObjects"] = stpxloopguardobjects;
     }
 
     if(stpxfaststartobjects != nullptr)
     {
-        children["stpxFastStartObjects"] = stpxfaststartobjects;
+        _children["stpxFastStartObjects"] = stpxfaststartobjects;
     }
 
     if(stpxbpduskewingobjects != nullptr)
     {
-        children["stpxBpduSkewingObjects"] = stpxbpduskewingobjects;
+        _children["stpxBpduSkewingObjects"] = stpxbpduskewingobjects;
     }
 
     if(stpxmstobjects != nullptr)
     {
-        children["stpxMSTObjects"] = stpxmstobjects;
+        _children["stpxMSTObjects"] = stpxmstobjects;
     }
 
     if(stpxrstpobjects != nullptr)
     {
-        children["stpxRSTPObjects"] = stpxrstpobjects;
+        _children["stpxRSTPObjects"] = stpxrstpobjects;
     }
 
     if(stpxsmstobjects != nullptr)
     {
-        children["stpxSMSTObjects"] = stpxsmstobjects;
+        _children["stpxSMSTObjects"] = stpxsmstobjects;
     }
 
     if(stpxpvstvlantable != nullptr)
     {
-        children["stpxPVSTVlanTable"] = stpxpvstvlantable;
+        _children["stpxPVSTVlanTable"] = stpxpvstvlantable;
     }
 
     if(stpxinconsistencytable != nullptr)
     {
-        children["stpxInconsistencyTable"] = stpxinconsistencytable;
+        _children["stpxInconsistencyTable"] = stpxinconsistencytable;
     }
 
     if(stpxrootguardconfigtable != nullptr)
     {
-        children["stpxRootGuardConfigTable"] = stpxrootguardconfigtable;
+        _children["stpxRootGuardConfigTable"] = stpxrootguardconfigtable;
     }
 
     if(stpxrootinconsistencytable != nullptr)
     {
-        children["stpxRootInconsistencyTable"] = stpxrootinconsistencytable;
+        _children["stpxRootInconsistencyTable"] = stpxrootinconsistencytable;
     }
 
     if(stpxmistpinstancetable != nullptr)
     {
-        children["stpxMISTPInstanceTable"] = stpxmistpinstancetable;
+        _children["stpxMISTPInstanceTable"] = stpxmistpinstancetable;
     }
 
     if(stpxloopguardconfigtable != nullptr)
     {
-        children["stpxLoopGuardConfigTable"] = stpxloopguardconfigtable;
+        _children["stpxLoopGuardConfigTable"] = stpxloopguardconfigtable;
     }
 
     if(stpxloopinconsistencytable != nullptr)
     {
-        children["stpxLoopInconsistencyTable"] = stpxloopinconsistencytable;
+        _children["stpxLoopInconsistencyTable"] = stpxloopinconsistencytable;
     }
 
     if(stpxfaststartporttable != nullptr)
     {
-        children["stpxFastStartPortTable"] = stpxfaststartporttable;
+        _children["stpxFastStartPortTable"] = stpxfaststartporttable;
     }
 
     if(stpxfaststartopermodetable != nullptr)
     {
-        children["stpxFastStartOperModeTable"] = stpxfaststartopermodetable;
+        _children["stpxFastStartOperModeTable"] = stpxfaststartopermodetable;
     }
 
     if(stpxbpduskewingtable != nullptr)
     {
-        children["stpxBpduSkewingTable"] = stpxbpduskewingtable;
+        _children["stpxBpduSkewingTable"] = stpxbpduskewingtable;
     }
 
     if(stpxmstinstancetable != nullptr)
     {
-        children["stpxMSTInstanceTable"] = stpxmstinstancetable;
+        _children["stpxMSTInstanceTable"] = stpxmstinstancetable;
     }
 
     if(stpxmstinstanceedittable != nullptr)
     {
-        children["stpxMSTInstanceEditTable"] = stpxmstinstanceedittable;
+        _children["stpxMSTInstanceEditTable"] = stpxmstinstanceedittable;
     }
 
     if(stpxmstporttable != nullptr)
     {
-        children["stpxMSTPortTable"] = stpxmstporttable;
+        _children["stpxMSTPortTable"] = stpxmstporttable;
     }
 
     if(stpxmstportroletable != nullptr)
     {
-        children["stpxMSTPortRoleTable"] = stpxmstportroletable;
+        _children["stpxMSTPortRoleTable"] = stpxmstportroletable;
     }
 
     if(stpxrstpporttable != nullptr)
     {
-        children["stpxRSTPPortTable"] = stpxrstpporttable;
+        _children["stpxRSTPPortTable"] = stpxrstpporttable;
     }
 
     if(stpxrstpportroletable != nullptr)
     {
-        children["stpxRSTPPortRoleTable"] = stpxrstpportroletable;
+        _children["stpxRSTPPortRoleTable"] = stpxrstpportroletable;
     }
 
     if(stpxrpvstporttable != nullptr)
     {
-        children["stpxRPVSTPortTable"] = stpxrpvstporttable;
+        _children["stpxRPVSTPortTable"] = stpxrpvstporttable;
     }
 
     if(stpxsmstinstancetable != nullptr)
     {
-        children["stpxSMSTInstanceTable"] = stpxsmstinstancetable;
+        _children["stpxSMSTInstanceTable"] = stpxsmstinstancetable;
     }
 
     if(stpxsmstinstanceedittable != nullptr)
     {
-        children["stpxSMSTInstanceEditTable"] = stpxsmstinstanceedittable;
+        _children["stpxSMSTInstanceEditTable"] = stpxsmstinstanceedittable;
     }
 
     if(stpxsmstporttable != nullptr)
     {
-        children["stpxSMSTPortTable"] = stpxsmstporttable;
+        _children["stpxSMSTPortTable"] = stpxsmstporttable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -608,7 +608,7 @@ void CISCOSTPEXTENSIONSMIB::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::clone_ptr() const
 {
     return std::make_shared<CISCOSTPEXTENSIONSMIB>();
 }
@@ -704,16 +704,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxUplink
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -853,16 +853,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxBackbo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1018,16 +1018,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSpanni
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1151,16 +1151,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMISTPO
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMISTPObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1236,16 +1236,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopGu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1329,16 +1329,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastSt
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1434,16 +1434,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxBpduSk
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1547,16 +1547,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTObj
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMSTObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMSTObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1702,16 +1702,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPOb
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRSTPObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1811,16 +1811,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTOb
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxSMSTObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1964,33 +1964,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxPVSTVl
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxPVSTVlanEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry>();
-        c->parent = this;
-        stpxpvstvlanentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry>();
+        ent_->parent = this;
+        stpxpvstvlanentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxpvstvlanentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxpvstvlanentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2061,16 +2061,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxPVSTVl
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2164,33 +2164,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxIncons
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxInconsistencyEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry>();
-        c->parent = this;
-        stpxinconsistencyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry>();
+        ent_->parent = this;
+        stpxinconsistencyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxinconsistencyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxinconsistencyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2266,16 +2266,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxIncons
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2377,33 +2377,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRootGu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRootGuardConfigEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry>();
-        c->parent = this;
-        stpxrootguardconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry>();
+        ent_->parent = this;
+        stpxrootguardconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxrootguardconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxrootguardconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2474,16 +2474,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRootGu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2577,33 +2577,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRootIn
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRootInconsistencyEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry>();
-        c->parent = this;
-        stpxrootinconsistencyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry>();
+        ent_->parent = this;
+        stpxrootinconsistencyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxrootinconsistencyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxrootinconsistencyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2679,16 +2679,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRootIn
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2792,33 +2792,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMISTPI
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMISTPInstanceEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry>();
-        c->parent = this;
-        stpxmistpinstanceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry>();
+        ent_->parent = this;
+        stpxmistpinstanceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxmistpinstanceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxmistpinstanceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2905,16 +2905,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMISTPI
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3048,33 +3048,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopGu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxLoopGuardConfigEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry>();
-        c->parent = this;
-        stpxloopguardconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry>();
+        ent_->parent = this;
+        stpxloopguardconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxloopguardconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxloopguardconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3149,16 +3149,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopGu
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3262,33 +3262,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopIn
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxLoopInconsistencyEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry>();
-        c->parent = this;
-        stpxloopinconsistencyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry>();
+        ent_->parent = this;
+        stpxloopinconsistencyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxloopinconsistencyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxloopinconsistencyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3364,16 +3364,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxLoopIn
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3477,33 +3477,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastSt
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxFastStartPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry>();
-        c->parent = this;
-        stpxfaststartportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry>();
+        ent_->parent = this;
+        stpxfaststartportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxfaststartportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxfaststartportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3586,16 +3586,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastSt
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3719,33 +3719,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastSt
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxFastStartOperModeEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry>();
-        c->parent = this;
-        stpxfaststartopermodeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry>();
+        ent_->parent = this;
+        stpxfaststartopermodeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxfaststartopermodeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxfaststartopermodeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3821,16 +3821,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxFastSt
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3934,33 +3934,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxBpduSk
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxBpduSkewingEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry>();
-        c->parent = this;
-        stpxbpduskewingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry>();
+        ent_->parent = this;
+        stpxbpduskewingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxbpduskewingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxbpduskewingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4044,16 +4044,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxBpduSk
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4177,33 +4177,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTIns
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMSTInstanceEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry>();
-        c->parent = this;
-        stpxmstinstanceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry>();
+        ent_->parent = this;
+        stpxmstinstanceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxmstinstanceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxmstinstanceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4290,16 +4290,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTIns
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4433,33 +4433,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTIns
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMSTInstanceEditEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry>();
-        c->parent = this;
-        stpxmstinstanceeditentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry>();
+        ent_->parent = this;
+        stpxmstinstanceeditentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxmstinstanceeditentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxmstinstanceeditentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4542,16 +4542,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTIns
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4675,33 +4675,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTPor
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMSTPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry>();
-        c->parent = this;
-        stpxmstportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry>();
+        ent_->parent = this;
+        stpxmstportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxmstportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxmstportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4784,16 +4784,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTPor
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4915,33 +4915,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTPor
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxMSTPortRoleEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry>();
-        c->parent = this;
-        stpxmstportroleentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry>();
+        ent_->parent = this;
+        stpxmstportroleentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxmstportroleentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxmstportroleentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5017,16 +5017,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxMSTPor
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5130,33 +5130,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPPo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRSTPPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry>();
-        c->parent = this;
-        stpxrstpportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry>();
+        ent_->parent = this;
+        stpxrstpportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxrstpportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxrstpportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5235,16 +5235,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPPo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5358,33 +5358,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPPo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRSTPPortRoleEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry>();
-        c->parent = this;
-        stpxrstpportroleentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry>();
+        ent_->parent = this;
+        stpxrstpportroleentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxrstpportroleentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxrstpportroleentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5460,16 +5460,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRSTPPo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5573,33 +5573,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRPVSTP
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxRPVSTPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry>();
-        c->parent = this;
-        stpxrpvstportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry>();
+        ent_->parent = this;
+        stpxrpvstportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxrpvstportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxrpvstportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5675,16 +5675,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxRPVSTP
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5786,33 +5786,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTIn
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxSMSTInstanceEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry>();
-        c->parent = this;
-        stpxsmstinstanceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry>();
+        ent_->parent = this;
+        stpxsmstinstanceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxsmstinstanceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxsmstinstanceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5899,16 +5899,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTIn
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6042,33 +6042,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTIn
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxSMSTInstanceEditEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry>();
-        c->parent = this;
-        stpxsmstinstanceeditentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry>();
+        ent_->parent = this;
+        stpxsmstinstanceeditentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxsmstinstanceeditentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxsmstinstanceeditentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6147,16 +6147,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTIn
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6270,33 +6270,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTPo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stpxSMSTPortEntry")
     {
-        auto c = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry>();
-        c->parent = this;
-        stpxsmstportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry>();
+        ent_->parent = this;
+        stpxsmstportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stpxsmstportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stpxsmstportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6387,16 +6387,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSTPEXTENSIONSMIB::StpxSMSTPo
 
 }
 
-std::shared_ptr<Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

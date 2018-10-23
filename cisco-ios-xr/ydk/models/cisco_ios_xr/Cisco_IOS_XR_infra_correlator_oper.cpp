@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Suppression::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Suppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Suppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-summaries")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Suppression::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Suppression::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Suppression::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rule_summaries != nullptr)
     {
-        children["rule-summaries"] = rule_summaries;
+        _children["rule-summaries"] = rule_summaries;
     }
 
     if(rule_details != nullptr)
     {
-        children["rule-details"] = rule_details;
+        _children["rule-details"] = rule_details;
     }
 
-    return children;
+    return _children;
 }
 
 void Suppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Suppression::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Suppression::clone_ptr() const
+std::shared_ptr<ydk::Entity> Suppression::clone_ptr() const
 {
     return std::make_shared<Suppression>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > Suppression::RuleSummaries::get_n
 
 }
 
-std::shared_ptr<Entity> Suppression::RuleSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Suppression::RuleSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-summary")
     {
-        auto c = std::make_shared<Suppression::RuleSummaries::RuleSummary>();
-        c->parent = this;
-        rule_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Suppression::RuleSummaries::RuleSummary>();
+        ent_->parent = this;
+        rule_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Suppression::RuleSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Suppression::RuleSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -297,16 +297,16 @@ std::vector<std::pair<std::string, LeafData> > Suppression::RuleSummaries::RuleS
 
 }
 
-std::shared_ptr<Entity> Suppression::RuleSummaries::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Suppression::RuleSummaries::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleSummaries::RuleSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Suppression::RuleSummaries::RuleSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Suppression::RuleSummaries::RuleSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -420,33 +420,33 @@ std::vector<std::pair<std::string, LeafData> > Suppression::RuleDetails::get_nam
 
 }
 
-std::shared_ptr<Entity> Suppression::RuleDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Suppression::RuleDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-detail")
     {
-        auto c = std::make_shared<Suppression::RuleDetails::RuleDetail>();
-        c->parent = this;
-        rule_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Suppression::RuleDetails::RuleDetail>();
+        ent_->parent = this;
+        rule_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Suppression::RuleDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Suppression::RuleDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -551,7 +551,7 @@ std::vector<std::pair<std::string, LeafData> > Suppression::RuleDetails::RuleDet
 
 }
 
-std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Suppression::RuleDetails::RuleDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-summary")
     {
@@ -564,34 +564,34 @@ std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::get_child_by_name(
 
     if(child_yang_name == "codes")
     {
-        auto c = std::make_shared<Suppression::RuleDetails::RuleDetail::Codes>();
-        c->parent = this;
-        codes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Suppression::RuleDetails::RuleDetail::Codes>();
+        ent_->parent = this;
+        codes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Suppression::RuleDetails::RuleDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rule_summary != nullptr)
     {
-        children["rule-summary"] = rule_summary;
+        _children["rule-summary"] = rule_summary;
     }
 
-    count = 0;
-    for (auto c : codes.entities())
+    count_ = 0;
+    for (auto ent_ : codes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Suppression::RuleDetails::RuleDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -696,16 +696,16 @@ std::vector<std::pair<std::string, LeafData> > Suppression::RuleDetails::RuleDet
 
 }
 
-std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Suppression::RuleDetails::RuleDetail::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::RuleSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Suppression::RuleDetails::RuleDetail::RuleSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Suppression::RuleDetails::RuleDetail::RuleSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -802,16 +802,16 @@ std::vector<std::pair<std::string, LeafData> > Suppression::RuleDetails::RuleDet
 
 }
 
-std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Suppression::RuleDetails::RuleDetail::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::Codes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Suppression::RuleDetails::RuleDetail::Codes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Suppression::RuleDetails::RuleDetail::Codes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -924,7 +924,7 @@ std::vector<std::pair<std::string, LeafData> > Correlator::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Correlator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rules")
     {
@@ -992,46 +992,46 @@ std::shared_ptr<Entity> Correlator::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rules != nullptr)
     {
-        children["rules"] = rules;
+        _children["rules"] = rules;
     }
 
     if(buffer_status != nullptr)
     {
-        children["buffer-status"] = buffer_status;
+        _children["buffer-status"] = buffer_status;
     }
 
     if(alarms != nullptr)
     {
-        children["alarms"] = alarms;
+        _children["alarms"] = alarms;
     }
 
     if(rule_set_summaries != nullptr)
     {
-        children["rule-set-summaries"] = rule_set_summaries;
+        _children["rule-set-summaries"] = rule_set_summaries;
     }
 
     if(rule_set_details != nullptr)
     {
-        children["rule-set-details"] = rule_set_details;
+        _children["rule-set-details"] = rule_set_details;
     }
 
     if(rule_details != nullptr)
     {
-        children["rule-details"] = rule_details;
+        _children["rule-details"] = rule_details;
     }
 
     if(rule_summaries != nullptr)
     {
-        children["rule-summaries"] = rule_summaries;
+        _children["rule-summaries"] = rule_summaries;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1042,7 +1042,7 @@ void Correlator::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Correlator::clone_ptr() const
+std::shared_ptr<ydk::Entity> Correlator::clone_ptr() const
 {
     return std::make_shared<Correlator>();
 }
@@ -1130,33 +1130,33 @@ std::vector<std::pair<std::string, LeafData> > Correlator::Rules::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Correlator::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule")
     {
-        auto c = std::make_shared<Correlator::Rules::Rule>();
-        c->parent = this;
-        rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Correlator::Rules::Rule>();
+        ent_->parent = this;
+        rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::Rules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1275,33 +1275,33 @@ std::vector<std::pair<std::string, LeafData> > Correlator::Rules::Rule::get_name
 
 }
 
-std::shared_ptr<Entity> Correlator::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "codes")
     {
-        auto c = std::make_shared<Correlator::Rules::Rule::Codes>();
-        c->parent = this;
-        codes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Correlator::Rules::Rule::Codes>();
+        ent_->parent = this;
+        codes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::Rule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::Rules::Rule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : codes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : codes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::Rules::Rule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1424,16 +1424,16 @@ std::vector<std::pair<std::string, LeafData> > Correlator::Rules::Rule::Codes::g
 
 }
 
-std::shared_ptr<Entity> Correlator::Rules::Rule::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::Rules::Rule::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::Rule::Codes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::Rules::Rule::Codes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Correlator::Rules::Rule::Codes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1533,16 +1533,16 @@ std::vector<std::pair<std::string, LeafData> > Correlator::BufferStatus::get_nam
 
 }
 
-std::shared_ptr<Entity> Correlator::BufferStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::BufferStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::BufferStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::BufferStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Correlator::BufferStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1636,33 +1636,33 @@ std::vector<std::pair<std::string, LeafData> > Correlator::Alarms::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Correlator::Alarms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::Alarms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alarm")
     {
-        auto c = std::make_shared<Correlator::Alarms::Alarm>();
-        c->parent = this;
-        alarm.append(c);
-        return c;
+        auto ent_ = std::make_shared<Correlator::Alarms::Alarm>();
+        ent_->parent = this;
+        alarm.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::Alarms::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::Alarms::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alarm.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : alarm.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::Alarms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1742,7 +1742,7 @@ std::vector<std::pair<std::string, LeafData> > Correlator::Alarms::Alarm::get_na
 
 }
 
-std::shared_ptr<Entity> Correlator::Alarms::Alarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::Alarms::Alarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alarm-info")
     {
@@ -1756,16 +1756,16 @@ std::shared_ptr<Entity> Correlator::Alarms::Alarm::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::Alarms::Alarm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::Alarms::Alarm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(alarm_info != nullptr)
     {
-        children["alarm-info"] = alarm_info;
+        _children["alarm-info"] = alarm_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::Alarms::Alarm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1890,16 +1890,16 @@ std::vector<std::pair<std::string, LeafData> > Correlator::Alarms::Alarm::AlarmI
 
 }
 
-std::shared_ptr<Entity> Correlator::Alarms::Alarm::AlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::Alarms::Alarm::AlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::Alarms::Alarm::AlarmInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::Alarms::Alarm::AlarmInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Correlator::Alarms::Alarm::AlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2073,33 +2073,33 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetSummaries::get
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleSetSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleSetSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-set-summary")
     {
-        auto c = std::make_shared<Correlator::RuleSetSummaries::RuleSetSummary>();
-        c->parent = this;
-        rule_set_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Correlator::RuleSetSummaries::RuleSetSummary>();
+        ent_->parent = this;
+        rule_set_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleSetSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule_set_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule_set_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::RuleSetSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2170,16 +2170,16 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetSummaries::Rul
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleSetSummaries::RuleSetSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleSetSummaries::RuleSetSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetSummaries::RuleSetSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleSetSummaries::RuleSetSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Correlator::RuleSetSummaries::RuleSetSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2273,33 +2273,33 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetDetails::get_n
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleSetDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleSetDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-set-detail")
     {
-        auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail>();
-        c->parent = this;
-        rule_set_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail>();
+        ent_->parent = this;
+        rule_set_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleSetDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule_set_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule_set_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::RuleSetDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2382,33 +2382,33 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetDetails::RuleS
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleSetDetails::RuleSetDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rules")
     {
-        auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail::Rules>();
-        c->parent = this;
-        rules.append(c);
-        return c;
+        auto ent_ = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail::Rules>();
+        ent_->parent = this;
+        rules.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::RuleSetDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleSetDetails::RuleSetDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rules.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rules.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::RuleSetDetails::RuleSetDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2499,16 +2499,16 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleSetDetails::RuleS
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Correlator::RuleSetDetails::RuleSetDetail::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2622,33 +2622,33 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleDetails::get_name
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-detail")
     {
-        auto c = std::make_shared<Correlator::RuleDetails::RuleDetail>();
-        c->parent = this;
-        rule_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Correlator::RuleDetails::RuleDetail>();
+        ent_->parent = this;
+        rule_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::RuleDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2783,7 +2783,7 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleDetails::RuleDeta
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleDetails::RuleDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-summary")
     {
@@ -2796,34 +2796,34 @@ std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::get_child_by_name(c
 
     if(child_yang_name == "codes")
     {
-        auto c = std::make_shared<Correlator::RuleDetails::RuleDetail::Codes>();
-        c->parent = this;
-        codes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Correlator::RuleDetails::RuleDetail::Codes>();
+        ent_->parent = this;
+        codes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::RuleDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleDetails::RuleDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rule_summary != nullptr)
     {
-        children["rule-summary"] = rule_summary;
+        _children["rule-summary"] = rule_summary;
     }
 
-    count = 0;
-    for (auto c : codes.entities())
+    count_ = 0;
+    for (auto ent_ : codes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::RuleDetails::RuleDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2980,16 +2980,16 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleDetails::RuleDeta
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleDetails::RuleDetail::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::RuleDetail::RuleSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleDetails::RuleDetail::RuleSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Correlator::RuleDetails::RuleDetail::RuleSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3096,16 +3096,16 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleDetails::RuleDeta
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleDetails::RuleDetail::Codes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::RuleDetail::Codes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleDetails::RuleDetail::Codes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Correlator::RuleDetails::RuleDetail::Codes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3209,33 +3209,33 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleSummaries::get_na
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-summary")
     {
-        auto c = std::make_shared<Correlator::RuleSummaries::RuleSummary>();
-        c->parent = this;
-        rule_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Correlator::RuleSummaries::RuleSummary>();
+        ent_->parent = this;
+        rule_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Correlator::RuleSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3318,16 +3318,16 @@ std::vector<std::pair<std::string, LeafData> > Correlator::RuleSummaries::RuleSu
 
 }
 
-std::shared_ptr<Entity> Correlator::RuleSummaries::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Correlator::RuleSummaries::RuleSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSummaries::RuleSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Correlator::RuleSummaries::RuleSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Correlator::RuleSummaries::RuleSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

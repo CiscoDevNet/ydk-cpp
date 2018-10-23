@@ -37,13 +37,6 @@
 namespace ydk
 {
 
-namespace path
-{
-class DataNode;
-}
-
-class Entity;
-
 class CrudService
 {
     public:

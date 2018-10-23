@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> ShowFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locations")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> ShowFpd::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(locations != nullptr)
     {
-        children["locations"] = locations;
+        _children["locations"] = locations;
     }
 
     if(hw_module_fpd != nullptr)
     {
-        children["hw-module-fpd"] = hw_module_fpd;
+        _children["hw-module-fpd"] = hw_module_fpd;
     }
 
     if(help_locations != nullptr)
     {
-        children["help-locations"] = help_locations;
+        _children["help-locations"] = help_locations;
     }
 
     if(hw_module_fpd_help_fpd != nullptr)
     {
-        children["hw-module-fpd-help-fpd"] = hw_module_fpd_help_fpd;
+        _children["hw-module-fpd-help-fpd"] = hw_module_fpd_help_fpd;
     }
 
     if(package != nullptr)
     {
-        children["package"] = package;
+        _children["package"] = package;
     }
 
     if(location_help != nullptr)
     {
-        children["location-help"] = location_help;
+        _children["location-help"] = location_help;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void ShowFpd::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ShowFpd::clone_ptr() const
+std::shared_ptr<ydk::Entity> ShowFpd::clone_ptr() const
 {
     return std::make_shared<ShowFpd>();
 }
@@ -264,33 +264,33 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<ShowFpd::Locations::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<ShowFpd::Locations::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::Locations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::Locations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -362,7 +362,7 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::get
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "details")
     {
@@ -376,16 +376,16 @@ std::shared_ptr<Entity> ShowFpd::Locations::Location::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::Locations::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(details != nullptr)
     {
-        children["details"] = details;
+        _children["details"] = details;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::Locations::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -462,33 +462,33 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Det
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::Location::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::Locations::Location::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
-        auto c = std::make_shared<ShowFpd::Locations::Location::Details::Detail>();
-        c->parent = this;
-        detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<ShowFpd::Locations::Location::Details::Detail>();
+        ent_->parent = this;
+        detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Details::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::Locations::Location::Details::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::Locations::Location::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -564,33 +564,33 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Det
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::Location::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::Locations::Location::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fpd-info-detaile")
     {
-        auto c = std::make_shared<ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile>();
-        c->parent = this;
-        fpd_info_detaile.append(c);
-        return c;
+        auto ent_ = std::make_shared<ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile>();
+        ent_->parent = this;
+        fpd_info_detaile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Details::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::Locations::Location::Details::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fpd_info_detaile.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fpd_info_detaile.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::Locations::Location::Details::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -697,16 +697,16 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::Locations::Location::Det
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -864,33 +864,33 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::HwModuleFpd::get_name_le
 
 }
 
-std::shared_ptr<Entity> ShowFpd::HwModuleFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::HwModuleFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fpd-info-detaile")
     {
-        auto c = std::make_shared<ShowFpd::HwModuleFpd::FpdInfoDetaile>();
-        c->parent = this;
-        fpd_info_detaile.append(c);
-        return c;
+        auto ent_ = std::make_shared<ShowFpd::HwModuleFpd::FpdInfoDetaile>();
+        ent_->parent = this;
+        fpd_info_detaile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::HwModuleFpd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fpd_info_detaile.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fpd_info_detaile.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::HwModuleFpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -994,16 +994,16 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::HwModuleFpd::FpdInfoDeta
 
 }
 
-std::shared_ptr<Entity> ShowFpd::HwModuleFpd::FpdInfoDetaile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::HwModuleFpd::FpdInfoDetaile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpd::FpdInfoDetaile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::HwModuleFpd::FpdInfoDetaile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ShowFpd::HwModuleFpd::FpdInfoDetaile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1157,33 +1157,33 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::HelpLocations::get_name_
 
 }
 
-std::shared_ptr<Entity> ShowFpd::HelpLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::HelpLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "help-location")
     {
-        auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation>();
-        c->parent = this;
-        help_location.append(c);
-        return c;
+        auto ent_ = std::make_shared<ShowFpd::HelpLocations::HelpLocation>();
+        ent_->parent = this;
+        help_location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::HelpLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : help_location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : help_location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::HelpLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1255,7 +1255,7 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::HelpLocations::HelpLocat
 
 }
 
-std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::HelpLocations::HelpLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "help-fpd")
     {
@@ -1269,16 +1269,16 @@ std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::HelpLocations::HelpLocation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(help_fpd != nullptr)
     {
-        children["help-fpd"] = help_fpd;
+        _children["help-fpd"] = help_fpd;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::HelpLocations::HelpLocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1355,33 +1355,33 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::HelpLocations::HelpLocat
 
 }
 
-std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fpd-name")
     {
-        auto c = std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName>();
-        c->parent = this;
-        fpd_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName>();
+        ent_->parent = this;
+        fpd_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fpd_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fpd_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::HelpLocations::HelpLocation::HelpFpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1444,16 +1444,16 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::HelpLocations::HelpLocat
 
 }
 
-std::shared_ptr<Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1547,33 +1547,33 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::HwModuleFpdHelpFpd::get_
 
 }
 
-std::shared_ptr<Entity> ShowFpd::HwModuleFpdHelpFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::HwModuleFpdHelpFpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fpd-name")
     {
-        auto c = std::make_shared<ShowFpd::HwModuleFpdHelpFpd::FpdName>();
-        c->parent = this;
-        fpd_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<ShowFpd::HwModuleFpdHelpFpd::FpdName>();
+        ent_->parent = this;
+        fpd_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpdHelpFpd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::HwModuleFpdHelpFpd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fpd_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fpd_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::HwModuleFpdHelpFpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1643,16 +1643,16 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::HwModuleFpdHelpFpd::FpdN
 
 }
 
-std::shared_ptr<Entity> ShowFpd::HwModuleFpdHelpFpd::FpdName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::HwModuleFpdHelpFpd::FpdName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::HwModuleFpdHelpFpd::FpdName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::HwModuleFpdHelpFpd::FpdName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ShowFpd::HwModuleFpdHelpFpd::FpdName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1746,33 +1746,33 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::Package::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fpd-pkg-data")
     {
-        auto c = std::make_shared<ShowFpd::Package::FpdPkgData>();
-        c->parent = this;
-        fpd_pkg_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<ShowFpd::Package::FpdPkgData>();
+        ent_->parent = this;
+        fpd_pkg_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Package::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::Package::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fpd_pkg_data.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fpd_pkg_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1858,16 +1858,16 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::Package::FpdPkgData::get
 
 }
 
-std::shared_ptr<Entity> ShowFpd::Package::FpdPkgData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::Package::FpdPkgData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::Package::FpdPkgData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::Package::FpdPkgData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ShowFpd::Package::FpdPkgData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2001,33 +2001,33 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::LocationHelp::get_name_l
 
 }
 
-std::shared_ptr<Entity> ShowFpd::LocationHelp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::LocationHelp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location-name")
     {
-        auto c = std::make_shared<ShowFpd::LocationHelp::LocationName>();
-        c->parent = this;
-        location_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<ShowFpd::LocationHelp::LocationName>();
+        ent_->parent = this;
+        location_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::LocationHelp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::LocationHelp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ShowFpd::LocationHelp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2093,16 +2093,16 @@ std::vector<std::pair<std::string, LeafData> > ShowFpd::LocationHelp::LocationNa
 
 }
 
-std::shared_ptr<Entity> ShowFpd::LocationHelp::LocationName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ShowFpd::LocationHelp::LocationName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ShowFpd::LocationHelp::LocationName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ShowFpd::LocationHelp::LocationName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ShowFpd::LocationHelp::LocationName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

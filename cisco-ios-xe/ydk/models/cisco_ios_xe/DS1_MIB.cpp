@@ -84,7 +84,7 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> DS1MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1ConfigTable")
     {
@@ -170,56 +170,56 @@ std::shared_ptr<Entity> DS1MIB::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dsx1configtable != nullptr)
     {
-        children["dsx1ConfigTable"] = dsx1configtable;
+        _children["dsx1ConfigTable"] = dsx1configtable;
     }
 
     if(dsx1currenttable != nullptr)
     {
-        children["dsx1CurrentTable"] = dsx1currenttable;
+        _children["dsx1CurrentTable"] = dsx1currenttable;
     }
 
     if(dsx1intervaltable != nullptr)
     {
-        children["dsx1IntervalTable"] = dsx1intervaltable;
+        _children["dsx1IntervalTable"] = dsx1intervaltable;
     }
 
     if(dsx1totaltable != nullptr)
     {
-        children["dsx1TotalTable"] = dsx1totaltable;
+        _children["dsx1TotalTable"] = dsx1totaltable;
     }
 
     if(dsx1farendcurrenttable != nullptr)
     {
-        children["dsx1FarEndCurrentTable"] = dsx1farendcurrenttable;
+        _children["dsx1FarEndCurrentTable"] = dsx1farendcurrenttable;
     }
 
     if(dsx1farendintervaltable != nullptr)
     {
-        children["dsx1FarEndIntervalTable"] = dsx1farendintervaltable;
+        _children["dsx1FarEndIntervalTable"] = dsx1farendintervaltable;
     }
 
     if(dsx1farendtotaltable != nullptr)
     {
-        children["dsx1FarEndTotalTable"] = dsx1farendtotaltable;
+        _children["dsx1FarEndTotalTable"] = dsx1farendtotaltable;
     }
 
     if(dsx1fractable != nullptr)
     {
-        children["dsx1FracTable"] = dsx1fractable;
+        _children["dsx1FracTable"] = dsx1fractable;
     }
 
     if(dsx1chanmappingtable != nullptr)
     {
-        children["dsx1ChanMappingTable"] = dsx1chanmappingtable;
+        _children["dsx1ChanMappingTable"] = dsx1chanmappingtable;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -230,7 +230,7 @@ void DS1MIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DS1MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DS1MIB::clone_ptr() const
 {
     return std::make_shared<DS1MIB>();
 }
@@ -318,33 +318,33 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1ConfigTable::get_name
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1ConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1ConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1ConfigEntry")
     {
-        auto c = std::make_shared<DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry>();
-        c->parent = this;
-        dsx1configentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry>();
+        ent_->parent = this;
+        dsx1configentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1ConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1ConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dsx1configentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dsx1configentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::Dsx1ConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -487,16 +487,16 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1ConfigTable::Dsx1Conf
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DS1MIB::Dsx1ConfigTable::Dsx1ConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -770,33 +770,33 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1CurrentTable::get_nam
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1CurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1CurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1CurrentEntry")
     {
-        auto c = std::make_shared<DS1MIB::Dsx1CurrentTable::Dsx1CurrentEntry>();
-        c->parent = this;
-        dsx1currententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DS1MIB::Dsx1CurrentTable::Dsx1CurrentEntry>();
+        ent_->parent = this;
+        dsx1currententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1CurrentTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1CurrentTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dsx1currententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dsx1currententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::Dsx1CurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -903,16 +903,16 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1CurrentTable::Dsx1Cur
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1CurrentTable::Dsx1CurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1CurrentTable::Dsx1CurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1CurrentTable::Dsx1CurrentEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1CurrentTable::Dsx1CurrentEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DS1MIB::Dsx1CurrentTable::Dsx1CurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1096,33 +1096,33 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1IntervalTable::get_na
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1IntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1IntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1IntervalEntry")
     {
-        auto c = std::make_shared<DS1MIB::Dsx1IntervalTable::Dsx1IntervalEntry>();
-        c->parent = this;
-        dsx1intervalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DS1MIB::Dsx1IntervalTable::Dsx1IntervalEntry>();
+        ent_->parent = this;
+        dsx1intervalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1IntervalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1IntervalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dsx1intervalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dsx1intervalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::Dsx1IntervalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1238,16 +1238,16 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1IntervalTable::Dsx1In
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1IntervalTable::Dsx1IntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1IntervalTable::Dsx1IntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1IntervalTable::Dsx1IntervalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1IntervalTable::Dsx1IntervalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DS1MIB::Dsx1IntervalTable::Dsx1IntervalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1451,33 +1451,33 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1TotalTable::get_name_
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1TotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1TotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1TotalEntry")
     {
-        auto c = std::make_shared<DS1MIB::Dsx1TotalTable::Dsx1TotalEntry>();
-        c->parent = this;
-        dsx1totalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DS1MIB::Dsx1TotalTable::Dsx1TotalEntry>();
+        ent_->parent = this;
+        dsx1totalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1TotalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1TotalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dsx1totalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dsx1totalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::Dsx1TotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1584,16 +1584,16 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1TotalTable::Dsx1Total
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1TotalTable::Dsx1TotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1TotalTable::Dsx1TotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1TotalTable::Dsx1TotalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1TotalTable::Dsx1TotalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DS1MIB::Dsx1TotalTable::Dsx1TotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1777,33 +1777,33 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1FarEndCurrentTable::g
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1FarEndCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1FarEndCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1FarEndCurrentEntry")
     {
-        auto c = std::make_shared<DS1MIB::Dsx1FarEndCurrentTable::Dsx1FarEndCurrentEntry>();
-        c->parent = this;
-        dsx1farendcurrententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DS1MIB::Dsx1FarEndCurrentTable::Dsx1FarEndCurrentEntry>();
+        ent_->parent = this;
+        dsx1farendcurrententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1FarEndCurrentTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1FarEndCurrentTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dsx1farendcurrententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dsx1farendcurrententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::Dsx1FarEndCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1918,16 +1918,16 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1FarEndCurrentTable::D
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1FarEndCurrentTable::Dsx1FarEndCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1FarEndCurrentTable::Dsx1FarEndCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1FarEndCurrentTable::Dsx1FarEndCurrentEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1FarEndCurrentTable::Dsx1FarEndCurrentEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DS1MIB::Dsx1FarEndCurrentTable::Dsx1FarEndCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2131,33 +2131,33 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1FarEndIntervalTable::
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1FarEndIntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1FarEndIntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1FarEndIntervalEntry")
     {
-        auto c = std::make_shared<DS1MIB::Dsx1FarEndIntervalTable::Dsx1FarEndIntervalEntry>();
-        c->parent = this;
-        dsx1farendintervalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DS1MIB::Dsx1FarEndIntervalTable::Dsx1FarEndIntervalEntry>();
+        ent_->parent = this;
+        dsx1farendintervalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1FarEndIntervalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1FarEndIntervalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dsx1farendintervalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dsx1farendintervalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::Dsx1FarEndIntervalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2269,16 +2269,16 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1FarEndIntervalTable::
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1FarEndIntervalTable::Dsx1FarEndIntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1FarEndIntervalTable::Dsx1FarEndIntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1FarEndIntervalTable::Dsx1FarEndIntervalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1FarEndIntervalTable::Dsx1FarEndIntervalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DS1MIB::Dsx1FarEndIntervalTable::Dsx1FarEndIntervalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2472,33 +2472,33 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1FarEndTotalTable::get
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1FarEndTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1FarEndTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1FarEndTotalEntry")
     {
-        auto c = std::make_shared<DS1MIB::Dsx1FarEndTotalTable::Dsx1FarEndTotalEntry>();
-        c->parent = this;
-        dsx1farendtotalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DS1MIB::Dsx1FarEndTotalTable::Dsx1FarEndTotalEntry>();
+        ent_->parent = this;
+        dsx1farendtotalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1FarEndTotalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1FarEndTotalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dsx1farendtotalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dsx1farendtotalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::Dsx1FarEndTotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2601,16 +2601,16 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1FarEndTotalTable::Dsx
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1FarEndTotalTable::Dsx1FarEndTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1FarEndTotalTable::Dsx1FarEndTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1FarEndTotalTable::Dsx1FarEndTotalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1FarEndTotalTable::Dsx1FarEndTotalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DS1MIB::Dsx1FarEndTotalTable::Dsx1FarEndTotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2784,33 +2784,33 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1FracTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1FracTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1FracTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1FracEntry")
     {
-        auto c = std::make_shared<DS1MIB::Dsx1FracTable::Dsx1FracEntry>();
-        c->parent = this;
-        dsx1fracentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DS1MIB::Dsx1FracTable::Dsx1FracEntry>();
+        ent_->parent = this;
+        dsx1fracentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1FracTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1FracTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dsx1fracentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dsx1fracentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::Dsx1FracTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2886,16 +2886,16 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1FracTable::Dsx1FracEn
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1FracTable::Dsx1FracEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1FracTable::Dsx1FracEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1FracTable::Dsx1FracEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1FracTable::Dsx1FracEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DS1MIB::Dsx1FracTable::Dsx1FracEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2999,33 +2999,33 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1ChanMappingTable::get
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1ChanMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1ChanMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dsx1ChanMappingEntry")
     {
-        auto c = std::make_shared<DS1MIB::Dsx1ChanMappingTable::Dsx1ChanMappingEntry>();
-        c->parent = this;
-        dsx1chanmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DS1MIB::Dsx1ChanMappingTable::Dsx1ChanMappingEntry>();
+        ent_->parent = this;
+        dsx1chanmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1ChanMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1ChanMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dsx1chanmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dsx1chanmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DS1MIB::Dsx1ChanMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3101,16 +3101,16 @@ std::vector<std::pair<std::string, LeafData> > DS1MIB::Dsx1ChanMappingTable::Dsx
 
 }
 
-std::shared_ptr<Entity> DS1MIB::Dsx1ChanMappingTable::Dsx1ChanMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DS1MIB::Dsx1ChanMappingTable::Dsx1ChanMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1ChanMappingTable::Dsx1ChanMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DS1MIB::Dsx1ChanMappingTable::Dsx1ChanMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DS1MIB::Dsx1ChanMappingTable::Dsx1ChanMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

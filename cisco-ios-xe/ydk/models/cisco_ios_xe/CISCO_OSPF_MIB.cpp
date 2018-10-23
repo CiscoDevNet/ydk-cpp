@@ -76,7 +76,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfGeneralGroup")
     {
@@ -144,46 +144,46 @@ std::shared_ptr<Entity> CISCOOSPFMIB::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cospfgeneralgroup != nullptr)
     {
-        children["cospfGeneralGroup"] = cospfgeneralgroup;
+        _children["cospfGeneralGroup"] = cospfgeneralgroup;
     }
 
     if(cospflsdbtable != nullptr)
     {
-        children["cospfLsdbTable"] = cospflsdbtable;
+        _children["cospfLsdbTable"] = cospflsdbtable;
     }
 
     if(cospfshamlinktable != nullptr)
     {
-        children["cospfShamLinkTable"] = cospfshamlinktable;
+        _children["cospfShamLinkTable"] = cospfshamlinktable;
     }
 
     if(cospflocallsdbtable != nullptr)
     {
-        children["cospfLocalLsdbTable"] = cospflocallsdbtable;
+        _children["cospfLocalLsdbTable"] = cospflocallsdbtable;
     }
 
     if(cospfvirtlocallsdbtable != nullptr)
     {
-        children["cospfVirtLocalLsdbTable"] = cospfvirtlocallsdbtable;
+        _children["cospfVirtLocalLsdbTable"] = cospfvirtlocallsdbtable;
     }
 
     if(cospfshamlinknbrtable != nullptr)
     {
-        children["cospfShamLinkNbrTable"] = cospfshamlinknbrtable;
+        _children["cospfShamLinkNbrTable"] = cospfshamlinknbrtable;
     }
 
     if(cospfshamlinkstable != nullptr)
     {
-        children["cospfShamLinksTable"] = cospfshamlinkstable;
+        _children["cospfShamLinksTable"] = cospfshamlinkstable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOOSPFMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -194,7 +194,7 @@ void CISCOOSPFMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::clone_ptr() const
 {
     return std::make_shared<CISCOOSPFMIB>();
 }
@@ -290,16 +290,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfGeneralGroup::
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfGeneralGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfGeneralGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfGeneralGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfGeneralGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfGeneralGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -423,33 +423,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfLsdbTable::get
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfLsdbEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry>();
-        c->parent = this;
-        cospflsdbentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry>();
+        ent_->parent = this;
+        cospflsdbentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfLsdbTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfLsdbTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cospflsdbentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cospflsdbentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -547,16 +547,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfLsdbTable::Cos
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -710,33 +710,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinkTable:
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinkTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfShamLinkTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfShamLinkEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry>();
-        c->parent = this;
-        cospfshamlinkentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry>();
+        ent_->parent = this;
+        cospfshamlinkentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinkTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfShamLinkTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cospfshamlinkentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cospfshamlinkentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfShamLinkTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -837,16 +837,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinkTable:
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1010,33 +1010,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfLocalLsdbTable
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfLocalLsdbEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry>();
-        c->parent = this;
-        cospflocallsdbentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry>();
+        ent_->parent = this;
+        cospflocallsdbentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfLocalLsdbTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfLocalLsdbTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cospflocallsdbentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cospflocallsdbentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfLocalLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1139,16 +1139,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfLocalLsdbTable
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1312,33 +1312,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfVirtLocalLsdbT
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfVirtLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfVirtLocalLsdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfVirtLocalLsdbEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry>();
-        c->parent = this;
-        cospfvirtlocallsdbentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry>();
+        ent_->parent = this;
+        cospfvirtlocallsdbentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfVirtLocalLsdbTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfVirtLocalLsdbTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cospfvirtlocallsdbentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cospfvirtlocallsdbentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfVirtLocalLsdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1441,16 +1441,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfVirtLocalLsdbT
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1614,33 +1614,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinkNbrTab
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinkNbrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfShamLinkNbrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfShamLinkNbrEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry>();
-        c->parent = this;
-        cospfshamlinknbrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry>();
+        ent_->parent = this;
+        cospfshamlinknbrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinkNbrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfShamLinkNbrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cospfshamlinknbrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cospfshamlinknbrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfShamLinkNbrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1751,16 +1751,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinkNbrTab
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1944,33 +1944,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinksTable
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinksTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfShamLinksTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfShamLinksEntry")
     {
-        auto c = std::make_shared<CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry>();
-        c->parent = this;
-        cospfshamlinksentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry>();
+        ent_->parent = this;
+        cospfshamlinksentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinksTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfShamLinksTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cospfshamlinksentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cospfshamlinksentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfShamLinksTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2081,16 +2081,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFMIB::CospfShamLinksTable
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

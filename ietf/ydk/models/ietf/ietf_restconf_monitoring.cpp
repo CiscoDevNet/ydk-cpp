@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > RestconfState::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> RestconfState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RestconfState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capabilities")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> RestconfState::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RestconfState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RestconfState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(capabilities != nullptr)
     {
-        children["capabilities"] = capabilities;
+        _children["capabilities"] = capabilities;
     }
 
     if(streams != nullptr)
     {
-        children["streams"] = streams;
+        _children["streams"] = streams;
     }
 
-    return children;
+    return _children;
 }
 
 void RestconfState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void RestconfState::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> RestconfState::clone_ptr() const
+std::shared_ptr<ydk::Entity> RestconfState::clone_ptr() const
 {
     return std::make_shared<RestconfState>();
 }
@@ -195,16 +195,16 @@ std::vector<std::pair<std::string, LeafData> > RestconfState::Capabilities::get_
 
 }
 
-std::shared_ptr<Entity> RestconfState::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RestconfState::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RestconfState::Capabilities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RestconfState::Capabilities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RestconfState::Capabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -286,33 +286,33 @@ std::vector<std::pair<std::string, LeafData> > RestconfState::Streams::get_name_
 
 }
 
-std::shared_ptr<Entity> RestconfState::Streams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RestconfState::Streams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stream")
     {
-        auto c = std::make_shared<RestconfState::Streams::Stream>();
-        c->parent = this;
-        stream.append(c);
-        return c;
+        auto ent_ = std::make_shared<RestconfState::Streams::Stream>();
+        ent_->parent = this;
+        stream.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RestconfState::Streams::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stream.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stream.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RestconfState::Streams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -403,33 +403,33 @@ std::vector<std::pair<std::string, LeafData> > RestconfState::Streams::Stream::g
 
 }
 
-std::shared_ptr<Entity> RestconfState::Streams::Stream::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RestconfState::Streams::Stream::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
-        auto c = std::make_shared<RestconfState::Streams::Stream::Access>();
-        c->parent = this;
-        access.append(c);
-        return c;
+        auto ent_ = std::make_shared<RestconfState::Streams::Stream::Access>();
+        ent_->parent = this;
+        access.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::Stream::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RestconfState::Streams::Stream::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RestconfState::Streams::Stream::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -533,16 +533,16 @@ std::vector<std::pair<std::string, LeafData> > RestconfState::Streams::Stream::A
 
 }
 
-std::shared_ptr<Entity> RestconfState::Streams::Stream::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RestconfState::Streams::Stream::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::Stream::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RestconfState::Streams::Stream::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RestconfState::Streams::Stream::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

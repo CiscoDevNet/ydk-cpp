@@ -55,7 +55,7 @@ std::vector<std::pair<std::string, LeafData> > Lpts::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Lpts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt")
     {
@@ -78,21 +78,21 @@ std::shared_ptr<Entity> Lpts::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(punt != nullptr)
     {
-        children["Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt"] = punt;
+        _children["Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt"] = punt;
     }
 
     if(ipolicer != nullptr)
     {
-        children["Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer"] = ipolicer;
+        _children["Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer"] = ipolicer;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -103,7 +103,7 @@ void Lpts::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Lpts::clone_ptr() const
+std::shared_ptr<ydk::Entity> Lpts::clone_ptr() const
 {
     return std::make_shared<Lpts>();
 }
@@ -183,7 +183,7 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Punt::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Lpts::Punt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Punt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flowtrap")
     {
@@ -197,16 +197,16 @@ std::shared_ptr<Entity> Lpts::Punt::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Punt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flowtrap != nullptr)
     {
-        children["flowtrap"] = flowtrap;
+        _children["flowtrap"] = flowtrap;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Punt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -325,7 +325,7 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::get_name_le
 
 }
 
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Punt::Flowtrap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "penalty-rates")
     {
@@ -357,26 +357,26 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Punt::Flowtrap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(penalty_rates != nullptr)
     {
-        children["penalty-rates"] = penalty_rates;
+        _children["penalty-rates"] = penalty_rates;
     }
 
     if(penalty_timeouts != nullptr)
     {
-        children["penalty-timeouts"] = penalty_timeouts;
+        _children["penalty-timeouts"] = penalty_timeouts;
     }
 
     if(exclude != nullptr)
     {
-        children["exclude"] = exclude;
+        _children["exclude"] = exclude;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Punt::Flowtrap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -560,33 +560,33 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::PenaltyRate
 
 }
 
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Punt::Flowtrap::PenaltyRates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "penalty-rate")
     {
-        auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate>();
-        c->parent = this;
-        penalty_rate.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate>();
+        ent_->parent = this;
+        penalty_rate.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyRates::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Punt::Flowtrap::PenaltyRates::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : penalty_rate.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : penalty_rate.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Punt::Flowtrap::PenaltyRates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -657,16 +657,16 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::PenaltyRate
 
 }
 
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -760,33 +760,33 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::PenaltyTime
 
 }
 
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "penalty-timeout")
     {
-        auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout>();
-        c->parent = this;
-        penalty_timeout.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout>();
+        ent_->parent = this;
+        penalty_timeout.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : penalty_timeout.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : penalty_timeout.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Punt::Flowtrap::PenaltyTimeouts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -857,16 +857,16 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::PenaltyTime
 
 }
 
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -952,7 +952,7 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::Exclude::ge
 
 }
 
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::Exclude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Punt::Flowtrap::Exclude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-names")
     {
@@ -966,16 +966,16 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::Exclude::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::Exclude::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Punt::Flowtrap::Exclude::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_names != nullptr)
     {
-        children["interface-names"] = interface_names;
+        _children["interface-names"] = interface_names;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Punt::Flowtrap::Exclude::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1049,33 +1049,33 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::Exclude::In
 
 }
 
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-name")
     {
-        auto c = std::make_shared<Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName>();
-        c->parent = this;
-        interface_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName>();
+        ent_->parent = this;
+        interface_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Punt::Flowtrap::Exclude::InterfaceNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1146,16 +1146,16 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Punt::Flowtrap::Exclude::In
 
 }
 
-std::shared_ptr<Entity> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1250,7 +1250,7 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acls")
     {
@@ -1273,21 +1273,21 @@ std::shared_ptr<Entity> Lpts::Ipolicer::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(acls != nullptr)
     {
-        children["acls"] = acls;
+        _children["acls"] = acls;
     }
 
     if(flows != nullptr)
     {
-        children["flows"] = flows;
+        _children["flows"] = flows;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Ipolicer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1371,33 +1371,33 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::get_name_le
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl")
     {
-        auto c = std::make_shared<Lpts::Ipolicer::Acls::Acl>();
-        c->parent = this;
-        acl.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lpts::Ipolicer::Acls::Acl>();
+        ent_->parent = this;
+        acl.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : acl.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : acl.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Ipolicer::Acls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1469,7 +1469,7 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::get_na
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "afi-types")
     {
@@ -1483,16 +1483,16 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(afi_types != nullptr)
     {
-        children["afi-types"] = afi_types;
+        _children["afi-types"] = afi_types;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Ipolicer::Acls::Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1569,33 +1569,33 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTyp
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "afi-type")
     {
-        auto c = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType>();
-        c->parent = this;
-        afi_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType>();
+        ent_->parent = this;
+        afi_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : afi_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : afi_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Ipolicer::Acls::Acl::AfiTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1660,7 +1660,7 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTyp
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-names")
     {
@@ -1674,16 +1674,16 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf_names != nullptr)
     {
-        children["vrf-names"] = vrf_names;
+        _children["vrf-names"] = vrf_names;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1760,33 +1760,33 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTyp
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-name")
     {
-        auto c = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName>();
-        c->parent = this;
-        vrf_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName>();
+        ent_->parent = this;
+        vrf_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1850,16 +1850,16 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTyp
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1953,33 +1953,33 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::get_name_l
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow")
     {
-        auto c = std::make_shared<Lpts::Ipolicer::Flows::Flow>();
-        c->parent = this;
-        flow.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lpts::Ipolicer::Flows::Flow>();
+        ent_->parent = this;
+        flow.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Flows::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Flows::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flow.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Ipolicer::Flows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2055,7 +2055,7 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::Flow::get_
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "precedences")
     {
@@ -2069,16 +2069,16 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Flows::Flow::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Flows::Flow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Flows::Flow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(precedences != nullptr)
     {
-        children["precedences"] = precedences;
+        _children["precedences"] = precedences;
     }
 
-    return children;
+    return _children;
 }
 
 void Lpts::Ipolicer::Flows::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2168,16 +2168,16 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::Flow::Prec
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Flows::Flow::Precedences::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Flows::Flow::Precedences::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lpts::Ipolicer::Flows::Flow::Precedences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

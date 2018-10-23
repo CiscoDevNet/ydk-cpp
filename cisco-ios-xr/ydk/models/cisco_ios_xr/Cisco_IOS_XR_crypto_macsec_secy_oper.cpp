@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Macsec::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "secy")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Macsec::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(secy != nullptr)
     {
-        children["secy"] = secy;
+        _children["secy"] = secy;
     }
 
-    return children;
+    return _children;
 }
 
 void Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Macsec::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Macsec::clone_ptr() const
+std::shared_ptr<ydk::Entity> Macsec::clone_ptr() const
 {
     return std::make_shared<Macsec>();
 }
@@ -166,7 +166,7 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Secy::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Macsec::Secy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::Secy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -180,16 +180,16 @@ std::shared_ptr<Entity> Macsec::Secy::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::Secy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Macsec::Secy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -263,33 +263,33 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::get_nam
 
 }
 
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::Secy::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Macsec::Secy::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Macsec::Secy::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::Secy::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Macsec::Secy::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -361,7 +361,7 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interfa
 
 }
 
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::Secy::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats")
     {
@@ -375,16 +375,16 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::Secy::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stats != nullptr)
     {
-        children["stats"] = stats;
+        _children["stats"] = stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Macsec::Secy::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -468,7 +468,7 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interfa
 
 }
 
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::Secy::Interfaces::Interface::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "intf-stats")
     {
@@ -490,39 +490,39 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::get_child_by
 
     if(child_yang_name == "rx-sc-stats")
     {
-        auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats>();
-        c->parent = this;
-        rx_sc_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats>();
+        ent_->parent = this;
+        rx_sc_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::Secy::Interfaces::Interface::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(intf_stats != nullptr)
     {
-        children["intf-stats"] = intf_stats;
+        _children["intf-stats"] = intf_stats;
     }
 
     if(tx_sc_stats != nullptr)
     {
-        children["tx-sc-stats"] = tx_sc_stats;
+        _children["tx-sc-stats"] = tx_sc_stats;
     }
 
-    count = 0;
-    for (auto c : rx_sc_stats.entities())
+    count_ = 0;
+    for (auto ent_ : rx_sc_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Macsec::Secy::Interfaces::Interface::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -625,16 +625,16 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interfa
 
 }
 
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Macsec::Secy::Interfaces::Interface::Stats::IntfStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -845,33 +845,33 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interfa
 
 }
 
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "txsa-stat")
     {
-        auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat>();
-        c->parent = this;
-        txsa_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat>();
+        ent_->parent = this;
+        txsa_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : txsa_stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : txsa_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -998,16 +998,16 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interfa
 
 }
 
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1152,33 +1152,33 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interfa
 
 }
 
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rxsa-stat")
     {
-        auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat>();
-        c->parent = this;
-        rxsa_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat>();
+        ent_->parent = this;
+        rxsa_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rxsa_stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rxsa_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Macsec::Secy::Interfaces::Interface::Stats::RxScStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1377,16 +1377,16 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Secy::Interfaces::Interfa
 
 }
 
-std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

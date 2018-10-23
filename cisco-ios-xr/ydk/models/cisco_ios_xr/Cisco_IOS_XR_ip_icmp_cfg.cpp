@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Icmp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Icmp::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Icmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
-    return children;
+    return _children;
 }
 
 void Icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Icmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Icmp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Icmp::clone_ptr() const
 {
     return std::make_shared<Icmp>();
 }
@@ -188,7 +188,7 @@ std::vector<std::pair<std::string, LeafData> > Icmp::Ipv6::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Icmp::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Icmp::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rate-limit")
     {
@@ -211,21 +211,21 @@ std::shared_ptr<Entity> Icmp::Ipv6::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Icmp::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rate_limit != nullptr)
     {
-        children["rate-limit"] = rate_limit;
+        _children["rate-limit"] = rate_limit;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void Icmp::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -291,7 +291,7 @@ std::vector<std::pair<std::string, LeafData> > Icmp::Ipv6::RateLimit::get_name_l
 
 }
 
-std::shared_ptr<Entity> Icmp::Ipv6::RateLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Icmp::Ipv6::RateLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unreachable")
     {
@@ -305,16 +305,16 @@ std::shared_ptr<Entity> Icmp::Ipv6::RateLimit::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::RateLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Icmp::Ipv6::RateLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(unreachable != nullptr)
     {
-        children["unreachable"] = unreachable;
+        _children["unreachable"] = unreachable;
     }
 
-    return children;
+    return _children;
 }
 
 void Icmp::Ipv6::RateLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -384,16 +384,16 @@ std::vector<std::pair<std::string, LeafData> > Icmp::Ipv6::RateLimit::Unreachabl
 
 }
 
-std::shared_ptr<Entity> Icmp::Ipv6::RateLimit::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Icmp::Ipv6::RateLimit::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::RateLimit::Unreachable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Icmp::Ipv6::RateLimit::Unreachable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Icmp::Ipv6::RateLimit::Unreachable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -479,16 +479,16 @@ std::vector<std::pair<std::string, LeafData> > Icmp::Ipv6::Source::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Icmp::Ipv6::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Icmp::Ipv6::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv6::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Icmp::Ipv6::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Icmp::Ipv6::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -568,7 +568,7 @@ std::vector<std::pair<std::string, LeafData> > Icmp::Ipv4::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Icmp::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Icmp::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rate-limit")
     {
@@ -591,21 +591,21 @@ std::shared_ptr<Entity> Icmp::Ipv4::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Icmp::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rate_limit != nullptr)
     {
-        children["rate-limit"] = rate_limit;
+        _children["rate-limit"] = rate_limit;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void Icmp::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -671,7 +671,7 @@ std::vector<std::pair<std::string, LeafData> > Icmp::Ipv4::RateLimit::get_name_l
 
 }
 
-std::shared_ptr<Entity> Icmp::Ipv4::RateLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Icmp::Ipv4::RateLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unreachable")
     {
@@ -685,16 +685,16 @@ std::shared_ptr<Entity> Icmp::Ipv4::RateLimit::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::RateLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Icmp::Ipv4::RateLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(unreachable != nullptr)
     {
-        children["unreachable"] = unreachable;
+        _children["unreachable"] = unreachable;
     }
 
-    return children;
+    return _children;
 }
 
 void Icmp::Ipv4::RateLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -764,16 +764,16 @@ std::vector<std::pair<std::string, LeafData> > Icmp::Ipv4::RateLimit::Unreachabl
 
 }
 
-std::shared_ptr<Entity> Icmp::Ipv4::RateLimit::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Icmp::Ipv4::RateLimit::Unreachable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::RateLimit::Unreachable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Icmp::Ipv4::RateLimit::Unreachable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Icmp::Ipv4::RateLimit::Unreachable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -859,16 +859,16 @@ std::vector<std::pair<std::string, LeafData> > Icmp::Ipv4::Source::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Icmp::Ipv4::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Icmp::Ipv4::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Icmp::Ipv4::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Icmp::Ipv4::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Icmp::Ipv4::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

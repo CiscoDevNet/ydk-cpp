@@ -73,7 +73,7 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Watchdog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-memory")
     {
@@ -96,21 +96,21 @@ std::shared_ptr<Entity> Watchdog::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold_memory != nullptr)
     {
-        children["threshold-memory"] = threshold_memory;
+        _children["threshold-memory"] = threshold_memory;
     }
 
     if(disk_limit != nullptr)
     {
-        children["disk-limit"] = disk_limit;
+        _children["disk-limit"] = disk_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Watchdog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -161,7 +161,7 @@ void Watchdog::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Watchdog::clone_ptr() const
+std::shared_ptr<ydk::Entity> Watchdog::clone_ptr() const
 {
     return std::make_shared<Watchdog>();
 }
@@ -249,16 +249,16 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::ThresholdMemory::get_na
 
 }
 
-std::shared_ptr<Entity> Watchdog::ThresholdMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::ThresholdMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::ThresholdMemory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::ThresholdMemory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Watchdog::ThresholdMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -362,16 +362,16 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::DiskLimit::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Watchdog::DiskLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::DiskLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::DiskLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::DiskLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Watchdog::DiskLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -460,16 +460,16 @@ std::vector<std::pair<std::string, LeafData> > Watchd::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Watchd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Watchd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -490,7 +490,7 @@ void Watchd::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Watchd::clone_ptr() const
+std::shared_ptr<ydk::Entity> Watchd::clone_ptr() const
 {
     return std::make_shared<Watchd>();
 }

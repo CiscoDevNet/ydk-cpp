@@ -110,7 +110,7 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGMIB::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> TOKENRINGMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot5Table")
     {
@@ -142,26 +142,26 @@ std::shared_ptr<Entity> TOKENRINGMIB::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dot5table != nullptr)
     {
-        children["dot5Table"] = dot5table;
+        _children["dot5Table"] = dot5table;
     }
 
     if(dot5statstable != nullptr)
     {
-        children["dot5StatsTable"] = dot5statstable;
+        _children["dot5StatsTable"] = dot5statstable;
     }
 
     if(dot5timertable != nullptr)
     {
-        children["dot5TimerTable"] = dot5timertable;
+        _children["dot5TimerTable"] = dot5timertable;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -172,7 +172,7 @@ void TOKENRINGMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> TOKENRINGMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> TOKENRINGMIB::clone_ptr() const
 {
     return std::make_shared<TOKENRINGMIB>();
 }
@@ -260,33 +260,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGMIB::Dot5Table::get_name
 
 }
 
-std::shared_ptr<Entity> TOKENRINGMIB::Dot5Table::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGMIB::Dot5Table::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot5Entry")
     {
-        auto c = std::make_shared<TOKENRINGMIB::Dot5Table::Dot5Entry>();
-        c->parent = this;
-        dot5entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGMIB::Dot5Table::Dot5Entry>();
+        ent_->parent = this;
+        dot5entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5Table::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGMIB::Dot5Table::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dot5entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dot5entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGMIB::Dot5Table::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -389,16 +389,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGMIB::Dot5Table::Dot5Entr
 
 }
 
-std::shared_ptr<Entity> TOKENRINGMIB::Dot5Table::Dot5Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGMIB::Dot5Table::Dot5Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5Table::Dot5Entry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGMIB::Dot5Table::Dot5Entry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGMIB::Dot5Table::Dot5Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -572,33 +572,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGMIB::Dot5StatsTable::get
 
 }
 
-std::shared_ptr<Entity> TOKENRINGMIB::Dot5StatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGMIB::Dot5StatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot5StatsEntry")
     {
-        auto c = std::make_shared<TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry>();
-        c->parent = this;
-        dot5statsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry>();
+        ent_->parent = this;
+        dot5statsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5StatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGMIB::Dot5StatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dot5statsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dot5statsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGMIB::Dot5StatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -737,16 +737,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGMIB::Dot5StatsTable::Dot
 
 }
 
-std::shared_ptr<Entity> TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGMIB::Dot5StatsTable::Dot5StatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1010,33 +1010,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGMIB::Dot5TimerTable::get
 
 }
 
-std::shared_ptr<Entity> TOKENRINGMIB::Dot5TimerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGMIB::Dot5TimerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot5TimerEntry")
     {
-        auto c = std::make_shared<TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry>();
-        c->parent = this;
-        dot5timerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry>();
+        ent_->parent = this;
+        dot5timerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5TimerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGMIB::Dot5TimerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dot5timerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dot5timerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGMIB::Dot5TimerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1143,16 +1143,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGMIB::Dot5TimerTable::Dot
 
 }
 
-std::shared_ptr<Entity> TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGMIB::Dot5TimerTable::Dot5TimerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

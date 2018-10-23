@@ -88,7 +88,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsIsakmpGroup")
     {
@@ -183,61 +183,61 @@ std::shared_ptr<Entity> CISCOIPSECMIB::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cipsisakmpgroup != nullptr)
     {
-        children["cipsIsakmpGroup"] = cipsisakmpgroup;
+        _children["cipsIsakmpGroup"] = cipsisakmpgroup;
     }
 
     if(cipsipsecglobals != nullptr)
     {
-        children["cipsIPsecGlobals"] = cipsipsecglobals;
+        _children["cipsIPsecGlobals"] = cipsipsecglobals;
     }
 
     if(cipsipsecstatistics != nullptr)
     {
-        children["cipsIPsecStatistics"] = cipsipsecstatistics;
+        _children["cipsIPsecStatistics"] = cipsipsecstatistics;
     }
 
     if(cipssyscapacitygroup != nullptr)
     {
-        children["cipsSysCapacityGroup"] = cipssyscapacitygroup;
+        _children["cipsSysCapacityGroup"] = cipssyscapacitygroup;
     }
 
     if(cipstrapcntlgroup != nullptr)
     {
-        children["cipsTrapCntlGroup"] = cipstrapcntlgroup;
+        _children["cipsTrapCntlGroup"] = cipstrapcntlgroup;
     }
 
     if(cipsisakmppolicytable != nullptr)
     {
-        children["cipsIsakmpPolicyTable"] = cipsisakmppolicytable;
+        _children["cipsIsakmpPolicyTable"] = cipsisakmppolicytable;
     }
 
     if(cipsstaticcryptomapsettable != nullptr)
     {
-        children["cipsStaticCryptomapSetTable"] = cipsstaticcryptomapsettable;
+        _children["cipsStaticCryptomapSetTable"] = cipsstaticcryptomapsettable;
     }
 
     if(cipsdynamiccryptomapsettable != nullptr)
     {
-        children["cipsDynamicCryptomapSetTable"] = cipsdynamiccryptomapsettable;
+        _children["cipsDynamicCryptomapSetTable"] = cipsdynamiccryptomapsettable;
     }
 
     if(cipsstaticcryptomaptable != nullptr)
     {
-        children["cipsStaticCryptomapTable"] = cipsstaticcryptomaptable;
+        _children["cipsStaticCryptomapTable"] = cipsstaticcryptomaptable;
     }
 
     if(cipscryptomapsetiftable != nullptr)
     {
-        children["cipsCryptomapSetIfTable"] = cipscryptomapsetiftable;
+        _children["cipsCryptomapSetIfTable"] = cipscryptomapsetiftable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSECMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ void CISCOIPSECMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIPSECMIB>();
 }
@@ -340,16 +340,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsIsakmpGroup::g
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsIsakmpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsIsakmpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsIsakmpGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsIsakmpGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsIsakmpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -475,16 +475,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsIPsecGlobals::
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsIPsecGlobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsIPsecGlobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsIPsecGlobals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsIPsecGlobals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsIPsecGlobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -618,16 +618,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsIPsecStatistic
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsIPsecStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsIPsecStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsIPsecStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsIPsecStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsIPsecStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -727,16 +727,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsSysCapacityGro
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsSysCapacityGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsSysCapacityGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsSysCapacityGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsSysCapacityGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsSysCapacityGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -846,16 +846,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsTrapCntlGroup:
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsTrapCntlGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsTrapCntlGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsTrapCntlGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsTrapCntlGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsTrapCntlGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -999,33 +999,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsIsakmpPolicyTa
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsIsakmpPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsIsakmpPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsIsakmpPolicyEntry")
     {
-        auto c = std::make_shared<CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry>();
-        c->parent = this;
-        cipsisakmppolicyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry>();
+        ent_->parent = this;
+        cipsisakmppolicyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsIsakmpPolicyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsIsakmpPolicyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipsisakmppolicyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipsisakmppolicyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsIsakmpPolicyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1112,16 +1112,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsIsakmpPolicyTa
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1255,33 +1255,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsStaticCryptoma
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsStaticCryptomapSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsStaticCryptomapSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsStaticCryptomapSetEntry")
     {
-        auto c = std::make_shared<CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry>();
-        c->parent = this;
-        cipsstaticcryptomapsetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry>();
+        ent_->parent = this;
+        cipsstaticcryptomapsetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsStaticCryptomapSetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsStaticCryptomapSetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipsstaticcryptomapsetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipsstaticcryptomapsetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsStaticCryptomapSetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1376,16 +1376,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsStaticCryptoma
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1539,33 +1539,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsDynamicCryptom
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsDynamicCryptomapSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsDynamicCryptomapSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsDynamicCryptomapSetEntry")
     {
-        auto c = std::make_shared<CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry>();
-        c->parent = this;
-        cipsdynamiccryptomapsetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry>();
+        ent_->parent = this;
+        cipsdynamiccryptomapsetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsDynamicCryptomapSetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsDynamicCryptomapSetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipsdynamiccryptomapsetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipsdynamiccryptomapsetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsDynamicCryptomapSetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1640,16 +1640,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsDynamicCryptom
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1753,33 +1753,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsStaticCryptoma
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsStaticCryptomapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsStaticCryptomapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsStaticCryptomapEntry")
     {
-        auto c = std::make_shared<CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry>();
-        c->parent = this;
-        cipsstaticcryptomapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry>();
+        ent_->parent = this;
+        cipsstaticcryptomapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsStaticCryptomapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsStaticCryptomapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipsstaticcryptomapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipsstaticcryptomapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsStaticCryptomapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1883,16 +1883,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsStaticCryptoma
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2066,33 +2066,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsCryptomapSetIf
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsCryptomapSetIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsCryptomapSetIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipsCryptomapSetIfEntry")
     {
-        auto c = std::make_shared<CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry>();
-        c->parent = this;
-        cipscryptomapsetifentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry>();
+        ent_->parent = this;
+        cipscryptomapsetifentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsCryptomapSetIfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsCryptomapSetIfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipscryptomapsetifentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipscryptomapsetifentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsCryptomapSetIfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2172,16 +2172,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSECMIB::CipsCryptomapSetIf
 
 }
 
-std::shared_ptr<Entity> CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

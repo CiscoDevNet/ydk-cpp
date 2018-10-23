@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1315MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frame-relay-globals")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> RFC1315MIB::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1315MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(frame_relay_globals != nullptr)
     {
-        children["frame-relay-globals"] = frame_relay_globals;
+        _children["frame-relay-globals"] = frame_relay_globals;
     }
 
     if(frdlcmitable != nullptr)
     {
-        children["frDlcmiTable"] = frdlcmitable;
+        _children["frDlcmiTable"] = frdlcmitable;
     }
 
     if(frcircuittable != nullptr)
     {
-        children["frCircuitTable"] = frcircuittable;
+        _children["frCircuitTable"] = frcircuittable;
     }
 
     if(frerrtable != nullptr)
     {
-        children["frErrTable"] = frerrtable;
+        _children["frErrTable"] = frerrtable;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1315MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void RFC1315MIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> RFC1315MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> RFC1315MIB::clone_ptr() const
 {
     return std::make_shared<RFC1315MIB>();
 }
@@ -220,16 +220,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrameRelayGlobals::ge
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::FrameRelayGlobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1315MIB::FrameRelayGlobals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrameRelayGlobals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1315MIB::FrameRelayGlobals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1315MIB::FrameRelayGlobals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -313,33 +313,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrDlcmiTable::get_nam
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::FrDlcmiTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1315MIB::FrDlcmiTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frDlcmiEntry")
     {
-        auto c = std::make_shared<RFC1315MIB::FrDlcmiTable::FrDlcmiEntry>();
-        c->parent = this;
-        frdlcmientry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1315MIB::FrDlcmiTable::FrDlcmiEntry>();
+        ent_->parent = this;
+        frdlcmientry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrDlcmiTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1315MIB::FrDlcmiTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : frdlcmientry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frdlcmientry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1315MIB::FrDlcmiTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -442,16 +442,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrDlcmiTable::FrDlcmi
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -625,33 +625,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrCircuitTable::get_n
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::FrCircuitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1315MIB::FrCircuitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frCircuitEntry")
     {
-        auto c = std::make_shared<RFC1315MIB::FrCircuitTable::FrCircuitEntry>();
-        c->parent = this;
-        frcircuitentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1315MIB::FrCircuitTable::FrCircuitEntry>();
+        ent_->parent = this;
+        frcircuitentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrCircuitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1315MIB::FrCircuitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : frcircuitentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frcircuitentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1315MIB::FrCircuitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -771,16 +771,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrCircuitTable::FrCir
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::FrCircuitTable::FrCircuitEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1315MIB::FrCircuitTable::FrCircuitEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrCircuitTable::FrCircuitEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1315MIB::FrCircuitTable::FrCircuitEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1315MIB::FrCircuitTable::FrCircuitEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -994,33 +994,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrErrTable::get_name_
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::FrErrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1315MIB::FrErrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frErrEntry")
     {
-        auto c = std::make_shared<RFC1315MIB::FrErrTable::FrErrEntry>();
-        c->parent = this;
-        frerrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1315MIB::FrErrTable::FrErrEntry>();
+        ent_->parent = this;
+        frerrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrErrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1315MIB::FrErrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : frerrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frerrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1315MIB::FrErrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1099,16 +1099,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1315MIB::FrErrTable::FrErrEntr
 
 }
 
-std::shared_ptr<Entity> RFC1315MIB::FrErrTable::FrErrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1315MIB::FrErrTable::FrErrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrErrTable::FrErrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1315MIB::FrErrTable::FrErrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1315MIB::FrErrTable::FrErrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

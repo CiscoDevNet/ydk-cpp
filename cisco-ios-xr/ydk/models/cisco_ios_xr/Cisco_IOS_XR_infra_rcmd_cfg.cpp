@@ -91,7 +91,7 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocols")
     {
@@ -141,36 +141,36 @@ std::shared_ptr<Entity> RouterConvergence::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocols != nullptr)
     {
-        children["protocols"] = protocols;
+        _children["protocols"] = protocols;
     }
 
     if(storage_location != nullptr)
     {
-        children["storage-location"] = storage_location;
+        _children["storage-location"] = storage_location;
     }
 
     if(mpls_ldp != nullptr)
     {
-        children["mpls-ldp"] = mpls_ldp;
+        _children["mpls-ldp"] = mpls_ldp;
     }
 
     if(collect_diagnostics != nullptr)
     {
-        children["collect-diagnostics"] = collect_diagnostics;
+        _children["collect-diagnostics"] = collect_diagnostics;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void RouterConvergence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -241,7 +241,7 @@ void RouterConvergence::set_filter(const std::string & value_path, YFilter yfilt
     }
 }
 
-std::shared_ptr<Entity> RouterConvergence::clone_ptr() const
+std::shared_ptr<ydk::Entity> RouterConvergence::clone_ptr() const
 {
     return std::make_shared<RouterConvergence>();
 }
@@ -329,33 +329,33 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::Protocols::get
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol")
     {
-        auto c = std::make_shared<RouterConvergence::Protocols::Protocol>();
-        c->parent = this;
-        protocol.append(c);
-        return c;
+        auto ent_ = std::make_shared<RouterConvergence::Protocols::Protocol>();
+        ent_->parent = this;
+        protocol.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::Protocols::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : protocol.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : protocol.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RouterConvergence::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -431,7 +431,7 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::Protocols::Pro
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "priorities")
     {
@@ -445,16 +445,16 @@ std::shared_ptr<Entity> RouterConvergence::Protocols::Protocol::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::Protocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::Protocols::Protocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(priorities != nullptr)
     {
-        children["priorities"] = priorities;
+        _children["priorities"] = priorities;
     }
 
-    return children;
+    return _children;
 }
 
 void RouterConvergence::Protocols::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -541,33 +541,33 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::Protocols::Pro
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::Protocols::Protocol::Priorities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::Protocols::Protocol::Priorities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "priority")
     {
-        auto c = std::make_shared<RouterConvergence::Protocols::Protocol::Priorities::Priority>();
-        c->parent = this;
-        priority.append(c);
-        return c;
+        auto ent_ = std::make_shared<RouterConvergence::Protocols::Protocol::Priorities::Priority>();
+        ent_->parent = this;
+        priority.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::Protocol::Priorities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::Protocols::Protocol::Priorities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : priority.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : priority.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RouterConvergence::Protocols::Protocol::Priorities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -647,16 +647,16 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::Protocols::Pro
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::Protocols::Protocol::Priorities::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::Protocols::Protocol::Priorities::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::Protocol::Priorities::Priority::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::Protocols::Protocol::Priorities::Priority::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RouterConvergence::Protocols::Protocol::Priorities::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -794,16 +794,16 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::StorageLocatio
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::StorageLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::StorageLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::StorageLocation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::StorageLocation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RouterConvergence::StorageLocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -908,7 +908,7 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::MplsLdp::get_n
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::MplsLdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::MplsLdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-lfa")
     {
@@ -922,16 +922,16 @@ std::shared_ptr<Entity> RouterConvergence::MplsLdp::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::MplsLdp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::MplsLdp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(remote_lfa != nullptr)
     {
-        children["remote-lfa"] = remote_lfa;
+        _children["remote-lfa"] = remote_lfa;
     }
 
-    return children;
+    return _children;
 }
 
 void RouterConvergence::MplsLdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -997,16 +997,16 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::MplsLdp::Remot
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::MplsLdp::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::MplsLdp::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::MplsLdp::RemoteLfa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::MplsLdp::RemoteLfa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RouterConvergence::MplsLdp::RemoteLfa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1090,33 +1090,33 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::CollectDiagnos
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::CollectDiagnostics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::CollectDiagnostics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "collect-diagnostic")
     {
-        auto c = std::make_shared<RouterConvergence::CollectDiagnostics::CollectDiagnostic>();
-        c->parent = this;
-        collect_diagnostic.append(c);
-        return c;
+        auto ent_ = std::make_shared<RouterConvergence::CollectDiagnostics::CollectDiagnostic>();
+        ent_->parent = this;
+        collect_diagnostic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::CollectDiagnostics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::CollectDiagnostics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : collect_diagnostic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : collect_diagnostic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RouterConvergence::CollectDiagnostics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1187,16 +1187,16 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::CollectDiagnos
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RouterConvergence::CollectDiagnostics::CollectDiagnostic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1290,33 +1290,33 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::Nodes::get_nam
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<RouterConvergence::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<RouterConvergence::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RouterConvergence::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1391,16 +1391,16 @@ std::vector<std::pair<std::string, LeafData> > RouterConvergence::Nodes::Node::g
 
 }
 
-std::shared_ptr<Entity> RouterConvergence::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RouterConvergence::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RouterConvergence::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RouterConvergence::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

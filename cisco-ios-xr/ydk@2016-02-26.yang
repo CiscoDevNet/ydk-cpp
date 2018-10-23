@@ -1,11 +1,8 @@
 module ydk {
 
-  
   namespace "http://cisco.com/ns/yang/ydk";
 
   prefix "ydk";
-
- 
   
   organization "Cisco Systems, Inc.";
 
@@ -61,11 +58,7 @@ module ydk {
     }
     description "Represents a specific date in YYYY-MM-DD format.";
   }
-  
- 
-  
- 
-  
+
   extension type-constraint {
      description "This extension is used under an instance-identifier type. It is used to 
      qualify the instance-identifier with the type of target node identified by the path.
@@ -73,7 +66,6 @@ module ydk {
      A note a given type instance-identifier can have multiple targets
      ";
      argument path;
-     
   }
   
   extension service-provider-class-name {
@@ -117,7 +109,7 @@ module ydk {
         
            type string;
         }
- 
+
   }
   
 
@@ -233,9 +225,6 @@ container ydk {
             }
         }
   }
-            
-
-            
   
   container service-providers {
     config false;
@@ -306,7 +295,7 @@ container ydk {
   
   
   
-  container bundles {   
+  container bundles {
     config false;
     
     list bundle {
@@ -845,5 +834,213 @@ container ydk {
     }
   } 
 
-}
 
+
+    grouping gnmi-entity-grouping {
+        leaf alias {
+            description "A unique string value, which identifies the entity.";
+            type string;
+        }
+        leaf entity {
+            description "Represents an entity encoded to JSON formatted string.";
+            type string;
+        }
+    }
+
+    container gnmi-capabilities {
+        list supported-models {
+            key "name";
+            leaf name {
+                description "Name of the model.";
+                type string;
+            }
+            leaf organization {
+                description "Organization publishing the model.";
+                type string;
+            }
+            leaf version {
+                description "Semantic version of the model.";
+                type string;
+            }
+        }
+        leaf-list supported-encodings {
+            description "Encoding defines the value encoding formats that are supported by the gNMI protocol.";
+            type string;
+        }
+        leaf gnmi-version {
+            description "Supported gNMI version.";
+            type string;
+        }
+    }
+
+    rpc gnmi-caps {
+
+        description "The 'gnmi-caps' RPC allows the client to retrieve set of capabilities that is supported by the target.
+                     The CapabilityRequest message is sent by the client to interrogate the target.
+                     The target sends back to the client CapabilityResponse message, which contains this structure.";
+
+        output {
+            anyxml data {
+                description "Data that is read";
+            }
+        }
+    }
+
+    rpc gnmi-get {
+
+        description "The 'gnmi-get' RPC is used in the client to retrieve entity or entities from the target.";
+
+        input {
+            list request {
+                key "alias";
+                uses gnmi-entity-grouping;
+            }
+
+            leaf type {
+                description "Defines type of requested information.";
+                type enumeration {
+                    enum CONFIG {
+                        value 0;
+                    }
+                    enum STATE {
+                        value 1;
+                    }
+                    enum OPERATIONAL {
+                        value 2;
+                    }
+                    enum ALL {
+                        value 3;
+                    }
+                }
+                default CONFIG;
+            }
+        }
+
+        output {
+            anyxml data {
+                description "Data that is read";
+            }
+        }
+    }
+
+    rpc gnmi-set {
+
+        description "The 'gnmi-set' RPC allows the client to create/replace, update or delete entity or multiple entities on the target.
+                     A client sends a SetRequest message to the target indicating the modifications it desires.";
+
+        input {
+          list delete {
+            key "alias";
+            uses gnmi-entity-grouping;
+          }
+          list replace {
+            key "alias";
+            uses gnmi-entity-grouping;
+          }
+          list update {
+            key "alias";
+            uses gnmi-entity-grouping;
+          }
+        }
+    }
+
+    rpc gnmi-subscribe {
+
+        description "When a client wishes to receive updates relating to the state of data instances on a target,
+                     it creates a subscription via the Subscribe RPC. A subscription consists of one or more entities,
+                     with a specified subscription mode. The mode of each subscription determines the triggers
+                     for updates for data sent from the target to the client.";
+
+        input {
+          container subscription {
+            list subscription-list {
+              key "alias";
+              uses gnmi-entity-grouping;
+
+              leaf subscription-mode {
+                  description "The mode of each subscription determines triggers for updates for data sent from the target to the client.";
+                  type enumeration {
+                      enum TARGET_DEFINED {
+                          value 0;
+                      }
+                      enum ON_CHANGE {
+                          value 1;
+                      }
+                      enum SAMPLE {
+                          value 2;
+                      }
+                  }
+                  default ON_CHANGE;
+              }
+
+              leaf sample-interval {
+                  description "Time interval in ns between samples in STREAM mode";
+                  type uint64;
+                  default 60000000000;
+              }
+
+              leaf suppress-redundant {
+                  description "Indicates whether values that not changed should be sent in a STREAM subscription.";
+                  type boolean;
+                  default true;
+              }
+
+              leaf heartbeat-interval {
+                  description "Specifies the maximum allowable silent period in nanoseconds when
+                               suppress_redundant is in use. The target should send a value at least once
+                               in the period specified.";
+                  type uint64;
+                  default 600000000000;
+              }
+            }
+
+            leaf mode {
+                description "The mode of each subscription determines triggers for updates for data sent from the target to the client.";
+                type enumeration {
+                    enum ONCE {
+                        value 0;
+                    }
+                    enum POLL {
+                        value 1;
+                    }
+                    enum STREAM {
+                        value 2;
+                    }
+                }
+                default ONCE;
+            }
+
+            leaf qos {
+                description "DSCP marking to be used.";
+                type uint32;
+                default 0;
+            }
+
+            leaf encoding {
+                description "The encoding that the target should use within the Notifications generated 
+                             corresponding to the SubscriptionList.";
+                type enumeration {
+                    enum JSON {
+                        value 0;
+                    }
+                    enum BYTES {
+                        value 1;
+                    }
+                    enum PROTO {
+                        value 2;
+                    }
+                    enum ASCII {
+                        value 3;
+                    }
+                    enum JSON_IETF {
+                        value 4;
+                    }
+                }
+                default PROTO;
+            }
+
+          }
+        }
+    }
+
+}

@@ -156,7 +156,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cSipCfgBase")
     {
@@ -359,121 +359,121 @@ std::shared_ptr<Entity> CISCOSIPUAMIB::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(csipcfgbase != nullptr)
     {
-        children["cSipCfgBase"] = csipcfgbase;
+        _children["cSipCfgBase"] = csipcfgbase;
     }
 
     if(csipcfgtimer != nullptr)
     {
-        children["cSipCfgTimer"] = csipcfgtimer;
+        _children["cSipCfgTimer"] = csipcfgtimer;
     }
 
     if(csipcfgretry != nullptr)
     {
-        children["cSipCfgRetry"] = csipcfgretry;
+        _children["cSipCfgRetry"] = csipcfgretry;
     }
 
     if(csipcfgpeer != nullptr)
     {
-        children["cSipCfgPeer"] = csipcfgpeer;
+        _children["cSipCfgPeer"] = csipcfgpeer;
     }
 
     if(csipcfgaaa != nullptr)
     {
-        children["cSipCfgAaa"] = csipcfgaaa;
+        _children["cSipCfgAaa"] = csipcfgaaa;
     }
 
     if(csipcfgvoiceservicevoip != nullptr)
     {
-        children["cSipCfgVoiceServiceVoip"] = csipcfgvoiceservicevoip;
+        _children["cSipCfgVoiceServiceVoip"] = csipcfgvoiceservicevoip;
     }
 
     if(csipstatsinfo != nullptr)
     {
-        children["cSipStatsInfo"] = csipstatsinfo;
+        _children["cSipStatsInfo"] = csipstatsinfo;
     }
 
     if(csipstatssuccess != nullptr)
     {
-        children["cSipStatsSuccess"] = csipstatssuccess;
+        _children["cSipStatsSuccess"] = csipstatssuccess;
     }
 
     if(csipstatsredirect != nullptr)
     {
-        children["cSipStatsRedirect"] = csipstatsredirect;
+        _children["cSipStatsRedirect"] = csipstatsredirect;
     }
 
     if(csipstatserrclient != nullptr)
     {
-        children["cSipStatsErrClient"] = csipstatserrclient;
+        _children["cSipStatsErrClient"] = csipstatserrclient;
     }
 
     if(csipstatserrserver != nullptr)
     {
-        children["cSipStatsErrServer"] = csipstatserrserver;
+        _children["cSipStatsErrServer"] = csipstatserrserver;
     }
 
     if(csipstatsglobalfail != nullptr)
     {
-        children["cSipStatsGlobalFail"] = csipstatsglobalfail;
+        _children["cSipStatsGlobalFail"] = csipstatsglobalfail;
     }
 
     if(csipstatstraffic != nullptr)
     {
-        children["cSipStatsTraffic"] = csipstatstraffic;
+        _children["cSipStatsTraffic"] = csipstatstraffic;
     }
 
     if(csipstatsretry != nullptr)
     {
-        children["cSipStatsRetry"] = csipstatsretry;
+        _children["cSipStatsRetry"] = csipstatsretry;
     }
 
     if(csipstatsmisc != nullptr)
     {
-        children["cSipStatsMisc"] = csipstatsmisc;
+        _children["cSipStatsMisc"] = csipstatsmisc;
     }
 
     if(csipstatsconnection != nullptr)
     {
-        children["cSipStatsConnection"] = csipstatsconnection;
+        _children["cSipStatsConnection"] = csipstatsconnection;
     }
 
     if(csipcfgearlymediatable != nullptr)
     {
-        children["cSipCfgEarlyMediaTable"] = csipcfgearlymediatable;
+        _children["cSipCfgEarlyMediaTable"] = csipcfgearlymediatable;
     }
 
     if(csipcfgbindsourceaddrtable != nullptr)
     {
-        children["cSipCfgBindSourceAddrTable"] = csipcfgbindsourceaddrtable;
+        _children["cSipCfgBindSourceAddrTable"] = csipcfgbindsourceaddrtable;
     }
 
     if(csipcfgpeertable != nullptr)
     {
-        children["cSipCfgPeerTable"] = csipcfgpeertable;
+        _children["cSipCfgPeerTable"] = csipcfgpeertable;
     }
 
     if(csipcfgstatuscausetable != nullptr)
     {
-        children["cSipCfgStatusCauseTable"] = csipcfgstatuscausetable;
+        _children["cSipCfgStatusCauseTable"] = csipcfgstatuscausetable;
     }
 
     if(csipcfgcausestatustable != nullptr)
     {
-        children["cSipCfgCauseStatusTable"] = csipcfgcausestatustable;
+        _children["cSipCfgCauseStatusTable"] = csipcfgcausestatustable;
     }
 
     if(csipstatssuccessoktable != nullptr)
     {
-        children["cSipStatsSuccessOkTable"] = csipstatssuccessoktable;
+        _children["cSipStatsSuccessOkTable"] = csipstatssuccessoktable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSIPUAMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -484,7 +484,7 @@ void CISCOSIPUAMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::clone_ptr() const
 {
     return std::make_shared<CISCOSIPUAMIB>();
 }
@@ -616,16 +616,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgBase::get_n
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -883,16 +883,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgTimer::get_
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgTimer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgTimer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1142,16 +1142,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgRetry::get_
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgRetry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgRetry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgRetry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1349,16 +1349,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgPeer::get_n
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1464,16 +1464,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgAaa::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgAaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgAaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgAaa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgAaa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgAaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1561,16 +1561,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgVoiceServic
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgVoiceServiceVoip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgVoiceServiceVoip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgVoiceServiceVoip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgVoiceServiceVoip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgVoiceServiceVoip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1712,16 +1712,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsInfo::get
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1899,16 +1899,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsSuccess::
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsSuccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsSuccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsSuccess::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsSuccess::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsSuccess::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2042,16 +2042,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsRedirect:
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsRedirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsRedirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsRedirect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsRedirect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsRedirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2417,16 +2417,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsErrClient
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsErrClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsErrClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsErrClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsErrClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsErrClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3104,16 +3104,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsErrServer
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsErrServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsErrServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsErrServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsErrServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsErrServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3347,16 +3347,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsGlobalFai
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsGlobalFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsGlobalFail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsGlobalFail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsGlobalFail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsGlobalFail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3602,16 +3602,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsTraffic::
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsTraffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsTraffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsTraffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsTraffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsTraffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3981,16 +3981,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsRetry::ge
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsRetry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsRetry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsRetry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4176,16 +4176,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsMisc::get
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsMisc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsMisc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsMisc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsMisc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsMisc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4293,16 +4293,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsConnectio
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsConnection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsConnection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsConnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4466,33 +4466,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgEarlyMediaT
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgEarlyMediaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgEarlyMediaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cSipCfgEarlyMediaEntry")
     {
-        auto c = std::make_shared<CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry>();
-        c->parent = this;
-        csipcfgearlymediaentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry>();
+        ent_->parent = this;
+        csipcfgearlymediaentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgEarlyMediaTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgEarlyMediaTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csipcfgearlymediaentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csipcfgearlymediaentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgEarlyMediaTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4563,16 +4563,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgEarlyMediaT
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgEarlyMediaTable::CSipCfgEarlyMediaEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4666,33 +4666,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgBindSourceA
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cSipCfgBindSourceAddrEntry")
     {
-        auto c = std::make_shared<CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry>();
-        c->parent = this;
-        csipcfgbindsourceaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry>();
+        ent_->parent = this;
+        csipcfgbindsourceaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csipcfgbindsourceaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csipcfgbindsourceaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4763,16 +4763,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgBindSourceA
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgBindSourceAddrTable::CSipCfgBindSourceAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4866,33 +4866,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgPeerTable::
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cSipCfgPeerEntry")
     {
-        auto c = std::make_shared<CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry>();
-        c->parent = this;
-        csipcfgpeerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry>();
+        ent_->parent = this;
+        csipcfgpeerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgPeerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgPeerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csipcfgpeerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csipcfgpeerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4979,16 +4979,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgPeerTable::
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgPeerTable::CSipCfgPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5122,33 +5122,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgStatusCause
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgStatusCauseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgStatusCauseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cSipCfgStatusCauseEntry")
     {
-        auto c = std::make_shared<CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry>();
-        c->parent = this;
-        csipcfgstatuscauseentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry>();
+        ent_->parent = this;
+        csipcfgstatuscauseentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgStatusCauseTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgStatusCauseTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csipcfgstatuscauseentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csipcfgstatuscauseentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgStatusCauseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5223,16 +5223,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgStatusCause
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgStatusCauseTable::CSipCfgStatusCauseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5336,33 +5336,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgCauseStatus
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgCauseStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgCauseStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cSipCfgCauseStatusEntry")
     {
-        auto c = std::make_shared<CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry>();
-        c->parent = this;
-        csipcfgcausestatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry>();
+        ent_->parent = this;
+        csipcfgcausestatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgCauseStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgCauseStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csipcfgcausestatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csipcfgcausestatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgCauseStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5437,16 +5437,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipCfgCauseStatus
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipCfgCauseStatusTable::CSipCfgCauseStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5550,33 +5550,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsSuccessOk
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsSuccessOkTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsSuccessOkTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cSipStatsSuccessOkEntry")
     {
-        auto c = std::make_shared<CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry>();
-        c->parent = this;
-        csipstatssuccessokentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry>();
+        ent_->parent = this;
+        csipstatssuccessokentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsSuccessOkTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsSuccessOkTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csipstatssuccessokentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csipstatssuccessokentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsSuccessOkTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5651,16 +5651,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSIPUAMIB::CSipStatsSuccessOk
 
 }
 
-std::shared_ptr<Entity> CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSIPUAMIB::CSipStatsSuccessOkTable::CSipStatsSuccessOkEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

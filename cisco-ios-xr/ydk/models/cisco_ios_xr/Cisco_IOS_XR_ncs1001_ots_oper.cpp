@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> HwModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "amplifier-trails")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> HwModule::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(amplifier_trails != nullptr)
     {
-        children["amplifier-trails"] = amplifier_trails;
+        _children["amplifier-trails"] = amplifier_trails;
     }
 
     if(channels_trails != nullptr)
     {
-        children["channels-trails"] = channels_trails;
+        _children["channels-trails"] = channels_trails;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void HwModule::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> HwModule::clone_ptr() const
+std::shared_ptr<ydk::Entity> HwModule::clone_ptr() const
 {
     return std::make_shared<HwModule>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::AmplifierTrails::get_na
 
 }
 
-std::shared_ptr<Entity> HwModule::AmplifierTrails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::AmplifierTrails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "amplifier-trail")
     {
-        auto c = std::make_shared<HwModule::AmplifierTrails::AmplifierTrail>();
-        c->parent = this;
-        amplifier_trail.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::AmplifierTrails::AmplifierTrail>();
+        ent_->parent = this;
+        amplifier_trail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::AmplifierTrails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::AmplifierTrails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : amplifier_trail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : amplifier_trail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::AmplifierTrails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -297,33 +297,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::AmplifierTrails::Amplif
 
 }
 
-std::shared_ptr<Entity> HwModule::AmplifierTrails::AmplifierTrail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::AmplifierTrails::AmplifierTrail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "amplifier-trail-data")
     {
-        auto c = std::make_shared<HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData>();
-        c->parent = this;
-        amplifier_trail_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData>();
+        ent_->parent = this;
+        amplifier_trail_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::AmplifierTrails::AmplifierTrail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::AmplifierTrails::AmplifierTrail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : amplifier_trail_data.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : amplifier_trail_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::AmplifierTrails::AmplifierTrail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -416,50 +416,50 @@ std::vector<std::pair<std::string, LeafData> > HwModule::AmplifierTrails::Amplif
 
 }
 
-std::shared_ptr<Entity> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ampli-trail-info")
     {
-        auto c = std::make_shared<HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::AmpliTrailInfo>();
-        c->parent = this;
-        ampli_trail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::AmpliTrailInfo>();
+        ent_->parent = this;
+        ampli_trail_info.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "channel-trail-info")
     {
-        auto c = std::make_shared<HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::ChannelTrailInfo>();
-        c->parent = this;
-        channel_trail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::ChannelTrailInfo>();
+        ent_->parent = this;
+        channel_trail_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ampli_trail_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ampli_trail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : channel_trail_info.entities())
+    count_ = 0;
+    for (auto ent_ : channel_trail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -652,16 +652,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::AmplifierTrails::Amplif
 
 }
 
-std::shared_ptr<Entity> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::AmpliTrailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::AmpliTrailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::AmpliTrailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::AmpliTrailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::AmpliTrailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1096,16 +1096,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::AmplifierTrails::Amplif
 
 }
 
-std::shared_ptr<Entity> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::ChannelTrailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::ChannelTrailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::ChannelTrailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::ChannelTrailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::ChannelTrailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1329,33 +1329,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::ChannelsTrails::get_nam
 
 }
 
-std::shared_ptr<Entity> HwModule::ChannelsTrails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::ChannelsTrails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "channels-trail")
     {
-        auto c = std::make_shared<HwModule::ChannelsTrails::ChannelsTrail>();
-        c->parent = this;
-        channels_trail.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::ChannelsTrails::ChannelsTrail>();
+        ent_->parent = this;
+        channels_trail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::ChannelsTrails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::ChannelsTrails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : channels_trail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : channels_trail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::ChannelsTrails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1434,33 +1434,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::ChannelsTrails::Channel
 
 }
 
-std::shared_ptr<Entity> HwModule::ChannelsTrails::ChannelsTrail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::ChannelsTrails::ChannelsTrail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "channels-trail-data")
     {
-        auto c = std::make_shared<HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData>();
-        c->parent = this;
-        channels_trail_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData>();
+        ent_->parent = this;
+        channels_trail_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::ChannelsTrails::ChannelsTrail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::ChannelsTrails::ChannelsTrail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : channels_trail_data.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : channels_trail_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::ChannelsTrails::ChannelsTrail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1553,50 +1553,50 @@ std::vector<std::pair<std::string, LeafData> > HwModule::ChannelsTrails::Channel
 
 }
 
-std::shared_ptr<Entity> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ampli-trail-info")
     {
-        auto c = std::make_shared<HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::AmpliTrailInfo>();
-        c->parent = this;
-        ampli_trail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::AmpliTrailInfo>();
+        ent_->parent = this;
+        ampli_trail_info.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "channel-trail-info")
     {
-        auto c = std::make_shared<HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::ChannelTrailInfo>();
-        c->parent = this;
-        channel_trail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::ChannelTrailInfo>();
+        ent_->parent = this;
+        channel_trail_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ampli_trail_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ampli_trail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : channel_trail_info.entities())
+    count_ = 0;
+    for (auto ent_ : channel_trail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1789,16 +1789,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::ChannelsTrails::Channel
 
 }
 
-std::shared_ptr<Entity> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::AmpliTrailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::AmpliTrailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::AmpliTrailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::AmpliTrailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::AmpliTrailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2233,16 +2233,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::ChannelsTrails::Channel
 
 }
 
-std::shared_ptr<Entity> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::ChannelTrailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::ChannelTrailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::ChannelTrailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::ChannelTrailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::ChannelTrailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

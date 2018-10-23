@@ -120,7 +120,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFRUPower")
     {
@@ -287,101 +287,101 @@ std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cefcfrupower != nullptr)
     {
-        children["cefcFRUPower"] = cefcfrupower;
+        _children["cefcFRUPower"] = cefcfrupower;
     }
 
     if(cefcmibnotificationenables != nullptr)
     {
-        children["cefcMIBNotificationEnables"] = cefcmibnotificationenables;
+        _children["cefcMIBNotificationEnables"] = cefcmibnotificationenables;
     }
 
     if(cefcfrupowersupplygrouptable != nullptr)
     {
-        children["cefcFRUPowerSupplyGroupTable"] = cefcfrupowersupplygrouptable;
+        _children["cefcFRUPowerSupplyGroupTable"] = cefcfrupowersupplygrouptable;
     }
 
     if(cefcfrupowerstatustable != nullptr)
     {
-        children["cefcFRUPowerStatusTable"] = cefcfrupowerstatustable;
+        _children["cefcFRUPowerStatusTable"] = cefcfrupowerstatustable;
     }
 
     if(cefcfrupowersupplyvaluetable != nullptr)
     {
-        children["cefcFRUPowerSupplyValueTable"] = cefcfrupowersupplyvaluetable;
+        _children["cefcFRUPowerSupplyValueTable"] = cefcfrupowersupplyvaluetable;
     }
 
     if(cefcmoduletable != nullptr)
     {
-        children["cefcModuleTable"] = cefcmoduletable;
+        _children["cefcModuleTable"] = cefcmoduletable;
     }
 
     if(cefcintellimoduletable != nullptr)
     {
-        children["cefcIntelliModuleTable"] = cefcintellimoduletable;
+        _children["cefcIntelliModuleTable"] = cefcintellimoduletable;
     }
 
     if(cefcmodulelocalswitchingtable != nullptr)
     {
-        children["cefcModuleLocalSwitchingTable"] = cefcmodulelocalswitchingtable;
+        _children["cefcModuleLocalSwitchingTable"] = cefcmodulelocalswitchingtable;
     }
 
     if(cefcfantraystatustable != nullptr)
     {
-        children["cefcFanTrayStatusTable"] = cefcfantraystatustable;
+        _children["cefcFanTrayStatusTable"] = cefcfantraystatustable;
     }
 
     if(cefcphysicaltable != nullptr)
     {
-        children["cefcPhysicalTable"] = cefcphysicaltable;
+        _children["cefcPhysicalTable"] = cefcphysicaltable;
     }
 
     if(cefcpowersupplyinputtable != nullptr)
     {
-        children["cefcPowerSupplyInputTable"] = cefcpowersupplyinputtable;
+        _children["cefcPowerSupplyInputTable"] = cefcpowersupplyinputtable;
     }
 
     if(cefcpowersupplyoutputtable != nullptr)
     {
-        children["cefcPowerSupplyOutputTable"] = cefcpowersupplyoutputtable;
+        _children["cefcPowerSupplyOutputTable"] = cefcpowersupplyoutputtable;
     }
 
     if(cefcchassiscoolingtable != nullptr)
     {
-        children["cefcChassisCoolingTable"] = cefcchassiscoolingtable;
+        _children["cefcChassisCoolingTable"] = cefcchassiscoolingtable;
     }
 
     if(cefcfancoolingtable != nullptr)
     {
-        children["cefcFanCoolingTable"] = cefcfancoolingtable;
+        _children["cefcFanCoolingTable"] = cefcfancoolingtable;
     }
 
     if(cefcmodulecoolingtable != nullptr)
     {
-        children["cefcModuleCoolingTable"] = cefcmodulecoolingtable;
+        _children["cefcModuleCoolingTable"] = cefcmodulecoolingtable;
     }
 
     if(cefcfancoolingcaptable != nullptr)
     {
-        children["cefcFanCoolingCapTable"] = cefcfancoolingcaptable;
+        _children["cefcFanCoolingCapTable"] = cefcfancoolingcaptable;
     }
 
     if(cefcconnectorratingtable != nullptr)
     {
-        children["cefcConnectorRatingTable"] = cefcconnectorratingtable;
+        _children["cefcConnectorRatingTable"] = cefcconnectorratingtable;
     }
 
     if(cefcmodulepowerconsumptiontable != nullptr)
     {
-        children["cefcModulePowerConsumptionTable"] = cefcmodulepowerconsumptiontable;
+        _children["cefcModulePowerConsumptionTable"] = cefcmodulepowerconsumptiontable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -392,7 +392,7 @@ void CISCOENTITYFRUCONTROLMIB::set_filter(const std::string & value_path, YFilte
 {
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::clone_ptr() const
 {
     return std::make_shared<CISCOENTITYFRUCONTROLMIB>();
 }
@@ -476,16 +476,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRU
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFRUPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -575,16 +575,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMIB
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -678,33 +678,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRU
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFRUPowerSupplyGroupEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry>();
-        c->parent = this;
-        cefcfrupowersupplygroupentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry>();
+        ent_->parent = this;
+        cefcfrupowersupplygroupentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcfrupowersupplygroupentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcfrupowersupplygroupentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -799,16 +799,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRU
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -962,33 +962,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRU
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFRUPowerStatusEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry>();
-        c->parent = this;
-        cefcfrupowerstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry>();
+        ent_->parent = this;
+        cefcfrupowerstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcfrupowerstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcfrupowerstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1075,16 +1075,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRU
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1216,33 +1216,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRU
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFRUPowerSupplyValueEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry>();
-        c->parent = this;
-        cefcfrupowersupplyvalueentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry>();
+        ent_->parent = this;
+        cefcfrupowersupplyvalueentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcfrupowersupplyvalueentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcfrupowersupplyvalueentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1325,16 +1325,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFRU
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1458,33 +1458,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcModuleEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry>();
-        c->parent = this;
-        cefcmoduleentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry>();
+        ent_->parent = this;
+        cefcmoduleentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcmoduleentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcmoduleentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcModuleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1583,16 +1583,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1756,33 +1756,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcInt
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcIntelliModuleEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry>();
-        c->parent = this;
-        cefcintellimoduleentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry>();
+        ent_->parent = this;
+        cefcintellimoduleentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcintellimoduleentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcintellimoduleentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1857,16 +1857,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcInt
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1970,33 +1970,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcModuleLocalSwitchingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry>();
-        c->parent = this;
-        cefcmodulelocalswitchingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry>();
+        ent_->parent = this;
+        cefcmodulelocalswitchingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcmodulelocalswitchingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcmodulelocalswitchingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2067,16 +2067,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2170,33 +2170,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFanTrayStatusEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry>();
-        c->parent = this;
-        cefcfantraystatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry>();
+        ent_->parent = this;
+        cefcfantraystatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcfantraystatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcfantraystatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2267,16 +2267,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2370,33 +2370,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPhy
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcPhysicalEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry>();
-        c->parent = this;
-        cefcphysicalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry>();
+        ent_->parent = this;
+        cefcphysicalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcphysicalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcphysicalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2467,16 +2467,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPhy
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2570,33 +2570,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPow
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcPowerSupplyInputEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry>();
-        c->parent = this;
-        cefcpowersupplyinputentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry>();
+        ent_->parent = this;
+        cefcpowersupplyinputentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcpowersupplyinputentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcpowersupplyinputentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2672,16 +2672,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPow
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2785,33 +2785,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPow
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcPowerSupplyOutputEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry>();
-        c->parent = this;
-        cefcpowersupplyoutputentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry>();
+        ent_->parent = this;
+        cefcpowersupplyoutputentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcpowersupplyoutputentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcpowersupplyoutputentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2891,16 +2891,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcPow
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3014,33 +3014,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcCha
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcChassisCoolingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry>();
-        c->parent = this;
-        cefcchassiscoolingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry>();
+        ent_->parent = this;
+        cefcchassiscoolingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcchassiscoolingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcchassiscoolingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3115,16 +3115,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcCha
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3228,33 +3228,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFanCoolingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry>();
-        c->parent = this;
-        cefcfancoolingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry>();
+        ent_->parent = this;
+        cefcfancoolingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcfancoolingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcfancoolingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3329,16 +3329,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3442,33 +3442,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcModuleCoolingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry>();
-        c->parent = this;
-        cefcmodulecoolingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry>();
+        ent_->parent = this;
+        cefcmodulecoolingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcmodulecoolingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcmodulecoolingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3543,16 +3543,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3656,33 +3656,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcFanCoolingCapEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry>();
-        c->parent = this;
-        cefcfancoolingcapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry>();
+        ent_->parent = this;
+        cefcfancoolingcapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcfancoolingcapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcfancoolingcapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3770,16 +3770,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcFan
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3913,33 +3913,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcCon
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcConnectorRatingEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry>();
-        c->parent = this;
-        cefcconnectorratingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry>();
+        ent_->parent = this;
+        cefcconnectorratingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcconnectorratingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcconnectorratingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4010,16 +4010,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcCon
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4113,33 +4113,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefcModulePowerConsumptionEntry")
     {
-        auto c = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry>();
-        c->parent = this;
-        cefcmodulepowerconsumptionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry>();
+        ent_->parent = this;
+        cefcmodulepowerconsumptionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcmodulepowerconsumptionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcmodulepowerconsumptionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4210,16 +4210,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYFRUCONTROLMIB::CefcMod
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > NodeInventory::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> NodeInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NodeInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> NodeInventory::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NodeInventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NodeInventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void NodeInventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void NodeInventory::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> NodeInventory::clone_ptr() const
+std::shared_ptr<ydk::Entity> NodeInventory::clone_ptr() const
 {
     return std::make_shared<NodeInventory>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > NodeInventory::Summary::get_name_
 
 }
 
-std::shared_ptr<Entity> NodeInventory::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NodeInventory::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node_locations")
     {
-        auto c = std::make_shared<NodeInventory::Summary::NodeLocations>();
-        c->parent = this;
-        node_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<NodeInventory::Summary::NodeLocations>();
+        ent_->parent = this;
+        node_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NodeInventory::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NodeInventory::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -297,33 +297,33 @@ std::vector<std::pair<std::string, LeafData> > NodeInventory::Summary::NodeLocat
 
 }
 
-std::shared_ptr<Entity> NodeInventory::Summary::NodeLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NodeInventory::Summary::NodeLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodei")
     {
-        auto c = std::make_shared<NodeInventory::Summary::NodeLocations::Nodei>();
-        c->parent = this;
-        nodei.append(c);
-        return c;
+        auto ent_ = std::make_shared<NodeInventory::Summary::NodeLocations::Nodei>();
+        ent_->parent = this;
+        nodei.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Summary::NodeLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NodeInventory::Summary::NodeLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nodei.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nodei.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NodeInventory::Summary::NodeLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -409,16 +409,16 @@ std::vector<std::pair<std::string, LeafData> > NodeInventory::Summary::NodeLocat
 
 }
 
-std::shared_ptr<Entity> NodeInventory::Summary::NodeLocations::Nodei::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NodeInventory::Summary::NodeLocations::Nodei::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Summary::NodeLocations::Nodei::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NodeInventory::Summary::NodeLocations::Nodei::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NodeInventory::Summary::NodeLocations::Nodei::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -542,33 +542,33 @@ std::vector<std::pair<std::string, LeafData> > NodeInventory::Detail::get_name_l
 
 }
 
-std::shared_ptr<Entity> NodeInventory::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NodeInventory::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node_locations")
     {
-        auto c = std::make_shared<NodeInventory::Detail::NodeLocations>();
-        c->parent = this;
-        node_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<NodeInventory::Detail::NodeLocations>();
+        ent_->parent = this;
+        node_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NodeInventory::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NodeInventory::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -647,33 +647,33 @@ std::vector<std::pair<std::string, LeafData> > NodeInventory::Detail::NodeLocati
 
 }
 
-std::shared_ptr<Entity> NodeInventory::Detail::NodeLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NodeInventory::Detail::NodeLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodei")
     {
-        auto c = std::make_shared<NodeInventory::Detail::NodeLocations::Nodei>();
-        c->parent = this;
-        nodei.append(c);
-        return c;
+        auto ent_ = std::make_shared<NodeInventory::Detail::NodeLocations::Nodei>();
+        ent_->parent = this;
+        nodei.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Detail::NodeLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NodeInventory::Detail::NodeLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nodei.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nodei.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NodeInventory::Detail::NodeLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -771,16 +771,16 @@ std::vector<std::pair<std::string, LeafData> > NodeInventory::Detail::NodeLocati
 
 }
 
-std::shared_ptr<Entity> NodeInventory::Detail::NodeLocations::Nodei::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NodeInventory::Detail::NodeLocations::Nodei::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NodeInventory::Detail::NodeLocations::Nodei::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NodeInventory::Detail::NodeLocations::Nodei::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NodeInventory::Detail::NodeLocations::Nodei::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -927,33 +927,33 @@ std::vector<std::pair<std::string, LeafData> > CardInventory::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> CardInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CardInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "card_locations")
     {
-        auto c = std::make_shared<CardInventory::CardLocations>();
-        c->parent = this;
-        card_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<CardInventory::CardLocations>();
+        ent_->parent = this;
+        card_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CardInventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CardInventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : card_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : card_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CardInventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -964,7 +964,7 @@ void CardInventory::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CardInventory::clone_ptr() const
+std::shared_ptr<ydk::Entity> CardInventory::clone_ptr() const
 {
     return std::make_shared<CardInventory>();
 }
@@ -1057,33 +1057,33 @@ std::vector<std::pair<std::string, LeafData> > CardInventory::CardLocations::get
 
 }
 
-std::shared_ptr<Entity> CardInventory::CardLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CardInventory::CardLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cardi")
     {
-        auto c = std::make_shared<CardInventory::CardLocations::Cardi>();
-        c->parent = this;
-        cardi.append(c);
-        return c;
+        auto ent_ = std::make_shared<CardInventory::CardLocations::Cardi>();
+        ent_->parent = this;
+        cardi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CardInventory::CardLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CardInventory::CardLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cardi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cardi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CardInventory::CardLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1177,16 +1177,16 @@ std::vector<std::pair<std::string, LeafData> > CardInventory::CardLocations::Car
 
 }
 
-std::shared_ptr<Entity> CardInventory::CardLocations::Cardi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CardInventory::CardLocations::Cardi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CardInventory::CardLocations::Cardi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CardInventory::CardLocations::Cardi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CardInventory::CardLocations::Cardi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1323,33 +1323,33 @@ std::vector<std::pair<std::string, LeafData> > RackInventory::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> RackInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RackInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack_locations")
     {
-        auto c = std::make_shared<RackInventory::RackLocations>();
-        c->parent = this;
-        rack_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<RackInventory::RackLocations>();
+        ent_->parent = this;
+        rack_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RackInventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RackInventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rack_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rack_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RackInventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1360,7 +1360,7 @@ void RackInventory::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> RackInventory::clone_ptr() const
+std::shared_ptr<ydk::Entity> RackInventory::clone_ptr() const
 {
     return std::make_shared<RackInventory>();
 }
@@ -1453,33 +1453,33 @@ std::vector<std::pair<std::string, LeafData> > RackInventory::RackLocations::get
 
 }
 
-std::shared_ptr<Entity> RackInventory::RackLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RackInventory::RackLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "racki")
     {
-        auto c = std::make_shared<RackInventory::RackLocations::Racki>();
-        c->parent = this;
-        racki.append(c);
-        return c;
+        auto ent_ = std::make_shared<RackInventory::RackLocations::Racki>();
+        ent_->parent = this;
+        racki.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RackInventory::RackLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RackInventory::RackLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : racki.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : racki.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RackInventory::RackLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1557,16 +1557,16 @@ std::vector<std::pair<std::string, LeafData> > RackInventory::RackLocations::Rac
 
 }
 
-std::shared_ptr<Entity> RackInventory::RackLocations::Racki::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RackInventory::RackLocations::Racki::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RackInventory::RackLocations::Racki::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RackInventory::RackLocations::Racki::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RackInventory::RackLocations::Racki::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1663,33 +1663,33 @@ std::vector<std::pair<std::string, LeafData> > SystemServiceInventory::get_name_
 
 }
 
-std::shared_ptr<Entity> SystemServiceInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SystemServiceInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ssvc_locations")
     {
-        auto c = std::make_shared<SystemServiceInventory::SsvcLocations>();
-        c->parent = this;
-        ssvc_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<SystemServiceInventory::SsvcLocations>();
+        ent_->parent = this;
+        ssvc_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemServiceInventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SystemServiceInventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ssvc_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ssvc_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SystemServiceInventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1700,7 +1700,7 @@ void SystemServiceInventory::set_filter(const std::string & value_path, YFilter 
 {
 }
 
-std::shared_ptr<Entity> SystemServiceInventory::clone_ptr() const
+std::shared_ptr<ydk::Entity> SystemServiceInventory::clone_ptr() const
 {
     return std::make_shared<SystemServiceInventory>();
 }
@@ -1793,33 +1793,33 @@ std::vector<std::pair<std::string, LeafData> > SystemServiceInventory::SsvcLocat
 
 }
 
-std::shared_ptr<Entity> SystemServiceInventory::SsvcLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SystemServiceInventory::SsvcLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ssvci")
     {
-        auto c = std::make_shared<SystemServiceInventory::SsvcLocations::Ssvci>();
-        c->parent = this;
-        ssvci.append(c);
-        return c;
+        auto ent_ = std::make_shared<SystemServiceInventory::SsvcLocations::Ssvci>();
+        ent_->parent = this;
+        ssvci.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemServiceInventory::SsvcLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SystemServiceInventory::SsvcLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ssvci.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ssvci.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SystemServiceInventory::SsvcLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1909,16 +1909,16 @@ std::vector<std::pair<std::string, LeafData> > SystemServiceInventory::SsvcLocat
 
 }
 
-std::shared_ptr<Entity> SystemServiceInventory::SsvcLocations::Ssvci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SystemServiceInventory::SsvcLocations::Ssvci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemServiceInventory::SsvcLocations::Ssvci::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SystemServiceInventory::SsvcLocations::Ssvci::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SystemServiceInventory::SsvcLocations::Ssvci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2045,33 +2045,33 @@ std::vector<std::pair<std::string, LeafData> > RackServiceInventory::get_name_le
 
 }
 
-std::shared_ptr<Entity> RackServiceInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RackServiceInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvc_locations")
     {
-        auto c = std::make_shared<RackServiceInventory::RsvcLocations>();
-        c->parent = this;
-        rsvc_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<RackServiceInventory::RsvcLocations>();
+        ent_->parent = this;
+        rsvc_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RackServiceInventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RackServiceInventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rsvc_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rsvc_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RackServiceInventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2082,7 +2082,7 @@ void RackServiceInventory::set_filter(const std::string & value_path, YFilter yf
 {
 }
 
-std::shared_ptr<Entity> RackServiceInventory::clone_ptr() const
+std::shared_ptr<ydk::Entity> RackServiceInventory::clone_ptr() const
 {
     return std::make_shared<RackServiceInventory>();
 }
@@ -2175,33 +2175,33 @@ std::vector<std::pair<std::string, LeafData> > RackServiceInventory::RsvcLocatio
 
 }
 
-std::shared_ptr<Entity> RackServiceInventory::RsvcLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RackServiceInventory::RsvcLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvci")
     {
-        auto c = std::make_shared<RackServiceInventory::RsvcLocations::Rsvci>();
-        c->parent = this;
-        rsvci.append(c);
-        return c;
+        auto ent_ = std::make_shared<RackServiceInventory::RsvcLocations::Rsvci>();
+        ent_->parent = this;
+        rsvci.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RackServiceInventory::RsvcLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RackServiceInventory::RsvcLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rsvci.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rsvci.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RackServiceInventory::RsvcLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2291,16 +2291,16 @@ std::vector<std::pair<std::string, LeafData> > RackServiceInventory::RsvcLocatio
 
 }
 
-std::shared_ptr<Entity> RackServiceInventory::RsvcLocations::Rsvci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RackServiceInventory::RsvcLocations::Rsvci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RackServiceInventory::RsvcLocations::Rsvci::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RackServiceInventory::RsvcLocations::Rsvci::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RackServiceInventory::RsvcLocations::Rsvci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2427,33 +2427,33 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> SdrInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sdr_locations")
     {
-        auto c = std::make_shared<SdrInventory::SdrLocations>();
-        c->parent = this;
-        sdr_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrInventory::SdrLocations>();
+        ent_->parent = this;
+        sdr_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrInventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrInventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sdr_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sdr_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrInventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2464,7 +2464,7 @@ void SdrInventory::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SdrInventory::clone_ptr() const
+std::shared_ptr<ydk::Entity> SdrInventory::clone_ptr() const
 {
     return std::make_shared<SdrInventory>();
 }
@@ -2557,33 +2557,33 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::SdrLocations::get_n
 
 }
 
-std::shared_ptr<Entity> SdrInventory::SdrLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrInventory::SdrLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sdri")
     {
-        auto c = std::make_shared<SdrInventory::SdrLocations::Sdri>();
-        c->parent = this;
-        sdri.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrInventory::SdrLocations::Sdri>();
+        ent_->parent = this;
+        sdri.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrInventory::SdrLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrInventory::SdrLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sdri.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sdri.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrInventory::SdrLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2665,16 +2665,16 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::SdrLocations::Sdri:
 
 }
 
-std::shared_ptr<Entity> SdrInventory::SdrLocations::Sdri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrInventory::SdrLocations::Sdri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrInventory::SdrLocations::Sdri::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrInventory::SdrLocations::Sdri::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrInventory::SdrLocations::Sdri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2781,33 +2781,33 @@ std::vector<std::pair<std::string, LeafData> > LeaderStatistics::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> LeaderStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LeaderStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ldr_locations")
     {
-        auto c = std::make_shared<LeaderStatistics::LdrLocations>();
-        c->parent = this;
-        ldr_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<LeaderStatistics::LdrLocations>();
+        ent_->parent = this;
+        ldr_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LeaderStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LeaderStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ldr_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ldr_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LeaderStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2818,7 +2818,7 @@ void LeaderStatistics::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> LeaderStatistics::clone_ptr() const
+std::shared_ptr<ydk::Entity> LeaderStatistics::clone_ptr() const
 {
     return std::make_shared<LeaderStatistics>();
 }
@@ -2923,16 +2923,16 @@ std::vector<std::pair<std::string, LeafData> > LeaderStatistics::LdrLocations::g
 
 }
 
-std::shared_ptr<Entity> LeaderStatistics::LdrLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LeaderStatistics::LdrLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LeaderStatistics::LdrLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LeaderStatistics::LdrLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LeaderStatistics::LdrLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3069,33 +3069,33 @@ std::vector<std::pair<std::string, LeafData> > TopologyNeighbors::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> TopologyNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TopologyNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nbr_locations")
     {
-        auto c = std::make_shared<TopologyNeighbors::NbrLocations>();
-        c->parent = this;
-        nbr_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<TopologyNeighbors::NbrLocations>();
+        ent_->parent = this;
+        nbr_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TopologyNeighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TopologyNeighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nbr_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nbr_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TopologyNeighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3106,7 +3106,7 @@ void TopologyNeighbors::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> TopologyNeighbors::clone_ptr() const
+std::shared_ptr<ydk::Entity> TopologyNeighbors::clone_ptr() const
 {
     return std::make_shared<TopologyNeighbors>();
 }
@@ -3199,33 +3199,33 @@ std::vector<std::pair<std::string, LeafData> > TopologyNeighbors::NbrLocations::
 
 }
 
-std::shared_ptr<Entity> TopologyNeighbors::NbrLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TopologyNeighbors::NbrLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nbri")
     {
-        auto c = std::make_shared<TopologyNeighbors::NbrLocations::Nbri>();
-        c->parent = this;
-        nbri.append(c);
-        return c;
+        auto ent_ = std::make_shared<TopologyNeighbors::NbrLocations::Nbri>();
+        ent_->parent = this;
+        nbri.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TopologyNeighbors::NbrLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TopologyNeighbors::NbrLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nbri.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nbri.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TopologyNeighbors::NbrLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3316,16 +3316,16 @@ std::vector<std::pair<std::string, LeafData> > TopologyNeighbors::NbrLocations::
 
 }
 
-std::shared_ptr<Entity> TopologyNeighbors::NbrLocations::Nbri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TopologyNeighbors::NbrLocations::Nbri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TopologyNeighbors::NbrLocations::Nbri::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TopologyNeighbors::NbrLocations::Nbri::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TopologyNeighbors::NbrLocations::Nbri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3440,16 +3440,16 @@ std::vector<std::pair<std::string, LeafData> > Placement::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Placement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Placement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Placement::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Placement::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Placement::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3460,7 +3460,7 @@ void Placement::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Placement::clone_ptr() const
+std::shared_ptr<ydk::Entity> Placement::clone_ptr() const
 {
     return std::make_shared<Placement>();
 }

@@ -65,33 +65,33 @@ std::vector<std::pair<std::string, LeafData> > Location::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fpd2")
     {
-        auto c = std::make_shared<Location::Fpd2>();
-        c->parent = this;
-        fpd2.append(c);
-        return c;
+        auto ent_ = std::make_shared<Location::Fpd2>();
+        ent_->parent = this;
+        fpd2.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fpd2.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fpd2.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -112,7 +112,7 @@ void Location::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Location::clone_ptr() const
+std::shared_ptr<ydk::Entity> Location::clone_ptr() const
 {
     return std::make_shared<Location>();
 }
@@ -186,16 +186,16 @@ std::vector<std::pair<std::string, LeafData> > Location::Fpd2::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Location::Fpd2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Location::Fpd2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Location::Fpd2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Location::Fpd2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Location::Fpd2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > NetconfYang::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> NetconfYang::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfYang::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "agent")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> NetconfYang::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(agent != nullptr)
     {
-        children["agent"] = agent;
+        _children["agent"] = agent;
     }
 
-    return children;
+    return _children;
 }
 
 void NetconfYang::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void NetconfYang::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> NetconfYang::clone_ptr() const
+std::shared_ptr<ydk::Entity> NetconfYang::clone_ptr() const
 {
     return std::make_shared<NetconfYang>();
 }
@@ -179,7 +179,7 @@ std::vector<std::pair<std::string, LeafData> > NetconfYang::Agent::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> NetconfYang::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfYang::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "models")
     {
@@ -211,26 +211,26 @@ std::shared_ptr<Entity> NetconfYang::Agent::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::Agent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(models != nullptr)
     {
-        children["models"] = models;
+        _children["models"] = models;
     }
 
     if(ssh != nullptr)
     {
-        children["ssh"] = ssh;
+        _children["ssh"] = ssh;
     }
 
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
-    return children;
+    return _children;
 }
 
 void NetconfYang::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -306,7 +306,7 @@ std::vector<std::pair<std::string, LeafData> > NetconfYang::Agent::Models::get_n
 
 }
 
-std::shared_ptr<Entity> NetconfYang::Agent::Models::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfYang::Agent::Models::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "openconfig")
     {
@@ -320,16 +320,16 @@ std::shared_ptr<Entity> NetconfYang::Agent::Models::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::Models::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::Agent::Models::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(openconfig != nullptr)
     {
-        children["openconfig"] = openconfig;
+        _children["openconfig"] = openconfig;
     }
 
-    return children;
+    return _children;
 }
 
 void NetconfYang::Agent::Models::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -395,16 +395,16 @@ std::vector<std::pair<std::string, LeafData> > NetconfYang::Agent::Models::Openc
 
 }
 
-std::shared_ptr<Entity> NetconfYang::Agent::Models::Openconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfYang::Agent::Models::Openconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::Models::Openconfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::Agent::Models::Openconfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetconfYang::Agent::Models::Openconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -480,16 +480,16 @@ std::vector<std::pair<std::string, LeafData> > NetconfYang::Agent::Ssh::get_name
 
 }
 
-std::shared_ptr<Entity> NetconfYang::Agent::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfYang::Agent::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::Ssh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::Agent::Ssh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetconfYang::Agent::Ssh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -573,16 +573,16 @@ std::vector<std::pair<std::string, LeafData> > NetconfYang::Agent::Session::get_
 
 }
 
-std::shared_ptr<Entity> NetconfYang::Agent::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfYang::Agent::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfYang::Agent::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::Agent::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetconfYang::Agent::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

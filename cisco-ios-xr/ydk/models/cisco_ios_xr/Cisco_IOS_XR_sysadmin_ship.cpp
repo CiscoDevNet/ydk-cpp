@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Stat::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Stat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Stat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ship_comp")
     {
-        auto c = std::make_shared<Stat::ShipComp>();
-        c->parent = this;
-        ship_comp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Stat::ShipComp>();
+        ent_->parent = this;
+        ship_comp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Stat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Stat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ship_comp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ship_comp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Stat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void Stat::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Stat::clone_ptr() const
+std::shared_ptr<ydk::Entity> Stat::clone_ptr() const
 {
     return std::make_shared<Stat>();
 }
@@ -190,33 +190,33 @@ std::vector<std::pair<std::string, LeafData> > Stat::ShipComp::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Stat::ShipComp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Stat::ShipComp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
-        auto c = std::make_shared<Stat::ShipComp::Process>();
-        c->parent = this;
-        process.append(c);
-        return c;
+        auto ent_ = std::make_shared<Stat::ShipComp::Process>();
+        ent_->parent = this;
+        process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Stat::ShipComp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Stat::ShipComp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Stat::ShipComp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -298,33 +298,33 @@ std::vector<std::pair<std::string, LeafData> > Stat::ShipComp::Process::get_name
 
 }
 
-std::shared_ptr<Entity> Stat::ShipComp::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Stat::ShipComp::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<Stat::ShipComp::Process::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<Stat::ShipComp::Process::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Stat::ShipComp::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Stat::ShipComp::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Stat::ShipComp::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -406,33 +406,33 @@ std::vector<std::pair<std::string, LeafData> > Stat::ShipComp::Process::Client::
 
 }
 
-std::shared_ptr<Entity> Stat::ShipComp::Process::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Stat::ShipComp::Process::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cat")
     {
-        auto c = std::make_shared<Stat::ShipComp::Process::Client::Cat>();
-        c->parent = this;
-        cat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Stat::ShipComp::Process::Client::Cat>();
+        ent_->parent = this;
+        cat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Stat::ShipComp::Process::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Stat::ShipComp::Process::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Stat::ShipComp::Process::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -514,33 +514,33 @@ std::vector<std::pair<std::string, LeafData> > Stat::ShipComp::Process::Client::
 
 }
 
-std::shared_ptr<Entity> Stat::ShipComp::Process::Client::Cat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Stat::ShipComp::Process::Client::Cat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counter-32b")
     {
-        auto c = std::make_shared<Stat::ShipComp::Process::Client::Cat::Counter32b>();
-        c->parent = this;
-        counter_32b.append(c);
-        return c;
+        auto ent_ = std::make_shared<Stat::ShipComp::Process::Client::Cat::Counter32b>();
+        ent_->parent = this;
+        counter_32b.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Stat::ShipComp::Process::Client::Cat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Stat::ShipComp::Process::Client::Cat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : counter_32b.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : counter_32b.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Stat::ShipComp::Process::Client::Cat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -654,16 +654,16 @@ std::vector<std::pair<std::string, LeafData> > Stat::ShipComp::Process::Client::
 
 }
 
-std::shared_ptr<Entity> Stat::ShipComp::Process::Client::Cat::Counter32b::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Stat::ShipComp::Process::Client::Cat::Counter32b::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Stat::ShipComp::Process::Client::Cat::Counter32b::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Stat::ShipComp::Process::Client::Cat::Counter32b::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Stat::ShipComp::Process::Client::Cat::Counter32b::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

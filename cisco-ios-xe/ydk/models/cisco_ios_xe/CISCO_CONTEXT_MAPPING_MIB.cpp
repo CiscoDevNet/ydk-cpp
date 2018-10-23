@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::get_name_
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cContextMappingTable")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONTEXTMAPPINGMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ccontextmappingtable != nullptr)
     {
-        children["cContextMappingTable"] = ccontextmappingtable;
+        _children["cContextMappingTable"] = ccontextmappingtable;
     }
 
     if(ccontextmappingbridgedomaintable != nullptr)
     {
-        children["cContextMappingBridgeDomainTable"] = ccontextmappingbridgedomaintable;
+        _children["cContextMappingBridgeDomainTable"] = ccontextmappingbridgedomaintable;
     }
 
     if(ccontextmappingbridgeinstancetable != nullptr)
     {
-        children["cContextMappingBridgeInstanceTable"] = ccontextmappingbridgeinstancetable;
+        _children["cContextMappingBridgeInstanceTable"] = ccontextmappingbridgeinstancetable;
     }
 
     if(ccontextmappinglicensegrouptable != nullptr)
     {
-        children["cContextMappingLicenseGroupTable"] = ccontextmappinglicensegrouptable;
+        _children["cContextMappingLicenseGroupTable"] = ccontextmappinglicensegrouptable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONTEXTMAPPINGMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void CISCOCONTEXTMAPPINGMIB::set_filter(const std::string & value_path, YFilter 
 {
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::clone_ptr() const
 {
     return std::make_shared<CISCOCONTEXTMAPPINGMIB>();
 }
@@ -228,33 +228,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextM
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cContextMappingEntry")
     {
-        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry>();
-        c->parent = this;
-        ccontextmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry>();
+        ent_->parent = this;
+        ccontextmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccontextmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccontextmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONTEXTMAPPINGMIB::CContextMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -341,16 +341,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextM
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -484,33 +484,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextM
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cContextMappingBridgeDomainEntry")
     {
-        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry>();
-        c->parent = this;
-        ccontextmappingbridgedomainentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry>();
+        ent_->parent = this;
+        ccontextmappingbridgedomainentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccontextmappingbridgedomainentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccontextmappingbridgedomainentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -589,16 +589,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextM
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -712,33 +712,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextM
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cContextMappingBridgeInstanceEntry")
     {
-        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry>();
-        c->parent = this;
-        ccontextmappingbridgeinstanceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry>();
+        ent_->parent = this;
+        ccontextmappingbridgeinstanceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccontextmappingbridgeinstanceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccontextmappingbridgeinstanceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -817,16 +817,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextM
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -940,33 +940,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextM
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cContextMappingLicenseGroupEntry")
     {
-        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry>();
-        c->parent = this;
-        ccontextmappinglicensegroupentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry>();
+        ent_->parent = this;
+        ccontextmappinglicensegroupentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccontextmappinglicensegroupentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccontextmappinglicensegroupentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1045,16 +1045,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextM
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

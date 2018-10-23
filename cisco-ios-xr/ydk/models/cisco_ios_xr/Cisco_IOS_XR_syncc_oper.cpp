@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > TimingController::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> TimingController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> TimingController::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void TimingController::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void TimingController::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> TimingController::clone_ptr() const
+std::shared_ptr<ydk::Entity> TimingController::clone_ptr() const
 {
     return std::make_shared<TimingController>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::get_name
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<TimingController::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<TimingController::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TimingController::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,7 +280,7 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::ge
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -312,26 +312,26 @@ std::shared_ptr<Entity> TimingController::Nodes::Node::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(clock_ != nullptr)
     {
-        children["clock"] = clock_;
+        _children["clock"] = clock_;
     }
 
     if(timing_source != nullptr)
     {
-        children["timing-source"] = timing_source;
+        _children["timing-source"] = timing_source;
     }
 
-    return children;
+    return _children;
 }
 
 void TimingController::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -408,33 +408,33 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::St
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "syncc-instance")
     {
-        auto c = std::make_shared<TimingController::Nodes::Node::State::SynccInstance>();
-        c->parent = this;
-        syncc_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<TimingController::Nodes::Node::State::SynccInstance>();
+        ent_->parent = this;
+        syncc_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : syncc_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : syncc_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TimingController::Nodes::Node::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -557,16 +557,16 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::St
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::State::SynccInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::State::SynccInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::State::SynccInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::State::SynccInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TimingController::Nodes::Node::State::SynccInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -803,33 +803,33 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::Cl
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "syncc-instance")
     {
-        auto c = std::make_shared<TimingController::Nodes::Node::Clock::SynccInstance>();
-        c->parent = this;
-        syncc_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<TimingController::Nodes::Node::Clock::SynccInstance>();
+        ent_->parent = this;
+        syncc_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::Clock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::Clock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : syncc_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : syncc_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TimingController::Nodes::Node::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -896,33 +896,33 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::Cl
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::Clock::SynccInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::Clock::SynccInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock")
     {
-        auto c = std::make_shared<TimingController::Nodes::Node::Clock::SynccInstance::Clock_>();
-        c->parent = this;
-        clock_.append(c);
-        return c;
+        auto ent_ = std::make_shared<TimingController::Nodes::Node::Clock::SynccInstance::Clock_>();
+        ent_->parent = this;
+        clock_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::Clock::SynccInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::Clock::SynccInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clock_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clock_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TimingController::Nodes::Node::Clock::SynccInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1169,16 +1169,16 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::Cl
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::Clock::SynccInstance::Clock_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::Clock::SynccInstance::Clock_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::Clock::SynccInstance::Clock_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::Clock::SynccInstance::Clock_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TimingController::Nodes::Node::Clock::SynccInstance::Clock_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1725,33 +1725,33 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::Ti
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::TimingSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::TimingSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "syncc-instance")
     {
-        auto c = std::make_shared<TimingController::Nodes::Node::TimingSource::SynccInstance>();
-        c->parent = this;
-        syncc_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<TimingController::Nodes::Node::TimingSource::SynccInstance>();
+        ent_->parent = this;
+        syncc_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::TimingSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::TimingSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : syncc_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : syncc_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TimingController::Nodes::Node::TimingSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1840,67 +1840,67 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::Ti
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::TimingSource::SynccInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::TimingSource::SynccInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timing-status-t0")
     {
-        auto c = std::make_shared<TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT0>();
-        c->parent = this;
-        timing_status_t0.append(c);
-        return c;
+        auto ent_ = std::make_shared<TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT0>();
+        ent_->parent = this;
+        timing_status_t0.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "timing-status-t4")
     {
-        auto c = std::make_shared<TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4>();
-        c->parent = this;
-        timing_status_t4.append(c);
-        return c;
+        auto ent_ = std::make_shared<TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4>();
+        ent_->parent = this;
+        timing_status_t4.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "timing-status1588")
     {
-        auto c = std::make_shared<TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588>();
-        c->parent = this;
-        timing_status1588.append(c);
-        return c;
+        auto ent_ = std::make_shared<TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588>();
+        ent_->parent = this;
+        timing_status1588.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::TimingSource::SynccInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::TimingSource::SynccInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : timing_status_t0.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : timing_status_t0.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : timing_status_t4.entities())
+    count_ = 0;
+    for (auto ent_ : timing_status_t4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : timing_status1588.entities())
+    count_ = 0;
+    for (auto ent_ : timing_status1588.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TimingController::Nodes::Node::TimingSource::SynccInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1995,16 +1995,16 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::Ti
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT0::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT0::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT0::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2199,16 +2199,16 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::Ti
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatusT4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2403,16 +2403,16 @@ std::vector<std::pair<std::string, LeafData> > TimingController::Nodes::Node::Ti
 
 }
 
-std::shared_ptr<Entity> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TimingController::Nodes::Node::TimingSource::SynccInstance::TimingStatus1588::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

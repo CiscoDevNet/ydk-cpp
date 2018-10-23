@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ocni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfipv4")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Ocni::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfipv4 != nullptr)
     {
-        children["vrfipv4"] = vrfipv4;
+        _children["vrfipv4"] = vrfipv4;
     }
 
     if(vrfipv6 != nullptr)
     {
-        children["vrfipv6"] = vrfipv6;
+        _children["vrfipv6"] = vrfipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Ocni::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Ocni::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ocni::clone_ptr() const
 {
     return std::make_shared<Ocni>();
 }
@@ -184,7 +184,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-instances")
     {
@@ -198,16 +198,16 @@ std::shared_ptr<Entity> Ocni::Vrfipv4::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network_instances != nullptr)
     {
-        children["network-instances"] = network_instances;
+        _children["network-instances"] = network_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -281,33 +281,33 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-instance")
     {
-        auto c = std::make_shared<Ocni::Vrfipv4::NetworkInstances::NetworkInstance>();
-        c->parent = this;
-        network_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ocni::Vrfipv4::NetworkInstances::NetworkInstance>();
+        ent_->parent = this;
+        network_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -379,7 +379,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocols")
     {
@@ -393,16 +393,16 @@ std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocols != nullptr)
     {
-        children["protocols"] = protocols;
+        _children["protocols"] = protocols;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -479,33 +479,33 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol")
     {
-        auto c = std::make_shared<Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol>();
-        c->parent = this;
-        protocol.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol>();
+        ent_->parent = this;
+        protocol.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : protocol.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : protocol.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -577,7 +577,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -600,21 +600,21 @@ std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(static_routes != nullptr)
     {
-        children["static-routes"] = static_routes;
+        _children["static-routes"] = static_routes;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -705,16 +705,16 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -821,33 +821,33 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-route")
     {
-        auto c = std::make_shared<Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute>();
-        c->parent = this;
-        static_route.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute>();
+        ent_->parent = this;
+        static_route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -916,7 +916,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hops")
     {
@@ -939,21 +939,21 @@ std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hops != nullptr)
     {
-        children["next-hops"] = next_hops;
+        _children["next-hops"] = next_hops;
     }
 
     if(static_routes_state != nullptr)
     {
-        children["static-routes-state"] = static_routes_state;
+        _children["static-routes-state"] = static_routes_state;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1030,33 +1030,33 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1125,7 +1125,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -1148,21 +1148,21 @@ std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1239,16 +1239,16 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1337,7 +1337,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -1351,16 +1351,16 @@ std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1423,16 +1423,16 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1515,16 +1515,16 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv4::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1610,7 +1610,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-instances")
     {
@@ -1624,16 +1624,16 @@ std::shared_ptr<Entity> Ocni::Vrfipv6::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network_instances != nullptr)
     {
-        children["network-instances"] = network_instances;
+        _children["network-instances"] = network_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1707,33 +1707,33 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-instance")
     {
-        auto c = std::make_shared<Ocni::Vrfipv6::NetworkInstances::NetworkInstance>();
-        c->parent = this;
-        network_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ocni::Vrfipv6::NetworkInstances::NetworkInstance>();
+        ent_->parent = this;
+        network_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1805,7 +1805,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocols")
     {
@@ -1819,16 +1819,16 @@ std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocols != nullptr)
     {
-        children["protocols"] = protocols;
+        _children["protocols"] = protocols;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1905,33 +1905,33 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol")
     {
-        auto c = std::make_shared<Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol>();
-        c->parent = this;
-        protocol.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol>();
+        ent_->parent = this;
+        protocol.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : protocol.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : protocol.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2003,7 +2003,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -2026,21 +2026,21 @@ std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(static_routes != nullptr)
     {
-        children["static-routes"] = static_routes;
+        _children["static-routes"] = static_routes;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2131,16 +2131,16 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2247,33 +2247,33 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-route")
     {
-        auto c = std::make_shared<Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute>();
-        c->parent = this;
-        static_route.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute>();
+        ent_->parent = this;
+        static_route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2342,7 +2342,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hops")
     {
@@ -2365,21 +2365,21 @@ std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hops != nullptr)
     {
-        children["next-hops"] = next_hops;
+        _children["next-hops"] = next_hops;
     }
 
     if(static_routes_state != nullptr)
     {
-        children["static-routes-state"] = static_routes_state;
+        _children["static-routes-state"] = static_routes_state;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2456,33 +2456,33 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2551,7 +2551,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -2574,21 +2574,21 @@ std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2665,16 +2665,16 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2763,7 +2763,7 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -2777,16 +2777,16 @@ std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2849,16 +2849,16 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2941,16 +2941,16 @@ std::vector<std::pair<std::string, LeafData> > Ocni::Vrfipv6::NetworkInstances::
 
 }
 
-std::shared_ptr<Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protocol::StaticRoutes::StaticRoute::StaticRoutesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

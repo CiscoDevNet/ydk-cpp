@@ -156,7 +156,7 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmtsCmCpeObjects")
     {
@@ -404,146 +404,146 @@ std::shared_ptr<Entity> CISCODOCSEXTMIB::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cdxcmtscmcpeobjects != nullptr)
     {
-        children["cdxCmtsCmCpeObjects"] = cdxcmtscmcpeobjects;
+        _children["cdxCmtsCmCpeObjects"] = cdxcmtscmcpeobjects;
     }
 
     if(cdxwbresilobjects != nullptr)
     {
-        children["cdxWBResilObjects"] = cdxwbresilobjects;
+        _children["cdxWBResilObjects"] = cdxwbresilobjects;
     }
 
     if(cdxcmtsdocsislbobjects != nullptr)
     {
-        children["cdxCmtsDocsisLBObjects"] = cdxcmtsdocsislbobjects;
+        _children["cdxCmtsDocsisLBObjects"] = cdxcmtsdocsislbobjects;
     }
 
     if(cdxqosctrluptable != nullptr)
     {
-        children["cdxQosCtrlUpTable"] = cdxqosctrluptable;
+        _children["cdxQosCtrlUpTable"] = cdxqosctrluptable;
     }
 
     if(cdxqosifratelimittable != nullptr)
     {
-        children["cdxQosIfRateLimitTable"] = cdxqosifratelimittable;
+        _children["cdxQosIfRateLimitTable"] = cdxqosifratelimittable;
     }
 
     if(cdxcmtsserviceexttable != nullptr)
     {
-        children["cdxCmtsServiceExtTable"] = cdxcmtsserviceexttable;
+        _children["cdxCmtsServiceExtTable"] = cdxcmtsserviceexttable;
     }
 
     if(cdxupinfoelemstatstable != nullptr)
     {
-        children["cdxUpInfoElemStatsTable"] = cdxupinfoelemstatstable;
+        _children["cdxUpInfoElemStatsTable"] = cdxupinfoelemstatstable;
     }
 
     if(cdxbwqueuetable != nullptr)
     {
-        children["cdxBWQueueTable"] = cdxbwqueuetable;
+        _children["cdxBWQueueTable"] = cdxbwqueuetable;
     }
 
     if(cdxcmcpetable != nullptr)
     {
-        children["cdxCmCpeTable"] = cdxcmcpetable;
+        _children["cdxCmCpeTable"] = cdxcmcpetable;
     }
 
     if(cdxcmtscmstatusexttable != nullptr)
     {
-        children["cdxCmtsCmStatusExtTable"] = cdxcmtscmstatusexttable;
+        _children["cdxCmtsCmStatusExtTable"] = cdxcmtscmstatusexttable;
     }
 
     if(cdxcmtsmacexttable != nullptr)
     {
-        children["cdxCmtsMacExtTable"] = cdxcmtsmacexttable;
+        _children["cdxCmtsMacExtTable"] = cdxcmtsmacexttable;
     }
 
     if(cdxcmtscmchovertable != nullptr)
     {
-        children["cdxCmtsCmChOverTable"] = cdxcmtscmchovertable;
+        _children["cdxCmtsCmChOverTable"] = cdxcmtscmchovertable;
     }
 
     if(cdxcmtscmtable != nullptr)
     {
-        children["cdxCmtsCmTable"] = cdxcmtscmtable;
+        _children["cdxCmtsCmTable"] = cdxcmtscmtable;
     }
 
     if(cdxcmtscmstatusdmictable != nullptr)
     {
-        children["cdxCmtsCmStatusDMICTable"] = cdxcmtscmstatusdmictable;
+        _children["cdxCmtsCmStatusDMICTable"] = cdxcmtscmstatusdmictable;
     }
 
     if(cdxcmtocpetable != nullptr)
     {
-        children["cdxCmToCpeTable"] = cdxcmtocpetable;
+        _children["cdxCmToCpeTable"] = cdxcmtocpetable;
     }
 
     if(cdxcpetocmtable != nullptr)
     {
-        children["cdxCpeToCmTable"] = cdxcpetocmtable;
+        _children["cdxCpeToCmTable"] = cdxcpetocmtable;
     }
 
     if(cdxcpeipprefixtable != nullptr)
     {
-        children["cdxCpeIpPrefixTable"] = cdxcpeipprefixtable;
+        _children["cdxCpeIpPrefixTable"] = cdxcpeipprefixtable;
     }
 
     if(cdxifupstreamchannelexttable != nullptr)
     {
-        children["cdxIfUpstreamChannelExtTable"] = cdxifupstreamchannelexttable;
+        _children["cdxIfUpstreamChannelExtTable"] = cdxifupstreamchannelexttable;
     }
 
     if(cdxwbresilcmtable != nullptr)
     {
-        children["cdxWBResilCmTable"] = cdxwbresilcmtable;
+        _children["cdxWBResilCmTable"] = cdxwbresilcmtable;
     }
 
     if(cdxrftoprimarychannelmappingtable != nullptr)
     {
-        children["cdxRFtoPrimaryChannelMappingTable"] = cdxrftoprimarychannelmappingtable;
+        _children["cdxRFtoPrimaryChannelMappingTable"] = cdxrftoprimarychannelmappingtable;
     }
 
     if(cdxprimarychanneltorfmappingtable != nullptr)
     {
-        children["cdxPrimaryChanneltoRFMappingTable"] = cdxprimarychanneltorfmappingtable;
+        _children["cdxPrimaryChanneltoRFMappingTable"] = cdxprimarychanneltorfmappingtable;
     }
 
     if(cdxcmtsmtccmtable != nullptr)
     {
-        children["cdxCmtsMtcCmTable"] = cdxcmtsmtccmtable;
+        _children["cdxCmtsMtcCmTable"] = cdxcmtsmtccmtable;
     }
 
     if(cdxcmtsuscbsflowtable != nullptr)
     {
-        children["cdxCmtsUscbSflowTable"] = cdxcmtsuscbsflowtable;
+        _children["cdxCmtsUscbSflowTable"] = cdxcmtsuscbsflowtable;
     }
 
     if(cdxrpdgs7ktable != nullptr)
     {
-        children["cdxRPDGS7KTable"] = cdxrpdgs7ktable;
+        _children["cdxRPDGS7KTable"] = cdxrpdgs7ktable;
     }
 
     if(cdxbundleiphelpertable != nullptr)
     {
-        children["cdxBundleIpHelperTable"] = cdxbundleiphelpertable;
+        _children["cdxBundleIpHelperTable"] = cdxbundleiphelpertable;
     }
 
     if(cdxbundleipv6dhcprelaytable != nullptr)
     {
-        children["cdxBundleIPv6DHCPRelayTable"] = cdxbundleipv6dhcprelaytable;
+        _children["cdxBundleIPv6DHCPRelayTable"] = cdxbundleipv6dhcprelaytable;
     }
 
     if(cdxbundleipv6dhcprelaydesttable != nullptr)
     {
-        children["cdxBundleIPv6DHCPRelayDestTable"] = cdxbundleipv6dhcprelaydesttable;
+        _children["cdxBundleIPv6DHCPRelayDestTable"] = cdxbundleipv6dhcprelaydesttable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -554,7 +554,7 @@ void CISCODOCSEXTMIB::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::clone_ptr() const
 {
     return std::make_shared<CISCODOCSEXTMIB>();
 }
@@ -634,16 +634,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsCmCpeObje
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsCmCpeObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsCmCpeObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsCmCpeObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsCmCpeObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsCmCpeObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -739,16 +739,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxWBResilObject
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxWBResilObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxWBResilObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxWBResilObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxWBResilObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxWBResilObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -888,16 +888,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsDocsisLBO
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsDocsisLBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1021,33 +1021,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxQosCtrlUpTabl
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxQosCtrlUpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxQosCtrlUpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxQosCtrlUpEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxQosCtrlUpTable::CdxQosCtrlUpEntry>();
-        c->parent = this;
-        cdxqosctrlupentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxQosCtrlUpTable::CdxQosCtrlUpEntry>();
+        ent_->parent = this;
+        cdxqosctrlupentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxQosCtrlUpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxQosCtrlUpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxqosctrlupentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxqosctrlupentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxQosCtrlUpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1134,16 +1134,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxQosCtrlUpTabl
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxQosCtrlUpTable::CdxQosCtrlUpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxQosCtrlUpTable::CdxQosCtrlUpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxQosCtrlUpTable::CdxQosCtrlUpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxQosCtrlUpTable::CdxQosCtrlUpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxQosCtrlUpTable::CdxQosCtrlUpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1277,33 +1277,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxQosIfRateLimi
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxQosIfRateLimitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxQosIfRateLimitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxQosIfRateLimitEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry>();
-        c->parent = this;
-        cdxqosifratelimitentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry>();
+        ent_->parent = this;
+        cdxqosifratelimitentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxQosIfRateLimitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxQosIfRateLimitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxqosifratelimitentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxqosifratelimitentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxQosIfRateLimitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1386,16 +1386,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxQosIfRateLimi
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxQosIfRateLimitTable::CdxQosIfRateLimitEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1519,33 +1519,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsServiceEx
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsServiceExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsServiceExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmtsServiceExtEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmtsServiceExtTable::CdxCmtsServiceExtEntry>();
-        c->parent = this;
-        cdxcmtsserviceextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmtsServiceExtTable::CdxCmtsServiceExtEntry>();
+        ent_->parent = this;
+        cdxcmtsserviceextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsServiceExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsServiceExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmtsserviceextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmtsserviceextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsServiceExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1649,16 +1649,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsServiceEx
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsServiceExtTable::CdxCmtsServiceExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsServiceExtTable::CdxCmtsServiceExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsServiceExtTable::CdxCmtsServiceExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsServiceExtTable::CdxCmtsServiceExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsServiceExtTable::CdxCmtsServiceExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1832,33 +1832,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxUpInfoElemSta
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxUpInfoElemStatsEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::CdxUpInfoElemStatsEntry>();
-        c->parent = this;
-        cdxupinfoelemstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::CdxUpInfoElemStatsEntry>();
+        ent_->parent = this;
+        cdxupinfoelemstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxupinfoelemstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxupinfoelemstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1934,16 +1934,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxUpInfoElemSta
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::CdxUpInfoElemStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::CdxUpInfoElemStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::CdxUpInfoElemStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::CdxUpInfoElemStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxUpInfoElemStatsTable::CdxUpInfoElemStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2047,33 +2047,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxBWQueueTable:
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxBWQueueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxBWQueueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxBWQueueEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry>();
-        c->parent = this;
-        cdxbwqueueentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry>();
+        ent_->parent = this;
+        cdxbwqueueentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxBWQueueTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxBWQueueTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxbwqueueentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxbwqueueentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxBWQueueTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2169,16 +2169,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxBWQueueTable:
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxBWQueueTable::CdxBWQueueEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2332,33 +2332,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmCpeTable::g
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmCpeEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmCpeTable::CdxCmCpeEntry>();
-        c->parent = this;
-        cdxcmcpeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmCpeTable::CdxCmCpeEntry>();
+        ent_->parent = this;
+        cdxcmcpeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmCpeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmCpeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmcpeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmcpeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmCpeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2457,16 +2457,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmCpeTable::C
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmCpeTable::CdxCmCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmCpeTable::CdxCmCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmCpeTable::CdxCmCpeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmCpeTable::CdxCmCpeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmCpeTable::CdxCmCpeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2630,33 +2630,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsCmStatusE
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmtsCmStatusExtEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::CdxCmtsCmStatusExtEntry>();
-        c->parent = this;
-        cdxcmtscmstatusextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::CdxCmtsCmStatusExtEntry>();
+        ent_->parent = this;
+        cdxcmtscmstatusextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmtscmstatusextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmtscmstatusextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2775,16 +2775,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsCmStatusE
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::CdxCmtsCmStatusExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::CdxCmtsCmStatusExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::CdxCmtsCmStatusExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::CdxCmtsCmStatusExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsCmStatusExtTable::CdxCmtsCmStatusExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2996,33 +2996,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsMacExtTab
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsMacExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsMacExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmtsMacExtEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmtsMacExtTable::CdxCmtsMacExtEntry>();
-        c->parent = this;
-        cdxcmtsmacextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmtsMacExtTable::CdxCmtsMacExtEntry>();
+        ent_->parent = this;
+        cdxcmtsmacextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsMacExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsMacExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmtsmacextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmtsmacextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsMacExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3121,16 +3121,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsMacExtTab
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsMacExtTable::CdxCmtsMacExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsMacExtTable::CdxCmtsMacExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsMacExtTable::CdxCmtsMacExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsMacExtTable::CdxCmtsMacExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsMacExtTable::CdxCmtsMacExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3294,33 +3294,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsCmChOverT
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsCmChOverTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsCmChOverTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmtsCmChOverEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmtsCmChOverTable::CdxCmtsCmChOverEntry>();
-        c->parent = this;
-        cdxcmtscmchoverentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmtsCmChOverTable::CdxCmtsCmChOverEntry>();
+        ent_->parent = this;
+        cdxcmtscmchoverentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsCmChOverTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsCmChOverTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmtscmchoverentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmtscmchoverentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsCmChOverTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3415,16 +3415,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsCmChOverT
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsCmChOverTable::CdxCmtsCmChOverEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsCmChOverTable::CdxCmtsCmChOverEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsCmChOverTable::CdxCmtsCmChOverEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsCmChOverTable::CdxCmtsCmChOverEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsCmChOverTable::CdxCmtsCmChOverEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3578,33 +3578,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsCmTable::
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmtsCmEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmtsCmTable::CdxCmtsCmEntry>();
-        c->parent = this;
-        cdxcmtscmentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmtsCmTable::CdxCmtsCmEntry>();
+        ent_->parent = this;
+        cdxcmtscmentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsCmTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsCmTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmtscmentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmtscmentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsCmTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3683,16 +3683,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsCmTable::
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsCmTable::CdxCmtsCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsCmTable::CdxCmtsCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsCmTable::CdxCmtsCmEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsCmTable::CdxCmtsCmEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsCmTable::CdxCmtsCmEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3806,33 +3806,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsCmStatusD
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmtsCmStatusDMICEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::CdxCmtsCmStatusDMICEntry>();
-        c->parent = this;
-        cdxcmtscmstatusdmicentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::CdxCmtsCmStatusDMICEntry>();
+        ent_->parent = this;
+        cdxcmtscmstatusdmicentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmtscmstatusdmicentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmtscmstatusdmicentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3907,16 +3907,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsCmStatusD
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::CdxCmtsCmStatusDMICEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::CdxCmtsCmStatusDMICEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::CdxCmtsCmStatusDMICEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::CdxCmtsCmStatusDMICEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsCmStatusDMICTable::CdxCmtsCmStatusDMICEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4020,33 +4020,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmToCpeTable:
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmToCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmToCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmToCpeEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmToCpeTable::CdxCmToCpeEntry>();
-        c->parent = this;
-        cdxcmtocpeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmToCpeTable::CdxCmToCpeEntry>();
+        ent_->parent = this;
+        cdxcmtocpeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmToCpeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmToCpeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmtocpeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmtocpeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmToCpeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4123,16 +4123,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmToCpeTable:
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmToCpeTable::CdxCmToCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmToCpeTable::CdxCmToCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmToCpeTable::CdxCmToCpeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmToCpeTable::CdxCmToCpeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmToCpeTable::CdxCmToCpeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4236,33 +4236,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCpeToCmTable:
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCpeToCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCpeToCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCpeToCmEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCpeToCmTable::CdxCpeToCmEntry>();
-        c->parent = this;
-        cdxcpetocmentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCpeToCmTable::CdxCpeToCmEntry>();
+        ent_->parent = this;
+        cdxcpetocmentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCpeToCmTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCpeToCmTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcpetocmentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcpetocmentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCpeToCmTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4345,16 +4345,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCpeToCmTable:
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCpeToCmTable::CdxCpeToCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCpeToCmTable::CdxCpeToCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCpeToCmTable::CdxCpeToCmEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCpeToCmTable::CdxCpeToCmEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCpeToCmTable::CdxCpeToCmEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4478,33 +4478,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCpeIpPrefixTa
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCpeIpPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCpeIpPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCpeIpPrefixEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCpeIpPrefixTable::CdxCpeIpPrefixEntry>();
-        c->parent = this;
-        cdxcpeipprefixentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCpeIpPrefixTable::CdxCpeIpPrefixEntry>();
+        ent_->parent = this;
+        cdxcpeipprefixentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCpeIpPrefixTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCpeIpPrefixTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcpeipprefixentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcpeipprefixentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCpeIpPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4594,16 +4594,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCpeIpPrefixTa
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCpeIpPrefixTable::CdxCpeIpPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCpeIpPrefixTable::CdxCpeIpPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCpeIpPrefixTable::CdxCpeIpPrefixEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCpeIpPrefixTable::CdxCpeIpPrefixEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCpeIpPrefixTable::CdxCpeIpPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4737,33 +4737,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxIfUpstreamCha
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxIfUpstreamChannelExtEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::CdxIfUpstreamChannelExtEntry>();
-        c->parent = this;
-        cdxifupstreamchannelextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::CdxIfUpstreamChannelExtEntry>();
+        ent_->parent = this;
+        cdxifupstreamchannelextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxifupstreamchannelextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxifupstreamchannelextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4894,16 +4894,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxIfUpstreamCha
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::CdxIfUpstreamChannelExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::CdxIfUpstreamChannelExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::CdxIfUpstreamChannelExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::CdxIfUpstreamChannelExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxIfUpstreamChannelExtTable::CdxIfUpstreamChannelExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5147,33 +5147,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxWBResilCmTabl
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxWBResilCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxWBResilCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxWBResilCmEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxWBResilCmTable::CdxWBResilCmEntry>();
-        c->parent = this;
-        cdxwbresilcmentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxWBResilCmTable::CdxWBResilCmEntry>();
+        ent_->parent = this;
+        cdxwbresilcmentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxWBResilCmTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxWBResilCmTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxwbresilcmentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxwbresilcmentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxWBResilCmTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5268,16 +5268,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxWBResilCmTabl
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxWBResilCmTable::CdxWBResilCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxWBResilCmTable::CdxWBResilCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxWBResilCmTable::CdxWBResilCmEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxWBResilCmTable::CdxWBResilCmEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxWBResilCmTable::CdxWBResilCmEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5431,33 +5431,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxRFtoPrimaryCh
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxRFtoPrimaryChannelMappingEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::CdxRFtoPrimaryChannelMappingEntry>();
-        c->parent = this;
-        cdxrftoprimarychannelmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::CdxRFtoPrimaryChannelMappingEntry>();
+        ent_->parent = this;
+        cdxrftoprimarychannelmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxrftoprimarychannelmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxrftoprimarychannelmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5528,16 +5528,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxRFtoPrimaryCh
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::CdxRFtoPrimaryChannelMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::CdxRFtoPrimaryChannelMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::CdxRFtoPrimaryChannelMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::CdxRFtoPrimaryChannelMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxRFtoPrimaryChannelMappingTable::CdxRFtoPrimaryChannelMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5631,33 +5631,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxPrimaryChanne
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxPrimaryChanneltoRFMappingEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::CdxPrimaryChanneltoRFMappingEntry>();
-        c->parent = this;
-        cdxprimarychanneltorfmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::CdxPrimaryChanneltoRFMappingEntry>();
+        ent_->parent = this;
+        cdxprimarychanneltorfmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxprimarychanneltorfmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxprimarychanneltorfmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5728,16 +5728,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxPrimaryChanne
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::CdxPrimaryChanneltoRFMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::CdxPrimaryChanneltoRFMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::CdxPrimaryChanneltoRFMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::CdxPrimaryChanneltoRFMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxPrimaryChanneltoRFMappingTable::CdxPrimaryChanneltoRFMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5831,33 +5831,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsMtcCmTabl
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsMtcCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsMtcCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmtsMtcCmEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmtsMtcCmTable::CdxCmtsMtcCmEntry>();
-        c->parent = this;
-        cdxcmtsmtccmentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmtsMtcCmTable::CdxCmtsMtcCmEntry>();
+        ent_->parent = this;
+        cdxcmtsmtccmentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsMtcCmTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsMtcCmTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmtsmtccmentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmtsmtccmentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsMtcCmTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5957,16 +5957,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsMtcCmTabl
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsMtcCmTable::CdxCmtsMtcCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsMtcCmTable::CdxCmtsMtcCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsMtcCmTable::CdxCmtsMtcCmEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsMtcCmTable::CdxCmtsMtcCmEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsMtcCmTable::CdxCmtsMtcCmEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6130,33 +6130,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsUscbSflow
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxCmtsUscbSflowEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::CdxCmtsUscbSflowEntry>();
-        c->parent = this;
-        cdxcmtsuscbsflowentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::CdxCmtsUscbSflowEntry>();
+        ent_->parent = this;
+        cdxcmtsuscbsflowentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxcmtsuscbsflowentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxcmtsuscbsflowentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6280,16 +6280,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxCmtsUscbSflow
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::CdxCmtsUscbSflowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::CdxCmtsUscbSflowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::CdxCmtsUscbSflowEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::CdxCmtsUscbSflowEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxCmtsUscbSflowTable::CdxCmtsUscbSflowEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6513,33 +6513,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxRPDGS7KTable:
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxRPDGS7KTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxRPDGS7KTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxRPDGS7KEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry>();
-        c->parent = this;
-        cdxrpdgs7kentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry>();
+        ent_->parent = this;
+        cdxrpdgs7kentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxRPDGS7KTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxRPDGS7KTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxrpdgs7kentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxrpdgs7kentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxRPDGS7KTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6662,16 +6662,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxRPDGS7KTable:
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxRPDGS7KTable::CdxRPDGS7KEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6895,33 +6895,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxBundleIpHelpe
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxBundleIpHelperTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxBundleIpHelperTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxBundleIpHelperEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxBundleIpHelperTable::CdxBundleIpHelperEntry>();
-        c->parent = this;
-        cdxbundleiphelperentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxBundleIpHelperTable::CdxBundleIpHelperEntry>();
+        ent_->parent = this;
+        cdxbundleiphelperentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxBundleIpHelperTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxBundleIpHelperTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxbundleiphelperentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxbundleiphelperentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxBundleIpHelperTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6997,16 +6997,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxBundleIpHelpe
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxBundleIpHelperTable::CdxBundleIpHelperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxBundleIpHelperTable::CdxBundleIpHelperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxBundleIpHelperTable::CdxBundleIpHelperEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxBundleIpHelperTable::CdxBundleIpHelperEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxBundleIpHelperTable::CdxBundleIpHelperEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7108,33 +7108,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxBundleIPv6DHC
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxBundleIPv6DHCPRelayEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::CdxBundleIPv6DHCPRelayEntry>();
-        c->parent = this;
-        cdxbundleipv6dhcprelayentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::CdxBundleIPv6DHCPRelayEntry>();
+        ent_->parent = this;
+        cdxbundleipv6dhcprelayentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxbundleipv6dhcprelayentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxbundleipv6dhcprelayentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7213,16 +7213,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxBundleIPv6DHC
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::CdxBundleIPv6DHCPRelayEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::CdxBundleIPv6DHCPRelayEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::CdxBundleIPv6DHCPRelayEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::CdxBundleIPv6DHCPRelayEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayTable::CdxBundleIPv6DHCPRelayEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7336,33 +7336,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxBundleIPv6DHC
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdxBundleIPv6DHCPRelayDestEntry")
     {
-        auto c = std::make_shared<CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::CdxBundleIPv6DHCPRelayDestEntry>();
-        c->parent = this;
-        cdxbundleipv6dhcprelaydestentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::CdxBundleIPv6DHCPRelayDestEntry>();
+        ent_->parent = this;
+        cdxbundleipv6dhcprelaydestentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdxbundleipv6dhcprelaydestentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdxbundleipv6dhcprelaydestentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7452,16 +7452,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODOCSEXTMIB::CdxBundleIPv6DHC
 
 }
 
-std::shared_ptr<Entity> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::CdxBundleIPv6DHCPRelayDestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::CdxBundleIPv6DHCPRelayDestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::CdxBundleIPv6DHCPRelayDestEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::CdxBundleIPv6DHCPRelayDestEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODOCSEXTMIB::CdxBundleIPv6DHCPRelayDestTable::CdxBundleIPv6DHCPRelayDestEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

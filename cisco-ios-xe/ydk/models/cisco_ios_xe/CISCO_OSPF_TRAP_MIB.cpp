@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFTRAPMIB::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFTRAPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFTRAPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cospfTrapControl")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> CISCOOSPFTRAPMIB::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFTRAPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFTRAPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cospftrapcontrol != nullptr)
     {
-        children["cospfTrapControl"] = cospftrapcontrol;
+        _children["cospfTrapControl"] = cospftrapcontrol;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOOSPFTRAPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void CISCOOSPFTRAPMIB::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> CISCOOSPFTRAPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOOSPFTRAPMIB::clone_ptr() const
 {
     return std::make_shared<CISCOOSPFTRAPMIB>();
 }
@@ -178,16 +178,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOOSPFTRAPMIB::CospfTrapContro
 
 }
 
-std::shared_ptr<Entity> CISCOOSPFTRAPMIB::CospfTrapControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOOSPFTRAPMIB::CospfTrapControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOOSPFTRAPMIB::CospfTrapControl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOOSPFTRAPMIB::CospfTrapControl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOOSPFTRAPMIB::CospfTrapControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

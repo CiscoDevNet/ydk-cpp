@@ -69,7 +69,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::get_nam
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global-nodes")
     {
@@ -119,36 +119,36 @@ std::shared_ptr<Entity> FrequencySynchronization::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global_nodes != nullptr)
     {
-        children["global-nodes"] = global_nodes;
+        _children["global-nodes"] = global_nodes;
     }
 
     if(global_interfaces != nullptr)
     {
-        children["global-interfaces"] = global_interfaces;
+        _children["global-interfaces"] = global_interfaces;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(interface_datas != nullptr)
     {
-        children["interface-datas"] = interface_datas;
+        _children["interface-datas"] = interface_datas;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -159,7 +159,7 @@ void FrequencySynchronization::set_filter(const std::string & value_path, YFilte
 {
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::clone_ptr() const
+std::shared_ptr<ydk::Entity> FrequencySynchronization::clone_ptr() const
 {
     return std::make_shared<FrequencySynchronization>();
 }
@@ -247,33 +247,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global-node")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode>();
-        c->parent = this;
-        global_node.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode>();
+        ent_->parent = this;
+        global_node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : global_node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : global_node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -361,7 +361,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-interface-selection-back-traces")
     {
@@ -411,36 +411,36 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_interface_selection_back_traces != nullptr)
     {
-        children["clock-interface-selection-back-traces"] = clock_interface_selection_back_traces;
+        _children["clock-interface-selection-back-traces"] = clock_interface_selection_back_traces;
     }
 
     if(clock_interface_selection_forward_traces != nullptr)
     {
-        children["clock-interface-selection-forward-traces"] = clock_interface_selection_forward_traces;
+        _children["clock-interface-selection-forward-traces"] = clock_interface_selection_forward_traces;
     }
 
     if(time_of_day_back_trace != nullptr)
     {
-        children["time-of-day-back-trace"] = time_of_day_back_trace;
+        _children["time-of-day-back-trace"] = time_of_day_back_trace;
     }
 
     if(ntp_selection_forward_trace != nullptr)
     {
-        children["ntp-selection-forward-trace"] = ntp_selection_forward_trace;
+        _children["ntp-selection-forward-trace"] = ntp_selection_forward_trace;
     }
 
     if(ptp_selection_forward_trace != nullptr)
     {
-        children["ptp-selection-forward-trace"] = ptp_selection_forward_trace;
+        _children["ptp-selection-forward-trace"] = ptp_selection_forward_trace;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -517,33 +517,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-interface-selection-back-trace")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace>();
-        c->parent = this;
-        clock_interface_selection_back_trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace>();
+        ent_->parent = this;
+        clock_interface_selection_back_trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clock_interface_selection_back_trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clock_interface_selection_back_trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -624,7 +624,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selected-source")
     {
@@ -637,34 +637,34 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
 
     if(child_yang_name == "selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint>();
-        c->parent = this;
-        selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint>();
+        ent_->parent = this;
+        selection_point.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(selected_source != nullptr)
     {
-        children["selected-source"] = selected_source;
+        _children["selected-source"] = selected_source;
     }
 
-    count = 0;
-    for (auto c : selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -776,7 +776,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -799,21 +799,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -950,16 +950,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1056,16 +1056,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1162,16 +1162,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionBackTraces::ClockInterfaceSelectionBackTrace::SelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1268,33 +1268,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-interface-selection-forward-trace")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace>();
-        c->parent = this;
-        clock_interface_selection_forward_trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace>();
+        ent_->parent = this;
+        clock_interface_selection_forward_trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clock_interface_selection_forward_trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clock_interface_selection_forward_trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1371,33 +1371,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forward-trace")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace>();
-        c->parent = this;
-        forward_trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace>();
+        ent_->parent = this;
+        forward_trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : forward_trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : forward_trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1476,7 +1476,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forward-trace-node")
     {
@@ -1490,16 +1490,16 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(forward_trace_node != nullptr)
     {
-        children["forward-trace-node"] = forward_trace_node;
+        _children["forward-trace-node"] = forward_trace_node;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1567,7 +1567,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selection-point")
     {
@@ -1590,21 +1590,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(selection_point != nullptr)
     {
-        children["selection-point"] = selection_point;
+        _children["selection-point"] = selection_point;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1681,16 +1681,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1812,7 +1812,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -1835,21 +1835,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::Clock
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1986,16 +1986,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2092,16 +2092,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSelectionForwardTraces::ClockInterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2201,7 +2201,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selected-source")
     {
@@ -2214,34 +2214,34 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeO
 
     if(child_yang_name == "selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint>();
-        c->parent = this;
-        selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint>();
+        ent_->parent = this;
+        selection_point.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(selected_source != nullptr)
     {
-        children["selected-source"] = selected_source;
+        _children["selected-source"] = selected_source;
     }
 
-    count = 0;
-    for (auto c : selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2333,7 +2333,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -2356,21 +2356,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeO
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2507,16 +2507,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2613,16 +2613,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2719,16 +2719,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrace::SelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2825,33 +2825,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forward-trace")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace>();
-        c->parent = this;
-        forward_trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace>();
+        ent_->parent = this;
+        forward_trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : forward_trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : forward_trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2910,7 +2910,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forward-trace-node")
     {
@@ -2924,16 +2924,16 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(forward_trace_node != nullptr)
     {
-        children["forward-trace-node"] = forward_trace_node;
+        _children["forward-trace-node"] = forward_trace_node;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3001,7 +3001,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selection-point")
     {
@@ -3024,21 +3024,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(selection_point != nullptr)
     {
-        children["selection-point"] = selection_point;
+        _children["selection-point"] = selection_point;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3115,16 +3115,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3246,7 +3246,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -3269,21 +3269,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3420,16 +3420,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3526,16 +3526,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3632,33 +3632,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forward-trace")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace>();
-        c->parent = this;
-        forward_trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace>();
+        ent_->parent = this;
+        forward_trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : forward_trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : forward_trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3717,7 +3717,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forward-trace-node")
     {
@@ -3731,16 +3731,16 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(forward_trace_node != nullptr)
     {
-        children["forward-trace-node"] = forward_trace_node;
+        _children["forward-trace-node"] = forward_trace_node;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3808,7 +3808,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selection-point")
     {
@@ -3831,21 +3831,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(selection_point != nullptr)
     {
-        children["selection-point"] = selection_point;
+        _children["selection-point"] = selection_point;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3922,16 +3922,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4053,7 +4053,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -4076,21 +4076,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4227,16 +4227,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4333,16 +4333,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalN
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4446,33 +4446,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global-interface")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface>();
-        c->parent = this;
-        global_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface>();
+        ent_->parent = this;
+        global_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : global_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : global_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4548,7 +4548,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-selection-forward-trace")
     {
@@ -4571,21 +4571,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_selection_forward_trace != nullptr)
     {
-        children["interface-selection-forward-trace"] = interface_selection_forward_trace;
+        _children["interface-selection-forward-trace"] = interface_selection_forward_trace;
     }
 
     if(interface_selection_back_trace != nullptr)
     {
-        children["interface-selection-back-trace"] = interface_selection_back_trace;
+        _children["interface-selection-back-trace"] = interface_selection_back_trace;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4662,33 +4662,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forward-trace")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace>();
-        c->parent = this;
-        forward_trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace>();
+        ent_->parent = this;
+        forward_trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : forward_trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : forward_trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4747,7 +4747,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forward-trace-node")
     {
@@ -4761,16 +4761,16 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(forward_trace_node != nullptr)
     {
-        children["forward-trace-node"] = forward_trace_node;
+        _children["forward-trace-node"] = forward_trace_node;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4838,7 +4838,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selection-point")
     {
@@ -4861,21 +4861,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(selection_point != nullptr)
     {
-        children["selection-point"] = selection_point;
+        _children["selection-point"] = selection_point;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4952,16 +4952,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::SelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5083,7 +5083,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -5106,21 +5106,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5257,16 +5257,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5363,16 +5363,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionForwardTrace::ForwardTrace::ForwardTraceNode::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5472,7 +5472,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selected-source")
     {
@@ -5485,34 +5485,34 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
 
     if(child_yang_name == "selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint>();
-        c->parent = this;
-        selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint>();
+        ent_->parent = this;
+        selection_point.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(selected_source != nullptr)
     {
-        children["selected-source"] = selected_source;
+        _children["selected-source"] = selected_source;
     }
 
-    count = 0;
-    for (auto c : selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5604,7 +5604,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -5627,21 +5627,21 @@ std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5778,16 +5778,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5884,16 +5884,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5990,16 +5990,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::GlobalI
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::GlobalInterfaces::GlobalInterface::InterfaceSelectionBackTrace::SelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6114,50 +6114,50 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frequency-summary")
     {
-        auto c = std::make_shared<FrequencySynchronization::Summary::FrequencySummary>();
-        c->parent = this;
-        frequency_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Summary::FrequencySummary>();
+        ent_->parent = this;
+        frequency_summary.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "time-of-day-summary")
     {
-        auto c = std::make_shared<FrequencySynchronization::Summary::TimeOfDaySummary>();
-        c->parent = this;
-        time_of_day_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Summary::TimeOfDaySummary>();
+        ent_->parent = this;
+        time_of_day_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : frequency_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frequency_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : time_of_day_summary.entities())
+    count_ = 0;
+    for (auto ent_ : time_of_day_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6236,7 +6236,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Summary::FrequencySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Summary::FrequencySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -6250,16 +6250,16 @@ std::shared_ptr<Entity> FrequencySynchronization::Summary::FrequencySummary::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::FrequencySummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Summary::FrequencySummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Summary::FrequencySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6388,7 +6388,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Summary::FrequencySummary::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Summary::FrequencySummary::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -6411,21 +6411,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Summary::FrequencySummary::Sou
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::FrequencySummary::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Summary::FrequencySummary::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Summary::FrequencySummary::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6569,16 +6569,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Summary::FrequencySummary::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6682,16 +6682,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Summary::FrequencySummary::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6792,7 +6792,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Summary::TimeOfDaySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Summary::TimeOfDaySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -6806,16 +6806,16 @@ std::shared_ptr<Entity> FrequencySynchronization::Summary::TimeOfDaySummary::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::TimeOfDaySummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Summary::TimeOfDaySummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Summary::TimeOfDaySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6924,7 +6924,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Summary::TimeOfDaySummary::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Summary::TimeOfDaySummary::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -6947,21 +6947,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Summary::TimeOfDaySummary::Sou
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::TimeOfDaySummary::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Summary::TimeOfDaySummary::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Summary::TimeOfDaySummary::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7105,16 +7105,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Summary::TimeOfDaySummary::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7218,16 +7218,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Summary
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Summary::TimeOfDaySummary::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7331,33 +7331,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-data")
     {
-        auto c = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData>();
-        c->parent = this;
-        interface_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData>();
+        ent_->parent = this;
+        interface_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_data.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7531,7 +7531,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -7616,91 +7616,91 @@ std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData:
 
     if(child_yang_name == "spa-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint>();
-        c->parent = this;
-        spa_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint>();
+        ent_->parent = this;
+        spa_selection_point.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "node-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint>();
-        c->parent = this;
-        node_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint>();
+        ent_->parent = this;
+        node_selection_point.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(selected_source != nullptr)
     {
-        children["selected-source"] = selected_source;
+        _children["selected-source"] = selected_source;
     }
 
     if(quality_level_received != nullptr)
     {
-        children["quality-level-received"] = quality_level_received;
+        _children["quality-level-received"] = quality_level_received;
     }
 
     if(quality_level_damped != nullptr)
     {
-        children["quality-level-damped"] = quality_level_damped;
+        _children["quality-level-damped"] = quality_level_damped;
     }
 
     if(quality_level_effective_input != nullptr)
     {
-        children["quality-level-effective-input"] = quality_level_effective_input;
+        _children["quality-level-effective-input"] = quality_level_effective_input;
     }
 
     if(quality_level_effective_output != nullptr)
     {
-        children["quality-level-effective-output"] = quality_level_effective_output;
+        _children["quality-level-effective-output"] = quality_level_effective_output;
     }
 
     if(quality_level_selected_source != nullptr)
     {
-        children["quality-level-selected-source"] = quality_level_selected_source;
+        _children["quality-level-selected-source"] = quality_level_selected_source;
     }
 
     if(ethernet_peer_information != nullptr)
     {
-        children["ethernet-peer-information"] = ethernet_peer_information;
+        _children["ethernet-peer-information"] = ethernet_peer_information;
     }
 
     if(esmc_statistics != nullptr)
     {
-        children["esmc-statistics"] = esmc_statistics;
+        _children["esmc-statistics"] = esmc_statistics;
     }
 
-    count = 0;
-    for (auto c : spa_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : spa_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : node_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : node_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7922,7 +7922,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -7945,21 +7945,21 @@ std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8096,16 +8096,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8202,16 +8202,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8333,7 +8333,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -8356,21 +8356,21 @@ std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8507,16 +8507,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8613,16 +8613,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8723,16 +8723,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8843,16 +8843,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelDamped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8963,16 +8963,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9083,16 +9083,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelEffectiveOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9203,16 +9203,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::QualityLevelSelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9328,7 +9328,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-state-time")
     {
@@ -9351,21 +9351,21 @@ std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer_state_time != nullptr)
     {
-        children["peer-state-time"] = peer_state_time;
+        _children["peer-state-time"] = peer_state_time;
     }
 
     if(last_ssm != nullptr)
     {
-        children["last-ssm"] = last_ssm;
+        _children["last-ssm"] = last_ssm;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9458,16 +9458,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::PeerStateTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9550,16 +9550,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::EthernetPeerInformation::LastSsm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9666,16 +9666,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::EsmcStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9818,16 +9818,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9910,16 +9910,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Interfa
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10013,33 +10013,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10139,7 +10139,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ntp-data")
     {
@@ -10216,51 +10216,51 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ntp_data != nullptr)
     {
-        children["ntp-data"] = ntp_data;
+        _children["ntp-data"] = ntp_data;
     }
 
     if(selection_point_datas != nullptr)
     {
-        children["selection-point-datas"] = selection_point_datas;
+        _children["selection-point-datas"] = selection_point_datas;
     }
 
     if(configuration_errors != nullptr)
     {
-        children["configuration-errors"] = configuration_errors;
+        _children["configuration-errors"] = configuration_errors;
     }
 
     if(ptp_data != nullptr)
     {
-        children["ptp-data"] = ptp_data;
+        _children["ptp-data"] = ptp_data;
     }
 
     if(ssm_summary != nullptr)
     {
-        children["ssm-summary"] = ssm_summary;
+        _children["ssm-summary"] = ssm_summary;
     }
 
     if(detailed_clock_datas != nullptr)
     {
-        children["detailed-clock-datas"] = detailed_clock_datas;
+        _children["detailed-clock-datas"] = detailed_clock_datas;
     }
 
     if(clock_datas != nullptr)
     {
-        children["clock-datas"] = clock_datas;
+        _children["clock-datas"] = clock_datas;
     }
 
     if(selection_point_inputs != nullptr)
     {
-        children["selection-point-inputs"] = selection_point_inputs;
+        _children["selection-point-inputs"] = selection_point_inputs;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10372,7 +10372,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::NtpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "quality-level-effective-input")
     {
@@ -10385,51 +10385,51 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::get_chil
 
     if(child_yang_name == "spa-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint>();
-        c->parent = this;
-        spa_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint>();
+        ent_->parent = this;
+        spa_selection_point.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "node-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint>();
-        c->parent = this;
-        node_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint>();
+        ent_->parent = this;
+        node_selection_point.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::NtpData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::NtpData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(quality_level_effective_input != nullptr)
     {
-        children["quality-level-effective-input"] = quality_level_effective_input;
+        _children["quality-level-effective-input"] = quality_level_effective_input;
     }
 
-    count = 0;
-    for (auto c : spa_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : spa_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : node_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : node_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::NtpData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10550,16 +10550,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::NtpData::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10662,16 +10662,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10754,16 +10754,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10850,33 +10850,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selection-point-data")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData>();
-        c->parent = this;
-        selection_point_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData>();
+        ent_->parent = this;
+        selection_point_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : selection_point_data.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : selection_point_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointDatas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10969,7 +10969,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output")
     {
@@ -11001,26 +11001,26 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
     if(last_programmed != nullptr)
     {
-        children["last-programmed"] = last_programmed;
+        _children["last-programmed"] = last_programmed;
     }
 
     if(last_selection != nullptr)
     {
-        children["last-selection"] = last_selection;
+        _children["last-selection"] = last_selection;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11192,84 +11192,84 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spa-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint>();
-        c->parent = this;
-        spa_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint>();
+        ent_->parent = this;
+        spa_selection_point.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "node-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint>();
-        c->parent = this;
-        node_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint>();
+        ent_->parent = this;
+        node_selection_point.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "chassis-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint>();
-        c->parent = this;
-        chassis_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint>();
+        ent_->parent = this;
+        chassis_selection_point.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "router-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint>();
-        c->parent = this;
-        router_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint>();
+        ent_->parent = this;
+        router_selection_point.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : spa_selection_point.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : spa_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : node_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : node_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : chassis_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : chassis_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : router_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : router_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11362,16 +11362,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11454,16 +11454,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11546,16 +11546,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::ChassisSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11638,16 +11638,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::Output::RouterSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11730,16 +11730,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastProgrammed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11822,16 +11822,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointDatas::SelectionPointData::LastSelection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11918,33 +11918,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "error-source")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource>();
-        c->parent = this;
-        error_source.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource>();
+        ent_->parent = this;
+        error_source.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : error_source.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : error_source.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12060,7 +12060,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -12128,46 +12128,46 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErro
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(input_min_ql != nullptr)
     {
-        children["input-min-ql"] = input_min_ql;
+        _children["input-min-ql"] = input_min_ql;
     }
 
     if(input_exact_ql != nullptr)
     {
-        children["input-exact-ql"] = input_exact_ql;
+        _children["input-exact-ql"] = input_exact_ql;
     }
 
     if(input_max_ql != nullptr)
     {
-        children["input-max-ql"] = input_max_ql;
+        _children["input-max-ql"] = input_max_ql;
     }
 
     if(output_min_ql != nullptr)
     {
-        children["output-min-ql"] = output_min_ql;
+        _children["output-min-ql"] = output_min_ql;
     }
 
     if(output_exact_ql != nullptr)
     {
-        children["output-exact-ql"] = output_exact_ql;
+        _children["output-exact-ql"] = output_exact_ql;
     }
 
     if(output_max_ql != nullptr)
     {
-        children["output-max-ql"] = output_max_ql;
+        _children["output-max-ql"] = output_max_ql;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12339,7 +12339,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -12362,21 +12362,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErro
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12513,16 +12513,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12619,16 +12619,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12729,16 +12729,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMinQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMinQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMinQl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMinQl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMinQl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12849,16 +12849,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputExactQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputExactQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputExactQl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputExactQl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputExactQl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12969,16 +12969,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMaxQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMaxQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMaxQl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMaxQl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::InputMaxQl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13089,16 +13089,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMinQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMinQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMinQl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMinQl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMinQl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13209,16 +13209,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputExactQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputExactQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputExactQl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputExactQl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputExactQl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13329,16 +13329,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSource::OutputMaxQl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13480,7 +13480,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::PtpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "quality-level-effective-input")
     {
@@ -13493,51 +13493,51 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::get_chil
 
     if(child_yang_name == "spa-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint>();
-        c->parent = this;
-        spa_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint>();
+        ent_->parent = this;
+        spa_selection_point.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "node-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint>();
-        c->parent = this;
-        node_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint>();
+        ent_->parent = this;
+        node_selection_point.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::PtpData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::PtpData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(quality_level_effective_input != nullptr)
     {
-        children["quality-level-effective-input"] = quality_level_effective_input;
+        _children["quality-level-effective-input"] = quality_level_effective_input;
     }
 
-    count = 0;
-    for (auto c : spa_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : spa_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : node_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : node_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::PtpData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13658,16 +13658,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::PtpData::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13770,16 +13770,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13862,16 +13862,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13994,16 +13994,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SsmSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SsmSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SsmSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SsmSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SsmSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14190,33 +14190,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detailed-clock-data")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData>();
-        c->parent = this;
-        detailed_clock_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData>();
+        ent_->parent = this;
+        detailed_clock_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detailed_clock_data.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detailed_clock_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14404,7 +14404,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -14471,81 +14471,81 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockData
 
     if(child_yang_name == "spa-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SpaSelectionPoint>();
-        c->parent = this;
-        spa_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SpaSelectionPoint>();
+        ent_->parent = this;
+        spa_selection_point.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "node-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::NodeSelectionPoint>();
-        c->parent = this;
-        node_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::NodeSelectionPoint>();
+        ent_->parent = this;
+        node_selection_point.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(selected_source != nullptr)
     {
-        children["selected-source"] = selected_source;
+        _children["selected-source"] = selected_source;
     }
 
     if(quality_level_received != nullptr)
     {
-        children["quality-level-received"] = quality_level_received;
+        _children["quality-level-received"] = quality_level_received;
     }
 
     if(quality_level_damped != nullptr)
     {
-        children["quality-level-damped"] = quality_level_damped;
+        _children["quality-level-damped"] = quality_level_damped;
     }
 
     if(quality_level_effective_input != nullptr)
     {
-        children["quality-level-effective-input"] = quality_level_effective_input;
+        _children["quality-level-effective-input"] = quality_level_effective_input;
     }
 
     if(quality_level_effective_output != nullptr)
     {
-        children["quality-level-effective-output"] = quality_level_effective_output;
+        _children["quality-level-effective-output"] = quality_level_effective_output;
     }
 
     if(quality_level_selected_source != nullptr)
     {
-        children["quality-level-selected-source"] = quality_level_selected_source;
+        _children["quality-level-selected-source"] = quality_level_selected_source;
     }
 
-    count = 0;
-    for (auto c : spa_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : spa_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : node_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : node_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14837,7 +14837,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -14860,21 +14860,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockData
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15011,16 +15011,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15117,16 +15117,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15248,7 +15248,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -15271,21 +15271,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockData
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15422,16 +15422,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15528,16 +15528,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15638,16 +15638,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelReceived::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelReceived::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15758,16 +15758,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelDamped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelDamped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelDamped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15878,16 +15878,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15998,16 +15998,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveOutput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveOutput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelEffectiveOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16118,16 +16118,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelSelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelSelectedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::QualityLevelSelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16230,16 +16230,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SpaSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SpaSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16322,16 +16322,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::NodeSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::NodeSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedClockData::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16418,33 +16418,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-data")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData>();
-        c->parent = this;
-        clock_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData>();
+        ent_->parent = this;
+        clock_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clock_data.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clock_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16632,7 +16632,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -16699,81 +16699,81 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::Clock
 
     if(child_yang_name == "spa-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint>();
-        c->parent = this;
-        spa_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint>();
+        ent_->parent = this;
+        spa_selection_point.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "node-selection-point")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint>();
-        c->parent = this;
-        node_selection_point.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint>();
+        ent_->parent = this;
+        node_selection_point.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(selected_source != nullptr)
     {
-        children["selected-source"] = selected_source;
+        _children["selected-source"] = selected_source;
     }
 
     if(quality_level_received != nullptr)
     {
-        children["quality-level-received"] = quality_level_received;
+        _children["quality-level-received"] = quality_level_received;
     }
 
     if(quality_level_damped != nullptr)
     {
-        children["quality-level-damped"] = quality_level_damped;
+        _children["quality-level-damped"] = quality_level_damped;
     }
 
     if(quality_level_effective_input != nullptr)
     {
-        children["quality-level-effective-input"] = quality_level_effective_input;
+        _children["quality-level-effective-input"] = quality_level_effective_input;
     }
 
     if(quality_level_effective_output != nullptr)
     {
-        children["quality-level-effective-output"] = quality_level_effective_output;
+        _children["quality-level-effective-output"] = quality_level_effective_output;
     }
 
     if(quality_level_selected_source != nullptr)
     {
-        children["quality-level-selected-source"] = quality_level_selected_source;
+        _children["quality-level-selected-source"] = quality_level_selected_source;
     }
 
-    count = 0;
-    for (auto c : spa_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : spa_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : node_selection_point.entities())
+    count_ = 0;
+    for (auto ent_ : node_selection_point.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17065,7 +17065,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -17088,21 +17088,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::Clock
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17239,16 +17239,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17345,16 +17345,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::Source::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17476,7 +17476,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -17499,21 +17499,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::Clock
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17650,16 +17650,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17756,16 +17756,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SelectedSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17866,16 +17866,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17986,16 +17986,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18106,16 +18106,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18226,16 +18226,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelEffectiveOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18346,16 +18346,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelSelectedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18458,16 +18458,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18550,16 +18550,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18646,33 +18646,33 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selection-point-input")
     {
-        auto c = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput>();
-        c->parent = this;
-        selection_point_input.append(c);
-        return c;
+        auto ent_ = std::make_shared<FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput>();
+        ent_->parent = this;
+        selection_point_input.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : selection_point_input.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : selection_point_input.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18808,7 +18808,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input-selection-point")
     {
@@ -18849,31 +18849,31 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input_selection_point != nullptr)
     {
-        children["input-selection-point"] = input_selection_point;
+        _children["input-selection-point"] = input_selection_point;
     }
 
     if(stream != nullptr)
     {
-        children["stream"] = stream;
+        _children["stream"] = stream;
     }
 
     if(original_source != nullptr)
     {
-        children["original-source"] = original_source;
+        _children["original-source"] = original_source;
     }
 
     if(quality_level != nullptr)
     {
-        children["quality-level"] = quality_level;
+        _children["quality-level"] = quality_level;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19100,16 +19100,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::InputSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::InputSelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::InputSelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::InputSelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::InputSelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19207,7 +19207,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-id")
     {
@@ -19230,21 +19230,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source_id != nullptr)
     {
-        children["source-id"] = source_id;
+        _children["source-id"] = source_id;
     }
 
     if(selection_point_id != nullptr)
     {
-        children["selection-point-id"] = selection_point_id;
+        _children["selection-point-id"] = selection_point_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19346,7 +19346,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -19369,21 +19369,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19520,16 +19520,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19626,16 +19626,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SourceId::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19729,7 +19729,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "selection-point")
     {
@@ -19743,16 +19743,16 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(selection_point != nullptr)
     {
-        children["selection-point"] = selection_point;
+        _children["selection-point"] = selection_point;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19829,16 +19829,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::SelectionPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::SelectionPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::SelectionPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::Stream::SelectionPointId::SelectionPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19960,7 +19960,7 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-id")
     {
@@ -19983,21 +19983,21 @@ std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_id != nullptr)
     {
-        children["clock-id"] = clock_id;
+        _children["clock-id"] = clock_id;
     }
 
     if(gnss_receiver_id != nullptr)
     {
-        children["gnss-receiver-id"] = gnss_receiver_id;
+        _children["gnss-receiver-id"] = gnss_receiver_id;
     }
 
-    return children;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20134,16 +20134,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::ClockId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

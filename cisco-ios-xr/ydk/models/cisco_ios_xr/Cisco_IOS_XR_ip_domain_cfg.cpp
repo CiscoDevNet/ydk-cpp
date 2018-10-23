@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> IpDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> IpDomain::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void IpDomain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void IpDomain::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IpDomain::clone_ptr() const
+std::shared_ptr<ydk::Entity> IpDomain::clone_ptr() const
 {
     return std::make_shared<IpDomain>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<IpDomain::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpDomain::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpDomain::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -300,7 +300,7 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::Vrf::get_name_lea
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-hosts")
     {
@@ -341,31 +341,31 @@ std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6_hosts != nullptr)
     {
-        children["ipv6-hosts"] = ipv6_hosts;
+        _children["ipv6-hosts"] = ipv6_hosts;
     }
 
     if(servers != nullptr)
     {
-        children["servers"] = servers;
+        _children["servers"] = servers;
     }
 
     if(lists != nullptr)
     {
-        children["lists"] = lists;
+        _children["lists"] = lists;
     }
 
     if(ipv4_hosts != nullptr)
     {
-        children["ipv4-hosts"] = ipv4_hosts;
+        _children["ipv4-hosts"] = ipv4_hosts;
     }
 
-    return children;
+    return _children;
 }
 
 void IpDomain::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -482,33 +482,33 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::Vrf::Ipv6Hosts::g
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Ipv6Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::Vrf::Ipv6Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-host")
     {
-        auto c = std::make_shared<IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host>();
-        c->parent = this;
-        ipv6_host.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host>();
+        ent_->parent = this;
+        ipv6_host.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Ipv6Hosts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::Vrf::Ipv6Hosts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6_host.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6_host.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpDomain::Vrfs::Vrf::Ipv6Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -582,16 +582,16 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::Vrf::Ipv6Hosts::I
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -676,33 +676,33 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::Vrf::Servers::get
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Servers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::Vrf::Servers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "server")
     {
-        auto c = std::make_shared<IpDomain::Vrfs::Vrf::Servers::Server>();
-        c->parent = this;
-        server.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpDomain::Vrfs::Vrf::Servers::Server>();
+        ent_->parent = this;
+        server.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Servers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::Vrf::Servers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : server.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpDomain::Vrfs::Vrf::Servers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -767,16 +767,16 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::Vrf::Servers::Ser
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Servers::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::Vrf::Servers::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Servers::Server::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::Vrf::Servers::Server::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpDomain::Vrfs::Vrf::Servers::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -863,33 +863,33 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::Vrf::Lists::get_n
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Lists::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::Vrf::Lists::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "list")
     {
-        auto c = std::make_shared<IpDomain::Vrfs::Vrf::Lists::List>();
-        c->parent = this;
-        list.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpDomain::Vrfs::Vrf::Lists::List>();
+        ent_->parent = this;
+        list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Lists::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::Vrf::Lists::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpDomain::Vrfs::Vrf::Lists::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -954,16 +954,16 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::Vrf::Lists::List:
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Lists::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::Vrf::Lists::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Lists::List::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::Vrf::Lists::List::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpDomain::Vrfs::Vrf::Lists::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1050,33 +1050,33 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::Vrf::Ipv4Hosts::g
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Ipv4Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::Vrf::Ipv4Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-host")
     {
-        auto c = std::make_shared<IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host>();
-        c->parent = this;
-        ipv4_host.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host>();
+        ent_->parent = this;
+        ipv4_host.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Ipv4Hosts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::Vrf::Ipv4Hosts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_host.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_host.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpDomain::Vrfs::Vrf::Ipv4Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1150,16 +1150,16 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::Vrfs::Vrf::Ipv4Hosts::I
 
 }
 
-std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

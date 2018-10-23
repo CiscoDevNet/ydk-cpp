@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > LispState::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> LispState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-routers")
     {
-        auto c = std::make_shared<LispState::LispRouters>();
-        c->parent = this;
-        lisp_routers.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters>();
+        ent_->parent = this;
+        lisp_routers.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lisp_routers.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lisp_routers.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void LispState::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> LispState::clone_ptr() const
+std::shared_ptr<ydk::Entity> LispState::clone_ptr() const
 {
     return std::make_shared<LispState>();
 }
@@ -241,84 +241,84 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::get_name_
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instances")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances>();
-        c->parent = this;
-        instances.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances>();
+        ent_->parent = this;
+        instances.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "sessions")
     {
-        auto c = std::make_shared<LispState::LispRouters::Sessions>();
-        c->parent = this;
-        sessions.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Sessions>();
+        ent_->parent = this;
+        sessions.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "local-rlocs")
     {
-        auto c = std::make_shared<LispState::LispRouters::LocalRlocs>();
-        c->parent = this;
-        local_rlocs.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::LocalRlocs>();
+        ent_->parent = this;
+        local_rlocs.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "prefix-lists")
     {
-        auto c = std::make_shared<LispState::LispRouters::PrefixLists>();
-        c->parent = this;
-        prefix_lists.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::PrefixLists>();
+        ent_->parent = this;
+        prefix_lists.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instances.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instances.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : sessions.entities())
+    count_ = 0;
+    for (auto ent_ : sessions.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : local_rlocs.entities())
+    count_ = 0;
+    for (auto ent_ : local_rlocs.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : prefix_lists.entities())
+    count_ = 0;
+    for (auto ent_ : prefix_lists.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -448,67 +448,67 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "af")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af>();
-        c->parent = this;
-        af.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af>();
+        ent_->parent = this;
+        af.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ms-eid-membership")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::MsEidMembership>();
-        c->parent = this;
-        ms_eid_membership.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::MsEidMembership>();
+        ent_->parent = this;
+        ms_eid_membership.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "etr-eid-membership")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::EtrEidMembership>();
-        c->parent = this;
-        etr_eid_membership.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::EtrEidMembership>();
+        ent_->parent = this;
+        etr_eid_membership.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : af.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ms_eid_membership.entities())
+    count_ = 0;
+    for (auto ent_ : ms_eid_membership.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : etr_eid_membership.entities())
+    count_ = 0;
+    for (auto ent_ : etr_eid_membership.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -981,7 +981,7 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "role")
     {
@@ -994,119 +994,119 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::get_child_by_name
 
     if(child_yang_name == "map-cache")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::MapCache>();
-        c->parent = this;
-        map_cache.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::MapCache>();
+        ent_->parent = this;
+        map_cache.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "local-dbase")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::LocalDbase>();
-        c->parent = this;
-        local_dbase.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::LocalDbase>();
+        ent_->parent = this;
+        local_dbase.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ms-registrations")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations>();
-        c->parent = this;
-        ms_registrations.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations>();
+        ent_->parent = this;
+        ms_registrations.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "map-servers")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::MapServers>();
-        c->parent = this;
-        map_servers.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::MapServers>();
+        ent_->parent = this;
+        map_servers.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "map-resolvers")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::MapResolvers>();
-        c->parent = this;
-        map_resolvers.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::MapResolvers>();
+        ent_->parent = this;
+        map_resolvers.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "proxy-etrs")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::ProxyEtrs>();
-        c->parent = this;
-        proxy_etrs.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::ProxyEtrs>();
+        ent_->parent = this;
+        proxy_etrs.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(role != nullptr)
     {
-        children["role"] = role;
+        _children["role"] = role;
     }
 
-    count = 0;
-    for (auto c : map_cache.entities())
+    count_ = 0;
+    for (auto ent_ : map_cache.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : local_dbase.entities())
+    count_ = 0;
+    for (auto ent_ : local_dbase.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ms_registrations.entities())
+    count_ = 0;
+    for (auto ent_ : ms_registrations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : map_servers.entities())
+    count_ = 0;
+    for (auto ent_ : map_servers.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : map_resolvers.entities())
+    count_ = 0;
+    for (auto ent_ : map_resolvers.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : proxy_etrs.entities())
+    count_ = 0;
+    for (auto ent_ : proxy_etrs.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1975,16 +1975,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::Role::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::Role::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::Role::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::Role::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::Role::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2169,33 +2169,33 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-rloc")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc>();
-        c->parent = this;
-        map_cache_rloc.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc>();
+        ent_->parent = this;
+        map_cache_rloc.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MapCache::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MapCache::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : map_cache_rloc.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : map_cache_rloc.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2421,7 +2421,7 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "params")
     {
@@ -2435,16 +2435,16 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MapCache::MapCach
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(params != nullptr)
     {
-        children["params"] = params;
+        _children["params"] = params;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2575,16 +2575,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2713,33 +2713,33 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::LocalDbase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::LocalDbase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-dbase-rloc")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc>();
-        c->parent = this;
-        local_dbase_rloc.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc>();
+        ent_->parent = this;
+        local_dbase_rloc.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::LocalDbase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::LocalDbase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : local_dbase_rloc.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : local_dbase_rloc.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::LocalDbase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2867,7 +2867,7 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "params")
     {
@@ -2881,16 +2881,16 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::LocalDbase::Local
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(params != nullptr)
     {
-        children["params"] = params;
+        _children["params"] = params;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3001,16 +3001,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3163,7 +3163,7 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MsRegistrations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MsRegistrations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "last-registration-source")
     {
@@ -3176,34 +3176,34 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MsRegistrations::
 
     if(child_yang_name == "etr-registrations")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations>();
-        c->parent = this;
-        etr_registrations.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations>();
+        ent_->parent = this;
+        etr_registrations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(last_registration_source != nullptr)
     {
-        children["last-registration-source"] = last_registration_source;
+        _children["last-registration-source"] = last_registration_source;
     }
 
-    count = 0;
-    for (auto c : etr_registrations.entities())
+    count_ = 0;
+    for (auto ent_ : etr_registrations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MsRegistrations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3366,16 +3366,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3488,33 +3488,33 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ms-registration-rloc")
     {
-        auto c = std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc>();
-        c->parent = this;
-        ms_registration_rloc.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc>();
+        ent_->parent = this;
+        ms_registration_rloc.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ms_registration_rloc.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ms_registration_rloc.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3652,7 +3652,7 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "params")
     {
@@ -3666,16 +3666,16 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MsRegistrations::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(params != nullptr)
     {
-        children["params"] = params;
+        _children["params"] = params;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3786,16 +3786,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::Params::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::Params::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::Params::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::Params::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::Params::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3904,16 +3904,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MapServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MapServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MapServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MapServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MapServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4012,16 +4012,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MapResolvers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::MapResolvers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::MapResolvers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::MapResolvers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::MapResolvers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4125,7 +4125,7 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::ProxyEtrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::ProxyEtrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "params")
     {
@@ -4139,16 +4139,16 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::ProxyEtrs::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::ProxyEtrs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::ProxyEtrs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(params != nullptr)
     {
-        children["params"] = params;
+        _children["params"] = params;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::ProxyEtrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4249,16 +4249,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::ProxyEtrs::Params::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::Af::ProxyEtrs::Params::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::Af::ProxyEtrs::Params::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::Af::ProxyEtrs::Params::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::Af::ProxyEtrs::Params::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4370,16 +4370,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::MsEidMembership::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::MsEidMembership::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::MsEidMembership::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::MsEidMembership::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::MsEidMembership::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4491,16 +4491,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Instances
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Instances::EtrEidMembership::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Instances::EtrEidMembership::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances::EtrEidMembership::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Instances::EtrEidMembership::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Instances::EtrEidMembership::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4647,16 +4647,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::Sessions:
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::Sessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4849,16 +4849,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::LocalRloc
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::LocalRlocs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::LocalRlocs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::LocalRlocs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::LocalRlocs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::LocalRlocs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4974,33 +4974,33 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::PrefixLis
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::PrefixLists::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::PrefixLists::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-list-entry")
     {
-        auto c = std::make_shared<LispState::LispRouters::PrefixLists::PrefixListEntry>();
-        c->parent = this;
-        prefix_list_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LispState::LispRouters::PrefixLists::PrefixListEntry>();
+        ent_->parent = this;
+        prefix_list_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::PrefixLists::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::PrefixLists::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix_list_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix_list_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LispState::LispRouters::PrefixLists::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5097,16 +5097,16 @@ std::vector<std::pair<std::string, LeafData> > LispState::LispRouters::PrefixLis
 
 }
 
-std::shared_ptr<Entity> LispState::LispRouters::PrefixLists::PrefixListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LispState::LispRouters::PrefixLists::PrefixListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::PrefixLists::PrefixListEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LispState::LispRouters::PrefixLists::PrefixListEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LispState::LispRouters::PrefixLists::PrefixListEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

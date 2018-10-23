@@ -57,7 +57,7 @@ std::vector<std::pair<std::string, LeafData> > Rib::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Rib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "af")
     {
@@ -71,16 +71,16 @@ std::shared_ptr<Entity> Rib::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(af != nullptr)
     {
-        children["af"] = af;
+        _children["af"] = af;
     }
 
-    return children;
+    return _children;
 }
 
 void Rib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -101,7 +101,7 @@ void Rib::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Rib::clone_ptr() const
+std::shared_ptr<ydk::Entity> Rib::clone_ptr() const
 {
     return std::make_shared<Rib>();
 }
@@ -185,7 +185,7 @@ std::vector<std::pair<std::string, LeafData> > Rib::Af::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Rib::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rib::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -208,21 +208,21 @@ std::shared_ptr<Entity> Rib::Af::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rib::Af::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rib::Af::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Rib::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -293,7 +293,7 @@ std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv4::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Rib::Af::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rib::Af::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "redistribution-history")
     {
@@ -307,16 +307,16 @@ std::shared_ptr<Entity> Rib::Af::Ipv4::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rib::Af::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(redistribution_history != nullptr)
     {
-        children["redistribution-history"] = redistribution_history;
+        _children["redistribution-history"] = redistribution_history;
     }
 
-    return children;
+    return _children;
 }
 
 void Rib::Af::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -401,7 +401,7 @@ std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv4::RedistributionHist
 
 }
 
-std::shared_ptr<Entity> Rib::Af::Ipv4::RedistributionHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rib::Af::Ipv4::RedistributionHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keep")
     {
@@ -415,16 +415,16 @@ std::shared_ptr<Entity> Rib::Af::Ipv4::RedistributionHistory::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::RedistributionHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rib::Af::Ipv4::RedistributionHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(keep != nullptr)
     {
-        children["keep"] = keep;
+        _children["keep"] = keep;
     }
 
-    return children;
+    return _children;
 }
 
 void Rib::Af::Ipv4::RedistributionHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -510,16 +510,16 @@ std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv4::RedistributionHist
 
 }
 
-std::shared_ptr<Entity> Rib::Af::Ipv4::RedistributionHistory::Keep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rib::Af::Ipv4::RedistributionHistory::Keep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::RedistributionHistory::Keep::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rib::Af::Ipv4::RedistributionHistory::Keep::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rib::Af::Ipv4::RedistributionHistory::Keep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -600,7 +600,7 @@ std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv6::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Rib::Af::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rib::Af::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "redistribution-history")
     {
@@ -614,16 +614,16 @@ std::shared_ptr<Entity> Rib::Af::Ipv6::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rib::Af::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(redistribution_history != nullptr)
     {
-        children["redistribution-history"] = redistribution_history;
+        _children["redistribution-history"] = redistribution_history;
     }
 
-    return children;
+    return _children;
 }
 
 void Rib::Af::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -708,7 +708,7 @@ std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv6::RedistributionHist
 
 }
 
-std::shared_ptr<Entity> Rib::Af::Ipv6::RedistributionHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rib::Af::Ipv6::RedistributionHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keep")
     {
@@ -722,16 +722,16 @@ std::shared_ptr<Entity> Rib::Af::Ipv6::RedistributionHistory::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::RedistributionHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rib::Af::Ipv6::RedistributionHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(keep != nullptr)
     {
-        children["keep"] = keep;
+        _children["keep"] = keep;
     }
 
-    return children;
+    return _children;
 }
 
 void Rib::Af::Ipv6::RedistributionHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -817,16 +817,16 @@ std::vector<std::pair<std::string, LeafData> > Rib::Af::Ipv6::RedistributionHist
 
 }
 
-std::shared_ptr<Entity> Rib::Af::Ipv6::RedistributionHistory::Keep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rib::Af::Ipv6::RedistributionHistory::Keep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::RedistributionHistory::Keep::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rib::Af::Ipv6::RedistributionHistory::Keep::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rib::Af::Ipv6::RedistributionHistory::Keep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

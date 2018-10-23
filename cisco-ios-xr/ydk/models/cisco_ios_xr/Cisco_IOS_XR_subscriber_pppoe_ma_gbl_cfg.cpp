@@ -61,7 +61,7 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe-bba-groups")
     {
@@ -75,16 +75,16 @@ std::shared_ptr<Entity> PppoeCfg::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pppoe_bba_groups != nullptr)
     {
-        children["pppoe-bba-groups"] = pppoe_bba_groups;
+        _children["pppoe-bba-groups"] = pppoe_bba_groups;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -115,7 +115,7 @@ void PppoeCfg::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> PppoeCfg::clone_ptr() const
+std::shared_ptr<ydk::Entity> PppoeCfg::clone_ptr() const
 {
     return std::make_shared<PppoeCfg>();
 }
@@ -203,33 +203,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::get_nam
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe-bba-group")
     {
-        auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup>();
-        c->parent = this;
-        pppoe_bba_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup>();
+        ent_->parent = this;
+        pppoe_bba_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pppoe_bba_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pppoe_bba_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -328,7 +328,7 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tag")
     {
@@ -369,31 +369,31 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tag != nullptr)
     {
-        children["tag"] = tag;
+        _children["tag"] = tag;
     }
 
     if(sessions != nullptr)
     {
-        children["sessions"] = sessions;
+        _children["sessions"] = sessions;
     }
 
     if(control_packets != nullptr)
     {
-        children["control-packets"] = control_packets;
+        _children["control-packets"] = control_packets;
     }
 
     if(pa_do_delay != nullptr)
     {
-        children["pa-do-delay"] = pa_do_delay;
+        _children["pa-do-delay"] = pa_do_delay;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -522,7 +522,7 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "padr")
     {
@@ -554,26 +554,26 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(padr != nullptr)
     {
-        children["padr"] = padr;
+        _children["padr"] = padr;
     }
 
     if(service_name_configureds != nullptr)
     {
-        children["service-name-configureds"] = service_name_configureds;
+        _children["service-name-configureds"] = service_name_configureds;
     }
 
     if(ppp_max_payload != nullptr)
     {
-        children["ppp-max-payload"] = ppp_max_payload;
+        _children["ppp-max-payload"] = ppp_max_payload;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -666,16 +666,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -762,33 +762,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-name-configured")
     {
-        auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured>();
-        c->parent = this;
-        service_name_configured.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured>();
+        ent_->parent = this;
+        service_name_configured.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_name_configured.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_name_configured.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -848,16 +848,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -930,16 +930,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1077,7 +1077,7 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-throttle")
     {
@@ -1271,116 +1271,116 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vlan_throttle != nullptr)
     {
-        children["vlan-throttle"] = vlan_throttle;
+        _children["vlan-throttle"] = vlan_throttle;
     }
 
     if(inner_vlan_throttle != nullptr)
     {
-        children["inner-vlan-throttle"] = inner_vlan_throttle;
+        _children["inner-vlan-throttle"] = inner_vlan_throttle;
     }
 
     if(remote_id_limit != nullptr)
     {
-        children["remote-id-limit"] = remote_id_limit;
+        _children["remote-id-limit"] = remote_id_limit;
     }
 
     if(mac_iwf_access_interface_throttle != nullptr)
     {
-        children["mac-iwf-access-interface-throttle"] = mac_iwf_access_interface_throttle;
+        _children["mac-iwf-access-interface-throttle"] = mac_iwf_access_interface_throttle;
     }
 
     if(access_interface_limit != nullptr)
     {
-        children["access-interface-limit"] = access_interface_limit;
+        _children["access-interface-limit"] = access_interface_limit;
     }
 
     if(mac_access_interface_throttle != nullptr)
     {
-        children["mac-access-interface-throttle"] = mac_access_interface_throttle;
+        _children["mac-access-interface-throttle"] = mac_access_interface_throttle;
     }
 
     if(outer_vlan_limit != nullptr)
     {
-        children["outer-vlan-limit"] = outer_vlan_limit;
+        _children["outer-vlan-limit"] = outer_vlan_limit;
     }
 
     if(circuit_id_throttle != nullptr)
     {
-        children["circuit-id-throttle"] = circuit_id_throttle;
+        _children["circuit-id-throttle"] = circuit_id_throttle;
     }
 
     if(mac_limit != nullptr)
     {
-        children["mac-limit"] = mac_limit;
+        _children["mac-limit"] = mac_limit;
     }
 
     if(circuit_id_limit != nullptr)
     {
-        children["circuit-id-limit"] = circuit_id_limit;
+        _children["circuit-id-limit"] = circuit_id_limit;
     }
 
     if(mac_iwf_limit != nullptr)
     {
-        children["mac-iwf-limit"] = mac_iwf_limit;
+        _children["mac-iwf-limit"] = mac_iwf_limit;
     }
 
     if(mac_iwf_access_interface_limit != nullptr)
     {
-        children["mac-iwf-access-interface-limit"] = mac_iwf_access_interface_limit;
+        _children["mac-iwf-access-interface-limit"] = mac_iwf_access_interface_limit;
     }
 
     if(inner_vlan_limit != nullptr)
     {
-        children["inner-vlan-limit"] = inner_vlan_limit;
+        _children["inner-vlan-limit"] = inner_vlan_limit;
     }
 
     if(outer_vlan_throttle != nullptr)
     {
-        children["outer-vlan-throttle"] = outer_vlan_throttle;
+        _children["outer-vlan-throttle"] = outer_vlan_throttle;
     }
 
     if(mac_throttle != nullptr)
     {
-        children["mac-throttle"] = mac_throttle;
+        _children["mac-throttle"] = mac_throttle;
     }
 
     if(circuit_id_and_remote_id_limit != nullptr)
     {
-        children["circuit-id-and-remote-id-limit"] = circuit_id_and_remote_id_limit;
+        _children["circuit-id-and-remote-id-limit"] = circuit_id_and_remote_id_limit;
     }
 
     if(vlan_limit != nullptr)
     {
-        children["vlan-limit"] = vlan_limit;
+        _children["vlan-limit"] = vlan_limit;
     }
 
     if(mac_access_interface_limit != nullptr)
     {
-        children["mac-access-interface-limit"] = mac_access_interface_limit;
+        _children["mac-access-interface-limit"] = mac_access_interface_limit;
     }
 
     if(remote_id_throttle != nullptr)
     {
-        children["remote-id-throttle"] = remote_id_throttle;
+        _children["remote-id-throttle"] = remote_id_throttle;
     }
 
     if(max_limit != nullptr)
     {
-        children["max-limit"] = max_limit;
+        _children["max-limit"] = max_limit;
     }
 
     if(circuit_id_and_remote_id_throttle != nullptr)
     {
-        children["circuit-id-and-remote-id-throttle"] = circuit_id_and_remote_id_throttle;
+        _children["circuit-id-and-remote-id-throttle"] = circuit_id_and_remote_id_throttle;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1447,16 +1447,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1553,16 +1553,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1655,16 +1655,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1751,16 +1751,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1853,16 +1853,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1949,16 +1949,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2051,16 +2051,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2147,16 +2147,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2249,16 +2249,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2341,16 +2341,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2433,16 +2433,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2525,16 +2525,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2617,16 +2617,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2713,16 +2713,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2819,16 +2819,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2921,16 +2921,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3013,16 +3013,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3105,16 +3105,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3201,16 +3201,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3303,16 +3303,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3399,16 +3399,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3497,16 +3497,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3608,7 +3608,7 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-id-substrings")
     {
@@ -3667,41 +3667,41 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(remote_id_substrings != nullptr)
     {
-        children["remote-id-substrings"] = remote_id_substrings;
+        _children["remote-id-substrings"] = remote_id_substrings;
     }
 
     if(remote_id_strings != nullptr)
     {
-        children["remote-id-strings"] = remote_id_strings;
+        _children["remote-id-strings"] = remote_id_strings;
     }
 
     if(service_name_strings != nullptr)
     {
-        children["service-name-strings"] = service_name_strings;
+        _children["service-name-strings"] = service_name_strings;
     }
 
     if(circuit_id_substrings != nullptr)
     {
-        children["circuit-id-substrings"] = circuit_id_substrings;
+        _children["circuit-id-substrings"] = circuit_id_substrings;
     }
 
     if(service_name_substrings != nullptr)
     {
-        children["service-name-substrings"] = service_name_substrings;
+        _children["service-name-substrings"] = service_name_substrings;
     }
 
     if(circuit_id_strings != nullptr)
     {
-        children["circuit-id-strings"] = circuit_id_strings;
+        _children["circuit-id-strings"] = circuit_id_strings;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3798,33 +3798,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-id-substring")
     {
-        auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring>();
-        c->parent = this;
-        remote_id_substring.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring>();
+        ent_->parent = this;
+        remote_id_substring.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : remote_id_substring.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : remote_id_substring.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3888,16 +3888,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3984,33 +3984,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-id-string")
     {
-        auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString>();
-        c->parent = this;
-        remote_id_string.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString>();
+        ent_->parent = this;
+        remote_id_string.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : remote_id_string.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : remote_id_string.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4074,16 +4074,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4170,33 +4170,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-name-string")
     {
-        auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString>();
-        c->parent = this;
-        service_name_string.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString>();
+        ent_->parent = this;
+        service_name_string.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_name_string.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_name_string.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4260,16 +4260,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4356,33 +4356,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "circuit-id-substring")
     {
-        auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring>();
-        c->parent = this;
-        circuit_id_substring.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring>();
+        ent_->parent = this;
+        circuit_id_substring.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : circuit_id_substring.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : circuit_id_substring.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4446,16 +4446,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4542,33 +4542,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-name-substring")
     {
-        auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring>();
-        c->parent = this;
-        service_name_substring.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring>();
+        ent_->parent = this;
+        service_name_substring.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_name_substring.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_name_substring.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4632,16 +4632,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4728,33 +4728,33 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "circuit-id-string")
     {
-        auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString>();
-        c->parent = this;
-        circuit_id_string.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString>();
+        ent_->parent = this;
+        circuit_id_string.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : circuit_id_string.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : circuit_id_string.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4818,16 +4818,16 @@ std::vector<std::pair<std::string, LeafData> > PppoeCfg::PppoeBbaGroups::PppoeBb
 
 }
 
-std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

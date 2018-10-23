@@ -81,14 +81,14 @@ std::vector<std::pair<std::string, LeafData> > TacacsServer::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> TacacsServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TacacsServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "host")
     {
-        auto c = std::make_shared<TacacsServer::Host>();
-        c->parent = this;
-        host.append(c);
-        return c;
+        auto ent_ = std::make_shared<TacacsServer::Host>();
+        ent_->parent = this;
+        host.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-sysadmin-tacacs-show-tacacs:requests")
@@ -130,40 +130,40 @@ std::shared_ptr<Entity> TacacsServer::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TacacsServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TacacsServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : host.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : host.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(requests != nullptr)
     {
-        children["Cisco-IOS-XR-sysadmin-tacacs-show-tacacs:requests"] = requests;
+        _children["Cisco-IOS-XR-sysadmin-tacacs-show-tacacs:requests"] = requests;
     }
 
     if(test_authentication != nullptr)
     {
-        children["Cisco-IOS-XR-sysadmin-tacacs-test-tacacs:test-authentication"] = test_authentication;
+        _children["Cisco-IOS-XR-sysadmin-tacacs-test-tacacs:test-authentication"] = test_authentication;
     }
 
     if(test_authorization != nullptr)
     {
-        children["Cisco-IOS-XR-sysadmin-tacacs-test-tacacs:test-authorization"] = test_authorization;
+        _children["Cisco-IOS-XR-sysadmin-tacacs-test-tacacs:test-authorization"] = test_authorization;
     }
 
     if(test_accounting != nullptr)
     {
-        children["Cisco-IOS-XR-sysadmin-tacacs-test-tacacs:test-accounting"] = test_accounting;
+        _children["Cisco-IOS-XR-sysadmin-tacacs-test-tacacs:test-accounting"] = test_accounting;
     }
 
-    return children;
+    return _children;
 }
 
 void TacacsServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -194,7 +194,7 @@ void TacacsServer::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> TacacsServer::clone_ptr() const
+std::shared_ptr<ydk::Entity> TacacsServer::clone_ptr() const
 {
     return std::make_shared<TacacsServer>();
 }
@@ -288,16 +288,16 @@ std::vector<std::pair<std::string, LeafData> > TacacsServer::Host::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> TacacsServer::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TacacsServer::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TacacsServer::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TacacsServer::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TacacsServer::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -411,33 +411,33 @@ std::vector<std::pair<std::string, LeafData> > TacacsServer::Requests::get_name_
 
 }
 
-std::shared_ptr<Entity> TacacsServer::Requests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TacacsServer::Requests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        auto c = std::make_shared<TacacsServer::Requests::Ipv4>();
-        c->parent = this;
-        ipv4.append(c);
-        return c;
+        auto ent_ = std::make_shared<TacacsServer::Requests::Ipv4>();
+        ent_->parent = this;
+        ipv4.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TacacsServer::Requests::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TacacsServer::Requests::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TacacsServer::Requests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -533,16 +533,16 @@ std::vector<std::pair<std::string, LeafData> > TacacsServer::Requests::Ipv4::get
 
 }
 
-std::shared_ptr<Entity> TacacsServer::Requests::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TacacsServer::Requests::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TacacsServer::Requests::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TacacsServer::Requests::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TacacsServer::Requests::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -688,16 +688,16 @@ std::vector<std::pair<std::string, LeafData> > TacacsServer::TestAuthentication:
 
 }
 
-std::shared_ptr<Entity> TacacsServer::TestAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TacacsServer::TestAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TacacsServer::TestAuthentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TacacsServer::TestAuthentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TacacsServer::TestAuthentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -773,16 +773,16 @@ std::vector<std::pair<std::string, LeafData> > TacacsServer::TestAuthorization::
 
 }
 
-std::shared_ptr<Entity> TacacsServer::TestAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TacacsServer::TestAuthorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TacacsServer::TestAuthorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TacacsServer::TestAuthorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TacacsServer::TestAuthorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -858,16 +858,16 @@ std::vector<std::pair<std::string, LeafData> > TacacsServer::TestAccounting::get
 
 }
 
-std::shared_ptr<Entity> TacacsServer::TestAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TacacsServer::TestAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TacacsServer::TestAccounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TacacsServer::TestAccounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TacacsServer::TestAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

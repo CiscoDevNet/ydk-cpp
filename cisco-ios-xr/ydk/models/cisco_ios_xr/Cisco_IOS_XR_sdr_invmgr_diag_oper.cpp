@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Diag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "racks")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Diag::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(racks != nullptr)
     {
-        children["racks"] = racks;
+        _children["racks"] = racks;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Diag::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Diag::clone_ptr() const
+std::shared_ptr<ydk::Entity> Diag::clone_ptr() const
 {
     return std::make_shared<Diag>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack")
     {
-        auto c = std::make_shared<Diag::Racks::Rack>();
-        c->parent = this;
-        rack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Racks::Rack>();
+        ent_->parent = this;
+        rack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -284,7 +284,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "power-shelfs")
     {
@@ -325,31 +325,31 @@ std::shared_ptr<Entity> Diag::Racks::Rack::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(power_shelfs != nullptr)
     {
-        children["power-shelfs"] = power_shelfs;
+        _children["power-shelfs"] = power_shelfs;
     }
 
     if(fan_trays != nullptr)
     {
-        children["fan-trays"] = fan_trays;
+        _children["fan-trays"] = fan_trays;
     }
 
     if(slots != nullptr)
     {
-        children["slots"] = slots;
+        _children["slots"] = slots;
     }
 
     if(chassis != nullptr)
     {
-        children["chassis"] = chassis;
+        _children["chassis"] = chassis;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -426,33 +426,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::PowerShelfs::g
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::PowerShelfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "power-shelf")
     {
-        auto c = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf>();
-        c->parent = this;
-        power_shelf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf>();
+        ent_->parent = this;
+        power_shelf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::PowerShelfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : power_shelf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : power_shelf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::PowerShelfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -517,7 +517,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::PowerShelfs::P
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "power-supplies")
     {
@@ -531,16 +531,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(power_supplies != nullptr)
     {
-        children["power-supplies"] = power_supplies;
+        _children["power-supplies"] = power_supplies;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::PowerShelfs::PowerShelf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -617,33 +617,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::PowerShelfs::P
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "power-supply")
     {
-        auto c = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply>();
-        c->parent = this;
-        power_supply.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply>();
+        ent_->parent = this;
+        power_supply.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : power_supply.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : power_supply.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -708,7 +708,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::PowerShelfs::P
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "information")
     {
@@ -722,16 +722,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplie
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(information != nullptr)
     {
-        children["information"] = information;
+        _children["information"] = information;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1029,7 +1029,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::PowerShelfs::P
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rma")
     {
@@ -1043,16 +1043,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplie
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rma != nullptr)
     {
-        children["rma"] = rma;
+        _children["rma"] = rma;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1689,16 +1689,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::PowerShelfs::P
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1795,33 +1795,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::get_
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::FanTrays::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fan-tray")
     {
-        auto c = std::make_shared<Diag::Racks::Rack::FanTrays::FanTray>();
-        c->parent = this;
-        fan_tray.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Racks::Rack::FanTrays::FanTray>();
+        ent_->parent = this;
+        fan_tray.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::FanTrays::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fan_tray.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fan_tray.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::FanTrays::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1886,7 +1886,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanT
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::FanTrays::FanTray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fanses")
     {
@@ -1900,16 +1900,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::FanTrays::FanTray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fanses != nullptr)
     {
-        children["fanses"] = fanses;
+        _children["fanses"] = fanses;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::FanTrays::FanTray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1986,33 +1986,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanT
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fans")
     {
-        auto c = std::make_shared<Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans>();
-        c->parent = this;
-        fans.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans>();
+        ent_->parent = this;
+        fans.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fans.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fans.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::FanTrays::FanTray::Fanses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2077,7 +2077,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanT
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "information")
     {
@@ -2091,16 +2091,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(information != nullptr)
     {
-        children["information"] = information;
+        _children["information"] = information;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2398,7 +2398,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanT
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rma")
     {
@@ -2412,16 +2412,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Info
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rma != nullptr)
     {
-        children["rma"] = rma;
+        _children["rma"] = rma;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3058,16 +3058,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::FanTrays::FanT
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Racks::Rack::FanTrays::FanTray::Fanses::Fans::Information::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3164,33 +3164,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::get_nam
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slot")
     {
-        auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot>();
-        c->parent = this;
-        slot.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Racks::Rack::Slots::Slot>();
+        ent_->parent = this;
+        slot.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::Slots::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : slot.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : slot.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3255,7 +3255,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::g
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instances")
     {
@@ -3269,16 +3269,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::Slots::Slot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(instances != nullptr)
     {
-        children["instances"] = instances;
+        _children["instances"] = instances;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3355,33 +3355,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::Slots::Slot::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance")
     {
-        auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance>();
-        c->parent = this;
-        instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance>();
+        ent_->parent = this;
+        instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::Slots::Slot::Instances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::Slots::Slot::Instances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3446,7 +3446,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -3460,16 +3460,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::Slots::Slot::Instances::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3543,7 +3543,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "card-instance")
     {
@@ -3557,16 +3557,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(card_instance != nullptr)
     {
-        children["card-instance"] = card_instance;
+        _children["card-instance"] = card_instance;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3864,7 +3864,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rma")
     {
@@ -3878,16 +3878,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rma != nullptr)
     {
-        children["rma"] = rma;
+        _children["rma"] = rma;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4524,16 +4524,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Slots::Slot::I
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4851,7 +4851,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Chassis::get_n
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Chassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::Chassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rma")
     {
@@ -4865,16 +4865,16 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Chassis::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Chassis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::Chassis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rma != nullptr)
     {
-        children["rma"] = rma;
+        _children["rma"] = rma;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Racks::Rack::Chassis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5511,16 +5511,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Racks::Rack::Chassis::Rma::
 
 }
 
-std::shared_ptr<Entity> Diag::Racks::Rack::Chassis::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Racks::Rack::Chassis::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Chassis::Rma::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Racks::Rack::Chassis::Rma::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Racks::Rack::Chassis::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

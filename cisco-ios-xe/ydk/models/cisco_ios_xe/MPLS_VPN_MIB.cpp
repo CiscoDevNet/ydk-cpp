@@ -76,7 +76,7 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsVpnScalars")
     {
@@ -144,46 +144,46 @@ std::shared_ptr<Entity> MPLSVPNMIB::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mplsvpnscalars != nullptr)
     {
-        children["mplsVpnScalars"] = mplsvpnscalars;
+        _children["mplsVpnScalars"] = mplsvpnscalars;
     }
 
     if(mplsvpninterfaceconftable != nullptr)
     {
-        children["mplsVpnInterfaceConfTable"] = mplsvpninterfaceconftable;
+        _children["mplsVpnInterfaceConfTable"] = mplsvpninterfaceconftable;
     }
 
     if(mplsvpnvrftable != nullptr)
     {
-        children["mplsVpnVrfTable"] = mplsvpnvrftable;
+        _children["mplsVpnVrfTable"] = mplsvpnvrftable;
     }
 
     if(mplsvpnvrfroutetargettable != nullptr)
     {
-        children["mplsVpnVrfRouteTargetTable"] = mplsvpnvrfroutetargettable;
+        _children["mplsVpnVrfRouteTargetTable"] = mplsvpnvrfroutetargettable;
     }
 
     if(mplsvpnvrfbgpnbraddrtable != nullptr)
     {
-        children["mplsVpnVrfBgpNbrAddrTable"] = mplsvpnvrfbgpnbraddrtable;
+        _children["mplsVpnVrfBgpNbrAddrTable"] = mplsvpnvrfbgpnbraddrtable;
     }
 
     if(mplsvpnvrfbgpnbrprefixtable != nullptr)
     {
-        children["mplsVpnVrfBgpNbrPrefixTable"] = mplsvpnvrfbgpnbrprefixtable;
+        _children["mplsVpnVrfBgpNbrPrefixTable"] = mplsvpnvrfbgpnbrprefixtable;
     }
 
     if(mplsvpnvrfroutetable != nullptr)
     {
-        children["mplsVpnVrfRouteTable"] = mplsvpnvrfroutetable;
+        _children["mplsVpnVrfRouteTable"] = mplsvpnvrfroutetable;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSVPNMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -194,7 +194,7 @@ void MPLSVPNMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::clone_ptr() const
 {
     return std::make_shared<MPLSVPNMIB>();
 }
@@ -290,16 +290,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnScalars::get_n
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnScalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnScalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnScalars::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnScalars::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnScalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -423,33 +423,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnInterfaceConfT
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnInterfaceConfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnInterfaceConfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsVpnInterfaceConfEntry")
     {
-        auto c = std::make_shared<MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry>();
-        c->parent = this;
-        mplsvpninterfaceconfentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry>();
+        ent_->parent = this;
+        mplsvpninterfaceconfentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnInterfaceConfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnInterfaceConfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplsvpninterfaceconfentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplsvpninterfaceconfentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnInterfaceConfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -541,16 +541,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnInterfaceConfT
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnInterfaceConfTable::MplsVpnInterfaceConfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -692,33 +692,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfTable::get_
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsVpnVrfEntry")
     {
-        auto c = std::make_shared<MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry>();
-        c->parent = this;
-        mplsvpnvrfentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry>();
+        ent_->parent = this;
+        mplsvpnvrfentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplsvpnvrfentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplsvpnvrfentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -853,16 +853,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfTable::Mpls
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfTable::MplsVpnVrfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1116,33 +1116,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfRouteTarget
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfRouteTargetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfRouteTargetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsVpnVrfRouteTargetEntry")
     {
-        auto c = std::make_shared<MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry>();
-        c->parent = this;
-        mplsvpnvrfroutetargetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry>();
+        ent_->parent = this;
+        mplsvpnvrfroutetargetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfRouteTargetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfRouteTargetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplsvpnvrfroutetargetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplsvpnvrfroutetargetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfRouteTargetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1231,16 +1231,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfRouteTarget
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfRouteTargetTable::MplsVpnVrfRouteTargetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1374,33 +1374,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfBgpNbrAddrT
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsVpnVrfBgpNbrAddrEntry")
     {
-        auto c = std::make_shared<MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry>();
-        c->parent = this;
-        mplsvpnvrfbgpnbraddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry>();
+        ent_->parent = this;
+        mplsvpnvrfbgpnbraddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplsvpnvrfbgpnbraddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplsvpnvrfbgpnbraddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1497,16 +1497,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfBgpNbrAddrT
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfBgpNbrAddrTable::MplsVpnVrfBgpNbrAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1660,33 +1660,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfBgpNbrPrefi
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsVpnVrfBgpNbrPrefixEntry")
     {
-        auto c = std::make_shared<MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry>();
-        c->parent = this;
-        mplsvpnvrfbgpnbrprefixentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry>();
+        ent_->parent = this;
+        mplsvpnvrfbgpnbrprefixentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplsvpnvrfbgpnbrprefixentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplsvpnvrfbgpnbrprefixentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1812,16 +1812,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfBgpNbrPrefi
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfBgpNbrPrefixTable::MplsVpnVrfBgpNbrPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2045,33 +2045,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfRouteTable:
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsVpnVrfRouteEntry")
     {
-        auto c = std::make_shared<MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry>();
-        c->parent = this;
-        mplsvpnvrfrouteentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry>();
+        ent_->parent = this;
+        mplsvpnvrfrouteentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfRouteTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfRouteTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplsvpnvrfrouteentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplsvpnvrfrouteentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfRouteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2222,16 +2222,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSVPNMIB::MplsVpnVrfRouteTable:
 
 }
 
-std::shared_ptr<Entity> MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSVPNMIB::MplsVpnVrfRouteTable::MplsVpnVrfRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -62,7 +62,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Aps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aps-modules")
     {
@@ -76,16 +76,16 @@ std::shared_ptr<Entity> Aps::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aps_modules != nullptr)
     {
-        children["aps-modules"] = aps_modules;
+        _children["aps-modules"] = aps_modules;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -96,7 +96,7 @@ void Aps::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Aps::clone_ptr() const
+std::shared_ptr<ydk::Entity> Aps::clone_ptr() const
 {
     return std::make_shared<Aps>();
 }
@@ -184,33 +184,33 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aps-module")
     {
-        auto c = std::make_shared<Aps::ApsModules::ApsModule>();
-        c->parent = this;
-        aps_module.append(c);
-        return c;
+        auto ent_ = std::make_shared<Aps::ApsModules::ApsModule>();
+        ent_->parent = this;
+        aps_module.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : aps_module.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : aps_module.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -290,7 +290,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::get_n
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -322,26 +322,26 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(ports != nullptr)
     {
-        children["ports"] = ports;
+        _children["ports"] = ports;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -430,16 +430,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Confi
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -582,16 +582,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::State
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -740,7 +740,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-primary-in")
     {
@@ -799,41 +799,41 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(line_primary_in != nullptr)
     {
-        children["line-primary-in"] = line_primary_in;
+        _children["line-primary-in"] = line_primary_in;
     }
 
     if(line_primary_out != nullptr)
     {
-        children["line-primary-out"] = line_primary_out;
+        _children["line-primary-out"] = line_primary_out;
     }
 
     if(line_secondary_in != nullptr)
     {
-        children["line-secondary-in"] = line_secondary_in;
+        _children["line-secondary-in"] = line_secondary_in;
     }
 
     if(line_secondary_out != nullptr)
     {
-        children["line-secondary-out"] = line_secondary_out;
+        _children["line-secondary-out"] = line_secondary_out;
     }
 
     if(common_in != nullptr)
     {
-        children["common-in"] = common_in;
+        _children["common-in"] = common_in;
     }
 
     if(common_output != nullptr)
     {
-        children["common-output"] = common_output;
+        _children["common-output"] = common_output;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -896,7 +896,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -919,21 +919,21 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -996,16 +996,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1097,7 +1097,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-power")
     {
@@ -1111,16 +1111,16 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optical_power != nullptr)
     {
-        children["optical-power"] = optical_power;
+        _children["optical-power"] = optical_power;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1221,16 +1221,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1333,7 +1333,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1356,21 +1356,21 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1429,16 +1429,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1516,7 +1516,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-power")
     {
@@ -1530,16 +1530,16 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optical_power != nullptr)
     {
-        children["optical-power"] = optical_power;
+        _children["optical-power"] = optical_power;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1630,16 +1630,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1742,7 +1742,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1765,21 +1765,21 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1842,16 +1842,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1943,7 +1943,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-power")
     {
@@ -1957,16 +1957,16 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Stat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optical_power != nullptr)
     {
-        children["optical-power"] = optical_power;
+        _children["optical-power"] = optical_power;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2067,16 +2067,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2179,7 +2179,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2202,21 +2202,21 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2275,16 +2275,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2362,7 +2362,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-power")
     {
@@ -2376,16 +2376,16 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Sta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optical_power != nullptr)
     {
-        children["optical-power"] = optical_power;
+        _children["optical-power"] = optical_power;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2476,16 +2476,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2588,7 +2588,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2611,21 +2611,21 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::CommonIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2688,16 +2688,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::CommonIn::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2789,7 +2789,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-power")
     {
@@ -2803,16 +2803,16 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::State::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optical_power != nullptr)
     {
-        children["optical-power"] = optical_power;
+        _children["optical-power"] = optical_power;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::CommonIn::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2913,16 +2913,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3025,7 +3025,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3048,21 +3048,21 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::CommonOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3121,16 +3121,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3208,7 +3208,7 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-power")
     {
@@ -3222,16 +3222,16 @@ std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optical_power != nullptr)
     {
-        children["optical-power"] = optical_power;
+        _children["optical-power"] = optical_power;
     }
 
-    return children;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::CommonOutput::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3322,16 +3322,16 @@ std::vector<std::pair<std::string, LeafData> > Aps::ApsModules::ApsModule::Ports
 
 }
 
-std::shared_ptr<Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

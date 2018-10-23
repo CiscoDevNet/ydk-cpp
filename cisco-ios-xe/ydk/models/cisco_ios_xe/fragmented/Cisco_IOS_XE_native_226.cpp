@@ -59,7 +59,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -73,16 +73,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -165,14 +165,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -196,30 +196,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -287,16 +287,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -385,16 +385,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -471,33 +471,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -561,16 +561,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -649,7 +649,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -663,16 +663,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -746,14 +746,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress>();
-        c->parent = this;
-        sender_ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress>();
+        ent_->parent = this;
+        sender_ip_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -777,30 +777,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -869,7 +869,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -883,16 +883,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -985,14 +985,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -1016,30 +1016,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1107,16 +1107,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1205,16 +1205,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1291,33 +1291,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1381,16 +1381,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1469,7 +1469,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -1483,16 +1483,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1565,14 +1565,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -1596,30 +1596,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1687,16 +1687,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1785,16 +1785,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Any_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Any_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Any_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1871,33 +1871,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1961,16 +1961,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2057,33 +2057,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress>();
-        c->parent = this;
-        ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress>();
+        ent_->parent = this;
+        ip_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2148,7 +2148,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -2162,16 +2162,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2254,14 +2254,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -2285,30 +2285,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2376,16 +2376,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2474,16 +2474,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2560,33 +2560,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2650,16 +2650,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Permit::
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Permit::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2746,7 +2746,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::ge
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -2778,26 +2778,26 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(request != nullptr)
     {
-        children["request"] = request;
+        _children["request"] = request;
     }
 
     if(response != nullptr)
     {
-        children["response"] = response;
+        _children["response"] = response;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2871,14 +2871,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Ip::SenderIpAddress>();
-        c->parent = this;
-        sender_ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Ip::SenderIpAddress>();
+        ent_->parent = this;
+        sender_ip_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -2902,30 +2902,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2994,7 +2994,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -3008,16 +3008,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::SenderIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3110,14 +3110,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -3141,30 +3141,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3232,16 +3232,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3330,16 +3330,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3416,33 +3416,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3506,16 +3506,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3594,7 +3594,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -3608,16 +3608,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Any::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3690,14 +3690,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -3721,30 +3721,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Any::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3812,16 +3812,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Any::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3910,16 +3910,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Any::Mac::Any_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3996,33 +3996,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4086,16 +4086,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Any::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4182,33 +4182,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Ip::Host::IpAddress>();
-        c->parent = this;
-        ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Ip::Host::IpAddress>();
+        ent_->parent = this;
+        ip_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4273,7 +4273,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -4287,16 +4287,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Host::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4379,14 +4379,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -4410,30 +4410,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4501,16 +4501,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4599,16 +4599,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4685,33 +4685,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4775,16 +4775,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4863,7 +4863,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -4877,16 +4877,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4960,14 +4960,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress>();
-        c->parent = this;
-        sender_ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress>();
+        ent_->parent = this;
+        sender_ip_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -4991,30 +4991,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5083,7 +5083,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -5097,16 +5097,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5199,14 +5199,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -5230,30 +5230,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5321,16 +5321,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5419,16 +5419,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5505,33 +5505,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5595,16 +5595,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5683,7 +5683,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -5697,16 +5697,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5779,14 +5779,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -5810,30 +5810,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5901,16 +5901,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5999,16 +5999,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Any_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6085,33 +6085,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6175,16 +6175,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Any::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6271,33 +6271,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress>();
-        c->parent = this;
-        ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress>();
+        ent_->parent = this;
+        ip_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6362,7 +6362,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -6376,16 +6376,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6468,14 +6468,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -6499,30 +6499,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6590,16 +6590,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6688,16 +6688,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6774,33 +6774,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6864,16 +6864,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6952,7 +6952,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -6966,16 +6966,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7049,14 +7049,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress>();
-        c->parent = this;
-        sender_ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress>();
+        ent_->parent = this;
+        sender_ip_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -7080,30 +7080,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7172,7 +7172,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -7186,16 +7186,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAdd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7288,14 +7288,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -7319,30 +7319,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAdd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7410,16 +7410,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7508,16 +7508,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7594,33 +7594,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7684,16 +7684,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7772,7 +7772,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -7786,16 +7786,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7868,14 +7868,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -7899,30 +7899,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7990,16 +7990,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8088,16 +8088,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Any_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8174,33 +8174,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8264,16 +8264,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Any::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8360,33 +8360,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress>();
-        c->parent = this;
-        ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress>();
+        ent_->parent = this;
+        ip_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8451,7 +8451,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -8465,16 +8465,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAdd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8557,14 +8557,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -8588,30 +8588,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAdd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8679,16 +8679,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8777,16 +8777,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8863,33 +8863,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8953,16 +8953,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Deny::Re
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Deny::Response::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9045,7 +9045,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "permit")
     {
@@ -9068,21 +9068,21 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(permit != nullptr)
     {
-        children["permit"] = permit;
+        _children["permit"] = permit;
     }
 
     if(deny != nullptr)
     {
-        children["deny"] = deny;
+        _children["deny"] = deny;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9149,7 +9149,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -9181,26 +9181,26 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(request != nullptr)
     {
-        children["request"] = request;
+        _children["request"] = request;
     }
 
     if(response != nullptr)
     {
-        children["response"] = response;
+        _children["response"] = response;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9274,14 +9274,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress>();
-        c->parent = this;
-        sender_ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress>();
+        ent_->parent = this;
+        sender_ip_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -9305,30 +9305,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9397,7 +9397,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -9411,16 +9411,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9513,14 +9513,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -9544,30 +9544,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9635,16 +9635,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9733,16 +9733,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9819,33 +9819,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9909,16 +9909,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9997,7 +9997,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -10011,16 +10011,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10093,14 +10093,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -10124,30 +10124,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10215,16 +10215,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10313,16 +10313,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Any_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Any_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Any_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10399,33 +10399,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10489,16 +10489,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Any::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10585,33 +10585,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress>();
-        c->parent = this;
-        ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress>();
+        ent_->parent = this;
+        ip_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10676,7 +10676,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -10690,16 +10690,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10782,14 +10782,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -10813,30 +10813,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAd
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10904,16 +10904,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11002,16 +11002,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11088,33 +11088,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11178,16 +11178,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11266,7 +11266,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -11280,16 +11280,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11363,14 +11363,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress>();
-        c->parent = this;
-        sender_ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress>();
+        ent_->parent = this;
+        sender_ip_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -11394,30 +11394,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11486,7 +11486,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -11500,16 +11500,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11602,14 +11602,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -11633,30 +11633,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11724,16 +11724,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11822,16 +11822,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11908,33 +11908,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11998,16 +11998,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12086,7 +12086,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -12100,16 +12100,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12182,14 +12182,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -12213,30 +12213,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12304,16 +12304,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12402,16 +12402,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Any_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Any_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Any_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12488,33 +12488,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12578,16 +12578,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Any::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12674,33 +12674,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress>();
-        c->parent = this;
-        ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress>();
+        ent_->parent = this;
+        ip_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12765,7 +12765,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -12779,16 +12779,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::H
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12871,14 +12871,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -12902,30 +12902,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::H
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12993,16 +12993,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13091,16 +13091,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13177,33 +13177,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13267,16 +13267,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Request::Ip::Host::IpAddress::Mac::Host_::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13355,7 +13355,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -13369,16 +13369,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13452,14 +13452,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress>();
-        c->parent = this;
-        sender_ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress>();
+        ent_->parent = this;
+        sender_ip_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -13483,30 +13483,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13575,7 +13575,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -13589,16 +13589,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13691,14 +13691,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -13722,30 +13722,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13813,16 +13813,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13911,16 +13911,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13997,33 +13997,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14087,16 +14087,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::SenderIpAddress::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14175,7 +14175,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -14189,16 +14189,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::Any::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14271,14 +14271,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -14302,30 +14302,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14393,16 +14393,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14491,16 +14491,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Any_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Any_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Any_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Any_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14577,33 +14577,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14667,16 +14667,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::Any::Mac::Host::SenderMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14763,33 +14763,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress>();
-        c->parent = this;
-        ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress>();
+        ent_->parent = this;
+        ip_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14854,7 +14854,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
@@ -14868,16 +14868,16 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14960,14 +14960,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Arp::AccessList::Default:
 
 }
 
-std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-mac-address")
     {
-        auto c = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress>();
-        c->parent = this;
-        sender_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::Mac::SenderMacAddress>();
+        ent_->parent = this;
+        sender_mac_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "any")
@@ -14991,30 +14991,30 @@ std::shared_ptr<Entity> Native::Arp::AccessList::Default::Permit::Response::Ip::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(any != nullptr)
     {
-        children["any"] = any;
+        _children["any"] = any;
     }
 
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Arp::AccessList::Default::Permit::Response::Ip::Host::IpAddress::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

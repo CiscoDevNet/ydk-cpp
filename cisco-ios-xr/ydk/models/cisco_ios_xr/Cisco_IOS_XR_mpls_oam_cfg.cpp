@@ -61,7 +61,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> MplsOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reply-mode")
     {
@@ -75,16 +75,16 @@ std::shared_ptr<Entity> MplsOam::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(reply_mode != nullptr)
     {
-        children["reply-mode"] = reply_mode;
+        _children["reply-mode"] = reply_mode;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -115,7 +115,7 @@ void MplsOam::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> MplsOam::clone_ptr() const
+std::shared_ptr<ydk::Entity> MplsOam::clone_ptr() const
 {
     return std::make_shared<MplsOam>();
 }
@@ -195,7 +195,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::ReplyMode::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> MplsOam::ReplyMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::ReplyMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "control-channel")
     {
@@ -209,16 +209,16 @@ std::shared_ptr<Entity> MplsOam::ReplyMode::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::ReplyMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::ReplyMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(control_channel != nullptr)
     {
-        children["control-channel"] = control_channel;
+        _children["control-channel"] = control_channel;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::ReplyMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -284,16 +284,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::ReplyMode::ControlChanne
 
 }
 
-std::shared_ptr<Entity> MplsOam::ReplyMode::ControlChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::ReplyMode::ControlChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::ReplyMode::ControlChannel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::ReplyMode::ControlChannel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::ReplyMode::ControlChannel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

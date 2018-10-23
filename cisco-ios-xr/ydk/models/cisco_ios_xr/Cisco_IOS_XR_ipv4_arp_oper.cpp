@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> ArpGmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-infos")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> ArpGmp::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf_infos != nullptr)
     {
-        children["vrf-infos"] = vrf_infos;
+        _children["vrf-infos"] = vrf_infos;
     }
 
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpGmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void ArpGmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ArpGmp::clone_ptr() const
+std::shared_ptr<ydk::Entity> ArpGmp::clone_ptr() const
 {
     return std::make_shared<ArpGmp>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::VrfInfos::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> ArpGmp::VrfInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::VrfInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-info")
     {
-        auto c = std::make_shared<ArpGmp::VrfInfos::VrfInfo>();
-        c->parent = this;
-        vrf_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<ArpGmp::VrfInfos::VrfInfo>();
+        ent_->parent = this;
+        vrf_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::VrfInfos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::VrfInfos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpGmp::VrfInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -305,16 +305,16 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::VrfInfos::VrfInfo::get_na
 
 }
 
-std::shared_ptr<Entity> ArpGmp::VrfInfos::VrfInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::VrfInfos::VrfInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::VrfInfos::VrfInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::VrfInfos::VrfInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ArpGmp::VrfInfos::VrfInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -448,33 +448,33 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::Vrfs::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> ArpGmp::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<ArpGmp::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<ArpGmp::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpGmp::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -554,7 +554,7 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::Vrfs::Vrf::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configured-ip-addresses")
     {
@@ -586,26 +586,26 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(configured_ip_addresses != nullptr)
     {
-        children["configured-ip-addresses"] = configured_ip_addresses;
+        _children["configured-ip-addresses"] = configured_ip_addresses;
     }
 
     if(routes != nullptr)
     {
-        children["routes"] = routes;
+        _children["routes"] = routes;
     }
 
     if(interface_configured_ips != nullptr)
     {
-        children["interface-configured-ips"] = interface_configured_ips;
+        _children["interface-configured-ips"] = interface_configured_ips;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpGmp::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -682,33 +682,33 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::Vrfs::Vrf::ConfiguredIpAd
 
 }
 
-std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configured-ip-address")
     {
-        auto c = std::make_shared<ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress>();
-        c->parent = this;
-        configured_ip_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress>();
+        ent_->parent = this;
+        configured_ip_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : configured_ip_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : configured_ip_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -784,16 +784,16 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::Vrfs::Vrf::ConfiguredIpAd
 
 }
 
-std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -910,33 +910,33 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::Vrfs::Vrf::Routes::get_na
 
 }
 
-std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::Vrfs::Vrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
-        auto c = std::make_shared<ArpGmp::Vrfs::Vrf::Routes::Route>();
-        c->parent = this;
-        route.append(c);
-        return c;
+        auto ent_ = std::make_shared<ArpGmp::Vrfs::Vrf::Routes::Route>();
+        ent_->parent = this;
+        route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::Routes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::Vrfs::Vrf::Routes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpGmp::Vrfs::Vrf::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1025,16 +1025,16 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::Vrfs::Vrf::Routes::Route:
 
 }
 
-std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::Vrfs::Vrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::Routes::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::Vrfs::Vrf::Routes::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ArpGmp::Vrfs::Vrf::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1159,33 +1159,33 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::Vrfs::Vrf::InterfaceConfi
 
 }
 
-std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-configured-ip")
     {
-        auto c = std::make_shared<ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp>();
-        c->parent = this;
-        interface_configured_ip.append(c);
-        return c;
+        auto ent_ = std::make_shared<ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp>();
+        ent_->parent = this;
+        interface_configured_ip.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_configured_ip.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_configured_ip.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1261,7 +1261,7 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::Vrfs::Vrf::InterfaceConfi
 
 }
 
-std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "associated-configuration-entry")
     {
@@ -1275,16 +1275,16 @@ std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(associated_configuration_entry != nullptr)
     {
-        children["associated-configuration-entry"] = associated_configuration_entry;
+        _children["associated-configuration-entry"] = associated_configuration_entry;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1395,16 +1395,16 @@ std::vector<std::pair<std::string, LeafData> > ArpGmp::Vrfs::Vrf::InterfaceConfi
 
 }
 
-std::shared_ptr<Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1503,7 +1503,7 @@ std::vector<std::pair<std::string, LeafData> > Arp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Arp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -1517,16 +1517,16 @@ std::shared_ptr<Entity> Arp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Arp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1537,7 +1537,7 @@ void Arp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Arp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Arp::clone_ptr() const
 {
     return std::make_shared<Arp>();
 }
@@ -1625,33 +1625,33 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Arp::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Arp::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Arp::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1743,7 +1743,7 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "resolution-history-dynamic")
     {
@@ -1802,41 +1802,41 @@ std::shared_ptr<Entity> Arp::Nodes::Node::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(resolution_history_dynamic != nullptr)
     {
-        children["resolution-history-dynamic"] = resolution_history_dynamic;
+        _children["resolution-history-dynamic"] = resolution_history_dynamic;
     }
 
     if(traffic_vrfs != nullptr)
     {
-        children["traffic-vrfs"] = traffic_vrfs;
+        _children["traffic-vrfs"] = traffic_vrfs;
     }
 
     if(traffic_node != nullptr)
     {
-        children["traffic-node"] = traffic_node;
+        _children["traffic-node"] = traffic_node;
     }
 
     if(resolution_history_client != nullptr)
     {
-        children["resolution-history-client"] = resolution_history_client;
+        _children["resolution-history-client"] = resolution_history_client;
     }
 
     if(entries != nullptr)
     {
-        children["entries"] = entries;
+        _children["entries"] = entries;
     }
 
     if(traffic_interfaces != nullptr)
     {
-        children["traffic-interfaces"] = traffic_interfaces;
+        _children["traffic-interfaces"] = traffic_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Arp::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1913,33 +1913,33 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::ResolutionHisto
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryDynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::ResolutionHistoryDynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "arp-entry")
     {
-        auto c = std::make_shared<Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry>();
-        c->parent = this;
-        arp_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry>();
+        ent_->parent = this;
+        arp_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHistoryDynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::ResolutionHistoryDynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : arp_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : arp_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Arp::Nodes::Node::ResolutionHistoryDynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2026,16 +2026,16 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::ResolutionHisto
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2182,33 +2182,33 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::TrafficVrfs::ge
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::TrafficVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::TrafficVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traffic-vrf")
     {
-        auto c = std::make_shared<Arp::Nodes::Node::TrafficVrfs::TrafficVrf>();
-        c->parent = this;
-        traffic_vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Arp::Nodes::Node::TrafficVrfs::TrafficVrf>();
+        ent_->parent = this;
+        traffic_vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficVrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::TrafficVrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : traffic_vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : traffic_vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Arp::Nodes::Node::TrafficVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2384,16 +2384,16 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::TrafficVrfs::Tr
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Arp::Nodes::Node::TrafficVrfs::TrafficVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2864,16 +2864,16 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::TrafficNode::ge
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::TrafficNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::TrafficNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::TrafficNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Arp::Nodes::Node::TrafficNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3230,33 +3230,33 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::ResolutionHisto
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::ResolutionHistoryClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "arp-entry")
     {
-        auto c = std::make_shared<Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry>();
-        c->parent = this;
-        arp_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry>();
+        ent_->parent = this;
+        arp_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHistoryClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::ResolutionHistoryClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : arp_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : arp_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Arp::Nodes::Node::ResolutionHistoryClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3343,16 +3343,16 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::ResolutionHisto
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3499,33 +3499,33 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::Entries::get_na
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::Entries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::Entries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entry")
     {
-        auto c = std::make_shared<Arp::Nodes::Node::Entries::Entry>();
-        c->parent = this;
-        entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Arp::Nodes::Node::Entries::Entry>();
+        ent_->parent = this;
+        entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::Entries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::Entries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Arp::Nodes::Node::Entries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3618,16 +3618,16 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::Entries::Entry:
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::Entries::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::Entries::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::Entries::Entry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::Entries::Entry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Arp::Nodes::Node::Entries::Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3784,33 +3784,33 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::TrafficInterfac
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::TrafficInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::TrafficInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traffic-interface")
     {
-        auto c = std::make_shared<Arp::Nodes::Node::TrafficInterfaces::TrafficInterface>();
-        c->parent = this;
-        traffic_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Arp::Nodes::Node::TrafficInterfaces::TrafficInterface>();
+        ent_->parent = this;
+        traffic_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::TrafficInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : traffic_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : traffic_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Arp::Nodes::Node::TrafficInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3986,16 +3986,16 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::TrafficInterfac
 
 }
 
-std::shared_ptr<Entity> Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

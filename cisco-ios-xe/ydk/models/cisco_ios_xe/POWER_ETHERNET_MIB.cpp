@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> POWERETHERNETMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pethPsePortTable")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> POWERETHERNETMIB::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> POWERETHERNETMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pethpseporttable != nullptr)
     {
-        children["pethPsePortTable"] = pethpseporttable;
+        _children["pethPsePortTable"] = pethpseporttable;
     }
 
     if(pethmainpsetable != nullptr)
     {
-        children["pethMainPseTable"] = pethmainpsetable;
+        _children["pethMainPseTable"] = pethmainpsetable;
     }
 
     if(pethnotificationcontroltable != nullptr)
     {
-        children["pethNotificationControlTable"] = pethnotificationcontroltable;
+        _children["pethNotificationControlTable"] = pethnotificationcontroltable;
     }
 
-    return children;
+    return _children;
 }
 
 void POWERETHERNETMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void POWERETHERNETMIB::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> POWERETHERNETMIB::clone_ptr() const
 {
     return std::make_shared<POWERETHERNETMIB>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethPsePortTabl
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::PethPsePortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> POWERETHERNETMIB::PethPsePortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pethPsePortEntry")
     {
-        auto c = std::make_shared<POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry>();
-        c->parent = this;
-        pethpseportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry>();
+        ent_->parent = this;
+        pethpseportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethPsePortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> POWERETHERNETMIB::PethPsePortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pethpseportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pethpseportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void POWERETHERNETMIB::PethPsePortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -420,16 +420,16 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethPsePortTabl
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void POWERETHERNETMIB::PethPsePortTable::PethPsePortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -799,33 +799,33 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethMainPseTabl
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::PethMainPseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> POWERETHERNETMIB::PethMainPseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pethMainPseEntry")
     {
-        auto c = std::make_shared<POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry>();
-        c->parent = this;
-        pethmainpseentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry>();
+        ent_->parent = this;
+        pethmainpseentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethMainPseTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> POWERETHERNETMIB::PethMainPseTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pethmainpseentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pethmainpseentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void POWERETHERNETMIB::PethMainPseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -908,16 +908,16 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethMainPseTabl
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void POWERETHERNETMIB::PethMainPseTable::PethMainPseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1041,33 +1041,33 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethNotificatio
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::PethNotificationControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> POWERETHERNETMIB::PethNotificationControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pethNotificationControlEntry")
     {
-        auto c = std::make_shared<POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry>();
-        c->parent = this;
-        pethnotificationcontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry>();
+        ent_->parent = this;
+        pethnotificationcontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethNotificationControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> POWERETHERNETMIB::PethNotificationControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pethnotificationcontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pethnotificationcontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void POWERETHERNETMIB::PethNotificationControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1138,16 +1138,16 @@ std::vector<std::pair<std::string, LeafData> > POWERETHERNETMIB::PethNotificatio
 
 }
 
-std::shared_ptr<Entity> POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void POWERETHERNETMIB::PethNotificationControlTable::PethNotificationControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

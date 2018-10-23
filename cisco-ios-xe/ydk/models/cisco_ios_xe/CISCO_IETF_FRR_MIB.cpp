@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFFRRMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsFrrScalars")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFFRRMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cmplsfrrscalars != nullptr)
     {
-        children["cmplsFrrScalars"] = cmplsfrrscalars;
+        _children["cmplsFrrScalars"] = cmplsfrrscalars;
     }
 
     if(cmplsfrrconsttable != nullptr)
     {
-        children["cmplsFrrConstTable"] = cmplsfrrconsttable;
+        _children["cmplsFrrConstTable"] = cmplsfrrconsttable;
     }
 
     if(cmplsfrrlogtable != nullptr)
     {
-        children["cmplsFrrLogTable"] = cmplsfrrlogtable;
+        _children["cmplsFrrLogTable"] = cmplsfrrlogtable;
     }
 
     if(cmplsfrrfacroutedbtable != nullptr)
     {
-        children["cmplsFrrFacRouteDBTable"] = cmplsfrrfacroutedbtable;
+        _children["cmplsFrrFacRouteDBTable"] = cmplsfrrfacroutedbtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFFRRMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void CISCOIETFFRRMIB::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIETFFRRMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIETFFRRMIB>();
 }
@@ -272,16 +272,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrScalars:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrScalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFFRRMIB::CmplsFrrScalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrScalars::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFFRRMIB::CmplsFrrScalars::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFFRRMIB::CmplsFrrScalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -495,33 +495,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrConstTab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrConstTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFFRRMIB::CmplsFrrConstTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsFrrConstEntry")
     {
-        auto c = std::make_shared<CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry>();
-        c->parent = this;
-        cmplsfrrconstentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry>();
+        ent_->parent = this;
+        cmplsfrrconstentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrConstTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFFRRMIB::CmplsFrrConstTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmplsfrrconstentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmplsfrrconstentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFFRRMIB::CmplsFrrConstTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -638,16 +638,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrConstTab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -851,33 +851,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrLogTable
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFFRRMIB::CmplsFrrLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsFrrLogEntry")
     {
-        auto c = std::make_shared<CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry>();
-        c->parent = this;
-        cmplsfrrlogentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry>();
+        ent_->parent = this;
+        cmplsfrrlogentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrLogTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFFRRMIB::CmplsFrrLogTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmplsfrrlogentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmplsfrrlogentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFFRRMIB::CmplsFrrLogTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -964,16 +964,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrLogTable
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1107,33 +1107,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrFacRoute
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsFrrFacRouteDBEntry")
     {
-        auto c = std::make_shared<CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry>();
-        c->parent = this;
-        cmplsfrrfacroutedbentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry>();
+        ent_->parent = this;
+        cmplsfrrfacroutedbentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmplsfrrfacroutedbentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmplsfrrfacroutedbentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1237,16 +1237,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrFacRoute
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

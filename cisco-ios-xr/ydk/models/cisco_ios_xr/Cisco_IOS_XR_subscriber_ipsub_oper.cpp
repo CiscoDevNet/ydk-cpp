@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> IpSubscriber::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void IpSubscriber::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IpSubscriber::clone_ptr() const
+std::shared_ptr<ydk::Entity> IpSubscriber::clone_ptr() const
 {
     return std::make_shared<IpSubscriber>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::get_name_lea
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<IpSubscriber::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpSubscriber::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,7 +280,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::get_na
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -312,26 +312,26 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(access_interfaces != nullptr)
     {
-        children["access-interfaces"] = access_interfaces;
+        _children["access-interfaces"] = access_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -415,7 +415,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interface-summary")
     {
@@ -437,39 +437,39 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::get_child_by_name(co
 
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<IpSubscriber::Nodes::Node::Summary::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpSubscriber::Nodes::Node::Summary::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_interface_summary != nullptr)
     {
-        children["access-interface-summary"] = access_interface_summary;
+        _children["access-interface-summary"] = access_interface_summary;
     }
 
     if(interface_counts != nullptr)
     {
-        children["interface-counts"] = interface_counts;
+        _children["interface-counts"] = interface_counts;
     }
 
-    count = 0;
-    for (auto c : vrf.entities())
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -537,7 +537,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "initiators")
     {
@@ -560,21 +560,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(initiators != nullptr)
     {
-        children["initiators"] = initiators;
+        _children["initiators"] = initiators;
     }
 
     if(ipv6_initiators != nullptr)
     {
-        children["ipv6-initiators"] = ipv6_initiators;
+        _children["ipv6-initiators"] = ipv6_initiators;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -647,7 +647,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
@@ -670,21 +670,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dhcp != nullptr)
     {
-        children["dhcp"] = dhcp;
+        _children["dhcp"] = dhcp;
     }
 
     if(packet_trigger != nullptr)
     {
-        children["packet-trigger"] = packet_trigger;
+        _children["packet-trigger"] = packet_trigger;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -747,16 +747,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -839,16 +839,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -931,7 +931,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
@@ -954,21 +954,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSumma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dhcp != nullptr)
     {
-        children["dhcp"] = dhcp;
+        _children["dhcp"] = dhcp;
     }
 
     if(packet_trigger != nullptr)
     {
-        children["packet-trigger"] = packet_trigger;
+        _children["packet-trigger"] = packet_trigger;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1031,16 +1031,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1123,16 +1123,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1215,7 +1215,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "initiators")
     {
@@ -1238,21 +1238,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(initiators != nullptr)
     {
-        children["initiators"] = initiators;
+        _children["initiators"] = initiators;
     }
 
     if(ipv6_initiators != nullptr)
     {
-        children["ipv6-initiators"] = ipv6_initiators;
+        _children["ipv6-initiators"] = ipv6_initiators;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1315,7 +1315,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
@@ -1338,21 +1338,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ini
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dhcp != nullptr)
     {
-        children["dhcp"] = dhcp;
+        _children["dhcp"] = dhcp;
     }
 
     if(packet_trigger != nullptr)
     {
-        children["packet-trigger"] = packet_trigger;
+        _children["packet-trigger"] = packet_trigger;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1467,16 +1467,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1741,16 +1741,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1963,7 +1963,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
@@ -1986,21 +1986,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dhcp != nullptr)
     {
-        children["dhcp"] = dhcp;
+        _children["dhcp"] = dhcp;
     }
 
     if(packet_trigger != nullptr)
     {
-        children["packet-trigger"] = packet_trigger;
+        _children["packet-trigger"] = packet_trigger;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2115,16 +2115,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2389,16 +2389,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2619,16 +2619,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Summary::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Summary::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summary::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Summary::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Summary::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2735,33 +2735,33 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interf
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpSubscriber::Nodes::Node::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2906,7 +2906,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interf
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -2929,21 +2929,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(ipv6vrf != nullptr)
     {
-        children["ipv6vrf"] = ipv6vrf;
+        _children["ipv6vrf"] = ipv6vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3206,16 +3206,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interf
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3298,16 +3298,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Interf
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3394,33 +3394,33 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-interface")
     {
-        auto c = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface>();
-        c->parent = this;
-        access_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface>();
+        ent_->parent = this;
+        access_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3517,7 +3517,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "initiators")
     {
@@ -3549,26 +3549,26 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(initiators != nullptr)
     {
-        children["initiators"] = initiators;
+        _children["initiators"] = initiators;
     }
 
     if(ipv6_initiators != nullptr)
     {
-        children["ipv6-initiators"] = ipv6_initiators;
+        _children["ipv6-initiators"] = ipv6_initiators;
     }
 
     if(session_limit != nullptr)
     {
-        children["session-limit"] = session_limit;
+        _children["session-limit"] = session_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3701,7 +3701,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
@@ -3724,21 +3724,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dhcp != nullptr)
     {
-        children["dhcp"] = dhcp;
+        _children["dhcp"] = dhcp;
     }
 
     if(packet_trigger != nullptr)
     {
-        children["packet-trigger"] = packet_trigger;
+        _children["packet-trigger"] = packet_trigger;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3833,16 +3833,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4037,16 +4037,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4209,7 +4209,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
@@ -4232,21 +4232,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dhcp != nullptr)
     {
-        children["dhcp"] = dhcp;
+        _children["dhcp"] = dhcp;
     }
 
     if(packet_trigger != nullptr)
     {
-        children["packet-trigger"] = packet_trigger;
+        _children["packet-trigger"] = packet_trigger;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4341,16 +4341,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4545,16 +4545,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4717,7 +4717,7 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unclassified-source")
     {
@@ -4740,21 +4740,21 @@ std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInter
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(unclassified_source != nullptr)
     {
-        children["unclassified-source"] = unclassified_source;
+        _children["unclassified-source"] = unclassified_source;
     }
 
     if(total != nullptr)
     {
-        children["total"] = total;
+        _children["total"] = total;
     }
 
-    return children;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4813,16 +4813,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4891,16 +4891,16 @@ std::vector<std::pair<std::string, LeafData> > IpSubscriber::Nodes::Node::Access
 
 }
 
-std::shared_ptr<Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "discovery-info-interfaces")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> EtherLinkOam::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(discovery_info_interfaces != nullptr)
     {
-        children["discovery-info-interfaces"] = discovery_info_interfaces;
+        _children["discovery-info-interfaces"] = discovery_info_interfaces;
     }
 
     if(interface_state_interfaces != nullptr)
     {
-        children["interface-state-interfaces"] = interface_state_interfaces;
+        _children["interface-state-interfaces"] = interface_state_interfaces;
     }
 
     if(running_config_interfaces != nullptr)
     {
-        children["running-config-interfaces"] = running_config_interfaces;
+        _children["running-config-interfaces"] = running_config_interfaces;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
     if(event_log_entry_interfaces != nullptr)
     {
-        children["event-log-entry-interfaces"] = event_log_entry_interfaces;
+        _children["event-log-entry-interfaces"] = event_log_entry_interfaces;
     }
 
     if(stats_interfaces != nullptr)
     {
-        children["stats-interfaces"] = stats_interfaces;
+        _children["stats-interfaces"] = stats_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void EtherLinkOam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> EtherLinkOam::clone_ptr() const
+std::shared_ptr<ydk::Entity> EtherLinkOam::clone_ptr() const
 {
     return std::make_shared<EtherLinkOam>();
 }
@@ -264,33 +264,33 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::DiscoveryInfoInterf
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::DiscoveryInfoInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::DiscoveryInfoInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "discovery-info-interface")
     {
-        auto c = std::make_shared<EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface>();
-        c->parent = this;
-        discovery_info_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface>();
+        ent_->parent = this;
+        discovery_info_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::DiscoveryInfoInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::DiscoveryInfoInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : discovery_info_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : discovery_info_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::DiscoveryInfoInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -553,16 +553,16 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::DiscoveryInfoInterf
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1136,33 +1136,33 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::InterfaceStateInter
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::InterfaceStateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-state-interface")
     {
-        auto c = std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface>();
-        c->parent = this;
-        interface_state_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface>();
+        ent_->parent = this;
+        interface_state_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::InterfaceStateInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_state_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_state_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::InterfaceStateInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1258,7 +1258,7 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::InterfaceStateInter
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "errors")
     {
@@ -1281,21 +1281,21 @@ std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateIn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(errors != nullptr)
     {
-        children["errors"] = errors;
+        _children["errors"] = errors;
     }
 
     if(efd_triggers != nullptr)
     {
-        children["efd-triggers"] = efd_triggers;
+        _children["efd-triggers"] = efd_triggers;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1450,16 +1450,16 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::InterfaceStateInter
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1634,16 +1634,16 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::InterfaceStateInter
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1767,33 +1767,33 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::RunningConfigInterf
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::RunningConfigInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::RunningConfigInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "running-config-interface")
     {
-        auto c = std::make_shared<EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface>();
-        c->parent = this;
-        running_config_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface>();
+        ent_->parent = this;
+        running_config_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::RunningConfigInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::RunningConfigInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : running_config_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : running_config_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::RunningConfigInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2172,16 +2172,16 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::RunningConfigInterf
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3045,33 +3045,33 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::Nodes::get_name_lea
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<EtherLinkOam::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<EtherLinkOam::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3143,7 +3143,7 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::Nodes::Node::get_na
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -3157,16 +3157,16 @@ std::shared_ptr<Entity> EtherLinkOam::Nodes::Node::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3319,16 +3319,16 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::Nodes::Node::Summar
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::Nodes::Node::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EtherLinkOam::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3622,33 +3622,33 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::EventLogEntryInterf
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::EventLogEntryInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event-log-entry-interface")
     {
-        auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface>();
-        c->parent = this;
-        event_log_entry_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface>();
+        ent_->parent = this;
+        event_log_entry_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::EventLogEntryInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : event_log_entry_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : event_log_entry_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::EventLogEntryInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3720,7 +3720,7 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::EventLogEntryInterf
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event-log-entry-indexes")
     {
@@ -3734,16 +3734,16 @@ std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInte
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(event_log_entry_indexes != nullptr)
     {
-        children["event-log-entry-indexes"] = event_log_entry_indexes;
+        _children["event-log-entry-indexes"] = event_log_entry_indexes;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3820,33 +3820,33 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::EventLogEntryInterf
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event-log-entry-index")
     {
-        auto c = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex>();
-        c->parent = this;
-        event_log_entry_index.append(c);
-        return c;
+        auto ent_ = std::make_shared<EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex>();
+        ent_->parent = this;
+        event_log_entry_index.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : event_log_entry_index.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : event_log_entry_index.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3982,16 +3982,16 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::EventLogEntryInterf
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4265,33 +4265,33 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::StatsInterfaces::ge
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::StatsInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::StatsInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats-interface")
     {
-        auto c = std::make_shared<EtherLinkOam::StatsInterfaces::StatsInterface>();
-        c->parent = this;
-        stats_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<EtherLinkOam::StatsInterfaces::StatsInterface>();
+        ent_->parent = this;
+        stats_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::StatsInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::StatsInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stats_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stats_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EtherLinkOam::StatsInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4462,16 +4462,16 @@ std::vector<std::pair<std::string, LeafData> > EtherLinkOam::StatsInterfaces::St
 
 }
 
-std::shared_ptr<Entity> EtherLinkOam::StatsInterfaces::StatsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EtherLinkOam::StatsInterfaces::StatsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::StatsInterfaces::StatsInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EtherLinkOam::StatsInterfaces::StatsInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EtherLinkOam::StatsInterfaces::StatsInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

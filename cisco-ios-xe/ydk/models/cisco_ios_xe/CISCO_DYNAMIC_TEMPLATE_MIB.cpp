@@ -88,7 +88,7 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::get_name
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtTemplateTable")
     {
@@ -183,61 +183,61 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cdttemplatetable != nullptr)
     {
-        children["cdtTemplateTable"] = cdttemplatetable;
+        _children["cdtTemplateTable"] = cdttemplatetable;
     }
 
     if(cdttemplatetargettable != nullptr)
     {
-        children["cdtTemplateTargetTable"] = cdttemplatetargettable;
+        _children["cdtTemplateTargetTable"] = cdttemplatetargettable;
     }
 
     if(cdttemplateassociationtable != nullptr)
     {
-        children["cdtTemplateAssociationTable"] = cdttemplateassociationtable;
+        _children["cdtTemplateAssociationTable"] = cdttemplateassociationtable;
     }
 
     if(cdttemplateusagetable != nullptr)
     {
-        children["cdtTemplateUsageTable"] = cdttemplateusagetable;
+        _children["cdtTemplateUsageTable"] = cdttemplateusagetable;
     }
 
     if(cdttemplatecommontable != nullptr)
     {
-        children["cdtTemplateCommonTable"] = cdttemplatecommontable;
+        _children["cdtTemplateCommonTable"] = cdttemplatecommontable;
     }
 
     if(cdtiftemplatetable != nullptr)
     {
-        children["cdtIfTemplateTable"] = cdtiftemplatetable;
+        _children["cdtIfTemplateTable"] = cdtiftemplatetable;
     }
 
     if(cdtppptemplatetable != nullptr)
     {
-        children["cdtPppTemplateTable"] = cdtppptemplatetable;
+        _children["cdtPppTemplateTable"] = cdtppptemplatetable;
     }
 
     if(cdtppppeeripaddrpooltable != nullptr)
     {
-        children["cdtPppPeerIpAddrPoolTable"] = cdtppppeeripaddrpooltable;
+        _children["cdtPppPeerIpAddrPoolTable"] = cdtppppeeripaddrpooltable;
     }
 
     if(cdtethernettemplatetable != nullptr)
     {
-        children["cdtEthernetTemplateTable"] = cdtethernettemplatetable;
+        _children["cdtEthernetTemplateTable"] = cdtethernettemplatetable;
     }
 
     if(cdtsrvtemplatetable != nullptr)
     {
-        children["cdtSrvTemplateTable"] = cdtsrvtemplatetable;
+        _children["cdtSrvTemplateTable"] = cdtsrvtemplatetable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ void CISCODYNAMICTEMPLATEMIB::set_filter(const std::string & value_path, YFilter
 {
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::clone_ptr() const
 {
     return std::make_shared<CISCODYNAMICTEMPLATEMIB>();
 }
@@ -336,33 +336,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtTemplateEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry>();
-        c->parent = this;
-        cdttemplateentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry>();
+        ent_->parent = this;
+        cdttemplateentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdttemplateentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdttemplateentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -449,16 +449,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateTable::CdtTemplateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -592,33 +592,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtTemplateTargetEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry>();
-        c->parent = this;
-        cdttemplatetargetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry>();
+        ent_->parent = this;
+        cdttemplatetargetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdttemplatetargetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdttemplatetargetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -698,16 +698,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateTargetTable::CdtTemplateTargetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -821,33 +821,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtTemplateAssociationEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry>();
-        c->parent = this;
-        cdttemplateassociationentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry>();
+        ent_->parent = this;
+        cdttemplateassociationentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdttemplateassociationentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdttemplateassociationentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -928,16 +928,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateAssociationTable::CdtTemplateAssociationEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1051,33 +1051,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtTemplateUsageEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry>();
-        c->parent = this;
-        cdttemplateusageentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry>();
+        ent_->parent = this;
+        cdttemplateusageentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdttemplateusageentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdttemplateusageentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1154,16 +1154,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateUsageTable::CdtTemplateUsageEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1267,33 +1267,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtTemplateCommonEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry>();
-        c->parent = this;
-        cdttemplatecommonentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry>();
+        ent_->parent = this;
+        cdttemplatecommonentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdttemplatecommonentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdttemplatecommonentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1420,16 +1420,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtTempl
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtTemplateCommonTable::CdtTemplateCommonEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1661,33 +1661,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtIfTem
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtIfTemplateEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry>();
-        c->parent = this;
-        cdtiftemplateentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry>();
+        ent_->parent = this;
+        cdtiftemplateentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdtiftemplateentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdtiftemplateentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1874,16 +1874,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtIfTem
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtIfTemplateTable::CdtIfTemplateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2259,33 +2259,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtPppTe
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtPppTemplateEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry>();
-        c->parent = this;
-        cdtppptemplateentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry>();
+        ent_->parent = this;
+        cdtppptemplateentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdtppptemplateentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdtppptemplateentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2508,16 +2508,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtPppTe
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtPppTemplateTable::CdtPppTemplateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2975,33 +2975,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtPppPe
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtPppPeerIpAddrPoolEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry>();
-        c->parent = this;
-        cdtppppeeripaddrpoolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry>();
+        ent_->parent = this;
+        cdtppppeeripaddrpoolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdtppppeeripaddrpoolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdtppppeeripaddrpoolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3085,16 +3085,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtPppPe
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtPppPeerIpAddrPoolTable::CdtPppPeerIpAddrPoolEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3218,33 +3218,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtEther
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtEthernetTemplateEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry>();
-        c->parent = this;
-        cdtethernettemplateentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry>();
+        ent_->parent = this;
+        cdtethernettemplateentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdtethernettemplateentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdtethernettemplateentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3331,16 +3331,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtEther
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtEthernetTemplateTable::CdtEthernetTemplateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3472,33 +3472,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtSrvTe
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdtSrvTemplateEntry")
     {
-        auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry>();
-        c->parent = this;
-        cdtsrvtemplateentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry>();
+        ent_->parent = this;
+        cdtsrvtemplateentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdtsrvtemplateentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdtsrvtemplateentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3589,16 +3589,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODYNAMICTEMPLATEMIB::CdtSrvTe
 
 }
 
-std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODYNAMICTEMPLATEMIB::CdtSrvTemplateTable::CdtSrvTemplateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

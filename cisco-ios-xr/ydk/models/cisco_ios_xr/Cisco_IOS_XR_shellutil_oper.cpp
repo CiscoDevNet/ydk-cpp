@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > SystemTime::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> SystemTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SystemTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> SystemTime::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SystemTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clock_ != nullptr)
     {
-        children["clock"] = clock_;
+        _children["clock"] = clock_;
     }
 
     if(uptime != nullptr)
     {
-        children["uptime"] = uptime;
+        _children["uptime"] = uptime;
     }
 
-    return children;
+    return _children;
 }
 
 void SystemTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void SystemTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SystemTime::clone_ptr() const
+std::shared_ptr<ydk::Entity> SystemTime::clone_ptr() const
 {
     return std::make_shared<SystemTime>();
 }
@@ -220,16 +220,16 @@ std::vector<std::pair<std::string, LeafData> > SystemTime::Clock::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> SystemTime::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SystemTime::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemTime::Clock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SystemTime::Clock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SystemTime::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -399,16 +399,16 @@ std::vector<std::pair<std::string, LeafData> > SystemTime::Uptime::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> SystemTime::Uptime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SystemTime::Uptime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemTime::Uptime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SystemTime::Uptime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SystemTime::Uptime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

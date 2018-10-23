@@ -55,7 +55,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -78,21 +78,21 @@ std::shared_ptr<Entity> Igmp::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
     if(default_context != nullptr)
     {
-        children["default-context"] = default_context;
+        _children["default-context"] = default_context;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -103,7 +103,7 @@ void Igmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Igmp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Igmp::clone_ptr() const
 {
     return std::make_shared<Igmp>();
 }
@@ -191,33 +191,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -313,7 +313,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traffic")
     {
@@ -363,36 +363,36 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(traffic != nullptr)
     {
-        children["traffic"] = traffic;
+        _children["traffic"] = traffic;
     }
 
     if(inheritable_defaults != nullptr)
     {
-        children["inheritable-defaults"] = inheritable_defaults;
+        _children["inheritable-defaults"] = inheritable_defaults;
     }
 
     if(ssm_access_groups != nullptr)
     {
-        children["ssm-access-groups"] = ssm_access_groups;
+        _children["ssm-access-groups"] = ssm_access_groups;
     }
 
     if(maximum != nullptr)
     {
-        children["maximum"] = maximum;
+        _children["maximum"] = maximum;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -481,16 +481,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Traffic::get_nam
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -586,7 +586,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::InheritableDefau
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::InheritableDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::InheritableDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "maximum-groups-per-interface-oor")
     {
@@ -609,21 +609,21 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::InheritableDefaults::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::InheritableDefaults::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::InheritableDefaults::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(maximum_groups_per_interface_oor != nullptr)
     {
-        children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
+        _children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
     }
 
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -750,16 +750,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::InheritableDefau
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -852,16 +852,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::InheritableDefau
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -948,33 +948,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::SsmAccessGroups:
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ssm-access-group")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup>();
-        c->parent = this;
-        ssm_access_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup>();
+        ent_->parent = this;
+        ssm_access_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::SsmAccessGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::SsmAccessGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ssm_access_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ssm_access_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::SsmAccessGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1038,16 +1038,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::SsmAccessGroups:
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1126,16 +1126,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Maximum::get_nam
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Maximum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Maximum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1212,33 +1212,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::get_
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1336,7 +1336,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "join-groups")
     {
@@ -1377,31 +1377,31 @@ std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(join_groups != nullptr)
     {
-        children["join-groups"] = join_groups;
+        _children["join-groups"] = join_groups;
     }
 
     if(static_group_group_addresses != nullptr)
     {
-        children["static-group-group-addresses"] = static_group_group_addresses;
+        _children["static-group-group-addresses"] = static_group_group_addresses;
     }
 
     if(maximum_groups_per_interface_oor != nullptr)
     {
-        children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
+        _children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
     }
 
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1549,50 +1549,50 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "join-group")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup>();
-        c->parent = this;
-        join_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup>();
+        ent_->parent = this;
+        join_group.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "join-group-source-address")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
-        c->parent = this;
-        join_group_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
+        ent_->parent = this;
+        join_group_source_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : join_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : join_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : join_group_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : join_group_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1656,16 +1656,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1754,16 +1754,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1915,118 +1915,118 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-group-group-address")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
-        c->parent = this;
-        static_group_group_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
+        ent_->parent = this;
+        static_group_group_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-source-address")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
-        c->parent = this;
-        static_group_group_address_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
+        ent_->parent = this;
+        static_group_group_address_source_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-source-address-source-address-mask")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
-        c->parent = this;
-        static_group_group_address_source_address_source_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_source_address_source_address_mask.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
-        c->parent = this;
-        static_group_group_address_group_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
-        c->parent = this;
-        static_group_group_address_group_address_mask_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask_source_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address-source-address-mask")
     {
-        auto c = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
-        c->parent = this;
-        static_group_group_address_group_address_mask_source_address_source_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask_source_address_source_address_mask.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_group_group_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_group_group_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_source_address_source_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_source_address_source_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2098,16 +2098,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2224,16 +2224,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2365,16 +2365,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2511,16 +2511,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2652,16 +2652,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2808,16 +2808,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2954,16 +2954,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3056,16 +3056,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Vrfs::Vrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3188,7 +3188,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::get_name_le
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsf")
     {
@@ -3265,51 +3265,51 @@ std::shared_ptr<Entity> Igmp::DefaultContext::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nsf != nullptr)
     {
-        children["nsf"] = nsf;
+        _children["nsf"] = nsf;
     }
 
     if(unicast_qos_adjust != nullptr)
     {
-        children["unicast-qos-adjust"] = unicast_qos_adjust;
+        _children["unicast-qos-adjust"] = unicast_qos_adjust;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(traffic != nullptr)
     {
-        children["traffic"] = traffic;
+        _children["traffic"] = traffic;
     }
 
     if(inheritable_defaults != nullptr)
     {
-        children["inheritable-defaults"] = inheritable_defaults;
+        _children["inheritable-defaults"] = inheritable_defaults;
     }
 
     if(ssm_access_groups != nullptr)
     {
-        children["ssm-access-groups"] = ssm_access_groups;
+        _children["ssm-access-groups"] = ssm_access_groups;
     }
 
     if(maximum != nullptr)
     {
-        children["maximum"] = maximum;
+        _children["maximum"] = maximum;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::DefaultContext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3395,16 +3395,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Nsf::get_na
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Nsf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Nsf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3488,16 +3488,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::UnicastQosA
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::UnicastQosAdjust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::UnicastQosAdjust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::UnicastQosAdjust::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::UnicastQosAdjust::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::UnicastQosAdjust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3593,16 +3593,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Accounting:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3678,16 +3678,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Traffic::ge
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3790,7 +3790,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Inheritable
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::InheritableDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::InheritableDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "maximum-groups-per-interface-oor")
     {
@@ -3813,21 +3813,21 @@ std::shared_ptr<Entity> Igmp::DefaultContext::InheritableDefaults::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::InheritableDefaults::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::InheritableDefaults::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(maximum_groups_per_interface_oor != nullptr)
     {
-        children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
+        _children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
     }
 
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::DefaultContext::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3961,16 +3961,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Inheritable
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4070,16 +4070,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Inheritable
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4173,33 +4173,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::SsmAccessGr
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::SsmAccessGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::SsmAccessGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ssm-access-group")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup>();
-        c->parent = this;
-        ssm_access_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup>();
+        ent_->parent = this;
+        ssm_access_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::SsmAccessGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::SsmAccessGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ssm_access_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ssm_access_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::DefaultContext::SsmAccessGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4270,16 +4270,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::SsmAccessGr
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4365,16 +4365,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Maximum::ge
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Maximum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Maximum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4458,33 +4458,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4589,7 +4589,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "join-groups")
     {
@@ -4630,31 +4630,31 @@ std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(join_groups != nullptr)
     {
-        children["join-groups"] = join_groups;
+        _children["join-groups"] = join_groups;
     }
 
     if(static_group_group_addresses != nullptr)
     {
-        children["static-group-group-addresses"] = static_group_group_addresses;
+        _children["static-group-group-addresses"] = static_group_group_addresses;
     }
 
     if(maximum_groups_per_interface_oor != nullptr)
     {
-        children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
+        _children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
     }
 
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4802,50 +4802,50 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "join-group")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup>();
-        c->parent = this;
-        join_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup>();
+        ent_->parent = this;
+        join_group.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "join-group-source-address")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
-        c->parent = this;
-        join_group_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
+        ent_->parent = this;
+        join_group_source_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : join_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : join_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : join_group_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : join_group_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4909,16 +4909,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5007,16 +5007,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5168,118 +5168,118 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-group-group-address")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
-        c->parent = this;
-        static_group_group_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
+        ent_->parent = this;
+        static_group_group_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-source-address")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
-        c->parent = this;
-        static_group_group_address_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
+        ent_->parent = this;
+        static_group_group_address_source_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-source-address-source-address-mask")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
-        c->parent = this;
-        static_group_group_address_source_address_source_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_source_address_source_address_mask.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
-        c->parent = this;
-        static_group_group_address_group_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
-        c->parent = this;
-        static_group_group_address_group_address_mask_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask_source_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address-source-address-mask")
     {
-        auto c = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
-        c->parent = this;
-        static_group_group_address_group_address_mask_source_address_source_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask_source_address_source_address_mask.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_group_group_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_group_group_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_source_address_source_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_source_address_source_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5351,16 +5351,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5477,16 +5477,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5618,16 +5618,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5764,16 +5764,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5905,16 +5905,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6061,16 +6061,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6207,16 +6207,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6309,16 +6309,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::DefaultContext::Interfaces:
 
 }
 
-std::shared_ptr<Entity> Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6440,7 +6440,7 @@ std::vector<std::pair<std::string, LeafData> > Amt::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Amt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Amt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "relay-adv-add")
     {
@@ -6463,21 +6463,21 @@ std::shared_ptr<Entity> Amt::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Amt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Amt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(relay_adv_add != nullptr)
     {
-        children["relay-adv-add"] = relay_adv_add;
+        _children["relay-adv-add"] = relay_adv_add;
     }
 
     if(relay_anycast_prefix != nullptr)
     {
-        children["relay-anycast-prefix"] = relay_anycast_prefix;
+        _children["relay-anycast-prefix"] = relay_anycast_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Amt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6588,7 +6588,7 @@ void Amt::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Amt::clone_ptr() const
+std::shared_ptr<ydk::Entity> Amt::clone_ptr() const
 {
     return std::make_shared<Amt>();
 }
@@ -6672,16 +6672,16 @@ std::vector<std::pair<std::string, LeafData> > Amt::RelayAdvAdd::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Amt::RelayAdvAdd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Amt::RelayAdvAdd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Amt::RelayAdvAdd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Amt::RelayAdvAdd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Amt::RelayAdvAdd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6771,16 +6771,16 @@ std::vector<std::pair<std::string, LeafData> > Amt::RelayAnycastPrefix::get_name
 
 }
 
-std::shared_ptr<Entity> Amt::RelayAnycastPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Amt::RelayAnycastPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Amt::RelayAnycastPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Amt::RelayAnycastPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Amt::RelayAnycastPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6862,7 +6862,7 @@ std::vector<std::pair<std::string, LeafData> > Mld::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Mld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -6885,21 +6885,21 @@ std::shared_ptr<Entity> Mld::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
     if(default_context != nullptr)
     {
-        children["default-context"] = default_context;
+        _children["default-context"] = default_context;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6910,7 +6910,7 @@ void Mld::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Mld::clone_ptr() const
+std::shared_ptr<ydk::Entity> Mld::clone_ptr() const
 {
     return std::make_shared<Mld>();
 }
@@ -6998,33 +6998,33 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7120,7 +7120,7 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traffic")
     {
@@ -7170,36 +7170,36 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(traffic != nullptr)
     {
-        children["traffic"] = traffic;
+        _children["traffic"] = traffic;
     }
 
     if(inheritable_defaults != nullptr)
     {
-        children["inheritable-defaults"] = inheritable_defaults;
+        _children["inheritable-defaults"] = inheritable_defaults;
     }
 
     if(ssm_access_groups != nullptr)
     {
-        children["ssm-access-groups"] = ssm_access_groups;
+        _children["ssm-access-groups"] = ssm_access_groups;
     }
 
     if(maximum != nullptr)
     {
-        children["maximum"] = maximum;
+        _children["maximum"] = maximum;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7288,16 +7288,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Traffic::get_name
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7393,7 +7393,7 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::InheritableDefaul
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::InheritableDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::InheritableDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "maximum-groups-per-interface-oor")
     {
@@ -7416,21 +7416,21 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::InheritableDefaults::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::InheritableDefaults::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::InheritableDefaults::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(maximum_groups_per_interface_oor != nullptr)
     {
-        children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
+        _children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
     }
 
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7557,16 +7557,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::InheritableDefaul
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7659,16 +7659,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::InheritableDefaul
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7755,33 +7755,33 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::SsmAccessGroups::
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::SsmAccessGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ssm-access-group")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup>();
-        c->parent = this;
-        ssm_access_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup>();
+        ent_->parent = this;
+        ssm_access_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::SsmAccessGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::SsmAccessGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ssm_access_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ssm_access_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::SsmAccessGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7845,16 +7845,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::SsmAccessGroups::
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7933,16 +7933,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Maximum::get_name
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Maximum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Maximum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8019,33 +8019,33 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::get_n
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8143,7 +8143,7 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "join-groups")
     {
@@ -8184,31 +8184,31 @@ std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(join_groups != nullptr)
     {
-        children["join-groups"] = join_groups;
+        _children["join-groups"] = join_groups;
     }
 
     if(static_group_group_addresses != nullptr)
     {
-        children["static-group-group-addresses"] = static_group_group_addresses;
+        _children["static-group-group-addresses"] = static_group_group_addresses;
     }
 
     if(maximum_groups_per_interface_oor != nullptr)
     {
-        children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
+        _children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
     }
 
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8356,50 +8356,50 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "join-group")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup>();
-        c->parent = this;
-        join_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup>();
+        ent_->parent = this;
+        join_group.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "join-group-source-address")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
-        c->parent = this;
-        join_group_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
+        ent_->parent = this;
+        join_group_source_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : join_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : join_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : join_group_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : join_group_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8463,16 +8463,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8561,16 +8561,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8722,118 +8722,118 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-group-group-address")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
-        c->parent = this;
-        static_group_group_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
+        ent_->parent = this;
+        static_group_group_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-source-address")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
-        c->parent = this;
-        static_group_group_address_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
+        ent_->parent = this;
+        static_group_group_address_source_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-source-address-source-address-mask")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
-        c->parent = this;
-        static_group_group_address_source_address_source_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_source_address_source_address_mask.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
-        c->parent = this;
-        static_group_group_address_group_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
-        c->parent = this;
-        static_group_group_address_group_address_mask_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask_source_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address-source-address-mask")
     {
-        auto c = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
-        c->parent = this;
-        static_group_group_address_group_address_mask_source_address_source_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask_source_address_source_address_mask.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_group_group_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_group_group_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_source_address_source_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_source_address_source_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8905,16 +8905,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9031,16 +9031,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9172,16 +9172,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9318,16 +9318,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9459,16 +9459,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9615,16 +9615,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9761,16 +9761,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9863,16 +9863,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9995,7 +9995,7 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsf")
     {
@@ -10072,51 +10072,51 @@ std::shared_ptr<Entity> Mld::DefaultContext::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nsf != nullptr)
     {
-        children["nsf"] = nsf;
+        _children["nsf"] = nsf;
     }
 
     if(unicast_qos_adjust != nullptr)
     {
-        children["unicast-qos-adjust"] = unicast_qos_adjust;
+        _children["unicast-qos-adjust"] = unicast_qos_adjust;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(traffic != nullptr)
     {
-        children["traffic"] = traffic;
+        _children["traffic"] = traffic;
     }
 
     if(inheritable_defaults != nullptr)
     {
-        children["inheritable-defaults"] = inheritable_defaults;
+        _children["inheritable-defaults"] = inheritable_defaults;
     }
 
     if(ssm_access_groups != nullptr)
     {
-        children["ssm-access-groups"] = ssm_access_groups;
+        _children["ssm-access-groups"] = ssm_access_groups;
     }
 
     if(maximum != nullptr)
     {
-        children["maximum"] = maximum;
+        _children["maximum"] = maximum;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::DefaultContext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10202,16 +10202,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Nsf::get_nam
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Nsf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Nsf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10295,16 +10295,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::UnicastQosAd
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::UnicastQosAdjust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::UnicastQosAdjust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::UnicastQosAdjust::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::UnicastQosAdjust::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::UnicastQosAdjust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10400,16 +10400,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Accounting::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10485,16 +10485,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Traffic::get
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10597,7 +10597,7 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::InheritableD
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::InheritableDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::InheritableDefaults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "maximum-groups-per-interface-oor")
     {
@@ -10620,21 +10620,21 @@ std::shared_ptr<Entity> Mld::DefaultContext::InheritableDefaults::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::InheritableDefaults::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::InheritableDefaults::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(maximum_groups_per_interface_oor != nullptr)
     {
-        children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
+        _children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
     }
 
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::DefaultContext::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10768,16 +10768,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::InheritableD
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10877,16 +10877,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::InheritableD
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::InheritableDefaults::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::InheritableDefaults::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::InheritableDefaults::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::InheritableDefaults::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10980,33 +10980,33 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::SsmAccessGro
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::SsmAccessGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::SsmAccessGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ssm-access-group")
     {
-        auto c = std::make_shared<Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup>();
-        c->parent = this;
-        ssm_access_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup>();
+        ent_->parent = this;
+        ssm_access_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::SsmAccessGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::SsmAccessGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ssm_access_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ssm_access_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::DefaultContext::SsmAccessGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11077,16 +11077,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::SsmAccessGro
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11172,16 +11172,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Maximum::get
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Maximum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Maximum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11265,33 +11265,33 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11396,7 +11396,7 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "join-groups")
     {
@@ -11437,31 +11437,31 @@ std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(join_groups != nullptr)
     {
-        children["join-groups"] = join_groups;
+        _children["join-groups"] = join_groups;
     }
 
     if(static_group_group_addresses != nullptr)
     {
-        children["static-group-group-addresses"] = static_group_group_addresses;
+        _children["static-group-group-addresses"] = static_group_group_addresses;
     }
 
     if(maximum_groups_per_interface_oor != nullptr)
     {
-        children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
+        _children["maximum-groups-per-interface-oor"] = maximum_groups_per_interface_oor;
     }
 
     if(explicit_tracking != nullptr)
     {
-        children["explicit-tracking"] = explicit_tracking;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11609,50 +11609,50 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "join-group")
     {
-        auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup>();
-        c->parent = this;
-        join_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup>();
+        ent_->parent = this;
+        join_group.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "join-group-source-address")
     {
-        auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
-        c->parent = this;
-        join_group_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress>();
+        ent_->parent = this;
+        join_group_source_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::JoinGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::JoinGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : join_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : join_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : join_group_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : join_group_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11716,16 +11716,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11814,16 +11814,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11975,118 +11975,118 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-group-group-address")
     {
-        auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
-        c->parent = this;
-        static_group_group_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress>();
+        ent_->parent = this;
+        static_group_group_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-source-address")
     {
-        auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
-        c->parent = this;
-        static_group_group_address_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress>();
+        ent_->parent = this;
+        static_group_group_address_source_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-source-address-source-address-mask")
     {
-        auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
-        c->parent = this;
-        static_group_group_address_source_address_source_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_source_address_source_address_mask.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask")
     {
-        auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
-        c->parent = this;
-        static_group_group_address_group_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address")
     {
-        auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
-        c->parent = this;
-        static_group_group_address_group_address_mask_source_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask_source_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static-group-group-address-group-address-mask-source-address-source-address-mask")
     {
-        auto c = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
-        c->parent = this;
-        static_group_group_address_group_address_mask_source_address_source_address_mask.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask>();
+        ent_->parent = this;
+        static_group_group_address_group_address_mask_source_address_source_address_mask.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_group_group_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_group_group_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_source_address_source_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_source_address_source_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask_source_address.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask_source_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
+    count_ = 0;
+    for (auto ent_ : static_group_group_address_group_address_mask_source_address_source_address_mask.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12158,16 +12158,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12284,16 +12284,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12425,16 +12425,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12571,16 +12571,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12712,16 +12712,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12868,16 +12868,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13014,16 +13014,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13116,16 +13116,16 @@ std::vector<std::pair<std::string, LeafData> > Mld::DefaultContext::Interfaces::
 
 }
 
-std::shared_ptr<Entity> Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

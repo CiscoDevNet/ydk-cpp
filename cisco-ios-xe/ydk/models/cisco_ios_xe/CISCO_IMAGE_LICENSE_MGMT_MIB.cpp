@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGELICENSEMGMTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoImageLicenseMgmtMIBObjects")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGELICENSEMGMTMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciscoimagelicensemgmtmibobjects != nullptr)
     {
-        children["ciscoImageLicenseMgmtMIBObjects"] = ciscoimagelicensemgmtmibobjects;
+        _children["ciscoImageLicenseMgmtMIBObjects"] = ciscoimagelicensemgmtmibobjects;
     }
 
     if(cilmnotifcntl != nullptr)
     {
-        children["cilmNotifCntl"] = cilmnotifcntl;
+        _children["cilmNotifCntl"] = cilmnotifcntl;
     }
 
     if(cilmbootimageleveltable != nullptr)
     {
-        children["cilmBootImageLevelTable"] = cilmbootimageleveltable;
+        _children["cilmBootImageLevelTable"] = cilmbootimageleveltable;
     }
 
     if(cilmimageleveltolicensemaptable != nullptr)
     {
-        children["cilmImageLevelToLicenseMapTable"] = cilmimageleveltolicensemaptable;
+        _children["cilmImageLevelToLicenseMapTable"] = cilmimageleveltolicensemaptable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIMAGELICENSEMGMTMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void CISCOIMAGELICENSEMGMTMIB::set_filter(const std::string & value_path, YFilte
 {
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIMAGELICENSEMGMTMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIMAGELICENSEMGMTMIB>();
 }
@@ -220,16 +220,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CiscoIm
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -305,16 +305,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmNot
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -398,33 +398,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmBoo
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cilmBootImageLevelEntry")
     {
-        auto c = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry>();
-        c->parent = this;
-        cilmbootimagelevelentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry>();
+        ent_->parent = this;
+        cilmbootimagelevelentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cilmbootimagelevelentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cilmbootimagelevelentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -524,16 +524,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmBoo
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -697,33 +697,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmIma
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cilmImageLevelToLicenseMapEntry")
     {
-        auto c = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry>();
-        c->parent = this;
-        cilmimageleveltolicensemapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry>();
+        ent_->parent = this;
+        cilmimageleveltolicensemapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cilmimageleveltolicensemapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cilmimageleveltolicensemapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -812,16 +812,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmIma
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -77,7 +77,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "groups")
     {
@@ -100,21 +100,21 @@ std::shared_ptr<Entity> SessionRedundancy::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(groups != nullptr)
     {
-        children["groups"] = groups;
+        _children["groups"] = groups;
     }
 
     if(revertive_timer != nullptr)
     {
-        children["revertive-timer"] = revertive_timer;
+        _children["revertive-timer"] = revertive_timer;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -175,7 +175,7 @@ void SessionRedundancy::set_filter(const std::string & value_path, YFilter yfilt
     }
 }
 
-std::shared_ptr<Entity> SessionRedundancy::clone_ptr() const
+std::shared_ptr<ydk::Entity> SessionRedundancy::clone_ptr() const
 {
     return std::make_shared<SessionRedundancy>();
 }
@@ -263,33 +263,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::get_na
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
-        auto c = std::make_shared<SessionRedundancy::Groups::Group>();
-        c->parent = this;
-        group.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancy::Groups::Group>();
+        ent_->parent = this;
+        group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancy::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -405,7 +405,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer")
     {
@@ -446,31 +446,31 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer != nullptr)
     {
-        children["peer"] = peer;
+        _children["peer"] = peer;
     }
 
     if(revertive_timer != nullptr)
     {
-        children["revertive-timer"] = revertive_timer;
+        _children["revertive-timer"] = revertive_timer;
     }
 
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
     if(pool_list != nullptr)
     {
-        children["pool-list"] = pool_list;
+        _children["pool-list"] = pool_list;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -619,7 +619,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipaddress")
     {
@@ -633,16 +633,16 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::Peer::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipaddress != nullptr)
     {
-        children["ipaddress"] = ipaddress;
+        _children["ipaddress"] = ipaddress;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -705,16 +705,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::Peer::Ipaddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::Peer::Ipaddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -797,16 +797,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::RevertiveTimer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::RevertiveTimer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::RevertiveTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -894,7 +894,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-ranges")
     {
@@ -917,21 +917,21 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_ranges != nullptr)
     {
-        children["interface-ranges"] = interface_ranges;
+        _children["interface-ranges"] = interface_ranges;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1008,33 +1008,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-range")
     {
-        auto c = std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange>();
-        c->parent = this;
-        interface_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange>();
+        ent_->parent = this;
+        interface_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1112,16 +1112,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1238,33 +1238,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::InterfaceList::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1328,16 +1328,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1421,7 +1421,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::PoolList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::PoolList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pool-names")
     {
@@ -1435,16 +1435,16 @@ std::shared_ptr<Entity> SessionRedundancy::Groups::Group::PoolList::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::PoolList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::PoolList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pool_names != nullptr)
     {
-        children["pool-names"] = pool_names;
+        _children["pool-names"] = pool_names;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::PoolList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1521,33 +1521,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::PoolList::PoolNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::PoolList::PoolNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pool-name")
     {
-        auto c = std::make_shared<SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName>();
-        c->parent = this;
-        pool_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName>();
+        ent_->parent = this;
+        pool_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::PoolList::PoolNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::PoolList::PoolNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pool_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pool_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::PoolList::PoolNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1607,16 +1607,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::Groups::Group:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancy::Groups::Group::PoolList::PoolNames::PoolName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1696,16 +1696,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancy::RevertiveTimer
 
 }
 
-std::shared_ptr<Entity> SessionRedundancy::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancy::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::RevertiveTimer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancy::RevertiveTimer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancy::RevertiveTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

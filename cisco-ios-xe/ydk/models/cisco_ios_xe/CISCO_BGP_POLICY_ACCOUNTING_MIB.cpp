@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::get_
 
 }
 
-std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOBGPPOLICYACCOUNTINGMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbpAcctTable")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGPPOLICYACCOUNTINGMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOBGPPOLICYACCOUNTINGMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cbpaccttable != nullptr)
     {
-        children["cbpAcctTable"] = cbpaccttable;
+        _children["cbpAcctTable"] = cbpaccttable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOBGPPOLICYACCOUNTINGMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void CISCOBGPPOLICYACCOUNTINGMIB::set_filter(const std::string & value_path, YFi
 {
 }
 
-std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOBGPPOLICYACCOUNTINGMIB::clone_ptr() const
 {
     return std::make_shared<CISCOBGPPOLICYACCOUNTINGMIB>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::CbpA
 
 }
 
-std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbpAcctEntry")
     {
-        auto c = std::make_shared<CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry>();
-        c->parent = this;
-        cbpacctentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry>();
+        ent_->parent = this;
+        cbpacctentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cbpacctentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cbpacctentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -288,16 +288,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOBGPPOLICYACCOUNTINGMIB::CbpA
 
 }
 
-std::shared_ptr<Entity> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

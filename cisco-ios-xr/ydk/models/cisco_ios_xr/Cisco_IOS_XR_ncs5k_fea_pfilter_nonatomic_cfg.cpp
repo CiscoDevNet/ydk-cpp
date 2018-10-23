@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Hardware::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Hardware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Hardware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-list")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Hardware::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Hardware::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Hardware::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_list != nullptr)
     {
-        children["access-list"] = access_list;
+        _children["access-list"] = access_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Hardware::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Hardware::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Hardware::clone_ptr() const
+std::shared_ptr<ydk::Entity> Hardware::clone_ptr() const
 {
     return std::make_shared<Hardware>();
 }
@@ -166,16 +166,16 @@ std::vector<std::pair<std::string, LeafData> > Hardware::AccessList::get_name_le
 
 }
 
-std::shared_ptr<Entity> Hardware::AccessList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Hardware::AccessList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Hardware::AccessList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Hardware::AccessList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Hardware::AccessList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

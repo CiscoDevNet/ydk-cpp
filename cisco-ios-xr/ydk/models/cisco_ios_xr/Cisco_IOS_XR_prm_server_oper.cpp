@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void HardwareModule::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> HardwareModule::clone_ptr() const
+std::shared_ptr<ydk::Entity> HardwareModule::clone_ptr() const
 {
     return std::make_shared<HardwareModule>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::get_name_l
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<HardwareModule::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<HardwareModule::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::get_
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "np")
     {
@@ -286,16 +286,16 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(np != nullptr)
     {
-        children["np"] = np;
+        _children["np"] = np;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -368,7 +368,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::Np::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpu")
     {
@@ -391,21 +391,21 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::Np::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cpu != nullptr)
     {
-        children["cpu"] = cpu;
+        _children["cpu"] = cpu;
     }
 
     if(platform_drop != nullptr)
     {
-        children["platform-drop"] = platform_drop;
+        _children["platform-drop"] = platform_drop;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::Np::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -464,7 +464,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::Np::Cpu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "indexes")
     {
@@ -478,16 +478,16 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::Np::Cpu::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(indexes != nullptr)
     {
-        children["indexes"] = indexes;
+        _children["indexes"] = indexes;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::Np::Cpu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -554,33 +554,33 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "index")
     {
-        auto c = std::make_shared<HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index>();
-        c->parent = this;
-        index_.append(c);
-        return c;
+        auto ent_ = std::make_shared<HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index>();
+        ent_->parent = this;
+        index_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : index_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : index_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::Np::Cpu::Indexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -668,16 +668,16 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -820,7 +820,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "indxes")
     {
@@ -843,21 +843,21 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(indxes != nullptr)
     {
-        children["indxes"] = indxes;
+        _children["indxes"] = indxes;
     }
 
     if(idxes != nullptr)
     {
-        children["idxes"] = idxes;
+        _children["idxes"] = idxes;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::Np::PlatformDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -924,33 +924,33 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "indx")
     {
-        auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx>();
-        c->parent = this;
-        indx.append(c);
-        return c;
+        auto ent_ = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx>();
+        ent_->parent = this;
+        indx.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : indx.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : indx.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1058,16 +1058,16 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1264,33 +1264,33 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idx")
     {
-        auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx>();
-        c->parent = this;
-        idx.append(c);
-        return c;
+        auto ent_ = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx>();
+        ent_->parent = this;
+        idx.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : idx.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : idx.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1358,16 +1358,16 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1456,7 +1456,7 @@ std::vector<std::pair<std::string, LeafData> > Prm::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Prm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Prm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -1470,16 +1470,16 @@ std::shared_ptr<Entity> Prm::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Prm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Prm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Prm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1490,7 +1490,7 @@ void Prm::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Prm::clone_ptr() const
+std::shared_ptr<ydk::Entity> Prm::clone_ptr() const
 {
     return std::make_shared<Prm>();
 }
@@ -1578,33 +1578,33 @@ std::vector<std::pair<std::string, LeafData> > Prm::Nodes::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Prm::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Prm::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Prm::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Prm::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Prm::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Prm::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1676,7 +1676,7 @@ std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Prm::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Prm::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "server")
     {
@@ -1690,16 +1690,16 @@ std::shared_ptr<Entity> Prm::Nodes::Node::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Prm::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(server != nullptr)
     {
-        children["server"] = server;
+        _children["server"] = server;
     }
 
-    return children;
+    return _children;
 }
 
 void Prm::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1768,7 +1768,7 @@ std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::get_nam
 
 }
 
-std::shared_ptr<Entity> Prm::Nodes::Node::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Prm::Nodes::Node::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "resource")
     {
@@ -1782,16 +1782,16 @@ std::shared_ptr<Entity> Prm::Nodes::Node::Server::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Prm::Nodes::Node::Server::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(resource != nullptr)
     {
-        children["resource"] = resource;
+        _children["resource"] = resource;
     }
 
-    return children;
+    return _children;
 }
 
 void Prm::Nodes::Node::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1850,7 +1850,7 @@ std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resourc
 
 }
 
-std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Prm::Nodes::Node::Server::Resource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "indexes")
     {
@@ -1864,16 +1864,16 @@ std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Prm::Nodes::Node::Server::Resource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(indexes != nullptr)
     {
-        children["indexes"] = indexes;
+        _children["indexes"] = indexes;
     }
 
-    return children;
+    return _children;
 }
 
 void Prm::Nodes::Node::Server::Resource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1940,33 +1940,33 @@ std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resourc
 
 }
 
-std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Prm::Nodes::Node::Server::Resource::Indexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "index")
     {
-        auto c = std::make_shared<Prm::Nodes::Node::Server::Resource::Indexes::Index>();
-        c->parent = this;
-        index_.append(c);
-        return c;
+        auto ent_ = std::make_shared<Prm::Nodes::Node::Server::Resource::Indexes::Index>();
+        ent_->parent = this;
+        index_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::Indexes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Prm::Nodes::Node::Server::Resource::Indexes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : index_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : index_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Prm::Nodes::Node::Server::Resource::Indexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2062,16 +2062,16 @@ std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resourc
 
 }
 
-std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::Index::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Prm::Nodes::Node::Server::Resource::Indexes::Index::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::Indexes::Index::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Prm::Nodes::Node::Server::Resource::Indexes::Index::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Prm::Nodes::Node::Server::Resource::Indexes::Index::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -126,135 +126,135 @@ std::vector<std::pair<std::string, LeafData> > CellwanOperData::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> CellwanOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CellwanOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cellwan-hardware")
     {
-        auto c = std::make_shared<CellwanOperData::CellwanHardware>();
-        c->parent = this;
-        cellwan_hardware.append(c);
-        return c;
+        auto ent_ = std::make_shared<CellwanOperData::CellwanHardware>();
+        ent_->parent = this;
+        cellwan_hardware.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cellwan-radio")
     {
-        auto c = std::make_shared<CellwanOperData::CellwanRadio>();
-        c->parent = this;
-        cellwan_radio.append(c);
-        return c;
+        auto ent_ = std::make_shared<CellwanOperData::CellwanRadio>();
+        ent_->parent = this;
+        cellwan_radio.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cellwan-network")
     {
-        auto c = std::make_shared<CellwanOperData::CellwanNetwork>();
-        c->parent = this;
-        cellwan_network.append(c);
-        return c;
+        auto ent_ = std::make_shared<CellwanOperData::CellwanNetwork>();
+        ent_->parent = this;
+        cellwan_network.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cellwan-connection")
     {
-        auto c = std::make_shared<CellwanOperData::CellwanConnection>();
-        c->parent = this;
-        cellwan_connection.append(c);
-        return c;
+        auto ent_ = std::make_shared<CellwanOperData::CellwanConnection>();
+        ent_->parent = this;
+        cellwan_connection.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cellwan-security")
     {
-        auto c = std::make_shared<CellwanOperData::CellwanSecurity>();
-        c->parent = this;
-        cellwan_security.append(c);
-        return c;
+        auto ent_ = std::make_shared<CellwanOperData::CellwanSecurity>();
+        ent_->parent = this;
+        cellwan_security.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cellwan-sms")
     {
-        auto c = std::make_shared<CellwanOperData::CellwanSms>();
-        c->parent = this;
-        cellwan_sms.append(c);
-        return c;
+        auto ent_ = std::make_shared<CellwanOperData::CellwanSms>();
+        ent_->parent = this;
+        cellwan_sms.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cellwan-gps")
     {
-        auto c = std::make_shared<CellwanOperData::CellwanGps>();
-        c->parent = this;
-        cellwan_gps.append(c);
-        return c;
+        auto ent_ = std::make_shared<CellwanOperData::CellwanGps>();
+        ent_->parent = this;
+        cellwan_gps.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CellwanOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cellwan_hardware.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cellwan_hardware.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cellwan_radio.entities())
+    count_ = 0;
+    for (auto ent_ : cellwan_radio.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cellwan_network.entities())
+    count_ = 0;
+    for (auto ent_ : cellwan_network.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cellwan_connection.entities())
+    count_ = 0;
+    for (auto ent_ : cellwan_connection.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cellwan_security.entities())
+    count_ = 0;
+    for (auto ent_ : cellwan_security.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cellwan_sms.entities())
+    count_ = 0;
+    for (auto ent_ : cellwan_sms.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cellwan_gps.entities())
+    count_ = 0;
+    for (auto ent_ : cellwan_gps.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CellwanOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -265,7 +265,7 @@ void CellwanOperData::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> CellwanOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> CellwanOperData::clone_ptr() const
 {
     return std::make_shared<CellwanOperData>();
 }
@@ -406,16 +406,16 @@ std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanHardware:
 
 }
 
-std::shared_ptr<Entity> CellwanOperData::CellwanHardware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CellwanOperData::CellwanHardware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanHardware::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CellwanOperData::CellwanHardware::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CellwanOperData::CellwanHardware::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -690,16 +690,16 @@ std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanRadio::ge
 
 }
 
-std::shared_ptr<Entity> CellwanOperData::CellwanRadio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CellwanOperData::CellwanRadio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanRadio::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CellwanOperData::CellwanRadio::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CellwanOperData::CellwanRadio::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -976,16 +976,16 @@ std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanNetwork::
 
 }
 
-std::shared_ptr<Entity> CellwanOperData::CellwanNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CellwanOperData::CellwanNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanNetwork::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CellwanOperData::CellwanNetwork::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CellwanOperData::CellwanNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1314,16 +1314,16 @@ std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanConnectio
 
 }
 
-std::shared_ptr<Entity> CellwanOperData::CellwanConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CellwanOperData::CellwanConnection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanConnection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CellwanOperData::CellwanConnection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CellwanOperData::CellwanConnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1554,16 +1554,16 @@ std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanSecurity:
 
 }
 
-std::shared_ptr<Entity> CellwanOperData::CellwanSecurity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CellwanOperData::CellwanSecurity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanSecurity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CellwanOperData::CellwanSecurity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CellwanOperData::CellwanSecurity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1752,16 +1752,16 @@ std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanSms::get_
 
 }
 
-std::shared_ptr<Entity> CellwanOperData::CellwanSms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CellwanOperData::CellwanSms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanSms::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CellwanOperData::CellwanSms::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CellwanOperData::CellwanSms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1996,16 +1996,16 @@ std::vector<std::pair<std::string, LeafData> > CellwanOperData::CellwanGps::get_
 
 }
 
-std::shared_ptr<Entity> CellwanOperData::CellwanGps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CellwanOperData::CellwanGps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CellwanOperData::CellwanGps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CellwanOperData::CellwanGps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CellwanOperData::CellwanGps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

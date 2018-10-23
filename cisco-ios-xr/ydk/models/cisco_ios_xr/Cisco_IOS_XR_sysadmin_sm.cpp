@@ -87,7 +87,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "shelf_mgr")
     {
@@ -136,10 +136,10 @@ std::shared_ptr<Entity> Oper::get_child_by_name(const std::string & child_yang_n
 
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Oper::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "reload_vm")
@@ -163,55 +163,55 @@ std::shared_ptr<Entity> Oper::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(shelf_mgr != nullptr)
     {
-        children["shelf_mgr"] = shelf_mgr;
+        _children["shelf_mgr"] = shelf_mgr;
     }
 
     if(platform != nullptr)
     {
-        children["platform"] = platform;
+        _children["platform"] = platform;
     }
 
     if(chassis != nullptr)
     {
-        children["chassis"] = chassis;
+        _children["chassis"] = chassis;
     }
 
     if(reload != nullptr)
     {
-        children["reload"] = reload;
+        _children["reload"] = reload;
     }
 
     if(reboot_history != nullptr)
     {
-        children["reboot-history"] = reboot_history;
+        _children["reboot-history"] = reboot_history;
     }
 
-    count = 0;
-    for (auto c : interface.entities())
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(reload_vm != nullptr)
     {
-        children["reload_vm"] = reload_vm;
+        _children["reload_vm"] = reload_vm;
     }
 
     if(macpool != nullptr)
     {
-        children["macpool"] = macpool;
+        _children["macpool"] = macpool;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -222,7 +222,7 @@ void Oper::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Oper::clone_ptr() const
+std::shared_ptr<ydk::Entity> Oper::clone_ptr() const
 {
     return std::make_shared<Oper>();
 }
@@ -310,33 +310,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::ShelfMgr::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Oper::ShelfMgr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::ShelfMgr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<Oper::ShelfMgr::Trace>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::ShelfMgr::Trace>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::ShelfMgr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::ShelfMgr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::ShelfMgr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -415,33 +415,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::ShelfMgr::Trace::get_name_l
 
 }
 
-std::shared_ptr<Entity> Oper::ShelfMgr::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::ShelfMgr::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Oper::ShelfMgr::Trace::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::ShelfMgr::Trace::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::ShelfMgr::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::ShelfMgr::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::ShelfMgr::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -523,33 +523,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::ShelfMgr::Trace::Location::
 
 }
 
-std::shared_ptr<Entity> Oper::ShelfMgr::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::ShelfMgr::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<Oper::ShelfMgr::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::ShelfMgr::Trace::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::ShelfMgr::Trace::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::ShelfMgr::Trace::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::ShelfMgr::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -631,33 +631,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::ShelfMgr::Trace::Location::
 
 }
 
-std::shared_ptr<Entity> Oper::ShelfMgr::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::ShelfMgr::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::ShelfMgr::Trace::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::ShelfMgr::Trace::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::ShelfMgr::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -726,16 +726,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::ShelfMgr::Trace::Location::
 
 }
 
-std::shared_ptr<Entity> Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -819,7 +819,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -851,26 +851,26 @@ std::shared_ptr<Entity> Oper::Platform::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
     if(slices != nullptr)
     {
-        children["slices"] = slices;
+        _children["slices"] = slices;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Platform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -944,33 +944,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Summary::get_name
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Oper::Platform::Summary::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::Platform::Summary::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Platform::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1042,7 +1042,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Summary::Location
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Summary::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Summary::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary-data")
     {
@@ -1056,16 +1056,16 @@ std::shared_ptr<Entity> Oper::Platform::Summary::Location::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Summary::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Summary::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary_data != nullptr)
     {
-        children["summary-data"] = summary_data;
+        _children["summary-data"] = summary_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Platform::Summary::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1146,16 +1146,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Summary::Location
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Summary::Location::SummaryData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Summary::Location::SummaryData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Summary::Location::SummaryData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Summary::Location::SummaryData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::Platform::Summary::Location::SummaryData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1269,33 +1269,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Detail::get_name_
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Oper::Platform::Detail::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::Platform::Detail::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Platform::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1367,7 +1367,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Detail::Location:
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Detail::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Detail::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-data")
     {
@@ -1381,16 +1381,16 @@ std::shared_ptr<Entity> Oper::Platform::Detail::Location::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Detail::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Detail::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail_data != nullptr)
     {
-        children["detail-data"] = detail_data;
+        _children["detail-data"] = detail_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Platform::Detail::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1491,16 +1491,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Detail::Location:
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Detail::Location::DetailData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Detail::Location::DetailData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Detail::Location::DetailData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Detail::Location::DetailData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::Platform::Detail::Location::DetailData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1664,33 +1664,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Slices::get_name_
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Slices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Slices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Oper::Platform::Slices::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::Platform::Slices::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Slices::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Slices::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Platform::Slices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1769,33 +1769,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Slices::Location:
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Slices::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Slices::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slice_values")
     {
-        auto c = std::make_shared<Oper::Platform::Slices::Location::SliceValues>();
-        c->parent = this;
-        slice_values.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::Platform::Slices::Location::SliceValues>();
+        ent_->parent = this;
+        slice_values.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Slices::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Slices::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : slice_values.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : slice_values.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Platform::Slices::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1870,7 +1870,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Slices::Location:
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Slices::Location::SliceValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Slices::Location::SliceValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slice")
     {
@@ -1884,16 +1884,16 @@ std::shared_ptr<Entity> Oper::Platform::Slices::Location::SliceValues::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Slices::Location::SliceValues::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Slices::Location::SliceValues::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(slice != nullptr)
     {
-        children["slice"] = slice;
+        _children["slice"] = slice;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Platform::Slices::Location::SliceValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1970,16 +1970,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::Platform::Slices::Location:
 
 }
 
-std::shared_ptr<Entity> Oper::Platform::Slices::Location::SliceValues::Slice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Platform::Slices::Location::SliceValues::Slice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Platform::Slices::Location::SliceValues::Slice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Platform::Slices::Location::SliceValues::Slice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::Platform::Slices::Location::SliceValues::Slice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2075,7 +2075,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Chassis::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Oper::Chassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Chassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
@@ -2089,16 +2089,16 @@ std::shared_ptr<Entity> Oper::Chassis::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Chassis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Chassis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(brief != nullptr)
     {
-        children["brief"] = brief;
+        _children["brief"] = brief;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Chassis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2172,33 +2172,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::Chassis::Brief::get_name_le
 
 }
 
-std::shared_ptr<Entity> Oper::Chassis::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Chassis::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "chassis_serial")
     {
-        auto c = std::make_shared<Oper::Chassis::Brief::ChassisSerial>();
-        c->parent = this;
-        chassis_serial.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::Chassis::Brief::ChassisSerial>();
+        ent_->parent = this;
+        chassis_serial.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Chassis::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Chassis::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : chassis_serial.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : chassis_serial.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Chassis::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2270,7 +2270,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Chassis::Brief::ChassisSeri
 
 }
 
-std::shared_ptr<Entity> Oper::Chassis::Brief::ChassisSerial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Chassis::Brief::ChassisSerial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief-data")
     {
@@ -2284,16 +2284,16 @@ std::shared_ptr<Entity> Oper::Chassis::Brief::ChassisSerial::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Chassis::Brief::ChassisSerial::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Chassis::Brief::ChassisSerial::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(brief_data != nullptr)
     {
-        children["brief-data"] = brief_data;
+        _children["brief-data"] = brief_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Chassis::Brief::ChassisSerial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2378,16 +2378,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::Chassis::Brief::ChassisSeri
 
 }
 
-std::shared_ptr<Entity> Oper::Chassis::Brief::ChassisSerial::BriefData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Chassis::Brief::ChassisSerial::BriefData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Chassis::Brief::ChassisSerial::BriefData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Chassis::Brief::ChassisSerial::BriefData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::Chassis::Brief::ChassisSerial::BriefData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2503,7 +2503,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Reload::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Oper::Reload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Reload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack")
     {
@@ -2517,16 +2517,16 @@ std::shared_ptr<Entity> Oper::Reload::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Reload::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Reload::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rack != nullptr)
     {
-        children["rack"] = rack;
+        _children["rack"] = rack;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Reload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2600,33 +2600,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::Reload::Rack::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Oper::Reload::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Reload::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "racks")
     {
-        auto c = std::make_shared<Oper::Reload::Rack::Racks>();
-        c->parent = this;
-        racks.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::Reload::Rack::Racks>();
+        ent_->parent = this;
+        racks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Reload::Rack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Reload::Rack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : racks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : racks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Reload::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2693,16 +2693,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::Reload::Rack::Racks::get_na
 
 }
 
-std::shared_ptr<Entity> Oper::Reload::Rack::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Reload::Rack::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Reload::Rack::Racks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Reload::Rack::Racks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::Reload::Rack::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2786,7 +2786,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "card")
     {
@@ -2818,26 +2818,26 @@ std::shared_ptr<Entity> Oper::RebootHistory::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(card != nullptr)
     {
-        children["card"] = card;
+        _children["card"] = card;
     }
 
     if(admin_vm != nullptr)
     {
-        children["admin-vm"] = admin_vm;
+        _children["admin-vm"] = admin_vm;
     }
 
     if(reverse != nullptr)
     {
-        children["reverse"] = reverse;
+        _children["reverse"] = reverse;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2911,33 +2911,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Card::get_na
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Oper::RebootHistory::Card::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::RebootHistory::Card::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Card::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Card::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Card::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3016,33 +3016,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Card::Locati
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Card::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Card::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "events")
     {
-        auto c = std::make_shared<Oper::RebootHistory::Card::Location::Events>();
-        c->parent = this;
-        events.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::RebootHistory::Card::Location::Events>();
+        ent_->parent = this;
+        events.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Card::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Card::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : events.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : events.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Card::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3117,7 +3117,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Card::Locati
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Card::Location::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Card::Location::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event")
     {
@@ -3131,16 +3131,16 @@ std::shared_ptr<Entity> Oper::RebootHistory::Card::Location::Events::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Card::Location::Events::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Card::Location::Events::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(event != nullptr)
     {
-        children["event"] = event;
+        _children["event"] = event;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Card::Location::Events::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3225,16 +3225,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Card::Locati
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Card::Location::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Card::Location::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Card::Location::Events::Event::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Card::Location::Events::Event::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::RebootHistory::Card::Location::Events::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3358,33 +3358,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::AdminVm::get
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::AdminVm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::AdminVm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Oper::RebootHistory::AdminVm::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::RebootHistory::AdminVm::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::AdminVm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::AdminVm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::AdminVm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3463,33 +3463,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::AdminVm::Loc
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::AdminVm::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::AdminVm::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "events")
     {
-        auto c = std::make_shared<Oper::RebootHistory::AdminVm::Location::Events>();
-        c->parent = this;
-        events.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::RebootHistory::AdminVm::Location::Events>();
+        ent_->parent = this;
+        events.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::AdminVm::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::AdminVm::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : events.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : events.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::AdminVm::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3564,7 +3564,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::AdminVm::Loc
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::AdminVm::Location::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::AdminVm::Location::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event")
     {
@@ -3578,16 +3578,16 @@ std::shared_ptr<Entity> Oper::RebootHistory::AdminVm::Location::Events::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::AdminVm::Location::Events::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::AdminVm::Location::Events::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(event != nullptr)
     {
-        children["event"] = event;
+        _children["event"] = event;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::AdminVm::Location::Events::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3672,16 +3672,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::AdminVm::Loc
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::AdminVm::Location::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::AdminVm::Location::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::AdminVm::Location::Events::Event::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::AdminVm::Location::Events::Event::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::RebootHistory::AdminVm::Location::Events::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3801,7 +3801,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Reverse::get
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Reverse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Reverse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "card")
     {
@@ -3824,21 +3824,21 @@ std::shared_ptr<Entity> Oper::RebootHistory::Reverse::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Reverse::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(card != nullptr)
     {
-        children["card"] = card;
+        _children["card"] = card;
     }
 
     if(admin_vm != nullptr)
     {
-        children["admin-vm"] = admin_vm;
+        _children["admin-vm"] = admin_vm;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Reverse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3912,33 +3912,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Reverse::Car
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Reverse::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Reverse::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Oper::RebootHistory::Reverse::Card::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::RebootHistory::Reverse::Card::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::Card::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Reverse::Card::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Reverse::Card::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4017,33 +4017,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Reverse::Car
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Reverse::Card::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Reverse::Card::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "events")
     {
-        auto c = std::make_shared<Oper::RebootHistory::Reverse::Card::Location::Events>();
-        c->parent = this;
-        events.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::RebootHistory::Reverse::Card::Location::Events>();
+        ent_->parent = this;
+        events.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::Card::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Reverse::Card::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : events.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : events.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Reverse::Card::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4118,7 +4118,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Reverse::Car
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Reverse::Card::Location::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Reverse::Card::Location::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event")
     {
@@ -4132,16 +4132,16 @@ std::shared_ptr<Entity> Oper::RebootHistory::Reverse::Card::Location::Events::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::Card::Location::Events::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Reverse::Card::Location::Events::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(event != nullptr)
     {
-        children["event"] = event;
+        _children["event"] = event;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Reverse::Card::Location::Events::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4226,16 +4226,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Reverse::Car
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Reverse::Card::Location::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Reverse::Card::Location::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::Card::Location::Events::Event::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Reverse::Card::Location::Events::Event::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::RebootHistory::Reverse::Card::Location::Events::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4359,33 +4359,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Reverse::Adm
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Reverse::AdminVm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Reverse::AdminVm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Oper::RebootHistory::Reverse::AdminVm::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::RebootHistory::Reverse::AdminVm::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::AdminVm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Reverse::AdminVm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Reverse::AdminVm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4464,33 +4464,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Reverse::Adm
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Reverse::AdminVm::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Reverse::AdminVm::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "events")
     {
-        auto c = std::make_shared<Oper::RebootHistory::Reverse::AdminVm::Location::Events>();
-        c->parent = this;
-        events.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::RebootHistory::Reverse::AdminVm::Location::Events>();
+        ent_->parent = this;
+        events.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::AdminVm::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Reverse::AdminVm::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : events.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : events.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Reverse::AdminVm::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4565,7 +4565,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Reverse::Adm
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Reverse::AdminVm::Location::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Reverse::AdminVm::Location::Events::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "event")
     {
@@ -4579,16 +4579,16 @@ std::shared_ptr<Entity> Oper::RebootHistory::Reverse::AdminVm::Location::Events:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::AdminVm::Location::Events::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Reverse::AdminVm::Location::Events::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(event != nullptr)
     {
-        children["event"] = event;
+        _children["event"] = event;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::RebootHistory::Reverse::AdminVm::Location::Events::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4673,16 +4673,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::RebootHistory::Reverse::Adm
 
 }
 
-std::shared_ptr<Entity> Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::RebootHistory::Reverse::AdminVm::Location::Events::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4804,7 +4804,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Interface::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Oper::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-data")
     {
@@ -4818,16 +4818,16 @@ std::shared_ptr<Entity> Oper::Interface::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_data != nullptr)
     {
-        children["interface-data"] = interface_data;
+        _children["interface-data"] = interface_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4976,16 +4976,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::Interface::InterfaceData::g
 
 }
 
-std::shared_ptr<Entity> Oper::Interface::InterfaceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Interface::InterfaceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Interface::InterfaceData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Interface::InterfaceData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::Interface::InterfaceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5269,33 +5269,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::ReloadVm::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Oper::ReloadVm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::ReloadVm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Oper::ReloadVm::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::ReloadVm::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::ReloadVm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::ReloadVm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::ReloadVm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5362,16 +5362,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::ReloadVm::Location::get_nam
 
 }
 
-std::shared_ptr<Entity> Oper::ReloadVm::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::ReloadVm::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::ReloadVm::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::ReloadVm::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::ReloadVm::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5447,7 +5447,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Macpool::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Oper::Macpool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Macpool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
@@ -5461,16 +5461,16 @@ std::shared_ptr<Entity> Oper::Macpool::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Macpool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Macpool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(brief != nullptr)
     {
-        children["brief"] = brief;
+        _children["brief"] = brief;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Macpool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5544,33 +5544,33 @@ std::vector<std::pair<std::string, LeafData> > Oper::Macpool::Brief::get_name_le
 
 }
 
-std::shared_ptr<Entity> Oper::Macpool::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Macpool::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack")
     {
-        auto c = std::make_shared<Oper::Macpool::Brief::Rack>();
-        c->parent = this;
-        rack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Oper::Macpool::Brief::Rack>();
+        ent_->parent = this;
+        rack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Macpool::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Macpool::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Macpool::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5642,7 +5642,7 @@ std::vector<std::pair<std::string, LeafData> > Oper::Macpool::Brief::Rack::get_n
 
 }
 
-std::shared_ptr<Entity> Oper::Macpool::Brief::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Macpool::Brief::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief-data")
     {
@@ -5656,16 +5656,16 @@ std::shared_ptr<Entity> Oper::Macpool::Brief::Rack::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Macpool::Brief::Rack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Macpool::Brief::Rack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(brief_data != nullptr)
     {
-        children["brief-data"] = brief_data;
+        _children["brief-data"] = brief_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Oper::Macpool::Brief::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5750,16 +5750,16 @@ std::vector<std::pair<std::string, LeafData> > Oper::Macpool::Brief::Rack::Brief
 
 }
 
-std::shared_ptr<Entity> Oper::Macpool::Brief::Rack::BriefData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Oper::Macpool::Brief::Rack::BriefData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oper::Macpool::Brief::Rack::BriefData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Oper::Macpool::Brief::Rack::BriefData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Oper::Macpool::Brief::Rack::BriefData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5880,7 +5880,7 @@ std::vector<std::pair<std::string, LeafData> > Config::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "chassis")
     {
@@ -5921,31 +5921,31 @@ std::shared_ptr<Entity> Config::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(chassis != nullptr)
     {
-        children["chassis"] = chassis;
+        _children["chassis"] = chassis;
     }
 
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
     if(domain != nullptr)
     {
-        children["domain"] = domain;
+        _children["domain"] = domain;
     }
 
     if(virtual_macaddr_range != nullptr)
     {
-        children["virtual-macaddr-range"] = virtual_macaddr_range;
+        _children["virtual-macaddr-range"] = virtual_macaddr_range;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5956,7 +5956,7 @@ void Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Config::clone_ptr() const
+std::shared_ptr<ydk::Entity> Config::clone_ptr() const
 {
     return std::make_shared<Config>();
 }
@@ -6044,33 +6044,33 @@ std::vector<std::pair<std::string, LeafData> > Config::Chassis::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Config::Chassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Chassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "serial")
     {
-        auto c = std::make_shared<Config::Chassis::Serial>();
-        c->parent = this;
-        serial.append(c);
-        return c;
+        auto ent_ = std::make_shared<Config::Chassis::Serial>();
+        ent_->parent = this;
+        serial.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Chassis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Chassis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : serial.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : serial.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Chassis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6141,16 +6141,16 @@ std::vector<std::pair<std::string, LeafData> > Config::Chassis::Serial::get_name
 
 }
 
-std::shared_ptr<Entity> Config::Chassis::Serial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Chassis::Serial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Chassis::Serial::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Chassis::Serial::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Config::Chassis::Serial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6236,7 +6236,7 @@ std::vector<std::pair<std::string, LeafData> > Config::Interface::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Config::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "MgmtEth")
     {
@@ -6250,16 +6250,16 @@ std::shared_ptr<Entity> Config::Interface::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mgmteth != nullptr)
     {
-        children["MgmtEth"] = mgmteth;
+        _children["MgmtEth"] = mgmteth;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6333,33 +6333,33 @@ std::vector<std::pair<std::string, LeafData> > Config::Interface::MgmtEth::get_n
 
 }
 
-std::shared_ptr<Entity> Config::Interface::MgmtEth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Interface::MgmtEth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locport")
     {
-        auto c = std::make_shared<Config::Interface::MgmtEth::Locport>();
-        c->parent = this;
-        locport.append(c);
-        return c;
+        auto ent_ = std::make_shared<Config::Interface::MgmtEth::Locport>();
+        ent_->parent = this;
+        locport.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Interface::MgmtEth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Interface::MgmtEth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : locport.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : locport.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Interface::MgmtEth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6462,7 +6462,7 @@ std::vector<std::pair<std::string, LeafData> > Config::Interface::MgmtEth::Locpo
 
 }
 
-std::shared_ptr<Entity> Config::Interface::MgmtEth::Locport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Interface::MgmtEth::Locport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -6485,21 +6485,21 @@ std::shared_ptr<Entity> Config::Interface::MgmtEth::Locport::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Interface::MgmtEth::Locport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Interface::MgmtEth::Locport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(arp != nullptr)
     {
-        children["arp"] = arp;
+        _children["arp"] = arp;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Interface::MgmtEth::Locport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6628,16 +6628,16 @@ std::vector<std::pair<std::string, LeafData> > Config::Interface::MgmtEth::Locpo
 
 }
 
-std::shared_ptr<Entity> Config::Interface::MgmtEth::Locport::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Interface::MgmtEth::Locport::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Interface::MgmtEth::Locport::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Interface::MgmtEth::Locport::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Config::Interface::MgmtEth::Locport::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6714,33 +6714,33 @@ std::vector<std::pair<std::string, LeafData> > Config::Interface::MgmtEth::Locpo
 
 }
 
-std::shared_ptr<Entity> Config::Interface::MgmtEth::Locport::Arp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Interface::MgmtEth::Locport::Arp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
-        auto c = std::make_shared<Config::Interface::MgmtEth::Locport::Arp::Ip>();
-        c->parent = this;
-        ip.append(c);
-        return c;
+        auto ent_ = std::make_shared<Config::Interface::MgmtEth::Locport::Arp::Ip>();
+        ent_->parent = this;
+        ip.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Interface::MgmtEth::Locport::Arp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Interface::MgmtEth::Locport::Arp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Interface::MgmtEth::Locport::Arp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6804,16 +6804,16 @@ std::vector<std::pair<std::string, LeafData> > Config::Interface::MgmtEth::Locpo
 
 }
 
-std::shared_ptr<Entity> Config::Interface::MgmtEth::Locport::Arp::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Interface::MgmtEth::Locport::Arp::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Interface::MgmtEth::Locport::Arp::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Interface::MgmtEth::Locport::Arp::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Config::Interface::MgmtEth::Locport::Arp::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6918,50 +6918,50 @@ std::vector<std::pair<std::string, LeafData> > Config::Domain::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Config::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "name")
     {
-        auto c = std::make_shared<Config::Domain::Name>();
-        c->parent = this;
-        name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Config::Domain::Name>();
+        ent_->parent = this;
+        name.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "name-server")
     {
-        auto c = std::make_shared<Config::Domain::NameServer>();
-        c->parent = this;
-        name_server.append(c);
-        return c;
+        auto ent_ = std::make_shared<Config::Domain::NameServer>();
+        ent_->parent = this;
+        name_server.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Domain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Domain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : name_server.entities())
+    count_ = 0;
+    for (auto ent_ : name_server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7028,16 +7028,16 @@ std::vector<std::pair<std::string, LeafData> > Config::Domain::Name::get_name_le
 
 }
 
-std::shared_ptr<Entity> Config::Domain::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Domain::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Domain::Name::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Domain::Name::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Config::Domain::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7114,16 +7114,16 @@ std::vector<std::pair<std::string, LeafData> > Config::Domain::NameServer::get_n
 
 }
 
-std::shared_ptr<Entity> Config::Domain::NameServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Domain::NameServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Domain::NameServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Domain::NameServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Config::Domain::NameServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7203,16 +7203,16 @@ std::vector<std::pair<std::string, LeafData> > Config::VirtualMacaddrRange::get_
 
 }
 
-std::shared_ptr<Entity> Config::VirtualMacaddrRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::VirtualMacaddrRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::VirtualMacaddrRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::VirtualMacaddrRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Config::VirtualMacaddrRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7287,16 +7287,16 @@ std::vector<std::pair<std::string, LeafData> > Actions::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Actions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Actions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Actions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7307,7 +7307,7 @@ void Actions::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Actions::clone_ptr() const
+std::shared_ptr<ydk::Entity> Actions::clone_ptr() const
 {
     return std::make_shared<Actions>();
 }

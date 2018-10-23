@@ -61,7 +61,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -93,26 +93,26 @@ std::shared_ptr<Entity> Bgp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(peer_groups != nullptr)
     {
-        children["peer-groups"] = peer_groups;
+        _children["peer-groups"] = peer_groups;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -123,7 +123,7 @@ void Bgp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Bgp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Bgp::clone_ptr() const
 {
     return std::make_shared<Bgp>();
 }
@@ -235,7 +235,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -321,56 +321,56 @@ std::shared_ptr<Entity> Bgp::Global::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(default_route_distance != nullptr)
     {
-        children["default-route-distance"] = default_route_distance;
+        _children["default-route-distance"] = default_route_distance;
     }
 
     if(confederation != nullptr)
     {
-        children["confederation"] = confederation;
+        _children["confederation"] = confederation;
     }
 
     if(graceful_restart != nullptr)
     {
-        children["graceful-restart"] = graceful_restart;
+        _children["graceful-restart"] = graceful_restart;
     }
 
     if(use_multiple_paths != nullptr)
     {
-        children["use-multiple-paths"] = use_multiple_paths;
+        _children["use-multiple-paths"] = use_multiple_paths;
     }
 
     if(route_selection_options != nullptr)
     {
-        children["route-selection-options"] = route_selection_options;
+        _children["route-selection-options"] = route_selection_options;
     }
 
     if(afi_safis != nullptr)
     {
-        children["afi-safis"] = afi_safis;
+        _children["afi-safis"] = afi_safis;
     }
 
     if(dynamic_neighbor_prefixes != nullptr)
     {
-        children["dynamic-neighbor-prefixes"] = dynamic_neighbor_prefixes;
+        _children["dynamic-neighbor-prefixes"] = dynamic_neighbor_prefixes;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -440,16 +440,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::Config::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -547,16 +547,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::State::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -666,7 +666,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::DefaultRouteDistance
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::DefaultRouteDistance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -689,21 +689,21 @@ std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::DefaultRouteDistance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::DefaultRouteDistance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -773,16 +773,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::DefaultRouteDistance
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::DefaultRouteDistance::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::DefaultRouteDistance::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::DefaultRouteDistance::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -872,16 +872,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::DefaultRouteDistance
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::DefaultRouteDistance::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::DefaultRouteDistance::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::DefaultRouteDistance::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -971,7 +971,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::Confederation::get_n
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::Confederation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::Confederation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -994,21 +994,21 @@ std::shared_ptr<Entity> Bgp::Global::Confederation::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::Confederation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::Confederation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1092,16 +1092,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::Confederation::Confi
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::Confederation::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::Confederation::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::Confederation::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::Confederation::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1213,16 +1213,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::Confederation::State
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::Confederation::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::Confederation::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::Confederation::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::Confederation::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1320,7 +1320,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::GracefulRestart::get
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1343,21 +1343,21 @@ std::shared_ptr<Entity> Bgp::Global::GracefulRestart::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::GracefulRestart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1435,16 +1435,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::GracefulRestart::Con
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::GracefulRestart::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1562,16 +1562,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::GracefulRestart::Sta
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::GracefulRestart::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1689,7 +1689,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::UseMultiplePaths::ge
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::UseMultiplePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1730,31 +1730,31 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::UseMultiplePaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(ebgp != nullptr)
     {
-        children["ebgp"] = ebgp;
+        _children["ebgp"] = ebgp;
     }
 
     if(ibgp != nullptr)
     {
-        children["ibgp"] = ibgp;
+        _children["ibgp"] = ibgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::UseMultiplePaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1820,16 +1820,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::UseMultiplePaths::Co
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::UseMultiplePaths::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::UseMultiplePaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1905,16 +1905,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::UseMultiplePaths::St
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::UseMultiplePaths::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::UseMultiplePaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1994,7 +1994,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::UseMultiplePaths::Eb
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2017,21 +2017,21 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ebgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::UseMultiplePaths::Ebgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::UseMultiplePaths::Ebgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2101,16 +2101,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::UseMultiplePaths::Eb
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ebgp::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::UseMultiplePaths::Ebgp::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::UseMultiplePaths::Ebgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2200,16 +2200,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::UseMultiplePaths::Eb
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ebgp::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::UseMultiplePaths::Ebgp::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::UseMultiplePaths::Ebgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2299,7 +2299,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::UseMultiplePaths::Ib
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::UseMultiplePaths::Ibgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2322,21 +2322,21 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ibgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::UseMultiplePaths::Ibgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::UseMultiplePaths::Ibgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2402,16 +2402,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::UseMultiplePaths::Ib
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::UseMultiplePaths::Ibgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ibgp::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::UseMultiplePaths::Ibgp::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::UseMultiplePaths::Ibgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2487,16 +2487,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::UseMultiplePaths::Ib
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::UseMultiplePaths::Ibgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ibgp::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::UseMultiplePaths::Ibgp::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::UseMultiplePaths::Ibgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2576,7 +2576,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::RouteSelectionOption
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::RouteSelectionOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2599,21 +2599,21 @@ std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::RouteSelectionOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::RouteSelectionOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2699,16 +2699,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::RouteSelectionOption
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::RouteSelectionOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::RouteSelectionOptions::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::RouteSelectionOptions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2854,16 +2854,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::RouteSelectionOption
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::RouteSelectionOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::RouteSelectionOptions::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::RouteSelectionOptions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2997,33 +2997,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::get_name_l
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "afi-safi")
     {
-        auto c = std::make_shared<Bgp::Global::AfiSafis::AfiSafi>();
-        c->parent = this;
-        afi_safi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Global::AfiSafis::AfiSafi>();
+        ent_->parent = this;
+        afi_safi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : afi_safi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : afi_safi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3151,7 +3151,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::g
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3291,86 +3291,86 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(graceful_restart != nullptr)
     {
-        children["graceful-restart"] = graceful_restart;
+        _children["graceful-restart"] = graceful_restart;
     }
 
     if(route_selection_options != nullptr)
     {
-        children["route-selection-options"] = route_selection_options;
+        _children["route-selection-options"] = route_selection_options;
     }
 
     if(use_multiple_paths != nullptr)
     {
-        children["use-multiple-paths"] = use_multiple_paths;
+        _children["use-multiple-paths"] = use_multiple_paths;
     }
 
     if(ipv4_unicast != nullptr)
     {
-        children["ipv4-unicast"] = ipv4_unicast;
+        _children["ipv4-unicast"] = ipv4_unicast;
     }
 
     if(ipv6_unicast != nullptr)
     {
-        children["ipv6-unicast"] = ipv6_unicast;
+        _children["ipv6-unicast"] = ipv6_unicast;
     }
 
     if(ipv4_labeled_unicast != nullptr)
     {
-        children["ipv4-labeled-unicast"] = ipv4_labeled_unicast;
+        _children["ipv4-labeled-unicast"] = ipv4_labeled_unicast;
     }
 
     if(ipv6_labeled_unicast != nullptr)
     {
-        children["ipv6-labeled-unicast"] = ipv6_labeled_unicast;
+        _children["ipv6-labeled-unicast"] = ipv6_labeled_unicast;
     }
 
     if(l3vpn_ipv4_unicast != nullptr)
     {
-        children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
+        _children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
     }
 
     if(l3vpn_ipv6_unicast != nullptr)
     {
-        children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
+        _children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
     }
 
     if(l3vpn_ipv4_multicast != nullptr)
     {
-        children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
+        _children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
     }
 
     if(l3vpn_ipv6_multicast != nullptr)
     {
-        children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
+        _children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
     }
 
     if(l2vpn_vpls != nullptr)
     {
-        children["l2vpn-vpls"] = l2vpn_vpls;
+        _children["l2vpn-vpls"] = l2vpn_vpls;
     }
 
     if(l2vpn_evpn != nullptr)
     {
-        children["l2vpn-evpn"] = l2vpn_evpn;
+        _children["l2vpn-evpn"] = l2vpn_evpn;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3443,16 +3443,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::C
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3543,16 +3543,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::S
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3655,7 +3655,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::G
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3678,21 +3678,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3751,16 +3751,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::G
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3829,16 +3829,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::G
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3911,7 +3911,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::R
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3934,21 +3934,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4027,16 +4027,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::R
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4175,16 +4175,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::R
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4315,7 +4315,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::U
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4356,31 +4356,31 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(ebgp != nullptr)
     {
-        children["ebgp"] = ebgp;
+        _children["ebgp"] = ebgp;
     }
 
     if(ibgp != nullptr)
     {
-        children["ibgp"] = ibgp;
+        _children["ibgp"] = ibgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4439,16 +4439,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::U
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4517,16 +4517,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::U
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4599,7 +4599,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::U
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4622,21 +4622,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4699,16 +4699,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::U
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4791,16 +4791,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::U
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4883,7 +4883,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::U
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4906,21 +4906,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4979,16 +4979,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::U
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5057,16 +5057,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::U
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5143,7 +5143,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -5175,26 +5175,26 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5257,7 +5257,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -5280,21 +5280,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5365,16 +5365,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5485,16 +5485,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5593,16 +5593,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5671,16 +5671,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5757,7 +5757,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -5789,26 +5789,26 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5871,7 +5871,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -5894,21 +5894,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5979,16 +5979,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6099,16 +6099,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6207,16 +6207,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6285,16 +6285,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6363,7 +6363,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -6377,16 +6377,16 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6449,7 +6449,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6472,21 +6472,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::Pref
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6557,16 +6557,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6677,16 +6677,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6785,7 +6785,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -6799,16 +6799,16 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6871,7 +6871,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6894,21 +6894,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::Pref
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6979,16 +6979,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7099,16 +7099,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::I
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7207,7 +7207,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -7221,16 +7221,16 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7293,7 +7293,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -7316,21 +7316,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::Prefix
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7401,16 +7401,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7521,16 +7521,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Unicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7629,7 +7629,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -7643,16 +7643,16 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7715,7 +7715,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -7738,21 +7738,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::Prefix
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7823,16 +7823,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7943,16 +7943,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Unicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8051,7 +8051,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -8065,16 +8065,16 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8137,7 +8137,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8160,21 +8160,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::Pref
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8245,16 +8245,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8365,16 +8365,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv4Multicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8473,7 +8473,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -8487,16 +8487,16 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8559,7 +8559,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8582,21 +8582,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::Pref
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8667,16 +8667,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8787,16 +8787,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L3vpnIpv6Multicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8895,7 +8895,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -8909,16 +8909,16 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8981,7 +8981,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9004,21 +9004,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9089,16 +9089,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9209,16 +9209,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9317,7 +9317,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -9331,16 +9331,16 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9403,7 +9403,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9426,21 +9426,21 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9511,16 +9511,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9631,16 +9631,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::AfiSafis::AfiSafi::L
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9754,33 +9754,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::DynamicNeighborPrefi
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::DynamicNeighborPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::DynamicNeighborPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic-neighbor-prefix")
     {
-        auto c = std::make_shared<Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix>();
-        c->parent = this;
-        dynamic_neighbor_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix>();
+        ent_->parent = this;
+        dynamic_neighbor_prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DynamicNeighborPrefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::DynamicNeighborPrefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dynamic_neighbor_prefix.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dynamic_neighbor_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::DynamicNeighborPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9856,7 +9856,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::DynamicNeighborPrefi
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9879,21 +9879,21 @@ std::shared_ptr<Entity> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPre
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9966,16 +9966,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::DynamicNeighborPrefi
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10058,16 +10058,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Global::DynamicNeighborPrefi
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Global::DynamicNeighborPrefixes::DynamicNeighborPrefix::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10161,33 +10161,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Bgp::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10311,7 +10311,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::get_nam
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -10442,81 +10442,81 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(timers != nullptr)
     {
-        children["timers"] = timers;
+        _children["timers"] = timers;
     }
 
     if(transport != nullptr)
     {
-        children["transport"] = transport;
+        _children["transport"] = transport;
     }
 
     if(error_handling != nullptr)
     {
-        children["error-handling"] = error_handling;
+        _children["error-handling"] = error_handling;
     }
 
     if(graceful_restart != nullptr)
     {
-        children["graceful-restart"] = graceful_restart;
+        _children["graceful-restart"] = graceful_restart;
     }
 
     if(logging_options != nullptr)
     {
-        children["logging-options"] = logging_options;
+        _children["logging-options"] = logging_options;
     }
 
     if(ebgp_multihop != nullptr)
     {
-        children["ebgp-multihop"] = ebgp_multihop;
+        _children["ebgp-multihop"] = ebgp_multihop;
     }
 
     if(route_reflector != nullptr)
     {
-        children["route-reflector"] = route_reflector;
+        _children["route-reflector"] = route_reflector;
     }
 
     if(as_path_options != nullptr)
     {
-        children["as-path-options"] = as_path_options;
+        _children["as-path-options"] = as_path_options;
     }
 
     if(add_paths != nullptr)
     {
-        children["add-paths"] = add_paths;
+        _children["add-paths"] = add_paths;
     }
 
     if(use_multiple_paths != nullptr)
     {
-        children["use-multiple-paths"] = use_multiple_paths;
+        _children["use-multiple-paths"] = use_multiple_paths;
     }
 
     if(apply_policy != nullptr)
     {
-        children["apply-policy"] = apply_policy;
+        _children["apply-policy"] = apply_policy;
     }
 
     if(afi_safis != nullptr)
     {
-        children["afi-safis"] = afi_safis;
+        _children["afi-safis"] = afi_safis;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10625,16 +10625,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Config:
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10882,7 +10882,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::State::
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "messages")
     {
@@ -10905,21 +10905,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(messages != nullptr)
     {
-        children["messages"] = messages;
+        _children["messages"] = messages;
     }
 
     if(queues != nullptr)
     {
-        children["queues"] = queues;
+        _children["queues"] = queues;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11141,7 +11141,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::State::
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::State::Messages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sent")
     {
@@ -11164,21 +11164,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Messages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::State::Messages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sent != nullptr)
     {
-        children["sent"] = sent;
+        _children["sent"] = sent;
     }
 
     if(received != nullptr)
     {
-        children["received"] = received;
+        _children["received"] = received;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::State::Messages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11241,16 +11241,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::State::
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::Sent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::State::Messages::Sent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Messages::Sent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::State::Messages::Sent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::State::Messages::Sent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11333,16 +11333,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::State::
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::State::Messages::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Messages::Received::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::State::Messages::Received::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::State::Messages::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11425,16 +11425,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::State::
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Queues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::State::Queues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Queues::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::State::Queues::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::State::Queues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11517,7 +11517,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Timers:
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -11540,21 +11540,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::Timers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11625,16 +11625,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Timers:
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::Timers::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::Timers::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::Timers::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11749,16 +11749,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Timers:
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::Timers::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::Timers::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::Timers::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11871,7 +11871,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Transpo
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -11894,21 +11894,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::Transport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11979,16 +11979,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Transpo
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::Transport::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transport::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::Transport::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::Transport::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12111,16 +12111,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Transpo
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::Transport::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transport::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::Transport::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::Transport::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12253,7 +12253,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::ErrorHa
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::ErrorHandling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -12276,21 +12276,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::ErrorHandling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12349,16 +12349,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::ErrorHa
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::ErrorHandling::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12431,16 +12431,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::ErrorHa
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::ErrorHandling::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::ErrorHandling::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12523,7 +12523,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Gracefu
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -12546,21 +12546,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12631,16 +12631,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Gracefu
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12767,16 +12767,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Gracefu
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12919,7 +12919,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Logging
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::LoggingOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -12942,21 +12942,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::LoggingOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13015,16 +13015,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Logging
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::LoggingOptions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13093,16 +13093,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::Logging
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::LoggingOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::LoggingOptions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13175,7 +13175,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::EbgpMul
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13198,21 +13198,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::EbgpMultihop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13275,16 +13275,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::EbgpMul
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::EbgpMultihop::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13367,16 +13367,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::EbgpMul
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::EbgpMultihop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13459,7 +13459,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::RouteRe
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::RouteReflector::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13482,21 +13482,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteReflector::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::RouteReflector::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::RouteReflector::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13559,16 +13559,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::RouteRe
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::RouteReflector::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteReflector::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::RouteReflector::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::RouteReflector::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13651,16 +13651,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::RouteRe
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::RouteReflector::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteReflector::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::RouteReflector::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::RouteReflector::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13743,7 +13743,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AsPathO
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AsPathOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13766,21 +13766,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AsPathOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13843,16 +13843,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AsPathO
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AsPathOptions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13935,16 +13935,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AsPathO
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AsPathOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AsPathOptions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14027,7 +14027,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AddPath
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AddPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14050,21 +14050,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AddPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AddPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14131,16 +14131,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AddPath
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AddPaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPaths::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AddPaths::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AddPaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14237,16 +14237,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AddPath
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AddPaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPaths::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AddPaths::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AddPaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14343,7 +14343,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::UseMult
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14375,26 +14375,26 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(ebgp != nullptr)
     {
-        children["ebgp"] = ebgp;
+        _children["ebgp"] = ebgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::UseMultiplePaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14453,16 +14453,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::UseMult
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14531,16 +14531,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::UseMult
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::UseMultiplePaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14613,7 +14613,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::UseMult
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14636,21 +14636,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14709,16 +14709,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::UseMult
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14787,16 +14787,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::UseMult
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14869,7 +14869,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::ApplyPo
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14892,21 +14892,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::ApplyPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14997,16 +14997,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::ApplyPo
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::ApplyPolicy::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15133,16 +15133,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::ApplyPo
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::ApplyPolicy::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15245,33 +15245,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "afi-safi")
     {
-        auto c = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi>();
-        c->parent = this;
-        afi_safi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi>();
+        ent_->parent = this;
+        afi_safi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : afi_safi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : afi_safi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15392,7 +15392,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -15532,86 +15532,86 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(graceful_restart != nullptr)
     {
-        children["graceful-restart"] = graceful_restart;
+        _children["graceful-restart"] = graceful_restart;
     }
 
     if(apply_policy != nullptr)
     {
-        children["apply-policy"] = apply_policy;
+        _children["apply-policy"] = apply_policy;
     }
 
     if(ipv4_unicast != nullptr)
     {
-        children["ipv4-unicast"] = ipv4_unicast;
+        _children["ipv4-unicast"] = ipv4_unicast;
     }
 
     if(ipv6_unicast != nullptr)
     {
-        children["ipv6-unicast"] = ipv6_unicast;
+        _children["ipv6-unicast"] = ipv6_unicast;
     }
 
     if(ipv4_labeled_unicast != nullptr)
     {
-        children["ipv4-labeled-unicast"] = ipv4_labeled_unicast;
+        _children["ipv4-labeled-unicast"] = ipv4_labeled_unicast;
     }
 
     if(ipv6_labeled_unicast != nullptr)
     {
-        children["ipv6-labeled-unicast"] = ipv6_labeled_unicast;
+        _children["ipv6-labeled-unicast"] = ipv6_labeled_unicast;
     }
 
     if(l3vpn_ipv4_unicast != nullptr)
     {
-        children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
+        _children["l3vpn-ipv4-unicast"] = l3vpn_ipv4_unicast;
     }
 
     if(l3vpn_ipv6_unicast != nullptr)
     {
-        children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
+        _children["l3vpn-ipv6-unicast"] = l3vpn_ipv6_unicast;
     }
 
     if(l3vpn_ipv4_multicast != nullptr)
     {
-        children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
+        _children["l3vpn-ipv4-multicast"] = l3vpn_ipv4_multicast;
     }
 
     if(l3vpn_ipv6_multicast != nullptr)
     {
-        children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
+        _children["l3vpn-ipv6-multicast"] = l3vpn_ipv6_multicast;
     }
 
     if(l2vpn_vpls != nullptr)
     {
-        children["l2vpn-vpls"] = l2vpn_vpls;
+        _children["l2vpn-vpls"] = l2vpn_vpls;
     }
 
     if(l2vpn_evpn != nullptr)
     {
-        children["l2vpn-evpn"] = l2vpn_evpn;
+        _children["l2vpn-evpn"] = l2vpn_evpn;
     }
 
     if(use_multiple_paths != nullptr)
     {
-        children["use-multiple-paths"] = use_multiple_paths;
+        _children["use-multiple-paths"] = use_multiple_paths;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15684,16 +15684,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15785,7 +15785,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefixes")
     {
@@ -15799,16 +15799,16 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefixes != nullptr)
     {
-        children["prefixes"] = prefixes;
+        _children["prefixes"] = prefixes;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15905,16 +15905,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16007,7 +16007,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -16030,21 +16030,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRes
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16103,16 +16103,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16189,16 +16189,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16291,7 +16291,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -16314,21 +16314,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16419,16 +16419,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16555,16 +16555,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16667,7 +16667,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -16699,26 +16699,26 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16781,7 +16781,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -16804,21 +16804,21 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16889,16 +16889,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Neighbors::Neighbor::AfiSafi
 
 }
 
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

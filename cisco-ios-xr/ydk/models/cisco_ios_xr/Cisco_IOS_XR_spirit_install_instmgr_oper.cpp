@@ -112,7 +112,7 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "superseded")
     {
@@ -261,91 +261,91 @@ std::shared_ptr<Entity> SoftwareInstall::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(superseded != nullptr)
     {
-        children["superseded"] = superseded;
+        _children["superseded"] = superseded;
     }
 
     if(committed_summary != nullptr)
     {
-        children["committed-summary"] = committed_summary;
+        _children["committed-summary"] = committed_summary;
     }
 
     if(active_summary != nullptr)
     {
-        children["active-summary"] = active_summary;
+        _children["active-summary"] = active_summary;
     }
 
     if(inactive_summary != nullptr)
     {
-        children["inactive-summary"] = inactive_summary;
+        _children["inactive-summary"] = inactive_summary;
     }
 
     if(prepare != nullptr)
     {
-        children["prepare"] = prepare;
+        _children["prepare"] = prepare;
     }
 
     if(active != nullptr)
     {
-        children["active"] = active;
+        _children["active"] = active;
     }
 
     if(version != nullptr)
     {
-        children["version"] = version;
+        _children["version"] = version;
     }
 
     if(inactive != nullptr)
     {
-        children["inactive"] = inactive;
+        _children["inactive"] = inactive;
     }
 
     if(request != nullptr)
     {
-        children["request"] = request;
+        _children["request"] = request;
     }
 
     if(superseded_summary != nullptr)
     {
-        children["superseded-summary"] = superseded_summary;
+        _children["superseded-summary"] = superseded_summary;
     }
 
     if(issu != nullptr)
     {
-        children["issu"] = issu;
+        _children["issu"] = issu;
     }
 
     if(committed != nullptr)
     {
-        children["committed"] = committed;
+        _children["committed"] = committed;
     }
 
     if(all_operations_log != nullptr)
     {
-        children["all-operations-log"] = all_operations_log;
+        _children["all-operations-log"] = all_operations_log;
     }
 
     if(packages != nullptr)
     {
-        children["packages"] = packages;
+        _children["packages"] = packages;
     }
 
     if(operation_logs != nullptr)
     {
-        children["operation-logs"] = operation_logs;
+        _children["operation-logs"] = operation_logs;
     }
 
     if(repository != nullptr)
     {
-        children["repository"] = repository;
+        _children["repository"] = repository;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -356,7 +356,7 @@ void SoftwareInstall::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> SoftwareInstall::clone_ptr() const
+std::shared_ptr<ydk::Entity> SoftwareInstall::clone_ptr() const
 {
     return std::make_shared<SoftwareInstall>();
 }
@@ -444,33 +444,33 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Superseded::get_
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Superseded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Superseded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "superseded-package-info")
     {
-        auto c = std::make_shared<SoftwareInstall::Superseded::SupersededPackageInfo>();
-        c->parent = this;
-        superseded_package_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::Superseded::SupersededPackageInfo>();
+        ent_->parent = this;
+        superseded_package_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Superseded::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Superseded::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : superseded_package_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : superseded_package_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Superseded::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -552,16 +552,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Superseded::Supe
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Superseded::SupersededPackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Superseded::SupersededPackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Superseded::SupersededPackageInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Superseded::SupersededPackageInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Superseded::SupersededPackageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -685,33 +685,33 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::CommittedSummary
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::CommittedSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::CommittedSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "committed-package-info")
     {
-        auto c = std::make_shared<SoftwareInstall::CommittedSummary::CommittedPackageInfo>();
-        c->parent = this;
-        committed_package_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::CommittedSummary::CommittedPackageInfo>();
+        ent_->parent = this;
+        committed_package_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::CommittedSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::CommittedSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : committed_package_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : committed_package_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::CommittedSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -797,16 +797,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::CommittedSummary
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::CommittedSummary::CommittedPackageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -940,33 +940,33 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::ActiveSummary::g
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::ActiveSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::ActiveSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active-package-info")
     {
-        auto c = std::make_shared<SoftwareInstall::ActiveSummary::ActivePackageInfo>();
-        c->parent = this;
-        active_package_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::ActiveSummary::ActivePackageInfo>();
+        ent_->parent = this;
+        active_package_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::ActiveSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::ActiveSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active_package_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active_package_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::ActiveSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1052,16 +1052,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::ActiveSummary::A
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::ActiveSummary::ActivePackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::ActiveSummary::ActivePackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::ActiveSummary::ActivePackageInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::ActiveSummary::ActivePackageInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::ActiveSummary::ActivePackageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1187,16 +1187,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::InactiveSummary:
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::InactiveSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::InactiveSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::InactiveSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::InactiveSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::InactiveSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1315,50 +1315,50 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Prepare::get_nam
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Prepare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Prepare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rpm")
     {
-        auto c = std::make_shared<SoftwareInstall::Prepare::Rpm>();
-        c->parent = this;
-        rpm.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::Prepare::Rpm>();
+        ent_->parent = this;
+        rpm.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "package")
     {
-        auto c = std::make_shared<SoftwareInstall::Prepare::Package>();
-        c->parent = this;
-        package.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::Prepare::Package>();
+        ent_->parent = this;
+        package.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Prepare::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Prepare::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rpm.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rpm.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : package.entities())
+    count_ = 0;
+    for (auto ent_ : package.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Prepare::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1484,16 +1484,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Prepare::Rpm::ge
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Prepare::Rpm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Prepare::Rpm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Prepare::Rpm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Prepare::Rpm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Prepare::Rpm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1569,16 +1569,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Prepare::Package
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Prepare::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Prepare::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Prepare::Package::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Prepare::Package::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Prepare::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1662,33 +1662,33 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Active::get_name
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active-package-info")
     {
-        auto c = std::make_shared<SoftwareInstall::Active::ActivePackageInfo>();
-        c->parent = this;
-        active_package_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::Active::ActivePackageInfo>();
+        ent_->parent = this;
+        active_package_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active_package_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active_package_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1774,16 +1774,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Active::ActivePa
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Active::ActivePackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Active::ActivePackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Active::ActivePackageInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Active::ActivePackageInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Active::ActivePackageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1937,33 +1937,33 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Version::get_nam
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "package")
     {
-        auto c = std::make_shared<SoftwareInstall::Version::Package>();
-        c->parent = this;
-        package.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::Version::Package>();
+        ent_->parent = this;
+        package.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Version::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Version::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : package.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : package.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Version::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2099,16 +2099,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Version::Package
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Version::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Version::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Version::Package::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Version::Package::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Version::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2234,16 +2234,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Inactive::get_na
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Inactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Inactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2319,16 +2319,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Request::get_nam
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Request::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Request::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Request::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2404,16 +2404,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::SupersededSummar
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::SupersededSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::SupersededSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::SupersededSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::SupersededSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::SupersededSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2493,7 +2493,7 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Issu::get_name_l
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stage")
     {
@@ -2516,21 +2516,21 @@ std::shared_ptr<Entity> SoftwareInstall::Issu::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Issu::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stage != nullptr)
     {
-        children["stage"] = stage;
+        _children["stage"] = stage;
     }
 
     if(inventory != nullptr)
     {
-        children["inventory"] = inventory;
+        _children["inventory"] = inventory;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Issu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2616,16 +2616,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Issu::Stage::get
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Issu::Stage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Issu::Stage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::Stage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Issu::Stage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Issu::Stage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2759,33 +2759,33 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Issu::Inventory:
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Issu::Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Issu::Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "invinfo")
     {
-        auto c = std::make_shared<SoftwareInstall::Issu::Inventory::Invinfo>();
-        c->parent = this;
-        invinfo.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::Issu::Inventory::Invinfo>();
+        ent_->parent = this;
+        invinfo.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::Inventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Issu::Inventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : invinfo.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : invinfo.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Issu::Inventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2867,16 +2867,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Issu::Inventory:
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Issu::Inventory::Invinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Issu::Inventory::Invinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::Inventory::Invinfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Issu::Inventory::Invinfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Issu::Inventory::Invinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3000,33 +3000,33 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Committed::get_n
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Committed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Committed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "committed-package-info")
     {
-        auto c = std::make_shared<SoftwareInstall::Committed::CommittedPackageInfo>();
-        c->parent = this;
-        committed_package_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::Committed::CommittedPackageInfo>();
+        ent_->parent = this;
+        committed_package_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Committed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Committed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : committed_package_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : committed_package_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Committed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3112,16 +3112,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Committed::Commi
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Committed::CommittedPackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Committed::CommittedPackageInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Committed::CommittedPackageInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Committed::CommittedPackageInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Committed::CommittedPackageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3259,7 +3259,7 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::AllOperationsLog
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::AllOperationsLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reverse-detail")
     {
@@ -3300,31 +3300,31 @@ std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::AllOperationsLog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(reverse_detail != nullptr)
     {
-        children["reverse-detail"] = reverse_detail;
+        _children["reverse-detail"] = reverse_detail;
     }
 
     if(reverse != nullptr)
     {
-        children["reverse"] = reverse;
+        _children["reverse"] = reverse;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::AllOperationsLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3390,16 +3390,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::AllOperationsLog
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::ReverseDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::AllOperationsLog::ReverseDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::ReverseDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::AllOperationsLog::ReverseDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::AllOperationsLog::ReverseDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3475,16 +3475,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::AllOperationsLog
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::Reverse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::AllOperationsLog::Reverse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::Reverse::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::AllOperationsLog::Reverse::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::AllOperationsLog::Reverse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3560,16 +3560,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::AllOperationsLog
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::AllOperationsLog::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::AllOperationsLog::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::AllOperationsLog::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3645,16 +3645,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::AllOperationsLog
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::AllOperationsLog::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::AllOperationsLog::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::AllOperationsLog::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::AllOperationsLog::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3738,33 +3738,33 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Packages::get_na
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Packages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Packages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "package")
     {
-        auto c = std::make_shared<SoftwareInstall::Packages::Package>();
-        c->parent = this;
-        package.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::Packages::Package>();
+        ent_->parent = this;
+        package.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Packages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : package.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : package.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Packages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3844,7 +3844,7 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Packages::Packag
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Packages::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Packages::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "verbose")
     {
@@ -3876,26 +3876,26 @@ std::shared_ptr<Entity> SoftwareInstall::Packages::Package::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Package::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Packages::Package::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(verbose != nullptr)
     {
-        children["verbose"] = verbose;
+        _children["verbose"] = verbose;
     }
 
     if(brief != nullptr)
     {
-        children["brief"] = brief;
+        _children["brief"] = brief;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Packages::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3964,16 +3964,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Packages::Packag
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Packages::Package::Verbose::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Packages::Package::Verbose::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Package::Verbose::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Packages::Package::Verbose::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Packages::Package::Verbose::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4042,16 +4042,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Packages::Packag
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Packages::Package::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Packages::Package::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Package::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Packages::Package::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Packages::Package::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4120,16 +4120,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Packages::Packag
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Packages::Package::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Packages::Package::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Package::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Packages::Package::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Packages::Package::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4213,33 +4213,33 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::OperationLogs::g
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::OperationLogs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::OperationLogs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operation-log")
     {
-        auto c = std::make_shared<SoftwareInstall::OperationLogs::OperationLog>();
-        c->parent = this;
-        operation_log.append(c);
-        return c;
+        auto ent_ = std::make_shared<SoftwareInstall::OperationLogs::OperationLog>();
+        ent_->parent = this;
+        operation_log.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::OperationLogs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : operation_log.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : operation_log.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::OperationLogs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4315,7 +4315,7 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::OperationLogs::O
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::OperationLogs::OperationLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::OperationLogs::OperationLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -4338,21 +4338,21 @@ std::shared_ptr<Entity> SoftwareInstall::OperationLogs::OperationLog::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::OperationLog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::OperationLogs::OperationLog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::OperationLogs::OperationLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4421,16 +4421,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::OperationLogs::O
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::OperationLogs::OperationLog::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::OperationLogs::OperationLog::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::OperationLog::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::OperationLogs::OperationLog::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::OperationLogs::OperationLog::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4499,16 +4499,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::OperationLogs::O
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::OperationLogs::OperationLog::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::OperationLogs::OperationLog::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::OperationLog::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::OperationLogs::OperationLog::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::OperationLogs::OperationLog::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4588,7 +4588,7 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Repository::get_
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Repository::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Repository::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "xr")
     {
@@ -4611,21 +4611,21 @@ std::shared_ptr<Entity> SoftwareInstall::Repository::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Repository::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Repository::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(xr != nullptr)
     {
-        children["xr"] = xr;
+        _children["xr"] = xr;
     }
 
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void SoftwareInstall::Repository::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4691,16 +4691,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Repository::Xr::
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Repository::Xr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Repository::Xr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Repository::Xr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Repository::Xr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Repository::Xr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4776,16 +4776,16 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Repository::All:
 
 }
 
-std::shared_ptr<Entity> SoftwareInstall::Repository::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SoftwareInstall::Repository::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Repository::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SoftwareInstall::Repository::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SoftwareInstall::Repository::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

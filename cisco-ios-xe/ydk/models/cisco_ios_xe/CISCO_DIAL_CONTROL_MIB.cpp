@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CISCODIALCONTROLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODIALCONTROLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cPeerGlobalConfiguration")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> CISCODIALCONTROLMIB::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODIALCONTROLMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cpeerglobalconfiguration != nullptr)
     {
-        children["cPeerGlobalConfiguration"] = cpeerglobalconfiguration;
+        _children["cPeerGlobalConfiguration"] = cpeerglobalconfiguration;
     }
 
     if(ccallhistorytable != nullptr)
     {
-        children["cCallHistoryTable"] = ccallhistorytable;
+        _children["cCallHistoryTable"] = ccallhistorytable;
     }
 
     if(ccallhistoryiectable != nullptr)
     {
-        children["cCallHistoryIecTable"] = ccallhistoryiectable;
+        _children["cCallHistoryIecTable"] = ccallhistoryiectable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODIALCONTROLMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void CISCODIALCONTROLMIB::set_filter(const std::string & value_path, YFilter yfi
 {
 }
 
-std::shared_ptr<Entity> CISCODIALCONTROLMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCODIALCONTROLMIB::clone_ptr() const
 {
     return std::make_shared<CISCODIALCONTROLMIB>();
 }
@@ -202,16 +202,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::CPeerGlobalC
 
 }
 
-std::shared_ptr<Entity> CISCODIALCONTROLMIB::CPeerGlobalConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODIALCONTROLMIB::CPeerGlobalConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::CPeerGlobalConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODIALCONTROLMIB::CPeerGlobalConfiguration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODIALCONTROLMIB::CPeerGlobalConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -295,33 +295,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::CCallHistory
 
 }
 
-std::shared_ptr<Entity> CISCODIALCONTROLMIB::CCallHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODIALCONTROLMIB::CCallHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cCallHistoryEntry")
     {
-        auto c = std::make_shared<CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry>();
-        c->parent = this;
-        ccallhistoryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry>();
+        ent_->parent = this;
+        ccallhistoryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::CCallHistoryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODIALCONTROLMIB::CCallHistoryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccallhistoryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccallhistoryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODIALCONTROLMIB::CCallHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -464,16 +464,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::CCallHistory
 
 }
 
-std::shared_ptr<Entity> CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -747,33 +747,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::CCallHistory
 
 }
 
-std::shared_ptr<Entity> CISCODIALCONTROLMIB::CCallHistoryIecTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODIALCONTROLMIB::CCallHistoryIecTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cCallHistoryIecEntry")
     {
-        auto c = std::make_shared<CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry>();
-        c->parent = this;
-        ccallhistoryiecentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry>();
+        ent_->parent = this;
+        ccallhistoryiecentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::CCallHistoryIecTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODIALCONTROLMIB::CCallHistoryIecTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccallhistoryiecentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccallhistoryiecentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODIALCONTROLMIB::CCallHistoryIecTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -849,16 +849,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODIALCONTROLMIB::CCallHistory
 
 }
 
-std::shared_ptr<Entity> CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODIALCONTROLMIB::CCallHistoryIecTable::CCallHistoryIecEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -28,9 +28,9 @@
 
 namespace ydk
 {
-class Entity;
 
 std::string get_relative_entity_path(const Entity* current_node, const Entity* ancestor, const std::string & path);
+
 bool is_set(const YFilter & yfilter);
 
 const EntityPath get_entity_path(const Entity & entity, Entity* ancestor);

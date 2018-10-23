@@ -84,7 +84,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::get_name_l
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoCableWidebandMIBObjects")
     {
@@ -170,56 +170,56 @@ std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciscocablewidebandmibobjects != nullptr)
     {
-        children["ciscoCableWidebandMIBObjects"] = ciscocablewidebandmibobjects;
+        _children["ciscoCableWidebandMIBObjects"] = ciscocablewidebandmibobjects;
     }
 
     if(ccwbrfchanneltable != nullptr)
     {
-        children["ccwbRFChannelTable"] = ccwbrfchanneltable;
+        _children["ccwbRFChannelTable"] = ccwbrfchanneltable;
     }
 
     if(ccwbwbtorfmappingtable != nullptr)
     {
-        children["ccwbWBtoRFMappingTable"] = ccwbwbtorfmappingtable;
+        _children["ccwbWBtoRFMappingTable"] = ccwbwbtorfmappingtable;
     }
 
     if(ccwbwbtonbmappingtable != nullptr)
     {
-        children["ccwbWBtoNBMappingTable"] = ccwbwbtonbmappingtable;
+        _children["ccwbWBtoNBMappingTable"] = ccwbwbtonbmappingtable;
     }
 
     if(ccwbwbbondgrptable != nullptr)
     {
-        children["ccwbWBBondGrpTable"] = ccwbwbbondgrptable;
+        _children["ccwbWBBondGrpTable"] = ccwbwbbondgrptable;
     }
 
     if(ccwbwbcmstatustable != nullptr)
     {
-        children["ccwbWBCmStatusTable"] = ccwbwbcmstatustable;
+        _children["ccwbWBCmStatusTable"] = ccwbwbcmstatustable;
     }
 
     if(ccwbwbcmstatusexttable != nullptr)
     {
-        children["ccwbWBCmStatusExtTable"] = ccwbwbcmstatusexttable;
+        _children["ccwbWBCmStatusExtTable"] = ccwbwbcmstatusexttable;
     }
 
     if(ccwbfibernodedescrtable != nullptr)
     {
-        children["ccwbFiberNodeDescrTable"] = ccwbfibernodedescrtable;
+        _children["ccwbFiberNodeDescrTable"] = ccwbfibernodedescrtable;
     }
 
     if(ccwbfibernodetable != nullptr)
     {
-        children["ccwbFiberNodeTable"] = ccwbfibernodetable;
+        _children["ccwbFiberNodeTable"] = ccwbfibernodetable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -230,7 +230,7 @@ void CISCOCABLEWIDEBANDMIB::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::clone_ptr() const
 {
     return std::make_shared<CISCOCABLEWIDEBANDMIB>();
 }
@@ -314,16 +314,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CiscoCable
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CiscoCableWidebandMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CiscoCableWidebandMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CiscoCableWidebandMIBObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CiscoCableWidebandMIBObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CiscoCableWidebandMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -417,33 +417,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbRFChan
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccwbRFChannelEntry")
     {
-        auto c = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry>();
-        c->parent = this;
-        ccwbrfchannelentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry>();
+        ent_->parent = this;
+        ccwbrfchannelentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccwbrfchannelentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccwbrfchannelentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -591,16 +591,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbRFChan
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbRFChannelTable::CcwbRFChannelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -884,33 +884,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBtoRF
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccwbWBtoRFMappingEntry")
     {
-        auto c = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::CcwbWBtoRFMappingEntry>();
-        c->parent = this;
-        ccwbwbtorfmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::CcwbWBtoRFMappingEntry>();
+        ent_->parent = this;
+        ccwbwbtorfmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccwbwbtorfmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccwbwbtorfmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -999,16 +999,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBtoRF
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::CcwbWBtoRFMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::CcwbWBtoRFMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::CcwbWBtoRFMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::CcwbWBtoRFMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBtoRFMappingTable::CcwbWBtoRFMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1142,33 +1142,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBtoNB
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccwbWBtoNBMappingEntry")
     {
-        auto c = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::CcwbWBtoNBMappingEntry>();
-        c->parent = this;
-        ccwbwbtonbmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::CcwbWBtoNBMappingEntry>();
+        ent_->parent = this;
+        ccwbwbtonbmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccwbwbtonbmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccwbwbtonbmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1248,16 +1248,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBtoNB
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::CcwbWBtoNBMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::CcwbWBtoNBMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::CcwbWBtoNBMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::CcwbWBtoNBMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBtoNBMappingTable::CcwbWBtoNBMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1371,33 +1371,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBBond
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccwbWBBondGrpEntry")
     {
-        auto c = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::CcwbWBBondGrpEntry>();
-        c->parent = this;
-        ccwbwbbondgrpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::CcwbWBBondGrpEntry>();
+        ent_->parent = this;
+        ccwbwbbondgrpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccwbwbbondgrpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccwbwbbondgrpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1468,16 +1468,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBBond
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::CcwbWBBondGrpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::CcwbWBBondGrpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::CcwbWBBondGrpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::CcwbWBBondGrpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBBondGrpTable::CcwbWBBondGrpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1571,33 +1571,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBCmSt
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccwbWBCmStatusEntry")
     {
-        auto c = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::CcwbWBCmStatusEntry>();
-        c->parent = this;
-        ccwbwbcmstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::CcwbWBCmStatusEntry>();
+        ent_->parent = this;
+        ccwbwbcmstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccwbwbcmstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccwbwbcmstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1668,16 +1668,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBCmSt
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::CcwbWBCmStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::CcwbWBCmStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::CcwbWBCmStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::CcwbWBCmStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusTable::CcwbWBCmStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1771,33 +1771,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBCmSt
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccwbWBCmStatusExtEntry")
     {
-        auto c = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::CcwbWBCmStatusExtEntry>();
-        c->parent = this;
-        ccwbwbcmstatusextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::CcwbWBCmStatusExtEntry>();
+        ent_->parent = this;
+        ccwbwbcmstatusextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccwbwbcmstatusextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccwbwbcmstatusextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1873,16 +1873,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbWBCmSt
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::CcwbWBCmStatusExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::CcwbWBCmStatusExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::CcwbWBCmStatusExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::CcwbWBCmStatusExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbWBCmStatusExtTable::CcwbWBCmStatusExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1986,33 +1986,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbFiberN
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccwbFiberNodeDescrEntry")
     {
-        auto c = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::CcwbFiberNodeDescrEntry>();
-        c->parent = this;
-        ccwbfibernodedescrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::CcwbFiberNodeDescrEntry>();
+        ent_->parent = this;
+        ccwbfibernodedescrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccwbfibernodedescrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccwbfibernodedescrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2091,16 +2091,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbFiberN
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::CcwbFiberNodeDescrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::CcwbFiberNodeDescrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::CcwbFiberNodeDescrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::CcwbFiberNodeDescrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbFiberNodeDescrTable::CcwbFiberNodeDescrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2214,33 +2214,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbFiberN
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccwbFiberNodeEntry")
     {
-        auto c = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::CcwbFiberNodeEntry>();
-        c->parent = this;
-        ccwbfibernodeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::CcwbFiberNodeEntry>();
+        ent_->parent = this;
+        ccwbfibernodeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccwbfibernodeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccwbfibernodeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2332,16 +2332,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLEWIDEBANDMIB::CcwbFiberN
 
 }
 
-std::shared_ptr<Entity> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::CcwbFiberNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::CcwbFiberNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::CcwbFiberNodeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::CcwbFiberNodeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLEWIDEBANDMIB::CcwbFiberNodeTable::CcwbFiberNodeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

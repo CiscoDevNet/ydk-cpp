@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
@@ -100,26 +100,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access != nullptr)
     {
-        children["access"] = access;
+        _children["access"] = access;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(attribute != nullptr)
     {
-        children["attribute"] = attribute;
+        _children["attribute"] = attribute;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -193,7 +193,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ack")
     {
@@ -225,26 +225,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ack != nullptr)
     {
-        children["ack"] = ack;
+        _children["ack"] = ack;
     }
 
     if(drop != nullptr)
     {
-        children["drop"] = drop;
+        _children["drop"] = drop;
     }
 
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -322,16 +322,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -449,16 +449,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -576,16 +576,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -699,7 +699,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ack")
     {
@@ -731,26 +731,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ack != nullptr)
     {
-        children["ack"] = ack;
+        _children["ack"] = ack;
     }
 
     if(drop != nullptr)
     {
-        children["drop"] = drop;
+        _children["drop"] = drop;
     }
 
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -828,16 +828,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -955,16 +955,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1082,16 +1082,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1201,16 +1201,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Attribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Filter::Attribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Attribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Attribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Filter::Attribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1300,16 +1300,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1394,7 +1394,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ignore")
     {
@@ -1408,16 +1408,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1483,16 +1483,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1568,16 +1568,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Mode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Mode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1653,16 +1653,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::PwlanSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::PwlanSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::PwlanSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::PwlanSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::PwlanSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1738,16 +1738,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ReAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ReAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ReAuthentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ReAuthentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ReAuthentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1828,7 +1828,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vsa")
     {
@@ -1842,16 +1842,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vsa != nullptr)
     {
-        children["vsa"] = vsa;
+        _children["vsa"] = vsa;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::SessionIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1931,16 +1931,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2043,7 +2043,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disconnect")
     {
@@ -2057,16 +2057,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Timer::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Timer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Timer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disconnect != nullptr)
     {
-        children["disconnect"] = disconnect;
+        _children["disconnect"] = disconnect;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2176,16 +2176,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2279,33 +2279,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2421,7 +2421,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting")
     {
@@ -2534,71 +2534,71 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(calling_station_id != nullptr)
     {
-        children["calling-station-id"] = calling_station_id;
+        _children["calling-station-id"] = calling_station_id;
     }
 
     if(eap_user != nullptr)
     {
-        children["eap-user"] = eap_user;
+        _children["eap-user"] = eap_user;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
     if(message_authenticator != nullptr)
     {
-        children["message-authenticator"] = message_authenticator;
+        _children["message-authenticator"] = message_authenticator;
     }
 
     if(mode != nullptr)
     {
-        children["mode"] = mode;
+        _children["mode"] = mode;
     }
 
     if(pwlan_session != nullptr)
     {
-        children["pwlan-session"] = pwlan_session;
+        _children["pwlan-session"] = pwlan_session;
     }
 
     if(re_authentication != nullptr)
     {
-        children["re-authentication"] = re_authentication;
+        _children["re-authentication"] = re_authentication;
     }
 
     if(session_identifier != nullptr)
     {
-        children["session-identifier"] = session_identifier;
+        _children["session-identifier"] = session_identifier;
     }
 
     if(timer != nullptr)
     {
-        children["timer"] = timer;
+        _children["timer"] = timer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2672,7 +2672,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "method-list")
     {
@@ -2686,16 +2686,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ac
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(method_list != nullptr)
     {
-        children["method-list"] = method_list;
+        _children["method-list"] = method_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2768,16 +2768,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2861,7 +2861,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "method-list")
     {
@@ -2875,16 +2875,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Au
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(method_list != nullptr)
     {
-        children["method-list"] = method_list;
+        _children["method-list"] = method_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2957,16 +2957,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3045,7 +3045,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "format")
     {
@@ -3059,16 +3059,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(format != nullptr)
     {
-        children["format"] = format;
+        _children["format"] = format;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3132,7 +3132,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-address")
     {
@@ -3146,16 +3146,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac_address != nullptr)
     {
-        children["mac-address"] = mac_address;
+        _children["mac-address"] = mac_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3246,7 +3246,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default")
     {
@@ -3305,41 +3305,41 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(ietf != nullptr)
     {
-        children["ietf"] = ietf;
+        _children["ietf"] = ietf;
     }
 
     if(one_byte != nullptr)
     {
-        children["one-byte"] = one_byte;
+        _children["one-byte"] = one_byte;
     }
 
     if(three_byte != nullptr)
     {
-        children["three-byte"] = three_byte;
+        _children["three-byte"] = three_byte;
     }
 
     if(two_byte != nullptr)
     {
-        children["two-byte"] = two_byte;
+        _children["two-byte"] = two_byte;
     }
 
     if(unformatted != nullptr)
     {
-        children["unformatted"] = unformatted;
+        _children["unformatted"] = unformatted;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3408,16 +3408,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3486,16 +3486,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3564,7 +3564,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delimiter")
     {
@@ -3578,16 +3578,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delimiter != nullptr)
     {
-        children["delimiter"] = delimiter;
+        _children["delimiter"] = delimiter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3651,7 +3651,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "colon")
     {
@@ -3683,26 +3683,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(colon != nullptr)
     {
-        children["colon"] = colon;
+        _children["colon"] = colon;
     }
 
     if(dot != nullptr)
     {
-        children["dot"] = dot;
+        _children["dot"] = dot;
     }
 
     if(hyphen != nullptr)
     {
-        children["hyphen"] = hyphen;
+        _children["hyphen"] = hyphen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3761,16 +3761,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3839,16 +3839,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3917,16 +3917,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3995,7 +3995,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delimiter")
     {
@@ -4009,16 +4009,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delimiter != nullptr)
     {
-        children["delimiter"] = delimiter;
+        _children["delimiter"] = delimiter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4082,7 +4082,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "colon")
     {
@@ -4114,26 +4114,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(colon != nullptr)
     {
-        children["colon"] = colon;
+        _children["colon"] = colon;
     }
 
     if(dot != nullptr)
     {
-        children["dot"] = dot;
+        _children["dot"] = dot;
     }
 
     if(hyphen != nullptr)
     {
-        children["hyphen"] = hyphen;
+        _children["hyphen"] = hyphen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4192,16 +4192,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4270,16 +4270,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4348,16 +4348,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4426,7 +4426,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delimiter")
     {
@@ -4440,16 +4440,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delimiter != nullptr)
     {
-        children["delimiter"] = delimiter;
+        _children["delimiter"] = delimiter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4513,7 +4513,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "colon")
     {
@@ -4545,26 +4545,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(colon != nullptr)
     {
-        children["colon"] = colon;
+        _children["colon"] = colon;
     }
 
     if(dot != nullptr)
     {
-        children["dot"] = dot;
+        _children["dot"] = dot;
     }
 
     if(hyphen != nullptr)
     {
-        children["hyphen"] = hyphen;
+        _children["hyphen"] = hyphen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4623,16 +4623,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4701,16 +4701,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4779,16 +4779,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4857,16 +4857,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Unformatted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Unformatted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Unformatted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Unformatted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Unformatted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4935,16 +4935,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5021,7 +5021,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
@@ -5053,26 +5053,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Fi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access != nullptr)
     {
-        children["access"] = access;
+        _children["access"] = access;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(attribute != nullptr)
     {
-        children["attribute"] = attribute;
+        _children["attribute"] = attribute;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5139,7 +5139,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ack")
     {
@@ -5171,26 +5171,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Fi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ack != nullptr)
     {
-        children["ack"] = ack;
+        _children["ack"] = ack;
     }
 
     if(drop != nullptr)
     {
-        children["drop"] = drop;
+        _children["drop"] = drop;
     }
 
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5261,16 +5261,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5381,16 +5381,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5501,16 +5501,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5617,7 +5617,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ack")
     {
@@ -5649,26 +5649,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Fi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ack != nullptr)
     {
-        children["ack"] = ack;
+        _children["ack"] = ack;
     }
 
     if(drop != nullptr)
     {
-        children["drop"] = drop;
+        _children["drop"] = drop;
     }
 
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5739,16 +5739,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5859,16 +5859,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5979,16 +5979,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6091,16 +6091,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6183,16 +6183,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6270,7 +6270,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ignore")
     {
@@ -6284,16 +6284,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Me
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6352,16 +6352,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6430,16 +6430,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6508,16 +6508,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6586,16 +6586,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6669,7 +6669,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vsa")
     {
@@ -6683,16 +6683,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Se
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vsa != nullptr)
     {
-        children["vsa"] = vsa;
+        _children["vsa"] = vsa;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6765,16 +6765,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6870,7 +6870,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disconnect")
     {
@@ -6884,16 +6884,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ti
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disconnect != nullptr)
     {
-        children["disconnect"] = disconnect;
+        _children["disconnect"] = disconnect;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6996,16 +6996,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7099,33 +7099,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7246,7 +7246,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting")
     {
@@ -7359,71 +7359,71 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(calling_station_id != nullptr)
     {
-        children["calling-station-id"] = calling_station_id;
+        _children["calling-station-id"] = calling_station_id;
     }
 
     if(eap_user != nullptr)
     {
-        children["eap-user"] = eap_user;
+        _children["eap-user"] = eap_user;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
     if(message_authenticator != nullptr)
     {
-        children["message-authenticator"] = message_authenticator;
+        _children["message-authenticator"] = message_authenticator;
     }
 
     if(mode != nullptr)
     {
-        children["mode"] = mode;
+        _children["mode"] = mode;
     }
 
     if(pwlan_session != nullptr)
     {
-        children["pwlan-session"] = pwlan_session;
+        _children["pwlan-session"] = pwlan_session;
     }
 
     if(re_authentication != nullptr)
     {
-        children["re-authentication"] = re_authentication;
+        _children["re-authentication"] = re_authentication;
     }
 
     if(session_identifier != nullptr)
     {
-        children["session-identifier"] = session_identifier;
+        _children["session-identifier"] = session_identifier;
     }
 
     if(timer != nullptr)
     {
-        children["timer"] = timer;
+        _children["timer"] = timer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7507,7 +7507,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "method-list")
     {
@@ -7521,16 +7521,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(method_list != nullptr)
     {
-        children["method-list"] = method_list;
+        _children["method-list"] = method_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7603,16 +7603,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7696,7 +7696,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "method-list")
     {
@@ -7710,16 +7710,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(method_list != nullptr)
     {
-        children["method-list"] = method_list;
+        _children["method-list"] = method_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7792,16 +7792,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::MethodList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::MethodList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::MethodList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7880,7 +7880,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "format")
     {
@@ -7894,16 +7894,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(format != nullptr)
     {
-        children["format"] = format;
+        _children["format"] = format;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7967,7 +7967,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-address")
     {
@@ -7981,16 +7981,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac_address != nullptr)
     {
-        children["mac-address"] = mac_address;
+        _children["mac-address"] = mac_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8081,7 +8081,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default")
     {
@@ -8140,41 +8140,41 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(ietf != nullptr)
     {
-        children["ietf"] = ietf;
+        _children["ietf"] = ietf;
     }
 
     if(one_byte != nullptr)
     {
-        children["one-byte"] = one_byte;
+        _children["one-byte"] = one_byte;
     }
 
     if(three_byte != nullptr)
     {
-        children["three-byte"] = three_byte;
+        _children["three-byte"] = three_byte;
     }
 
     if(two_byte != nullptr)
     {
-        children["two-byte"] = two_byte;
+        _children["two-byte"] = two_byte;
     }
 
     if(unformatted != nullptr)
     {
-        children["unformatted"] = unformatted;
+        _children["unformatted"] = unformatted;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8243,16 +8243,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8321,16 +8321,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Ietf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Ietf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Ietf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Ietf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Ietf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8399,7 +8399,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delimiter")
     {
@@ -8413,16 +8413,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delimiter != nullptr)
     {
-        children["delimiter"] = delimiter;
+        _children["delimiter"] = delimiter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8486,7 +8486,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "colon")
     {
@@ -8518,26 +8518,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(colon != nullptr)
     {
-        children["colon"] = colon;
+        _children["colon"] = colon;
     }
 
     if(dot != nullptr)
     {
-        children["dot"] = dot;
+        _children["dot"] = dot;
     }
 
     if(hyphen != nullptr)
     {
-        children["hyphen"] = hyphen;
+        _children["hyphen"] = hyphen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8596,16 +8596,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8674,16 +8674,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8752,16 +8752,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8830,7 +8830,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delimiter")
     {
@@ -8844,16 +8844,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delimiter != nullptr)
     {
-        children["delimiter"] = delimiter;
+        _children["delimiter"] = delimiter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8917,7 +8917,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "colon")
     {
@@ -8949,26 +8949,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(colon != nullptr)
     {
-        children["colon"] = colon;
+        _children["colon"] = colon;
     }
 
     if(dot != nullptr)
     {
-        children["dot"] = dot;
+        _children["dot"] = dot;
     }
 
     if(hyphen != nullptr)
     {
-        children["hyphen"] = hyphen;
+        _children["hyphen"] = hyphen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9027,16 +9027,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9105,16 +9105,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9183,16 +9183,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9261,7 +9261,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delimiter")
     {
@@ -9275,16 +9275,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delimiter != nullptr)
     {
-        children["delimiter"] = delimiter;
+        _children["delimiter"] = delimiter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9348,7 +9348,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "colon")
     {
@@ -9380,26 +9380,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(colon != nullptr)
     {
-        children["colon"] = colon;
+        _children["colon"] = colon;
     }
 
     if(dot != nullptr)
     {
-        children["dot"] = dot;
+        _children["dot"] = dot;
     }
 
     if(hyphen != nullptr)
     {
-        children["hyphen"] = hyphen;
+        _children["hyphen"] = hyphen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9458,16 +9458,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9536,16 +9536,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9614,16 +9614,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9692,16 +9692,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Unformatted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Unformatted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Unformatted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Unformatted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Unformatted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9770,16 +9770,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9856,7 +9856,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
@@ -9888,26 +9888,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access != nullptr)
     {
-        children["access"] = access;
+        _children["access"] = access;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(attribute != nullptr)
     {
-        children["attribute"] = attribute;
+        _children["attribute"] = attribute;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9974,7 +9974,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ack")
     {
@@ -10006,26 +10006,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ack != nullptr)
     {
-        children["ack"] = ack;
+        _children["ack"] = ack;
     }
 
     if(drop != nullptr)
     {
-        children["drop"] = drop;
+        _children["drop"] = drop;
     }
 
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10096,16 +10096,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10216,16 +10216,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10336,16 +10336,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10452,7 +10452,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ack")
     {
@@ -10484,26 +10484,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ack != nullptr)
     {
-        children["ack"] = ack;
+        _children["ack"] = ack;
     }
 
     if(drop != nullptr)
     {
-        children["drop"] = drop;
+        _children["drop"] = drop;
     }
 
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10574,16 +10574,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10694,16 +10694,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Drop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Drop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10814,16 +10814,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10926,16 +10926,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11018,16 +11018,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11105,7 +11105,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ignore")
     {
@@ -11119,16 +11119,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11187,16 +11187,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11265,16 +11265,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11343,16 +11343,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11421,16 +11421,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11504,7 +11504,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vsa")
     {
@@ -11518,16 +11518,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vsa != nullptr)
     {
-        children["vsa"] = vsa;
+        _children["vsa"] = vsa;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11600,16 +11600,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11705,7 +11705,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disconnect")
     {
@@ -11719,16 +11719,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disconnect != nullptr)
     {
-        children["disconnect"] = disconnect;
+        _children["disconnect"] = disconnect;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11831,16 +11831,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11934,33 +11934,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12081,7 +12081,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accounting")
     {
@@ -12194,71 +12194,71 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(calling_station_id != nullptr)
     {
-        children["calling-station-id"] = calling_station_id;
+        _children["calling-station-id"] = calling_station_id;
     }
 
     if(eap_user != nullptr)
     {
-        children["eap-user"] = eap_user;
+        _children["eap-user"] = eap_user;
     }
 
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
     if(message_authenticator != nullptr)
     {
-        children["message-authenticator"] = message_authenticator;
+        _children["message-authenticator"] = message_authenticator;
     }
 
     if(mode != nullptr)
     {
-        children["mode"] = mode;
+        _children["mode"] = mode;
     }
 
     if(pwlan_session != nullptr)
     {
-        children["pwlan-session"] = pwlan_session;
+        _children["pwlan-session"] = pwlan_session;
     }
 
     if(re_authentication != nullptr)
     {
-        children["re-authentication"] = re_authentication;
+        _children["re-authentication"] = re_authentication;
     }
 
     if(session_identifier != nullptr)
     {
-        children["session-identifier"] = session_identifier;
+        _children["session-identifier"] = session_identifier;
     }
 
     if(timer != nullptr)
     {
-        children["timer"] = timer;
+        _children["timer"] = timer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12342,7 +12342,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "method-list")
     {
@@ -12356,16 +12356,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(method_list != nullptr)
     {
-        children["method-list"] = method_list;
+        _children["method-list"] = method_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12438,16 +12438,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12531,7 +12531,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "method-list")
     {
@@ -12545,16 +12545,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(method_list != nullptr)
     {
-        children["method-list"] = method_list;
+        _children["method-list"] = method_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12627,16 +12627,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12715,7 +12715,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "format")
     {
@@ -12729,16 +12729,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(format != nullptr)
     {
-        children["format"] = format;
+        _children["format"] = format;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12802,7 +12802,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-address")
     {
@@ -12816,16 +12816,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac_address != nullptr)
     {
-        children["mac-address"] = mac_address;
+        _children["mac-address"] = mac_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12916,7 +12916,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default")
     {
@@ -12975,41 +12975,41 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(ietf != nullptr)
     {
-        children["ietf"] = ietf;
+        _children["ietf"] = ietf;
     }
 
     if(one_byte != nullptr)
     {
-        children["one-byte"] = one_byte;
+        _children["one-byte"] = one_byte;
     }
 
     if(three_byte != nullptr)
     {
-        children["three-byte"] = three_byte;
+        _children["three-byte"] = three_byte;
     }
 
     if(two_byte != nullptr)
     {
-        children["two-byte"] = two_byte;
+        _children["two-byte"] = two_byte;
     }
 
     if(unformatted != nullptr)
     {
-        children["unformatted"] = unformatted;
+        _children["unformatted"] = unformatted;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13078,16 +13078,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13156,16 +13156,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Ietf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Ietf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Ietf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Ietf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Ietf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13234,7 +13234,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delimiter")
     {
@@ -13248,16 +13248,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delimiter != nullptr)
     {
-        children["delimiter"] = delimiter;
+        _children["delimiter"] = delimiter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13321,7 +13321,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "colon")
     {
@@ -13353,26 +13353,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(colon != nullptr)
     {
-        children["colon"] = colon;
+        _children["colon"] = colon;
     }
 
     if(dot != nullptr)
     {
-        children["dot"] = dot;
+        _children["dot"] = dot;
     }
 
     if(hyphen != nullptr)
     {
-        children["hyphen"] = hyphen;
+        _children["hyphen"] = hyphen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13431,16 +13431,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13509,16 +13509,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13587,16 +13587,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13665,7 +13665,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delimiter")
     {
@@ -13679,16 +13679,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delimiter != nullptr)
     {
-        children["delimiter"] = delimiter;
+        _children["delimiter"] = delimiter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13752,7 +13752,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "colon")
     {
@@ -13784,26 +13784,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(colon != nullptr)
     {
-        children["colon"] = colon;
+        _children["colon"] = colon;
     }
 
     if(dot != nullptr)
     {
-        children["dot"] = dot;
+        _children["dot"] = dot;
     }
 
     if(hyphen != nullptr)
     {
-        children["hyphen"] = hyphen;
+        _children["hyphen"] = hyphen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13862,16 +13862,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13940,16 +13940,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14018,16 +14018,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14096,7 +14096,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delimiter")
     {
@@ -14110,16 +14110,16 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delimiter != nullptr)
     {
-        children["delimiter"] = delimiter;
+        _children["delimiter"] = delimiter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14183,7 +14183,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "colon")
     {
@@ -14215,26 +14215,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(colon != nullptr)
     {
-        children["colon"] = colon;
+        _children["colon"] = colon;
     }
 
     if(dot != nullptr)
     {
-        children["dot"] = dot;
+        _children["dot"] = dot;
     }
 
     if(hyphen != nullptr)
     {
-        children["hyphen"] = hyphen;
+        _children["hyphen"] = hyphen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14293,16 +14293,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14371,16 +14371,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14449,16 +14449,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14527,16 +14527,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Unformatted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Unformatted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Unformatted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Unformatted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Unformatted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14605,16 +14605,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14691,7 +14691,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
@@ -14723,26 +14723,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access != nullptr)
     {
-        children["access"] = access;
+        _children["access"] = access;
     }
 
     if(accounting != nullptr)
     {
-        children["accounting"] = accounting;
+        _children["accounting"] = accounting;
     }
 
     if(attribute != nullptr)
     {
-        children["attribute"] = attribute;
+        _children["attribute"] = attribute;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14809,7 +14809,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ack")
     {
@@ -14841,26 +14841,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ack != nullptr)
     {
-        children["ack"] = ack;
+        _children["ack"] = ack;
     }
 
     if(drop != nullptr)
     {
-        children["drop"] = drop;
+        _children["drop"] = drop;
     }
 
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14931,16 +14931,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15051,16 +15051,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15171,16 +15171,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15287,7 +15287,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ack")
     {
@@ -15319,26 +15319,26 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ack != nullptr)
     {
-        children["ack"] = ack;
+        _children["ack"] = ack;
     }
 
     if(drop != nullptr)
     {
-        children["drop"] = drop;
+        _children["drop"] = drop;
     }
 
     if(ignore != nullptr)
     {
-        children["ignore"] = ignore;
+        _children["ignore"] = ignore;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

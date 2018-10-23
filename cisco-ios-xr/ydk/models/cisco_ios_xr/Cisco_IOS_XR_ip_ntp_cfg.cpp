@@ -107,7 +107,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "admin-types")
     {
@@ -202,61 +202,61 @@ std::shared_ptr<Entity> Ntp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(admin_types != nullptr)
     {
-        children["admin-types"] = admin_types;
+        _children["admin-types"] = admin_types;
     }
 
     if(peer_vrfs != nullptr)
     {
-        children["peer-vrfs"] = peer_vrfs;
+        _children["peer-vrfs"] = peer_vrfs;
     }
 
     if(dscp_ipv4 != nullptr)
     {
-        children["dscp-ipv4"] = dscp_ipv4;
+        _children["dscp-ipv4"] = dscp_ipv4;
     }
 
     if(dscp_ipv6 != nullptr)
     {
-        children["dscp-ipv6"] = dscp_ipv6;
+        _children["dscp-ipv6"] = dscp_ipv6;
     }
 
     if(sources != nullptr)
     {
-        children["sources"] = sources;
+        _children["sources"] = sources;
     }
 
     if(drift != nullptr)
     {
-        children["drift"] = drift;
+        _children["drift"] = drift;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(passive != nullptr)
     {
-        children["passive"] = passive;
+        _children["passive"] = passive;
     }
 
     if(interface_tables != nullptr)
     {
-        children["interface-tables"] = interface_tables;
+        _children["interface-tables"] = interface_tables;
     }
 
     if(access_group_tables != nullptr)
     {
-        children["access-group-tables"] = access_group_tables;
+        _children["access-group-tables"] = access_group_tables;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -317,7 +317,7 @@ void Ntp::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Ntp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ntp::clone_ptr() const
 {
     return std::make_shared<Ntp>();
 }
@@ -405,33 +405,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::AdminTypes::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Ntp::AdminTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::AdminTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "admin-type")
     {
-        auto c = std::make_shared<Ntp::AdminTypes::AdminType>();
-        c->parent = this;
-        admin_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::AdminTypes::AdminType>();
+        ent_->parent = this;
+        admin_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AdminTypes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::AdminTypes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : admin_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : admin_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::AdminTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -526,16 +526,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::AdminTypes::AdminType::get_n
 
 }
 
-std::shared_ptr<Entity> Ntp::AdminTypes::AdminType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::AdminTypes::AdminType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AdminTypes::AdminType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::AdminTypes::AdminType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::AdminTypes::AdminType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -689,33 +689,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Ntp::PeerVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::PeerVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-vrf")
     {
-        auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf>();
-        c->parent = this;
-        peer_vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::PeerVrfs::PeerVrf>();
+        ent_->parent = this;
+        peer_vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::PeerVrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer_vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer_vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::PeerVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -791,7 +791,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::get_name_
 
 }
 
-std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::PeerVrfs::PeerVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-ipv4s")
     {
@@ -814,21 +814,21 @@ std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::PeerVrfs::PeerVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer_ipv4s != nullptr)
     {
-        children["peer-ipv4s"] = peer_ipv4s;
+        _children["peer-ipv4s"] = peer_ipv4s;
     }
 
     if(peer_ipv6s != nullptr)
     {
-        children["peer-ipv6s"] = peer_ipv6s;
+        _children["peer-ipv6s"] = peer_ipv6s;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::PeerVrfs::PeerVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -905,33 +905,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv4s
 
 }
 
-std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-ipv4")
     {
-        auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4>();
-        c->parent = this;
-        peer_ipv4.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4>();
+        ent_->parent = this;
+        peer_ipv4.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer_ipv4.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer_ipv4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::PeerVrfs::PeerVrf::PeerIpv4s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1003,33 +1003,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv4s
 
 }
 
-std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-type-ipv4")
     {
-        auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4>();
-        c->parent = this;
-        peer_type_ipv4.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4>();
+        ent_->parent = this;
+        peer_type_ipv4.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer_type_ipv4.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer_type_ipv4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1131,16 +1131,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv4s
 
 }
 
-std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::PeerVrfs::PeerVrf::PeerIpv4s::PeerIpv4::PeerTypeIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1297,33 +1297,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv6s
 
 }
 
-std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-ipv6")
     {
-        auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6>();
-        c->parent = this;
-        peer_ipv6.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6>();
+        ent_->parent = this;
+        peer_ipv6.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer_ipv6.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer_ipv6.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::PeerVrfs::PeerVrf::PeerIpv6s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1395,33 +1395,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv6s
 
 }
 
-std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-type-ipv6")
     {
-        auto c = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6>();
-        c->parent = this;
-        peer_type_ipv6.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6>();
+        ent_->parent = this;
+        peer_type_ipv6.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer_type_ipv6.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer_type_ipv6.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1527,16 +1527,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::PeerVrfs::PeerVrf::PeerIpv6s
 
 }
 
-std::shared_ptr<Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::PeerVrfs::PeerVrf::PeerIpv6s::PeerIpv6::PeerTypeIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1706,16 +1706,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::DscpIpv4::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Ntp::DscpIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::DscpIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::DscpIpv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::DscpIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1805,16 +1805,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::DscpIpv6::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Ntp::DscpIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::DscpIpv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::DscpIpv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::DscpIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1908,33 +1908,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Sources::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Ntp::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
-        auto c = std::make_shared<Ntp::Sources::Source>();
-        c->parent = this;
-        source.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::Sources::Source>();
+        ent_->parent = this;
+        source.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Sources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Sources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : source.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : source.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Sources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2005,16 +2005,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Sources::Source::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ntp::Sources::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Sources::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Sources::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Sources::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Sources::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2105,7 +2105,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Drift::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Ntp::Drift::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Drift::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "file")
     {
@@ -2119,16 +2119,16 @@ std::shared_ptr<Entity> Ntp::Drift::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Drift::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Drift::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(file != nullptr)
     {
-        children["file"] = file;
+        _children["file"] = file;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Drift::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2208,16 +2208,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Drift::File::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Ntp::Drift::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Drift::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Drift::File::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Drift::File::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Drift::File::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2312,7 +2312,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Ntp::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keys")
     {
@@ -2335,21 +2335,21 @@ std::shared_ptr<Entity> Ntp::Authentication::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(keys != nullptr)
     {
-        children["keys"] = keys;
+        _children["keys"] = keys;
     }
 
     if(trusted_keys != nullptr)
     {
-        children["trusted-keys"] = trusted_keys;
+        _children["trusted-keys"] = trusted_keys;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2433,33 +2433,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keys::get_na
 
 }
 
-std::shared_ptr<Entity> Ntp::Authentication::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Authentication::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
-        auto c = std::make_shared<Ntp::Authentication::Keys::Key>();
-        c->parent = this;
-        key.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::Authentication::Keys::Key>();
+        ent_->parent = this;
+        key.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keys::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Authentication::Keys::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : key.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : key.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Authentication::Keys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2530,16 +2530,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::Keys::Key::g
 
 }
 
-std::shared_ptr<Entity> Ntp::Authentication::Keys::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Authentication::Keys::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keys::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Authentication::Keys::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Authentication::Keys::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2633,33 +2633,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeys:
 
 }
 
-std::shared_ptr<Entity> Ntp::Authentication::TrustedKeys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Authentication::TrustedKeys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trusted-key")
     {
-        auto c = std::make_shared<Ntp::Authentication::TrustedKeys::TrustedKey>();
-        c->parent = this;
-        trusted_key.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::Authentication::TrustedKeys::TrustedKey>();
+        ent_->parent = this;
+        trusted_key.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeys::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Authentication::TrustedKeys::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trusted_key.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trusted_key.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Authentication::TrustedKeys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2726,16 +2726,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Authentication::TrustedKeys:
 
 }
 
-std::shared_ptr<Entity> Ntp::Authentication::TrustedKeys::TrustedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Authentication::TrustedKeys::TrustedKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeys::TrustedKey::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Authentication::TrustedKeys::TrustedKey::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Authentication::TrustedKeys::TrustedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2811,16 +2811,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Passive::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Ntp::Passive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Passive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Passive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Passive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Passive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2904,33 +2904,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-table")
     {
-        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable>();
-        c->parent = this;
-        interface_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::InterfaceTables::InterfaceTable>();
+        ent_->parent = this;
+        interface_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::InterfaceTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3009,33 +3009,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3118,7 +3118,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-multicast")
     {
@@ -3141,21 +3141,21 @@ std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_multicast != nullptr)
     {
-        children["interface-multicast"] = interface_multicast;
+        _children["interface-multicast"] = interface_multicast;
     }
 
     if(interface_broadcast != nullptr)
     {
-        children["interface-broadcast"] = interface_broadcast;
+        _children["interface-broadcast"] = interface_broadcast;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3238,7 +3238,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "multicast-clients")
     {
@@ -3261,21 +3261,21 @@ std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::Interfa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(multicast_clients != nullptr)
     {
-        children["multicast-clients"] = multicast_clients;
+        _children["multicast-clients"] = multicast_clients;
     }
 
     if(multicast_servers != nullptr)
     {
-        children["multicast-servers"] = multicast_servers;
+        _children["multicast-servers"] = multicast_servers;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3342,33 +3342,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "multicast-client")
     {
-        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient>();
-        c->parent = this;
-        multicast_client.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient>();
+        ent_->parent = this;
+        multicast_client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : multicast_client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : multicast_client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3428,16 +3428,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3514,33 +3514,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "multicast-server")
     {
-        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer>();
-        c->parent = this;
-        multicast_server.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer>();
+        ent_->parent = this;
+        multicast_server.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : multicast_server.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : multicast_server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3612,16 +3612,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3725,7 +3725,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "broadcast-servers")
     {
@@ -3739,16 +3739,16 @@ std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::Interfa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(broadcast_servers != nullptr)
     {
-        children["broadcast-servers"] = broadcast_servers;
+        _children["broadcast-servers"] = broadcast_servers;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3825,33 +3825,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "broadcast-server")
     {
-        auto c = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer>();
-        c->parent = this;
-        broadcast_server.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer>();
+        ent_->parent = this;
+        broadcast_server.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : broadcast_server.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : broadcast_server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3923,16 +3923,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::InterfaceTables::InterfaceTa
 
 }
 
-std::shared_ptr<Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::BroadcastServers::BroadcastServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4046,33 +4046,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::AccessGroupTables::get_name_
 
 }
 
-std::shared_ptr<Entity> Ntp::AccessGroupTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::AccessGroupTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-group-table")
     {
-        auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable>();
-        c->parent = this;
-        access_group_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable>();
+        ent_->parent = this;
+        access_group_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::AccessGroupTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_group_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_group_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::AccessGroupTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4151,33 +4151,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::AccessGroupTables::AccessGro
 
 }
 
-std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::AccessGroupTables::AccessGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-group-af-table")
     {
-        auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable>();
-        c->parent = this;
-        access_group_af_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable>();
+        ent_->parent = this;
+        access_group_af_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::AccessGroupTables::AccessGroupTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_group_af_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_group_af_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::AccessGroupTables::AccessGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4259,33 +4259,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::AccessGroupTables::AccessGro
 
 }
 
-std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-group")
     {
-        auto c = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup>();
-        c->parent = this;
-        access_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup>();
+        ent_->parent = this;
+        access_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4359,16 +4359,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::AccessGroupTables::AccessGro
 
 }
 
-std::shared_ptr<Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

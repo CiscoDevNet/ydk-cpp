@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > StartTransaction::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> StartTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StartTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> StartTransaction::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StartTransaction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StartTransaction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void StartTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void StartTransaction::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> StartTransaction::clone_ptr() const
+std::shared_ptr<ydk::Entity> StartTransaction::clone_ptr() const
 {
     return std::make_shared<StartTransaction>();
 }
@@ -171,7 +171,7 @@ std::vector<std::pair<std::string, LeafData> > StartTransaction::Input::get_name
 
 }
 
-std::shared_ptr<Entity> StartTransaction::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StartTransaction::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target")
     {
@@ -185,16 +185,16 @@ std::shared_ptr<Entity> StartTransaction::Input::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StartTransaction::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StartTransaction::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(target != nullptr)
     {
-        children["target"] = target;
+        _children["target"] = target;
     }
 
-    return children;
+    return _children;
 }
 
 void StartTransaction::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -278,16 +278,16 @@ std::vector<std::pair<std::string, LeafData> > StartTransaction::Input::Target::
 
 }
 
-std::shared_ptr<Entity> StartTransaction::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StartTransaction::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StartTransaction::Input::Target::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StartTransaction::Input::Target::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void StartTransaction::Input::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -372,16 +372,16 @@ std::vector<std::pair<std::string, LeafData> > PrepareTransaction::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> PrepareTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PrepareTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PrepareTransaction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PrepareTransaction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PrepareTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -392,7 +392,7 @@ void PrepareTransaction::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> PrepareTransaction::clone_ptr() const
+std::shared_ptr<ydk::Entity> PrepareTransaction::clone_ptr() const
 {
     return std::make_shared<PrepareTransaction>();
 }
@@ -459,16 +459,16 @@ std::vector<std::pair<std::string, LeafData> > CommitTransaction::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> CommitTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CommitTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CommitTransaction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CommitTransaction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CommitTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -479,7 +479,7 @@ void CommitTransaction::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> CommitTransaction::clone_ptr() const
+std::shared_ptr<ydk::Entity> CommitTransaction::clone_ptr() const
 {
     return std::make_shared<CommitTransaction>();
 }
@@ -546,16 +546,16 @@ std::vector<std::pair<std::string, LeafData> > AbortTransaction::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> AbortTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AbortTransaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AbortTransaction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AbortTransaction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AbortTransaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -566,7 +566,7 @@ void AbortTransaction::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> AbortTransaction::clone_ptr() const
+std::shared_ptr<ydk::Entity> AbortTransaction::clone_ptr() const
 {
     return std::make_shared<AbortTransaction>();
 }

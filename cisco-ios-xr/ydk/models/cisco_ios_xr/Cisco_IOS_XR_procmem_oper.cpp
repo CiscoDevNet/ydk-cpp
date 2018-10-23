@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > ProcessesMemory::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> ProcessesMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessesMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> ProcessesMemory::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessesMemory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessesMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void ProcessesMemory::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> ProcessesMemory::clone_ptr() const
+std::shared_ptr<ydk::Entity> ProcessesMemory::clone_ptr() const
 {
     return std::make_shared<ProcessesMemory>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > ProcessesMemory::Nodes::get_name_
 
 }
 
-std::shared_ptr<Entity> ProcessesMemory::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessesMemory::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<ProcessesMemory::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<ProcessesMemory::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessesMemory::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessesMemory::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ std::vector<std::pair<std::string, LeafData> > ProcessesMemory::Nodes::Node::get
 
 }
 
-std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessesMemory::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process-ids")
     {
@@ -286,16 +286,16 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessesMemory::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(process_ids != nullptr)
     {
-        children["process-ids"] = process_ids;
+        _children["process-ids"] = process_ids;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessesMemory::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -372,33 +372,33 @@ std::vector<std::pair<std::string, LeafData> > ProcessesMemory::Nodes::Node::Pro
 
 }
 
-std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::ProcessIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessesMemory::Nodes::Node::ProcessIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process-id")
     {
-        auto c = std::make_shared<ProcessesMemory::Nodes::Node::ProcessIds::ProcessId>();
-        c->parent = this;
-        process_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<ProcessesMemory::Nodes::Node::ProcessIds::ProcessId>();
+        ent_->parent = this;
+        process_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::ProcessIds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessesMemory::Nodes::Node::ProcessIds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessesMemory::Nodes::Node::ProcessIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -498,16 +498,16 @@ std::vector<std::pair<std::string, LeafData> > ProcessesMemory::Nodes::Node::Pro
 
 }
 
-std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

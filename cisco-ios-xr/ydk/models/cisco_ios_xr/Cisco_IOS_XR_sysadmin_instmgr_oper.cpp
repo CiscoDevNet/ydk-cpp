@@ -92,7 +92,7 @@ std::vector<std::pair<std::string, LeafData> > Install::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Install::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "version")
     {
@@ -196,66 +196,66 @@ std::shared_ptr<Entity> Install::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(version != nullptr)
     {
-        children["version"] = version;
+        _children["version"] = version;
     }
 
     if(inactive != nullptr)
     {
-        children["inactive"] = inactive;
+        _children["inactive"] = inactive;
     }
 
     if(prepare != nullptr)
     {
-        children["prepare"] = prepare;
+        _children["prepare"] = prepare;
     }
 
     if(package != nullptr)
     {
-        children["package"] = package;
+        _children["package"] = package;
     }
 
     if(active != nullptr)
     {
-        children["active"] = active;
+        _children["active"] = active;
     }
 
     if(superseded != nullptr)
     {
-        children["superseded"] = superseded;
+        _children["superseded"] = superseded;
     }
 
     if(request != nullptr)
     {
-        children["request"] = request;
+        _children["request"] = request;
     }
 
     if(repository != nullptr)
     {
-        children["repository"] = repository;
+        _children["repository"] = repository;
     }
 
     if(log != nullptr)
     {
-        children["log"] = log;
+        _children["log"] = log;
     }
 
     if(which != nullptr)
     {
-        children["which"] = which;
+        _children["which"] = which;
     }
 
     if(committed != nullptr)
     {
-        children["committed"] = committed;
+        _children["committed"] = committed;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -266,7 +266,7 @@ void Install::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Install::clone_ptr() const
+std::shared_ptr<ydk::Entity> Install::clone_ptr() const
 {
     return std::make_shared<Install>();
 }
@@ -357,16 +357,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Version::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Install::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Version::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Version::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Version::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -455,7 +455,7 @@ std::vector<std::pair<std::string, LeafData> > Install::Inactive::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Install::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Inactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -469,16 +469,16 @@ std::shared_ptr<Entity> Install::Inactive::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Inactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Inactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -563,16 +563,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Inactive::Summary::get_n
 
 }
 
-std::shared_ptr<Entity> Install::Inactive::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Inactive::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Inactive::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Inactive::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Inactive::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -657,16 +657,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Prepare::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Install::Prepare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Prepare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Prepare::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Prepare::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Prepare::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -748,33 +748,33 @@ std::vector<std::pair<std::string, LeafData> > Install::Package::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Install::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Package::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pkg_list")
     {
-        auto c = std::make_shared<Install::Package::PkgList>();
-        c->parent = this;
-        pkg_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Install::Package::PkgList>();
+        ent_->parent = this;
+        pkg_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Package::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Package::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pkg_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pkg_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -864,7 +864,7 @@ std::vector<std::pair<std::string, LeafData> > Install::Package::PkgList::get_na
 
 }
 
-std::shared_ptr<Entity> Install::Package::PkgList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Package::PkgList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -887,21 +887,21 @@ std::shared_ptr<Entity> Install::Package::PkgList::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Package::PkgList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Package::PkgList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
     if(verbose != nullptr)
     {
-        children["verbose"] = verbose;
+        _children["verbose"] = verbose;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Package::PkgList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -989,16 +989,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Package::PkgList::Detail
 
 }
 
-std::shared_ptr<Entity> Install::Package::PkgList::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Package::PkgList::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Package::PkgList::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Package::PkgList::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Package::PkgList::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1076,16 +1076,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Package::PkgList::Verbos
 
 }
 
-std::shared_ptr<Entity> Install::Package::PkgList::Verbose::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Package::PkgList::Verbose::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Package::PkgList::Verbose::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Package::PkgList::Verbose::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Package::PkgList::Verbose::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1174,7 +1174,7 @@ std::vector<std::pair<std::string, LeafData> > Install::Active::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Install::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -1188,16 +1188,16 @@ std::shared_ptr<Entity> Install::Active::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1282,16 +1282,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Active::Summary::get_nam
 
 }
 
-std::shared_ptr<Entity> Install::Active::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Active::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Active::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Active::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Active::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1380,7 +1380,7 @@ std::vector<std::pair<std::string, LeafData> > Install::Superseded::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Install::Superseded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Superseded::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -1394,16 +1394,16 @@ std::shared_ptr<Entity> Install::Superseded::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Superseded::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Superseded::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Superseded::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1488,16 +1488,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Superseded::Summary::get
 
 }
 
-std::shared_ptr<Entity> Install::Superseded::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Superseded::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Superseded::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Superseded::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Superseded::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1582,16 +1582,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Request::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Install::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Request::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Request::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Request::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1680,7 +1680,7 @@ std::vector<std::pair<std::string, LeafData> > Install::Repository::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Install::Repository::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Repository::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -1694,16 +1694,16 @@ std::shared_ptr<Entity> Install::Repository::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Repository::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Repository::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Repository::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1788,16 +1788,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Repository::All::get_nam
 
 }
 
-std::shared_ptr<Entity> Install::Repository::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Repository::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Repository::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Repository::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Repository::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1901,14 +1901,14 @@ std::vector<std::pair<std::string, LeafData> > Install::Log::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Install::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
-        auto c = std::make_shared<Install::Log::Id>();
-        c->parent = this;
-        id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Install::Log::Id>();
+        ent_->parent = this;
+        id.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "reverse")
@@ -1932,30 +1932,30 @@ std::shared_ptr<Entity> Install::Log::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Log::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Log::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(reverse != nullptr)
     {
-        children["reverse"] = reverse;
+        _children["reverse"] = reverse;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Log::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2049,7 +2049,7 @@ std::vector<std::pair<std::string, LeafData> > Install::Log::Id::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Install::Log::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Log::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -2063,16 +2063,16 @@ std::shared_ptr<Entity> Install::Log::Id::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Log::Id::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Log::Id::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Log::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2160,16 +2160,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Log::Id::Detail::get_nam
 
 }
 
-std::shared_ptr<Entity> Install::Log::Id::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Log::Id::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Log::Id::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Log::Id::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Log::Id::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2258,7 +2258,7 @@ std::vector<std::pair<std::string, LeafData> > Install::Log::Reverse::get_name_l
 
 }
 
-std::shared_ptr<Entity> Install::Log::Reverse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Log::Reverse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -2272,16 +2272,16 @@ std::shared_ptr<Entity> Install::Log::Reverse::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Log::Reverse::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Log::Reverse::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Log::Reverse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2366,16 +2366,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Log::Reverse::Detail::ge
 
 }
 
-std::shared_ptr<Entity> Install::Log::Reverse::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Log::Reverse::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Log::Reverse::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Log::Reverse::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Log::Reverse::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2460,16 +2460,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Log::Detail::get_name_le
 
 }
 
-std::shared_ptr<Entity> Install::Log::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Log::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Log::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Log::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Log::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2551,33 +2551,33 @@ std::vector<std::pair<std::string, LeafData> > Install::Which::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Install::Which::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Which::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "file_list")
     {
-        auto c = std::make_shared<Install::Which::FileList>();
-        c->parent = this;
-        file_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Install::Which::FileList>();
+        ent_->parent = this;
+        file_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Which::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Which::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : file_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : file_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Which::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2663,7 +2663,7 @@ std::vector<std::pair<std::string, LeafData> > Install::Which::FileList::get_nam
 
 }
 
-std::shared_ptr<Entity> Install::Which::FileList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Which::FileList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -2677,16 +2677,16 @@ std::shared_ptr<Entity> Install::Which::FileList::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Which::FileList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Which::FileList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Which::FileList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2774,16 +2774,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Which::FileList::Detail:
 
 }
 
-std::shared_ptr<Entity> Install::Which::FileList::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Which::FileList::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Which::FileList::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Which::FileList::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Which::FileList::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2872,7 +2872,7 @@ std::vector<std::pair<std::string, LeafData> > Install::Committed::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Install::Committed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Committed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -2886,16 +2886,16 @@ std::shared_ptr<Entity> Install::Committed::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Committed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Committed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Install::Committed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2980,16 +2980,16 @@ std::vector<std::pair<std::string, LeafData> > Install::Committed::Summary::get_
 
 }
 
-std::shared_ptr<Entity> Install::Committed::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Install::Committed::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Install::Committed::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Install::Committed::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Install::Committed::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

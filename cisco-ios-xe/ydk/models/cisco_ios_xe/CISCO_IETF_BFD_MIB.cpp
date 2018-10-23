@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoBfdScalarObjects")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> CISCOIETFBFDMIB::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciscobfdscalarobjects != nullptr)
     {
-        children["ciscoBfdScalarObjects"] = ciscobfdscalarobjects;
+        _children["ciscoBfdScalarObjects"] = ciscobfdscalarobjects;
     }
 
     if(ciscobfdsesstable != nullptr)
     {
-        children["ciscoBfdSessTable"] = ciscobfdsesstable;
+        _children["ciscoBfdSessTable"] = ciscobfdsesstable;
     }
 
     if(ciscobfdsessmaptable != nullptr)
     {
-        children["ciscoBfdSessMapTable"] = ciscobfdsessmaptable;
+        _children["ciscoBfdSessMapTable"] = ciscobfdsessmaptable;
     }
 
     if(ciscobfdsessdiscmaptable != nullptr)
     {
-        children["ciscoBfdSessDiscMapTable"] = ciscobfdsessdiscmaptable;
+        _children["ciscoBfdSessDiscMapTable"] = ciscobfdsessdiscmaptable;
     }
 
     if(ciscobfdsessipmaptable != nullptr)
     {
-        children["ciscoBfdSessIpMapTable"] = ciscobfdsessipmaptable;
+        _children["ciscoBfdSessIpMapTable"] = ciscobfdsessipmaptable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void CISCOIETFBFDMIB::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIETFBFDMIB>();
 }
@@ -246,16 +246,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdScalarOb
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdScalarObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::CiscoBfdScalarObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdScalarObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::CiscoBfdScalarObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::CiscoBfdScalarObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -359,33 +359,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::CiscoBfdSessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoBfdSessEntry")
     {
-        auto c = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry>();
-        c->parent = this;
-        ciscobfdsessentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry>();
+        ent_->parent = this;
+        ciscobfdsessentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::CiscoBfdSessTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscobfdsessentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscobfdsessentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::CiscoBfdSessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -584,16 +584,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::CiscoBfdSessTable::CiscoBfdSessEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1007,33 +1007,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessMapT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::CiscoBfdSessMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoBfdSessMapEntry")
     {
-        auto c = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry>();
-        c->parent = this;
-        ciscobfdsessmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry>();
+        ent_->parent = this;
+        ciscobfdsessmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::CiscoBfdSessMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscobfdsessmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscobfdsessmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::CiscoBfdSessMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1119,16 +1119,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessMapT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::CiscoBfdSessMapTable::CiscoBfdSessMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1252,33 +1252,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessDisc
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoBfdSessDiscMapEntry")
     {
-        auto c = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry>();
-        c->parent = this;
-        ciscobfdsessdiscmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry>();
+        ent_->parent = this;
+        ciscobfdsessdiscmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscobfdsessdiscmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscobfdsessdiscmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1349,16 +1349,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessDisc
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::CiscoBfdSessDiscMapTable::CiscoBfdSessDiscMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1452,33 +1452,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessIpMa
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoBfdSessIpMapEntry")
     {
-        auto c = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry>();
-        c->parent = this;
-        ciscobfdsessipmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry>();
+        ent_->parent = this;
+        ciscobfdsessipmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscobfdsessipmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscobfdsessipmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1559,16 +1559,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFBFDMIB::CiscoBfdSessIpMa
 
 }
 
-std::shared_ptr<Entity> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFBFDMIB::CiscoBfdSessIpMapTable::CiscoBfdSessIpMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

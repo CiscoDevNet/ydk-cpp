@@ -60,16 +60,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::OriginalSource::GnssReceiverId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -170,16 +170,16 @@ std::vector<std::pair<std::string, LeafData> > FrequencySynchronization::Nodes::
 
 }
 
-std::shared_ptr<Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::QualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::QualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::QualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::QualityLevel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FrequencySynchronization::Nodes::Node::SelectionPointInputs::SelectionPointInput::QualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

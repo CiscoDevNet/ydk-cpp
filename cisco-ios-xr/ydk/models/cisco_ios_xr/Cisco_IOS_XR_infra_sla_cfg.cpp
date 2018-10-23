@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Sla::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocols")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Sla::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocols != nullptr)
     {
-        children["protocols"] = protocols;
+        _children["protocols"] = protocols;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Sla::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Sla::clone_ptr() const
+std::shared_ptr<ydk::Entity> Sla::clone_ptr() const
 {
     return std::make_shared<Sla>();
 }
@@ -166,7 +166,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-ethernet-cfm-cfg:ethernet")
     {
@@ -180,16 +180,16 @@ std::shared_ptr<Entity> Sla::Protocols::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet != nullptr)
     {
-        children["Cisco-IOS-XR-ethernet-cfm-cfg:ethernet"] = ethernet;
+        _children["Cisco-IOS-XR-ethernet-cfm-cfg:ethernet"] = ethernet;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -255,7 +255,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::get_nam
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profiles")
     {
@@ -269,16 +269,16 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(profiles != nullptr)
     {
-        children["profiles"] = profiles;
+        _children["profiles"] = profiles;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -352,33 +352,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profile")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile>();
-        c->parent = this;
-        profile.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile>();
+        ent_->parent = this;
+        profile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : profile.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : profile.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -461,7 +461,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -493,26 +493,26 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(schedule != nullptr)
     {
-        children["schedule"] = schedule;
+        _children["schedule"] = schedule;
     }
 
     if(probe != nullptr)
     {
-        children["probe"] = probe;
+        _children["probe"] = probe;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -599,33 +599,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistic")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic>();
-        c->parent = this;
-        statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic>();
+        ent_->parent = this;
+        statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -704,7 +704,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "buckets-size")
     {
@@ -736,26 +736,26 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(buckets_size != nullptr)
     {
-        children["buckets-size"] = buckets_size;
+        _children["buckets-size"] = buckets_size;
     }
 
     if(actions != nullptr)
     {
-        children["actions"] = actions;
+        _children["actions"] = actions;
     }
 
     if(aggregation != nullptr)
     {
-        children["aggregation"] = aggregation;
+        _children["aggregation"] = aggregation;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -848,16 +848,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -944,33 +944,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action>();
-        c->parent = this;
-        action.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action>();
+        ent_->parent = this;
+        action.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : action.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : action.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1048,16 +1048,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Actions::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1174,16 +1174,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1300,16 +1300,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Schedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1459,7 +1459,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "send")
     {
@@ -1482,21 +1482,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(send != nullptr)
     {
-        children["send"] = send;
+        _children["send"] = send;
     }
 
     if(packet_size_and_padding != nullptr)
     {
-        children["packet-size-and-padding"] = packet_size_and_padding;
+        _children["packet-size-and-padding"] = packet_size_and_padding;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Probe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1595,16 +1595,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1731,16 +1731,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Profile
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -104,7 +104,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -145,31 +145,31 @@ std::shared_ptr<Entity> Acl::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(acl_sets != nullptr)
     {
-        children["acl-sets"] = acl_sets;
+        _children["acl-sets"] = acl_sets;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -180,7 +180,7 @@ void Acl::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Acl::clone_ptr() const
+std::shared_ptr<ydk::Entity> Acl::clone_ptr() const
 {
     return std::make_shared<Acl>();
 }
@@ -256,16 +256,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Config::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Acl::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -329,16 +329,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::State::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Acl::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -422,33 +422,33 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl-set")
     {
-        auto c = std::make_shared<Acl::AclSets::AclSet>();
-        c->parent = this;
-        acl_set.append(c);
-        return c;
+        auto ent_ = std::make_shared<Acl::AclSets::AclSet>();
+        ent_->parent = this;
+        acl_set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : acl_set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : acl_set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -533,7 +533,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::get_name_le
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -565,26 +565,26 @@ std::shared_ptr<Entity> Acl::AclSets::AclSet::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(acl_entries != nullptr)
     {
-        children["acl-entries"] = acl_entries;
+        _children["acl-entries"] = acl_entries;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -671,16 +671,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::Config::get
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -777,16 +777,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::State::get_
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -883,33 +883,33 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl-entry")
     {
-        auto c = std::make_shared<Acl::AclSets::AclSet::AclEntries::AclEntry>();
-        c->parent = this;
-        acl_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Acl::AclSets::AclSet::AclEntries::AclEntry>();
+        ent_->parent = this;
+        acl_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : acl_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : acl_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1002,7 +1002,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1079,51 +1079,51 @@ std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(l2 != nullptr)
     {
-        children["l2"] = l2;
+        _children["l2"] = l2;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(transport != nullptr)
     {
-        children["transport"] = transport;
+        _children["transport"] = transport;
     }
 
     if(input_interface != nullptr)
     {
-        children["input-interface"] = input_interface;
+        _children["input-interface"] = input_interface;
     }
 
     if(actions != nullptr)
     {
-        children["actions"] = actions;
+        _children["actions"] = actions;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1196,16 +1196,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1296,16 +1296,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1408,7 +1408,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1431,21 +1431,21 @@ std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::L2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1520,16 +1520,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::L2::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1654,16 +1654,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::L2::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::L2::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1776,7 +1776,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1799,21 +1799,21 @@ std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1888,16 +1888,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2022,16 +2022,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2144,7 +2144,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2167,21 +2167,21 @@ std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2264,16 +2264,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2426,16 +2426,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2568,7 +2568,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2591,21 +2591,21 @@ std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2682,16 +2682,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2797,16 +2797,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Transport::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2902,7 +2902,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2934,26 +2934,26 @@ std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterfa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3008,16 +3008,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3070,16 +3070,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3140,7 +3140,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3163,21 +3163,21 @@ std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterfa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3240,16 +3240,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3332,16 +3332,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::InputInterface::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3424,7 +3424,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3447,21 +3447,21 @@ std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3524,16 +3524,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3616,16 +3616,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::AclSets::AclSet::AclEntries:
 
 }
 
-std::shared_ptr<Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::AclSets::AclSet::AclEntries::AclEntry::Actions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3719,33 +3719,33 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Acl::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Acl::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3833,7 +3833,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::get_n
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3883,36 +3883,36 @@ std::shared_ptr<Entity> Acl::Interfaces::Interface::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
     if(ingress_acl_sets != nullptr)
     {
-        children["ingress-acl-sets"] = ingress_acl_sets;
+        _children["ingress-acl-sets"] = ingress_acl_sets;
     }
 
     if(egress_acl_sets != nullptr)
     {
-        children["egress-acl-sets"] = egress_acl_sets;
+        _children["egress-acl-sets"] = egress_acl_sets;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3981,16 +3981,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Confi
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4059,16 +4059,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::State
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4141,7 +4141,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Inter
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4164,21 +4164,21 @@ std::shared_ptr<Entity> Acl::Interfaces::Interface::InterfaceRef::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4241,16 +4241,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Inter
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4333,16 +4333,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Inter
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4429,33 +4429,33 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Ingre
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::IngressAclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::IngressAclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ingress-acl-set")
     {
-        auto c = std::make_shared<Acl::Interfaces::Interface::IngressAclSets::IngressAclSet>();
-        c->parent = this;
-        ingress_acl_set.append(c);
-        return c;
+        auto ent_ = std::make_shared<Acl::Interfaces::Interface::IngressAclSets::IngressAclSet>();
+        ent_->parent = this;
+        ingress_acl_set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::IngressAclSets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::IngressAclSets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ingress_acl_set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ingress_acl_set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::IngressAclSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4533,7 +4533,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Ingre
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4565,26 +4565,26 @@ std::shared_ptr<Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(acl_entries != nullptr)
     {
-        children["acl-entries"] = acl_entries;
+        _children["acl-entries"] = acl_entries;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4667,16 +4667,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Ingre
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4759,16 +4759,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Ingre
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4855,33 +4855,33 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Ingre
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl-entry")
     {
-        auto c = std::make_shared<Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry>();
-        c->parent = this;
-        acl_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry>();
+        ent_->parent = this;
+        acl_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : acl_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : acl_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4946,7 +4946,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Ingre
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -4960,16 +4960,16 @@ std::shared_ptr<Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5046,16 +5046,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Ingre
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::IngressAclSets::IngressAclSet::AclEntries::AclEntry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5152,33 +5152,33 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Egres
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::EgressAclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::EgressAclSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "egress-acl-set")
     {
-        auto c = std::make_shared<Acl::Interfaces::Interface::EgressAclSets::EgressAclSet>();
-        c->parent = this;
-        egress_acl_set.append(c);
-        return c;
+        auto ent_ = std::make_shared<Acl::Interfaces::Interface::EgressAclSets::EgressAclSet>();
+        ent_->parent = this;
+        egress_acl_set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::EgressAclSets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::EgressAclSets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : egress_acl_set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : egress_acl_set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::EgressAclSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5256,7 +5256,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Egres
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -5288,26 +5288,26 @@ std::shared_ptr<Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(acl_entries != nullptr)
     {
-        children["acl-entries"] = acl_entries;
+        _children["acl-entries"] = acl_entries;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5390,16 +5390,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Egres
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5482,16 +5482,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Egres
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5578,33 +5578,33 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Egres
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl-entry")
     {
-        auto c = std::make_shared<Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry>();
-        c->parent = this;
-        acl_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry>();
+        ent_->parent = this;
+        acl_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : acl_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : acl_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5669,7 +5669,7 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Egres
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -5683,16 +5683,16 @@ std::shared_ptr<Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5769,16 +5769,16 @@ std::vector<std::pair<std::string, LeafData> > Acl::Interfaces::Interface::Egres
 
 }
 
-std::shared_ptr<Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

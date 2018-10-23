@@ -69,7 +69,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Ipv4NetworkGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4NetworkGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unnumbered")
     {
@@ -92,21 +92,21 @@ std::shared_ptr<Entity> Ipv4NetworkGlobal::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4NetworkGlobal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(unnumbered != nullptr)
     {
-        children["unnumbered"] = unnumbered;
+        _children["unnumbered"] = unnumbered;
     }
 
     if(qppb != nullptr)
     {
-        children["qppb"] = qppb;
+        _children["qppb"] = qppb;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4NetworkGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -147,7 +147,7 @@ void Ipv4NetworkGlobal::set_filter(const std::string & value_path, YFilter yfilt
     }
 }
 
-std::shared_ptr<Entity> Ipv4NetworkGlobal::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ipv4NetworkGlobal::clone_ptr() const
 {
     return std::make_shared<Ipv4NetworkGlobal>();
 }
@@ -227,7 +227,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Unnumbered::ge
 
 }
 
-std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4NetworkGlobal::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mpls")
     {
@@ -241,16 +241,16 @@ std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4NetworkGlobal::Unnumbered::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4NetworkGlobal::Unnumbered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -316,7 +316,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Unnumbered::Mp
 
 }
 
-std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "te")
     {
@@ -330,16 +330,16 @@ std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(te != nullptr)
     {
-        children["te"] = te;
+        _children["te"] = te;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv4NetworkGlobal::Unnumbered::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -405,16 +405,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Unnumbered::Mp
 
 }
 
-std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4NetworkGlobal::Unnumbered::Mpls::Te::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -494,16 +494,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv4NetworkGlobal::Qppb::get_name
 
 }
 
-std::shared_ptr<Entity> Ipv4NetworkGlobal::Qppb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv4NetworkGlobal::Qppb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Qppb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4NetworkGlobal::Qppb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv4NetworkGlobal::Qppb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -582,16 +582,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberPta::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> SubscriberPta::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberPta::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberPta::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberPta::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberPta::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -612,7 +612,7 @@ void SubscriberPta::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> SubscriberPta::clone_ptr() const
+std::shared_ptr<ydk::Entity> SubscriberPta::clone_ptr() const
 {
     return std::make_shared<SubscriberPta>();
 }

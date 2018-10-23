@@ -256,7 +256,8 @@ ydk::path::Codec::encode(const ydk::path::DataNode& dn, ydk::EncodingFormat form
         if (m_node == nullptr) {
             throw(ydk::YInvalidArgumentError{"No data in data node"});
         }
-        char* buffer;
+        char* buffer = nullptr;
+        //lyd_node* temp_node = m_node->prev->next; m_node->prev->next = nullptr;    // Fixing libyang bug in printer_json
         if(!lyd_print_mem(&buffer, m_node, scheme, (pretty ? LYP_FORMAT : 0)|LYP_WD_ALL|LYP_KEEPEMPTYCONT)) {
             if(!buffer)
             {
@@ -268,6 +269,7 @@ ydk::path::Codec::encode(const ydk::path::DataNode& dn, ydk::EncodingFormat form
             ret = buffer;
             std::free(buffer);
         }
+        //m_node->prev->next = temp_node;    // Fixing libyang bug in printer_json
     }
     return ret;
 }

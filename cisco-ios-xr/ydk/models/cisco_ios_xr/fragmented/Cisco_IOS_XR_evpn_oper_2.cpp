@@ -60,16 +60,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::Teps::Tep::LocalIn
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::Teps::Tep::LocalInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::Teps::Tep::LocalInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::Teps::Tep::LocalInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::Teps::Tep::LocalInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::Teps::Tep::LocalInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -166,16 +166,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::Teps::Tep::RemoteI
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::Teps::Tep::RemoteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::Teps::Tep::RemoteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::Teps::Tep::RemoteInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::Teps::Tep::RemoteInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::Teps::Tep::RemoteInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -279,33 +279,33 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::InternalLabels::ge
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::InternalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::InternalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "internal-label")
     {
-        auto c = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel>();
-        c->parent = this;
-        internal_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel>();
+        ent_->parent = this;
+        internal_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::InternalLabels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::InternalLabels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : internal_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : internal_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Evpn::Standby::InternalLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -496,7 +496,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::InternalLabels::In
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::InternalLabels::InternalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::InternalLabels::InternalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evpn-instance")
     {
@@ -509,85 +509,85 @@ std::shared_ptr<Entity> Evpn::Standby::InternalLabels::InternalLabel::get_child_
 
     if(child_yang_name == "mac-path-buffer")
     {
-        auto c = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel::MacPathBuffer>();
-        c->parent = this;
-        mac_path_buffer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel::MacPathBuffer>();
+        ent_->parent = this;
+        mac_path_buffer.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ead-path-buffer")
     {
-        auto c = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel::EadPathBuffer>();
-        c->parent = this;
-        ead_path_buffer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel::EadPathBuffer>();
+        ent_->parent = this;
+        ead_path_buffer.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "evi-path-buffer")
     {
-        auto c = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel::EviPathBuffer>();
-        c->parent = this;
-        evi_path_buffer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel::EviPathBuffer>();
+        ent_->parent = this;
+        evi_path_buffer.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "summary-path-buffer")
     {
-        auto c = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel::SummaryPathBuffer>();
-        c->parent = this;
-        summary_path_buffer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::InternalLabels::InternalLabel::SummaryPathBuffer>();
+        ent_->parent = this;
+        summary_path_buffer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::InternalLabels::InternalLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::InternalLabels::InternalLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(evpn_instance != nullptr)
     {
-        children["evpn-instance"] = evpn_instance;
+        _children["evpn-instance"] = evpn_instance;
     }
 
-    count = 0;
-    for (auto c : mac_path_buffer.entities())
+    count_ = 0;
+    for (auto ent_ : mac_path_buffer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ead_path_buffer.entities())
+    count_ = 0;
+    for (auto ent_ : ead_path_buffer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : evi_path_buffer.entities())
+    count_ = 0;
+    for (auto ent_ : evi_path_buffer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : summary_path_buffer.entities())
+    count_ = 0;
+    for (auto ent_ : summary_path_buffer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Evpn::Standby::InternalLabels::InternalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -865,16 +865,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::InternalLabels::In
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::InternalLabels::InternalLabel::EvpnInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::InternalLabels::InternalLabel::EvpnInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::InternalLabels::InternalLabel::EvpnInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::InternalLabels::InternalLabel::EvpnInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::InternalLabels::InternalLabel::EvpnInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -992,16 +992,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::InternalLabels::In
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::InternalLabels::InternalLabel::MacPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::InternalLabels::InternalLabel::MacPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::InternalLabels::InternalLabel::MacPathBuffer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::InternalLabels::InternalLabel::MacPathBuffer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::InternalLabels::InternalLabel::MacPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1119,16 +1119,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::InternalLabels::In
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::InternalLabels::InternalLabel::EadPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::InternalLabels::InternalLabel::EadPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::InternalLabels::InternalLabel::EadPathBuffer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::InternalLabels::InternalLabel::EadPathBuffer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::InternalLabels::InternalLabel::EadPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1246,16 +1246,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::InternalLabels::In
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::InternalLabels::InternalLabel::EviPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::InternalLabels::InternalLabel::EviPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::InternalLabels::InternalLabel::EviPathBuffer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::InternalLabels::InternalLabel::EviPathBuffer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::InternalLabels::InternalLabel::EviPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1373,16 +1373,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::InternalLabels::In
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::InternalLabels::InternalLabel::SummaryPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::InternalLabels::InternalLabel::SummaryPathBuffer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::InternalLabels::InternalLabel::SummaryPathBuffer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::InternalLabels::InternalLabel::SummaryPathBuffer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::InternalLabels::InternalLabel::SummaryPathBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1496,33 +1496,33 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment>();
-        c->parent = this;
-        ethernet_segment.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment>();
+        ent_->parent = this;
+        ethernet_segment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ethernet_segment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ethernet_segment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1901,220 +1901,220 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-identifier")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::EthernetSegmentIdentifier>();
-        c->parent = this;
-        ethernet_segment_identifier.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::EthernetSegmentIdentifier>();
+        ent_->parent = this;
+        ethernet_segment_identifier.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "primary-service")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::PrimaryService>();
-        c->parent = this;
-        primary_service.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::PrimaryService>();
+        ent_->parent = this;
+        primary_service.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "secondary-service")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::SecondaryService>();
-        c->parent = this;
-        secondary_service.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::SecondaryService>();
+        ent_->parent = this;
+        secondary_service.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "service-carving-i-sidelected-result")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingISidelectedResult>();
-        c->parent = this;
-        service_carving_i_sidelected_result.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingISidelectedResult>();
+        ent_->parent = this;
+        service_carving_i_sidelected_result.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "service-carving-isid-not-elected-result")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingIsidNotElectedResult>();
-        c->parent = this;
-        service_carving_isid_not_elected_result.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingIsidNotElectedResult>();
+        ent_->parent = this;
+        service_carving_isid_not_elected_result.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "service-carving-evi-elected-result")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviElectedResult>();
-        c->parent = this;
-        service_carving_evi_elected_result.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviElectedResult>();
+        ent_->parent = this;
+        service_carving_evi_elected_result.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "service-carving-evi-not-elected-result")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviNotElectedResult>();
-        c->parent = this;
-        service_carving_evi_not_elected_result.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviNotElectedResult>();
+        ent_->parent = this;
+        service_carving_evi_not_elected_result.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "service-carving-vni-elected-result")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniElectedResult>();
-        c->parent = this;
-        service_carving_vni_elected_result.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniElectedResult>();
+        ent_->parent = this;
+        service_carving_vni_elected_result.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "service-carving-vni-not-elected-result")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniNotElectedResult>();
-        c->parent = this;
-        service_carving_vni_not_elected_result.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniNotElectedResult>();
+        ent_->parent = this;
+        service_carving_vni_not_elected_result.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "service-carving-vpws-permanent-result")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVpwsPermanentResult>();
-        c->parent = this;
-        service_carving_vpws_permanent_result.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVpwsPermanentResult>();
+        ent_->parent = this;
+        service_carving_vpws_permanent_result.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "remote-split-horizon-group-label")
     {
-        auto c = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel>();
-        c->parent = this;
-        remote_split_horizon_group_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel>();
+        ent_->parent = this;
+        remote_split_horizon_group_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ethernet_segment_identifier.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ethernet_segment_identifier.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : primary_service.entities())
+    count_ = 0;
+    for (auto ent_ : primary_service.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : secondary_service.entities())
+    count_ = 0;
+    for (auto ent_ : secondary_service.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : service_carving_i_sidelected_result.entities())
+    count_ = 0;
+    for (auto ent_ : service_carving_i_sidelected_result.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : service_carving_isid_not_elected_result.entities())
+    count_ = 0;
+    for (auto ent_ : service_carving_isid_not_elected_result.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : service_carving_evi_elected_result.entities())
+    count_ = 0;
+    for (auto ent_ : service_carving_evi_elected_result.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : service_carving_evi_not_elected_result.entities())
+    count_ = 0;
+    for (auto ent_ : service_carving_evi_not_elected_result.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : service_carving_vni_elected_result.entities())
+    count_ = 0;
+    for (auto ent_ : service_carving_vni_elected_result.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : service_carving_vni_not_elected_result.entities())
+    count_ = 0;
+    for (auto ent_ : service_carving_vni_not_elected_result.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : next_hop.entities())
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : service_carving_vpws_permanent_result.entities())
+    count_ = 0;
+    for (auto ent_ : service_carving_vpws_permanent_result.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : remote_split_horizon_group_label.entities())
+    count_ = 0;
+    for (auto ent_ : remote_split_horizon_group_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2640,16 +2640,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::EthernetSegmentIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::EthernetSegmentIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::EthernetSegmentIdentifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::EthernetSegmentIdentifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::EthernetSegmentIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2725,16 +2725,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::PrimaryService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::PrimaryService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::PrimaryService::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::PrimaryService::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::PrimaryService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2810,16 +2810,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::SecondaryService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::SecondaryService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::SecondaryService::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::SecondaryService::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::SecondaryService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2895,16 +2895,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingISidelectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingISidelectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingISidelectedResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingISidelectedResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingISidelectedResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2980,16 +2980,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingIsidNotElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingIsidNotElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingIsidNotElectedResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingIsidNotElectedResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingIsidNotElectedResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3065,16 +3065,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviElectedResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviElectedResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviElectedResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3150,16 +3150,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviNotElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviNotElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviNotElectedResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviNotElectedResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingEviNotElectedResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3235,16 +3235,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniElectedResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniElectedResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniElectedResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3320,16 +3320,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniNotElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniNotElectedResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniNotElectedResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniNotElectedResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVniNotElectedResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3417,16 +3417,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3540,16 +3540,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVpwsPermanentResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVpwsPermanentResult::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVpwsPermanentResult::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVpwsPermanentResult::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::ServiceCarvingVpwsPermanentResult::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3649,16 +3649,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::EthernetSegments::
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3752,33 +3752,33 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::AcIds::get_name_le
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::AcIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::AcIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ac-id")
     {
-        auto c = std::make_shared<Evpn::Standby::AcIds::AcId>();
-        c->parent = this;
-        ac_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Evpn::Standby::AcIds::AcId>();
+        ent_->parent = this;
+        ac_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::AcIds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::AcIds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ac_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ac_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Evpn::Standby::AcIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3857,7 +3857,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::AcIds::AcId::get_n
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::AcIds::AcId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::AcIds::AcId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evpn-instance")
     {
@@ -3871,16 +3871,16 @@ std::shared_ptr<Entity> Evpn::Standby::AcIds::AcId::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::AcIds::AcId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::AcIds::AcId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(evpn_instance != nullptr)
     {
-        children["evpn-instance"] = evpn_instance;
+        _children["evpn-instance"] = evpn_instance;
     }
 
-    return children;
+    return _children;
 }
 
 void Evpn::Standby::AcIds::AcId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3988,16 +3988,16 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Standby::AcIds::AcId::EvpnI
 
 }
 
-std::shared_ptr<Entity> Evpn::Standby::AcIds::AcId::EvpnInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Evpn::Standby::AcIds::AcId::EvpnInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Evpn::Standby::AcIds::AcId::EvpnInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Evpn::Standby::AcIds::AcId::EvpnInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Evpn::Standby::AcIds::AcId::EvpnInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

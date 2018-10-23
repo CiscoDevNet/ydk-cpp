@@ -98,7 +98,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::get_name_l
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec")
     {
@@ -202,66 +202,66 @@ std::shared_ptr<Entity> PerformanceManagement::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec != nullptr)
     {
-        children["macsec"] = macsec;
+        _children["macsec"] = macsec;
     }
 
     if(ho_vc != nullptr)
     {
-        children["ho-vc"] = ho_vc;
+        _children["ho-vc"] = ho_vc;
     }
 
     if(odu != nullptr)
     {
-        children["odu"] = odu;
+        _children["odu"] = odu;
     }
 
     if(otu != nullptr)
     {
-        children["otu"] = otu;
+        _children["otu"] = otu;
     }
 
     if(stm != nullptr)
     {
-        children["stm"] = stm;
+        _children["stm"] = stm;
     }
 
     if(sonet != nullptr)
     {
-        children["sonet"] = sonet;
+        _children["sonet"] = sonet;
     }
 
     if(optics != nullptr)
     {
-        children["optics"] = optics;
+        _children["optics"] = optics;
     }
 
     if(sts != nullptr)
     {
-        children["sts"] = sts;
+        _children["sts"] = sts;
     }
 
     if(dwdm != nullptr)
     {
-        children["dwdm"] = dwdm;
+        _children["dwdm"] = dwdm;
     }
 
     if(oc != nullptr)
     {
-        children["oc"] = oc;
+        _children["oc"] = oc;
     }
 
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        _children["ethernet"] = ethernet;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ void PerformanceManagement::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> PerformanceManagement::clone_ptr() const
+std::shared_ptr<ydk::Entity> PerformanceManagement::clone_ptr() const
 {
     return std::make_shared<PerformanceManagement>();
 }
@@ -352,7 +352,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::ge
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-ports")
     {
@@ -366,16 +366,16 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_ports != nullptr)
     {
-        children["macsec-ports"] = macsec_ports;
+        _children["macsec-ports"] = macsec_ports;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -449,33 +449,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-port")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort>();
-        c->parent = this;
-        macsec_port.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort>();
+        ent_->parent = this;
+        macsec_port.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_port.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_port.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -547,7 +547,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-current")
     {
@@ -561,16 +561,16 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_current != nullptr)
     {
-        children["macsec-current"] = macsec_current;
+        _children["macsec-current"] = macsec_current;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -647,7 +647,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15")
     {
@@ -679,26 +679,26 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_minute15 != nullptr)
     {
-        children["macsec-minute15"] = macsec_minute15;
+        _children["macsec-minute15"] = macsec_minute15;
     }
 
     if(macsec_second30 != nullptr)
     {
-        children["macsec-second30"] = macsec_second30;
+        _children["macsec-second30"] = macsec_second30;
     }
 
     if(macsec_hour24 != nullptr)
     {
-        children["macsec-hour24"] = macsec_hour24;
+        _children["macsec-hour24"] = macsec_hour24;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -769,7 +769,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secyifs")
     {
@@ -810,31 +810,31 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_minute15secyifs != nullptr)
     {
-        children["macsec-minute15secyifs"] = macsec_minute15secyifs;
+        _children["macsec-minute15secyifs"] = macsec_minute15secyifs;
     }
 
     if(macsec_minute15secyrxes != nullptr)
     {
-        children["macsec-minute15secyrxes"] = macsec_minute15secyrxes;
+        _children["macsec-minute15secyrxes"] = macsec_minute15secyrxes;
     }
 
     if(macsec_minute15secytxes != nullptr)
     {
-        children["macsec-minute15secytxes"] = macsec_minute15secytxes;
+        _children["macsec-minute15secytxes"] = macsec_minute15secytxes;
     }
 
     if(macsec_minute15_ether_s != nullptr)
     {
-        children["macsec-minute15-ether-s"] = macsec_minute15_ether_s;
+        _children["macsec-minute15-ether-s"] = macsec_minute15_ether_s;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -901,33 +901,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secyif")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif>();
-        c->parent = this;
-        macsec_minute15secyif.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif>();
+        ent_->parent = this;
+        macsec_minute15secyif.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_minute15secyif.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_minute15secyif.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1072,7 +1072,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-untagged")
     {
@@ -1185,71 +1185,71 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(in_pkts_untagged != nullptr)
     {
-        children["in-pkts-untagged"] = in_pkts_untagged;
+        _children["in-pkts-untagged"] = in_pkts_untagged;
     }
 
     if(in_pkts_no_tag != nullptr)
     {
-        children["in-pkts-no-tag"] = in_pkts_no_tag;
+        _children["in-pkts-no-tag"] = in_pkts_no_tag;
     }
 
     if(in_pkts_bad_tag != nullptr)
     {
-        children["in-pkts-bad-tag"] = in_pkts_bad_tag;
+        _children["in-pkts-bad-tag"] = in_pkts_bad_tag;
     }
 
     if(in_pkts_unknown_sci != nullptr)
     {
-        children["in-pkts-unknown-sci"] = in_pkts_unknown_sci;
+        _children["in-pkts-unknown-sci"] = in_pkts_unknown_sci;
     }
 
     if(in_pkts_no_sci != nullptr)
     {
-        children["in-pkts-no-sci"] = in_pkts_no_sci;
+        _children["in-pkts-no-sci"] = in_pkts_no_sci;
     }
 
     if(in_pkts_overrun != nullptr)
     {
-        children["in-pkts-overrun"] = in_pkts_overrun;
+        _children["in-pkts-overrun"] = in_pkts_overrun;
     }
 
     if(in_octets_validated != nullptr)
     {
-        children["in-octets-validated"] = in_octets_validated;
+        _children["in-octets-validated"] = in_octets_validated;
     }
 
     if(in_octets_decrypted != nullptr)
     {
-        children["in-octets-decrypted"] = in_octets_decrypted;
+        _children["in-octets-decrypted"] = in_octets_decrypted;
     }
 
     if(out_pkts_untagged != nullptr)
     {
-        children["out-pkts-untagged"] = out_pkts_untagged;
+        _children["out-pkts-untagged"] = out_pkts_untagged;
     }
 
     if(out_pkts_too_long != nullptr)
     {
-        children["out-pkts-too-long"] = out_pkts_too_long;
+        _children["out-pkts-too-long"] = out_pkts_too_long;
     }
 
     if(out_octets_protected != nullptr)
     {
-        children["out-octets-protected"] = out_octets_protected;
+        _children["out-octets-protected"] = out_octets_protected;
     }
 
     if(out_octets_encrypted != nullptr)
     {
-        children["out-octets-encrypted"] = out_octets_encrypted;
+        _children["out-octets-encrypted"] = out_octets_encrypted;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1420,16 +1420,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1540,16 +1540,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1660,16 +1660,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1780,16 +1780,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1900,16 +1900,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2020,16 +2020,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2140,16 +2140,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2260,16 +2260,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2380,16 +2380,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2500,16 +2500,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2620,16 +2620,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2740,16 +2740,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2856,33 +2856,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secyrx")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx>();
-        c->parent = this;
-        macsec_minute15secyrx.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx>();
+        ent_->parent = this;
+        macsec_minute15secyrx.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_minute15secyrx.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_minute15secyrx.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3023,7 +3023,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-unchecked")
     {
@@ -3127,66 +3127,66 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(in_pkts_unchecked != nullptr)
     {
-        children["in-pkts-unchecked"] = in_pkts_unchecked;
+        _children["in-pkts-unchecked"] = in_pkts_unchecked;
     }
 
     if(in_pkts_delayed != nullptr)
     {
-        children["in-pkts-delayed"] = in_pkts_delayed;
+        _children["in-pkts-delayed"] = in_pkts_delayed;
     }
 
     if(in_pkts_late != nullptr)
     {
-        children["in-pkts-late"] = in_pkts_late;
+        _children["in-pkts-late"] = in_pkts_late;
     }
 
     if(in_pkts_ok != nullptr)
     {
-        children["in-pkts-ok"] = in_pkts_ok;
+        _children["in-pkts-ok"] = in_pkts_ok;
     }
 
     if(in_pkts_invalid != nullptr)
     {
-        children["in-pkts-invalid"] = in_pkts_invalid;
+        _children["in-pkts-invalid"] = in_pkts_invalid;
     }
 
     if(in_pkts_not_valid != nullptr)
     {
-        children["in-pkts-not-valid"] = in_pkts_not_valid;
+        _children["in-pkts-not-valid"] = in_pkts_not_valid;
     }
 
     if(in_pkts_not_using_sa != nullptr)
     {
-        children["in-pkts-not-using-sa"] = in_pkts_not_using_sa;
+        _children["in-pkts-not-using-sa"] = in_pkts_not_using_sa;
     }
 
     if(in_pkts_unused_sa != nullptr)
     {
-        children["in-pkts-unused-sa"] = in_pkts_unused_sa;
+        _children["in-pkts-unused-sa"] = in_pkts_unused_sa;
     }
 
     if(in_pkts_untagged_hit != nullptr)
     {
-        children["in-pkts-untagged-hit"] = in_pkts_untagged_hit;
+        _children["in-pkts-untagged-hit"] = in_pkts_untagged_hit;
     }
 
     if(in_octets_validated != nullptr)
     {
-        children["in-octets-validated"] = in_octets_validated;
+        _children["in-octets-validated"] = in_octets_validated;
     }
 
     if(in_octets_decrypted != nullptr)
     {
-        children["in-octets-decrypted"] = in_octets_decrypted;
+        _children["in-octets-decrypted"] = in_octets_decrypted;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3357,16 +3357,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3477,16 +3477,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3597,16 +3597,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3717,16 +3717,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3837,16 +3837,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3957,16 +3957,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4077,16 +4077,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4197,16 +4197,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4317,16 +4317,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4437,16 +4437,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4557,16 +4557,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4673,33 +4673,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secytx")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx>();
-        c->parent = this;
-        macsec_minute15secytx.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx>();
+        ent_->parent = this;
+        macsec_minute15secytx.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_minute15secytx.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_minute15secytx.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4816,7 +4816,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "out-pkts-protected")
     {
@@ -4866,36 +4866,36 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(out_pkts_protected != nullptr)
     {
-        children["out-pkts-protected"] = out_pkts_protected;
+        _children["out-pkts-protected"] = out_pkts_protected;
     }
 
     if(out_pkts_encrypted != nullptr)
     {
-        children["out-pkts-encrypted"] = out_pkts_encrypted;
+        _children["out-pkts-encrypted"] = out_pkts_encrypted;
     }
 
     if(out_octets_protected != nullptr)
     {
-        children["out-octets-protected"] = out_octets_protected;
+        _children["out-octets-protected"] = out_octets_protected;
     }
 
     if(out_octets_encrypted != nullptr)
     {
-        children["out-octets-encrypted"] = out_octets_encrypted;
+        _children["out-octets-encrypted"] = out_octets_encrypted;
     }
 
     if(out_pkts_too_long != nullptr)
     {
-        children["out-pkts-too-long"] = out_pkts_too_long;
+        _children["out-pkts-too-long"] = out_pkts_too_long;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5066,16 +5066,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5186,16 +5186,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5306,16 +5306,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5426,16 +5426,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5546,16 +5546,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5662,33 +5662,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15-ether")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether>();
-        c->parent = this;
-        macsec_minute15_ether.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether>();
+        ent_->parent = this;
+        macsec_minute15_ether.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_minute15_ether.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_minute15_ether.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6081,7 +6081,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rx-pkt")
     {
@@ -6761,386 +6761,386 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rx_pkt != nullptr)
     {
-        children["rx-pkt"] = rx_pkt;
+        _children["rx-pkt"] = rx_pkt;
     }
 
     if(stat_pkt != nullptr)
     {
-        children["stat-pkt"] = stat_pkt;
+        _children["stat-pkt"] = stat_pkt;
     }
 
     if(octet_stat != nullptr)
     {
-        children["octet-stat"] = octet_stat;
+        _children["octet-stat"] = octet_stat;
     }
 
     if(oversize_pkt_stat != nullptr)
     {
-        children["oversize-pkt-stat"] = oversize_pkt_stat;
+        _children["oversize-pkt-stat"] = oversize_pkt_stat;
     }
 
     if(fcs_errors_stat != nullptr)
     {
-        children["fcs-errors-stat"] = fcs_errors_stat;
+        _children["fcs-errors-stat"] = fcs_errors_stat;
     }
 
     if(long_frames_stat != nullptr)
     {
-        children["long-frames-stat"] = long_frames_stat;
+        _children["long-frames-stat"] = long_frames_stat;
     }
 
     if(jabber_stat != nullptr)
     {
-        children["jabber-stat"] = jabber_stat;
+        _children["jabber-stat"] = jabber_stat;
     }
 
     if(ether64_octets != nullptr)
     {
-        children["ether64-octets"] = ether64_octets;
+        _children["ether64-octets"] = ether64_octets;
     }
 
     if(ether65127_octet != nullptr)
     {
-        children["ether65127-octet"] = ether65127_octet;
+        _children["ether65127-octet"] = ether65127_octet;
     }
 
     if(ether128255_octet != nullptr)
     {
-        children["ether128255-octet"] = ether128255_octet;
+        _children["ether128255-octet"] = ether128255_octet;
     }
 
     if(ether256511_octet != nullptr)
     {
-        children["ether256511-octet"] = ether256511_octet;
+        _children["ether256511-octet"] = ether256511_octet;
     }
 
     if(ether5121023_octet != nullptr)
     {
-        children["ether5121023-octet"] = ether5121023_octet;
+        _children["ether5121023-octet"] = ether5121023_octet;
     }
 
     if(ether10241518_octet != nullptr)
     {
-        children["ether10241518-octet"] = ether10241518_octet;
+        _children["ether10241518-octet"] = ether10241518_octet;
     }
 
     if(in_ucast_pkt != nullptr)
     {
-        children["in-ucast-pkt"] = in_ucast_pkt;
+        _children["in-ucast-pkt"] = in_ucast_pkt;
     }
 
     if(in_mcast_pkt != nullptr)
     {
-        children["in-mcast-pkt"] = in_mcast_pkt;
+        _children["in-mcast-pkt"] = in_mcast_pkt;
     }
 
     if(in_bcast_pkt != nullptr)
     {
-        children["in-bcast-pkt"] = in_bcast_pkt;
+        _children["in-bcast-pkt"] = in_bcast_pkt;
     }
 
     if(out_ucast_pkt != nullptr)
     {
-        children["out-ucast-pkt"] = out_ucast_pkt;
+        _children["out-ucast-pkt"] = out_ucast_pkt;
     }
 
     if(out_bcast_pkt != nullptr)
     {
-        children["out-bcast-pkt"] = out_bcast_pkt;
+        _children["out-bcast-pkt"] = out_bcast_pkt;
     }
 
     if(out_mcast_pkt != nullptr)
     {
-        children["out-mcast-pkt"] = out_mcast_pkt;
+        _children["out-mcast-pkt"] = out_mcast_pkt;
     }
 
     if(tx_pkt != nullptr)
     {
-        children["tx-pkt"] = tx_pkt;
+        _children["tx-pkt"] = tx_pkt;
     }
 
     if(if_in_errors != nullptr)
     {
-        children["if-in-errors"] = if_in_errors;
+        _children["if-in-errors"] = if_in_errors;
     }
 
     if(if_in_octets != nullptr)
     {
-        children["if-in-octets"] = if_in_octets;
+        _children["if-in-octets"] = if_in_octets;
     }
 
     if(ether_stat_multicast_pkt != nullptr)
     {
-        children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
+        _children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
     }
 
     if(ether_stat_broadcast_pkt != nullptr)
     {
-        children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
+        _children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
     }
 
     if(ether_stat_undersized_pkt != nullptr)
     {
-        children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
+        _children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
     }
 
     if(out_octets != nullptr)
     {
-        children["out-octets"] = out_octets;
+        _children["out-octets"] = out_octets;
     }
 
     if(in_pause_frame != nullptr)
     {
-        children["in-pause-frame"] = in_pause_frame;
+        _children["in-pause-frame"] = in_pause_frame;
     }
 
     if(in_good_bytes != nullptr)
     {
-        children["in-good-bytes"] = in_good_bytes;
+        _children["in-good-bytes"] = in_good_bytes;
     }
 
     if(in8021q_frames != nullptr)
     {
-        children["in8021q-frames"] = in8021q_frames;
+        _children["in8021q-frames"] = in8021q_frames;
     }
 
     if(in_pkts1519_max_octets != nullptr)
     {
-        children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
+        _children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
     }
 
     if(in_good_pkts != nullptr)
     {
-        children["in-good-pkts"] = in_good_pkts;
+        _children["in-good-pkts"] = in_good_pkts;
     }
 
     if(in_drop_overrun != nullptr)
     {
-        children["in-drop-overrun"] = in_drop_overrun;
+        _children["in-drop-overrun"] = in_drop_overrun;
     }
 
     if(in_drop_abort != nullptr)
     {
-        children["in-drop-abort"] = in_drop_abort;
+        _children["in-drop-abort"] = in_drop_abort;
     }
 
     if(in_drop_invalid_vlan != nullptr)
     {
-        children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
+        _children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
     }
 
     if(in_drop_invalid_dmac != nullptr)
     {
-        children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
+        _children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
     }
 
     if(in_drop_invalid_encap != nullptr)
     {
-        children["in-drop-invalid-encap"] = in_drop_invalid_encap;
+        _children["in-drop-invalid-encap"] = in_drop_invalid_encap;
     }
 
     if(in_drop_other != nullptr)
     {
-        children["in-drop-other"] = in_drop_other;
+        _children["in-drop-other"] = in_drop_other;
     }
 
     if(in_mib_giant != nullptr)
     {
-        children["in-mib-giant"] = in_mib_giant;
+        _children["in-mib-giant"] = in_mib_giant;
     }
 
     if(in_mib_jabber != nullptr)
     {
-        children["in-mib-jabber"] = in_mib_jabber;
+        _children["in-mib-jabber"] = in_mib_jabber;
     }
 
     if(in_mibcrc != nullptr)
     {
-        children["in-mibcrc"] = in_mibcrc;
+        _children["in-mibcrc"] = in_mibcrc;
     }
 
     if(in_error_collisions != nullptr)
     {
-        children["in-error-collisions"] = in_error_collisions;
+        _children["in-error-collisions"] = in_error_collisions;
     }
 
     if(in_error_symbol != nullptr)
     {
-        children["in-error-symbol"] = in_error_symbol;
+        _children["in-error-symbol"] = in_error_symbol;
     }
 
     if(out_good_bytes != nullptr)
     {
-        children["out-good-bytes"] = out_good_bytes;
+        _children["out-good-bytes"] = out_good_bytes;
     }
 
     if(out8021q_frames != nullptr)
     {
-        children["out8021q-frames"] = out8021q_frames;
+        _children["out8021q-frames"] = out8021q_frames;
     }
 
     if(out_pause_frames != nullptr)
     {
-        children["out-pause-frames"] = out_pause_frames;
+        _children["out-pause-frames"] = out_pause_frames;
     }
 
     if(out_pkts1519_max_octets != nullptr)
     {
-        children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
+        _children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
     }
 
     if(out_good_pkts != nullptr)
     {
-        children["out-good-pkts"] = out_good_pkts;
+        _children["out-good-pkts"] = out_good_pkts;
     }
 
     if(out_drop_underrun != nullptr)
     {
-        children["out-drop-underrun"] = out_drop_underrun;
+        _children["out-drop-underrun"] = out_drop_underrun;
     }
 
     if(out_drop_abort != nullptr)
     {
-        children["out-drop-abort"] = out_drop_abort;
+        _children["out-drop-abort"] = out_drop_abort;
     }
 
     if(out_drop_other != nullptr)
     {
-        children["out-drop-other"] = out_drop_other;
+        _children["out-drop-other"] = out_drop_other;
     }
 
     if(out_error_other != nullptr)
     {
-        children["out-error-other"] = out_error_other;
+        _children["out-error-other"] = out_error_other;
     }
 
     if(in_error_giant != nullptr)
     {
-        children["in-error-giant"] = in_error_giant;
+        _children["in-error-giant"] = in_error_giant;
     }
 
     if(in_error_runt != nullptr)
     {
-        children["in-error-runt"] = in_error_runt;
+        _children["in-error-runt"] = in_error_runt;
     }
 
     if(in_error_jabbers != nullptr)
     {
-        children["in-error-jabbers"] = in_error_jabbers;
+        _children["in-error-jabbers"] = in_error_jabbers;
     }
 
     if(in_error_fragments != nullptr)
     {
-        children["in-error-fragments"] = in_error_fragments;
+        _children["in-error-fragments"] = in_error_fragments;
     }
 
     if(in_error_other != nullptr)
     {
-        children["in-error-other"] = in_error_other;
+        _children["in-error-other"] = in_error_other;
     }
 
     if(in_pkt64_octet != nullptr)
     {
-        children["in-pkt64-octet"] = in_pkt64_octet;
+        _children["in-pkt64-octet"] = in_pkt64_octet;
     }
 
     if(in_pkts65_to127_octets != nullptr)
     {
-        children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
+        _children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
     }
 
     if(in_pkts128_to255_octets != nullptr)
     {
-        children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
+        _children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
     }
 
     if(in_pkts256_to511_octets != nullptr)
     {
-        children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
+        _children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
     }
 
     if(in_pkts512_to1023_octets != nullptr)
     {
-        children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
+        _children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
     }
 
     if(in_pkts1024_to1518_octets != nullptr)
     {
-        children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
+        _children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
     }
 
     if(outpkt64octet != nullptr)
     {
-        children["outpkt64octet"] = outpkt64octet;
+        _children["outpkt64octet"] = outpkt64octet;
     }
 
     if(out_pkts65127_octets != nullptr)
     {
-        children["out-pkts65127-octets"] = out_pkts65127_octets;
+        _children["out-pkts65127-octets"] = out_pkts65127_octets;
     }
 
     if(out_pkts128255_octets != nullptr)
     {
-        children["out-pkts128255-octets"] = out_pkts128255_octets;
+        _children["out-pkts128255-octets"] = out_pkts128255_octets;
     }
 
     if(out_pkts256511_octets != nullptr)
     {
-        children["out-pkts256511-octets"] = out_pkts256511_octets;
+        _children["out-pkts256511-octets"] = out_pkts256511_octets;
     }
 
     if(out_pkts5121023_octets != nullptr)
     {
-        children["out-pkts5121023-octets"] = out_pkts5121023_octets;
+        _children["out-pkts5121023-octets"] = out_pkts5121023_octets;
     }
 
     if(out_pkts10241518_octets != nullptr)
     {
-        children["out-pkts10241518-octets"] = out_pkts10241518_octets;
+        _children["out-pkts10241518-octets"] = out_pkts10241518_octets;
     }
 
     if(rx_util != nullptr)
     {
-        children["rx-util"] = rx_util;
+        _children["rx-util"] = rx_util;
     }
 
     if(tx_util != nullptr)
     {
-        children["tx-util"] = tx_util;
+        _children["tx-util"] = tx_util;
     }
 
     if(tx_undersized_pkt != nullptr)
     {
-        children["tx-undersized-pkt"] = tx_undersized_pkt;
+        _children["tx-undersized-pkt"] = tx_undersized_pkt;
     }
 
     if(tx_oversized_pkt != nullptr)
     {
-        children["tx-oversized-pkt"] = tx_oversized_pkt;
+        _children["tx-oversized-pkt"] = tx_oversized_pkt;
     }
 
     if(tx_fragments != nullptr)
     {
-        children["tx-fragments"] = tx_fragments;
+        _children["tx-fragments"] = tx_fragments;
     }
 
     if(tx_jabber != nullptr)
     {
-        children["tx-jabber"] = tx_jabber;
+        _children["tx-jabber"] = tx_jabber;
     }
 
     if(tx_bad_fcs != nullptr)
     {
-        children["tx-bad-fcs"] = tx_bad_fcs;
+        _children["tx-bad-fcs"] = tx_bad_fcs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7301,16 +7301,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7421,16 +7421,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7541,16 +7541,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7661,16 +7661,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7781,16 +7781,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7901,16 +7901,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8021,16 +8021,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8141,16 +8141,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8261,16 +8261,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8381,16 +8381,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8501,16 +8501,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8621,16 +8621,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8741,16 +8741,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8861,16 +8861,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8981,16 +8981,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9101,16 +9101,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9221,16 +9221,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9341,16 +9341,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9461,16 +9461,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9581,16 +9581,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9701,16 +9701,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9821,16 +9821,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9941,16 +9941,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10061,16 +10061,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10181,16 +10181,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10301,16 +10301,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10421,16 +10421,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10541,16 +10541,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10661,16 +10661,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10781,16 +10781,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10901,16 +10901,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11021,16 +11021,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11141,16 +11141,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11261,16 +11261,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11381,16 +11381,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11501,16 +11501,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11621,16 +11621,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11741,16 +11741,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11861,16 +11861,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11981,16 +11981,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12101,16 +12101,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12221,16 +12221,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12341,16 +12341,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12461,16 +12461,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12581,16 +12581,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12701,16 +12701,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12821,16 +12821,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12941,16 +12941,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13061,16 +13061,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13181,16 +13181,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13301,16 +13301,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13421,16 +13421,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13541,16 +13541,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13661,16 +13661,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13781,16 +13781,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13901,16 +13901,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14021,16 +14021,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14141,16 +14141,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14261,16 +14261,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14381,16 +14381,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14501,16 +14501,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14621,16 +14621,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14741,16 +14741,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14861,16 +14861,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14981,16 +14981,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15101,16 +15101,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15221,16 +15221,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15341,16 +15341,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15461,16 +15461,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15581,16 +15581,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15701,16 +15701,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15821,16 +15821,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15941,16 +15941,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16061,16 +16061,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16181,16 +16181,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16301,7 +16301,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-second30secyifs")
     {
@@ -16342,31 +16342,31 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_second30secyifs != nullptr)
     {
-        children["macsec-second30secyifs"] = macsec_second30secyifs;
+        _children["macsec-second30secyifs"] = macsec_second30secyifs;
     }
 
     if(macsec_second30secyrxes != nullptr)
     {
-        children["macsec-second30secyrxes"] = macsec_second30secyrxes;
+        _children["macsec-second30secyrxes"] = macsec_second30secyrxes;
     }
 
     if(macsec_second30_ether_s != nullptr)
     {
-        children["macsec-second30-ether-s"] = macsec_second30_ether_s;
+        _children["macsec-second30-ether-s"] = macsec_second30_ether_s;
     }
 
     if(macsec_second30secytxes != nullptr)
     {
-        children["macsec-second30secytxes"] = macsec_second30secytxes;
+        _children["macsec-second30secytxes"] = macsec_second30secytxes;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16433,33 +16433,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-second30secyif")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif>();
-        c->parent = this;
-        macsec_second30secyif.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif>();
+        ent_->parent = this;
+        macsec_second30secyif.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_second30secyif.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_second30secyif.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16604,7 +16604,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-untagged")
     {
@@ -16717,71 +16717,71 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(in_pkts_untagged != nullptr)
     {
-        children["in-pkts-untagged"] = in_pkts_untagged;
+        _children["in-pkts-untagged"] = in_pkts_untagged;
     }
 
     if(in_pkts_no_tag != nullptr)
     {
-        children["in-pkts-no-tag"] = in_pkts_no_tag;
+        _children["in-pkts-no-tag"] = in_pkts_no_tag;
     }
 
     if(in_pkts_bad_tag != nullptr)
     {
-        children["in-pkts-bad-tag"] = in_pkts_bad_tag;
+        _children["in-pkts-bad-tag"] = in_pkts_bad_tag;
     }
 
     if(in_pkts_unknown_sci != nullptr)
     {
-        children["in-pkts-unknown-sci"] = in_pkts_unknown_sci;
+        _children["in-pkts-unknown-sci"] = in_pkts_unknown_sci;
     }
 
     if(in_pkts_no_sci != nullptr)
     {
-        children["in-pkts-no-sci"] = in_pkts_no_sci;
+        _children["in-pkts-no-sci"] = in_pkts_no_sci;
     }
 
     if(in_pkts_overrun != nullptr)
     {
-        children["in-pkts-overrun"] = in_pkts_overrun;
+        _children["in-pkts-overrun"] = in_pkts_overrun;
     }
 
     if(in_octets_validated != nullptr)
     {
-        children["in-octets-validated"] = in_octets_validated;
+        _children["in-octets-validated"] = in_octets_validated;
     }
 
     if(in_octets_decrypted != nullptr)
     {
-        children["in-octets-decrypted"] = in_octets_decrypted;
+        _children["in-octets-decrypted"] = in_octets_decrypted;
     }
 
     if(out_pkts_untagged != nullptr)
     {
-        children["out-pkts-untagged"] = out_pkts_untagged;
+        _children["out-pkts-untagged"] = out_pkts_untagged;
     }
 
     if(out_pkts_too_long != nullptr)
     {
-        children["out-pkts-too-long"] = out_pkts_too_long;
+        _children["out-pkts-too-long"] = out_pkts_too_long;
     }
 
     if(out_octets_protected != nullptr)
     {
-        children["out-octets-protected"] = out_octets_protected;
+        _children["out-octets-protected"] = out_octets_protected;
     }
 
     if(out_octets_encrypted != nullptr)
     {
-        children["out-octets-encrypted"] = out_octets_encrypted;
+        _children["out-octets-encrypted"] = out_octets_encrypted;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16952,16 +16952,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17072,16 +17072,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17192,16 +17192,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17312,16 +17312,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17432,16 +17432,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17552,16 +17552,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17672,16 +17672,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17792,16 +17792,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17912,16 +17912,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18032,16 +18032,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18152,16 +18152,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18272,16 +18272,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18388,33 +18388,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-second30secyrx")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx>();
-        c->parent = this;
-        macsec_second30secyrx.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx>();
+        ent_->parent = this;
+        macsec_second30secyrx.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_second30secyrx.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_second30secyrx.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18555,7 +18555,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-unchecked")
     {
@@ -18659,66 +18659,66 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(in_pkts_unchecked != nullptr)
     {
-        children["in-pkts-unchecked"] = in_pkts_unchecked;
+        _children["in-pkts-unchecked"] = in_pkts_unchecked;
     }
 
     if(in_pkts_delayed != nullptr)
     {
-        children["in-pkts-delayed"] = in_pkts_delayed;
+        _children["in-pkts-delayed"] = in_pkts_delayed;
     }
 
     if(in_pkts_late != nullptr)
     {
-        children["in-pkts-late"] = in_pkts_late;
+        _children["in-pkts-late"] = in_pkts_late;
     }
 
     if(in_pkts_ok != nullptr)
     {
-        children["in-pkts-ok"] = in_pkts_ok;
+        _children["in-pkts-ok"] = in_pkts_ok;
     }
 
     if(in_pkts_invalid != nullptr)
     {
-        children["in-pkts-invalid"] = in_pkts_invalid;
+        _children["in-pkts-invalid"] = in_pkts_invalid;
     }
 
     if(in_pkts_not_valid != nullptr)
     {
-        children["in-pkts-not-valid"] = in_pkts_not_valid;
+        _children["in-pkts-not-valid"] = in_pkts_not_valid;
     }
 
     if(in_pkts_not_using_sa != nullptr)
     {
-        children["in-pkts-not-using-sa"] = in_pkts_not_using_sa;
+        _children["in-pkts-not-using-sa"] = in_pkts_not_using_sa;
     }
 
     if(in_pkts_unused_sa != nullptr)
     {
-        children["in-pkts-unused-sa"] = in_pkts_unused_sa;
+        _children["in-pkts-unused-sa"] = in_pkts_unused_sa;
     }
 
     if(in_pkts_untagged_hit != nullptr)
     {
-        children["in-pkts-untagged-hit"] = in_pkts_untagged_hit;
+        _children["in-pkts-untagged-hit"] = in_pkts_untagged_hit;
     }
 
     if(in_octets_validated != nullptr)
     {
-        children["in-octets-validated"] = in_octets_validated;
+        _children["in-octets-validated"] = in_octets_validated;
     }
 
     if(in_octets_decrypted != nullptr)
     {
-        children["in-octets-decrypted"] = in_octets_decrypted;
+        _children["in-octets-decrypted"] = in_octets_decrypted;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18889,16 +18889,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19009,16 +19009,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19129,16 +19129,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19249,16 +19249,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19369,16 +19369,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19489,16 +19489,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19609,16 +19609,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19729,16 +19729,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19849,16 +19849,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19969,16 +19969,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20089,16 +20089,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20205,33 +20205,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-second30-ether")
     {
-        auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether>();
-        c->parent = this;
-        macsec_second30_ether.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether>();
+        ent_->parent = this;
+        macsec_second30_ether.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_second30_ether.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_second30_ether.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20624,7 +20624,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rx-pkt")
     {
@@ -21304,386 +21304,386 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rx_pkt != nullptr)
     {
-        children["rx-pkt"] = rx_pkt;
+        _children["rx-pkt"] = rx_pkt;
     }
 
     if(stat_pkt != nullptr)
     {
-        children["stat-pkt"] = stat_pkt;
+        _children["stat-pkt"] = stat_pkt;
     }
 
     if(octet_stat != nullptr)
     {
-        children["octet-stat"] = octet_stat;
+        _children["octet-stat"] = octet_stat;
     }
 
     if(oversize_pkt_stat != nullptr)
     {
-        children["oversize-pkt-stat"] = oversize_pkt_stat;
+        _children["oversize-pkt-stat"] = oversize_pkt_stat;
     }
 
     if(fcs_errors_stat != nullptr)
     {
-        children["fcs-errors-stat"] = fcs_errors_stat;
+        _children["fcs-errors-stat"] = fcs_errors_stat;
     }
 
     if(long_frames_stat != nullptr)
     {
-        children["long-frames-stat"] = long_frames_stat;
+        _children["long-frames-stat"] = long_frames_stat;
     }
 
     if(jabber_stat != nullptr)
     {
-        children["jabber-stat"] = jabber_stat;
+        _children["jabber-stat"] = jabber_stat;
     }
 
     if(ether64_octets != nullptr)
     {
-        children["ether64-octets"] = ether64_octets;
+        _children["ether64-octets"] = ether64_octets;
     }
 
     if(ether65127_octet != nullptr)
     {
-        children["ether65127-octet"] = ether65127_octet;
+        _children["ether65127-octet"] = ether65127_octet;
     }
 
     if(ether128255_octet != nullptr)
     {
-        children["ether128255-octet"] = ether128255_octet;
+        _children["ether128255-octet"] = ether128255_octet;
     }
 
     if(ether256511_octet != nullptr)
     {
-        children["ether256511-octet"] = ether256511_octet;
+        _children["ether256511-octet"] = ether256511_octet;
     }
 
     if(ether5121023_octet != nullptr)
     {
-        children["ether5121023-octet"] = ether5121023_octet;
+        _children["ether5121023-octet"] = ether5121023_octet;
     }
 
     if(ether10241518_octet != nullptr)
     {
-        children["ether10241518-octet"] = ether10241518_octet;
+        _children["ether10241518-octet"] = ether10241518_octet;
     }
 
     if(in_ucast_pkt != nullptr)
     {
-        children["in-ucast-pkt"] = in_ucast_pkt;
+        _children["in-ucast-pkt"] = in_ucast_pkt;
     }
 
     if(in_mcast_pkt != nullptr)
     {
-        children["in-mcast-pkt"] = in_mcast_pkt;
+        _children["in-mcast-pkt"] = in_mcast_pkt;
     }
 
     if(in_bcast_pkt != nullptr)
     {
-        children["in-bcast-pkt"] = in_bcast_pkt;
+        _children["in-bcast-pkt"] = in_bcast_pkt;
     }
 
     if(out_ucast_pkt != nullptr)
     {
-        children["out-ucast-pkt"] = out_ucast_pkt;
+        _children["out-ucast-pkt"] = out_ucast_pkt;
     }
 
     if(out_bcast_pkt != nullptr)
     {
-        children["out-bcast-pkt"] = out_bcast_pkt;
+        _children["out-bcast-pkt"] = out_bcast_pkt;
     }
 
     if(out_mcast_pkt != nullptr)
     {
-        children["out-mcast-pkt"] = out_mcast_pkt;
+        _children["out-mcast-pkt"] = out_mcast_pkt;
     }
 
     if(tx_pkt != nullptr)
     {
-        children["tx-pkt"] = tx_pkt;
+        _children["tx-pkt"] = tx_pkt;
     }
 
     if(if_in_errors != nullptr)
     {
-        children["if-in-errors"] = if_in_errors;
+        _children["if-in-errors"] = if_in_errors;
     }
 
     if(if_in_octets != nullptr)
     {
-        children["if-in-octets"] = if_in_octets;
+        _children["if-in-octets"] = if_in_octets;
     }
 
     if(ether_stat_multicast_pkt != nullptr)
     {
-        children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
+        _children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
     }
 
     if(ether_stat_broadcast_pkt != nullptr)
     {
-        children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
+        _children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
     }
 
     if(ether_stat_undersized_pkt != nullptr)
     {
-        children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
+        _children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
     }
 
     if(out_octets != nullptr)
     {
-        children["out-octets"] = out_octets;
+        _children["out-octets"] = out_octets;
     }
 
     if(in_pause_frame != nullptr)
     {
-        children["in-pause-frame"] = in_pause_frame;
+        _children["in-pause-frame"] = in_pause_frame;
     }
 
     if(in_good_bytes != nullptr)
     {
-        children["in-good-bytes"] = in_good_bytes;
+        _children["in-good-bytes"] = in_good_bytes;
     }
 
     if(in8021q_frames != nullptr)
     {
-        children["in8021q-frames"] = in8021q_frames;
+        _children["in8021q-frames"] = in8021q_frames;
     }
 
     if(in_pkts1519_max_octets != nullptr)
     {
-        children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
+        _children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
     }
 
     if(in_good_pkts != nullptr)
     {
-        children["in-good-pkts"] = in_good_pkts;
+        _children["in-good-pkts"] = in_good_pkts;
     }
 
     if(in_drop_overrun != nullptr)
     {
-        children["in-drop-overrun"] = in_drop_overrun;
+        _children["in-drop-overrun"] = in_drop_overrun;
     }
 
     if(in_drop_abort != nullptr)
     {
-        children["in-drop-abort"] = in_drop_abort;
+        _children["in-drop-abort"] = in_drop_abort;
     }
 
     if(in_drop_invalid_vlan != nullptr)
     {
-        children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
+        _children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
     }
 
     if(in_drop_invalid_dmac != nullptr)
     {
-        children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
+        _children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
     }
 
     if(in_drop_invalid_encap != nullptr)
     {
-        children["in-drop-invalid-encap"] = in_drop_invalid_encap;
+        _children["in-drop-invalid-encap"] = in_drop_invalid_encap;
     }
 
     if(in_drop_other != nullptr)
     {
-        children["in-drop-other"] = in_drop_other;
+        _children["in-drop-other"] = in_drop_other;
     }
 
     if(in_mib_giant != nullptr)
     {
-        children["in-mib-giant"] = in_mib_giant;
+        _children["in-mib-giant"] = in_mib_giant;
     }
 
     if(in_mib_jabber != nullptr)
     {
-        children["in-mib-jabber"] = in_mib_jabber;
+        _children["in-mib-jabber"] = in_mib_jabber;
     }
 
     if(in_mibcrc != nullptr)
     {
-        children["in-mibcrc"] = in_mibcrc;
+        _children["in-mibcrc"] = in_mibcrc;
     }
 
     if(in_error_collisions != nullptr)
     {
-        children["in-error-collisions"] = in_error_collisions;
+        _children["in-error-collisions"] = in_error_collisions;
     }
 
     if(in_error_symbol != nullptr)
     {
-        children["in-error-symbol"] = in_error_symbol;
+        _children["in-error-symbol"] = in_error_symbol;
     }
 
     if(out_good_bytes != nullptr)
     {
-        children["out-good-bytes"] = out_good_bytes;
+        _children["out-good-bytes"] = out_good_bytes;
     }
 
     if(out8021q_frames != nullptr)
     {
-        children["out8021q-frames"] = out8021q_frames;
+        _children["out8021q-frames"] = out8021q_frames;
     }
 
     if(out_pause_frames != nullptr)
     {
-        children["out-pause-frames"] = out_pause_frames;
+        _children["out-pause-frames"] = out_pause_frames;
     }
 
     if(out_pkts1519_max_octets != nullptr)
     {
-        children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
+        _children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
     }
 
     if(out_good_pkts != nullptr)
     {
-        children["out-good-pkts"] = out_good_pkts;
+        _children["out-good-pkts"] = out_good_pkts;
     }
 
     if(out_drop_underrun != nullptr)
     {
-        children["out-drop-underrun"] = out_drop_underrun;
+        _children["out-drop-underrun"] = out_drop_underrun;
     }
 
     if(out_drop_abort != nullptr)
     {
-        children["out-drop-abort"] = out_drop_abort;
+        _children["out-drop-abort"] = out_drop_abort;
     }
 
     if(out_drop_other != nullptr)
     {
-        children["out-drop-other"] = out_drop_other;
+        _children["out-drop-other"] = out_drop_other;
     }
 
     if(out_error_other != nullptr)
     {
-        children["out-error-other"] = out_error_other;
+        _children["out-error-other"] = out_error_other;
     }
 
     if(in_error_giant != nullptr)
     {
-        children["in-error-giant"] = in_error_giant;
+        _children["in-error-giant"] = in_error_giant;
     }
 
     if(in_error_runt != nullptr)
     {
-        children["in-error-runt"] = in_error_runt;
+        _children["in-error-runt"] = in_error_runt;
     }
 
     if(in_error_jabbers != nullptr)
     {
-        children["in-error-jabbers"] = in_error_jabbers;
+        _children["in-error-jabbers"] = in_error_jabbers;
     }
 
     if(in_error_fragments != nullptr)
     {
-        children["in-error-fragments"] = in_error_fragments;
+        _children["in-error-fragments"] = in_error_fragments;
     }
 
     if(in_error_other != nullptr)
     {
-        children["in-error-other"] = in_error_other;
+        _children["in-error-other"] = in_error_other;
     }
 
     if(in_pkt64_octet != nullptr)
     {
-        children["in-pkt64-octet"] = in_pkt64_octet;
+        _children["in-pkt64-octet"] = in_pkt64_octet;
     }
 
     if(in_pkts65_to127_octets != nullptr)
     {
-        children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
+        _children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
     }
 
     if(in_pkts128_to255_octets != nullptr)
     {
-        children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
+        _children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
     }
 
     if(in_pkts256_to511_octets != nullptr)
     {
-        children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
+        _children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
     }
 
     if(in_pkts512_to1023_octets != nullptr)
     {
-        children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
+        _children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
     }
 
     if(in_pkts1024_to1518_octets != nullptr)
     {
-        children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
+        _children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
     }
 
     if(outpkt64octet != nullptr)
     {
-        children["outpkt64octet"] = outpkt64octet;
+        _children["outpkt64octet"] = outpkt64octet;
     }
 
     if(out_pkts65127_octets != nullptr)
     {
-        children["out-pkts65127-octets"] = out_pkts65127_octets;
+        _children["out-pkts65127-octets"] = out_pkts65127_octets;
     }
 
     if(out_pkts128255_octets != nullptr)
     {
-        children["out-pkts128255-octets"] = out_pkts128255_octets;
+        _children["out-pkts128255-octets"] = out_pkts128255_octets;
     }
 
     if(out_pkts256511_octets != nullptr)
     {
-        children["out-pkts256511-octets"] = out_pkts256511_octets;
+        _children["out-pkts256511-octets"] = out_pkts256511_octets;
     }
 
     if(out_pkts5121023_octets != nullptr)
     {
-        children["out-pkts5121023-octets"] = out_pkts5121023_octets;
+        _children["out-pkts5121023-octets"] = out_pkts5121023_octets;
     }
 
     if(out_pkts10241518_octets != nullptr)
     {
-        children["out-pkts10241518-octets"] = out_pkts10241518_octets;
+        _children["out-pkts10241518-octets"] = out_pkts10241518_octets;
     }
 
     if(rx_util != nullptr)
     {
-        children["rx-util"] = rx_util;
+        _children["rx-util"] = rx_util;
     }
 
     if(tx_util != nullptr)
     {
-        children["tx-util"] = tx_util;
+        _children["tx-util"] = tx_util;
     }
 
     if(tx_undersized_pkt != nullptr)
     {
-        children["tx-undersized-pkt"] = tx_undersized_pkt;
+        _children["tx-undersized-pkt"] = tx_undersized_pkt;
     }
 
     if(tx_oversized_pkt != nullptr)
     {
-        children["tx-oversized-pkt"] = tx_oversized_pkt;
+        _children["tx-oversized-pkt"] = tx_oversized_pkt;
     }
 
     if(tx_fragments != nullptr)
     {
-        children["tx-fragments"] = tx_fragments;
+        _children["tx-fragments"] = tx_fragments;
     }
 
     if(tx_jabber != nullptr)
     {
-        children["tx-jabber"] = tx_jabber;
+        _children["tx-jabber"] = tx_jabber;
     }
 
     if(tx_bad_fcs != nullptr)
     {
-        children["tx-bad-fcs"] = tx_bad_fcs;
+        _children["tx-bad-fcs"] = tx_bad_fcs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21844,16 +21844,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21964,16 +21964,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22084,16 +22084,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagement::Macsec::Ma
 
 }
 
-std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

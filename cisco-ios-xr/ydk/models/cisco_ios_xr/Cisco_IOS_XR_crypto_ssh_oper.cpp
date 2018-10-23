@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ssh1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "kex")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Ssh1::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(kex != nullptr)
     {
-        children["kex"] = kex;
+        _children["kex"] = kex;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Ssh1::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Ssh1::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ssh1::clone_ptr() const
 {
     return std::make_shared<Ssh1>();
 }
@@ -166,7 +166,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Ssh1::Kex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh1::Kex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -180,16 +180,16 @@ std::shared_ptr<Entity> Ssh1::Kex::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh1::Kex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -263,33 +263,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Ssh1::Kex::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Ssh1::Kex::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh1::Kex::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh1::Kex::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -365,7 +365,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::get_name_
 
 }
 
-std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "incoming-sessions")
     {
@@ -388,21 +388,21 @@ std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(incoming_sessions != nullptr)
     {
-        children["incoming-sessions"] = incoming_sessions;
+        _children["incoming-sessions"] = incoming_sessions;
     }
 
     if(outgoing_connections != nullptr)
     {
-        children["outgoing-connections"] = outgoing_connections;
+        _children["outgoing-connections"] = outgoing_connections;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh1::Kex::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -479,33 +479,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::IncomingS
 
 }
 
-std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-detail-info")
     {
-        auto c = std::make_shared<Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo>();
-        c->parent = this;
-        session_detail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo>();
+        ent_->parent = this;
+        session_detail_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::IncomingSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::Node::IncomingSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_detail_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_detail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh1::Kex::Nodes::Node::IncomingSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -596,16 +596,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::IncomingS
 
 }
 
-std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -762,33 +762,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::OutgoingC
 
 }
 
-std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-detail-info")
     {
-        auto c = std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo>();
-        c->parent = this;
-        session_detail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo>();
+        ent_->parent = this;
+        session_detail_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::OutgoingConnections::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::Node::OutgoingConnections::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_detail_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_detail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh1::Kex::Nodes::Node::OutgoingConnections::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -879,16 +879,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::OutgoingC
 
 }
 
-std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1037,7 +1037,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -1051,16 +1051,16 @@ std::shared_ptr<Entity> Ssh::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1071,7 +1071,7 @@ void Ssh::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Ssh::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ssh::clone_ptr() const
 {
     return std::make_shared<Ssh>();
 }
@@ -1167,7 +1167,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rekey")
     {
@@ -1217,36 +1217,36 @@ std::shared_ptr<Entity> Ssh::Session::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rekey != nullptr)
     {
-        children["rekey"] = rekey;
+        _children["rekey"] = rekey;
     }
 
     if(history_detail != nullptr)
     {
-        children["history-detail"] = history_detail;
+        _children["history-detail"] = history_detail;
     }
 
     if(brief != nullptr)
     {
-        children["brief"] = brief;
+        _children["brief"] = brief;
     }
 
     if(history != nullptr)
     {
-        children["history"] = history;
+        _children["history"] = history;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1316,7 +1316,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Rekey::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Rekey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Rekey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "incoming-sessions")
     {
@@ -1339,21 +1339,21 @@ std::shared_ptr<Entity> Ssh::Session::Rekey::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Rekey::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(incoming_sessions != nullptr)
     {
-        children["incoming-sessions"] = incoming_sessions;
+        _children["incoming-sessions"] = incoming_sessions;
     }
 
     if(outgoing_connections != nullptr)
     {
-        children["outgoing-connections"] = outgoing_connections;
+        _children["outgoing-connections"] = outgoing_connections;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Rekey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1427,33 +1427,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Rekey::IncomingSess
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Rekey::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Rekey::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-rekey-info")
     {
-        auto c = std::make_shared<Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo>();
-        c->parent = this;
-        session_rekey_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo>();
+        ent_->parent = this;
+        session_rekey_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::IncomingSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Rekey::IncomingSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_rekey_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_rekey_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Rekey::IncomingSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1531,16 +1531,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Rekey::IncomingSess
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1654,33 +1654,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Rekey::OutgoingConn
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Rekey::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Rekey::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-rekey-info")
     {
-        auto c = std::make_shared<Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo>();
-        c->parent = this;
-        session_rekey_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo>();
+        ent_->parent = this;
+        session_rekey_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::OutgoingConnections::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Rekey::OutgoingConnections::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_rekey_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_rekey_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Rekey::OutgoingConnections::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1758,16 +1758,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Rekey::OutgoingConn
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1877,7 +1877,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::get_
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::HistoryDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::HistoryDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "incoming-sessions")
     {
@@ -1900,21 +1900,21 @@ std::shared_ptr<Entity> Ssh::Session::HistoryDetail::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::HistoryDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(incoming_sessions != nullptr)
     {
-        children["incoming-sessions"] = incoming_sessions;
+        _children["incoming-sessions"] = incoming_sessions;
     }
 
     if(outgoing_connections != nullptr)
     {
-        children["outgoing-connections"] = outgoing_connections;
+        _children["outgoing-connections"] = outgoing_connections;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::HistoryDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1988,33 +1988,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::Inco
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::HistoryDetail::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::HistoryDetail::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-detail-info")
     {
-        auto c = std::make_shared<Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo>();
-        c->parent = this;
-        session_detail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo>();
+        ent_->parent = this;
+        session_detail_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::IncomingSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::HistoryDetail::IncomingSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_detail_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_detail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::HistoryDetail::IncomingSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2112,16 +2112,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::Inco
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2285,33 +2285,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::Outg
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::HistoryDetail::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::HistoryDetail::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-detail-info")
     {
-        auto c = std::make_shared<Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo>();
-        c->parent = this;
-        session_detail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo>();
+        ent_->parent = this;
+        session_detail_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::OutgoingConnections::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::HistoryDetail::OutgoingConnections::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_detail_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_detail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::HistoryDetail::OutgoingConnections::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2409,16 +2409,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::Outg
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2578,7 +2578,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "incoming-sessions")
     {
@@ -2601,21 +2601,21 @@ std::shared_ptr<Entity> Ssh::Session::Brief::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(incoming_sessions != nullptr)
     {
-        children["incoming-sessions"] = incoming_sessions;
+        _children["incoming-sessions"] = incoming_sessions;
     }
 
     if(outgoing_sessions != nullptr)
     {
-        children["outgoing-sessions"] = outgoing_sessions;
+        _children["outgoing-sessions"] = outgoing_sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2689,33 +2689,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::IncomingSess
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Brief::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Brief::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-brief-info")
     {
-        auto c = std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo>();
-        c->parent = this;
-        session_brief_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo>();
+        ent_->parent = this;
+        session_brief_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::IncomingSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::IncomingSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_brief_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_brief_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Brief::IncomingSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2817,33 +2817,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::IncomingSess
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mc-info")
     {
-        auto c = std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo>();
-        c->parent = this;
-        mc_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo>();
+        ent_->parent = this;
+        mc_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mc_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mc_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2991,16 +2991,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::IncomingSess
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3114,33 +3114,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::OutgoingSess
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Brief::OutgoingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Brief::OutgoingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-brief-info")
     {
-        auto c = std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo>();
-        c->parent = this;
-        session_brief_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo>();
+        ent_->parent = this;
+        session_brief_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::OutgoingSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::OutgoingSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_brief_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_brief_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Brief::OutgoingSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3242,33 +3242,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::OutgoingSess
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mc-info")
     {
-        auto c = std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo>();
-        c->parent = this;
-        mc_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo>();
+        ent_->parent = this;
+        mc_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mc_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mc_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3416,16 +3416,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::OutgoingSess
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3531,7 +3531,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::get_name_l
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "incoming-sessions")
     {
@@ -3545,16 +3545,16 @@ std::shared_ptr<Entity> Ssh::Session::History::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(incoming_sessions != nullptr)
     {
-        children["incoming-sessions"] = incoming_sessions;
+        _children["incoming-sessions"] = incoming_sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3628,33 +3628,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::IncomingSe
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::History::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::History::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-history-info")
     {
-        auto c = std::make_shared<Ssh::Session::History::IncomingSessions::SessionHistoryInfo>();
-        c->parent = this;
-        session_history_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::History::IncomingSessions::SessionHistoryInfo>();
+        ent_->parent = this;
+        session_history_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::History::IncomingSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::History::IncomingSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_history_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_history_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::History::IncomingSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3752,33 +3752,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::IncomingSe
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mc-info")
     {
-        auto c = std::make_shared<Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo>();
-        c->parent = this;
-        mc_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo>();
+        ent_->parent = this;
+        mc_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mc_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mc_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::History::IncomingSessions::SessionHistoryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3916,16 +3916,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::IncomingSe
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4035,7 +4035,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "incoming-sessions")
     {
@@ -4058,21 +4058,21 @@ std::shared_ptr<Entity> Ssh::Session::Detail::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(incoming_sessions != nullptr)
     {
-        children["incoming-sessions"] = incoming_sessions;
+        _children["incoming-sessions"] = incoming_sessions;
     }
 
     if(outgoing_connections != nullptr)
     {
-        children["outgoing-connections"] = outgoing_connections;
+        _children["outgoing-connections"] = outgoing_connections;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4146,33 +4146,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::IncomingSes
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Detail::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Detail::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-detail-info")
     {
-        auto c = std::make_shared<Ssh::Session::Detail::IncomingSessions::SessionDetailInfo>();
-        c->parent = this;
-        session_detail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::Detail::IncomingSessions::SessionDetailInfo>();
+        ent_->parent = this;
+        session_detail_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::IncomingSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Detail::IncomingSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_detail_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_detail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Detail::IncomingSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4270,16 +4270,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::IncomingSes
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4443,33 +4443,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::OutgoingCon
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Detail::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Detail::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-detail-info")
     {
-        auto c = std::make_shared<Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo>();
-        c->parent = this;
-        session_detail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo>();
+        ent_->parent = this;
+        session_detail_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::OutgoingConnections::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Detail::OutgoingConnections::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_detail_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_detail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Session::Detail::OutgoingConnections::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4567,16 +4567,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::OutgoingCon
 
 }
 
-std::shared_ptr<Entity> Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > Rip::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> Rip::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
     if(protocol != nullptr)
     {
-        children["protocol"] = protocol;
+        _children["protocol"] = protocol;
     }
 
     if(default_vrf != nullptr)
     {
-        children["default-vrf"] = default_vrf;
+        _children["default-vrf"] = default_vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void Rip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Rip::clone_ptr() const
+std::shared_ptr<ydk::Entity> Rip::clone_ptr() const
 {
     return std::make_shared<Rip>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Rip::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -324,7 +324,7 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routes")
     {
@@ -374,36 +374,36 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(routes != nullptr)
     {
-        children["routes"] = routes;
+        _children["routes"] = routes;
     }
 
     if(configuration != nullptr)
     {
-        children["configuration"] = configuration;
+        _children["configuration"] = configuration;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -480,33 +480,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Routes::get_name_
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
-        auto c = std::make_shared<Rip::Vrfs::Vrf::Routes::Route>();
-        c->parent = this;
-        route.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Vrfs::Vrf::Routes::Route>();
+        ent_->parent = this;
+        route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Routes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Routes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -629,33 +629,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Routes::Route::ge
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "paths")
     {
-        auto c = std::make_shared<Rip::Vrfs::Vrf::Routes::Route::Paths>();
-        c->parent = this;
-        paths.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Vrfs::Vrf::Routes::Route::Paths>();
+        ent_->parent = this;
+        paths.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Routes::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Routes::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : paths.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : paths.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -878,16 +878,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Routes::Route::Pa
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Routes::Route::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Routes::Route::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Routes::Route::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Routes::Route::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Routes::Route::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1088,16 +1088,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Configuration::ge
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Configuration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Configuration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1394,16 +1394,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Statistics::get_n
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1600,33 +1600,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Interfaces::get_n
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1825,50 +1825,50 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-summary")
     {
-        auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary>();
-        c->parent = this;
-        rip_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary>();
+        ent_->parent = this;
+        rip_summary.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "rip-peer")
     {
-        auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer>();
-        c->parent = this;
-        rip_peer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer>();
+        ent_->parent = this;
+        rip_peer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rip_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rip_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : rip_peer.entities())
+    count_ = 0;
+    for (auto ent_ : rip_peer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2239,16 +2239,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2363,16 +2363,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Interfaces::Inter
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2492,7 +2492,7 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Global::get_name_
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-summary")
     {
@@ -2505,34 +2505,34 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Global::get_child_by_name(const std::str
 
     if(child_yang_name == "interface-summary")
     {
-        auto c = std::make_shared<Rip::Vrfs::Vrf::Global::InterfaceSummary>();
-        c->parent = this;
-        interface_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Vrfs::Vrf::Global::InterfaceSummary>();
+        ent_->parent = this;
+        interface_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf_summary != nullptr)
     {
-        children["vrf-summary"] = vrf_summary;
+        _children["vrf-summary"] = vrf_summary;
     }
 
-    count = 0;
-    for (auto c : interface_summary.entities())
+    count_ = 0;
+    for (auto ent_ : interface_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2635,16 +2635,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Global::VrfSummar
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Global::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Global::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Global::VrfSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Global::VrfSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Global::VrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2855,16 +2855,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Global::Interface
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Global::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Vrfs::Vrf::Global::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Global::InterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Vrfs::Vrf::Global::InterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Vrfs::Vrf::Global::InterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3024,7 +3024,7 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
@@ -3047,21 +3047,21 @@ std::shared_ptr<Entity> Rip::Protocol::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(process != nullptr)
     {
-        children["process"] = process;
+        _children["process"] = process;
     }
 
     if(default_vrf != nullptr)
     {
-        children["default-vrf"] = default_vrf;
+        _children["default-vrf"] = default_vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3159,33 +3159,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::Process::get_name_
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-summary")
     {
-        auto c = std::make_shared<Rip::Protocol::Process::VrfSummary>();
-        c->parent = this;
-        vrf_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Protocol::Process::VrfSummary>();
+        ent_->parent = this;
+        vrf_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Protocol::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3355,16 +3355,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::Process::VrfSummar
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::Process::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::Process::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::Process::VrfSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::Process::VrfSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Protocol::Process::VrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3566,7 +3566,7 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::get_na
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routes")
     {
@@ -3616,36 +3616,36 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(routes != nullptr)
     {
-        children["routes"] = routes;
+        _children["routes"] = routes;
     }
 
     if(configuration != nullptr)
     {
-        children["configuration"] = configuration;
+        _children["configuration"] = configuration;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3719,33 +3719,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Routes
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
-        auto c = std::make_shared<Rip::Protocol::DefaultVrf::Routes::Route>();
-        c->parent = this;
-        route.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Protocol::DefaultVrf::Routes::Route>();
+        ent_->parent = this;
+        route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Routes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Routes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3875,33 +3875,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Routes
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "paths")
     {
-        auto c = std::make_shared<Rip::Protocol::DefaultVrf::Routes::Route::Paths>();
-        c->parent = this;
-        paths.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Protocol::DefaultVrf::Routes::Route::Paths>();
+        ent_->parent = this;
+        paths.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Routes::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Routes::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : paths.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : paths.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4131,16 +4131,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Routes
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Routes::Route::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4348,16 +4348,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Config
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Configuration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Configuration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4661,16 +4661,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Statis
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4874,33 +4874,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Interf
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5106,50 +5106,50 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Interf
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-summary")
     {
-        auto c = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary>();
-        c->parent = this;
-        rip_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary>();
+        ent_->parent = this;
+        rip_summary.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "rip-peer")
     {
-        auto c = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer>();
-        c->parent = this;
-        rip_peer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer>();
+        ent_->parent = this;
+        rip_peer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rip_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rip_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : rip_peer.entities())
+    count_ = 0;
+    for (auto ent_ : rip_peer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5520,16 +5520,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Interf
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5644,16 +5644,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Interf
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5780,7 +5780,7 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Global
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-summary")
     {
@@ -5793,34 +5793,34 @@ std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Global::get_child_by_name(con
 
     if(child_yang_name == "interface-summary")
     {
-        auto c = std::make_shared<Rip::Protocol::DefaultVrf::Global::InterfaceSummary>();
-        c->parent = this;
-        interface_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::Protocol::DefaultVrf::Global::InterfaceSummary>();
+        ent_->parent = this;
+        interface_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf_summary != nullptr)
     {
-        children["vrf-summary"] = vrf_summary;
+        _children["vrf-summary"] = vrf_summary;
     }
 
-    count = 0;
-    for (auto c : interface_summary.entities())
+    count_ = 0;
+    for (auto ent_ : interface_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5930,16 +5930,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Global
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Global::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Global::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Global::VrfSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Global::VrfSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Global::VrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6157,16 +6157,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::Protocol::DefaultVrf::Global
 
 }
 
-std::shared_ptr<Entity> Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::Protocol::DefaultVrf::Global::InterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6338,7 +6338,7 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routes")
     {
@@ -6388,36 +6388,36 @@ std::shared_ptr<Entity> Rip::DefaultVrf::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(routes != nullptr)
     {
-        children["routes"] = routes;
+        _children["routes"] = routes;
     }
 
     if(configuration != nullptr)
     {
-        children["configuration"] = configuration;
+        _children["configuration"] = configuration;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6491,33 +6491,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Routes::get_name
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
-        auto c = std::make_shared<Rip::DefaultVrf::Routes::Route>();
-        c->parent = this;
-        route.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::DefaultVrf::Routes::Route>();
+        ent_->parent = this;
+        route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Routes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Routes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::DefaultVrf::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6647,33 +6647,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Routes::Route::g
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Routes::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "paths")
     {
-        auto c = std::make_shared<Rip::DefaultVrf::Routes::Route::Paths>();
-        c->parent = this;
-        paths.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::DefaultVrf::Routes::Route::Paths>();
+        ent_->parent = this;
+        paths.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Routes::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Routes::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : paths.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : paths.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::DefaultVrf::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6903,16 +6903,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Routes::Route::P
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Routes::Route::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Routes::Route::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Routes::Route::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Routes::Route::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::DefaultVrf::Routes::Route::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7120,16 +7120,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Configuration::g
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Configuration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Configuration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::DefaultVrf::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7433,16 +7433,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Statistics::get_
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::DefaultVrf::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7646,33 +7646,33 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Interfaces::get_
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::DefaultVrf::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::DefaultVrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7878,50 +7878,50 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-summary")
     {
-        auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface::RipSummary>();
-        c->parent = this;
-        rip_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::DefaultVrf::Interfaces::Interface::RipSummary>();
+        ent_->parent = this;
+        rip_summary.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "rip-peer")
     {
-        auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface::RipPeer>();
-        c->parent = this;
-        rip_peer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::DefaultVrf::Interfaces::Interface::RipPeer>();
+        ent_->parent = this;
+        rip_peer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rip_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rip_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : rip_peer.entities())
+    count_ = 0;
+    for (auto ent_ : rip_peer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::DefaultVrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8292,16 +8292,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::DefaultVrf::Interfaces::Interface::RipSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8416,16 +8416,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Interfaces::Inte
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::DefaultVrf::Interfaces::Interface::RipPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8552,7 +8552,7 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Global::get_name
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-summary")
     {
@@ -8565,34 +8565,34 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Global::get_child_by_name(const std::st
 
     if(child_yang_name == "interface-summary")
     {
-        auto c = std::make_shared<Rip::DefaultVrf::Global::InterfaceSummary>();
-        c->parent = this;
-        interface_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Rip::DefaultVrf::Global::InterfaceSummary>();
+        ent_->parent = this;
+        interface_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf_summary != nullptr)
     {
-        children["vrf-summary"] = vrf_summary;
+        _children["vrf-summary"] = vrf_summary;
     }
 
-    count = 0;
-    for (auto c : interface_summary.entities())
+    count_ = 0;
+    for (auto ent_ : interface_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Rip::DefaultVrf::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8702,16 +8702,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Global::VrfSumma
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Global::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Global::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Global::VrfSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Global::VrfSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::DefaultVrf::Global::VrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8929,16 +8929,16 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Global::Interfac
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Global::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rip::DefaultVrf::Global::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Global::InterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rip::DefaultVrf::Global::InterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rip::DefaultVrf::Global::InterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

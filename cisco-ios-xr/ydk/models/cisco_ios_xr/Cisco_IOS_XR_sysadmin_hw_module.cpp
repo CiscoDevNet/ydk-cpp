@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> HwModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> HwModule::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(oper != nullptr)
     {
-        children["oper"] = oper;
+        _children["oper"] = oper;
     }
 
     if(shhwfpd != nullptr)
     {
-        children["shhwfpd"] = shhwfpd;
+        _children["shhwfpd"] = shhwfpd;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void HwModule::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> HwModule::clone_ptr() const
+std::shared_ptr<ydk::Entity> HwModule::clone_ptr() const
 {
     return std::make_shared<HwModule>();
 }
@@ -225,7 +225,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "shutdown")
     {
@@ -265,49 +265,49 @@ std::shared_ptr<Entity> HwModule::Config::get_child_by_name(const std::string & 
 
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<HwModule::Config::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Config::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(shutdown != nullptr)
     {
-        children["shutdown"] = shutdown;
+        _children["shutdown"] = shutdown;
     }
 
     if(reset != nullptr)
     {
-        children["reset"] = reset;
+        _children["reset"] = reset;
     }
 
     if(offline != nullptr)
     {
-        children["offline"] = offline;
+        _children["offline"] = offline;
     }
 
     if(attention_led != nullptr)
     {
-        children["attention-led"] = attention_led;
+        _children["attention-led"] = attention_led;
     }
 
-    count = 0;
-    for (auto c : location.entities())
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -381,33 +381,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Shutdown::get_n
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<HwModule::Config::Shutdown::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Config::Shutdown::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Shutdown::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Shutdown::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Config::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -474,16 +474,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Shutdown::Locat
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Shutdown::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Shutdown::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Shutdown::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Shutdown::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Config::Shutdown::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -559,7 +559,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Reset::get_name
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Reset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Reset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "auto")
     {
@@ -573,16 +573,16 @@ std::shared_ptr<Entity> HwModule::Config::Reset::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Reset::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Reset::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(auto_ != nullptr)
     {
-        children["auto"] = auto_;
+        _children["auto"] = auto_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Config::Reset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -648,7 +648,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Reset::Auto::ge
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Reset::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Reset::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disable")
     {
@@ -662,16 +662,16 @@ std::shared_ptr<Entity> HwModule::Config::Reset::Auto::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Reset::Auto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Reset::Auto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disable != nullptr)
     {
-        children["disable"] = disable;
+        _children["disable"] = disable;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Config::Reset::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -745,33 +745,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Reset::Auto::Di
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Reset::Auto::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Reset::Auto::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<HwModule::Config::Reset::Auto::Disable::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Config::Reset::Auto::Disable::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Reset::Auto::Disable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Reset::Auto::Disable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Config::Reset::Auto::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -838,16 +838,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Reset::Auto::Di
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Reset::Auto::Disable::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Reset::Auto::Disable::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Reset::Auto::Disable::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Reset::Auto::Disable::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Config::Reset::Auto::Disable::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -931,33 +931,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Offline::get_na
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Offline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Offline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<HwModule::Config::Offline::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Config::Offline::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Offline::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Offline::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Config::Offline::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1024,16 +1024,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Offline::Locati
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Offline::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Offline::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Offline::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Offline::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Config::Offline::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1117,33 +1117,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::AttentionLed::g
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::AttentionLed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::AttentionLed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<HwModule::Config::AttentionLed::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Config::AttentionLed::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::AttentionLed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::AttentionLed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Config::AttentionLed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1210,16 +1210,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::AttentionLed::L
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::AttentionLed::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::AttentionLed::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::AttentionLed::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::AttentionLed::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Config::AttentionLed::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1301,7 +1301,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Location::get_n
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logging")
     {
@@ -1315,16 +1315,16 @@ std::shared_ptr<Entity> HwModule::Config::Location::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(logging != nullptr)
     {
-        children["logging"] = logging;
+        _children["logging"] = logging;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Config::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1393,7 +1393,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Location::Loggi
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Location::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Location::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "onboard")
     {
@@ -1407,16 +1407,16 @@ std::shared_ptr<Entity> HwModule::Config::Location::Logging::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Location::Logging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Location::Logging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(onboard != nullptr)
     {
-        children["onboard"] = onboard;
+        _children["onboard"] = onboard;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Config::Location::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1475,16 +1475,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Config::Location::Loggi
 
 }
 
-std::shared_ptr<Entity> HwModule::Config::Location::Logging::Onboard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Config::Location::Logging::Onboard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Config::Location::Logging::Onboard::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Config::Location::Logging::Onboard::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Config::Location::Logging::Onboard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1568,33 +1568,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Oper::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> HwModule::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<HwModule::Oper::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Oper::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Oper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Oper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Oper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1670,7 +1670,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Oper::Location::get_nam
 
 }
 
-std::shared_ptr<Entity> HwModule::Oper::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Oper::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "actions")
     {
@@ -1693,21 +1693,21 @@ std::shared_ptr<Entity> HwModule::Oper::Location::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Oper::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Oper::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(actions != nullptr)
     {
-        children["actions"] = actions;
+        _children["actions"] = actions;
     }
 
     if(show != nullptr)
     {
-        children["show"] = show;
+        _children["show"] = show;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Oper::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1776,7 +1776,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Oper::Location::Actions
 
 }
 
-std::shared_ptr<Entity> HwModule::Oper::Location::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Oper::Location::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cbootmedia")
     {
@@ -1790,16 +1790,16 @@ std::shared_ptr<Entity> HwModule::Oper::Location::Actions::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Oper::Location::Actions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Oper::Location::Actions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cbootmedia != nullptr)
     {
-        children["cbootmedia"] = cbootmedia;
+        _children["cbootmedia"] = cbootmedia;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Oper::Location::Actions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1866,33 +1866,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Oper::Location::Actions
 
 }
 
-std::shared_ptr<Entity> HwModule::Oper::Location::Actions::Cbootmedia::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Oper::Location::Actions::Cbootmedia::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bootmedia")
     {
-        auto c = std::make_shared<HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia>();
-        c->parent = this;
-        bootmedia.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia>();
+        ent_->parent = this;
+        bootmedia.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Oper::Location::Actions::Cbootmedia::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Oper::Location::Actions::Cbootmedia::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bootmedia.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bootmedia.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Oper::Location::Actions::Cbootmedia::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1952,16 +1952,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Oper::Location::Actions
 
 }
 
-std::shared_ptr<Entity> HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2026,16 +2026,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Oper::Location::Show::g
 
 }
 
-std::shared_ptr<Entity> HwModule::Oper::Location::Show::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Oper::Location::Show::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Oper::Location::Show::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Oper::Location::Show::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Oper::Location::Show::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2118,50 +2118,50 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Shhwfpd::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> HwModule::Shhwfpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Shhwfpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alocation")
     {
-        auto c = std::make_shared<HwModule::Shhwfpd::Alocation>();
-        c->parent = this;
-        alocation.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Shhwfpd::Alocation>();
+        ent_->parent = this;
+        alocation.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "fpd")
     {
-        auto c = std::make_shared<HwModule::Shhwfpd::Fpd>();
-        c->parent = this;
-        fpd.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Shhwfpd::Fpd>();
+        ent_->parent = this;
+        fpd.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Shhwfpd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Shhwfpd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alocation.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : alocation.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : fpd.entities())
+    count_ = 0;
+    for (auto ent_ : fpd.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Shhwfpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2240,33 +2240,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Shhwfpd::Alocation::get
 
 }
 
-std::shared_ptr<Entity> HwModule::Shhwfpd::Alocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Shhwfpd::Alocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fpd")
     {
-        auto c = std::make_shared<HwModule::Shhwfpd::Alocation::Fpd>();
-        c->parent = this;
-        fpd.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Shhwfpd::Alocation::Fpd>();
+        ent_->parent = this;
+        fpd.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Shhwfpd::Alocation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Shhwfpd::Alocation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fpd.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fpd.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Shhwfpd::Alocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2360,16 +2360,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Shhwfpd::Alocation::Fpd
 
 }
 
-std::shared_ptr<Entity> HwModule::Shhwfpd::Alocation::Fpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Shhwfpd::Alocation::Fpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Shhwfpd::Alocation::Fpd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Shhwfpd::Alocation::Fpd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Shhwfpd::Alocation::Fpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2506,16 +2506,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Shhwfpd::Fpd::get_name_
 
 }
 
-std::shared_ptr<Entity> HwModule::Shhwfpd::Fpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Shhwfpd::Fpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Shhwfpd::Fpd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Shhwfpd::Fpd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Shhwfpd::Fpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
