@@ -97,7 +97,7 @@ include(CPack)
 # include custom Modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 
-set(YDK_YANG_ARCHIVE ietf\@0.1.5)
+set(YDK_YANG_ARCHIVE ietf\@0.1.5-post2)
 
 if(NOT LIB_INSTALL_DIR)
     set(LIB_INSTALL_DIR lib)
@@ -108,7 +108,7 @@ if(NOT INCLUDE_INSTALL_DIR)
 endif()
 
 if(NOT YANG_INSTALL_DIR)
-    set(YANG_INSTALL_DIR share/ietf\@0.1.5)
+    set(YANG_INSTALL_DIR share/ietf\@0.1.5-post2)
 endif()
 
 # set default build type if not specified by user
@@ -132,7 +132,7 @@ set(libydk_ietf_headers ydk/models/ietf/bundle_info.hpp ydk/models/ietf/iana_if_
 
 set(libydk_ietf_yang ietf-diffserv-policy.yang ietf-event-notifications.yang ietf-netconf-acm.yang ietf-ipv6-unicast-routing.yang ietf-inet-types.yang iana-if-type.yang ydk@2016-02-26.yang ietf-netconf.yang iana-crypt-hash.yang ietf-interfaces-ext.yang ietf-yang-push.yang ietf-routing.yang ietf-yang-types.yang ietf-ipv4-unicast-routing.yang ietf-diffserv-action.yang ietf-key-chain.yang ietf-ip.yang ietf-yang-smiv2.yang ietf-netconf-notifications.yang ietf-syslog-types.yang ietf-ospf.yang ietf-restconf-monitoring.yang ietf-diffserv-classifier.yang policy-types.yang ietf-interfaces.yang ietf-diffserv-target.yang ietf-netconf-with-defaults.yang ietf-yang-library.yang ietf-netconf-monitoring.yang)
 
-set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/ietf\@0.1.5)
+set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/ietf\@0.1.5-post2)
 
 list(APPEND libydk_YANG_FILES "")
 foreach(yang_file IN LISTS libydk_ietf_yang)
