@@ -3135,8 +3135,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContLis
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
         ydk::YLeaf scope; //type: RtleakScope
         ydk::YLeaf rtmap; //type: string
 
@@ -3183,8 +3181,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContLis
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: BgpRtCtrlDir
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
         ydk::YLeaf list; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::PfxctrlItems::PfxCtrlPList
@@ -3370,7 +3366,6 @@ class System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionC
 
         ydk::YLeaf localasn; //type: string
         ydk::YLeaf asnpropagate; //type: BgpAsnPropagation
-        ydk::YLeaf name; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionContList::LocalasnItems
 
@@ -3429,6 +3424,7 @@ class System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCon
         ydk::YLeaf soo; //type: string
         ydk::YLeaf sendcomstd; //type: BgpAdminSt
         ydk::YLeaf sendcomext; //type: BgpAdminSt
+        ydk::YLeaf advlocallblrt; //type: NwAdminSt_
         ydk::YLeaf inheritcontpeerpolicyctrl; //type: string
         class MaxpfxpItems; //type: System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::MaxpfxpItems
         class AdvtmapItems; //type: System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::AdvtmapItems
@@ -3467,8 +3463,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCon
         ydk::YLeaf thresh; //type: uint8
         ydk::YLeaf action; //type: BgpMaxPfxAct
         ydk::YLeaf restarttime; //type: uint16
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::MaxpfxpItems
 
@@ -3584,8 +3578,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCon
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: BgpRtCtrlDir
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
         ydk::YLeaf list; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::PfxctrlItems::PfxCtrlPList

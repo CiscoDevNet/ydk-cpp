@@ -12,6 +12,3286 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::RsClassMapToPolicyMapList()
+    :
+    tdn{YType::str, "tDn"},
+    tcl{YType::enumeration, "tCl"}
+{
+
+    yang_name = "RsClassMapToPolicyMap-list"; yang_parent_name = "rsclassMapToPolicyMap-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::~RsClassMapToPolicyMapList()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::has_data() const
+{
+    if (is_presence_container) return true;
+    return tdn.is_set
+	|| tcl.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tdn.yfilter)
+	|| ydk::is_set(tcl.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RsClassMapToPolicyMap-list";
+    ADD_KEY_TOKEN(tdn, "tDn");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
+    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tDn")
+    {
+        tdn = value;
+        tdn.value_namespace = name_space;
+        tdn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tCl")
+    {
+        tcl = value;
+        tcl.value_namespace = name_space;
+        tcl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tDn")
+    {
+        tdn.yfilter = yfilter;
+    }
+    if(value_path == "tCl")
+    {
+        tcl.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tDn" || name == "tCl")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::PItems()
+    :
+    name_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems>())
+{
+    name_items->parent = this;
+
+    yang_name = "p-items"; yang_parent_name = "dflt-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::~PItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return (name_items !=  nullptr && name_items->has_data());
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| (name_items !=  nullptr && name_items->has_operation());
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "p-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "name-items")
+    {
+        if(name_items == nullptr)
+        {
+            name_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems>();
+        }
+        return name_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(name_items != nullptr)
+    {
+        _children["name-items"] = name_items;
+    }
+
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name-items")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::NameItems()
+    :
+    pmapinst_list(this, {"name"})
+{
+
+    yang_name = "name-items"; yang_parent_name = "p-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::~NameItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pmapinst_list.len(); index++)
+    {
+        if(pmapinst_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::has_operation() const
+{
+    for (std::size_t index=0; index<pmapinst_list.len(); index++)
+    {
+        if(pmapinst_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "name-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "PMapInst-list")
+    {
+        auto ent_ = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList>();
+        ent_->parent = this;
+        pmapinst_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pmapinst_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "PMapInst-list")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::PMapInstList()
+    :
+    name{YType::str, "name"},
+    matchtype{YType::enumeration, "matchType"},
+    refcount{YType::uint32, "refCount"},
+    configstatus{YType::uint32, "configStatus"}
+        ,
+    cmap_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems>())
+    , description_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems>())
+    , rtipqospolicyinsttopmap_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems>())
+    , rtclassmaptopolicymap_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtclassMapToPolicyMapItems>())
+{
+    cmap_items->parent = this;
+    description_items->parent = this;
+    rtipqospolicyinsttopmap_items->parent = this;
+    rtclassmaptopolicymap_items->parent = this;
+
+    yang_name = "PMapInst-list"; yang_parent_name = "name-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::~PMapInstList()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| matchtype.is_set
+	|| refcount.is_set
+	|| configstatus.is_set
+	|| (cmap_items !=  nullptr && cmap_items->has_data())
+	|| (description_items !=  nullptr && description_items->has_data())
+	|| (rtipqospolicyinsttopmap_items !=  nullptr && rtipqospolicyinsttopmap_items->has_data())
+	|| (rtclassmaptopolicymap_items !=  nullptr && rtclassmaptopolicymap_items->has_data());
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(matchtype.yfilter)
+	|| ydk::is_set(refcount.yfilter)
+	|| ydk::is_set(configstatus.yfilter)
+	|| (cmap_items !=  nullptr && cmap_items->has_operation())
+	|| (description_items !=  nullptr && description_items->has_operation())
+	|| (rtipqospolicyinsttopmap_items !=  nullptr && rtipqospolicyinsttopmap_items->has_operation())
+	|| (rtclassmaptopolicymap_items !=  nullptr && rtclassmaptopolicymap_items->has_operation());
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "PMapInst-list";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (matchtype.is_set || is_set(matchtype.yfilter)) leaf_name_data.push_back(matchtype.get_name_leafdata());
+    if (refcount.is_set || is_set(refcount.yfilter)) leaf_name_data.push_back(refcount.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cmap-items")
+    {
+        if(cmap_items == nullptr)
+        {
+            cmap_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems>();
+        }
+        return cmap_items;
+    }
+
+    if(child_yang_name == "Description-items")
+    {
+        if(description_items == nullptr)
+        {
+            description_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems>();
+        }
+        return description_items;
+    }
+
+    if(child_yang_name == "rtipqosPolicyInstToPMap-items")
+    {
+        if(rtipqospolicyinsttopmap_items == nullptr)
+        {
+            rtipqospolicyinsttopmap_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems>();
+        }
+        return rtipqospolicyinsttopmap_items;
+    }
+
+    if(child_yang_name == "rtclassMapToPolicyMap-items")
+    {
+        if(rtclassmaptopolicymap_items == nullptr)
+        {
+            rtclassmaptopolicymap_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtclassMapToPolicyMapItems>();
+        }
+        return rtclassmaptopolicymap_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(cmap_items != nullptr)
+    {
+        _children["cmap-items"] = cmap_items;
+    }
+
+    if(description_items != nullptr)
+    {
+        _children["Description-items"] = description_items;
+    }
+
+    if(rtipqospolicyinsttopmap_items != nullptr)
+    {
+        _children["rtipqosPolicyInstToPMap-items"] = rtipqospolicyinsttopmap_items;
+    }
+
+    if(rtclassmaptopolicymap_items != nullptr)
+    {
+        _children["rtclassMapToPolicyMap-items"] = rtclassmaptopolicymap_items;
+    }
+
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "matchType")
+    {
+        matchtype = value;
+        matchtype.value_namespace = name_space;
+        matchtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "refCount")
+    {
+        refcount = value;
+        refcount.value_namespace = name_space;
+        refcount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "matchType")
+    {
+        matchtype.yfilter = yfilter;
+    }
+    if(value_path == "refCount")
+    {
+        refcount.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmap-items" || name == "Description-items" || name == "rtipqosPolicyInstToPMap-items" || name == "rtclassMapToPolicyMap-items" || name == "name" || name == "matchType" || name == "refCount" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::CmapItems()
+    :
+    matchcmap_list(this, {"name"})
+{
+
+    yang_name = "cmap-items"; yang_parent_name = "PMapInst-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::~CmapItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<matchcmap_list.len(); index++)
+    {
+        if(matchcmap_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::has_operation() const
+{
+    for (std::size_t index=0; index<matchcmap_list.len(); index++)
+    {
+        if(matchcmap_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cmap-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "MatchCMap-list")
+    {
+        auto ent_ = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList>();
+        ent_->parent = this;
+        matchcmap_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : matchcmap_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "MatchCMap-list")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MatchCMapList()
+    :
+    name{YType::str, "name"},
+    prevcmap{YType::str, "prevCMap"},
+    nextcmap{YType::str, "nextCMap"},
+    configstatus{YType::uint32, "configStatus"}
+        ,
+    setcos_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems>())
+    , mtu_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems>())
+    , setprecedence_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems>())
+    , setdscp_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems>())
+    , setgrp_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems>())
+    , setdlbdisable_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems>())
+    , queuelimit_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems>())
+    , pause_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems>())
+    , dpp_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems>())
+    , setbw_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems>())
+    , setrembw_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems>())
+    , shape_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems>())
+    , police_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems>())
+    , prio_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems>())
+    , randdet_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems>())
+    , randdetnonecn_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems>())
+{
+    setcos_items->parent = this;
+    mtu_items->parent = this;
+    setprecedence_items->parent = this;
+    setdscp_items->parent = this;
+    setgrp_items->parent = this;
+    setdlbdisable_items->parent = this;
+    queuelimit_items->parent = this;
+    pause_items->parent = this;
+    dpp_items->parent = this;
+    setbw_items->parent = this;
+    setrembw_items->parent = this;
+    shape_items->parent = this;
+    police_items->parent = this;
+    prio_items->parent = this;
+    randdet_items->parent = this;
+    randdetnonecn_items->parent = this;
+
+    yang_name = "MatchCMap-list"; yang_parent_name = "cmap-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::~MatchCMapList()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| prevcmap.is_set
+	|| nextcmap.is_set
+	|| configstatus.is_set
+	|| (setcos_items !=  nullptr && setcos_items->has_data())
+	|| (mtu_items !=  nullptr && mtu_items->has_data())
+	|| (setprecedence_items !=  nullptr && setprecedence_items->has_data())
+	|| (setdscp_items !=  nullptr && setdscp_items->has_data())
+	|| (setgrp_items !=  nullptr && setgrp_items->has_data())
+	|| (setdlbdisable_items !=  nullptr && setdlbdisable_items->has_data())
+	|| (queuelimit_items !=  nullptr && queuelimit_items->has_data())
+	|| (pause_items !=  nullptr && pause_items->has_data())
+	|| (dpp_items !=  nullptr && dpp_items->has_data())
+	|| (setbw_items !=  nullptr && setbw_items->has_data())
+	|| (setrembw_items !=  nullptr && setrembw_items->has_data())
+	|| (shape_items !=  nullptr && shape_items->has_data())
+	|| (police_items !=  nullptr && police_items->has_data())
+	|| (prio_items !=  nullptr && prio_items->has_data())
+	|| (randdet_items !=  nullptr && randdet_items->has_data())
+	|| (randdetnonecn_items !=  nullptr && randdetnonecn_items->has_data());
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(prevcmap.yfilter)
+	|| ydk::is_set(nextcmap.yfilter)
+	|| ydk::is_set(configstatus.yfilter)
+	|| (setcos_items !=  nullptr && setcos_items->has_operation())
+	|| (mtu_items !=  nullptr && mtu_items->has_operation())
+	|| (setprecedence_items !=  nullptr && setprecedence_items->has_operation())
+	|| (setdscp_items !=  nullptr && setdscp_items->has_operation())
+	|| (setgrp_items !=  nullptr && setgrp_items->has_operation())
+	|| (setdlbdisable_items !=  nullptr && setdlbdisable_items->has_operation())
+	|| (queuelimit_items !=  nullptr && queuelimit_items->has_operation())
+	|| (pause_items !=  nullptr && pause_items->has_operation())
+	|| (dpp_items !=  nullptr && dpp_items->has_operation())
+	|| (setbw_items !=  nullptr && setbw_items->has_operation())
+	|| (setrembw_items !=  nullptr && setrembw_items->has_operation())
+	|| (shape_items !=  nullptr && shape_items->has_operation())
+	|| (police_items !=  nullptr && police_items->has_operation())
+	|| (prio_items !=  nullptr && prio_items->has_operation())
+	|| (randdet_items !=  nullptr && randdet_items->has_operation())
+	|| (randdetnonecn_items !=  nullptr && randdetnonecn_items->has_operation());
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "MatchCMap-list";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (prevcmap.is_set || is_set(prevcmap.yfilter)) leaf_name_data.push_back(prevcmap.get_name_leafdata());
+    if (nextcmap.is_set || is_set(nextcmap.yfilter)) leaf_name_data.push_back(nextcmap.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "setCos-items")
+    {
+        if(setcos_items == nullptr)
+        {
+            setcos_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems>();
+        }
+        return setcos_items;
+    }
+
+    if(child_yang_name == "mtu-items")
+    {
+        if(mtu_items == nullptr)
+        {
+            mtu_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems>();
+        }
+        return mtu_items;
+    }
+
+    if(child_yang_name == "setPrecedence-items")
+    {
+        if(setprecedence_items == nullptr)
+        {
+            setprecedence_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems>();
+        }
+        return setprecedence_items;
+    }
+
+    if(child_yang_name == "setDscp-items")
+    {
+        if(setdscp_items == nullptr)
+        {
+            setdscp_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems>();
+        }
+        return setdscp_items;
+    }
+
+    if(child_yang_name == "setGrp-items")
+    {
+        if(setgrp_items == nullptr)
+        {
+            setgrp_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems>();
+        }
+        return setgrp_items;
+    }
+
+    if(child_yang_name == "setDlbDisable-items")
+    {
+        if(setdlbdisable_items == nullptr)
+        {
+            setdlbdisable_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems>();
+        }
+        return setdlbdisable_items;
+    }
+
+    if(child_yang_name == "QueueLimit-items")
+    {
+        if(queuelimit_items == nullptr)
+        {
+            queuelimit_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems>();
+        }
+        return queuelimit_items;
+    }
+
+    if(child_yang_name == "pause-items")
+    {
+        if(pause_items == nullptr)
+        {
+            pause_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems>();
+        }
+        return pause_items;
+    }
+
+    if(child_yang_name == "dpp-items")
+    {
+        if(dpp_items == nullptr)
+        {
+            dpp_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems>();
+        }
+        return dpp_items;
+    }
+
+    if(child_yang_name == "setBW-items")
+    {
+        if(setbw_items == nullptr)
+        {
+            setbw_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems>();
+        }
+        return setbw_items;
+    }
+
+    if(child_yang_name == "setRemBW-items")
+    {
+        if(setrembw_items == nullptr)
+        {
+            setrembw_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems>();
+        }
+        return setrembw_items;
+    }
+
+    if(child_yang_name == "shape-items")
+    {
+        if(shape_items == nullptr)
+        {
+            shape_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems>();
+        }
+        return shape_items;
+    }
+
+    if(child_yang_name == "police-items")
+    {
+        if(police_items == nullptr)
+        {
+            police_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems>();
+        }
+        return police_items;
+    }
+
+    if(child_yang_name == "prio-items")
+    {
+        if(prio_items == nullptr)
+        {
+            prio_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems>();
+        }
+        return prio_items;
+    }
+
+    if(child_yang_name == "RandDet-items")
+    {
+        if(randdet_items == nullptr)
+        {
+            randdet_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems>();
+        }
+        return randdet_items;
+    }
+
+    if(child_yang_name == "RandDetNonEcn-items")
+    {
+        if(randdetnonecn_items == nullptr)
+        {
+            randdetnonecn_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems>();
+        }
+        return randdetnonecn_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(setcos_items != nullptr)
+    {
+        _children["setCos-items"] = setcos_items;
+    }
+
+    if(mtu_items != nullptr)
+    {
+        _children["mtu-items"] = mtu_items;
+    }
+
+    if(setprecedence_items != nullptr)
+    {
+        _children["setPrecedence-items"] = setprecedence_items;
+    }
+
+    if(setdscp_items != nullptr)
+    {
+        _children["setDscp-items"] = setdscp_items;
+    }
+
+    if(setgrp_items != nullptr)
+    {
+        _children["setGrp-items"] = setgrp_items;
+    }
+
+    if(setdlbdisable_items != nullptr)
+    {
+        _children["setDlbDisable-items"] = setdlbdisable_items;
+    }
+
+    if(queuelimit_items != nullptr)
+    {
+        _children["QueueLimit-items"] = queuelimit_items;
+    }
+
+    if(pause_items != nullptr)
+    {
+        _children["pause-items"] = pause_items;
+    }
+
+    if(dpp_items != nullptr)
+    {
+        _children["dpp-items"] = dpp_items;
+    }
+
+    if(setbw_items != nullptr)
+    {
+        _children["setBW-items"] = setbw_items;
+    }
+
+    if(setrembw_items != nullptr)
+    {
+        _children["setRemBW-items"] = setrembw_items;
+    }
+
+    if(shape_items != nullptr)
+    {
+        _children["shape-items"] = shape_items;
+    }
+
+    if(police_items != nullptr)
+    {
+        _children["police-items"] = police_items;
+    }
+
+    if(prio_items != nullptr)
+    {
+        _children["prio-items"] = prio_items;
+    }
+
+    if(randdet_items != nullptr)
+    {
+        _children["RandDet-items"] = randdet_items;
+    }
+
+    if(randdetnonecn_items != nullptr)
+    {
+        _children["RandDetNonEcn-items"] = randdetnonecn_items;
+    }
+
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prevCMap")
+    {
+        prevcmap = value;
+        prevcmap.value_namespace = name_space;
+        prevcmap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nextCMap")
+    {
+        nextcmap = value;
+        nextcmap.value_namespace = name_space;
+        nextcmap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "prevCMap")
+    {
+        prevcmap.yfilter = yfilter;
+    }
+    if(value_path == "nextCMap")
+    {
+        nextcmap.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "setCos-items" || name == "mtu-items" || name == "setPrecedence-items" || name == "setDscp-items" || name == "setGrp-items" || name == "setDlbDisable-items" || name == "QueueLimit-items" || name == "pause-items" || name == "dpp-items" || name == "setBW-items" || name == "setRemBW-items" || name == "shape-items" || name == "police-items" || name == "prio-items" || name == "RandDet-items" || name == "RandDetNonEcn-items" || name == "name" || name == "prevCMap" || name == "nextCMap" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::SetCosItems()
+    :
+    val{YType::uint8, "val"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "setCos-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::~SetCosItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return val.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(val.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "setCos-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (val.is_set || is_set(val.yfilter)) leaf_name_data.push_back(val.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "val")
+    {
+        val = value;
+        val.value_namespace = name_space;
+        val.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "val")
+    {
+        val.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetCosItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "val" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::MtuItems()
+    :
+    value_{YType::uint16, "value"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "mtu-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::~MtuItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mtu-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::SetPrecedenceItems()
+    :
+    val{YType::enumeration, "val"},
+    tunnel{YType::boolean, "tunnel"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "setPrecedence-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::~SetPrecedenceItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return val.is_set
+	|| tunnel.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(val.yfilter)
+	|| ydk::is_set(tunnel.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "setPrecedence-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (val.is_set || is_set(val.yfilter)) leaf_name_data.push_back(val.get_name_leafdata());
+    if (tunnel.is_set || is_set(tunnel.yfilter)) leaf_name_data.push_back(tunnel.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "val")
+    {
+        val = value;
+        val.value_namespace = name_space;
+        val.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel")
+    {
+        tunnel = value;
+        tunnel.value_namespace = name_space;
+        tunnel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "val")
+    {
+        val.yfilter = yfilter;
+    }
+    if(value_path == "tunnel")
+    {
+        tunnel.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "val" || name == "tunnel" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::SetDscpItems()
+    :
+    val{YType::uint8, "val"},
+    tunnel{YType::boolean, "tunnel"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "setDscp-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::~SetDscpItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return val.is_set
+	|| tunnel.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(val.yfilter)
+	|| ydk::is_set(tunnel.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "setDscp-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (val.is_set || is_set(val.yfilter)) leaf_name_data.push_back(val.get_name_leafdata());
+    if (tunnel.is_set || is_set(tunnel.yfilter)) leaf_name_data.push_back(tunnel.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "val")
+    {
+        val = value;
+        val.value_namespace = name_space;
+        val.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel")
+    {
+        tunnel = value;
+        tunnel.value_namespace = name_space;
+        tunnel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "val")
+    {
+        val.yfilter = yfilter;
+    }
+    if(value_path == "tunnel")
+    {
+        tunnel.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDscpItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "val" || name == "tunnel" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::SetGrpItems()
+    :
+    id{YType::uint16, "id"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "setGrp-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::~SetGrpItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "setGrp-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetGrpItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::SetDlbDisableItems()
+    :
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "setDlbDisable-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::~SetDlbDisableItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "setDlbDisable-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetDlbDisableItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::QueueLimitItems()
+    :
+    queuelimitval{YType::uint64, "QueueLimitVal"},
+    queuelimitunit{YType::enumeration, "QueueLimitUnit"},
+    dynamic{YType::uint8, "dynamic"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "QueueLimit-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::~QueueLimitItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return queuelimitval.is_set
+	|| queuelimitunit.is_set
+	|| dynamic.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(queuelimitval.yfilter)
+	|| ydk::is_set(queuelimitunit.yfilter)
+	|| ydk::is_set(dynamic.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "QueueLimit-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (queuelimitval.is_set || is_set(queuelimitval.yfilter)) leaf_name_data.push_back(queuelimitval.get_name_leafdata());
+    if (queuelimitunit.is_set || is_set(queuelimitunit.yfilter)) leaf_name_data.push_back(queuelimitunit.get_name_leafdata());
+    if (dynamic.is_set || is_set(dynamic.yfilter)) leaf_name_data.push_back(dynamic.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "QueueLimitVal")
+    {
+        queuelimitval = value;
+        queuelimitval.value_namespace = name_space;
+        queuelimitval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "QueueLimitUnit")
+    {
+        queuelimitunit = value;
+        queuelimitunit.value_namespace = name_space;
+        queuelimitunit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dynamic")
+    {
+        dynamic = value;
+        dynamic.value_namespace = name_space;
+        dynamic.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "QueueLimitVal")
+    {
+        queuelimitval.yfilter = yfilter;
+    }
+    if(value_path == "QueueLimitUnit")
+    {
+        queuelimitunit.yfilter = yfilter;
+    }
+    if(value_path == "dynamic")
+    {
+        dynamic.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::QueueLimitItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "QueueLimitVal" || name == "QueueLimitUnit" || name == "dynamic" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::PauseItems()
+    :
+    buffersize{YType::uint64, "bufferSize"},
+    pausethreshold{YType::uint64, "pauseThreshold"},
+    resumethreshold{YType::uint64, "resumeThreshold"},
+    pfccos0{YType::boolean, "pfcCos0"},
+    pfccos1{YType::boolean, "pfcCos1"},
+    pfccos2{YType::boolean, "pfcCos2"},
+    pfccos3{YType::boolean, "pfcCos3"},
+    pfccos4{YType::boolean, "pfcCos4"},
+    pfccos5{YType::boolean, "pfcCos5"},
+    pfccos6{YType::boolean, "pfcCos6"},
+    pfccos7{YType::boolean, "pfcCos7"},
+    receive{YType::boolean, "receive"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "pause-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::~PauseItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return buffersize.is_set
+	|| pausethreshold.is_set
+	|| resumethreshold.is_set
+	|| pfccos0.is_set
+	|| pfccos1.is_set
+	|| pfccos2.is_set
+	|| pfccos3.is_set
+	|| pfccos4.is_set
+	|| pfccos5.is_set
+	|| pfccos6.is_set
+	|| pfccos7.is_set
+	|| receive.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(buffersize.yfilter)
+	|| ydk::is_set(pausethreshold.yfilter)
+	|| ydk::is_set(resumethreshold.yfilter)
+	|| ydk::is_set(pfccos0.yfilter)
+	|| ydk::is_set(pfccos1.yfilter)
+	|| ydk::is_set(pfccos2.yfilter)
+	|| ydk::is_set(pfccos3.yfilter)
+	|| ydk::is_set(pfccos4.yfilter)
+	|| ydk::is_set(pfccos5.yfilter)
+	|| ydk::is_set(pfccos6.yfilter)
+	|| ydk::is_set(pfccos7.yfilter)
+	|| ydk::is_set(receive.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pause-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (buffersize.is_set || is_set(buffersize.yfilter)) leaf_name_data.push_back(buffersize.get_name_leafdata());
+    if (pausethreshold.is_set || is_set(pausethreshold.yfilter)) leaf_name_data.push_back(pausethreshold.get_name_leafdata());
+    if (resumethreshold.is_set || is_set(resumethreshold.yfilter)) leaf_name_data.push_back(resumethreshold.get_name_leafdata());
+    if (pfccos0.is_set || is_set(pfccos0.yfilter)) leaf_name_data.push_back(pfccos0.get_name_leafdata());
+    if (pfccos1.is_set || is_set(pfccos1.yfilter)) leaf_name_data.push_back(pfccos1.get_name_leafdata());
+    if (pfccos2.is_set || is_set(pfccos2.yfilter)) leaf_name_data.push_back(pfccos2.get_name_leafdata());
+    if (pfccos3.is_set || is_set(pfccos3.yfilter)) leaf_name_data.push_back(pfccos3.get_name_leafdata());
+    if (pfccos4.is_set || is_set(pfccos4.yfilter)) leaf_name_data.push_back(pfccos4.get_name_leafdata());
+    if (pfccos5.is_set || is_set(pfccos5.yfilter)) leaf_name_data.push_back(pfccos5.get_name_leafdata());
+    if (pfccos6.is_set || is_set(pfccos6.yfilter)) leaf_name_data.push_back(pfccos6.get_name_leafdata());
+    if (pfccos7.is_set || is_set(pfccos7.yfilter)) leaf_name_data.push_back(pfccos7.get_name_leafdata());
+    if (receive.is_set || is_set(receive.yfilter)) leaf_name_data.push_back(receive.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bufferSize")
+    {
+        buffersize = value;
+        buffersize.value_namespace = name_space;
+        buffersize.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pauseThreshold")
+    {
+        pausethreshold = value;
+        pausethreshold.value_namespace = name_space;
+        pausethreshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "resumeThreshold")
+    {
+        resumethreshold = value;
+        resumethreshold.value_namespace = name_space;
+        resumethreshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pfcCos0")
+    {
+        pfccos0 = value;
+        pfccos0.value_namespace = name_space;
+        pfccos0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pfcCos1")
+    {
+        pfccos1 = value;
+        pfccos1.value_namespace = name_space;
+        pfccos1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pfcCos2")
+    {
+        pfccos2 = value;
+        pfccos2.value_namespace = name_space;
+        pfccos2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pfcCos3")
+    {
+        pfccos3 = value;
+        pfccos3.value_namespace = name_space;
+        pfccos3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pfcCos4")
+    {
+        pfccos4 = value;
+        pfccos4.value_namespace = name_space;
+        pfccos4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pfcCos5")
+    {
+        pfccos5 = value;
+        pfccos5.value_namespace = name_space;
+        pfccos5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pfcCos6")
+    {
+        pfccos6 = value;
+        pfccos6.value_namespace = name_space;
+        pfccos6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pfcCos7")
+    {
+        pfccos7 = value;
+        pfccos7.value_namespace = name_space;
+        pfccos7.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "receive")
+    {
+        receive = value;
+        receive.value_namespace = name_space;
+        receive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bufferSize")
+    {
+        buffersize.yfilter = yfilter;
+    }
+    if(value_path == "pauseThreshold")
+    {
+        pausethreshold.yfilter = yfilter;
+    }
+    if(value_path == "resumeThreshold")
+    {
+        resumethreshold.yfilter = yfilter;
+    }
+    if(value_path == "pfcCos0")
+    {
+        pfccos0.yfilter = yfilter;
+    }
+    if(value_path == "pfcCos1")
+    {
+        pfccos1.yfilter = yfilter;
+    }
+    if(value_path == "pfcCos2")
+    {
+        pfccos2.yfilter = yfilter;
+    }
+    if(value_path == "pfcCos3")
+    {
+        pfccos3.yfilter = yfilter;
+    }
+    if(value_path == "pfcCos4")
+    {
+        pfccos4.yfilter = yfilter;
+    }
+    if(value_path == "pfcCos5")
+    {
+        pfccos5.yfilter = yfilter;
+    }
+    if(value_path == "pfcCos6")
+    {
+        pfccos6.yfilter = yfilter;
+    }
+    if(value_path == "pfcCos7")
+    {
+        pfccos7.yfilter = yfilter;
+    }
+    if(value_path == "receive")
+    {
+        receive.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PauseItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bufferSize" || name == "pauseThreshold" || name == "resumeThreshold" || name == "pfcCos0" || name == "pfcCos1" || name == "pfcCos2" || name == "pfcCos3" || name == "pfcCos4" || name == "pfcCos5" || name == "pfcCos6" || name == "pfcCos7" || name == "receive" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::DppItems()
+    :
+    setqosgroup{YType::uint16, "setQosGroup"}
+{
+
+    yang_name = "dpp-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::~DppItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return setqosgroup.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(setqosgroup.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dpp-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (setqosgroup.is_set || is_set(setqosgroup.yfilter)) leaf_name_data.push_back(setqosgroup.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "setQosGroup")
+    {
+        setqosgroup = value;
+        setqosgroup.value_namespace = name_space;
+        setqosgroup.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "setQosGroup")
+    {
+        setqosgroup.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::DppItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "setQosGroup")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::SetBWItems()
+    :
+    val{YType::uint8, "val"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "setBW-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::~SetBWItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return val.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(val.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "setBW-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (val.is_set || is_set(val.yfilter)) leaf_name_data.push_back(val.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "val")
+    {
+        val = value;
+        val.value_namespace = name_space;
+        val.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "val")
+    {
+        val.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetBWItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "val" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::SetRemBWItems()
+    :
+    val{YType::uint8, "val"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "setRemBW-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::~SetRemBWItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return val.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(val.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "setRemBW-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (val.is_set || is_set(val.yfilter)) leaf_name_data.push_back(val.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "val")
+    {
+        val = value;
+        val.value_namespace = name_space;
+        val.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "val")
+    {
+        val.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetRemBWItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "val" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::ShapeItems()
+    :
+    min{YType::uint64, "min"},
+    minrateunit{YType::enumeration, "minRateUnit"},
+    max{YType::uint64, "max"},
+    maxrateunit{YType::enumeration, "maxRateUnit"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "shape-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::~ShapeItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return min.is_set
+	|| minrateunit.is_set
+	|| max.is_set
+	|| maxrateunit.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(min.yfilter)
+	|| ydk::is_set(minrateunit.yfilter)
+	|| ydk::is_set(max.yfilter)
+	|| ydk::is_set(maxrateunit.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
+    if (minrateunit.is_set || is_set(minrateunit.yfilter)) leaf_name_data.push_back(minrateunit.get_name_leafdata());
+    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
+    if (maxrateunit.is_set || is_set(maxrateunit.yfilter)) leaf_name_data.push_back(maxrateunit.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "min")
+    {
+        min = value;
+        min.value_namespace = name_space;
+        min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minRateUnit")
+    {
+        minrateunit = value;
+        minrateunit.value_namespace = name_space;
+        minrateunit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max")
+    {
+        max = value;
+        max.value_namespace = name_space;
+        max.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maxRateUnit")
+    {
+        maxrateunit = value;
+        maxrateunit.value_namespace = name_space;
+        maxrateunit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "min")
+    {
+        min.yfilter = yfilter;
+    }
+    if(value_path == "minRateUnit")
+    {
+        minrateunit.yfilter = yfilter;
+    }
+    if(value_path == "max")
+    {
+        max.yfilter = yfilter;
+    }
+    if(value_path == "maxRateUnit")
+    {
+        maxrateunit.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::ShapeItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "min" || name == "minRateUnit" || name == "max" || name == "maxRateUnit" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::PoliceItems()
+    :
+    cirrate{YType::uint64, "cirRate"},
+    cirunit{YType::enumeration, "cirUnit"},
+    bcrate{YType::uint64, "bcRate"},
+    bcunit{YType::enumeration, "bcUnit"},
+    pirrate{YType::uint64, "pirRate"},
+    pirunit{YType::enumeration, "pirUnit"},
+    berate{YType::uint64, "beRate"},
+    beunit{YType::enumeration, "beUnit"},
+    conformaction{YType::enumeration, "conformAction"},
+    conformsetcostransmit{YType::uint8, "conformSetCosTransmit"},
+    conformsetdscptransmit{YType::uint8, "conformSetDscpTransmit"},
+    conformsetprectransmit{YType::enumeration, "conformSetPrecTransmit"},
+    conformsetqosgrptransmit{YType::uint16, "conformSetQosGrpTransmit"},
+    exceedaction{YType::enumeration, "exceedAction"},
+    exceedsetcostransmit{YType::uint8, "exceedSetCosTransmit"},
+    exceedsetdscptransmit{YType::uint8, "exceedSetDscpTransmit"},
+    exceedsetprectransmit{YType::enumeration, "exceedSetPrecTransmit"},
+    exceedsetqosgrptransmit{YType::uint16, "exceedSetQosGrpTransmit"},
+    violateaction{YType::enumeration, "violateAction"},
+    violatesetcostransmit{YType::uint8, "violateSetCosTransmit"},
+    violatesetdscptransmit{YType::uint8, "violateSetDscpTransmit"},
+    violatesetprectransmit{YType::enumeration, "violateSetPrecTransmit"},
+    violatesetqosgrptransmit{YType::uint16, "violateSetQosGrpTransmit"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "police-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::~PoliceItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return cirrate.is_set
+	|| cirunit.is_set
+	|| bcrate.is_set
+	|| bcunit.is_set
+	|| pirrate.is_set
+	|| pirunit.is_set
+	|| berate.is_set
+	|| beunit.is_set
+	|| conformaction.is_set
+	|| conformsetcostransmit.is_set
+	|| conformsetdscptransmit.is_set
+	|| conformsetprectransmit.is_set
+	|| conformsetqosgrptransmit.is_set
+	|| exceedaction.is_set
+	|| exceedsetcostransmit.is_set
+	|| exceedsetdscptransmit.is_set
+	|| exceedsetprectransmit.is_set
+	|| exceedsetqosgrptransmit.is_set
+	|| violateaction.is_set
+	|| violatesetcostransmit.is_set
+	|| violatesetdscptransmit.is_set
+	|| violatesetprectransmit.is_set
+	|| violatesetqosgrptransmit.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cirrate.yfilter)
+	|| ydk::is_set(cirunit.yfilter)
+	|| ydk::is_set(bcrate.yfilter)
+	|| ydk::is_set(bcunit.yfilter)
+	|| ydk::is_set(pirrate.yfilter)
+	|| ydk::is_set(pirunit.yfilter)
+	|| ydk::is_set(berate.yfilter)
+	|| ydk::is_set(beunit.yfilter)
+	|| ydk::is_set(conformaction.yfilter)
+	|| ydk::is_set(conformsetcostransmit.yfilter)
+	|| ydk::is_set(conformsetdscptransmit.yfilter)
+	|| ydk::is_set(conformsetprectransmit.yfilter)
+	|| ydk::is_set(conformsetqosgrptransmit.yfilter)
+	|| ydk::is_set(exceedaction.yfilter)
+	|| ydk::is_set(exceedsetcostransmit.yfilter)
+	|| ydk::is_set(exceedsetdscptransmit.yfilter)
+	|| ydk::is_set(exceedsetprectransmit.yfilter)
+	|| ydk::is_set(exceedsetqosgrptransmit.yfilter)
+	|| ydk::is_set(violateaction.yfilter)
+	|| ydk::is_set(violatesetcostransmit.yfilter)
+	|| ydk::is_set(violatesetdscptransmit.yfilter)
+	|| ydk::is_set(violatesetprectransmit.yfilter)
+	|| ydk::is_set(violatesetqosgrptransmit.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "police-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cirrate.is_set || is_set(cirrate.yfilter)) leaf_name_data.push_back(cirrate.get_name_leafdata());
+    if (cirunit.is_set || is_set(cirunit.yfilter)) leaf_name_data.push_back(cirunit.get_name_leafdata());
+    if (bcrate.is_set || is_set(bcrate.yfilter)) leaf_name_data.push_back(bcrate.get_name_leafdata());
+    if (bcunit.is_set || is_set(bcunit.yfilter)) leaf_name_data.push_back(bcunit.get_name_leafdata());
+    if (pirrate.is_set || is_set(pirrate.yfilter)) leaf_name_data.push_back(pirrate.get_name_leafdata());
+    if (pirunit.is_set || is_set(pirunit.yfilter)) leaf_name_data.push_back(pirunit.get_name_leafdata());
+    if (berate.is_set || is_set(berate.yfilter)) leaf_name_data.push_back(berate.get_name_leafdata());
+    if (beunit.is_set || is_set(beunit.yfilter)) leaf_name_data.push_back(beunit.get_name_leafdata());
+    if (conformaction.is_set || is_set(conformaction.yfilter)) leaf_name_data.push_back(conformaction.get_name_leafdata());
+    if (conformsetcostransmit.is_set || is_set(conformsetcostransmit.yfilter)) leaf_name_data.push_back(conformsetcostransmit.get_name_leafdata());
+    if (conformsetdscptransmit.is_set || is_set(conformsetdscptransmit.yfilter)) leaf_name_data.push_back(conformsetdscptransmit.get_name_leafdata());
+    if (conformsetprectransmit.is_set || is_set(conformsetprectransmit.yfilter)) leaf_name_data.push_back(conformsetprectransmit.get_name_leafdata());
+    if (conformsetqosgrptransmit.is_set || is_set(conformsetqosgrptransmit.yfilter)) leaf_name_data.push_back(conformsetqosgrptransmit.get_name_leafdata());
+    if (exceedaction.is_set || is_set(exceedaction.yfilter)) leaf_name_data.push_back(exceedaction.get_name_leafdata());
+    if (exceedsetcostransmit.is_set || is_set(exceedsetcostransmit.yfilter)) leaf_name_data.push_back(exceedsetcostransmit.get_name_leafdata());
+    if (exceedsetdscptransmit.is_set || is_set(exceedsetdscptransmit.yfilter)) leaf_name_data.push_back(exceedsetdscptransmit.get_name_leafdata());
+    if (exceedsetprectransmit.is_set || is_set(exceedsetprectransmit.yfilter)) leaf_name_data.push_back(exceedsetprectransmit.get_name_leafdata());
+    if (exceedsetqosgrptransmit.is_set || is_set(exceedsetqosgrptransmit.yfilter)) leaf_name_data.push_back(exceedsetqosgrptransmit.get_name_leafdata());
+    if (violateaction.is_set || is_set(violateaction.yfilter)) leaf_name_data.push_back(violateaction.get_name_leafdata());
+    if (violatesetcostransmit.is_set || is_set(violatesetcostransmit.yfilter)) leaf_name_data.push_back(violatesetcostransmit.get_name_leafdata());
+    if (violatesetdscptransmit.is_set || is_set(violatesetdscptransmit.yfilter)) leaf_name_data.push_back(violatesetdscptransmit.get_name_leafdata());
+    if (violatesetprectransmit.is_set || is_set(violatesetprectransmit.yfilter)) leaf_name_data.push_back(violatesetprectransmit.get_name_leafdata());
+    if (violatesetqosgrptransmit.is_set || is_set(violatesetqosgrptransmit.yfilter)) leaf_name_data.push_back(violatesetqosgrptransmit.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cirRate")
+    {
+        cirrate = value;
+        cirrate.value_namespace = name_space;
+        cirrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cirUnit")
+    {
+        cirunit = value;
+        cirunit.value_namespace = name_space;
+        cirunit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bcRate")
+    {
+        bcrate = value;
+        bcrate.value_namespace = name_space;
+        bcrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bcUnit")
+    {
+        bcunit = value;
+        bcunit.value_namespace = name_space;
+        bcunit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pirRate")
+    {
+        pirrate = value;
+        pirrate.value_namespace = name_space;
+        pirrate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pirUnit")
+    {
+        pirunit = value;
+        pirunit.value_namespace = name_space;
+        pirunit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "beRate")
+    {
+        berate = value;
+        berate.value_namespace = name_space;
+        berate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "beUnit")
+    {
+        beunit = value;
+        beunit.value_namespace = name_space;
+        beunit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conformAction")
+    {
+        conformaction = value;
+        conformaction.value_namespace = name_space;
+        conformaction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conformSetCosTransmit")
+    {
+        conformsetcostransmit = value;
+        conformsetcostransmit.value_namespace = name_space;
+        conformsetcostransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conformSetDscpTransmit")
+    {
+        conformsetdscptransmit = value;
+        conformsetdscptransmit.value_namespace = name_space;
+        conformsetdscptransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conformSetPrecTransmit")
+    {
+        conformsetprectransmit = value;
+        conformsetprectransmit.value_namespace = name_space;
+        conformsetprectransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "conformSetQosGrpTransmit")
+    {
+        conformsetqosgrptransmit = value;
+        conformsetqosgrptransmit.value_namespace = name_space;
+        conformsetqosgrptransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exceedAction")
+    {
+        exceedaction = value;
+        exceedaction.value_namespace = name_space;
+        exceedaction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exceedSetCosTransmit")
+    {
+        exceedsetcostransmit = value;
+        exceedsetcostransmit.value_namespace = name_space;
+        exceedsetcostransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exceedSetDscpTransmit")
+    {
+        exceedsetdscptransmit = value;
+        exceedsetdscptransmit.value_namespace = name_space;
+        exceedsetdscptransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exceedSetPrecTransmit")
+    {
+        exceedsetprectransmit = value;
+        exceedsetprectransmit.value_namespace = name_space;
+        exceedsetprectransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exceedSetQosGrpTransmit")
+    {
+        exceedsetqosgrptransmit = value;
+        exceedsetqosgrptransmit.value_namespace = name_space;
+        exceedsetqosgrptransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "violateAction")
+    {
+        violateaction = value;
+        violateaction.value_namespace = name_space;
+        violateaction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "violateSetCosTransmit")
+    {
+        violatesetcostransmit = value;
+        violatesetcostransmit.value_namespace = name_space;
+        violatesetcostransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "violateSetDscpTransmit")
+    {
+        violatesetdscptransmit = value;
+        violatesetdscptransmit.value_namespace = name_space;
+        violatesetdscptransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "violateSetPrecTransmit")
+    {
+        violatesetprectransmit = value;
+        violatesetprectransmit.value_namespace = name_space;
+        violatesetprectransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "violateSetQosGrpTransmit")
+    {
+        violatesetqosgrptransmit = value;
+        violatesetqosgrptransmit.value_namespace = name_space;
+        violatesetqosgrptransmit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cirRate")
+    {
+        cirrate.yfilter = yfilter;
+    }
+    if(value_path == "cirUnit")
+    {
+        cirunit.yfilter = yfilter;
+    }
+    if(value_path == "bcRate")
+    {
+        bcrate.yfilter = yfilter;
+    }
+    if(value_path == "bcUnit")
+    {
+        bcunit.yfilter = yfilter;
+    }
+    if(value_path == "pirRate")
+    {
+        pirrate.yfilter = yfilter;
+    }
+    if(value_path == "pirUnit")
+    {
+        pirunit.yfilter = yfilter;
+    }
+    if(value_path == "beRate")
+    {
+        berate.yfilter = yfilter;
+    }
+    if(value_path == "beUnit")
+    {
+        beunit.yfilter = yfilter;
+    }
+    if(value_path == "conformAction")
+    {
+        conformaction.yfilter = yfilter;
+    }
+    if(value_path == "conformSetCosTransmit")
+    {
+        conformsetcostransmit.yfilter = yfilter;
+    }
+    if(value_path == "conformSetDscpTransmit")
+    {
+        conformsetdscptransmit.yfilter = yfilter;
+    }
+    if(value_path == "conformSetPrecTransmit")
+    {
+        conformsetprectransmit.yfilter = yfilter;
+    }
+    if(value_path == "conformSetQosGrpTransmit")
+    {
+        conformsetqosgrptransmit.yfilter = yfilter;
+    }
+    if(value_path == "exceedAction")
+    {
+        exceedaction.yfilter = yfilter;
+    }
+    if(value_path == "exceedSetCosTransmit")
+    {
+        exceedsetcostransmit.yfilter = yfilter;
+    }
+    if(value_path == "exceedSetDscpTransmit")
+    {
+        exceedsetdscptransmit.yfilter = yfilter;
+    }
+    if(value_path == "exceedSetPrecTransmit")
+    {
+        exceedsetprectransmit.yfilter = yfilter;
+    }
+    if(value_path == "exceedSetQosGrpTransmit")
+    {
+        exceedsetqosgrptransmit.yfilter = yfilter;
+    }
+    if(value_path == "violateAction")
+    {
+        violateaction.yfilter = yfilter;
+    }
+    if(value_path == "violateSetCosTransmit")
+    {
+        violatesetcostransmit.yfilter = yfilter;
+    }
+    if(value_path == "violateSetDscpTransmit")
+    {
+        violatesetdscptransmit.yfilter = yfilter;
+    }
+    if(value_path == "violateSetPrecTransmit")
+    {
+        violatesetprectransmit.yfilter = yfilter;
+    }
+    if(value_path == "violateSetQosGrpTransmit")
+    {
+        violatesetqosgrptransmit.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PoliceItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cirRate" || name == "cirUnit" || name == "bcRate" || name == "bcUnit" || name == "pirRate" || name == "pirUnit" || name == "beRate" || name == "beUnit" || name == "conformAction" || name == "conformSetCosTransmit" || name == "conformSetDscpTransmit" || name == "conformSetPrecTransmit" || name == "conformSetQosGrpTransmit" || name == "exceedAction" || name == "exceedSetCosTransmit" || name == "exceedSetDscpTransmit" || name == "exceedSetPrecTransmit" || name == "exceedSetQosGrpTransmit" || name == "violateAction" || name == "violateSetCosTransmit" || name == "violateSetDscpTransmit" || name == "violateSetPrecTransmit" || name == "violateSetQosGrpTransmit" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::PrioItems()
+    :
+    level{YType::uint8, "level"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "prio-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::~PrioItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return level.is_set
+	|| configstatus.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prio-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::PrioItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "configStatus")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::RandDetItems()
+    :
+    minthreshold{YType::uint32, "minThreshold"},
+    minthresholdunit{YType::enumeration, "minThresholdUnit"},
+    maxthreshold{YType::uint32, "maxThreshold"},
+    maxthresholdunit{YType::enumeration, "maxThresholdUnit"},
+    dropavail{YType::uint8, "dropAvail"},
+    weight{YType::uint8, "weight"},
+    capaverage{YType::boolean, "capAverage"},
+    optimization{YType::uint8, "optimization"},
+    ecn{YType::boolean, "ecn"}
+{
+
+    yang_name = "RandDet-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::~RandDetItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return minthreshold.is_set
+	|| minthresholdunit.is_set
+	|| maxthreshold.is_set
+	|| maxthresholdunit.is_set
+	|| dropavail.is_set
+	|| weight.is_set
+	|| capaverage.is_set
+	|| optimization.is_set
+	|| ecn.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minthreshold.yfilter)
+	|| ydk::is_set(minthresholdunit.yfilter)
+	|| ydk::is_set(maxthreshold.yfilter)
+	|| ydk::is_set(maxthresholdunit.yfilter)
+	|| ydk::is_set(dropavail.yfilter)
+	|| ydk::is_set(weight.yfilter)
+	|| ydk::is_set(capaverage.yfilter)
+	|| ydk::is_set(optimization.yfilter)
+	|| ydk::is_set(ecn.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RandDet-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minthreshold.is_set || is_set(minthreshold.yfilter)) leaf_name_data.push_back(minthreshold.get_name_leafdata());
+    if (minthresholdunit.is_set || is_set(minthresholdunit.yfilter)) leaf_name_data.push_back(minthresholdunit.get_name_leafdata());
+    if (maxthreshold.is_set || is_set(maxthreshold.yfilter)) leaf_name_data.push_back(maxthreshold.get_name_leafdata());
+    if (maxthresholdunit.is_set || is_set(maxthresholdunit.yfilter)) leaf_name_data.push_back(maxthresholdunit.get_name_leafdata());
+    if (dropavail.is_set || is_set(dropavail.yfilter)) leaf_name_data.push_back(dropavail.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
+    if (capaverage.is_set || is_set(capaverage.yfilter)) leaf_name_data.push_back(capaverage.get_name_leafdata());
+    if (optimization.is_set || is_set(optimization.yfilter)) leaf_name_data.push_back(optimization.get_name_leafdata());
+    if (ecn.is_set || is_set(ecn.yfilter)) leaf_name_data.push_back(ecn.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minThreshold")
+    {
+        minthreshold = value;
+        minthreshold.value_namespace = name_space;
+        minthreshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minThresholdUnit")
+    {
+        minthresholdunit = value;
+        minthresholdunit.value_namespace = name_space;
+        minthresholdunit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maxThreshold")
+    {
+        maxthreshold = value;
+        maxthreshold.value_namespace = name_space;
+        maxthreshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maxThresholdUnit")
+    {
+        maxthresholdunit = value;
+        maxthresholdunit.value_namespace = name_space;
+        maxthresholdunit.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropAvail")
+    {
+        dropavail = value;
+        dropavail.value_namespace = name_space;
+        dropavail.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "capAverage")
+    {
+        capaverage = value;
+        capaverage.value_namespace = name_space;
+        capaverage.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optimization")
+    {
+        optimization = value;
+        optimization.value_namespace = name_space;
+        optimization.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ecn")
+    {
+        ecn = value;
+        ecn.value_namespace = name_space;
+        ecn.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minThreshold")
+    {
+        minthreshold.yfilter = yfilter;
+    }
+    if(value_path == "minThresholdUnit")
+    {
+        minthresholdunit.yfilter = yfilter;
+    }
+    if(value_path == "maxThreshold")
+    {
+        maxthreshold.yfilter = yfilter;
+    }
+    if(value_path == "maxThresholdUnit")
+    {
+        maxthresholdunit.yfilter = yfilter;
+    }
+    if(value_path == "dropAvail")
+    {
+        dropavail.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
+    if(value_path == "capAverage")
+    {
+        capaverage.yfilter = yfilter;
+    }
+    if(value_path == "optimization")
+    {
+        optimization.yfilter = yfilter;
+    }
+    if(value_path == "ecn")
+    {
+        ecn.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minThreshold" || name == "minThresholdUnit" || name == "maxThreshold" || name == "maxThresholdUnit" || name == "dropAvail" || name == "weight" || name == "capAverage" || name == "optimization" || name == "ecn")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::RandDetNonEcnItems()
+    :
+    minthresholdnonecn{YType::uint32, "minThresholdNonEcn"},
+    minthresholdunitnonecn{YType::enumeration, "minThresholdUnitNonEcn"},
+    maxthresholdnonecn{YType::uint32, "maxThresholdNonEcn"},
+    maxthresholdunitnonecn{YType::enumeration, "maxThresholdUnitNonEcn"},
+    dropavailnonecn{YType::uint8, "dropAvailNonEcn"}
+{
+
+    yang_name = "RandDetNonEcn-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::~RandDetNonEcnItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return minthresholdnonecn.is_set
+	|| minthresholdunitnonecn.is_set
+	|| maxthresholdnonecn.is_set
+	|| maxthresholdunitnonecn.is_set
+	|| dropavailnonecn.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minthresholdnonecn.yfilter)
+	|| ydk::is_set(minthresholdunitnonecn.yfilter)
+	|| ydk::is_set(maxthresholdnonecn.yfilter)
+	|| ydk::is_set(maxthresholdunitnonecn.yfilter)
+	|| ydk::is_set(dropavailnonecn.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "RandDetNonEcn-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minthresholdnonecn.is_set || is_set(minthresholdnonecn.yfilter)) leaf_name_data.push_back(minthresholdnonecn.get_name_leafdata());
+    if (minthresholdunitnonecn.is_set || is_set(minthresholdunitnonecn.yfilter)) leaf_name_data.push_back(minthresholdunitnonecn.get_name_leafdata());
+    if (maxthresholdnonecn.is_set || is_set(maxthresholdnonecn.yfilter)) leaf_name_data.push_back(maxthresholdnonecn.get_name_leafdata());
+    if (maxthresholdunitnonecn.is_set || is_set(maxthresholdunitnonecn.yfilter)) leaf_name_data.push_back(maxthresholdunitnonecn.get_name_leafdata());
+    if (dropavailnonecn.is_set || is_set(dropavailnonecn.yfilter)) leaf_name_data.push_back(dropavailnonecn.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minThresholdNonEcn")
+    {
+        minthresholdnonecn = value;
+        minthresholdnonecn.value_namespace = name_space;
+        minthresholdnonecn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "minThresholdUnitNonEcn")
+    {
+        minthresholdunitnonecn = value;
+        minthresholdunitnonecn.value_namespace = name_space;
+        minthresholdunitnonecn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maxThresholdNonEcn")
+    {
+        maxthresholdnonecn = value;
+        maxthresholdnonecn.value_namespace = name_space;
+        maxthresholdnonecn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maxThresholdUnitNonEcn")
+    {
+        maxthresholdunitnonecn = value;
+        maxthresholdunitnonecn.value_namespace = name_space;
+        maxthresholdunitnonecn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dropAvailNonEcn")
+    {
+        dropavailnonecn = value;
+        dropavailnonecn.value_namespace = name_space;
+        dropavailnonecn.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minThresholdNonEcn")
+    {
+        minthresholdnonecn.yfilter = yfilter;
+    }
+    if(value_path == "minThresholdUnitNonEcn")
+    {
+        minthresholdunitnonecn.yfilter = yfilter;
+    }
+    if(value_path == "maxThresholdNonEcn")
+    {
+        maxthresholdnonecn.yfilter = yfilter;
+    }
+    if(value_path == "maxThresholdUnitNonEcn")
+    {
+        maxthresholdunitnonecn.yfilter = yfilter;
+    }
+    if(value_path == "dropAvailNonEcn")
+    {
+        dropavailnonecn.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::RandDetNonEcnItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minThresholdNonEcn" || name == "minThresholdUnitNonEcn" || name == "maxThresholdNonEcn" || name == "maxThresholdUnitNonEcn" || name == "dropAvailNonEcn")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::DescriptionItems()
+    :
+    val{YType::str, "val"}
+{
+
+    yang_name = "Description-items"; yang_parent_name = "PMapInst-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::~DescriptionItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return val.is_set;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(val.yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Description-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (val.is_set || is_set(val.yfilter)) leaf_name_data.push_back(val.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "val")
+    {
+        val = value;
+        val.value_namespace = name_space;
+        val.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "val")
+    {
+        val.yfilter = yfilter;
+    }
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::DescriptionItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "val")
+        return true;
+    return false;
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::RtipqosPolicyInstToPMapItems()
+    :
+    rtipqospolicyinsttopmap_list(this, {"tdn"})
+{
+
+    yang_name = "rtipqosPolicyInstToPMap-items"; yang_parent_name = "PMapInst-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::~RtipqosPolicyInstToPMapItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rtipqospolicyinsttopmap_list.len(); index++)
+    {
+        if(rtipqospolicyinsttopmap_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::has_operation() const
+{
+    for (std::size_t index=0; index<rtipqospolicyinsttopmap_list.len(); index++)
+    {
+        if(rtipqospolicyinsttopmap_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rtipqosPolicyInstToPMap-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "RtIpqosPolicyInstToPMap-list")
+    {
+        auto ent_ = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::RtIpqosPolicyInstToPMapList>();
+        ent_->parent = this;
+        rtipqospolicyinsttopmap_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtipqospolicyinsttopmap_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "RtIpqosPolicyInstToPMap-list")
+        return true;
+    return false;
+}
+
 System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::PItems::NameItems::PMapInstList::RtipqosPolicyInstToPMapItems::RtIpqosPolicyInstToPMapList::RtIpqosPolicyInstToPMapList()
     :
     tdn{YType::str, "tDn"},
@@ -15496,3036 +18776,6 @@ void System::NpvItems::InstItems::SrvifItems::set_filter(const std::string & val
 bool System::NpvItems::InstItems::SrvifItems::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "SrvIf-list")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvIfList()
-    :
-    id{YType::str, "id"},
-    flags{YType::str, "flags"},
-    defaultvsan{YType::uint32, "defaultVsan"},
-    defaultextif{YType::str, "defaultExtIf"},
-    fcid{YType::uint32, "fcid"},
-    fsmst{YType::enumeration, "fsmSt"},
-    wwpn{YType::str, "wwpn"},
-    wwnn{YType::str, "wwnn"}
-        ,
-    targetif_items(std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems>())
-    , vsan_items(std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems>())
-    , srvif_items(std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_>())
-{
-    targetif_items->parent = this;
-    vsan_items->parent = this;
-    srvif_items->parent = this;
-
-    yang_name = "SrvIf-list"; yang_parent_name = "srvif-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::~SrvIfList()
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::has_data() const
-{
-    if (is_presence_container) return true;
-    return id.is_set
-	|| flags.is_set
-	|| defaultvsan.is_set
-	|| defaultextif.is_set
-	|| fcid.is_set
-	|| fsmst.is_set
-	|| wwpn.is_set
-	|| wwnn.is_set
-	|| (targetif_items !=  nullptr && targetif_items->has_data())
-	|| (vsan_items !=  nullptr && vsan_items->has_data())
-	|| (srvif_items !=  nullptr && srvif_items->has_data());
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(flags.yfilter)
-	|| ydk::is_set(defaultvsan.yfilter)
-	|| ydk::is_set(defaultextif.yfilter)
-	|| ydk::is_set(fcid.yfilter)
-	|| ydk::is_set(fsmst.yfilter)
-	|| ydk::is_set(wwpn.yfilter)
-	|| ydk::is_set(wwnn.yfilter)
-	|| (targetif_items !=  nullptr && targetif_items->has_operation())
-	|| (vsan_items !=  nullptr && vsan_items->has_operation())
-	|| (srvif_items !=  nullptr && srvif_items->has_operation());
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::SrvIfList::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/npv-items/inst-items/srvif-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::SrvIfList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "SrvIf-list";
-    ADD_KEY_TOKEN(id, "id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::SrvifItems::SrvIfList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
-    if (defaultvsan.is_set || is_set(defaultvsan.yfilter)) leaf_name_data.push_back(defaultvsan.get_name_leafdata());
-    if (defaultextif.is_set || is_set(defaultextif.yfilter)) leaf_name_data.push_back(defaultextif.get_name_leafdata());
-    if (fcid.is_set || is_set(fcid.yfilter)) leaf_name_data.push_back(fcid.get_name_leafdata());
-    if (fsmst.is_set || is_set(fsmst.yfilter)) leaf_name_data.push_back(fsmst.get_name_leafdata());
-    if (wwpn.is_set || is_set(wwpn.yfilter)) leaf_name_data.push_back(wwpn.get_name_leafdata());
-    if (wwnn.is_set || is_set(wwnn.yfilter)) leaf_name_data.push_back(wwnn.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::SrvifItems::SrvIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "targetif-items")
-    {
-        if(targetif_items == nullptr)
-        {
-            targetif_items = std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems>();
-        }
-        return targetif_items;
-    }
-
-    if(child_yang_name == "vsan-items")
-    {
-        if(vsan_items == nullptr)
-        {
-            vsan_items = std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems>();
-        }
-        return vsan_items;
-    }
-
-    if(child_yang_name == "srvif-items")
-    {
-        if(srvif_items == nullptr)
-        {
-            srvif_items = std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_>();
-        }
-        return srvif_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::SrvifItems::SrvIfList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(targetif_items != nullptr)
-    {
-        _children["targetif-items"] = targetif_items;
-    }
-
-    if(vsan_items != nullptr)
-    {
-        _children["vsan-items"] = vsan_items;
-    }
-
-    if(srvif_items != nullptr)
-    {
-        _children["srvif-items"] = srvif_items;
-    }
-
-    return _children;
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flags")
-    {
-        flags = value;
-        flags.value_namespace = name_space;
-        flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "defaultVsan")
-    {
-        defaultvsan = value;
-        defaultvsan.value_namespace = name_space;
-        defaultvsan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "defaultExtIf")
-    {
-        defaultextif = value;
-        defaultextif.value_namespace = name_space;
-        defaultextif.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fcid")
-    {
-        fcid = value;
-        fcid.value_namespace = name_space;
-        fcid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsmSt")
-    {
-        fsmst = value;
-        fsmst.value_namespace = name_space;
-        fsmst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wwpn")
-    {
-        wwpn = value;
-        wwpn.value_namespace = name_space;
-        wwpn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wwnn")
-    {
-        wwnn = value;
-        wwnn.value_namespace = name_space;
-        wwnn.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "flags")
-    {
-        flags.yfilter = yfilter;
-    }
-    if(value_path == "defaultVsan")
-    {
-        defaultvsan.yfilter = yfilter;
-    }
-    if(value_path == "defaultExtIf")
-    {
-        defaultextif.yfilter = yfilter;
-    }
-    if(value_path == "fcid")
-    {
-        fcid.yfilter = yfilter;
-    }
-    if(value_path == "fsmSt")
-    {
-        fsmst.yfilter = yfilter;
-    }
-    if(value_path == "wwpn")
-    {
-        wwpn.yfilter = yfilter;
-    }
-    if(value_path == "wwnn")
-    {
-        wwnn.yfilter = yfilter;
-    }
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "targetif-items" || name == "vsan-items" || name == "srvif-items" || name == "id" || name == "flags" || name == "defaultVsan" || name == "defaultExtIf" || name == "fcid" || name == "fsmSt" || name == "wwpn" || name == "wwnn")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetifItems()
-    :
-    targetif_list(this, {"id"})
-{
-
-    yang_name = "targetif-items"; yang_parent_name = "SrvIf-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::~TargetifItems()
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<targetif_list.len(); index++)
-    {
-        if(targetif_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::has_operation() const
-{
-    for (std::size_t index=0; index<targetif_list.len(); index++)
-    {
-        if(targetif_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "targetif-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "TargetIf-list")
-    {
-        auto ent_ = std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList>();
-        ent_->parent = this;
-        targetif_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : targetif_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "TargetIf-list")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::TargetIfList()
-    :
-    id{YType::str, "id"}
-{
-
-    yang_name = "TargetIf-list"; yang_parent_name = "targetif-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::~TargetIfList()
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::has_data() const
-{
-    if (is_presence_container) return true;
-    return id.is_set;
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter);
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "TargetIf-list";
-    ADD_KEY_TOKEN(id, "id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::TargetifItems::TargetIfList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "id")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::VsanItems()
-    :
-    srvvsan_list(this, {"id"})
-{
-
-    yang_name = "vsan-items"; yang_parent_name = "SrvIf-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::~VsanItems()
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<srvvsan_list.len(); index++)
-    {
-        if(srvvsan_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::has_operation() const
-{
-    for (std::size_t index=0; index<srvvsan_list.len(); index++)
-    {
-        if(srvvsan_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vsan-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "SrvVsan-list")
-    {
-        auto ent_ = std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList>();
-        ent_->parent = this;
-        srvvsan_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : srvvsan_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "SrvVsan-list")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::SrvVsanList()
-    :
-    id{YType::uint32, "id"}
-{
-
-    yang_name = "SrvVsan-list"; yang_parent_name = "vsan-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::~SrvVsanList()
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::has_data() const
-{
-    if (is_presence_container) return true;
-    return id.is_set;
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter);
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "SrvVsan-list";
-    ADD_KEY_TOKEN(id, "id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::VsanItems::SrvVsanList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "id")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvifItems_()
-    :
-    srvifflogi_list(this, {"fcid"})
-{
-
-    yang_name = "srvif-items"; yang_parent_name = "SrvIf-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::~SrvifItems_()
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<srvifflogi_list.len(); index++)
-    {
-        if(srvifflogi_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::has_operation() const
-{
-    for (std::size_t index=0; index<srvifflogi_list.len(); index++)
-    {
-        if(srvifflogi_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "srvif-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "SrvIfFlogi-list")
-    {
-        auto ent_ = std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList>();
-        ent_->parent = this;
-        srvifflogi_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : srvifflogi_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "SrvIfFlogi-list")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::SrvIfFlogiList()
-    :
-    fcid{YType::uint32, "fcid"},
-    wwpn{YType::str, "wwpn"},
-    wwnn{YType::str, "wwnn"},
-    defaultvsan{YType::uint32, "defaultVsan"},
-    defaultextif{YType::str, "defaultExtIf"}
-{
-
-    yang_name = "SrvIfFlogi-list"; yang_parent_name = "srvif-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::~SrvIfFlogiList()
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::has_data() const
-{
-    if (is_presence_container) return true;
-    return fcid.is_set
-	|| wwpn.is_set
-	|| wwnn.is_set
-	|| defaultvsan.is_set
-	|| defaultextif.is_set;
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(fcid.yfilter)
-	|| ydk::is_set(wwpn.yfilter)
-	|| ydk::is_set(wwnn.yfilter)
-	|| ydk::is_set(defaultvsan.yfilter)
-	|| ydk::is_set(defaultextif.yfilter);
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "SrvIfFlogi-list";
-    ADD_KEY_TOKEN(fcid, "fcid");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fcid.is_set || is_set(fcid.yfilter)) leaf_name_data.push_back(fcid.get_name_leafdata());
-    if (wwpn.is_set || is_set(wwpn.yfilter)) leaf_name_data.push_back(wwpn.get_name_leafdata());
-    if (wwnn.is_set || is_set(wwnn.yfilter)) leaf_name_data.push_back(wwnn.get_name_leafdata());
-    if (defaultvsan.is_set || is_set(defaultvsan.yfilter)) leaf_name_data.push_back(defaultvsan.get_name_leafdata());
-    if (defaultextif.is_set || is_set(defaultextif.yfilter)) leaf_name_data.push_back(defaultextif.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "fcid")
-    {
-        fcid = value;
-        fcid.value_namespace = name_space;
-        fcid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wwpn")
-    {
-        wwpn = value;
-        wwpn.value_namespace = name_space;
-        wwpn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wwnn")
-    {
-        wwnn = value;
-        wwnn.value_namespace = name_space;
-        wwnn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "defaultVsan")
-    {
-        defaultvsan = value;
-        defaultvsan.value_namespace = name_space;
-        defaultvsan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "defaultExtIf")
-    {
-        defaultextif = value;
-        defaultextif.value_namespace = name_space;
-        defaultextif.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "fcid")
-    {
-        fcid.yfilter = yfilter;
-    }
-    if(value_path == "wwpn")
-    {
-        wwpn.yfilter = yfilter;
-    }
-    if(value_path == "wwnn")
-    {
-        wwnn.yfilter = yfilter;
-    }
-    if(value_path == "defaultVsan")
-    {
-        defaultvsan.yfilter = yfilter;
-    }
-    if(value_path == "defaultExtIf")
-    {
-        defaultextif.yfilter = yfilter;
-    }
-}
-
-bool System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvifItems_::SrvIfFlogiList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fcid" || name == "wwpn" || name == "wwnn" || name == "defaultVsan" || name == "defaultExtIf")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtifItems()
-    :
-    extif_list(this, {"id"})
-{
-
-    yang_name = "extif-items"; yang_parent_name = "inst-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::NpvItems::InstItems::ExtifItems::~ExtifItems()
-{
-}
-
-bool System::NpvItems::InstItems::ExtifItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<extif_list.len(); index++)
-    {
-        if(extif_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::NpvItems::InstItems::ExtifItems::has_operation() const
-{
-    for (std::size_t index=0; index<extif_list.len(); index++)
-    {
-        if(extif_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::NpvItems::InstItems::ExtifItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/npv-items/inst-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::NpvItems::InstItems::ExtifItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "extif-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::ExtifItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::ExtifItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ExtIf-list")
-    {
-        auto ent_ = std::make_shared<System::NpvItems::InstItems::ExtifItems::ExtIfList>();
-        ent_->parent = this;
-        extif_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::ExtifItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : extif_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::NpvItems::InstItems::ExtifItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::NpvItems::InstItems::ExtifItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::NpvItems::InstItems::ExtifItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ExtIf-list")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::ExtIfList()
-    :
-    id{YType::str, "id"},
-    fsmst{YType::enumeration, "fsmSt"},
-    numvsan{YType::uint32, "numVsan"},
-    defaultvsan{YType::uint32, "defaultVsan"},
-    flogivsan{YType::uint32, "flogiVsan"},
-    operportmode{YType::str, "operPortMode"},
-    logifindex{YType::str, "logIfIndex"},
-    flags{YType::str, "flags"},
-    fcid{YType::uint32, "fcid"},
-    wwpn{YType::str, "wwpn"},
-    wwnn{YType::str, "wwnn"}
-        ,
-    targetif_items(std::make_shared<System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems>())
-    , vsan_items(std::make_shared<System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems>())
-{
-    targetif_items->parent = this;
-    vsan_items->parent = this;
-
-    yang_name = "ExtIf-list"; yang_parent_name = "extif-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::~ExtIfList()
-{
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::has_data() const
-{
-    if (is_presence_container) return true;
-    return id.is_set
-	|| fsmst.is_set
-	|| numvsan.is_set
-	|| defaultvsan.is_set
-	|| flogivsan.is_set
-	|| operportmode.is_set
-	|| logifindex.is_set
-	|| flags.is_set
-	|| fcid.is_set
-	|| wwpn.is_set
-	|| wwnn.is_set
-	|| (targetif_items !=  nullptr && targetif_items->has_data())
-	|| (vsan_items !=  nullptr && vsan_items->has_data());
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(fsmst.yfilter)
-	|| ydk::is_set(numvsan.yfilter)
-	|| ydk::is_set(defaultvsan.yfilter)
-	|| ydk::is_set(flogivsan.yfilter)
-	|| ydk::is_set(operportmode.yfilter)
-	|| ydk::is_set(logifindex.yfilter)
-	|| ydk::is_set(flags.yfilter)
-	|| ydk::is_set(fcid.yfilter)
-	|| ydk::is_set(wwpn.yfilter)
-	|| ydk::is_set(wwnn.yfilter)
-	|| (targetif_items !=  nullptr && targetif_items->has_operation())
-	|| (vsan_items !=  nullptr && vsan_items->has_operation());
-}
-
-std::string System::NpvItems::InstItems::ExtifItems::ExtIfList::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/npv-items/inst-items/extif-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::NpvItems::InstItems::ExtifItems::ExtIfList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ExtIf-list";
-    ADD_KEY_TOKEN(id, "id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::ExtifItems::ExtIfList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (fsmst.is_set || is_set(fsmst.yfilter)) leaf_name_data.push_back(fsmst.get_name_leafdata());
-    if (numvsan.is_set || is_set(numvsan.yfilter)) leaf_name_data.push_back(numvsan.get_name_leafdata());
-    if (defaultvsan.is_set || is_set(defaultvsan.yfilter)) leaf_name_data.push_back(defaultvsan.get_name_leafdata());
-    if (flogivsan.is_set || is_set(flogivsan.yfilter)) leaf_name_data.push_back(flogivsan.get_name_leafdata());
-    if (operportmode.is_set || is_set(operportmode.yfilter)) leaf_name_data.push_back(operportmode.get_name_leafdata());
-    if (logifindex.is_set || is_set(logifindex.yfilter)) leaf_name_data.push_back(logifindex.get_name_leafdata());
-    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
-    if (fcid.is_set || is_set(fcid.yfilter)) leaf_name_data.push_back(fcid.get_name_leafdata());
-    if (wwpn.is_set || is_set(wwpn.yfilter)) leaf_name_data.push_back(wwpn.get_name_leafdata());
-    if (wwnn.is_set || is_set(wwnn.yfilter)) leaf_name_data.push_back(wwnn.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::ExtifItems::ExtIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "targetif-items")
-    {
-        if(targetif_items == nullptr)
-        {
-            targetif_items = std::make_shared<System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems>();
-        }
-        return targetif_items;
-    }
-
-    if(child_yang_name == "vsan-items")
-    {
-        if(vsan_items == nullptr)
-        {
-            vsan_items = std::make_shared<System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems>();
-        }
-        return vsan_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::ExtifItems::ExtIfList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(targetif_items != nullptr)
-    {
-        _children["targetif-items"] = targetif_items;
-    }
-
-    if(vsan_items != nullptr)
-    {
-        _children["vsan-items"] = vsan_items;
-    }
-
-    return _children;
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsmSt")
-    {
-        fsmst = value;
-        fsmst.value_namespace = name_space;
-        fsmst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "numVsan")
-    {
-        numvsan = value;
-        numvsan.value_namespace = name_space;
-        numvsan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "defaultVsan")
-    {
-        defaultvsan = value;
-        defaultvsan.value_namespace = name_space;
-        defaultvsan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flogiVsan")
-    {
-        flogivsan = value;
-        flogivsan.value_namespace = name_space;
-        flogivsan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "operPortMode")
-    {
-        operportmode = value;
-        operportmode.value_namespace = name_space;
-        operportmode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "logIfIndex")
-    {
-        logifindex = value;
-        logifindex.value_namespace = name_space;
-        logifindex.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flags")
-    {
-        flags = value;
-        flags.value_namespace = name_space;
-        flags.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fcid")
-    {
-        fcid = value;
-        fcid.value_namespace = name_space;
-        fcid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wwpn")
-    {
-        wwpn = value;
-        wwpn.value_namespace = name_space;
-        wwpn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wwnn")
-    {
-        wwnn = value;
-        wwnn.value_namespace = name_space;
-        wwnn.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "fsmSt")
-    {
-        fsmst.yfilter = yfilter;
-    }
-    if(value_path == "numVsan")
-    {
-        numvsan.yfilter = yfilter;
-    }
-    if(value_path == "defaultVsan")
-    {
-        defaultvsan.yfilter = yfilter;
-    }
-    if(value_path == "flogiVsan")
-    {
-        flogivsan.yfilter = yfilter;
-    }
-    if(value_path == "operPortMode")
-    {
-        operportmode.yfilter = yfilter;
-    }
-    if(value_path == "logIfIndex")
-    {
-        logifindex.yfilter = yfilter;
-    }
-    if(value_path == "flags")
-    {
-        flags.yfilter = yfilter;
-    }
-    if(value_path == "fcid")
-    {
-        fcid.yfilter = yfilter;
-    }
-    if(value_path == "wwpn")
-    {
-        wwpn.yfilter = yfilter;
-    }
-    if(value_path == "wwnn")
-    {
-        wwnn.yfilter = yfilter;
-    }
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "targetif-items" || name == "vsan-items" || name == "id" || name == "fsmSt" || name == "numVsan" || name == "defaultVsan" || name == "flogiVsan" || name == "operPortMode" || name == "logIfIndex" || name == "flags" || name == "fcid" || name == "wwpn" || name == "wwnn")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetifItems()
-    :
-    targetif_list(this, {"id"})
-{
-
-    yang_name = "targetif-items"; yang_parent_name = "ExtIf-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::~TargetifItems()
-{
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<targetif_list.len(); index++)
-    {
-        if(targetif_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::has_operation() const
-{
-    for (std::size_t index=0; index<targetif_list.len(); index++)
-    {
-        if(targetif_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "targetif-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "TargetIf-list")
-    {
-        auto ent_ = std::make_shared<System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList>();
-        ent_->parent = this;
-        targetif_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : targetif_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "TargetIf-list")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::TargetIfList()
-    :
-    id{YType::str, "id"}
-{
-
-    yang_name = "TargetIf-list"; yang_parent_name = "targetif-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::~TargetIfList()
-{
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::has_data() const
-{
-    if (is_presence_container) return true;
-    return id.is_set;
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter);
-}
-
-std::string System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "TargetIf-list";
-    ADD_KEY_TOKEN(id, "id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::TargetifItems::TargetIfList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "id")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::VsanItems()
-    :
-    extvsan_list(this, {"id"})
-{
-
-    yang_name = "vsan-items"; yang_parent_name = "ExtIf-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::~VsanItems()
-{
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<extvsan_list.len(); index++)
-    {
-        if(extvsan_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::has_operation() const
-{
-    for (std::size_t index=0; index<extvsan_list.len(); index++)
-    {
-        if(extvsan_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vsan-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ExtVsan-list")
-    {
-        auto ent_ = std::make_shared<System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList>();
-        ent_->parent = this;
-        extvsan_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : extvsan_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ExtVsan-list")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::ExtVsanList()
-    :
-    id{YType::uint32, "id"},
-    fsmst{YType::enumeration, "fsmSt"}
-{
-
-    yang_name = "ExtVsan-list"; yang_parent_name = "vsan-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::~ExtVsanList()
-{
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::has_data() const
-{
-    if (is_presence_container) return true;
-    return id.is_set
-	|| fsmst.is_set;
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(fsmst.yfilter);
-}
-
-std::string System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ExtVsan-list";
-    ADD_KEY_TOKEN(id, "id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (fsmst.is_set || is_set(fsmst.yfilter)) leaf_name_data.push_back(fsmst.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fsmSt")
-    {
-        fsmst = value;
-        fsmst.value_namespace = name_space;
-        fsmst.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "fsmSt")
-    {
-        fsmst.yfilter = yfilter;
-    }
-}
-
-bool System::NpvItems::InstItems::ExtifItems::ExtIfList::VsanItems::ExtVsanList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "id" || name == "fsmSt")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::VsanmgrItems()
-    :
-    name{YType::str, "name"},
-    adminst{YType::enumeration, "adminSt"},
-    operst{YType::enumeration, "operSt"}
-        ,
-    vsan_items(std::make_shared<System::VsanmgrItems::VsanItems>())
-    , bdvsancfg_items(std::make_shared<System::VsanmgrItems::BdvsancfgItems>())
-    , inst_items(std::make_shared<System::VsanmgrItems::InstItems>())
-{
-    vsan_items->parent = this;
-    bdvsancfg_items->parent = this;
-    inst_items->parent = this;
-
-    yang_name = "vsanmgr-items"; yang_parent_name = "System"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::VsanmgrItems::~VsanmgrItems()
-{
-}
-
-bool System::VsanmgrItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| adminst.is_set
-	|| operst.is_set
-	|| (vsan_items !=  nullptr && vsan_items->has_data())
-	|| (bdvsancfg_items !=  nullptr && bdvsancfg_items->has_data())
-	|| (inst_items !=  nullptr && inst_items->has_data());
-}
-
-bool System::VsanmgrItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(adminst.yfilter)
-	|| ydk::is_set(operst.yfilter)
-	|| (vsan_items !=  nullptr && vsan_items->has_operation())
-	|| (bdvsancfg_items !=  nullptr && bdvsancfg_items->has_operation())
-	|| (inst_items !=  nullptr && inst_items->has_operation());
-}
-
-std::string System::VsanmgrItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::VsanmgrItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vsanmgr-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
-    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vsan-items")
-    {
-        if(vsan_items == nullptr)
-        {
-            vsan_items = std::make_shared<System::VsanmgrItems::VsanItems>();
-        }
-        return vsan_items;
-    }
-
-    if(child_yang_name == "bdvsancfg-items")
-    {
-        if(bdvsancfg_items == nullptr)
-        {
-            bdvsancfg_items = std::make_shared<System::VsanmgrItems::BdvsancfgItems>();
-        }
-        return bdvsancfg_items;
-    }
-
-    if(child_yang_name == "inst-items")
-    {
-        if(inst_items == nullptr)
-        {
-            inst_items = std::make_shared<System::VsanmgrItems::InstItems>();
-        }
-        return inst_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(vsan_items != nullptr)
-    {
-        _children["vsan-items"] = vsan_items;
-    }
-
-    if(bdvsancfg_items != nullptr)
-    {
-        _children["bdvsancfg-items"] = bdvsancfg_items;
-    }
-
-    if(inst_items != nullptr)
-    {
-        _children["inst-items"] = inst_items;
-    }
-
-    return _children;
-}
-
-void System::VsanmgrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst = value;
-        adminst.value_namespace = name_space;
-        adminst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "operSt")
-    {
-        operst = value;
-        operst.value_namespace = name_space;
-        operst.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::VsanmgrItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst.yfilter = yfilter;
-    }
-    if(value_path == "operSt")
-    {
-        operst.yfilter = yfilter;
-    }
-}
-
-bool System::VsanmgrItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vsan-items" || name == "bdvsancfg-items" || name == "inst-items" || name == "name" || name == "adminSt" || name == "operSt")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::VsanItems::VsanItems()
-    :
-    vsan_list(this, {"encap"})
-{
-
-    yang_name = "vsan-items"; yang_parent_name = "vsanmgr-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::VsanmgrItems::VsanItems::~VsanItems()
-{
-}
-
-bool System::VsanmgrItems::VsanItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<vsan_list.len(); index++)
-    {
-        if(vsan_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::VsanmgrItems::VsanItems::has_operation() const
-{
-    for (std::size_t index=0; index<vsan_list.len(); index++)
-    {
-        if(vsan_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::VsanmgrItems::VsanItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/vsanmgr-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::VsanmgrItems::VsanItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vsan-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::VsanItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::VsanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "Vsan-list")
-    {
-        auto ent_ = std::make_shared<System::VsanmgrItems::VsanItems::VsanList>();
-        ent_->parent = this;
-        vsan_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::VsanItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : vsan_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::VsanmgrItems::VsanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::VsanmgrItems::VsanItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::VsanmgrItems::VsanItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "Vsan-list")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::VsanItems::VsanList::VsanList()
-    :
-    encap{YType::str, "encap"},
-    id{YType::uint32, "id"},
-    adminst{YType::enumeration, "adminSt"},
-    operst{YType::enumeration, "operSt"},
-    lbtype{YType::enumeration, "lbType"},
-    vsanname{YType::str, "vsanName"},
-    interop{YType::uint16, "interop"},
-    name{YType::str, "name"}
-        ,
-    rtbdvsanmap_items(std::make_shared<System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems>())
-    , rsvsanifmap_items(std::make_shared<System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems>())
-    , rsvsanpathatt_items(std::make_shared<System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems>())
-{
-    rtbdvsanmap_items->parent = this;
-    rsvsanifmap_items->parent = this;
-    rsvsanpathatt_items->parent = this;
-
-    yang_name = "Vsan-list"; yang_parent_name = "vsan-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::VsanmgrItems::VsanItems::VsanList::~VsanList()
-{
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::has_data() const
-{
-    if (is_presence_container) return true;
-    return encap.is_set
-	|| id.is_set
-	|| adminst.is_set
-	|| operst.is_set
-	|| lbtype.is_set
-	|| vsanname.is_set
-	|| interop.is_set
-	|| name.is_set
-	|| (rtbdvsanmap_items !=  nullptr && rtbdvsanmap_items->has_data())
-	|| (rsvsanifmap_items !=  nullptr && rsvsanifmap_items->has_data())
-	|| (rsvsanpathatt_items !=  nullptr && rsvsanpathatt_items->has_data());
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(encap.yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(adminst.yfilter)
-	|| ydk::is_set(operst.yfilter)
-	|| ydk::is_set(lbtype.yfilter)
-	|| ydk::is_set(vsanname.yfilter)
-	|| ydk::is_set(interop.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| (rtbdvsanmap_items !=  nullptr && rtbdvsanmap_items->has_operation())
-	|| (rsvsanifmap_items !=  nullptr && rsvsanifmap_items->has_operation())
-	|| (rsvsanpathatt_items !=  nullptr && rsvsanpathatt_items->has_operation());
-}
-
-std::string System::VsanmgrItems::VsanItems::VsanList::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/vsanmgr-items/vsan-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::VsanmgrItems::VsanItems::VsanList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Vsan-list";
-    ADD_KEY_TOKEN(encap, "encap");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::VsanItems::VsanList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (encap.is_set || is_set(encap.yfilter)) leaf_name_data.push_back(encap.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
-    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
-    if (lbtype.is_set || is_set(lbtype.yfilter)) leaf_name_data.push_back(lbtype.get_name_leafdata());
-    if (vsanname.is_set || is_set(vsanname.yfilter)) leaf_name_data.push_back(vsanname.get_name_leafdata());
-    if (interop.is_set || is_set(interop.yfilter)) leaf_name_data.push_back(interop.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::VsanItems::VsanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rtBdVsanMap-items")
-    {
-        if(rtbdvsanmap_items == nullptr)
-        {
-            rtbdvsanmap_items = std::make_shared<System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems>();
-        }
-        return rtbdvsanmap_items;
-    }
-
-    if(child_yang_name == "rsvsanIfMap-items")
-    {
-        if(rsvsanifmap_items == nullptr)
-        {
-            rsvsanifmap_items = std::make_shared<System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems>();
-        }
-        return rsvsanifmap_items;
-    }
-
-    if(child_yang_name == "rsvsanPathAtt-items")
-    {
-        if(rsvsanpathatt_items == nullptr)
-        {
-            rsvsanpathatt_items = std::make_shared<System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems>();
-        }
-        return rsvsanpathatt_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::VsanItems::VsanList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(rtbdvsanmap_items != nullptr)
-    {
-        _children["rtBdVsanMap-items"] = rtbdvsanmap_items;
-    }
-
-    if(rsvsanifmap_items != nullptr)
-    {
-        _children["rsvsanIfMap-items"] = rsvsanifmap_items;
-    }
-
-    if(rsvsanpathatt_items != nullptr)
-    {
-        _children["rsvsanPathAtt-items"] = rsvsanpathatt_items;
-    }
-
-    return _children;
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "encap")
-    {
-        encap = value;
-        encap.value_namespace = name_space;
-        encap.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst = value;
-        adminst.value_namespace = name_space;
-        adminst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "operSt")
-    {
-        operst = value;
-        operst.value_namespace = name_space;
-        operst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lbType")
-    {
-        lbtype = value;
-        lbtype.value_namespace = name_space;
-        lbtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vsanName")
-    {
-        vsanname = value;
-        vsanname.value_namespace = name_space;
-        vsanname.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interop")
-    {
-        interop = value;
-        interop.value_namespace = name_space;
-        interop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "encap")
-    {
-        encap.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst.yfilter = yfilter;
-    }
-    if(value_path == "operSt")
-    {
-        operst.yfilter = yfilter;
-    }
-    if(value_path == "lbType")
-    {
-        lbtype.yfilter = yfilter;
-    }
-    if(value_path == "vsanName")
-    {
-        vsanname.yfilter = yfilter;
-    }
-    if(value_path == "interop")
-    {
-        interop.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rtBdVsanMap-items" || name == "rsvsanIfMap-items" || name == "rsvsanPathAtt-items" || name == "encap" || name == "id" || name == "adminSt" || name == "operSt" || name == "lbType" || name == "vsanName" || name == "interop" || name == "name")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::RtBdVsanMapItems()
-    :
-    tdn{YType::str, "tDn"},
-    tcl{YType::enumeration, "tCl"}
-{
-
-    yang_name = "rtBdVsanMap-items"; yang_parent_name = "Vsan-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::~RtBdVsanMapItems()
-{
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return tdn.is_set
-	|| tcl.is_set;
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tdn.yfilter)
-	|| ydk::is_set(tcl.yfilter);
-}
-
-std::string System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rtBdVsanMap-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
-    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tDn")
-    {
-        tdn = value;
-        tdn.value_namespace = name_space;
-        tdn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tCl")
-    {
-        tcl = value;
-        tcl.value_namespace = name_space;
-        tcl.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tDn")
-    {
-        tdn.yfilter = yfilter;
-    }
-    if(value_path == "tCl")
-    {
-        tcl.yfilter = yfilter;
-    }
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RtBdVsanMapItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tDn" || name == "tCl")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsvsanIfMapItems()
-    :
-    rsvsanifmap_list(this, {"tdn"})
-{
-
-    yang_name = "rsvsanIfMap-items"; yang_parent_name = "Vsan-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::~RsvsanIfMapItems()
-{
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<rsvsanifmap_list.len(); index++)
-    {
-        if(rsvsanifmap_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::has_operation() const
-{
-    for (std::size_t index=0; index<rsvsanifmap_list.len(); index++)
-    {
-        if(rsvsanifmap_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rsvsanIfMap-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "RsVsanIfMap-list")
-    {
-        auto ent_ = std::make_shared<System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList>();
-        ent_->parent = this;
-        rsvsanifmap_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : rsvsanifmap_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "RsVsanIfMap-list")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::RsVsanIfMapList()
-    :
-    tdn{YType::str, "tDn"},
-    tcl{YType::enumeration, "tCl"},
-    state{YType::enumeration, "state"},
-    statequal{YType::enumeration, "stateQual"},
-    ttype{YType::enumeration, "tType"},
-    rtype{YType::enumeration, "rType"},
-    forceresolve{YType::boolean, "forceResolve"}
-{
-
-    yang_name = "RsVsanIfMap-list"; yang_parent_name = "rsvsanIfMap-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::~RsVsanIfMapList()
-{
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::has_data() const
-{
-    if (is_presence_container) return true;
-    return tdn.is_set
-	|| tcl.is_set
-	|| state.is_set
-	|| statequal.is_set
-	|| ttype.is_set
-	|| rtype.is_set
-	|| forceresolve.is_set;
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tdn.yfilter)
-	|| ydk::is_set(tcl.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(statequal.yfilter)
-	|| ydk::is_set(ttype.yfilter)
-	|| ydk::is_set(rtype.yfilter)
-	|| ydk::is_set(forceresolve.yfilter);
-}
-
-std::string System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "RsVsanIfMap-list";
-    ADD_KEY_TOKEN(tdn, "tDn");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
-    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (statequal.is_set || is_set(statequal.yfilter)) leaf_name_data.push_back(statequal.get_name_leafdata());
-    if (ttype.is_set || is_set(ttype.yfilter)) leaf_name_data.push_back(ttype.get_name_leafdata());
-    if (rtype.is_set || is_set(rtype.yfilter)) leaf_name_data.push_back(rtype.get_name_leafdata());
-    if (forceresolve.is_set || is_set(forceresolve.yfilter)) leaf_name_data.push_back(forceresolve.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tDn")
-    {
-        tdn = value;
-        tdn.value_namespace = name_space;
-        tdn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tCl")
-    {
-        tcl = value;
-        tcl.value_namespace = name_space;
-        tcl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stateQual")
-    {
-        statequal = value;
-        statequal.value_namespace = name_space;
-        statequal.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tType")
-    {
-        ttype = value;
-        ttype.value_namespace = name_space;
-        ttype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rType")
-    {
-        rtype = value;
-        rtype.value_namespace = name_space;
-        rtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "forceResolve")
-    {
-        forceresolve = value;
-        forceresolve.value_namespace = name_space;
-        forceresolve.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tDn")
-    {
-        tdn.yfilter = yfilter;
-    }
-    if(value_path == "tCl")
-    {
-        tcl.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "stateQual")
-    {
-        statequal.yfilter = yfilter;
-    }
-    if(value_path == "tType")
-    {
-        ttype.yfilter = yfilter;
-    }
-    if(value_path == "rType")
-    {
-        rtype.yfilter = yfilter;
-    }
-    if(value_path == "forceResolve")
-    {
-        forceresolve.yfilter = yfilter;
-    }
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanIfMapItems::RsVsanIfMapList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tDn" || name == "tCl" || name == "state" || name == "stateQual" || name == "tType" || name == "rType" || name == "forceResolve")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsvsanPathAttItems()
-    :
-    rsvsanpathatt_list(this, {"tdn"})
-{
-
-    yang_name = "rsvsanPathAtt-items"; yang_parent_name = "Vsan-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::~RsvsanPathAttItems()
-{
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<rsvsanpathatt_list.len(); index++)
-    {
-        if(rsvsanpathatt_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::has_operation() const
-{
-    for (std::size_t index=0; index<rsvsanpathatt_list.len(); index++)
-    {
-        if(rsvsanpathatt_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rsvsanPathAtt-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "RsVsanPathAtt-list")
-    {
-        auto ent_ = std::make_shared<System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList>();
-        ent_->parent = this;
-        rsvsanpathatt_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : rsvsanpathatt_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "RsVsanPathAtt-list")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::RsVsanPathAttList()
-    :
-    tdn{YType::str, "tDn"},
-    tcl{YType::enumeration, "tCl"},
-    state{YType::enumeration, "state"},
-    statequal{YType::enumeration, "stateQual"},
-    ttype{YType::enumeration, "tType"},
-    rtype{YType::enumeration, "rType"},
-    forceresolve{YType::boolean, "forceResolve"},
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "RsVsanPathAtt-list"; yang_parent_name = "rsvsanPathAtt-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::~RsVsanPathAttList()
-{
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::has_data() const
-{
-    if (is_presence_container) return true;
-    return tdn.is_set
-	|| tcl.is_set
-	|| state.is_set
-	|| statequal.is_set
-	|| ttype.is_set
-	|| rtype.is_set
-	|| forceresolve.is_set
-	|| type.is_set;
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tdn.yfilter)
-	|| ydk::is_set(tcl.yfilter)
-	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(statequal.yfilter)
-	|| ydk::is_set(ttype.yfilter)
-	|| ydk::is_set(rtype.yfilter)
-	|| ydk::is_set(forceresolve.yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "RsVsanPathAtt-list";
-    ADD_KEY_TOKEN(tdn, "tDn");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tdn.is_set || is_set(tdn.yfilter)) leaf_name_data.push_back(tdn.get_name_leafdata());
-    if (tcl.is_set || is_set(tcl.yfilter)) leaf_name_data.push_back(tcl.get_name_leafdata());
-    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (statequal.is_set || is_set(statequal.yfilter)) leaf_name_data.push_back(statequal.get_name_leafdata());
-    if (ttype.is_set || is_set(ttype.yfilter)) leaf_name_data.push_back(ttype.get_name_leafdata());
-    if (rtype.is_set || is_set(rtype.yfilter)) leaf_name_data.push_back(rtype.get_name_leafdata());
-    if (forceresolve.is_set || is_set(forceresolve.yfilter)) leaf_name_data.push_back(forceresolve.get_name_leafdata());
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tDn")
-    {
-        tdn = value;
-        tdn.value_namespace = name_space;
-        tdn.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tCl")
-    {
-        tcl = value;
-        tcl.value_namespace = name_space;
-        tcl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "state")
-    {
-        state = value;
-        state.value_namespace = name_space;
-        state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stateQual")
-    {
-        statequal = value;
-        statequal.value_namespace = name_space;
-        statequal.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tType")
-    {
-        ttype = value;
-        ttype.value_namespace = name_space;
-        ttype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rType")
-    {
-        rtype = value;
-        rtype.value_namespace = name_space;
-        rtype.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "forceResolve")
-    {
-        forceresolve = value;
-        forceresolve.value_namespace = name_space;
-        forceresolve.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tDn")
-    {
-        tdn.yfilter = yfilter;
-    }
-    if(value_path == "tCl")
-    {
-        tcl.yfilter = yfilter;
-    }
-    if(value_path == "state")
-    {
-        state.yfilter = yfilter;
-    }
-    if(value_path == "stateQual")
-    {
-        statequal.yfilter = yfilter;
-    }
-    if(value_path == "tType")
-    {
-        ttype.yfilter = yfilter;
-    }
-    if(value_path == "rType")
-    {
-        rtype.yfilter = yfilter;
-    }
-    if(value_path == "forceResolve")
-    {
-        forceresolve.yfilter = yfilter;
-    }
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool System::VsanmgrItems::VsanItems::VsanList::RsvsanPathAttItems::RsVsanPathAttList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tDn" || name == "tCl" || name == "state" || name == "stateQual" || name == "tType" || name == "rType" || name == "forceResolve" || name == "type")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::BdvsancfgItems::BdvsancfgItems()
-    :
-    vlanid{YType::uint32, "vlanId"},
-    createflag{YType::enumeration, "createFlag"},
-    name{YType::str, "name"}
-{
-
-    yang_name = "bdvsancfg-items"; yang_parent_name = "vsanmgr-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::VsanmgrItems::BdvsancfgItems::~BdvsancfgItems()
-{
-}
-
-bool System::VsanmgrItems::BdvsancfgItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return vlanid.is_set
-	|| createflag.is_set
-	|| name.is_set;
-}
-
-bool System::VsanmgrItems::BdvsancfgItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vlanid.yfilter)
-	|| ydk::is_set(createflag.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string System::VsanmgrItems::BdvsancfgItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/vsanmgr-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::VsanmgrItems::BdvsancfgItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bdvsancfg-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::BdvsancfgItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vlanid.is_set || is_set(vlanid.yfilter)) leaf_name_data.push_back(vlanid.get_name_leafdata());
-    if (createflag.is_set || is_set(createflag.yfilter)) leaf_name_data.push_back(createflag.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::BdvsancfgItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::BdvsancfgItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::VsanmgrItems::BdvsancfgItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vlanId")
-    {
-        vlanid = value;
-        vlanid.value_namespace = name_space;
-        vlanid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "createFlag")
-    {
-        createflag = value;
-        createflag.value_namespace = name_space;
-        createflag.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::VsanmgrItems::BdvsancfgItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vlanId")
-    {
-        vlanid.yfilter = yfilter;
-    }
-    if(value_path == "createFlag")
-    {
-        createflag.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool System::VsanmgrItems::BdvsancfgItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vlanId" || name == "createFlag" || name == "name")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::InstItems::InstItems()
-    :
-    numconfiguredvsan{YType::uint32, "numConfiguredVsan"},
-    numcreatedvsan{YType::uint32, "numCreatedVsan"},
-    name{YType::str, "name"},
-    adminst{YType::enumeration, "adminSt"},
-    ctrl{YType::str, "ctrl"}
-        ,
-    vsanmbr_items(std::make_shared<System::VsanmgrItems::InstItems::VsanmbrItems>())
-{
-    vsanmbr_items->parent = this;
-
-    yang_name = "inst-items"; yang_parent_name = "vsanmgr-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::VsanmgrItems::InstItems::~InstItems()
-{
-}
-
-bool System::VsanmgrItems::InstItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return numconfiguredvsan.is_set
-	|| numcreatedvsan.is_set
-	|| name.is_set
-	|| adminst.is_set
-	|| ctrl.is_set
-	|| (vsanmbr_items !=  nullptr && vsanmbr_items->has_data());
-}
-
-bool System::VsanmgrItems::InstItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(numconfiguredvsan.yfilter)
-	|| ydk::is_set(numcreatedvsan.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(adminst.yfilter)
-	|| ydk::is_set(ctrl.yfilter)
-	|| (vsanmbr_items !=  nullptr && vsanmbr_items->has_operation());
-}
-
-std::string System::VsanmgrItems::InstItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/vsanmgr-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::VsanmgrItems::InstItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inst-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::InstItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (numconfiguredvsan.is_set || is_set(numconfiguredvsan.yfilter)) leaf_name_data.push_back(numconfiguredvsan.get_name_leafdata());
-    if (numcreatedvsan.is_set || is_set(numcreatedvsan.yfilter)) leaf_name_data.push_back(numcreatedvsan.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
-    if (ctrl.is_set || is_set(ctrl.yfilter)) leaf_name_data.push_back(ctrl.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vsanmbr-items")
-    {
-        if(vsanmbr_items == nullptr)
-        {
-            vsanmbr_items = std::make_shared<System::VsanmgrItems::InstItems::VsanmbrItems>();
-        }
-        return vsanmbr_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::InstItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(vsanmbr_items != nullptr)
-    {
-        _children["vsanmbr-items"] = vsanmbr_items;
-    }
-
-    return _children;
-}
-
-void System::VsanmgrItems::InstItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "numConfiguredVsan")
-    {
-        numconfiguredvsan = value;
-        numconfiguredvsan.value_namespace = name_space;
-        numconfiguredvsan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "numCreatedVsan")
-    {
-        numcreatedvsan = value;
-        numcreatedvsan.value_namespace = name_space;
-        numcreatedvsan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst = value;
-        adminst.value_namespace = name_space;
-        adminst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ctrl")
-    {
-        ctrl = value;
-        ctrl.value_namespace = name_space;
-        ctrl.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::VsanmgrItems::InstItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "numConfiguredVsan")
-    {
-        numconfiguredvsan.yfilter = yfilter;
-    }
-    if(value_path == "numCreatedVsan")
-    {
-        numcreatedvsan.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst.yfilter = yfilter;
-    }
-    if(value_path == "ctrl")
-    {
-        ctrl.yfilter = yfilter;
-    }
-}
-
-bool System::VsanmgrItems::InstItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vsanmbr-items" || name == "numConfiguredVsan" || name == "numCreatedVsan" || name == "name" || name == "adminSt" || name == "ctrl")
-        return true;
-    return false;
-}
-
-System::VsanmgrItems::InstItems::VsanmbrItems::VsanmbrItems()
-    :
-    vsanmbrif_list(this, {"id"})
-{
-
-    yang_name = "vsanmbr-items"; yang_parent_name = "inst-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::VsanmgrItems::InstItems::VsanmbrItems::~VsanmbrItems()
-{
-}
-
-bool System::VsanmgrItems::InstItems::VsanmbrItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<vsanmbrif_list.len(); index++)
-    {
-        if(vsanmbrif_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::VsanmgrItems::InstItems::VsanmbrItems::has_operation() const
-{
-    for (std::size_t index=0; index<vsanmbrif_list.len(); index++)
-    {
-        if(vsanmbrif_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::VsanmgrItems::InstItems::VsanmbrItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/vsanmgr-items/inst-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::VsanmgrItems::InstItems::VsanmbrItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vsanmbr-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::VsanmgrItems::InstItems::VsanmbrItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::VsanmgrItems::InstItems::VsanmbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "VsanMbrIf-list")
-    {
-        auto ent_ = std::make_shared<System::VsanmgrItems::InstItems::VsanmbrItems::VsanMbrIfList>();
-        ent_->parent = this;
-        vsanmbrif_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::VsanmgrItems::InstItems::VsanmbrItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : vsanmbrif_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::VsanmgrItems::InstItems::VsanmbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::VsanmgrItems::InstItems::VsanmbrItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::VsanmgrItems::InstItems::VsanmbrItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "VsanMbrIf-list")
         return true;
     return false;
 }

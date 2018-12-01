@@ -14,6 +14,641 @@ namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
 
+class System::NbmItems::ConfItems::FlowpolicytableItems::DomItems : public ydk::Entity
+{
+    public:
+        DomItems();
+        ~DomItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class FlowPolicyDomList; //type: System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList
+
+        ydk::YList flowpolicydom_list;
+        
+}; // System::NbmItems::ConfItems::FlowpolicytableItems::DomItems
+
+
+class System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList : public ydk::Entity
+{
+    public:
+        FlowPolicyDomList();
+        ~FlowPolicyDomList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        class NameItems; //type: System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems> name_items;
+        
+}; // System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList
+
+
+class System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems : public ydk::Entity
+{
+    public:
+        NameItems();
+        ~NameItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FlowPolicyList; //type: System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList
+
+        ydk::YList flowpolicy_list;
+        
+}; // System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems
+
+
+class System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList : public ydk::Entity
+{
+    public:
+        FlowPolicyList();
+        ~FlowPolicyList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf bw; //type: uint64
+        ydk::YLeaf bwunit; //type: NbmNbmBwUnitEn
+        ydk::YLeaf dscp; //type: uint32
+        class BgnItems; //type: System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList::BgnItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList::BgnItems> bgn_items;
+        
+}; // System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList
+
+
+class System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList::BgnItems : public ydk::Entity
+{
+    public:
+        BgnItems();
+        ~BgnItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FlowPolicyRangeList; //type: System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList::BgnItems::FlowPolicyRangeList
+
+        ydk::YList flowpolicyrange_list;
+        
+}; // System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList::BgnItems
+
+
+class System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList::BgnItems::FlowPolicyRangeList : public ydk::Entity
+{
+    public:
+        FlowPolicyRangeList();
+        ~FlowPolicyRangeList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf groupbegin; //type: string
+        ydk::YLeaf groupend; //type: string
+
+}; // System::NbmItems::ConfItems::FlowpolicytableItems::DomItems::FlowPolicyDomList::NameItems::FlowPolicyList::BgnItems::FlowPolicyRangeList
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems : public ydk::Entity
+{
+    public:
+        HostpolicytableItems();
+        ~HostpolicytableItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class DomItems; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ConfItems::HostpolicytableItems::DomItems> dom_items;
+        
+}; // System::NbmItems::ConfItems::HostpolicytableItems
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems : public ydk::Entity
+{
+    public:
+        DomItems();
+        ~DomItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class HostPolicyDomList; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList
+
+        ydk::YList hostpolicydom_list;
+        
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList : public ydk::Entity
+{
+    public:
+        HostPolicyDomList();
+        ~HostPolicyDomList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        class SenderItems; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems
+        class ReceiverItems; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems
+        class PimItems; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems> sender_items;
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems> receiver_items;
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems> pim_items;
+        
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems : public ydk::Entity
+{
+    public:
+        SenderItems();
+        ~SenderItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SeqItems; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems::SeqItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems::SeqItems> seq_items;
+        
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems::SeqItems : public ydk::Entity
+{
+    public:
+        SeqItems();
+        ~SeqItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SenderHostPolicyList; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems::SeqItems::SenderHostPolicyList
+
+        ydk::YList senderhostpolicy_list;
+        
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems::SeqItems
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems::SeqItems::SenderHostPolicyList : public ydk::Entity
+{
+    public:
+        SenderHostPolicyList();
+        ~SenderHostPolicyList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seqnum; //type: uint32
+        ydk::YLeaf host; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf groupmask; //type: uint16
+        ydk::YLeaf permission; //type: NbmNbmPermit
+
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::SenderItems::SeqItems::SenderHostPolicyList
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems : public ydk::Entity
+{
+    public:
+        ReceiverItems();
+        ~ReceiverItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SeqItems; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems::SeqItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems::SeqItems> seq_items;
+        
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems::SeqItems : public ydk::Entity
+{
+    public:
+        SeqItems();
+        ~SeqItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ReceiverHostPolicyList; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems::SeqItems::ReceiverHostPolicyList
+
+        ydk::YList receiverhostpolicy_list;
+        
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems::SeqItems
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems::SeqItems::ReceiverHostPolicyList : public ydk::Entity
+{
+    public:
+        ReceiverHostPolicyList();
+        ~ReceiverHostPolicyList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seqnum; //type: uint32
+        ydk::YLeaf host; //type: string
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf groupmask; //type: uint16
+        ydk::YLeaf permission; //type: NbmNbmPermit
+
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::ReceiverItems::SeqItems::ReceiverHostPolicyList
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems : public ydk::Entity
+{
+    public:
+        PimItems();
+        ~PimItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SeqItems; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems::SeqItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems::SeqItems> seq_items;
+        
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems::SeqItems : public ydk::Entity
+{
+    public:
+        SeqItems();
+        ~SeqItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PimHostPolicyList; //type: System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems::SeqItems::PimHostPolicyList
+
+        ydk::YList pimhostpolicy_list;
+        
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems::SeqItems
+
+
+class System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems::SeqItems::PimHostPolicyList : public ydk::Entity
+{
+    public:
+        PimHostPolicyList();
+        ~PimHostPolicyList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seqnum; //type: uint32
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf groupmask; //type: uint16
+        ydk::YLeaf permission; //type: NbmNbmPermit
+
+}; // System::NbmItems::ConfItems::HostpolicytableItems::DomItems::HostPolicyDomList::PimItems::SeqItems::PimHostPolicyList
+
+
+class System::NbmItems::ShowItems : public ydk::Entity
+{
+    public:
+        ShowItems();
+        ~ShowItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AppliedpoliciesItems; //type: System::NbmItems::ShowItems::AppliedpoliciesItems
+        class FlowsItems; //type: System::NbmItems::ShowItems::FlowsItems
+        class StatsItems; //type: System::NbmItems::ShowItems::StatsItems
+        class GlobalItems; //type: System::NbmItems::ShowItems::GlobalItems
+        class EndpointsItems; //type: System::NbmItems::ShowItems::EndpointsItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ShowItems::AppliedpoliciesItems> appliedpolicies_items;
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ShowItems::FlowsItems> flows_items;
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ShowItems::StatsItems> stats_items;
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ShowItems::GlobalItems> global_items;
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ShowItems::EndpointsItems> endpoints_items;
+        
+}; // System::NbmItems::ShowItems
+
+
+class System::NbmItems::ShowItems::AppliedpoliciesItems : public ydk::Entity
+{
+    public:
+        AppliedpoliciesItems();
+        ~AppliedpoliciesItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class DomItems; //type: System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems> dom_items;
+        
+}; // System::NbmItems::ShowItems::AppliedpoliciesItems
+
+
+class System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems : public ydk::Entity
+{
+    public:
+        DomItems();
+        ~DomItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class AppliedPolicyDomList; //type: System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList
+
+        ydk::YList appliedpolicydom_list;
+        
+}; // System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems
+
+
+class System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList : public ydk::Entity
+{
+    public:
+        AppliedPolicyDomList();
+        ~AppliedPolicyDomList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        class HostItems; //type: System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems> host_items;
+        
+}; // System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList
+
+
+class System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems : public ydk::Entity
+{
+    public:
+        HostItems();
+        ~HostItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SeqItems; //type: System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems::SeqItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems::SeqItems> seq_items;
+        
+}; // System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems
+
+
+class System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems::SeqItems : public ydk::Entity
+{
+    public:
+        SeqItems();
+        ~SeqItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AppliedPolicyList; //type: System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems::SeqItems::AppliedPolicyList
+
+        ydk::YList appliedpolicy_list;
+        
+}; // System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems::SeqItems
+
+
+class System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems::SeqItems::AppliedPolicyList : public ydk::Entity
+{
+    public:
+        AppliedPolicyList();
+        ~AppliedPolicyList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seqnum; //type: uint64
+        ydk::YLeaf policytype; //type: NbmNbmPolicyType
+        ydk::YLeaf if_; //type: uint32
+        ydk::YLeaf ifname; //type: string
+        ydk::YLeaf isactive; //type: NbmNbmNoYes
+
+}; // System::NbmItems::ShowItems::AppliedpoliciesItems::DomItems::AppliedPolicyDomList::HostItems::SeqItems::AppliedPolicyList
+
+
+class System::NbmItems::ShowItems::FlowsItems : public ydk::Entity
+{
+    public:
+        FlowsItems();
+        ~FlowsItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class DomItems; //type: System::NbmItems::ShowItems::FlowsItems::DomItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::NbmItems::ShowItems::FlowsItems::DomItems> dom_items;
+        
+}; // System::NbmItems::ShowItems::FlowsItems
+
+
 class System::NbmItems::ShowItems::FlowsItems::DomItems : public ydk::Entity
 {
     public:
@@ -1129,6 +1764,7 @@ class System::BootItems::ImageItems : public ydk::Entity
 
         ydk::YLeaf sup1; //type: string
         ydk::YLeaf sup2; //type: string
+        ydk::YLeaf imageverification; //type: BootImageVerify
         ydk::YLeaf image_err; //type: string
         ydk::YLeaf sup1nextreload; //type: string
         ydk::YLeaf sup2nextreload; //type: string
@@ -1336,6 +1972,8 @@ class System::ChItems::SupslotItems::SupCSlotList::SupItems : public ydk::Entity
         ydk::YLeaf swver; //type: string
         ydk::YLeaf partnumber; //type: string
         ydk::YLeaf vdrid; //type: string
+        ydk::YLeaf poweractualdraw; //type: uint32
+        ydk::YLeaf powerallocated; //type: uint32
         class RunningItems; //type: System::ChItems::SupslotItems::SupCSlotList::SupItems::RunningItems
         class EjItems; //type: System::ChItems::SupslotItems::SupCSlotList::SupItems::EjItems
         class EobcItems; //type: System::ChItems::SupslotItems::SupCSlotList::SupItems::EobcItems
@@ -2466,6 +3104,8 @@ class System::ChItems::LcslotItems::LCSlotList::LcItems : public ydk::Entity
         ydk::YLeaf swver; //type: string
         ydk::YLeaf partnumber; //type: string
         ydk::YLeaf vdrid; //type: string
+        ydk::YLeaf poweractualdraw; //type: uint32
+        ydk::YLeaf powerallocated; //type: uint32
         class RunningItems; //type: System::ChItems::LcslotItems::LCSlotList::LcItems::RunningItems
         class EjItems; //type: System::ChItems::LcslotItems::LCSlotList::LcItems::EjItems
         class EobcItems; //type: System::ChItems::LcslotItems::LCSlotList::LcItems::EobcItems
@@ -3467,761 +4107,6 @@ class System::ChItems::LcslotItems::LCSlotList::LcItems::CpuItems::CPUList::Core
         ydk::YLeaf descr; //type: string
 
 }; // System::ChItems::LcslotItems::LCSlotList::LcItems::CpuItems::CPUList::CoreItems::CoreList
-
-
-class System::ChItems::LcslotItems::LCSlotList::LcItems::DimmItems : public ydk::Entity
-{
-    public:
-        DimmItems();
-        ~DimmItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class DimmList; //type: System::ChItems::LcslotItems::LCSlotList::LcItems::DimmItems::DimmList
-
-        ydk::YList dimm_list;
-        
-}; // System::ChItems::LcslotItems::LCSlotList::LcItems::DimmItems
-
-
-class System::ChItems::LcslotItems::LCSlotList::LcItems::DimmItems::DimmList : public ydk::Entity
-{
-    public:
-        DimmList();
-        ~DimmList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf vendor; //type: string
-        ydk::YLeaf model; //type: string
-        ydk::YLeaf rev; //type: string
-        ydk::YLeaf ser; //type: string
-        ydk::YLeaf mfgtm; //type: string
-        ydk::YLeaf descr; //type: string
-        ydk::YLeaf type; //type: EqptMemT
-        ydk::YLeaf cap; //type: uint32
-        ydk::YLeaf acc; //type: EqptAcc
-        ydk::YLeaf operst; //type: EqptOpSt
-
-}; // System::ChItems::LcslotItems::LCSlotList::LcItems::DimmItems::DimmList
-
-
-class System::ChItems::LcslotItems::LCSlotList::LcItems::FlashItems : public ydk::Entity
-{
-    public:
-        FlashItems();
-        ~FlashItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf vendor; //type: string
-        ydk::YLeaf model; //type: string
-        ydk::YLeaf rev; //type: string
-        ydk::YLeaf ser; //type: string
-        ydk::YLeaf mfgtm; //type: string
-        ydk::YLeaf descr; //type: string
-        ydk::YLeaf type; //type: EqptMemT
-        ydk::YLeaf cap; //type: uint32
-        ydk::YLeaf acc; //type: EqptAcc
-        ydk::YLeaf operst; //type: EqptOpSt
-
-}; // System::ChItems::LcslotItems::LCSlotList::LcItems::FlashItems
-
-
-class System::ChItems::LcslotItems::LCSlotList::LcItems::ObflItems : public ydk::Entity
-{
-    public:
-        ObflItems();
-        ~ObflItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf logt; //type: string
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf vendor; //type: string
-        ydk::YLeaf model; //type: string
-        ydk::YLeaf rev; //type: string
-        ydk::YLeaf ser; //type: string
-        ydk::YLeaf mfgtm; //type: string
-        ydk::YLeaf descr; //type: string
-
-}; // System::ChItems::LcslotItems::LCSlotList::LcItems::ObflItems
-
-
-class System::ChItems::LcslotItems::LCSlotList::RtoosSlotItems : public ydk::Entity
-{
-    public:
-        RtoosSlotItems();
-        ~RtoosSlotItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tdn; //type: string
-        ydk::YLeaf tcl; //type: RelnClassId
-
-}; // System::ChItems::LcslotItems::LCSlotList::RtoosSlotItems
-
-
-class System::ChItems::FcslotItems : public ydk::Entity
-{
-    public:
-        FcslotItems();
-        ~FcslotItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class FCSlotList; //type: System::ChItems::FcslotItems::FCSlotList
-
-        ydk::YList fcslot_list;
-        
-}; // System::ChItems::FcslotItems
-
-
-class System::ChItems::FcslotItems::FCSlotList : public ydk::Entity
-{
-    public:
-        FCSlotList();
-        ~FCSlotList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf poweroff; //type: EqptPoweroffSt
-        ydk::YLeaf descr; //type: string
-        ydk::YLeaf physid; //type: uint32
-        ydk::YLeaf type; //type: EqptSlotT
-        ydk::YLeaf operst; //type: EqptSlotOpSt
-        ydk::YLeaf loc; //type: EqptSlotLoc
-        class FcItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems
-        class RtoosSlotItems; //type: System::ChItems::FcslotItems::FCSlotList::RtoosSlotItems
-
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems> fc_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::RtoosSlotItems> rtoosslot_items;
-        
-}; // System::ChItems::FcslotItems::FCSlotList
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems : public ydk::Entity
-{
-    public:
-        FcItems();
-        ~FcItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf vendor; //type: string
-        ydk::YLeaf model; //type: string
-        ydk::YLeaf rev; //type: string
-        ydk::YLeaf ser; //type: string
-        ydk::YLeaf mfgtm; //type: string
-        ydk::YLeaf descr; //type: string
-        ydk::YLeaf hwver; //type: string
-        ydk::YLeaf type; //type: EqptCardT
-        ydk::YLeaf operst; //type: EqptCOpSt
-        ydk::YLeaf swcid; //type: uint32
-        ydk::YLeaf nump; //type: uint16
-        ydk::YLeaf upts; //type: string
-        ydk::YLeaf pwrst; //type: EqptPwrState
-        ydk::YLeaf swver; //type: string
-        ydk::YLeaf partnumber; //type: string
-        ydk::YLeaf vdrid; //type: string
-        class RunningItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::RunningItems
-        class EjItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::EjItems
-        class EobcItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::EobcItems
-        class EpcItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::EpcItems
-        class SensorItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SensorItems
-        class SplcItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems
-        class AsicItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems
-        class CpuItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems
-        class DimmItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems
-        class FlashItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::FlashItems
-        class ObflItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::ObflItems
-
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::RunningItems> running_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::EjItems> ej_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::EobcItems> eobc_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::EpcItems> epc_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::SensorItems> sensor_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems> splc_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems> asic_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems> cpu_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems> dimm_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::FlashItems> flash_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::ObflItems> obfl_items;
-        
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::RunningItems : public ydk::Entity
-{
-    public:
-        RunningItems();
-        ~RunningItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf biosver; //type: string
-        ydk::YLeaf expectedver; //type: string
-        ydk::YLeaf operst; //type: FirmwareRunningOperSt
-        ydk::YLeaf interimver; //type: string
-        ydk::YLeaf version; //type: string
-        ydk::YLeaf internallabel; //type: string
-        ydk::YLeaf type; //type: FirmwareType
-        ydk::YLeaf mode; //type: FirmwareRunningMode
-        ydk::YLeaf ts; //type: string
-        ydk::YLeaf descr; //type: string
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::RunningItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::EjItems : public ydk::Entity
-{
-    public:
-        EjItems();
-        ~EjItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class EjecList; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::EjItems::EjecList
-
-        ydk::YList ejec_list;
-        
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::EjItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::EjItems::EjecList : public ydk::Entity
-{
-    public:
-        EjecList();
-        ~EjecList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf operst; //type: EqptEjSt
-        ydk::YLeaf vendor; //type: string
-        ydk::YLeaf model; //type: string
-        ydk::YLeaf rev; //type: string
-        ydk::YLeaf ser; //type: string
-        ydk::YLeaf mfgtm; //type: string
-        ydk::YLeaf descr; //type: string
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::EjItems::EjecList
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::EobcItems : public ydk::Entity
-{
-    public:
-        EobcItems();
-        ~EobcItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class EobcPList; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::EobcItems::EobcPList
-
-        ydk::YList eobcp_list;
-        
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::EobcItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::EobcItems::EobcPList : public ydk::Entity
-{
-    public:
-        EobcPList();
-        ~EobcPList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf descr; //type: string
-        ydk::YLeaf type; //type: EqptPortT
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::EobcItems::EobcPList
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::EpcItems : public ydk::Entity
-{
-    public:
-        EpcItems();
-        ~EpcItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class EpcPList; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::EpcItems::EpcPList
-
-        ydk::YList epcp_list;
-        
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::EpcItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::EpcItems::EpcPList : public ydk::Entity
-{
-    public:
-        EpcPList();
-        ~EpcPList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf descr; //type: string
-        ydk::YLeaf type; //type: EqptPortT
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::EpcItems::EpcPList
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SensorItems : public ydk::Entity
-{
-    public:
-        SensorItems();
-        ~SensorItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SensorList; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SensorItems::SensorList
-
-        ydk::YList sensor_list;
-        
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SensorItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SensorItems::SensorList : public ydk::Entity
-{
-    public:
-        SensorList();
-        ~SensorList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf type; //type: EqptSensorT
-        ydk::YLeaf majorthresh; //type: int16
-        ydk::YLeaf minorthresh; //type: int16
-        ydk::YLeaf operst; //type: EqptSensorOpSt
-        ydk::YLeaf tempvalue; //type: uint16
-        ydk::YLeaf unit; //type: string
-        ydk::YLeaf vendor; //type: string
-        ydk::YLeaf model; //type: string
-        ydk::YLeaf descr; //type: string
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SensorItems::SensorList
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems : public ydk::Entity
-{
-    public:
-        SplcItems();
-        ~SplcItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf vendor; //type: string
-        ydk::YLeaf rev; //type: string
-        ydk::YLeaf ser; //type: string
-        ydk::YLeaf descr; //type: string
-        ydk::YLeaf type; //type: EqptMemT
-        ydk::YLeaf cap; //type: uint32
-        ydk::YLeaf acc; //type: EqptAcc
-        ydk::YLeaf operst; //type: EqptOpSt
-        ydk::YLeaf numblk; //type: uint16
-        class SpcmnItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpcmnItems
-        class SplcblkItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems
-        class SppdItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SppdItems
-        class SpsdItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsdItems
-        class SpsensorblkItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems
-
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpcmnItems> spcmn_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems> splcblk_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SppdItems> sppd_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsdItems> spsd_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems> spsensorblk_items;
-        
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpcmnItems : public ydk::Entity
-{
-    public:
-        SpcmnItems();
-        ~SpcmnItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf size; //type: uint16
-        ydk::YLeaf count; //type: uint16
-        ydk::YLeaf major_; //type: uint16
-        ydk::YLeaf minor; //type: uint16
-        ydk::YLeaf oem; //type: string
-        ydk::YLeaf pdnum; //type: string
-        ydk::YLeaf sernum; //type: string
-        ydk::YLeaf prtnum; //type: string
-        ydk::YLeaf prev; //type: string
-        ydk::YLeaf mfgdev; //type: string
-        ydk::YLeaf hwver; //type: string
-        ydk::YLeaf mfgbits; //type: uint16
-        ydk::YLeaf engbits; //type: uint16
-        ydk::YLeaf pwrcon; //type: int16
-        ydk::YLeaf rmafl; //type: string
-        ydk::YLeaf clei; //type: string
-        ydk::YLeaf vdrid; //type: string
-        ydk::YLeaf sig; //type: uint16
-        ydk::YLeaf ver; //type: uint16
-        ydk::YLeaf len; //type: uint16
-        ydk::YLeaf cksum; //type: uint16
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpcmnItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems : public ydk::Entity
-{
-    public:
-        SplcblkItems();
-        ~SplcblkItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf fbits; //type: uint64
-        ydk::YLeaf hwcbits; //type: uint64
-        ydk::YLeaf crdidx; //type: uint16
-        ydk::YLeaf macb; //type: string
-        ydk::YLeaf macl; //type: uint16
-        ydk::YLeaf eobcn; //type: uint16
-        ydk::YLeaf epldn; //type: uint16
-        ydk::YLeaf maxcpwr; //type: uint16
-        ydk::YLeaf coolrq; //type: uint16
-        ydk::YLeaf ambt; //type: uint16
-        ydk::YLeaf sensor1; //type: string
-        ydk::YLeaf sensor2; //type: string
-        ydk::YLeaf sensor3; //type: string
-        ydk::YLeaf sensor4; //type: string
-        ydk::YLeaf sensor5; //type: string
-        ydk::YLeaf sensor6; //type: string
-        ydk::YLeaf sensor7; //type: string
-        ydk::YLeaf sensor8; //type: string
-        ydk::YLeaf sig; //type: uint16
-        ydk::YLeaf ver; //type: uint16
-        ydk::YLeaf len; //type: uint16
-        ydk::YLeaf cksum; //type: uint16
-        class SpsdItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SpsdItems
-        class SppdItems; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SppdItems
-
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SpsdItems> spsd_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SppdItems> sppd_items;
-        
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SpsdItems : public ydk::Entity
-{
-    public:
-        SpsdItems();
-        ~SpsdItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SpSdList; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SpsdItems::SpSdList
-
-        ydk::YList spsd_list;
-        
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SpsdItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SpsdItems::SpSdList : public ydk::Entity
-{
-    public:
-        SpSdList();
-        ~SpSdList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf majth; //type: int16
-        ydk::YLeaf minth; //type: int16
-        ydk::YLeaf vendor; //type: string
-        ydk::YLeaf model; //type: string
-        ydk::YLeaf rev; //type: string
-        ydk::YLeaf ser; //type: string
-        ydk::YLeaf mfgtm; //type: string
-        ydk::YLeaf descr; //type: string
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SpsdItems::SpSdList
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SppdItems : public ydk::Entity
-{
-    public:
-        SppdItems();
-        ~SppdItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prtty; //type: uint16
-        ydk::YLeaf numpts; //type: uint16
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SplcblkItems::SppdItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SppdItems : public ydk::Entity
-{
-    public:
-        SppdItems();
-        ~SppdItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prtty; //type: uint16
-        ydk::YLeaf numpts; //type: uint16
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SppdItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsdItems : public ydk::Entity
-{
-    public:
-        SpsdItems();
-        ~SpsdItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class SpSdList; //type: System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsdItems::SpSdList
-
-        ydk::YList spsd_list;
-        
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsdItems
-
-
-class System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsdItems::SpSdList : public ydk::Entity
-{
-    public:
-        SpSdList();
-        ~SpSdList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf id; //type: uint32
-        ydk::YLeaf majth; //type: int16
-        ydk::YLeaf minth; //type: int16
-        ydk::YLeaf vendor; //type: string
-        ydk::YLeaf model; //type: string
-        ydk::YLeaf rev; //type: string
-        ydk::YLeaf ser; //type: string
-        ydk::YLeaf mfgtm; //type: string
-        ydk::YLeaf descr; //type: string
-
-}; // System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsdItems::SpSdList
 
 
 }

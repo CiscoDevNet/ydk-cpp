@@ -15153,8 +15153,6 @@ bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 
 System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::DefrtleakItems::DefrtleakItems()
     :
-    name{YType::str, "name"},
-    descr{YType::str, "descr"},
     scope{YType::enumeration, "scope"},
     rtmap{YType::str, "rtMap"}
 {
@@ -15169,17 +15167,13 @@ System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfI
 bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::DefrtleakItems::has_data() const
 {
     if (is_presence_container) return true;
-    return name.is_set
-	|| descr.is_set
-	|| scope.is_set
+    return scope.is_set
 	|| rtmap.is_set;
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::DefrtleakItems::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(descr.yfilter)
 	|| ydk::is_set(scope.yfilter)
 	|| ydk::is_set(rtmap.yfilter);
 }
@@ -15195,8 +15189,6 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
     if (scope.is_set || is_set(scope.yfilter)) leaf_name_data.push_back(scope.get_name_leafdata());
     if (rtmap.is_set || is_set(rtmap.yfilter)) leaf_name_data.push_back(rtmap.get_name_leafdata());
 
@@ -15218,18 +15210,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::BgpItems::InstItems:
 
 void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::DefrtleakItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "descr")
-    {
-        descr = value;
-        descr.value_namespace = name_space;
-        descr.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "scope")
     {
         scope = value;
@@ -15246,14 +15226,6 @@ void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 
 void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::DefrtleakItems::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "descr")
-    {
-        descr.yfilter = yfilter;
-    }
     if(value_path == "scope")
     {
         scope.yfilter = yfilter;
@@ -15266,7 +15238,7 @@ void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 
 bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::DefrtleakItems::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "descr" || name == "scope" || name == "rtMap")
+    if(name == "scope" || name == "rtMap")
         return true;
     return false;
 }
@@ -15367,8 +15339,6 @@ bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::PfxctrlItems::PfxCtrlPList::PfxCtrlPList()
     :
     direction{YType::enumeration, "direction"},
-    name{YType::str, "name"},
-    descr{YType::str, "descr"},
     list{YType::str, "list"}
 {
 
@@ -15383,8 +15353,6 @@ bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 {
     if (is_presence_container) return true;
     return direction.is_set
-	|| name.is_set
-	|| descr.is_set
 	|| list.is_set;
 }
 
@@ -15392,8 +15360,6 @@ bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 {
     return is_set(yfilter)
 	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(descr.yfilter)
 	|| ydk::is_set(list.yfilter);
 }
 
@@ -15410,8 +15376,6 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
     if (list.is_set || is_set(list.yfilter)) leaf_name_data.push_back(list.get_name_leafdata());
 
     return leaf_name_data;
@@ -15438,18 +15402,6 @@ void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
         direction.value_namespace = name_space;
         direction.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "descr")
-    {
-        descr = value;
-        descr.value_namespace = name_space;
-        descr.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "list")
     {
         list = value;
@@ -15464,14 +15416,6 @@ void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
     {
         direction.yfilter = yfilter;
     }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "descr")
-    {
-        descr.yfilter = yfilter;
-    }
     if(value_path == "list")
     {
         list.yfilter = yfilter;
@@ -15480,7 +15424,7 @@ void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 
 bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::PfxctrlItems::PfxCtrlPList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "direction" || name == "name" || name == "descr" || name == "list")
+    if(name == "direction" || name == "list")
         return true;
     return false;
 }
@@ -16401,8 +16345,7 @@ bool System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionCo
 System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionContList::LocalasnItems::LocalasnItems()
     :
     localasn{YType::str, "localAsn"},
-    asnpropagate{YType::enumeration, "asnPropagate"},
-    name{YType::str, "name"}
+    asnpropagate{YType::enumeration, "asnPropagate"}
 {
 
     yang_name = "localasn-items"; yang_parent_name = "SessionCont-list"; is_top_level_class = false; has_list_ancestor = true; 
@@ -16416,16 +16359,14 @@ bool System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionCo
 {
     if (is_presence_container) return true;
     return localasn.is_set
-	|| asnpropagate.is_set
-	|| name.is_set;
+	|| asnpropagate.is_set;
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionContList::LocalasnItems::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(localasn.yfilter)
-	|| ydk::is_set(asnpropagate.yfilter)
-	|| ydk::is_set(name.yfilter);
+	|| ydk::is_set(asnpropagate.yfilter);
 }
 
 std::string System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionContList::LocalasnItems::get_segment_path() const
@@ -16441,7 +16382,6 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
 
     if (localasn.is_set || is_set(localasn.yfilter)) leaf_name_data.push_back(localasn.get_name_leafdata());
     if (asnpropagate.is_set || is_set(asnpropagate.yfilter)) leaf_name_data.push_back(asnpropagate.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -16473,12 +16413,6 @@ void System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionCo
         asnpropagate.value_namespace = name_space;
         asnpropagate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionContList::LocalasnItems::set_filter(const std::string & value_path, YFilter yfilter)
@@ -16491,15 +16425,11 @@ void System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionCo
     {
         asnpropagate.yfilter = yfilter;
     }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::SessioncontItems::SessionContList::LocalasnItems::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "localAsn" || name == "asnPropagate" || name == "name")
+    if(name == "localAsn" || name == "asnPropagate")
         return true;
     return false;
 }
@@ -16614,6 +16544,7 @@ System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList:
     soo{YType::str, "soo"},
     sendcomstd{YType::enumeration, "sendComStd"},
     sendcomext{YType::enumeration, "sendComExt"},
+    advlocallblrt{YType::enumeration, "advLocalLblRt"},
     inheritcontpeerpolicyctrl{YType::str, "inheritContPeerPolicyCtrl"}
         ,
     maxpfxp_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::MaxpfxpItems>())
@@ -16655,6 +16586,7 @@ bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 	|| soo.is_set
 	|| sendcomstd.is_set
 	|| sendcomext.is_set
+	|| advlocallblrt.is_set
 	|| inheritcontpeerpolicyctrl.is_set
 	|| (maxpfxp_items !=  nullptr && maxpfxp_items->has_data())
 	|| (advtmap_items !=  nullptr && advtmap_items->has_data())
@@ -16682,6 +16614,7 @@ bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 	|| ydk::is_set(soo.yfilter)
 	|| ydk::is_set(sendcomstd.yfilter)
 	|| ydk::is_set(sendcomext.yfilter)
+	|| ydk::is_set(advlocallblrt.yfilter)
 	|| ydk::is_set(inheritcontpeerpolicyctrl.yfilter)
 	|| (maxpfxp_items !=  nullptr && maxpfxp_items->has_operation())
 	|| (advtmap_items !=  nullptr && advtmap_items->has_operation())
@@ -16718,6 +16651,7 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (soo.is_set || is_set(soo.yfilter)) leaf_name_data.push_back(soo.get_name_leafdata());
     if (sendcomstd.is_set || is_set(sendcomstd.yfilter)) leaf_name_data.push_back(sendcomstd.get_name_leafdata());
     if (sendcomext.is_set || is_set(sendcomext.yfilter)) leaf_name_data.push_back(sendcomext.get_name_leafdata());
+    if (advlocallblrt.is_set || is_set(advlocallblrt.yfilter)) leaf_name_data.push_back(advlocallblrt.get_name_leafdata());
     if (inheritcontpeerpolicyctrl.is_set || is_set(inheritcontpeerpolicyctrl.yfilter)) leaf_name_data.push_back(inheritcontpeerpolicyctrl.get_name_leafdata());
 
     return leaf_name_data;
@@ -16912,6 +16846,12 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
         sendcomext.value_namespace = name_space;
         sendcomext.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "advLocalLblRt")
+    {
+        advlocallblrt = value;
+        advlocallblrt.value_namespace = name_space;
+        advlocallblrt.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "inheritContPeerPolicyCtrl")
     {
         inheritcontpeerpolicyctrl = value;
@@ -16982,6 +16922,10 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
     {
         sendcomext.yfilter = yfilter;
     }
+    if(value_path == "advLocalLblRt")
+    {
+        advlocallblrt.yfilter = yfilter;
+    }
     if(value_path == "inheritContPeerPolicyCtrl")
     {
         inheritcontpeerpolicyctrl.yfilter = yfilter;
@@ -16990,7 +16934,7 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 
 bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "maxpfxp-items" || name == "advtmap-items" || name == "rtctrl-items" || name == "pfxctrl-items" || name == "fltrctrl-items" || name == "pol-items" || name == "name" || name == "ctrl" || name == "allowedSelfAsCnt" || name == "softReconfigBackup" || name == "advIntvl" || name == "defOrg" || name == "defOrgRtMap" || name == "capAddlPaths" || name == "unSupprMap" || name == "asOverride" || name == "nhThirdparty" || name == "wght" || name == "soo" || name == "sendComStd" || name == "sendComExt" || name == "inheritContPeerPolicyCtrl")
+    if(name == "maxpfxp-items" || name == "advtmap-items" || name == "rtctrl-items" || name == "pfxctrl-items" || name == "fltrctrl-items" || name == "pol-items" || name == "name" || name == "ctrl" || name == "allowedSelfAsCnt" || name == "softReconfigBackup" || name == "advIntvl" || name == "defOrg" || name == "defOrgRtMap" || name == "capAddlPaths" || name == "unSupprMap" || name == "asOverride" || name == "nhThirdparty" || name == "wght" || name == "soo" || name == "sendComStd" || name == "sendComExt" || name == "advLocalLblRt" || name == "inheritContPeerPolicyCtrl")
         return true;
     return false;
 }
@@ -17000,9 +16944,7 @@ System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList:
     maxpfx{YType::uint32, "maxPfx"},
     thresh{YType::uint8, "thresh"},
     action{YType::enumeration, "action"},
-    restarttime{YType::uint16, "restartTime"},
-    name{YType::str, "name"},
-    descr{YType::str, "descr"}
+    restarttime{YType::uint16, "restartTime"}
 {
 
     yang_name = "maxpfxp-items"; yang_parent_name = "PolicyCont-list"; is_top_level_class = false; has_list_ancestor = true; 
@@ -17018,9 +16960,7 @@ bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
     return maxpfx.is_set
 	|| thresh.is_set
 	|| action.is_set
-	|| restarttime.is_set
-	|| name.is_set
-	|| descr.is_set;
+	|| restarttime.is_set;
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::MaxpfxpItems::has_operation() const
@@ -17029,9 +16969,7 @@ bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 	|| ydk::is_set(maxpfx.yfilter)
 	|| ydk::is_set(thresh.yfilter)
 	|| ydk::is_set(action.yfilter)
-	|| ydk::is_set(restarttime.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(descr.yfilter);
+	|| ydk::is_set(restarttime.yfilter);
 }
 
 std::string System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::MaxpfxpItems::get_segment_path() const
@@ -17049,8 +16987,6 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (thresh.is_set || is_set(thresh.yfilter)) leaf_name_data.push_back(thresh.get_name_leafdata());
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
     if (restarttime.is_set || is_set(restarttime.yfilter)) leaf_name_data.push_back(restarttime.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -17094,18 +17030,6 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
         restarttime.value_namespace = name_space;
         restarttime.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "descr")
-    {
-        descr = value;
-        descr.value_namespace = name_space;
-        descr.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::MaxpfxpItems::set_filter(const std::string & value_path, YFilter yfilter)
@@ -17126,19 +17050,11 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
     {
         restarttime.yfilter = yfilter;
     }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "descr")
-    {
-        descr.yfilter = yfilter;
-    }
 }
 
 bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::MaxpfxpItems::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "maxPfx" || name == "thresh" || name == "action" || name == "restartTime" || name == "name" || name == "descr")
+    if(name == "maxPfx" || name == "thresh" || name == "action" || name == "restartTime")
         return true;
     return false;
 }
@@ -17573,8 +17489,6 @@ bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::PfxctrlItems::PfxCtrlPList::PfxCtrlPList()
     :
     direction{YType::enumeration, "direction"},
-    name{YType::str, "name"},
-    descr{YType::str, "descr"},
     list{YType::str, "list"}
 {
 
@@ -17589,8 +17503,6 @@ bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 {
     if (is_presence_container) return true;
     return direction.is_set
-	|| name.is_set
-	|| descr.is_set
 	|| list.is_set;
 }
 
@@ -17598,8 +17510,6 @@ bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 {
     return is_set(yfilter)
 	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(descr.yfilter)
 	|| ydk::is_set(list.yfilter);
 }
 
@@ -17616,8 +17526,6 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
     if (list.is_set || is_set(list.yfilter)) leaf_name_data.push_back(list.get_name_leafdata());
 
     return leaf_name_data;
@@ -17644,18 +17552,6 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
         direction.value_namespace = name_space;
         direction.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "descr")
-    {
-        descr = value;
-        descr.value_namespace = name_space;
-        descr.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "list")
     {
         list = value;
@@ -17670,14 +17566,6 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
     {
         direction.yfilter = yfilter;
     }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "descr")
-    {
-        descr.yfilter = yfilter;
-    }
     if(value_path == "list")
     {
         list.yfilter = yfilter;
@@ -17686,7 +17574,7 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 
 bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::PfxctrlItems::PfxCtrlPList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "direction" || name == "name" || name == "descr" || name == "list")
+    if(name == "direction" || name == "list")
         return true;
     return false;
 }

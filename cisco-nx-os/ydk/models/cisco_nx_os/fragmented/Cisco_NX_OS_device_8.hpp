@@ -2301,8 +2301,6 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Defrtl
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
         ydk::YLeaf scope; //type: RtleakScope
         ydk::YLeaf rtmap; //type: string
 
@@ -2350,8 +2348,6 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Interl
 
         ydk::YLeaf proto; //type: RtleakProto
         ydk::YLeaf inst; //type: string
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
         ydk::YLeaf scope; //type: RtleakScope
         ydk::YLeaf rtmap; //type: string
         ydk::YLeaf asn; //type: string
@@ -2401,7 +2397,6 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Injnam
         ydk::YLeaf name; //type: string
         ydk::YLeaf rtmap; //type: string
         ydk::YLeaf copyattr; //type: BgpAdminSt
-        ydk::YLeaf descr; //type: string
         ydk::YLeaf scope; //type: RtleakScope
 
 }; // System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::InjnameItems::InjLeakPList
@@ -2480,8 +2475,6 @@ class System::BgpItems::InstItems::DomItems::DomList::GrItems : public ydk::Enti
         ydk::YLeaf ctrl; //type: string
         ydk::YLeaf restartintvl; //type: uint16
         ydk::YLeaf staleintvl; //type: uint16
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::GrItems
 
@@ -2589,7 +2582,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::Local
 
         ydk::YLeaf localasn; //type: string
         ydk::YLeaf asnpropagate; //type: BgpAsnPropagation
-        ydk::YLeaf name; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::LocalasnItems
 
@@ -2658,7 +2650,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EntIt
         ydk::YLeaf connattempts; //type: uint32
         ydk::YLeaf streason; //type: BgpStReason
         ydk::YLeaf passwdset; //type: BgpPasswdSet
-        ydk::YLeaf name; //type: string
         class GrItems; //type: System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EntItems::PeerEntryList::GrItems
         class EvItems; //type: System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EntItems::PeerEntryList::EvItems
         class EpeItems; //type: System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EntItems::PeerEntryList::EpeItems
@@ -2751,7 +2742,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EntIt
         ydk::YLeaf peersetname; //type: string
         ydk::YLeaf peersetsid; //type: uint32
         ydk::YLeaf peersetrpcsetid; //type: uint32
-        ydk::YLeaf name; //type: string
         class EpeadjItems; //type: System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EntItems::PeerEntryList::EpeItems::EpeadjItems
 
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EntItems::PeerEntryList::EpeItems::EpeadjItems> epeadj_items;
@@ -2860,7 +2850,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EntIt
         ydk::YLeaf pfxflushed; //type: uint64
         ydk::YLeaf lasteorrcvdts; //type: string
         ydk::YLeaf firsteorrcvdts; //type: string
-        ydk::YLeaf name; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EntItems::PeerEntryList::AfItems::PeerAfEntryList
 
@@ -2927,7 +2916,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EpeIt
         ydk::YLeaf peersetname; //type: string
         ydk::YLeaf peersetsid; //type: uint32
         ydk::YLeaf peersetrpcsetid; //type: uint32
-        ydk::YLeaf name; //type: string
         class EpeadjItems; //type: System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EpeItems::EpeadjItems
 
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::EpeItems::EpeadjItems> epeadj_items;
@@ -3040,6 +3028,7 @@ class System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::AfIte
         ydk::YLeaf encapmpls; //type: BgpAdminSt
         ydk::YLeaf rewritertasn; //type: BgpAdminSt
         ydk::YLeaf advgwip; //type: NwAdminSt_
+        ydk::YLeaf advlocallblrt; //type: NwAdminSt_
         ydk::YLeaf inheritcontpeerpolicyctrl; //type: string
         ydk::YLeaf name; //type: string
         class MaxpfxpItems; //type: System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::AfItems::PeerAfList::MaxpfxpItems
@@ -3099,8 +3088,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::AfIte
         ydk::YLeaf thresh; //type: uint8
         ydk::YLeaf action; //type: BgpMaxPfxAct
         ydk::YLeaf restarttime; //type: uint16
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::AfItems::PeerAfList::MaxpfxpItems
 

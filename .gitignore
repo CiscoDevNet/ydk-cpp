@@ -21,3 +21,5 @@ gittmp*/
 
 *.sublime-project
 *.sublime-workspace
+core/ydk/build
+gnmi/build
