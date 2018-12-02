@@ -12,8 +12,7 @@ matrix:
 
 before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update  ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl doxygen libssh xml2 ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install libssh && brew link libssh ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./dependencies_osx.sh ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key|sudo apt-key add - ; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update > /dev/null; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y bison curl doxygen flex git libboost-all-dev libboost-log-dev libcurl4-openssl-dev libpcre3-dev libpcre++-dev libssh-dev libtool libxml2-dev libxslt1-dev pkg-config software-properties-common unzip  zlib1g-dev cmake > /dev/null; fi
@@ -23,19 +22,16 @@ before_install:
 
 script:
     - cd core/ydk
-    - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_BUILD_TYPE=Release .. && sudo make install test
+    - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install test
 
     - cd ../../../gnmi
-    - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DCMAKE_BUILD_TYPE=Release .. && sudo make install
-
+    - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
 
     - cd ../../ietf
     - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
 
-    - cd ../..
-    - cd openconfig
+    - cd ../../openconfig
     - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
 
-    - cd ../..
-    - cd cisco-nx-os
+    - cd ../../cisco-nx-os
     - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
