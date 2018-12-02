@@ -24,9 +24,6 @@ script:
     - cd core/ydk
     - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install test
 
-    - cd ../../../gnmi
-    - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
-
     - cd ../../ietf
     - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
 
