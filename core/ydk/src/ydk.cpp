@@ -76,7 +76,7 @@ typedef struct RootSchemaNodeWrapper
 } RootSchemaNodeWrapper;
 
 //////////////////////////////////////////////////////////////////////////
-// Utility functions
+// Internal utility functions
 //////////////////////////////////////////////////////////////////////////
 static DataNodeWrapper* wrap(ydk::path::DataNode* datanode)
 {
@@ -96,6 +96,11 @@ static ydk::path::DataNode* unwrap(DataNodeWrapper* datanode_wrapper)
 static RootSchemaNodeWrapper* wrap(shared_ptr<ydk::path::RootSchemaNode> node)
 {
     return (new RootSchemaNodeWrapper(node));
+}
+
+static RootSchemaNodeWrapper* wrap(ydk::path::RootSchemaNode * node)
+{
+    return (new RootSchemaNodeWrapper( shared_ptr<ydk::path::RootSchemaNode> (node) ));
 }
 
 static ydk::path::RootSchemaNode* unwrap(RootSchemaNodeWrapper* node_wrapper)
@@ -144,7 +149,7 @@ static const char* string_to_array(const string & str)
     return cstr;
 }
 
-static void handle_error_message(YDKState* state, const char * message)
+void handle_error_message(YDKState* state, const char * message)
 {
     state->error_occurred = true;
     if (state->error_message)
@@ -155,7 +160,7 @@ static void handle_error_message(YDKState* state, const char * message)
     std::strcpy(state->error_message, message);
 }
 
-static void handle_error(YDKState* state)
+void handle_error(YDKState* state)
 {
     try
     {
@@ -332,6 +337,11 @@ void CapabilityFree(Capability cap)
     {
         delete real_cap;
     }
+}
+
+const char * ServiceProviderType(ServiceProvider provider) {
+	ydk::ServiceProvider * real_provider = static_cast<ydk::ServiceProvider*>(provider);
+	return real_provider->get_provider_type().c_str();
 }
 
 ServiceProvider NetconfServiceProviderInit(
@@ -582,6 +592,20 @@ RootSchemaNode ServiceProviderGetRootSchema(YDKStatePtr state, ServiceProvider p
     }
 }
 
+RootSchemaWrapper ServiceProviderGetRootSchemaNode(YDKStatePtr state, ServiceProvider provider)
+{
+    try {
+        ydk::ServiceProvider * real_provider = static_cast<ydk::ServiceProvider*>(provider);
+        ydk::path::RootSchemaNode* root_schema = &real_provider->get_session().get_root_schema();
+        return static_cast<void*>(wrap(root_schema));
+    }
+    catch(...) {
+        YDKState* real_state = static_cast<YDKState*>(state);
+        handle_error(real_state);
+        return NULL;
+    }
+}
+
 EncodingFormat ServiceProviderGetEncoding(ServiceProvider provider)
 {
     ydk::ServiceProvider * real_provider = static_cast<ydk::ServiceProvider*>(provider);
@@ -591,6 +615,27 @@ EncodingFormat ServiceProviderGetEncoding(ServiceProvider provider)
     }
     else {
         return JSON;
+    }
+}
+
+Session ServiceProviderGetSession(ServiceProvider provider)
+{
+    ydk::ServiceProvider * real_provider = static_cast<ydk::ServiceProvider*>(provider);
+    ydk::path::Session& s = const_cast<ydk::path::Session&>(real_provider->get_session());
+    return static_cast<void*>(&s);
+}
+
+RootSchemaNode SessionGetRootSchema(YDKStatePtr state, Session session)
+{
+    try {
+    	ydk::path::Session * real_session = static_cast<ydk::path::Session*>(session);
+        ydk::path::RootSchemaNode & root_schema = real_session->get_root_schema();
+        return static_cast<void*>(wrap(&root_schema));
+    }
+    catch(...) {
+        YDKState* real_state = static_cast<YDKState*>(state);
+        handle_error(real_state);
+        return NULL;
     }
 }
 

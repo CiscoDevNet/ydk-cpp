@@ -22,7 +22,7 @@
 //////////////////////////////////////////////////////////////////
 
 #include <iostream>
-#include "../src/path/netconf_model_provider.hpp"
+#include "../src/netconf_model_provider.hpp"
 #include "../src/path_api.hpp"
 #include "../src/path/path_private.hpp"
 #include "config.hpp"

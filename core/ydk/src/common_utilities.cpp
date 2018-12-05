@@ -26,6 +26,7 @@
 #include "common_utilities.hpp"
 #include "entity_data_node_walker.hpp"
 #include "xml_subtree_codec.hpp"
+#include "path/path_private.hpp"
 
 using namespace std;
 namespace ydk
@@ -166,4 +167,90 @@ vector<string> get_union(vector<string> & v1, vector<string> & v2)
     }
     return v;
 }
+
+shared_ptr<Entity>
+execute_rpc(ydk::ServiceProvider & provider, Entity & entity,
+            const string & operation, const string & data_tag, bool set_config_flag)
+{
+    vector<Entity*> input_list{};
+    input_list.push_back(&entity);
+
+    vector<shared_ptr<Entity>> output_list = execute_rpc(provider, input_list, operation, data_tag, set_config_flag);
+    if (output_list.size() == 0)
+        return nullptr;
+
+    return output_list[0];
+}
+
+vector<shared_ptr<Entity>>
+execute_rpc(ydk::ServiceProvider & provider, vector<Entity*> & filter_list,
+            const string & operation, const string & data_tag, bool set_config_flag)
+{
+    const path::Session& session = provider.get_session();
+    path::RootSchemaNode& root_schema = session.get_root_schema();
+    shared_ptr<ydk::path::Rpc> ydk_rpc{ root_schema.create_rpc(operation) };
+    vector<shared_ptr<Entity>> result_list{};
+
+    string xml_payload = "";
+    for (Entity* entity : filter_list)
+    {
+        if (data_tag == "filter" && provider.get_encoding() == EncodingFormat::XML) {
+            xml_payload += get_xml_subtree_filter_payload(*entity, provider);
+        }
+        else {
+            xml_payload += get_data_payload(*entity, provider);
+        }
+    }
+
+    if (set_config_flag)
+        ydk_rpc->get_input_node().create_datanode("only-config");
+    ydk_rpc->get_input_node().create_datanode(data_tag, xml_payload);
+
+    // Get root data node
+    shared_ptr<path::DataNode> rnd = (*ydk_rpc)(session);
+    if (rnd == nullptr)
+        return result_list;
+
+    // Build mapping of DataNode path to DataNode pointer.
+    // Use this mapping to retain order of filter list in results.
+    map<string,shared_ptr<path::DataNode>> path_to_datanode{};
+    for (auto dn : rnd->get_children()) {
+        string internal_key = dn->get_path().substr(1);
+        path_to_datanode[internal_key] = dn;
+    }
+
+    // Build resulting list of entities
+    for (Entity* entity : filter_list) {
+        string internal_key = entity->get_segment_path();
+        shared_ptr<path::DataNode> datanode = path_to_datanode[internal_key];
+        if (!datanode) {
+            YLOG_DEBUG("Searching for datanode using entity yang name '{}'", entity->yang_name);
+            path_to_datanode.erase(internal_key);
+            for (auto dn_entry : path_to_datanode) {
+                if (dn_entry.first.find(entity->yang_name) != string::npos && dn_entry.second) {
+                    datanode = dn_entry.second;
+                    break;
+                }
+            }
+        }
+        if (datanode) {
+            result_list.push_back( read_datanode(*entity, datanode));
+        }
+        else {
+            YLOG_DEBUG("CRUD read operation did not return data node on entity '{}'; returning nullptr.", internal_key);
+            result_list.push_back(nullptr);
+        }
+    }
+
+    return result_list;
+}
+
+path::DataNode* create_root_datanode(path::RootSchemaNode* root_schema)
+{
+	path::RootSchemaNodeImpl & rs_impl = dynamic_cast<path::RootSchemaNodeImpl &> (*root_schema);
+	path::RootDataImpl* rd = new path::RootDataImpl{rs_impl, rs_impl.m_ctx, "/"};
+	path::DataNodeImpl* rdn = dynamic_cast<path::DataNodeImpl*> (rd);
+    return rdn;
+}
+
 }

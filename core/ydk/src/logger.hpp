@@ -59,7 +59,9 @@ class Logger
                                            buffer, \
                                            args...); \
                     func(buffer.str().c_str()); \
+                    return;\
                 } \
+            /* Only applies to C++ core */ \
             if(!lazy_check()) { return; } \
             internal_logger->loglevel<Args...>(fmt, args...); \
         }
@@ -69,7 +71,8 @@ class Logger
         void loglevel(const T& msg) \
         { \
             logging_callback func = get_logging_callback(STRINGIFY(loglevel)); \
-            if(func != nullptr) { func(msg); } \
+            if(func != nullptr) { func(msg); return; } \
+            /* Only applies to C++ core */ \
             if(!lazy_check()) { return; } \
             internal_logger->loglevel<T>(msg); \
         }
@@ -109,7 +112,7 @@ class Logger
 
         bool is_logger_found()
         {
-            return (internal_logger && internal_logger != nullptr);
+            return (internal_logger != nullptr);
         }
 
     private:

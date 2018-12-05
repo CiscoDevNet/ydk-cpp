@@ -26,6 +26,7 @@
 
 #include "entity_util.hpp"
 #include "errors.hpp"
+#include "logger.hpp"
 
 using namespace std;
 

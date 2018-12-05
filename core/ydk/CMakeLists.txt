@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
-project(ydk VERSION 0.7.2 LANGUAGES C CXX)
-
+project(ydk VERSION 0.8.0 LANGUAGES C CXX)
 
 set(YDK_DESCRIPTION "YANG Development Kit Library. The library for  YDK API.")
 
@@ -154,7 +153,7 @@ set(libydk_src
     src/netconf_tcp_client.cpp
     src/netconf_provider.cpp
     src/netconf_service.cpp
-    src/path/netconf_session.cpp
+    src/netconf_session.cpp
     src/network_topology.cpp
     src/opendaylight_parser.cpp
     src/opendaylight_provider.cpp
@@ -171,7 +170,7 @@ set(libydk_src
     src/path/annotation.cpp
     src/path/capability.cpp
     src/path/data_node.cpp
-    src/path/netconf_model_provider.cpp
+    src/netconf_model_provider.cpp
     src/path/path.cpp
     src/path/repository.cpp
     src/path/restconf_session.cpp
@@ -195,6 +194,7 @@ set(spdlog_fmt_bundled_include_location include/spdlog/fmt/bundled)
 set(spdlog_sinks_include_location include/spdlog/sinks)
 
 set(libydk_install_headers
+    src/netconf_model_provider.hpp
     src/capabilities_parser.hpp
     src/codec_provider.hpp
     src/codec_service.hpp
@@ -206,6 +206,9 @@ set(libydk_install_headers
     src/errors.hpp
     src/executor_service.hpp
     src/filters.hpp
+    src/ietf_parser.hpp
+    src/json.hpp
+    src/logger.hpp
     src/logging_callback.hpp
     src/netconf_client.hpp
     src/netconf_provider.hpp
@@ -356,6 +359,7 @@ find_package(LibSSH REQUIRED)
 # Add LibNetconf
 set(libnetconf_include_location include/libnetconf)
 set(libnetconf_headers_location ${CMAKE_CURRENT_BINARY_DIR}/project_libnetconf/headers)
+
 include(ExternalProject)
 ExternalProject_Add(project_libnetconf
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}/project_libnetconf"
@@ -456,6 +460,7 @@ target_link_libraries(ydk
     ${pthread_location}
     libnetconf
     libyang
+    -rdynamic
     ${dl_location}
 )
 

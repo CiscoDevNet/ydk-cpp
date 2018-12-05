@@ -40,8 +40,11 @@ std::string to_string(YFilter yfilter)
         TOSTR(replace)
         TOSTR(not_set)
         TOSTR(read)
+        TOSTR(update)
         case YFilter::delete_:
             return "delete";
+        default:
+            return "unknown";
     }
     #undef TOSTR
     return {};

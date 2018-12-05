@@ -103,3 +103,8 @@ bool ydk::path::RpcImpl::has_output_node() const
     }
     return result;
 }
+
+std::string ydk::path::RpcImpl::get_name() const
+{
+    return ((SchemaNodeImpl*)&schema_node)->m_node->name;
+}

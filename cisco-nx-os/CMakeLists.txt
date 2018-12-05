@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
-project(ydk_cisco_nx_os VERSION 9.2.1 LANGUAGES C CXX)
+project(ydk_cisco_nx_os VERSION 9.2.2 LANGUAGES C CXX)
 
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk-cisco-nx-os")
@@ -97,7 +97,7 @@ include(CPack)
 # include custom Modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 
-set(YDK_YANG_ARCHIVE cisco_nx_os\@9.2.1)
+set(YDK_YANG_ARCHIVE cisco_nx_os\@9.2.2)
 
 if(NOT LIB_INSTALL_DIR)
     set(LIB_INSTALL_DIR lib)
@@ -108,7 +108,7 @@ if(NOT INCLUDE_INSTALL_DIR)
 endif()
 
 if(NOT YANG_INSTALL_DIR)
-    set(YANG_INSTALL_DIR share/cisco_nx_os\@9.2.1)
+    set(YANG_INSTALL_DIR share/cisco_nx_os\@9.2.2)
 endif()
 
 # set default build type if not specified by user
@@ -132,7 +132,7 @@ set(libydk_cisco_nx_os_headers ydk/models/cisco_nx_os/bundle_info.hpp ydk/models
 
 set(libydk_cisco_nx_os_yang Cisco-NX-OS-device.yang ydk@2016-02-26.yang ietf-diffserv-policy.yang ietf-event-notifications.yang ietf-netconf-acm.yang ietf-ipv6-unicast-routing.yang ietf-inet-types.yang iana-if-type.yang ietf-netconf.yang iana-crypt-hash.yang ietf-interfaces-ext.yang ietf-yang-push.yang ietf-routing.yang ietf-yang-types.yang ietf-ipv4-unicast-routing.yang ietf-diffserv-action.yang ietf-key-chain.yang ietf-ip.yang ietf-yang-smiv2.yang ietf-netconf-notifications.yang ietf-syslog-types.yang ietf-ospf.yang ietf-restconf-monitoring.yang ietf-diffserv-classifier.yang policy-types.yang ietf-interfaces.yang ietf-diffserv-target.yang ietf-netconf-with-defaults.yang ietf-yang-library.yang ietf-netconf-monitoring.yang)
 
-set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/cisco_nx_os\@9.2.1)
+set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/cisco_nx_os\@9.2.2)
 
 list(APPEND libydk_YANG_FILES "")
 foreach(yang_file IN LISTS libydk_cisco_nx_os_yang)

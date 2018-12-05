@@ -73,7 +73,6 @@ class System : public ydk::Entity
         class IsisItems; //type: System::IsisItems
         class LacpItems; //type: System::LacpItems
         class MgmtItems; //type: System::MgmtItems
-        class MitOperItems; //type: System::MitOperItems
         class SnmpItems; //type: System::SnmpItems
         class SyslogacctItems; //type: System::SyslogacctItems
         class SyslogItems; //type: System::SyslogItems
@@ -181,6 +180,7 @@ class System : public ydk::Entity
         class AdjacencyItems; //type: System::AdjacencyItems
         class ArpItems; //type: System::ArpItems
         class BfdItems; //type: System::BfdItems
+        class CfsItems; //type: System::CfsItems
         class HsrpItems; //type: System::HsrpItems
         class Icmpv4Items; //type: System::Icmpv4Items
         class Icmpv6Items; //type: System::Icmpv6Items
@@ -240,7 +240,6 @@ class System : public ydk::Entity
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::IsisItems> isis_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::LacpItems> lacp_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::MgmtItems> mgmt_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::MitOperItems> mitoper_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SnmpItems> snmp_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SyslogacctItems> syslogacct_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SyslogItems> syslog_items;
@@ -348,6 +347,7 @@ class System : public ydk::Entity
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::AdjacencyItems> adjacency_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::ArpItems> arp_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::BfdItems> bfd_items;
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::CfsItems> cfs_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::HsrpItems> hsrp_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::Icmpv4Items> icmpv4_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::Icmpv6Items> icmpv6_items;
@@ -513,11 +513,9 @@ class System::BgpItems::InstItems::DomItems::DomList : public ydk::Entity
         ydk::YLeaf pfxpeertimeout; //type: uint16
         ydk::YLeaf pfxpeerwaittime; //type: uint16
         ydk::YLeaf maxaslimit; //type: uint16
-        ydk::YLeaf rd; //type: string
         ydk::YLeaf bestpathintvl; //type: uint16
         ydk::YLeaf always; //type: BgpAdminSt
         ydk::YLeaf reconnintvl; //type: uint16
-        ydk::YLeaf cfgsrcctrlr; //type: BgpAdminSt
         ydk::YLeaf operst; //type: BgpDomOperSt
         ydk::YLeaf operrtrid; //type: string
         ydk::YLeaf firstpeerupts; //type: string
@@ -604,6 +602,7 @@ class System::BgpItems::InstItems::DomItems::DomList::PathctrlItems : public ydk
         ydk::YLeaf medconfed; //type: BgpAdminSt
         ydk::YLeaf medmissingasworst; //type: BgpAdminSt
         ydk::YLeaf mednondeter; //type: BgpAdminSt
+        ydk::YLeaf igpmetricignore; //type: BgpAdminSt
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PathctrlItems
 
@@ -753,10 +752,8 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList : publi
         ydk::YLeaf definforigrtt; //type: string
         ydk::YLeaf igpmetric; //type: uint16
         ydk::YLeaf supprinactive; //type: BgpAdminSt
-        ydk::YLeaf cfgsrcctrlr; //type: BgpAdminSt
         ydk::YLeaf advpip; //type: BgpAdminSt
         ydk::YLeaf exportgwip; //type: BgpAdminSt
-        ydk::YLeaf name; //type: string
         class CtrlItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::CtrlItems
         class AdminDistItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::AdminDistItems
         class DampeningItems; //type: System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::DampeningItems
@@ -868,7 +865,6 @@ class System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::CtrlIt
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: BgpAfT
-        ydk::YLeaf name; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::CtrlItems::VpnCtrlPList
 
@@ -4299,14 +4295,6 @@ class VrrpPreempt : public ydk::Enum
 
 };
 
-class NwAdminStIfStatIcmpRedirect : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-
-};
-
 class FlowSamplerMode : public ydk::Enum
 {
     public:
@@ -4396,6 +4384,14 @@ class StpSimulate : public ydk::Enum
 
 };
 
+class NwAdminStIfStatIcmpRedirect : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+
+};
+
 class FsetAdminState : public ydk::Enum
 {
     public:
@@ -4404,6 +4400,14 @@ class FsetAdminState : public ydk::Enum
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf installed;
         static const ydk::Enum::YLeaf uninstalled;
+
+};
+
+class L2EnfPref : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sw;
+        static const ydk::Enum::YLeaf hw;
 
 };
 
@@ -4441,6 +4445,14 @@ class BgpMajNotifErr : public ydk::Enum
         static const ydk::Enum::YLeaf rcvd_notif_err;
         static const ydk::Enum::YLeaf rcvd_dup_conn_req;
         static const ydk::Enum::YLeaf dyn_cap_no_buf;
+
+};
+
+class IpHardwareEcmpHashPolynomialT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf CRC16;
+        static const ydk::Enum::YLeaf CRC32HI;
 
 };
 
@@ -4694,14 +4706,6 @@ class BgpMinNotifErr : public ydk::Enum
 
 };
 
-class MitTreeType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mit_running;
-        static const ydk::Enum::YLeaf mit_candidate;
-
-};
-
 class AaaAuthenticationProtocol : public ydk::Enum
 {
     public:
@@ -4779,6 +4783,14 @@ class AaaRealm : public ydk::Enum
         static const ydk::Enum::YLeaf radius;
         static const ydk::Enum::YLeaf tacacs;
         static const ydk::Enum::YLeaf ldap;
+
+};
+
+class PlatformPfcMmuBufferSt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
@@ -5069,14 +5081,6 @@ class L2MacType : public ydk::Enum
 
 };
 
-class MitLockStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mit_unlocked;
-        static const ydk::Enum::YLeaf mit_locked;
-
-};
-
 class RtleakScope : public ydk::Enum
 {
     public:
@@ -5265,14 +5269,6 @@ class NwAdminStProcessStatAutoDiscAdd : public ydk::Enum
 
 };
 
-class RtmapCriteria : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf exact;
-        static const ydk::Enum::YLeaf sub_group;
-
-};
-
 class EqptFcotDomLane : public ydk::Enum
 {
     public:
@@ -5371,12 +5367,11 @@ class CoppMcast : public ydk::Enum
 
 };
 
-class RtdmcPolicyDirType : public ydk::Enum
+class AnalyticsOportSupportT : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf in;
-        static const ydk::Enum::YLeaf out;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -5896,6 +5891,15 @@ class M6ribHoldAdminSt : public ydk::Enum
 
 };
 
+class PlatformPstatCfg : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf PSTAT_DISABLE;
+        static const ydk::Enum::YLeaf PSTAT_ENABLE;
+        static const ydk::Enum::YLeaf PSTAT_ENABLE_PEAK;
+
+};
+
 class SisfRaGuardRouterPreferenceMaximum : public ydk::Enum
 {
     public:
@@ -6269,6 +6273,15 @@ class PlatformBufferMonitorMd : public ydk::Enum
         static const ydk::Enum::YLeaf None;
         static const ydk::Enum::YLeaf Unicast;
         static const ydk::Enum::YLeaf Multicast;
+
+};
+
+class StpRootType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf secondary;
 
 };
 
@@ -6901,14 +6914,6 @@ class IpqosPolicyType : public ydk::Enum
 
 };
 
-class L2EnfPref : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sw;
-        static const ydk::Enum::YLeaf hw;
-
-};
-
 class IsisDbT : public ydk::Enum
 {
     public:
@@ -7068,17 +7073,6 @@ class BgpRtCtrlOperSt : public ydk::Enum
 
 };
 
-class L1PhyLayer : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf sup_inband;
-        static const ydk::Enum::YLeaf eobc;
-        static const ydk::Enum::YLeaf mgmt;
-        static const ydk::Enum::YLeaf max;
-
-};
-
 class RtleakProto : public ydk::Enum
 {
     public:
@@ -7122,6 +7116,25 @@ class InstallerInstType : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf disruptive;
         static const ydk::Enum::YLeaf non_disruptive;
+
+};
+
+class OspfEventType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf adj;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf ha;
+        static const ydk::Enum::YLeaf lsa_flood;
+        static const ydk::Enum::YLeaf lsa;
+        static const ydk::Enum::YLeaf spf;
+        static const ydk::Enum::YLeaf redist;
+        static const ydk::Enum::YLeaf ldp;
+        static const ydk::Enum::YLeaf mpls_te;
+        static const ydk::Enum::YLeaf hello;
+        static const ydk::Enum::YLeaf rib;
+        static const ydk::Enum::YLeaf spf_trigger;
+        static const ydk::Enum::YLeaf cli;
 
 };
 
@@ -7281,18 +7294,6 @@ class BgpPeerOperSt : public ydk::Enum
 
 };
 
-class MitOperType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf commit_verify;
-        static const ydk::Enum::YLeaf commit_normal;
-        static const ydk::Enum::YLeaf commit_confirm_start;
-        static const ydk::Enum::YLeaf commit_confirm_end;
-        static const ydk::Enum::YLeaf commit_reset_timeout;
-        static const ydk::Enum::YLeaf commit_confirm_cancel;
-
-};
-
 class RtctrlRtCtrlDir : public ydk::Enum
 {
     public:
@@ -7436,6 +7437,16 @@ class L1Duplex : public ydk::Enum
 
 };
 
+class L1PacketTimestampState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable_ingress;
+        static const ydk::Enum::YLeaf enable_egress;
+        static const ydk::Enum::YLeaf enable_both;
+
+};
+
 class AggregateAfT : public ydk::Enum
 {
     public:
@@ -7500,34 +7511,6 @@ class OspfBfdControl : public ydk::Enum
 
 };
 
-class StpPortFast : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf trunk;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class OspfEventType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf adj;
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf ha;
-        static const ydk::Enum::YLeaf lsa_flood;
-        static const ydk::Enum::YLeaf lsa;
-        static const ydk::Enum::YLeaf spf;
-        static const ydk::Enum::YLeaf redist;
-        static const ydk::Enum::YLeaf ldp;
-        static const ydk::Enum::YLeaf mpls_te;
-        static const ydk::Enum::YLeaf hello;
-        static const ydk::Enum::YLeaf rib;
-        static const ydk::Enum::YLeaf spf_trigger;
-        static const ydk::Enum::YLeaf cli;
-
-};
-
 class BgpSoftReconfigBackup : public ydk::Enum
 {
     public:
@@ -7552,6 +7535,15 @@ class OpflexDeviceType : public ydk::Enum
         static const ydk::Enum::YLeaf n1kv;
         static const ydk::Enum::YLeaf hyperv;
         static const ydk::Enum::YLeaf ovs;
+
+};
+
+class EqptAirFilter : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf absent;
+        static const ydk::Enum::YLeaf present;
+        static const ydk::Enum::YLeaf notsupported;
 
 };
 
@@ -8148,14 +8140,6 @@ class L2DomMode : public ydk::Enum
 
 };
 
-class PlatformSwitchingMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf DEFAULT;
-        static const ydk::Enum::YLeaf STORE_FORWARD;
-
-};
-
 class BgpAsnPropagation : public ydk::Enum
 {
     public:
@@ -8651,6 +8635,7 @@ class InbandTelemetryModeT : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf inbandtelemetry;
+        static const ydk::Enum::YLeaf postcard;
 
 };
 
@@ -8693,6 +8678,12 @@ class RtdmcDbT : public ydk::Enum
         static const ydk::Enum::YLeaf group;
         static const ydk::Enum::YLeaf ifstats;
         static const ydk::Enum::YLeaf peer;
+        static const ydk::Enum::YLeaf rphash;
+        static const ydk::Enum::YLeaf df;
+        static const ydk::Enum::YLeaf bf;
+        static const ydk::Enum::YLeaf embedrp;
+        static const ydk::Enum::YLeaf syslog;
+        static const ydk::Enum::YLeaf vrfdetail;
 
 };
 
@@ -8928,6 +8919,15 @@ class BgpPeerType : public ydk::Enum
 
 };
 
+class NetflowDirectionT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
+        static const ydk::Enum::YLeaf both;
+
+};
+
 class PlatformRoutingMode : public ydk::Enum
 {
     public:
@@ -8950,6 +8950,7 @@ class PlatformRoutingMode : public ydk::Enum
         static const ydk::Enum::YLeaf TEMPLATE_VXLAN_SCALE;
         static const ydk::Enum::YLeaf TEMPLATE_MPLS_SCALE;
         static const ydk::Enum::YLeaf TEMPLATE_IPV6_LPM_HEAVY;
+        static const ydk::Enum::YLeaf TEMPLATE_MULTICAST_EXT_HEAVY;
 
 };
 
@@ -8989,6 +8990,14 @@ class FmInstOperState : public ydk::Enum
         static const ydk::Enum::YLeaf enabled;
         static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf enabled_not_running;
+
+};
+
+class CfsAdminSt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
@@ -9070,6 +9079,15 @@ class RtdmcBfdOperSt : public ydk::Enum
 
 };
 
+class NetflowCollVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf v5;
+        static const ydk::Enum::YLeaf v9;
+        static const ydk::Enum::YLeaf cisco_v1;
+
+};
+
 class SrteEncapsulationType : public ydk::Enum
 {
     public:
@@ -9106,6 +9124,41 @@ class AaaClear : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf no;
         static const ydk::Enum::YLeaf yes;
+
+};
+
+class EqptPsuFanDir : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf front2back;
+        static const ydk::Enum::YLeaf back2front;
+        static const ydk::Enum::YLeaf notused;
+
+};
+
+class SyslogFacility : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf kern;
+        static const ydk::Enum::YLeaf user;
+        static const ydk::Enum::YLeaf mail;
+        static const ydk::Enum::YLeaf daemon;
+        static const ydk::Enum::YLeaf auth;
+        static const ydk::Enum::YLeaf syslog;
+        static const ydk::Enum::YLeaf lpr;
+        static const ydk::Enum::YLeaf news;
+        static const ydk::Enum::YLeaf uucp;
+        static const ydk::Enum::YLeaf cron;
+        static const ydk::Enum::YLeaf authpriv;
+        static const ydk::Enum::YLeaf ftp;
+        static const ydk::Enum::YLeaf local0;
+        static const ydk::Enum::YLeaf local1;
+        static const ydk::Enum::YLeaf local2;
+        static const ydk::Enum::YLeaf local3;
+        static const ydk::Enum::YLeaf local4;
+        static const ydk::Enum::YLeaf local5;
+        static const ydk::Enum::YLeaf local6;
+        static const ydk::Enum::YLeaf local7;
 
 };
 
@@ -9209,6 +9262,13 @@ class EqptSlotT : public ydk::Enum
         static const ydk::Enum::YLeaf fantray;
         static const ydk::Enum::YLeaf bslot;
         static const ydk::Enum::YLeaf nslot;
+
+};
+
+class NetflowModeT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netflow;
 
 };
 
@@ -9406,6 +9466,14 @@ class NdDbT : public ydk::Enum
 
 };
 
+class RtmapCriteria : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf exact;
+        static const ydk::Enum::YLeaf sub_group;
+
+};
+
 class BgpMode : public ydk::Enum
 {
     public:
@@ -9537,6 +9605,7 @@ class McastfwdEhType : public ydk::Enum
         static const ydk::Enum::YLeaf packet;
         static const ydk::Enum::YLeaf vrf;
         static const ydk::Enum::YLeaf l2;
+        static const ydk::Enum::YLeaf nbm;
 
 };
 
@@ -9724,6 +9793,15 @@ class StpPortState : public ydk::Enum
         static const ydk::Enum::YLeaf learning;
         static const ydk::Enum::YLeaf forwarding;
         static const ydk::Enum::YLeaf disabled;
+
+};
+
+class CfsIpDistMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
@@ -10261,14 +10339,20 @@ class NgoamXcState : public ydk::Enum
 
 };
 
-class SwpkgsOperState : public ydk::Enum
+class RtdmcBfdInstSt : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf inactive;
-        static const ydk::Enum::YLeaf activated;
-        static const ydk::Enum::YLeaf deactivated;
-        static const ydk::Enum::YLeaf committed;
+
+};
+
+class StpRootMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
@@ -10376,12 +10460,11 @@ class NwAdminStIfStatLocalProxyArp : public ydk::Enum
 
 };
 
-class RtdmcBfdInstSt : public ydk::Enum
+class BootImageVerify : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -10423,6 +10506,15 @@ class PkiCsyncElementType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf exclude;
         static const ydk::Enum::YLeaf include;
+
+};
+
+class RtdmcPolicyDirType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
 
 };
 
@@ -10744,6 +10836,15 @@ class PcPCHashDist : public ydk::Enum
 
 };
 
+class NetflowFltType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ce;
+
+};
+
 class L1SwitchingSt : public ydk::Enum
 {
     public:
@@ -10914,6 +11015,17 @@ class Vrrpv3VrAf : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class RtdmcDfStates : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf offer;
+        static const ydk::Enum::YLeaf lose;
+        static const ydk::Enum::YLeaf winner;
+        static const ydk::Enum::YLeaf backoff;
 
 };
 
@@ -11316,6 +11428,15 @@ class L1FECMode : public ydk::Enum
 
 };
 
+class MsdpSource : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf pflist;
+        static const ydk::Enum::YLeaf rtmap;
+
+};
+
 class EqptAcc : public ydk::Enum
 {
     public:
@@ -11357,6 +11478,17 @@ class DatetimeClockProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf ptp;
         static const ydk::Enum::YLeaf ntp;
         static const ydk::Enum::YLeaf none;
+
+};
+
+class SwpkgsOperState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf inactive;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf deactivated;
+        static const ydk::Enum::YLeaf committed;
 
 };
 
@@ -11419,6 +11551,14 @@ class NwOSSum : public ydk::Enum
         static const ydk::Enum::YLeaf resetting;
         static const ydk::Enum::YLeaf degraded;
         static const ydk::Enum::YLeaf ok;
+
+};
+
+class PlatformSwitchingMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf DEFAULT;
+        static const ydk::Enum::YLeaf STORE_FORWARD;
 
 };
 
@@ -11797,6 +11937,25 @@ class SpanOperStQual : public ydk::Enum
 
 };
 
+class AnalyticsConfigLatencyResFactorT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+
+};
+
+class L1PhyLayer : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf sup_inband;
+        static const ydk::Enum::YLeaf eobc;
+        static const ydk::Enum::YLeaf mgmt;
+        static const ydk::Enum::YLeaf max;
+
+};
+
 class OspfPathT : public ydk::Enum
 {
     public:
@@ -11992,32 +12151,6 @@ class FvPcEnfPref : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf enforced;
         static const ydk::Enum::YLeaf unenforced;
-
-};
-
-class SyslogFacility : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf kern;
-        static const ydk::Enum::YLeaf user;
-        static const ydk::Enum::YLeaf mail;
-        static const ydk::Enum::YLeaf daemon;
-        static const ydk::Enum::YLeaf auth;
-        static const ydk::Enum::YLeaf syslog;
-        static const ydk::Enum::YLeaf lpr;
-        static const ydk::Enum::YLeaf news;
-        static const ydk::Enum::YLeaf uucp;
-        static const ydk::Enum::YLeaf cron;
-        static const ydk::Enum::YLeaf authpriv;
-        static const ydk::Enum::YLeaf ftp;
-        static const ydk::Enum::YLeaf local0;
-        static const ydk::Enum::YLeaf local1;
-        static const ydk::Enum::YLeaf local2;
-        static const ydk::Enum::YLeaf local3;
-        static const ydk::Enum::YLeaf local4;
-        static const ydk::Enum::YLeaf local5;
-        static const ydk::Enum::YLeaf local6;
-        static const ydk::Enum::YLeaf local7;
 
 };
 

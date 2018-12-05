@@ -13,9 +13,12 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 ------------------------------------------------------------------*/
+#include <libyang/libyang.h>
 
 #include "spdlog/spdlog.h"
 #include "logging_callback.hpp"
+#include "logger.hpp"
+#include "errors.hpp"
 
 namespace ydk
 {
@@ -25,6 +28,41 @@ static logging_callback ydk_logging_info_function = nullptr;
 static logging_callback ydk_logging_warn_function = nullptr;
 static logging_callback ydk_logging_error_function = nullptr;
 static logging_callback ydk_logging_critical_function = nullptr;
+
+void libyang_log_callback(LY_LOG_LEVEL level, const char *msg, const char *path)
+{
+    std::ostringstream error_message{};
+    error_message <<msg;
+    if(path)
+    {
+        error_message << " " << "Path: '" << path<<"'";
+    }
+    switch(level)
+    {
+        case LY_LLERR:
+            if(error_message.str().find("Invalid value")!= std::string::npos
+                    || error_message.str().find("Failed to resolve")!= std::string::npos
+                    || error_message.str().find("Unexpected character")!= std::string::npos
+                    || error_message.str().find("does not satisfy the constraint")!= std::string::npos)
+            {
+                YLOG_ERROR("Data is invalid according to the yang model. Libyang error: {}", error_message.str());
+                throw(YModelError{});
+            }
+            YLOG_ERROR("Data is invalid according to the yang model. Libyang error: {}", error_message.str());
+            break;
+        case LY_LLSILENT:
+        case LY_LLWRN:
+        case LY_LLVRB:
+        case LY_LLDBG:
+            YLOG_DEBUG("[libyang] {}", error_message.str());
+            break;
+    }
+}
+
+void set_libyang_logging_callback()
+{
+	ly_set_log_clb(libyang_log_callback, 1);
+}
 
 void set_logging_callback(const char* level, logging_callback func)
 {
@@ -47,4 +85,4 @@ logging_callback get_logging_callback(const char* level)
     return nullptr;
 }
 
-}
+}	// namespace ydk

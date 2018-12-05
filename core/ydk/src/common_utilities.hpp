@@ -45,6 +45,13 @@ namespace ydk
     std::string get_xml_subtree_filter_payload(Entity & entity, const ServiceProvider & provider);
 
     std::vector<std::string> get_union(std::vector<std::string> & v1, std::vector<std::string> & v2);
+
+    std::shared_ptr<Entity> execute_rpc(ServiceProvider & provider, Entity & entity,
+                                        const std::string & operation, const std::string & data_tag, bool set_config_flag);
+    std::vector<std::shared_ptr<Entity>> execute_rpc(ServiceProvider & provider, std::vector<Entity*> & filter_list,
+                                        const std::string & operation, const std::string & data_tag, bool set_config_flag);
+
+    path::DataNode* create_root_datanode(path::RootSchemaNode* root_schema);
 }
 
 #endif /* YDK_UTILITIES */

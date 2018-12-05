@@ -2878,8 +2878,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::AfIte
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
         ydk::YLeaf scope; //type: RtleakScope
         ydk::YLeaf rtmap; //type: string
 
@@ -2926,8 +2924,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::AfIte
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf direction; //type: BgpRtCtrlDir
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
         ydk::YLeaf list; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PeerItems::PeerList::AfItems::PeerAfList::PfxctrlItems::PfxCtrlPList
@@ -3115,7 +3111,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContLis
 
         ydk::YLeaf localasn; //type: string
         ydk::YLeaf asnpropagate; //type: BgpAsnPropagation
-        ydk::YLeaf name; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::LocalasnItems
 
@@ -3177,6 +3172,7 @@ class System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContLis
         ydk::YLeaf encapmpls; //type: BgpAdminSt
         ydk::YLeaf rewritertasn; //type: BgpAdminSt
         ydk::YLeaf advgwip; //type: NwAdminSt_
+        ydk::YLeaf advlocallblrt; //type: NwAdminSt_
         ydk::YLeaf inheritcontpeerpolicyctrl; //type: string
         ydk::YLeaf name; //type: string
         class MaxpfxpItems; //type: System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::MaxpfxpItems
@@ -3236,8 +3232,6 @@ class System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContLis
         ydk::YLeaf thresh; //type: uint8
         ydk::YLeaf action; //type: BgpMaxPfxAct
         ydk::YLeaf restarttime; //type: uint16
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf descr; //type: string
 
 }; // System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::MaxpfxpItems
 

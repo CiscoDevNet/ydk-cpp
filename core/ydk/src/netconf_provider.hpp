@@ -66,6 +66,13 @@ public:
         const path::Session& get_session() const;
         std::vector<std::string> get_capabilities() const;
 
+        inline const std::string get_provider_type() const {
+            return "NetconfServiceProvider";
+        }
+
+        std::shared_ptr<Entity> execute_operation(const std::string & operation, Entity & entity, std::map<std::string,std::string> params);
+        std::vector<std::shared_ptr<Entity>> execute_operation(const std::string & operation, std::vector<Entity*> entity_list, std::map<std::string,std::string> params);
+
 private:
         const path::NetconfSession session;
 };

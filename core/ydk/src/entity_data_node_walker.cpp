@@ -193,7 +193,7 @@ void get_entity_from_data_node(path::DataNode * node, shared_ptr<Entity> entity)
     if (entity == nullptr || node == nullptr)
         return;
 
-    YLOG_DEBUG("Looking at parent entity {}", entity->yang_name);
+    YLOG_DEBUG("Looking at parent entity '{}'", entity->yang_name);
     string module_name = node->get_schema_node().get_statement().module_name;
     for(auto & child_data_node:node->get_children())
     {

@@ -25,9 +25,6 @@
 #include <iostream>
 #include "../src/path_api.hpp"
 #include "../src/ietf_parser.hpp"
-#include "config.hpp"
-#include "catch.hpp"
-
 
 // as we are requiring load module from module namespace(test_codec.cpp)
 // we have to provide mock data with module namespace to module name mapping

@@ -25,10 +25,14 @@
 //
 //////////////////////////////////////////////////////////////////
 
-#include "../src/types.hpp"
-#include "catch.hpp"
-#include "mock_data.hpp"
 #include <iostream>
+
+#include "catch.hpp"
+#include "config.hpp"
+#include "mock_data.hpp"
+
+#include "../src/types.hpp"
+#include "../src/path/path_private.hpp"
 
 using namespace ydk;
 using namespace std;
@@ -120,7 +124,7 @@ TEST_CASE( "test_submodule_feature" )
     REQUIRE(xml == xml_rt);
 }
 
-TEST_CASE( "test_decode_multiple_json" )
+TEST_CASE( "decode_multiple_json" )
 {
     std::string searchdir{TEST_HOME};
     mock::MockSession sp{searchdir, test_openconfig};
