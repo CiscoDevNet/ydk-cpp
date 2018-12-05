@@ -27,7 +27,7 @@
 
 namespace ydk
 {
-#define ydk_openconfig_models_path "/usr/local/share/openconfig@0.1.6-post1"
+#define ydk_openconfig_models_path "/usr/local/share/openconfig@0.1.6"
 }
 
 #endif /* _BUNDLE_INFO_HPP_ */

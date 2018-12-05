@@ -97,7 +97,7 @@ include(CPack)
 # include custom Modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 
-set(YDK_YANG_ARCHIVE openconfig\@0.1.6-post1)
+set(YDK_YANG_ARCHIVE openconfig\@0.1.6)
 
 if(NOT LIB_INSTALL_DIR)
     set(LIB_INSTALL_DIR lib)
@@ -108,7 +108,7 @@ if(NOT INCLUDE_INSTALL_DIR)
 endif()
 
 if(NOT YANG_INSTALL_DIR)
-    set(YANG_INSTALL_DIR share/openconfig\@0.1.6-post1)
+    set(YANG_INSTALL_DIR share/openconfig\@0.1.6)
 endif()
 
 # set default build type if not specified by user
@@ -132,7 +132,7 @@ set(libydk_openconfig_headers ydk/models/openconfig/bundle_info.hpp ydk/models/o
 
 set(libydk_openconfig_yang openconfig-types.yang openconfig-mpls-static.yang openconfig-packet-match-types.yang openconfig-mpls-rsvp.yang openconfig-if-aggregate.yang openconfig-bgp-common-multiprotocol.yang openconfig-transport-types.yang openconfig-bgp-common.yang openconfig-aft-network-instance.yang openconfig-mpls-igp.yang openconfig-aft-ipv4.yang openconfig-isis-routing.yang openconfig-vlan.yang openconfig-local-routing.yang openconfig-if-ip.yang openconfig-bgp-policy.yang openconfig-policy-types.yang openconfig-platform.yang openconfig-network-instance-l3.yang openconfig-rsvp-sr-ext.yang ydk@2016-02-26.yang openconfig-bgp-types.yang ietf-diffserv-policy.yang ietf-event-notifications.yang ietf-netconf-acm.yang ietf-ipv6-unicast-routing.yang ietf-inet-types.yang iana-if-type.yang ietf-netconf.yang iana-crypt-hash.yang ietf-interfaces-ext.yang ietf-yang-push.yang ietf-routing.yang ietf-yang-types.yang ietf-ipv4-unicast-routing.yang ietf-diffserv-action.yang ietf-key-chain.yang ietf-ip.yang ietf-yang-smiv2.yang ietf-netconf-notifications.yang ietf-syslog-types.yang ietf-ospf.yang ietf-restconf-monitoring.yang ietf-diffserv-classifier.yang policy-types.yang ietf-interfaces.yang ietf-diffserv-target.yang ietf-netconf-with-defaults.yang ietf-yang-library.yang ietf-netconf-monitoring.yang openconfig-mpls-types.yang openconfig-interfaces.yang openconfig-channel-monitor.yang openconfig-network-instance-l2.yang openconfig-yang-types.yang openconfig-aft-ipv6.yang openconfig-lldp-types.yang openconfig-vlan-types.yang openconfig-mpls-ldp.yang openconfig-isis.yang openconfig-bgp-common-structure.yang openconfig-isis-policy.yang openconfig-isis-lsp.yang openconfig-bgp-peer-group.yang openconfig-aft.yang openconfig-packet-match.yang openconfig-if-ethernet.yang openconfig-bgp-neighbor.yang openconfig-aft-ethernet.yang openconfig-transport-line-protection.yang openconfig-extensions.yang openconfig-bgp-global.yang openconfig-mpls-sr.yang openconfig-optical-amplifier.yang openconfig-network-instance.yang openconfig-terminal-device.yang openconfig-isis-types.yang openconfig-platform-transceiver.yang openconfig-aft-mpls.yang openconfig-aft-common.yang openconfig-network-instance-types.yang openconfig-lldp.yang openconfig-segment-routing.yang openconfig-aft-pf.yang openconfig-lacp.yang openconfig-rib-bgp-types.yang openconfig-aft-types.yang openconfig-mpls.yang openconfig-inet-types.yang openconfig-rib-bgp.yang openconfig-telemetry.yang openconfig-transport-line-common.yang openconfig-platform-types.yang openconfig-isis-lsdb-types.yang openconfig-routing-policy.yang openconfig-acl.yang openconfig-bgp.yang openconfig-mpls-te.yang)
 
-set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/openconfig\@0.1.6-post1)
+set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/openconfig\@0.1.6)
 
 list(APPEND libydk_YANG_FILES "")
 foreach(yang_file IN LISTS libydk_openconfig_yang)

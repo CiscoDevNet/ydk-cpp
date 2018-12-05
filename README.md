@@ -134,17 +134,16 @@ For other Ubuntu distributions it is recommended to build core libraries from so
 For Xenial:
 
 ```
-$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.7.3/libydk_0.7.3-1_amd64.deb
+$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.0/xenial/libydk_0.8.0-1_amd64.deb
 $ sudo gdebi libydk_0.8.0-1_amd64.deb
 ```
 
 For Bionic:
 
 ```
-$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.7.3/libydk-ietf_0.1.3-1_amd64.deb
+$ wget https://devhub.cisco.com/artifactory/debian-ydk/0.8.0/bionic/libydk_0.8.0-1_amd64.deb
 $ sudo gdebi libydk_0.8.0-1_amd64.deb
 ```
-Similarly other model bundle packages listed [here](http://devhub.cisco.com/artifactory/webapp/#/artifacts/browse/tree/General/debian-ydk/0.7.2) can be installed.
 
 ##### Centos (Fedora-based)
 
