@@ -97,11 +97,11 @@ string entity_vector_to_string(vector<Entity*> & entity_list)
     string buf = "[";
     bool first = true;
     for (auto item : entity_list) {
-    if (first)
+      if (first)
         first = false;
-    else
+      else
         buf += ", ";
-        buf += item->get_segment_path();
+      buf += item->get_segment_path();
     }
     buf += ']';
     return buf;

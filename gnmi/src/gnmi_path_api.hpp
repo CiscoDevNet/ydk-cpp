@@ -28,6 +28,8 @@
 #ifndef YDK_GNMI_CORE_HPP
 #define YDK_GNMI_CORE_HPP
 
+#include <functional>
+
 #include <ydk/path_api.hpp>
 
 #include "gnmi.pb.h"

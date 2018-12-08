@@ -23,3 +23,5 @@ gittmp*/
 *.sublime-workspace
 core/ydk/build
 gnmi/build
+gnmi/samples/build
+gnmi/tests

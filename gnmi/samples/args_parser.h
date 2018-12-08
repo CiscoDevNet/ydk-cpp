@@ -23,4 +23,9 @@
 void show_usage(std::string name);
 std::vector<std::string> parse_args(int argc, char* argv[]);
 
+// Test utilities
+void print_tree(ydk::path::DataNode* dn, const std::string& indent);
+void print_data_node(std::shared_ptr<ydk::path::DataNode> dn);
+void print_entity(std::shared_ptr<ydk::Entity> entity, ydk::path::RootSchemaNode& root);
+
 #endif /* _ARGS_PARSER_H_*/

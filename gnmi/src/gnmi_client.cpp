@@ -23,6 +23,9 @@
 
 #include <thread>
 #include <chrono>
+#include <algorithm>    // std::all_of
+#include <ctype.h>  	// std::isdigit
+
 #include <google/protobuf/text_format.h>
 
 #include <ydk/errors.hpp>
@@ -344,11 +347,17 @@ static pair<string,string> get_path_from_update(gnmi::Update update)
                 	path_to_append = "}]" + path_to_append;
                 	string keys_to_append;
                     for (auto key : path.elem(l).key()) {
-                    	keys_to_append.append("\"" + key.first + "\":\"" + key.second + "\",");
-
-                        // Remove surrounding quotes for YDK to work with XR gNMI server.
-                        // This could be an issue with other gNMI servers
-                    	// keys_to_append.append("\"" + key.first + "\":" + key.second + ",");
+                        const char * ckey = key.second.c_str();
+                        bool is_number = all_of(key.second.begin(), key.second.end(), ::isdigit);
+                        if ((ckey[0] == '\"' && ckey[key.second.length()-1] == '\"')  || is_number) {
+                            // The key value is a number or string, which is already surrounded by double-quotes
+                            // like in implementation of XR gNMI server
+                            keys_to_append.append("\"" + key.first + "\":" + key.second + ",");
+                        }
+                        else {
+                            // The key value is not a number, treat it as a string by adding double-quotes
+                            keys_to_append.append("\"" + key.first + "\":\"" + key.second + "\",");
+                        }
                     }
                     path_to_prepend.append(keys_to_append);
                 }
@@ -370,9 +379,10 @@ static string get_value_from_update(gnmi::Update update)
     gnmi::TypedValue value;
     string value_for_payload;
 
-    if(update.has_val())
+    if (update.has_val()) {
         value = update.val();
         value_for_payload.append(value.json_ietf_val());
+    }
     return value_for_payload;
 }
 

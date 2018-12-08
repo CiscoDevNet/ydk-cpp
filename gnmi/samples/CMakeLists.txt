@@ -12,6 +12,8 @@ set(samples
      bgp_gnmi_read
      bgp_gnmi_service
      bgp_gnmi_subscribe
+     gnmi_ifc_read
+     xr_int_oper_gnmi_subscribe
      )
 
 # set default build type if not specified by user
@@ -22,7 +24,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 
 # Find dependent libraries
 #find_library(ydk_openconfig_location ydk_openconfig)
-#find_library(ydk_cisco_ios_xr_location ydk_cisco_ios_xr)
+find_library(ydk_cisco_ios_xr_location ydk_cisco_ios_xr)
 #find_library(ydk_cisco_ios_xe_location ydk_cisco_ios_xe)
 find_library(ydk_gnmi_location ydk_gnmi)
 find_library(ydk_location ydk)
@@ -49,6 +51,7 @@ foreach(sample IN LISTS samples)
     add_executable(${sample} ${sample}.cpp args_parser.cpp)
 
     target_link_libraries(${sample}
+    ${ydk_cisco_ios_xr_location}
     ${ydk_ydktest_location}
     ${ydk_gnmi_location}
     ${ydk_location}
